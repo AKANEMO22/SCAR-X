@@ -227,6 +227,8 @@ def dashboard(root):
                 if vw:value.setdefault('result',{})['visual_word_statistics']=vw
                 dw=direct_word_statistics(root,value.get('run_id'))
                 if dw:value.setdefault('result',{})['direct_word_statistics']=dw
+                ca=credit_alignment_statistics(root,value.get('run_id'))
+                if ca:value.setdefault('result',{})['credit_alignment_statistics']=ca
             jobs.append(value)
         except (OSError,ValueError):continue
     history=[]
@@ -411,6 +413,51 @@ def direct_word_statistics(root,run_id):
             if not isinstance(r,dict):continue
             summary[method]={k:(r[k] if type(r.get(k)) in (int,float) and math.isfinite(r[k]) else None) for k in ('macro_development','macro_train','probe_gain','restore_initial_hidden_dev')}
         return {'source_run':run_id,'decision':data['decision'],'summary':summary}
+    except (OSError,ValueError,TypeError,KeyError,AttributeError):return {}
+
+
+def credit_alignment_statistics(root,run_id):
+    """Bounded typed audit39 metrics: is the local direction actually aligned?
+
+    Readonly diagnostics only. Never exposes checkpoint paths or free answers.
+    """
+    if not isinstance(run_id,str) or not RUN_ID.fullmatch(run_id):return {}
+    base=(Path(root)/'runs').resolve();path=(base/run_id/'result.json').resolve()
+    if not path.is_relative_to(base) or not path.is_file() or path.stat().st_size>500000:return {}
+    try:
+        data=json.loads(path.read_text(encoding='utf-8'))
+        if data.get('decision')!='LOCAL_CREDIT_ALIGNMENT_DIAGNOSTIC_ONLY':return {}
+        if data.get('neural_training') is not False or data.get('deployed') is not False:return {}
+        # A superseded run measured the wrong thing; never render it as a result.
+        if data.get('do_not_cite') is True or data.get('superseded_by'):return {}
+        rows=data.get('alignment_rows');macro=data.get('dev_macro')
+        if not isinstance(rows,list) or not isinstance(macro,dict):return {}
+        def num(value):return value if type(value) in (int,float) and math.isfinite(value) else None
+        keep=('cases','nll_before','delta_direction','delta_signflip','delta_random_mean',
+              'delta_permuted_mean','gain_vs_random','gain_vs_permuted','gain_vs_signflip',
+              'alignment_fraction','norm_match_ratio_random','norm_match_ratio_permuted')
+        table=[]
+        for row in rows:
+            if not isinstance(row,dict) or row.get('split') not in ('train','development'):continue
+            if type(row.get('seed')) is not int:continue
+            table.append({'seed':row['seed'],'split':row['split'],**{k:num(row.get(k)) for k in keep}})
+        intervals={}
+        for name in ('dev_gain_vs_random_interval','dev_gain_vs_permuted_interval','dev_gain_vs_signflip_interval'):
+            value=data.get(name)
+            if isinstance(value,dict):
+                intervals[name.replace('dev_','').replace('_interval','')]={
+                    k:num(value.get(k)) for k in ('mean','lower95','upper95','n_seeds')}
+        heldout=data.get('heldout');held={}
+        if isinstance(heldout,dict):
+            held={'seeds':num(heldout.get('seeds')),'mean_dev_delta':num(heldout.get('mean_dev_delta'))}
+            interval=heldout.get('interval')
+            if isinstance(interval,dict):held['interval']={k:num(interval.get(k)) for k in ('mean','lower95','upper95')}
+        flags=data.get('flags')
+        return {'rows':table,'dev_macro':{k:num(macro.get(k)) for k in keep},
+            'intervals':intervals,'heldout':held,'flags':flags if isinstance(flags,dict) else {},
+            'model_sources':num(data.get('model_sources')),
+            'applied_counterfactual_evaluations':num(data.get('applied_counterfactual_evaluations')),
+            'scope':'Chẩn đoán cơ chế chỉ đọc: hướng local áp lên BẢN SAO dùng một lần, không huấn luyện, không phải câu trả lời tự sinh.'}
     except (OSError,ValueError,TypeError,KeyError,AttributeError):return {}
 
 

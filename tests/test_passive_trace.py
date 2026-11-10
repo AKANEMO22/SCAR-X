@@ -40,7 +40,14 @@ def test_measured_loss_weight_delta_and_full_guard_rollback(tmp_path,monkeypatch
         assert metrics['update_steps']==app.model.core.updates-updates
         assert metrics['changed_synapses']['w_out']==np.count_nonzero(app.model.core.w_out!=before)
         assert metrics['weight_delta']['w_out']==pytest.approx(np.linalg.norm(app.model.core.w_out-before))
-        assert not metrics['guard_checked'] # explicit form follows existing policy
+        # POLICY CHANGE 2026-11-10: the guard now runs on the explicit teaching
+        # path too. It previously ran only for _automatic lessons, so the web form
+        # and Hermes replaced weights with no regression check, which is how a
+        # lesson was accepted while a working reply was destroyed. See
+        # docs/OBSERVING.md and docs/STATUS.md. Consequence measured: acceptance
+        # on the product set drops to 12.5%, which is the honest state of
+        # interference, not a regression introduced here.
+        assert metrics['guard_checked'] and metrics['guard_probe_count']>0
         app.dialogue.enqueue('test','7 + 8','15','explicit unit-test lesson')
         app.dialogue.lessons[-1]['remaining']=1
         state=app.model.dumps();values=iter(([True],[False]))

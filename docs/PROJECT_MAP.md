@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+**Credit alignment39:** [báo cáo39](research/39_LOCAL_CREDIT_ALIGNMENT.md), protocol
+`experiments/local-credit-alignment-audit-v1.md`, `evaluation/credit_alignment.py`,
+`scripts/audit_local_credit_alignment.py`; receipt`artifacts/local-credit-alignment.json`.
+Read only15checkpoint36, áp hướng local unchanged35 lên **bản sao dùng một lần** và đo
+ΔNLL thật so control; `0` neuralupdate, khôngTorch/mainchange. Bản chạy
+`d8de33` có lỗi đo norm đã`do_not_cite`; dùng `db01fc`. UI`#research-lab` bảng AUDIT39
+tách khỏi freeanswer.
+
 **Wordobjectiveaudit38:** [báo cáo38](research/38_WORD_TRAINING_OBJECTIVE_AUDIT.md),
 `experiments/word-training-objective-audit-v1.md`, `evaluation/word_training_audit.py`,
 `scripts/audit_word_training_objective.py`. Readonly15models36/FREE-GOLDPREFIX/

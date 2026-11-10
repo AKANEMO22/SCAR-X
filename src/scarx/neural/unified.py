@@ -162,6 +162,15 @@ class UnifiedCore:
             previous = token
         return loss / (len(tokens)+1)
 
+    @staticmethod
+    def _repeating(words, max_block=3):
+        """True when the tail is an immediate verbatim repeat of the block before it."""
+        n = len(words)
+        for size in range(1, min(max_block, n // 2) + 1):
+            if words[n - 2 * size:n - size] == words[n - size:]:
+                return True
+        return False
+
     def generate(self, prompt, max_words=24, stop_at_sentence=False):
         context = self.context(prompt)
         if type(max_words) is not int or not 1 <= max_words <= 32:
@@ -175,6 +184,12 @@ class UnifiedCore:
             words.append(self.vocabulary[token]); previous = token
             if stop_at_sentence and self.vocabulary[token] in ('.','!','?'):
                 stopped = True; reason = 'sentence_boundary'; break
+            # Stop a degenerate repetition cycle at decode time. This masks no
+            # weights and changes no learning rule; it only refuses to emit a
+            # block that has just repeated itself verbatim, which is a known
+            # failure of this small readout (README documents looping).
+            if self._repeating(words):
+                stopped = True; reason = 'repetition_guard'; words.pop(); break
         return {'text': render(words), 'tokens': words, 'stopped': stopped, 'stop_reason': reason,
                 'mean_probability': float(np.mean(scores)), 'source': 'shared ALIF neural word readout; no answer lookup'}
 

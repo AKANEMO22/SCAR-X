@@ -56,13 +56,24 @@ class DialogueLearning:
     def pending(self,session):
         return next((q for q in reversed(self.questions) if q['session']==session and q['status']=='open'),None)
 
-    def ask(self,session,prompt,reason,force=False):
+    def ask(self,session,prompt,reason,force=False,user_turn=False):
         if not self.ask_enabled:return None
-        pending=self.pending(session)
-        if pending:return pending
-        blocked=next((l for l in reversed(self.lessons) if l['status']=='needs_help' and normalized(l['prompt'])==normalized(prompt)),None)
+        current=normalized(prompt)
+        pending=next((q for q in reversed(self.questions) if q['session']==session and q['status']=='open'),None)
+        if pending:
+            if normalized(pending['prompt'])==current:return pending
+            # A question about a DIFFERENT prompt must never answer this turn.
+            # ADR0009 allows at most one open question per session, so retire the
+            # stale one instead of stacking a second.
+            pending['status']='skipped'
+            pending['superseded_by_prompt']=prompt[:240]
+        blocked=next((l for l in reversed(self.lessons) if l['status']=='needs_help' and normalized(l['prompt'])==current),None)
+        skipped=any(q['session']==session and normalized(q['prompt'])==current and q['status']=='skipped' for q in self.questions)
+        # ADR0009: a skipped item is not re-raised merely because a background
+        # review is running (no nagging), but a NEW explicit user turn may ask
+        # again. `force` alone must not resurrect a skipped prompt.
+        if skipped and not user_turn:return None
         if blocked is not None and not force:return None
-        if not force and any(q['session']==session and normalized(q['prompt'])==normalized(prompt) and q['status']=='skipped' for q in self.questions):return None
         if len(self.questions)>=16:
             removable=next((i for i,q in enumerate(self.questions) if q['status']!='open'),None)
             if removable is None:return None
@@ -82,7 +93,7 @@ class DialogueLearning:
         bad=not result['text'].strip() or not result.get('stopped',False) or any(words.count(w)>3 for w in set(words))
         if target is not None and normalized(target)!=normalized(result['text']):bad=True
         if normalized(prompt) not in KNOWN_PROBES and target is None:bad=True
-        if bad:return self.ask(session,prompt,'unsupported coverage, unstable output or mismatch with an explicit lesson; not a truth verdict',force=True)
+        if bad:return self.ask(session,prompt,'unsupported coverage, unstable output or mismatch with an explicit lesson; not a truth verdict',force=True,user_turn=True)
         return None
 
     def correction(self,session,text):

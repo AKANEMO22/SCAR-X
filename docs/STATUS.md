@@ -1,5 +1,552 @@
 # Trạng thái SCAR-X
 
+## Vòng 18: guard đang BẢO VỆ khuyết điểm, không chỉ bảo vệ kỹ năng
+
+Sau restore (5/8), ba câu còn sai đều **gần đúng**: `'Hello'` thiếu dấu chấm,
+`'Rất vui được giúp bạn.'` thiếu dấu chấm, `'Tôi là'` bị cụt. Đã thử dạy cả ba —
+**cả 3 đều bị guard từ chối**, 0 thay đổi.
+
+Hỏi thẳng guard xem nó nghĩ gì về từng cặp:
+
+| Prompt | Target lưu | Model sinh | Guard nói |
+|---|---|---|---|
+| `'hi'` | `'Hello.'` | `'Hello'` | **PASS (equal)** |
+| `'cảm ơn'` | `'Rất vui được giúp bạn.'` | `'Rất vui được giúp bạn.'` | **PASS (equal)** |
+| `'bạn tên gì'` | `'scar-x'` | `'Tôi là'` | fail |
+
+Vì `normalized()` **bỏ dấu câu cuối**, `'Hello'` và `'Hello.'` được coi là **bằng
+nhau**. Hệ quả:
+
+1. Guard **bảo vệ dạng cụt** và từ chối mọi bài dạy sửa nó.
+2. Sản phẩm **không thể cải thiện** ba câu này chừng nào guard còn bật.
+3. Thước đo sản phẩm (đã sửa) lại coi `'Hello'` là **sai** → hai định nghĩa
+   "đúng" xung đột, đúng như round 15 kết luận.
+
+Đây là **cùng một nguyên nhân** với round 15 nhưng có hệ quả nặng hơn: không chỉ
+là bỏ sót, mà là **chủ động chặn việc sửa**.
+
+### Cần người dùng quyết (không tự sửa được)
+
+Sửa `normalized()` là **đổi định nghĩa bảo vệ** — ngoài phạm vi product-first:
+
+1. **Giữ dấu câu trong so sánh** → guard bảo vệ đúng câu hoàn chỉnh; nhưng sẽ từ
+   chối nhiều bài hơn nữa (hiện đã chỉ nhận 16,7%).
+2. **Giữ nguyên** và ghi rõ guard chỉ bảo vệ nội dung từ, không bảo vệ hình thức.
+3. **Tách hai mức**: bảo vệ nội dung (chặn) + cảnh báo hình thức (không chặn).
+
+## Vòng 17: chứng minh RESTORE sửa được sản phẩm — 0/8 lên 5/8
+
+Đã chứng minh end-to-end trên **bản sao** của phiên thật (không ghi gì vào live):
+
+| Metric | Trước restore | **Sau restore** |
+|---|---:|---:|
+| Free-answer đúng (hoàn chỉnh) | 0,000 | **0,625** |
+| Premature stop | 1,000 | **0,250** |
+| `weights_sha256` | `ebf05a78…` | `26e597a4…` |
+
+Câu trả lời sau restore:
+
+```
+'hello'     -> 'Hello.'                    ✅
+'chào'      -> 'Chào bạn.'                 ✅
+'chào bạn'  -> 'Chào bạn.'                 ✅
+'bạn là ai' -> 'Tôi là scar-x.'            ✅
+'tạm biệt'  -> 'Tạm biệt bạn.'             ✅
+'hi'        -> 'Hello'                     (thiếu dấu chấm)
+'bạn tên gì'-> 'Tôi là'
+'cảm ơn'    -> 'Rất vui được giúp bạn.'    (thiếu dấu chấm)
+```
+
+**Đích restore:** checkpoint `b305479afb0e40c1ba5a04acd0139658`
+(`2026-11-09T07:00:26`). API: `Generation.restore(id)`.
+
+### Trọng số đã hỏng thật, không phải topology
+
+| Trạng thái | Điểm |
+|---|---:|
+| Checkpoint tốt, hidden 64 | **4/4** |
+| Lớn lên 96 | **4/4** |
+| Lớn lên **128** (bằng live) | **4/4** |
+| Live hiện tại (hidden 128) | 1/4 |
+| Live **thu nhỏ** về 64 | 1/4 |
+
+Thu nhỏ **không** phục hồi → trọng số đã bị phá, không phải topology. Đây là lý do
+restore là cách sửa đúng, còn đổi kích thước thì không.
+
+### Cách tự chạy
+
+```powershell
+cd 'C:\Users\hachimi\Downloads\model agent\scar-x'
+python scripts\find_working_checkpoint.py          # chấm cả 108 checkpoint
+python scripts\prove_restore_fixes_product.py      # chứng minh restore trên bản sao
+```
+
+Cả hai chỉ đọc; restore trong script chạy trên thư mục tạm.
+
+## Vòng 16: tìm được checkpoint còn trả lời đúng — có đường khôi phục cụ thể
+
+Chấm toàn bộ **108 checkpoint** trong phiên live (đọc read-only, chấm 4 câu mẫu
+từ reset state):
+
+| Kết quả | Số checkpoint |
+|---|---:|
+| **4/4 đúng hoàn chỉnh** | **10** |
+| 1/4 (đã hỏng) | 98 |
+
+**Mốc hỏng xác định được:** checkpoint tốt cuối là `b305479afb0e`
+(`2026-11-09T07:00:26`); checkpoint hỏng đầu là `2026-11-09T07:09:44` — cách
+**~9 phút**. Sau mốc đó toàn bộ session hỏng.
+
+**Tăng capacity KHÔNG phải nguyên nhân.** Checkpoint `capacity-grow`
+(`5b54a081ec0c`, 04:40:13, hidden 64) vẫn đạt **4/4 đúng**. Các checkpoint tốt
+đều ở `hidden=64, active=48`. Vậy growth trong sạch, đúng như round 14 kết luận.
+
+**Checkpoint tốt nhất còn lại:**
+
+```
+id      : b305479afb0e
+created : 2026-11-09T07:00:26
+hidden  : 64   active: 48   updates: 241129
+  'hi'        -> 'Hello.'
+  'chào bạn'  -> 'Chào bạn.'
+  'bạn là ai' -> 'Tôi là scar-x.'
+  'tạm biệt'  -> 'Tạm biệt bạn.'
+```
+
+Đây là **đích khôi phục cụ thể** nếu người dùng muốn lấy lại chat hoạt động —
+nhưng restore là thao tác trên phiên thật nên cần người dùng quyết định.
+
+Công cụ: `scripts/find_working_checkpoint.py` (read-only). Kết quả:
+`local/checkpoint-quality.json`.
+
+**Lỗi đo tự bắt được (lần 5):** lần chạy đầu báo `scored: 0` với mọi checkpoint.
+Nguyên nhân: cột `payload` chứa **archive session** (`PK…model.zip`), không phải
+blob model thuần, nên `UnifiedCore.loads` trực tiếp luôn thất bại. Đã sửa để mở
+đúng như `Generation._unpack`. Sau khi sửa: **108/108 chấm được**.
+
+## Vòng 15: guard và sản phẩm dùng hai định nghĩa "đúng" khác nhau
+
+Truy vết từng bước từ trọng số shipped (241123 updates) cho thấy mỗi bài dạy được
+chấp nhận vẫn bào mòn câu trả lời cũ:
+
+| Bước | Kết quả | `hi` | `tạm biệt` |
+|---|---|---|---|
+| shipped | — | `'Hello.'` | `'Tạm biệt bạn.'` |
+| 1. `bạn khỏe không` | ACCEPT | mất `'.'` | mất `'bạn'` |
+| 2. `tôi muốn dạy bạn` | ACCEPT | vẫn hỏng | vẫn hỏng |
+| 3. `chào` | ACCEPT | vẫn hỏng | **hồi phục** |
+
+Không có "một bước phá tất cả" — hư hại **tích lũy**.
+
+### Nguyên nhân: guard bỏ dấu câu, sản phẩm thì không
+
+`normalized()` định nghĩa `' '.join(tokenize(text)).strip(' .!?')`, nên guard coi
+`'Hello'` và `'Hello.'` là **giống nhau**. Đo trực tiếp:
+
+```
+AFTER lesson: 'hi'  guard(reset)='Hello'  guard_pass=True   live='Hello.'
+```
+
+Guard báo **PASS** trong khi câu trả lời đã mất dấu chấm — đúng khuyết điểm
+`premature_stop`. Vì vậy:
+
+- Guard **không thể** bảo vệ câu hoàn chỉnh, vì nó không phân biệt hoàn chỉnh với cụt.
+- Thước đo sản phẩm (đã sửa) coi `'Hello'` là **sai**, nên báo `premature_stop = 1,000`
+  trong khi guard báo mọi thứ ổn.
+
+Đây là **hai định nghĩa "đúng" khác nhau** trong cùng một hệ thống. Không phải
+ngưỡng, không phải coverage — mà là **ngữ nghĩa so sánh**.
+
+Ngoài ra `'chào bạn'` cho ra `'Chào bạn. chào bạn'` trong guard reset và
+`'Chào bạn. bạn'` ở live: cùng trọng số, hai state, hai kết quả khác nhau.
+
+### Cần người dùng quyết
+
+Sửa `normalized()` cho guard phân biệt câu cụt là **thay đổi định nghĩa bảo vệ** —
+ngoài phạm vi product-first. Ba lựa chọn:
+
+1. Guard so khớp **nghiêm ngặt** (giữ dấu câu) → bảo vệ được câu hoàn chỉnh, nhưng
+   sẽ từ chối nhiều bài dạy hơn nữa (hiện đã chỉ nhận 16,7%).
+2. Giữ nguyên, và **ghi rõ** trong docs rằng guard chỉ bảo vệ nội dung từ, không bảo
+   vệ hình thức câu.
+3. Tách hai chế độ: guard nội dung + cảnh báo hình thức riêng.
+
+## Vòng 14: trọng số SHIPPED trả lời ĐÚNG — session live đã bị làm hỏng
+
+Đây là phát hiện quan trọng nhất của cả đợt. Đo trực tiếp hai session:
+
+| Session | updates | hidden | `chào bạn` | `bạn là ai` |
+|---|---:|---:|---|---|
+| **Shipped** (trọng số kèm gói) | 241123 | 48 | `'Chào bạn.'` ✅ | `'Tôi là scar-x.'` ✅ |
+| **Live** (`local/generation1`) | 241363 | 128 | `'Chào'` ❌ | `'Tôi là scar-x là'` ❌ |
+
+Chỉ cách nhau **240 lượt cập nhật**, nhưng shipped trả lời **đúng hoàn chỉnh** cả
+bốn câu mẫu (`hi`, `chào bạn`, `bạn là ai`, `tạm biệt`), còn live đã hỏng.
+
+**Không phải do tăng capacity.** Đã kiểm: lớn shipped từ 48 → 64 → 96 → **128**
+mà **không huấn luyện** thì câu trả lời vẫn đúng ở mọi mức. Vậy growth trong sạch.
+
+### Nguyên nhân gốc #4: rollback khôi phục TRỌNG SỐ nhưng không khôi phục HÀNH VI
+
+Đo trước/sau một lượt dạy **bị từ chối**:
+
+| Thành phần | Trước | Sau | Giống? |
+|---|---|---|---|
+| `weights` | `56ca4ce3…` | `56ca4ce3…` | ✅ |
+| `updates` | 241219 | 241219 | ✅ |
+| `ticks` | 2172265 | 2172358 | ❌ |
+| `voltage` | khác | khác | ❌ |
+| **`'hi'`** | **`'Hello.'`** | **`'Hello'`** | ❌ |
+
+**Trọng số giống hệt, `updates` không đổi, nhưng câu trả lời đã khác.** Nghĩa là
+một bài dạy **bị từ chối** vẫn làm hỏng hành vi người dùng thấy, trong khi guard
+báo "rollback sạch".
+
+Đây là lý do `premature_stop = 1,000` và vì sao dấu chấm biến mất: state sóng
+lan sang một quỹ đạo khác, và readout rất nhạy với state.
+
+### Hai việc phải làm (đều cần người dùng duyệt)
+
+1. **Khôi phục cả state khi rollback**, không chỉ trọng số — hoặc chấp nhận rằng
+   rollback chỉ bảo vệ trọng số và ghi rõ trong tài liệu.
+2. **Session live đang chạy mã cũ** (khởi động 15:41, mã sửa 17:31). Cần restart
+   để nạp guard thật; đây là phiên thật của người dùng nên phải hỏi trước.
+
+## Vòng root-cause 4: tìm ra guard CHƯA TỪNG chạy khi dạy thủ công — 2026-11-10
+
+Người dùng chốt hướng Product-first + Root-cause. Đã trả lời 7 câu hỏi xác minh
+bằng thực nghiệm trên **bản sao**.
+
+**Về bằng chứng trọng số không đổi:** không dùng SHA của toàn payload runtime —
+đo được nó **đổi liên tục** (`193d1868…` rồi `0566670d…` chỉ cách 6 giây) vì idle
+vẫn tick và ghi state. `updates` cũng không đủ. Bằng chứng đúng là
+`weights_sha256()` trong `evaluation/product_acceptance.py`: hash chỉ các mảng
+trọng số + `indices` + topology + vocabulary. Mọi thí nghiệm dưới đây chạy trên
+**bản sao** (`copy_session`), live session không bị mở để ghi.
+
+### Nguyên nhân gốc lớn nhất (đã sửa)
+
+`generation.py` dòng 289 cũ: **`guard = self._guard_pairs(prompt) if _automatic else []`**
+
+Guard **chỉ chạy cho bài học tự động (idle)**. Đường dạy thủ công — form web và
+Hermes, tức đường người dùng thật sự dùng — **bỏ qua guard hoàn toàn**. Hệ quả đo
+được: bài `'tạm biệt'` được **ACCEPTED** trong khi `'chào bạn'` đi từ
+`'Chào bạn.'` sang `'Bạn có bạn.'`, và `guard_lost` không hề được tính
+(`guard_lost=None`). Điều này giải thích luôn vì sao báo cáo trước thấy "15/15
+bị chặn" (nhánh `_automatic`) mà đồng thời "4/4 ACCEPTED" (nhánh thủ công):
+**hai nhánh khác nhau, một nhánh không có guard**.
+
+Đã sửa: guard chạy trên **mọi** đường dạy. Không nới ngưỡng. Cập nhật
+`docs/OBSERVING.md` và test `test_passive_trace` để policy mới minh bạch.
+
+### Log quan sát và chặn retry (mục tiêu #4)
+
+**Hai bug quan sát được đã sửa** (phát sinh từ chính thay đổi guard ở trên):
+
+1. Lượt dạy bị guard từ chối trả `rolled_back=None` và **không ghi gì vào trace**,
+   nên trên localhost một bài bị từ chối **không thể phân biệt** với bài chưa
+   từng chạy. Nay ghi event `learning_rejected` với `accepted=False`,
+   `rolled_back=True`, `weight_delta` toàn 0 và lý do rõ ràng. Đã kiểm: trace có
+   1 event, `weights_sha256` khôi phục đúng.
+2. `except BaseException: self.trace.clear()` xoá luôn bản ghi vừa thêm. Nay giữ
+   lại tối đa 4 event `learning_rejected` qua rollback.
+
+**Chặn retry vô hạn: đã có sẵn và đúng, không cần sửa.** Đo 12 lượt liên tiếp:
+dừng ở **lượt 2**, chuyển `needs_help`, `remaining=0`,
+`stopped_identical_proposal=True`. Cơ chế chống lặp lại đề xuất bị từ chối y hệt
+hoạt động đúng.
+
+Thêm `tests/test_guard_policy.py` (4 test) khoá lại: guard chạy ở đường thủ công,
+reject ghi `rolled_back` + weight_delta 0, reject xuất hiện trong trace, và retry
+dừng sau 2 lần từ chối giống nhau. Tổng **230 test qua**.
+
+
+
+Đo trên corpus có sẵn (`data/dialogue/generation1.json`, 8 family đều có đáp án
+đầy đủ), so từng bước với vector xác suất đầy đủ:
+
+| Prompt | Muốn | Sinh ra | Dừng ở | `<eos>` |
+|---|---|---|---:|---:|
+| `chào` | `Chào bạn.` | `chào` | p1 | 0,874 |
+| `tạm biệt` | `Tạm biệt bạn.` | `tạm biệt` | p2 | 0,979 |
+| `cảm ơn` | `Rất vui được giúp bạn.` | `rất vui được giúp` | p4 | 0,908 |
+| `bạn làm được gì` | `Tôi đang học trả lời.` | `lời đang học trả lời.` | p6 | 1,000 |
+| `tôi muốn dạy bạn` | `Bạn có thể dạy tôi.` | `bạn có thể` | p3 | 0,696 |
+
+**Kết luận: 6/8 là lỗi LEARNING, không phải decoder.** Readout **tự chọn**
+`<eos>` với xác suất 0,87–1,00 trong khi token đúng chỉ 0,01–0,30. Không decoder
+nào cứu được khi chính readout muốn dừng. Chỉ 1/8 (`bạn khỏe không`) là nghi
+decoder (lặp `hoạt động` không dừng).
+
+**Và forcing tiền tố đúng cũng không cứu:** cho model đúng tiền tố, nó chỉ đồng ý
+`1+0+0`, `1+1+0+0`, `1+1+1+1+0` … tức vài token đầu rồi lệch. Tổng: free 1/8,
+gold-prefix 1/8. Vậy **ánh xạ prompt→answer yếu ngay cả khi có tiền tố**, không
+chỉ là exposure gap.
+
+**Lỗi đo tự bắt được (lần 2):** script đầu tiên in cột "gold-prefix" luôn bằng
+đáp án corpus vì đó là token **bị ép**, rồi kết luận sai là "gold-prefix giúp".
+Đã tách rõ: cột text chỉ là token ép; chỉ cột `+`/`0` và số argmax mới nói model
+có đồng ý hay không. Sau khi sửa, kết luận đảo lại thành đúng.
+
+Điều này khớp audit 38 (gap 29,34đ) và audit 39 (held-out ΔNLL ≈ −8,4e−05): vấn
+đề gốc nằm ở **biểu diễn**, không ở decoder. Vì vậy **không sửa bằng decoder**.
+
+
+
+`python scripts/acceptance_suite.py --teach` đo đủ 12 metric trên bản sao:
+
+| Metric | Giá trị ĐÚNG |
+|---|---:|
+| 1 Free-answer accuracy | **0,000** |
+| 2 Held-out generalization | 0,500 |
+| 3 Learning acquisition | 0,167 (1/6) |
+| 4 Retention | **0,000** (mẫu số bằng 0 vì chưa câu nào đúng) |
+| 5 Guard acceptance | 0,167 |
+| 6 Guard regression | 0 |
+| 7 Guard passing | 4/13 |
+| 8 Premature stop | **1,000** |
+| 9 Repetition | 0,000 |
+| 10 RSS / VMS | 44,6 MB / 30,0 MB (dưới 2 GB) |
+| 11 Restart persistence | **True** (theo `weights_sha256`) |
+| 11b Text identical sau restart | False — working state trôi, không phải mất học |
+| 12 Bằng chứng trọng số | `weights_sha256`, không dùng `updates` |
+
+### ĐÍNH CHÍNH: các số 0,500 / 4-8 / Retention 1,000 báo trước đó là SAI
+
+Suốt các vòng trước STATUS ghi free-answer 0,500 và retention 1,000. **Sai.**
+Thước đo `product_acceptance` khi đó quá lỏng, có ba lỗi:
+
+1. `expect='scar-x'` dùng so khớp **chuỗi con**, nên `'Tôi là scar-x là'` được
+   tính ĐÚNG dù cụt giữa câu và lặp.
+2. `_cycles()` chỉ bắt lặp **khối liền kề y hệt**, không bắt kiểu `scar-x là`.
+3. Không kiểm tra câu **hoàn chỉnh**, nên `'Hello'` (thiếu dấu chấm) được tính
+   đúng.
+
+Nay `correct` đòi đồng thời: đủ mọi từ bắt buộc (`require_all`) **và** không lặp
+**và** kết thúc bằng `.`/`!`/`?` (hoặc khớp đúng câu tham chiếu). Kết quả thật:
+**0/8 câu hoàn chỉnh** — khớp với `premature_stop = 1,000` và với README đã công
+bố "chưa có general chat".
+
+Thước đo lỏng làm hỏng chính mục đích của nó: nó che đúng khuyết điểm mà nó tồn
+tại để phơi ra.
+
+
+
+
+Đo 8 bài × 3 mức bước (4/8/16), trên bản sao:
+
+| Phép đo | Kết quả |
+|---|---:|
+| Tỷ lệ chấp nhận | **3/24 = 12,5%** |
+| Bài được nhận mà vẫn mất kiến thức cũ | **0** |
+| Rollback đúng khi bị từ chối | **21/21** (weights SHA khớp lại) |
+
+Vậy guard đang bảo vệ đúng, nhưng **interference chưa được giải quyết**: học bài
+mới gần như luôn phá bài cũ. Đây là câu trả lời cho ưu tiên #1: **chưa đạt**.
+Giảm số bước (adaptive step) **không** cứu được — đã thử 4/8/16, tất cả đều mất
+cùng cặp guard.
+
+### Sửa: quan sát không được làm nhiễu thứ được quan sát
+
+`teach()` chụp "before text" bằng cách chạy `generate()` **trên live core**, và
+chính lệnh đó đẩy recurrent state sang quỹ đạo khác. Đã đổi sang chụp trên
+**bản clone dùng một lần** (`UnifiedCore.loads(self.model.dumps())`), giữ nguyên
+tính liên tục của session theo ADR0006.
+
+**Rollback đã được kiểm chứng là chính xác tuyệt đối.** So sánh trước/sau một
+lượt bị từ chối: `weights` identical, `updates` identical, `vocab` identical,
+`correct` identical, `guard` identical. Không có gì bị mất.
+
+**Hai lỗi trong script retention của chính tôi, đã sửa:**
+1. Báo `rollback_incomplete` cho **mọi** lượt reject vì so với baseline **đầu
+   tiên** thay vì trạng thái ngay trước lượt đó — trong khi các lượt ACCEPT ở
+   giữa đã thay đổi baseline một cách hợp lệ.
+2. Cộng cả chênh lệch `ticks` (vốn tăng liên tục theo ADR0006) vào vi phạm.
+
+Sau khi sửa: **0 vi phạm retention trên 9 lượt**, 7/7 reject rollback sạch.
+
+### NGUYÊN NHÂN GỐC #3: trọng số học ĐÚNG, nhưng state live làm hỏng câu trả lời
+
+Cô lập từng bước trên cùng một bản sao, đọc từ hai trạng thái:
+
+| Đường | live state | reset state |
+|---|---|---|
+| A. `train_pair` thuần | ✅ `Tôi là scar-x.` | ✅ `Tôi là scar-x.` |
+| B. `expand_vocabulary` + train | ✅ đúng | ✅ đúng |
+| D. train, không expand | ✅ đúng | ✅ đúng |
+| **C. `generate()` TRƯỚC rồi train** | ✅ đúng | ❌ **`Tôi là scar-x là`** |
+| F. train ×4 | ✅ đúng | ❌ sai |
+
+Lặp lại A ba lần: **3/3 đều đúng** — không phải may mắn.
+
+**Cơ chế:** `teach()` gọi `generate()` để chụp "before text" **trước khi** huấn luyện.
+Lệnh đó đẩy recurrent state sang một quỹ đạo khác, và **chính nó** làm phép đo
+sau đó sai — không phải trọng số.
+
+Sau một lần `teach()` thật:
+
+| Đọc từ | Kết quả | Đúng? |
+|---|---|---|
+| reset clone | `'Tôi là scar-x.'` | **ĐÚNG** |
+| live state | `'Tôi là scar-x là'` | sai |
+
+**Kết luận:** trọng số **đã học đúng**. Câu trả lời hỏng là do **trạng thái suy
+diễn**, không phải do learning. Điều này khớp audit 39 (tín hiệu đúng hướng,
+held-out ≈ 0) và khớp `premature_stop = 1,000`.
+
+Đây là hướng cải thiện khả thi nhất còn lại — và nó **không cần** đổi kiến trúc
+hay learning rule, chỉ cần xử lý state trước khi sinh. Nhưng nó **đụng ADR0006**
+("runtime never reset_state"), nên cần người dùng duyệt.
+
+### NGUYÊN NHÂN GỐC #2: thước đo phụ thuộc thứ tự vì `generate()` không reset state
+
+`generate()` **cố ý không reset** recurrent state (ADR0006: một state liên tục
+cho cả phiên). Đúng cho hội thoại, nhưng làm **mọi phép đo không tái lập được**:
+
+| Test | Kết quả |
+|---|---|
+| Live state, gọi 8 lần cùng prompt | **2 output khác nhau** (lần 1 khác lần 2–8) |
+| Reset state, gọi 8 lần | **1 output** — ổn định |
+| Đảo thứ tự prompt | `chào bạn`: `'Chào'` ↔ `'Bạn'`; `bạn là ai`: sai ↔ **đúng** |
+
+Đây giải thích vì sao các con số tôi báo ở nhiều vòng **không khớp nhau**: mỗi
+lần chạy, state vào khác nhau.
+
+Đã sửa `measure()`: mặc định chấm **mỗi prompt từ clone reset state** (cùng quy
+ước guard đang dùng), nên tái lập được — đo 2 lần liên tiếp cho cùng kết quả
+`0,000`. Vẫn giữ `measure(reset_state=False)` để quan sát hành vi **live** mà
+người dùng thật sự gặp (phụ thuộc thứ tự).
+
+**Phát hiện kèm theo:** một `train_pair` **thật sự sửa được** câu trả lời —
+`tôi là scar-x là scar-x` → `tôi là scar-x .` (đúng) — nhưng chỉ đọc đúng khi
+chấm từ state sạch. Nghĩa là model **có** học được; vấn đề nằm ở **trạng thái
+suy diễn**, không phải trọng số.
+
+### Vision: đo lại đầy đủ 10 chữ số — chỉ 1/10 (sắc nét) và 3/10 (khử răng cưa)
+
+Trước đây chỉ có **một mẫu** (nét đứng → số 1, conf 0,647) và nó được báo như
+"vision đúng". Một mẫu không phân biệt được classifier thật với hàm hằng. Đã đo
+lại toàn bộ 0–9 qua đúng đường sản phẩm, hai kiểu ảnh:
+
+| Cách vẽ | Accuracy | Ghi chú |
+|---|---:|---|
+| 7-segment 8×8 sắc nét | **1/10** | chỉ đúng số 5 |
+| 7-segment vẽ lớn rồi downsample bilinear | **3/10** | giống pipeline thật hơn |
+
+Nhầm lẫn: `0→2`, `1→9`, `8→7`, và nhiều số cùng về `5`. Readout **có** phản ứng
+với nội dung (không phải hằng số), nhưng phân loại kém.
+
+**Đính chính:** số `89,17%` trong tài liệu là của **V0.2 LAB** (model khác, đã
+retire theo ADR0006), không phải G1. Không được trích nó cho G1.
+
+Trọng số digit của G1 **có** được huấn luyện (480/1280 phần tử `w_out` khác 0,
+norm 25,09), nên đây không phải "chưa train" mà là **chất lượng thấp**. Muốn
+vision tốt hơn cần dữ liệu/huấn luyện thật — ngoài phạm vi product-first.
+
+### Hidden contribution — readout đang làm hết
+
+So cùng một bài, `full_local` (hidden plastic) vs `readout_only` (hidden đóng
+băng): **kết quả giống hệt nhau**, cùng số câu đúng, cùng `emits_target`. Vậy
+phần cải thiện hiện tại **giải thích được bằng readout**, không phải biểu diễn
+ẩn. Khớp với audit 39 (held-out ΔNLL ≈ −8,4e−05).
+
+### Đã trả lời 7 câu hỏi
+
+1. **15/15 vs guard_lost=0?** Khác nhánh: `_automatic` có guard (15/15 chặn),
+   thủ công **không có guard**. Không phải mâu thuẫn.
+2. **155 rejections?** Là **lượt thử cập nhật**, không phải bài học độc lập. Một
+   bài có thể đốt 32 lượt; chỉ 10 bài được giữ.
+3. **`updates` đủ chứng minh?** **Không.** `updates` là counter trong payload;
+   thay readout/vocabulary không tăng nó. Nay dùng `weights_sha256()` trên chính
+   mảng trọng số + topology + vocabulary.
+4. **Câu đúng có từ neural core thật?** Có: `UnifiedCore.generate → word_step →
+   probabilities(argmax)`, không target/lookup/retrieval.
+5. **Guard bảo vệ gì?** Bảo vệ cặp đang PASS. Nhưng trước đây nó **không chạy**
+   ở đường thủ công, và vẫn chấm trên **clone reset state** khác state sống.
+6. **Readout ghi đè / vocab shift?** Có: vocabulary mở rộng đổi input dimension
+   và làm hỏng cặp guard cũ (`hi → 'Hello.'` mất sau khi dạy bài khác).
+7. **`_repeating()` cắt nhầm?** Có thể, nếu câu hợp lệ lặp y hệt một khối ≤3 từ.
+   Đo trên live bench: **0/8** lần bị cắt, nên chưa phải nguyên nhân hiện tại.
+
+### Còn lại, cần người dùng duyệt
+
+- Guard chấm trên **clone reset** trong khi product trả lời bằng **state sống**;
+  đo được 1/12 cặp bất đồng (`'4 + 4'`: guard `'8'` PASS, live `'8 là scar-x.'`).
+- Truncation: `<eos>` học quá sớm (p=0,958 ở `chào`).
+- Held-out 6 câu quá ít để gọi là tổng quát hoá.
+
+## Vòng sản phẩm: chat sửa được 3 lỗi, nhưng guard chặn toàn bộ việc dạy — 2026-11-10
+
+Sau yêu cầu làm chat/vision "ổn" trong khuôn khổ ràng buộc, đã đo bằng thước lặp
+lại được `scripts/bench_product_chat.py` (8 câu cố định, chạy trên **bản sao**
+phiên, không huấn luyện, không seed, không phải benchmark nghiên cứu).
+
+**Đã sửa — 3 lỗi thật, có test hồi quy (`tests/test_chat_defects.py`):**
+
+1. Câu hỏi tồn đọng của prompt **khác** chiếm phiên: hỏi `chào bạn` lại trả về
+   câu hỏi cũ về «ê». Nay câu hỏi khác chủ đề bị retire, giữ đúng "1 câu mở mỗi
+   phiên" của ADR0009.
+2. Vòng lặp từ vô hạn: `Tôi là scar-x là scar-x…`. Nay `generate()` từ chối phát
+   ra khối lặp (`_repeating`, chỉ trong `generate`, **không** đụng `learn`/
+   `train_pair`).
+3. `observe()` gọi `ask(force=True)` nên bỏ qua "bỏ qua" của người dùng, làm phiên
+   bị hỏi mãi. Nay tách `user_turn`: idle review không nag, lượt mới được hỏi lại.
+
+Kết quả đo: **8/8 câu trả lời dùng được** (trước đó có câu bị routing/lặp),
+**0 vòng lặp**, vision đúng chữ số 1 (confidence 0,647). Nhưng **đúng nội dung
+mong đợi chỉ 4/8** — `chào`, `chào bạn`, `cảm ơn`, `bạn tên gì` vẫn dở.
+
+> **Đính chính (xem mục "ĐÍNH CHÍNH" phía trên):** con số 4/8 này đến từ thước đo
+> còn lỏng. Với thước đã sửa (đủ từ + không lặp + câu hoàn chỉnh), số đúng là
+> **0/8**. Phần "8/8 dùng được" và "0 vòng lặp" vẫn đúng vì chúng đo tiêu chí khác.
+
+
+**Phát hiện quyết định — vì sao dạy không cải thiện được:** đo trên bản sao,
+`train_pair` **hội tụ 12/15** trường hợp (nói đúng câu muốn dạy), nhưng guard
+**chặn 15/15**. Nguyên nhân cụ thể: mọi lần dạy đều làm hỏng cùng cặp
+`'QA kiểm tra tab: 4 + 4 bằng mấy?' → '8'` (**24/24** lần trong tìm kiếm bước
+1–8). Cặp đó **rất vững**, không phải trùng hợp: xác suất token `'8'` = **0,817**,
+margin trên token thứ hai **0,771**. Vậy guard đang bảo vệ đúng một kỹ năng thật,
+và chính vì thế nó chặn gần như mọi bài dạy mới. Đây đúng là hạn chế ADR0009 đã
+ghi: *"guard có thể chặn cả bài học mới"*.
+
+Thêm một khác biệt đo được: guard chấm trên **clone reset state**, còn sản phẩm
+trả lời bằng **state liên tục**. Cùng câu đó, clone cho `'8'` (đúng) nhưng state
+sống cho `'8 là scar-x.'` (sai). Hai phép đo khác nhau, chưa từng được đối chiếu.
+
+**Chưa làm và cần duyệt:** không nới guard, không đổi learning rule, không đổi
+kiến trúc. Ba hướng còn lại đều vượt quyền tự quyết: (a) đổi định nghĩa guard
+sang so trên state sống, (b) tránh mở rộng vocabulary bằng cách giới hạn từ vựng
+đáp án, (c) mở protocol representation. Tất cả cần người dùng chốt.
+
+Main ALIF/trọng số giữ nguyên (`updates` không đổi), CPU 2 GB giữ nguyên.
+
+## Audit 39: tín hiệu học cục bộ đúng hướng, nhưng gần như không tổng quát hóa — 2026-11-10
+
+[Protocol39](research/39_LOCAL_CREDIT_ALIGNMENT.md) trả lời đúng câu hỏi audit 38 để mở:
+hướng cập nhật cục bộ có thực sự làm giảm loss, hay chỉ là nhiễu có norm lớn? Chỉ đọc
+15 checkpoint36, áp **chính** hướng local (trung bình endpoint, Adam/clip của checkpoint)
+lên **bản sao dùng một lần**, đo lại NLL teacher-forced thật. 0 neural update, không
+Torch, checkpoint nguồn và trọng số chính không đổi; 214 kiểm thử qua.
+
+Kết quả dev (192 case, macro 8 family): **63,54% endpoint đi đúng hướng giảm loss**,
+ΔNLL trung bình **−0,1291**; đảo dấu cho **+0,0872**. Chênh so đảo dấu **+0,2164**
+CI95% 0,1971..0,2371. Vậy quy tắc cục bộ **không phải nhiễu vô hướng** và **không**
+phản tác dụng: `LOCAL_DIRECTION_ALIGNED` đạt, `DIRECTION_CONFLICT_CONFIRMED` không đạt.
+
+**Phát hiện quan trọng về chính phép đo:** Adam chuẩn hóa theo từng phần tử, nên control
+khớp norm *trước* Adam bị áp lực **lớn hơn thật 4,91×**, control hoán vị **2,13×**.
+Chỉ control **đảo dấu** khớp chính xác độ lớn (0,01498 vs 0,01505). Mọi "gain so random"
+đều bị nhiễu bởi độ lớn và **không** được dùng làm bằng chứng. Bản chạy đầu
+`20261110T080003Z-...-d8de33` có lỗi đo (norm áp dụng luôn đọc 0,0) đã đánh dấu
+`do_not_cite`/`superseded`, giữ lịch sử chứ không xóa.
+
+**Giới hạn quyết định:** held-out (hướng gộp từ TRAIN, áp một lần, chấm dev) ΔNLL chỉ
+**−8,43e−05**, CI95% −1,93e−04..1,91e−07. Tức tín hiệu đúng hướng **trên từng bài**,
+nhưng tổng quát hóa sang bài khác gần như bằng 0. Đây là chẩn đoán cơ chế, **không**
+phải normalchat/vision/retention/P1/P2 mới. Các STOP35–37 và PIVOT_NO_SCALE giữ nguyên.
+Không mở learner mới; mọi thay đổi learning rule vẫn cần protocol riêng và phê duyệt riêng.
+
 ## Audit 38: bài học còn hẹp, có khoảng cách tiền tố — 2026-11-10
 
 Sau câu hỏi người dùng về khácbiệt SNN/Transformer, [protocol38](research/38_WORD_TRAINING_OBJECTIVE_AUDIT.md)

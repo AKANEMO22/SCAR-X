@@ -1,0 +1,1898 @@
+{
+  "run": "runs/20261110T080426Z-local-credit-alignment-audit-v1-db01fc",
+  "source_run": "runs/20261110T062226Z-direct-word-bridge-v1-a6a908",
+  "decision": "LOCAL_CREDIT_ALIGNMENT_DIAGNOSTIC_ONLY",
+  "alignment_rows": [
+    {
+      "seed": 36313,
+      "split": "train",
+      "cases": 64,
+      "nll_before": 0.01565547895092136,
+      "delta_direction": -8.156845112418701e-05,
+      "delta_signflip": -0.00023550641405924508,
+      "delta_random_mean": 1.1669437311795804e-06,
+      "delta_permuted_mean": 1.922125486312827e-05,
+      "gain_vs_random": 8.273539485536684e-05,
+      "gain_vs_permuted": 0.00010078970598731546,
+      "gain_vs_signflip": -0.00015393796293505807,
+      "alignment_fraction": 0.09375,
+      "norm_match_ratio_random": 36.73366020196202,
+      "norm_match_ratio_permuted": 15.927852194229237
+    },
+    {
+      "seed": 36313,
+      "split": "development",
+      "cases": 64,
+      "nll_before": 0.9068324651830587,
+      "delta_direction": -0.13267975959807993,
+      "delta_signflip": 0.10440250291411018,
+      "delta_random_mean": 0.0069074155281230645,
+      "delta_permuted_mean": 0.007085930909684903,
+      "gain_vs_random": 0.139587175126203,
+      "gain_vs_permuted": 0.13976569050776483,
+      "gain_vs_signflip": 0.2370822625121901,
+      "alignment_fraction": 0.671875,
+      "norm_match_ratio_random": 4.932859415770863,
+      "norm_match_ratio_permuted": 2.1307658451561973
+    },
+    {
+      "seed": 36319,
+      "split": "train",
+      "cases": 64,
+      "nll_before": 0.012586112336278784,
+      "delta_direction": -0.0016883833987306968,
+      "delta_signflip": -0.0005452624699726381,
+      "delta_random_mean": 8.212609629788816e-06,
+      "delta_permuted_mean": 7.424973551490313e-06,
+      "gain_vs_random": 0.0016965960083604858,
+      "gain_vs_permuted": 0.001695808372282187,
+      "gain_vs_signflip": 0.0011431209287580586,
+      "alignment_fraction": 0.109375,
+      "norm_match_ratio_random": 37.383698325807515,
+      "norm_match_ratio_permuted": 15.869441792126784
+    },
+    {
+      "seed": 36319,
+      "split": "development",
+      "cases": 64,
+      "nll_before": 0.936246920468397,
+      "delta_direction": -0.12387295501144857,
+      "delta_signflip": 0.09107243716158431,
+      "delta_random_mean": 0.006774183007408405,
+      "delta_permuted_mean": 0.002988785642827067,
+      "gain_vs_random": 0.13064713801885697,
+      "gain_vs_permuted": 0.12686174065427566,
+      "gain_vs_signflip": 0.21494539217303288,
+      "alignment_fraction": 0.6875,
+      "norm_match_ratio_random": 4.715058772696321,
+      "norm_match_ratio_permuted": 2.046587172976616
+    },
+    {
+      "seed": 36341,
+      "split": "train",
+      "cases": 64,
+      "nll_before": 0.010461512504322012,
+      "delta_direction": 2.7033820202184745e-05,
+      "delta_signflip": -0.0001711971206829037,
+      "delta_random_mean": -8.962243674129065e-05,
+      "delta_permuted_mean": -0.00012094770727693027,
+      "gain_vs_random": -0.00011665625694347541,
+      "gain_vs_permuted": -0.000147981527479115,
+      "gain_vs_signflip": -0.0001982309408850884,
+      "alignment_fraction": 0.109375,
+      "norm_match_ratio_random": 30.403261741791503,
+      "norm_match_ratio_permuted": 13.140922742193831
+    },
+    {
+      "seed": 36341,
+      "split": "development",
+      "cases": 64,
+      "nll_before": 0.7642856070909014,
+      "delta_direction": -0.130827533566712,
+      "delta_signflip": 0.06623511417795461,
+      "delta_random_mean": 0.007521574850722084,
+      "delta_permuted_mean": 0.0018296893863320582,
+      "gain_vs_random": 0.13834910841743406,
+      "gain_vs_permuted": 0.13265722295304405,
+      "gain_vs_signflip": 0.19706264774466659,
+      "alignment_fraction": 0.546875,
+      "norm_match_ratio_random": 5.0856223429210035,
+      "norm_match_ratio_permuted": 2.2218225893953547
+    }
+  ],
+  "records": [
+    {
+      "seed": 36313,
+      "method": "correct",
+      "summary": {
+        "train": {
+          "cases": 64,
+          "nll_before": 0.01565547895092136,
+          "delta_direction": -8.156845112418701e-05,
+          "delta_signflip": -0.00023550641405924508,
+          "delta_random_mean": 1.1669437311795804e-06,
+          "delta_permuted_mean": 1.922125486312827e-05,
+          "gain_vs_random": 8.273539485536684e-05,
+          "gain_vs_permuted": 0.00010078970598731546,
+          "gain_vs_signflip": -0.00015393796293505807,
+          "alignment_fraction": 0.09375,
+          "direction_norm_pre_adam": 0.11399752769878557,
+          "applied_norm_direction": 0.0030768465295562364,
+          "applied_norm_random_mean": 0.11302383491030488,
+          "applied_norm_permuted_mean": 0.04900755674709891,
+          "norm_match_ratio_random": 36.73366020196202,
+          "norm_match_ratio_permuted": 15.927852194229237
+        },
+        "development": {
+          "cases": 64,
+          "nll_before": 0.9068324651830587,
+          "delta_direction": -0.13267975959807993,
+          "delta_signflip": 0.10440250291411018,
+          "delta_random_mean": 0.0069074155281230645,
+          "delta_permuted_mean": 0.007085930909684903,
+          "gain_vs_random": 0.139587175126203,
+          "gain_vs_permuted": 0.13976569050776483,
+          "gain_vs_signflip": 0.2370822625121901,
+          "alignment_fraction": 0.671875,
+          "direction_norm_pre_adam": 3.72762609030551,
+          "applied_norm_direction": 0.026800172826952965,
+          "applied_norm_random_mean": 0.13220148487372135,
+          "applied_norm_permuted_mean": 0.05710489290395459,
+          "norm_match_ratio_random": 4.932859415770863,
+          "norm_match_ratio_permuted": 2.1307658451561973
+        }
+      },
+      "heldout": {
+        "train_cases": 64,
+        "dev_cases": 64,
+        "dev_mean_delta": 1.9115740974243872e-07,
+        "dev_improved_fraction": 0.015625,
+        "rows": [
+          {
+            "id": "vi_greet_01",
+            "family": "vi_greet",
+            "nll_before": 0.3909833582028803,
+            "nll_after": 0.3910622995403415,
+            "delta": 7.894133746116916e-05,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_03",
+            "family": "vi_greet",
+            "nll_before": 1.4015199812895074,
+            "nll_after": 1.4015199812895074,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_04",
+            "family": "vi_greet",
+            "nll_before": 0.8787564710774745,
+            "nll_after": 0.8787564710774745,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_07",
+            "family": "vi_greet",
+            "nll_before": 0.0037241651180016707,
+            "nll_after": 0.0037241651180016707,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_08",
+            "family": "vi_greet",
+            "nll_before": 1.1859538451269362,
+            "nll_after": 1.1859538451269362,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_09",
+            "family": "vi_greet",
+            "nll_before": 1.3004785182061194,
+            "nll_after": 1.3004785182061194,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_14",
+            "family": "vi_greet",
+            "nll_before": 0.009600743391771227,
+            "nll_after": 0.009600743391771227,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_greet_16",
+            "family": "vi_greet",
+            "nll_before": 0.7530847507940268,
+            "nll_after": 0.7530847507940268,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_03",
+            "family": "en_greet",
+            "nll_before": 0.5507626918563641,
+            "nll_after": 0.5507626918563641,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_05",
+            "family": "en_greet",
+            "nll_before": 0.3170155016403742,
+            "nll_after": 0.3170155016403742,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_07",
+            "family": "en_greet",
+            "nll_before": 1.9059968737092394,
+            "nll_after": 1.9059968737092394,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_10",
+            "family": "en_greet",
+            "nll_before": 1.1938459290982453,
+            "nll_after": 1.1938459290982453,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_11",
+            "family": "en_greet",
+            "nll_before": 1.0453774481008649,
+            "nll_after": 1.0453774481008649,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_12",
+            "family": "en_greet",
+            "nll_before": 0.04671645150671569,
+            "nll_after": 0.04671645150671569,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_13",
+            "family": "en_greet",
+            "nll_before": 0.08172179950600124,
+            "nll_after": 0.08172179950600124,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_greet_14",
+            "family": "en_greet",
+            "nll_before": 0.04585756153517179,
+            "nll_after": 0.04585756153517179,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_01",
+            "family": "vi_identity",
+            "nll_before": 0.22248482235903616,
+            "nll_after": 0.22248482235903616,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_02",
+            "family": "vi_identity",
+            "nll_before": 0.284854317422854,
+            "nll_after": 0.284854317422854,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_03",
+            "family": "vi_identity",
+            "nll_before": 0.3523050056731806,
+            "nll_after": 0.3523050056731806,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_05",
+            "family": "vi_identity",
+            "nll_before": 0.5799555059865672,
+            "nll_after": 0.5799555059865672,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_08",
+            "family": "vi_identity",
+            "nll_before": 1.172393773209655,
+            "nll_after": 1.172393773209655,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_10",
+            "family": "vi_identity",
+            "nll_before": 0.1581071549392284,
+            "nll_after": 0.1581071549392284,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_12",
+            "family": "vi_identity",
+            "nll_before": 2.489811385676172,
+            "nll_after": 2.4897446784129342,
+            "delta": -6.670726323765308e-05,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_identity_13",
+            "family": "vi_identity",
+            "nll_before": 1.7057393258800513,
+            "nll_after": 1.7057393258800513,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_02",
+            "family": "en_identity",
+            "nll_before": 0.15871348916729483,
+            "nll_after": 0.15871348916729483,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_04",
+            "family": "en_identity",
+            "nll_before": 0.3681392941271783,
+            "nll_after": 0.3681392941271783,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_05",
+            "family": "en_identity",
+            "nll_before": 0.11353489167877732,
+            "nll_after": 0.11353489167877732,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_07",
+            "family": "en_identity",
+            "nll_before": 0.11643954500838793,
+            "nll_after": 0.11643954500838793,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_08",
+            "family": "en_identity",
+            "nll_before": 1.1817155796988374,
+            "nll_after": 1.1817155796988374,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_10",
+            "family": "en_identity",
+            "nll_before": 1.0110820930917153,
+            "nll_after": 1.0110820930917153,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_11",
+            "family": "en_identity",
+            "nll_before": 2.823707595554577,
+            "nll_after": 2.823707595554577,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_identity_15",
+            "family": "en_identity",
+            "nll_before": 0.28649262301514516,
+            "nll_after": 0.28649262301514516,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_01",
+            "family": "vi_thanks",
+            "nll_before": 0.030929354246934503,
+            "nll_after": 0.030929354246934503,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_02",
+            "family": "vi_thanks",
+            "nll_before": 0.38695674350252596,
+            "nll_after": 0.38695674350252596,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_03",
+            "family": "vi_thanks",
+            "nll_before": 0.30526823062749137,
+            "nll_after": 0.30526823062749137,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_04",
+            "family": "vi_thanks",
+            "nll_before": 0.22063936244168159,
+            "nll_after": 0.22063936244168159,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_07",
+            "family": "vi_thanks",
+            "nll_before": 1.159141304066773,
+            "nll_after": 1.159141304066773,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_08",
+            "family": "vi_thanks",
+            "nll_before": 0.008722893969479673,
+            "nll_after": 0.008722893969479673,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_12",
+            "family": "vi_thanks",
+            "nll_before": 0.1836399880722339,
+            "nll_after": 0.1836399880722339,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_thanks_14",
+            "family": "vi_thanks",
+            "nll_before": 0.09620049897943238,
+            "nll_after": 0.09620049897943238,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_03",
+            "family": "en_thanks",
+            "nll_before": 4.394394165953992,
+            "nll_after": 4.394394165953992,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_04",
+            "family": "en_thanks",
+            "nll_before": 1.1633070144605122,
+            "nll_after": 1.1633070144605122,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_06",
+            "family": "en_thanks",
+            "nll_before": 0.23209311954760853,
+            "nll_after": 0.23209311954760853,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_08",
+            "family": "en_thanks",
+            "nll_before": 0.19914344697967148,
+            "nll_after": 0.19914344697967148,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_09",
+            "family": "en_thanks",
+            "nll_before": 0.4524470587469864,
+            "nll_after": 0.4524470587469864,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_12",
+            "family": "en_thanks",
+            "nll_before": 0.49897543201578304,
+            "nll_after": 0.49897543201578304,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_13",
+            "family": "en_thanks",
+            "nll_before": 1.9881574800278918,
+            "nll_after": 1.9881574800278918,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_thanks_14",
+            "family": "en_thanks",
+            "nll_before": 0.6043272726952501,
+            "nll_after": 0.6043272726952501,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_01",
+            "family": "vi_bye",
+            "nll_before": 0.07642954492505545,
+            "nll_after": 0.07642954492505545,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_02",
+            "family": "vi_bye",
+            "nll_before": 0.19270100030317683,
+            "nll_after": 0.19270100030317683,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_04",
+            "family": "vi_bye",
+            "nll_before": 0.4934124637617686,
+            "nll_after": 0.4934124637617686,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_06",
+            "family": "vi_bye",
+            "nll_before": 0.07908261557082176,
+            "nll_after": 0.07908261557082176,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_08",
+            "family": "vi_bye",
+            "nll_before": 1.0848760590292876,
+            "nll_after": 1.0848760590292876,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_09",
+            "family": "vi_bye",
+            "nll_before": 1.0719621158908406,
+            "nll_after": 1.0719621158908406,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_13",
+            "family": "vi_bye",
+            "nll_before": 2.1028118020987883,
+            "nll_after": 2.1028118020987883,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "vi_bye_15",
+            "family": "vi_bye",
+            "nll_before": 0.8197224273584764,
+            "nll_after": 0.8197224273584764,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_02",
+            "family": "en_bye",
+            "nll_before": 2.6318696037151237,
+            "nll_after": 2.6318696037151237,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_03",
+            "family": "en_bye",
+            "nll_before": 0.43702492268818033,
+            "nll_after": 0.43702492268818033,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_05",
+            "family": "en_bye",
+            "nll_before": 3.874800897911069,
+            "nll_after": 3.874800897911069,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_07",
+            "family": "en_bye",
+            "nll_before": 0.6742881282823298,
+            "nll_after": 0.6742881282823298,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_09",
+            "family": "en_bye",
+            "nll_before": 0.26506730382228333,
+            "nll_after": 0.26506730382228333,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_11",
+            "family": "en_bye",
+            "nll_before": 1.0490187795063124,
+            "nll_after": 1.0490187795063124,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_13",
+            "family": "en_bye",
+            "nll_before": 1.8335595041374166,
+            "nll_after": 1.8335595041374166,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          },
+          {
+            "id": "en_bye_16",
+            "family": "en_bye",
+            "nll_before": 5.289434743732224,
+            "nll_after": 5.289434743732224,
+            "delta": 0.0,
+            "applied_norm": 0.0025071587327068203
+          }
+        ],
+        "scope": "Train-aggregated direction applied ONCE; dev labels used ONLY for scoring."
+      },
+      "source_checkpoint": "artifacts/direct-word-bridge/20261110T062226Z-direct-word-bridge-v1-a6a908/36313-correct.words.zip",
+      "source_sha256": "2a24b630bb3bffddbf5b1bcbdb9c508679af54ddeef75f4ba144f7d75bb024e1",
+      "source_protected_unchanged": true,
+      "neural_updates": 0,
+      "control_draws": 16,
+      "control_seed": 75352
+    },
+    {
+      "seed": 36319,
+      "method": "correct",
+      "summary": {
+        "train": {
+          "cases": 64,
+          "nll_before": 0.012586112336278784,
+          "delta_direction": -0.0016883833987306968,
+          "delta_signflip": -0.0005452624699726381,
+          "delta_random_mean": 8.212609629788816e-06,
+          "delta_permuted_mean": 7.424973551490313e-06,
+          "gain_vs_random": 0.0016965960083604858,
+          "gain_vs_permuted": 0.001695808372282187,
+          "gain_vs_signflip": 0.0011431209287580586,
+          "alignment_fraction": 0.109375,
+          "direction_norm_pre_adam": 0.11247995019008267,
+          "applied_norm_direction": 0.0030329939715505565,
+          "applied_norm_random_mean": 0.11338453165643882,
+          "applied_norm_permuted_mean": 0.04813192128739299,
+          "norm_match_ratio_random": 37.383698325807515,
+          "norm_match_ratio_permuted": 15.869441792126784
+        },
+        "development": {
+          "cases": 64,
+          "nll_before": 0.936246920468397,
+          "delta_direction": -0.12387295501144857,
+          "delta_signflip": 0.09107243716158431,
+          "delta_random_mean": 0.006774183007408405,
+          "delta_permuted_mean": 0.002988785642827067,
+          "gain_vs_random": 0.13064713801885697,
+          "gain_vs_permuted": 0.12686174065427566,
+          "gain_vs_signflip": 0.21494539217303288,
+          "alignment_fraction": 0.6875,
+          "direction_norm_pre_adam": 3.8360600394486664,
+          "applied_norm_direction": 0.02801124630526476,
+          "applied_norm_random_mean": 0.13207467262579603,
+          "applied_norm_permuted_mean": 0.05732745738744348,
+          "norm_match_ratio_random": 4.715058772696321,
+          "norm_match_ratio_permuted": 2.046587172976616
+        }
+      },
+      "heldout": {
+        "train_cases": 64,
+        "dev_cases": 64,
+        "dev_mean_delta": -6.0491251759232575e-05,
+        "dev_improved_fraction": 0.03125,
+        "rows": [
+          {
+            "id": "vi_greet_01",
+            "family": "vi_greet",
+            "nll_before": 0.042805396983471,
+            "nll_after": 0.042805396983471,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_03",
+            "family": "vi_greet",
+            "nll_before": 0.21504539061931222,
+            "nll_after": 0.21504539061931222,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_04",
+            "family": "vi_greet",
+            "nll_before": 1.4613873102846644,
+            "nll_after": 1.4613873102846644,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_07",
+            "family": "vi_greet",
+            "nll_before": 0.019104787208576238,
+            "nll_after": 0.019104787208576238,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_08",
+            "family": "vi_greet",
+            "nll_before": 2.491139753060329,
+            "nll_after": 2.491139753060329,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_09",
+            "family": "vi_greet",
+            "nll_before": 0.4217954369948675,
+            "nll_after": 0.4217954369948675,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_14",
+            "family": "vi_greet",
+            "nll_before": 1.1259872443149759,
+            "nll_after": 1.1259872443149759,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_greet_16",
+            "family": "vi_greet",
+            "nll_before": 0.6068718492230851,
+            "nll_after": 0.6068718492230851,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_03",
+            "family": "en_greet",
+            "nll_before": 0.7763334410292734,
+            "nll_after": 0.7763334410292734,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_05",
+            "family": "en_greet",
+            "nll_before": 0.8969410197947473,
+            "nll_after": 0.8969410197947473,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_07",
+            "family": "en_greet",
+            "nll_before": 1.0079678980765312,
+            "nll_after": 1.0079678980765312,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_10",
+            "family": "en_greet",
+            "nll_before": 2.6906136161420684,
+            "nll_after": 2.6906136161420684,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_11",
+            "family": "en_greet",
+            "nll_before": 0.059221215010510114,
+            "nll_after": 0.059221215010510114,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_12",
+            "family": "en_greet",
+            "nll_before": 1.0039839525743308,
+            "nll_after": 1.0039839525743308,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_13",
+            "family": "en_greet",
+            "nll_before": 0.5343829415578008,
+            "nll_after": 0.5343829415578008,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_greet_14",
+            "family": "en_greet",
+            "nll_before": 1.516228496010074,
+            "nll_after": 1.516228496010074,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_01",
+            "family": "vi_identity",
+            "nll_before": 0.2253156554933513,
+            "nll_after": 0.2253156554933513,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_02",
+            "family": "vi_identity",
+            "nll_before": 1.2798421371795037,
+            "nll_after": 1.2798421371795037,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_03",
+            "family": "vi_identity",
+            "nll_before": 0.085179930300306,
+            "nll_after": 0.085179930300306,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_05",
+            "family": "vi_identity",
+            "nll_before": 1.697776281894728,
+            "nll_after": 1.697778579979412,
+            "delta": 2.298084684104751e-06,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_08",
+            "family": "vi_identity",
+            "nll_before": 0.9522852961814963,
+            "nll_after": 0.9522852961814963,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_10",
+            "family": "vi_identity",
+            "nll_before": 0.1096716668465793,
+            "nll_after": 0.1096716668465793,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_12",
+            "family": "vi_identity",
+            "nll_before": 1.2110574487405648,
+            "nll_after": 1.2110574487405648,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_identity_13",
+            "family": "vi_identity",
+            "nll_before": 0.9043852290262127,
+            "nll_after": 0.9043852290262127,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_02",
+            "family": "en_identity",
+            "nll_before": 0.5130173924536859,
+            "nll_after": 0.5130173924536859,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_04",
+            "family": "en_identity",
+            "nll_before": 0.6923076721256071,
+            "nll_after": 0.6923076721256071,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_05",
+            "family": "en_identity",
+            "nll_before": 0.05435048370804905,
+            "nll_after": 0.05435048370804905,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_07",
+            "family": "en_identity",
+            "nll_before": 0.6153277032179629,
+            "nll_after": 0.6153277032179629,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_08",
+            "family": "en_identity",
+            "nll_before": 2.258791665169428,
+            "nll_after": 2.258791665169428,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_10",
+            "family": "en_identity",
+            "nll_before": 1.192350251177468,
+            "nll_after": 1.1913283973264788,
+            "delta": -0.001021853850989185,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_11",
+            "family": "en_identity",
+            "nll_before": 0.8408024954098255,
+            "nll_after": 0.8408024954098255,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_identity_15",
+            "family": "en_identity",
+            "nll_before": 0.15552303155017974,
+            "nll_after": 0.15552303155017974,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_01",
+            "family": "vi_thanks",
+            "nll_before": 0.034803482096866636,
+            "nll_after": 0.034803482096866636,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_02",
+            "family": "vi_thanks",
+            "nll_before": 1.1485780704561592,
+            "nll_after": 1.1485780704561592,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_03",
+            "family": "vi_thanks",
+            "nll_before": 0.9805518844720555,
+            "nll_after": 0.9805518844720555,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_04",
+            "family": "vi_thanks",
+            "nll_before": 0.37751662658443597,
+            "nll_after": 0.37751662658443597,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_07",
+            "family": "vi_thanks",
+            "nll_before": 0.9944303305007516,
+            "nll_after": 0.9944303305007516,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_08",
+            "family": "vi_thanks",
+            "nll_before": 0.8254785043071005,
+            "nll_after": 0.8254785043071005,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_12",
+            "family": "vi_thanks",
+            "nll_before": 0.31072752903747947,
+            "nll_after": 0.31072752903747947,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_thanks_14",
+            "family": "vi_thanks",
+            "nll_before": 0.23754663111028856,
+            "nll_after": 0.23754663111028856,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_03",
+            "family": "en_thanks",
+            "nll_before": 1.8689400463914467,
+            "nll_after": 1.8689400463914467,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_04",
+            "family": "en_thanks",
+            "nll_before": 0.4446874676326689,
+            "nll_after": 0.4446874676326689,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_06",
+            "family": "en_thanks",
+            "nll_before": 0.07635923860225866,
+            "nll_after": 0.07635923860225866,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_08",
+            "family": "en_thanks",
+            "nll_before": 3.2017545121518993,
+            "nll_after": 3.2017545121518993,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_09",
+            "family": "en_thanks",
+            "nll_before": 2.1794398164132174,
+            "nll_after": 2.2484704503135733,
+            "delta": 0.06903063390035591,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_12",
+            "family": "en_thanks",
+            "nll_before": 0.8444737961019959,
+            "nll_after": 0.8444737961019959,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_13",
+            "family": "en_thanks",
+            "nll_before": 3.921800636733823,
+            "nll_after": 3.921800636733823,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_thanks_14",
+            "family": "en_thanks",
+            "nll_before": 1.8298217823062177,
+            "nll_after": 1.4529329172288454,
+            "delta": -0.3768888650773723,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_01",
+            "family": "vi_bye",
+            "nll_before": 0.010940960768242088,
+            "nll_after": 0.010940960768242088,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_02",
+            "family": "vi_bye",
+            "nll_before": 0.9873697429548303,
+            "nll_after": 0.9873697429548303,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_04",
+            "family": "vi_bye",
+            "nll_before": 0.35460434427946497,
+            "nll_after": 0.35460434427946497,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_06",
+            "family": "vi_bye",
+            "nll_before": 0.10641332742710138,
+            "nll_after": 0.10641332742710138,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_08",
+            "family": "vi_bye",
+            "nll_before": 0.15239388162019693,
+            "nll_after": 0.15239388162019693,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_09",
+            "family": "vi_bye",
+            "nll_before": 0.44097625800897083,
+            "nll_after": 0.44097625800897083,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_13",
+            "family": "vi_bye",
+            "nll_before": 0.6576884635965141,
+            "nll_after": 0.9626948104272447,
+            "delta": 0.3050063468307306,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "vi_bye_15",
+            "family": "vi_bye",
+            "nll_before": 0.0891523146015292,
+            "nll_after": 0.0891523146015292,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_02",
+            "family": "en_bye",
+            "nll_before": 1.3201903735331935,
+            "nll_after": 1.3201903735331935,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_03",
+            "family": "en_bye",
+            "nll_before": 0.2114584967620683,
+            "nll_after": 0.2114584967620683,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_05",
+            "family": "en_bye",
+            "nll_before": 0.38529647664528793,
+            "nll_after": 0.38529647664528793,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_07",
+            "family": "en_bye",
+            "nll_before": 0.920493469814465,
+            "nll_after": 0.920493469814465,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_09",
+            "family": "en_bye",
+            "nll_before": 0.7183596518635542,
+            "nll_after": 0.7183596518635542,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_11",
+            "family": "en_bye",
+            "nll_before": 1.5127135147369828,
+            "nll_after": 1.5127135147369828,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_13",
+            "family": "en_bye",
+            "nll_before": 1.8344689012286388,
+            "nll_after": 1.8344689012286388,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          },
+          {
+            "id": "en_bye_16",
+            "family": "en_bye",
+            "nll_before": 3.282578287878127,
+            "nll_after": 3.282578287878127,
+            "delta": 0.0,
+            "applied_norm": 0.002530052810629979
+          }
+        ],
+        "scope": "Train-aggregated direction applied ONCE; dev labels used ONLY for scoring."
+      },
+      "source_checkpoint": "artifacts/direct-word-bridge/20261110T062226Z-direct-word-bridge-v1-a6a908/36319-correct.words.zip",
+      "source_sha256": "f15188257f0a7ae914e0f66f25e665a56d166143d1e5f924cfb7278b598f6222",
+      "source_protected_unchanged": true,
+      "neural_updates": 0,
+      "control_draws": 16,
+      "control_seed": 75358
+    },
+    {
+      "seed": 36341,
+      "method": "correct",
+      "summary": {
+        "train": {
+          "cases": 64,
+          "nll_before": 0.010461512504322012,
+          "delta_direction": 2.7033820202184745e-05,
+          "delta_signflip": -0.0001711971206829037,
+          "delta_random_mean": -8.962243674129065e-05,
+          "delta_permuted_mean": -0.00012094770727693027,
+          "gain_vs_random": -0.00011665625694347541,
+          "gain_vs_permuted": -0.000147981527479115,
+          "gain_vs_signflip": -0.0001982309408850884,
+          "alignment_fraction": 0.109375,
+          "direction_norm_pre_adam": 0.08361115558655952,
+          "applied_norm_direction": 0.003724903359067987,
+          "applied_norm_random_mean": 0.11324921178862239,
+          "applied_norm_permuted_mean": 0.04894866726365071,
+          "norm_match_ratio_random": 30.403261741791503,
+          "norm_match_ratio_permuted": 13.140922742193831
+        },
+        "development": {
+          "cases": 64,
+          "nll_before": 0.7642856070909014,
+          "delta_direction": -0.130827533566712,
+          "delta_signflip": 0.06623511417795461,
+          "delta_random_mean": 0.007521574850722084,
+          "delta_permuted_mean": 0.0018296893863320582,
+          "gain_vs_random": 0.13834910841743406,
+          "gain_vs_permuted": 0.13265722295304405,
+          "gain_vs_signflip": 0.19706264774466659,
+          "alignment_fraction": 0.546875,
+          "direction_norm_pre_adam": 2.874810557416506,
+          "applied_norm_direction": 0.025657808092132514,
+          "applied_norm_random_mean": 0.13048592210372845,
+          "applied_norm_permuted_mean": 0.05700709761347095,
+          "norm_match_ratio_random": 5.0856223429210035,
+          "norm_match_ratio_permuted": 2.2218225893953547
+        }
+      },
+      "heldout": {
+        "train_cases": 64,
+        "dev_cases": 64,
+        "dev_mean_delta": -0.00019261835523108096,
+        "dev_improved_fraction": 0.015625,
+        "rows": [
+          {
+            "id": "vi_greet_01",
+            "family": "vi_greet",
+            "nll_before": 0.4306272772122324,
+            "nll_after": 0.4306272772122324,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_03",
+            "family": "vi_greet",
+            "nll_before": 0.34744705082590793,
+            "nll_after": 0.34744705082590793,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_04",
+            "family": "vi_greet",
+            "nll_before": 0.3900703621785201,
+            "nll_after": 0.3900703621785201,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_07",
+            "family": "vi_greet",
+            "nll_before": 0.09316150822651738,
+            "nll_after": 0.09316150822651738,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_08",
+            "family": "vi_greet",
+            "nll_before": 0.3603025483004362,
+            "nll_after": 0.3603025483004362,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_09",
+            "family": "vi_greet",
+            "nll_before": 1.1960081124792397,
+            "nll_after": 1.1960081124792397,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_14",
+            "family": "vi_greet",
+            "nll_before": 0.015925727760734015,
+            "nll_after": 0.015925727760734015,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_greet_16",
+            "family": "vi_greet",
+            "nll_before": 0.03782916721001984,
+            "nll_after": 0.03782916721001984,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_03",
+            "family": "en_greet",
+            "nll_before": 1.608638954968263,
+            "nll_after": 1.608638954968263,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_05",
+            "family": "en_greet",
+            "nll_before": 0.30177175383123617,
+            "nll_after": 0.30177175383123617,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_07",
+            "family": "en_greet",
+            "nll_before": 1.4890430249482403,
+            "nll_after": 1.4890430249482403,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_10",
+            "family": "en_greet",
+            "nll_before": 1.4601186621822,
+            "nll_after": 1.4601186621822,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_11",
+            "family": "en_greet",
+            "nll_before": 0.6857343276260384,
+            "nll_after": 0.6725672324132228,
+            "delta": -0.01316709521281556,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_12",
+            "family": "en_greet",
+            "nll_before": 0.6700211160421364,
+            "nll_after": 0.6700211160421364,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_13",
+            "family": "en_greet",
+            "nll_before": 0.9588170201253948,
+            "nll_after": 0.9588170201253948,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_greet_14",
+            "family": "en_greet",
+            "nll_before": 0.3632172230125896,
+            "nll_after": 0.3632172230125896,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_01",
+            "family": "vi_identity",
+            "nll_before": 0.20821018316431666,
+            "nll_after": 0.20821018316431666,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_02",
+            "family": "vi_identity",
+            "nll_before": 0.16897863697092422,
+            "nll_after": 0.16897863697092422,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_03",
+            "family": "vi_identity",
+            "nll_before": 0.7544112475889635,
+            "nll_after": 0.7544112475889635,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_05",
+            "family": "vi_identity",
+            "nll_before": 0.5556713341446053,
+            "nll_after": 0.5556713341446053,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_08",
+            "family": "vi_identity",
+            "nll_before": 1.741929989664738,
+            "nll_after": 1.7427398251063457,
+            "delta": 0.0008098354416077314,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_10",
+            "family": "vi_identity",
+            "nll_before": 0.3303299855945656,
+            "nll_after": 0.3303299855945656,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_12",
+            "family": "vi_identity",
+            "nll_before": 1.586987459648683,
+            "nll_after": 1.586987459648683,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_identity_13",
+            "family": "vi_identity",
+            "nll_before": 0.6059801168432788,
+            "nll_after": 0.6059801168432788,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_02",
+            "family": "en_identity",
+            "nll_before": 0.0039417035374472095,
+            "nll_after": 0.0039417035374472095,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_04",
+            "family": "en_identity",
+            "nll_before": 0.015118782871147285,
+            "nll_after": 0.015118782871147285,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_05",
+            "family": "en_identity",
+            "nll_before": 0.0515439375432896,
+            "nll_after": 0.0515439375432896,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_07",
+            "family": "en_identity",
+            "nll_before": 0.0156539664871053,
+            "nll_after": 0.0156539664871053,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_08",
+            "family": "en_identity",
+            "nll_before": 0.14955796104869074,
+            "nll_after": 0.14955796104869074,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_10",
+            "family": "en_identity",
+            "nll_before": 2.2309531115364347,
+            "nll_after": 2.2309531115364347,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_11",
+            "family": "en_identity",
+            "nll_before": 0.7288583824834033,
+            "nll_after": 0.7288583824834033,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_identity_15",
+            "family": "en_identity",
+            "nll_before": 0.2715997189829383,
+            "nll_after": 0.2715997189829383,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_01",
+            "family": "vi_thanks",
+            "nll_before": 0.2110957689910853,
+            "nll_after": 0.2110957689910853,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_02",
+            "family": "vi_thanks",
+            "nll_before": 0.49817108091890017,
+            "nll_after": 0.49817108091890017,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_03",
+            "family": "vi_thanks",
+            "nll_before": 0.5239189635302003,
+            "nll_after": 0.5239189635302003,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_04",
+            "family": "vi_thanks",
+            "nll_before": 0.5538354176859145,
+            "nll_after": 0.5538354176859145,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_07",
+            "family": "vi_thanks",
+            "nll_before": 0.1494541170042648,
+            "nll_after": 0.1494541170042648,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_08",
+            "family": "vi_thanks",
+            "nll_before": 0.057964442973596694,
+            "nll_after": 0.057964442973596694,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_12",
+            "family": "vi_thanks",
+            "nll_before": 0.06370263189125108,
+            "nll_after": 0.06370263189125108,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_thanks_14",
+            "family": "vi_thanks",
+            "nll_before": 0.09256398787164474,
+            "nll_after": 0.09256398787164474,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_03",
+            "family": "en_thanks",
+            "nll_before": 2.6092025613484546,
+            "nll_after": 2.6092025613484546,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_04",
+            "family": "en_thanks",
+            "nll_before": 0.4681743564804973,
+            "nll_after": 0.4681743564804973,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_06",
+            "family": "en_thanks",
+            "nll_before": 1.0505925909311233,
+            "nll_after": 1.0505925909311233,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_08",
+            "family": "en_thanks",
+            "nll_before": 2.4493246574485785,
+            "nll_after": 2.4493246574485785,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_09",
+            "family": "en_thanks",
+            "nll_before": 1.1450464109589849,
+            "nll_after": 1.1450464109589849,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_12",
+            "family": "en_thanks",
+            "nll_before": 0.6678809798784873,
+            "nll_after": 0.6678809798784873,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_13",
+            "family": "en_thanks",
+            "nll_before": 1.3701486235800449,
+            "nll_after": 1.3701486235800449,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_thanks_14",
+            "family": "en_thanks",
+            "nll_before": 1.5997087205689962,
+            "nll_after": 1.5997087205689962,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_01",
+            "family": "vi_bye",
+            "nll_before": 0.0035139289357973536,
+            "nll_after": 0.0035139289357973536,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_02",
+            "family": "vi_bye",
+            "nll_before": 0.6804761559223972,
+            "nll_after": 0.6804761559223972,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_04",
+            "family": "vi_bye",
+            "nll_before": 1.3121288953712775,
+            "nll_after": 1.3121288953712775,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_06",
+            "family": "vi_bye",
+            "nll_before": 1.328066698524204,
+            "nll_after": 1.328066698524204,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_08",
+            "family": "vi_bye",
+            "nll_before": 0.6304191291711498,
+            "nll_after": 0.6304191291711498,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_09",
+            "family": "vi_bye",
+            "nll_before": 2.4710179229958085,
+            "nll_after": 2.4710179229958085,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_13",
+            "family": "vi_bye",
+            "nll_before": 0.16107777810601662,
+            "nll_after": 0.16107777810601662,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "vi_bye_15",
+            "family": "vi_bye",
+            "nll_before": 0.028276669232313097,
+            "nll_after": 0.028276669232313097,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_02",
+            "family": "en_bye",
+            "nll_before": 1.1080299634829116,
+            "nll_after": 1.1080299634829116,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_03",
+            "family": "en_bye",
+            "nll_before": 0.3050077882902428,
+            "nll_after": 0.3050374733266614,
+            "delta": 2.9685036418647393e-05,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_05",
+            "family": "en_bye",
+            "nll_before": 3.937622163693606,
+            "nll_after": 3.937622163693606,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_07",
+            "family": "en_bye",
+            "nll_before": 0.2896520319306848,
+            "nll_after": 0.2896520319306848,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_09",
+            "family": "en_bye",
+            "nll_before": 0.12307794795353953,
+            "nll_after": 0.12307794795353953,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_11",
+            "family": "en_bye",
+            "nll_before": 0.4861447939799756,
+            "nll_after": 0.4861447939799756,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_13",
+            "family": "en_bye",
+            "nll_before": 1.2295194688866078,
+            "nll_after": 1.2295194688866078,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          },
+          {
+            "id": "en_bye_16",
+            "family": "en_bye",
+            "nll_before": 1.4810018502388955,
+            "nll_after": 1.4810018502388955,
+            "delta": 0.0,
+            "applied_norm": 0.0035128714631948907
+          }
+        ],
+        "scope": "Train-aggregated direction applied ONCE; dev labels used ONLY for scoring."
+      },
+      "source_checkpoint": "artifacts/direct-word-bridge/20261110T062226Z-direct-word-bridge-v1-a6a908/36341-correct.words.zip",
+      "source_sha256": "f2b3033e080fe1fa255a2e760936aa7cc7d1b56f7c603ee7c7bfa5a3731f9de9",
+      "source_protected_unchanged": true,
+      "neural_updates": 0,
+      "control_draws": 16,
+      "control_seed": 75380
+    }
+  ],
+  "dev_macro": {
+    "alignment_fraction": 0.6354166666666666,
+    "gain_vs_random": 0.1361944738541647,
+    "gain_vs_permuted": 0.13309488470502817,
+    "gain_vs_signflip": 0.2163634341432965,
+    "delta_direction": -0.12912674939208016,
+    "delta_random_mean": 0.007067724462084518,
+    "delta_permuted_mean": 0.003968135312948009,
+    "delta_signflip": 0.08723668475121638,
+    "norm_match_ratio_random": 4.9111801771293955,
+    "norm_match_ratio_permuted": 2.1330585358427228,
+    "cases": 192
+  },
+  "dev_gain_vs_random_interval": {
+    "mean": 0.1361944738541647,
+    "lower95": 0.13064713801885697,
+    "upper95": 0.139587175126203,
+    "n_seeds": 3
+  },
+  "dev_gain_vs_permuted_interval": {
+    "mean": 0.13309488470502817,
+    "lower95": 0.12686174065427566,
+    "upper95": 0.13976569050776483,
+    "n_seeds": 3
+  },
+  "dev_gain_vs_signflip_interval": {
+    "mean": 0.2163634341432965,
+    "lower95": 0.19706264774466656,
+    "upper95": 0.2370822625121901,
+    "n_seeds": 3
+  },
+  "heldout": {
+    "seeds": 3,
+    "mean_dev_delta": -8.430614986019037e-05,
+    "interval": {
+      "mean": -8.430614986019037e-05,
+      "lower95": -0.00019261835523108096,
+      "upper95": 1.9115740974243872e-07,
+      "n_seeds": 3
+    }
+  },
+  "flags": {
+    "LOCAL_DIRECTION_ALIGNED": true,
+    "DIRECTION_UNINFORMATIVE": false,
+    "DIRECTION_CONFLICT_CONFIRMED": false,
+    "GAUSSIAN_CONTROL_OVERSHOOTS": true
+  },
+  "model_sources": 15,
+  "public_cases_per_source": 128,
+  "actual_forward_segments": 384,
+  "applied_counterfactual_evaluations": 7680,
+  "neural_training": false,
+  "neural_update_steps": 0,
+  "torch_imported": false,
+  "deployed": false,
+  "main_weights_changed": false,
+  "normal_chat_or_vision_proven": false,
+  "resources": {
+    "peak_rss_bytes": 53395456,
+    "peak_commit_or_vms_bytes": 38236160,
+    "os_process_peak_working_set_bytes": 54870016,
+    "os_process_peak_pagefile_commit_bytes": 39886848,
+    "samples": 347,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 41.468109199995524,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "seconds": 41.76091529999394,
+  "limits": [
+    "15existing checkpoints / 3 paired seeds only; CIs are exploratory, not 15 independent seeds.",
+    "Single-step local linear probe of ONE applied update; repeated application NOT tested.",
+    "Direction is one-step readout-error x own-neuron eligibility; no gradient/backward computed or approximated.",
+    "Applied to a disposable deep copy; source checkpoints and main weights unchanged.",
+    "No newlearner/objective/epoch/LR/grid from this audit; any credit-rule change needs its own protocol and approval.",
+    "Existing STOP35/36/37 and P1/P2 flags unchanged; this diagnoses a mechanism, it does not certify language ability."
+  ]
+}

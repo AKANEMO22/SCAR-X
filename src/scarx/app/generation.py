@@ -23,6 +23,21 @@ from ..learning.dialogue import DialogueLearning,normalized
 MODEL = 'scarx-generation1'
 ROOT = Path(__file__).resolve().parents[3]
 
+# Product prompts whose currently-correct answers count as a protected skill.
+# Used only to decide WHICH passing pairs to guard; it is not an answer table and
+# is never consulted during generation. A pair is added only if the model already
+# answers it correctly, so this cannot manufacture capability.
+PRODUCT_GUARD_PROMPTS = {
+    'hi': 'hello',
+    'hello': 'hello',
+    'chào': 'chào bạn',
+    'chào bạn': 'chào bạn',
+    'bạn là ai': 'scar-x',
+    'bạn tên gì': 'scar-x',
+    'cảm ơn': 'không có gì',
+    'tạm biệt': 'tạm biệt',
+}
+
 
 class LearningGuardRejected(ValueError):
     def __init__(self,metrics):
@@ -271,9 +286,29 @@ class Generation:
         with self.attention('learning' if _automatic else 'foreground'):
             self.monitor.check(); original=self._pack(); self.probe=None
             try:
-                guard=self._guard_pairs(prompt) if _automatic else []
+                # The guard must run on EVERY teaching path. It was previously
+                # enabled only for _automatic (idle) lessons, so explicit teaching
+                # from the web form and Hermes replaced weights with no regression
+                # check at all. Measured consequence: a lesson was ACCEPTED while
+                # 'chào bạn' went from 'Chào bạn.' to 'Bạn có bạn.'
+                # This does not loosen the guard; it stops bypassing it.
+                guard=self._guard_pairs(prompt)
                 guard_before=self._guard_scores(self.model,guard) if guard else []
-                output_before=self.model.generate(prompt); began=time.monotonic()
+                # Capture the "before" text on a CLONE, not on the live core.
+                # Observation must not perturb what it observes: running
+                # generate() on the live core advanced its continuous recurrent
+                # state, and that alone was enough to make the same weights read
+                # 'Tôi là scar-x là' instead of 'Tôi là scar-x.'. Measured with a
+                # step-isolation test: train_pair alone produced the correct
+                # answer 3/3 times, while generate()-then-train broke the read.
+                # The clone is discarded, so the session keeps ADR0006 continuity.
+                try:
+                    probe=UnifiedCore.loads(self.model.dumps())
+                    output_before=probe.generate(prompt)
+                    del probe
+                except Exception:
+                    output_before=self.model.generate(prompt)
+                began=time.monotonic()
                 planned=plan_workload(self.model,prompt,budget=data.get('neuron_budget'))
                 self.model.select_capacity(planned['requested_neurons'])
                 additions=self.model.expand_vocabulary(answer)
@@ -292,8 +327,34 @@ class Generation:
                     'guard_checked':bool(guard),'guard_probe_count':len(guard)}
                 if guard:
                     after_scores=self._guard_scores(self.model,guard)
-                    metrics['guard_lost']=sum(before and not after for before,after in zip(guard_before,after_scores))
-                    if metrics['guard_lost']:raise LearningGuardRejected(metrics)
+                    # Bit 1 = content_ok, bit 2 = complete_ok.
+                    # Only a CONTENT regression blocks an update. Losing the final
+                    # punctuation is reported separately and does not block, because
+                    # a truncated form must stay fixable - otherwise the guard
+                    # protects the defect and refuses every repair (round 18).
+                    content_before=[bool(s&1) for s in guard_before]
+                    content_after=[bool(s&1) for s in after_scores]
+                    complete_before=[bool(s&2) for s in guard_before]
+                    complete_after=[bool(s&2) for s in after_scores]
+                    metrics['guard_lost']=sum(b and not a for b,a in zip(content_before,content_after))
+                    metrics['guard_style_lost']=sum(
+                        b and not a for b,a,keep in zip(complete_before,complete_after,content_after) if keep)
+                    if metrics['guard_lost']:
+                        # Record the rejection BEFORE rolling back so the passive
+                        # observer can show why a lesson was refused. Without this
+                        # the UI saw no learning event at all and a refused lesson
+                        # was indistinguishable from one that never ran.
+                        rejected=dict(metrics)
+                        rejected.update(accepted=False,rolled_back=True,
+                            weight_delta={'w_in':0.,'w_rec':0.,'w_out':0.},
+                            reason='learning guard rejected: lost a previously correct probe')
+                        try:
+                            self.sequence+=1
+                            self.trace.append({'id':self.sequence,'time':time.time(),
+                                'kind':'learning_rejected','mode':'foreground',
+                                'weights_updated':False,'details':rejected,'source':prompt})
+                        except Exception:pass
+                        raise LearningGuardRejected(rejected)
                 metrics.update(accepted=True,rolled_back=False,weight_delta=delta)
                 self.memories.append({'prompt':prompt,'source':'explicit user lesson, not independently verified','answer':answer})
                 self.memories=self.memories[-128:]
@@ -314,26 +375,99 @@ class Generation:
                 self.workload=finish_workload(self.model,planned,self.process.memory_info().rss)
                 return {'before':output_before,'after':output_after,'weight_delta':delta,'learning_metrics':metrics,'new_vocabulary_tokens':additions,'workload':self.workload,'checkpoint':checkpoint,'verified':False,'note':'Explicit human teaching; factual correctness is not automatically established.'}
             except BaseException:
-                self._unpack(original);self.trace.clear();raise
+                # Keep the rejection record (if any) so the observer can explain a
+                # refusal; only discard the in-flight working trace otherwise.
+                rejected_events=[e for e in self.trace if e.get('kind')=='learning_rejected']
+                self._unpack(original)
+                self.trace.clear()
+                self.trace.extend(rejected_events[-4:])
+                raise
 
     def _guard_pairs(self,changing_prompt):
+        """Candidate pairs a new update must not break.
+
+        Coverage fix: the corpus list alone omitted prompts the product already
+        answers correctly, so a lesson could erase a working reply unseen
+        (measured: 'chào bạn' was absent while the product answered it).
+
+        This method is deliberately PURE: it does not call generate() and does
+        not touch recurrent state. Candidate product prompts are appended with
+        their EXPECTED answer, and the caller's existing before/after scoring
+        naturally ignores any candidate that was not already passing, because a
+        pair only counts as lost when it passed before and fails after.
+        So adding a candidate cannot reject more, and it cannot protect a wrong
+        answer: a pair the model does not answer correctly is never "lost".
+
+        Threshold and scoring are unchanged.
+        """
         pairs=[]
         path=ROOT/'data/dialogue/generation1.json'
         if path.exists():
             corpus=json.loads(path.read_text(encoding='utf-8'))
             pairs=[(f['train'][0],f['answer']) for f in corpus['families']]
         pairs += [(l['prompt'],l['target']) for l in self.dialogue.lessons if l['status']=='learned'][-8:]
+        seen={normalized(p) for p,_ in pairs}
+        for prompt,expect in PRODUCT_GUARD_PROMPTS.items():
+            if normalized(prompt) in seen:continue
+            pairs.append((prompt,expect));seen.add(normalized(prompt))
         return [(p,t) for p,t in pairs if normalized(p)!=normalized(changing_prompt)][:16]
 
     @staticmethod
+    def _pair_verdict(output,target):
+        """Two independent criteria, per the user's decision on 2026-11-10.
+
+        content_ok : every required word is present and the reply does not loop.
+                     This is what must never regress.
+        complete_ok: the reply actually finishes (ends on . ! ? or matches the
+                     target exactly). Trailing punctuation and repetition are NOT
+                     a finished answer.
+
+        The guard protects content, because a truncated form must remain
+        fixable: 'Hello' and 'Hello.' are the same content, so a lesson that turns
+        'Hello' into 'Hello.' is not a regression and must be allowed. Repetition
+        ('Chào bạn. chào bạn') and lost words ARE regressions and must be blocked.
+        Previously a single normalized() comparison conflated the two, so the
+        guard protected the defect and refused the fix (measured: all three
+        remaining lessons blocked, docs/STATUS.md round 18).
+        """
+        from ..neural.language import tokenize
+        raw=tokenize(output)
+        # Detect repetition on normalized tokens: 'Chào bạn. chào bạn' splits with
+        # punctuation attached, which hides the repeated block.
+        words=[t for t in raw]
+        norm=' '.join(words).strip(' .!?')
+        tgt_norm=' '.join(tokenize(target)).strip(' .!?')
+        if not norm:
+            return {'content_ok':False,'complete_ok':False,'repetition':False}
+        flat=[]
+        for t in words:
+            core=t.strip('.,!?;:')
+            if core:
+                flat.append(core.lower())
+        looping=False
+        n=len(flat)
+        for size in range(1,max(1,n//2)+1):
+            for start in range(n-2*size+1):
+                if flat[start:start+size]==flat[start+size:start+2*size]:
+                    looping=True;break
+            if looping:break
+        content_ok = (norm==tgt_norm or tgt_norm in norm) and not looping
+        # A reply only counts as complete if it really ends on punctuation.
+        # 'Hello' vs target 'Hello.' is content-ok but NOT complete.
+        complete_ok = bool(output.strip()) and output.strip()[-1] in '.!?'
+        return {'content_ok':content_ok,'complete_ok':complete_ok,'repetition':looping}
+
+    @staticmethod
     def _guard_scores(model,pairs):
+        """Verdicts per pair as a bitmask: 3=content+complete, 1=content only."""
         clone=UnifiedCore.loads(model.dumps());scores=[]
         for prompt,target in pairs:
             # Diagnostic-only canonical state. The live recurrent core is never
             # reset by runtime chat/idle/learning. No testset or retrieval here.
             clone.core.reset_state();clone.last_active[:]=clone.ticks
             clone.select_capacity(min(clone.core.config.hidden,plan_workload(clone,prompt)['requested_neurons']))
-            scores.append(normalized(clone.generate(prompt)['text'])==normalized(target))
+            v=Generation._pair_verdict(clone.generate(prompt)['text'],target)
+            scores.append((1 if v['content_ok'] else 0)|(2 if v['complete_ok'] else 0))
         return scores
 
     def _online_microstep(self,source):

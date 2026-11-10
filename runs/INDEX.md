@@ -118,3 +118,5 @@
 - [20261110T064337Z-direct-visual-preflight-v1-927d70](20261110T064337Z-direct-visual-preflight-v1-927d70/report.md) — direct-visual-preflight-v1
 - [20261110T065124Z-direct-visual-bridge-v1-3390d3](20261110T065124Z-direct-visual-bridge-v1-3390d3/report.md) — direct-visual-bridge-v1
 - [20261110T072222Z-word-training-objective-audit-v1-6a768d](20261110T072222Z-word-training-objective-audit-v1-6a768d/report.md) — word-training-objective-audit-v1
+- [20261110T080003Z-local-credit-alignment-audit-v1-d8de33](20261110T080003Z-local-credit-alignment-audit-v1-d8de33/report.md) — local-credit-alignment-audit-v1
+- [20261110T080426Z-local-credit-alignment-audit-v1-db01fc](20261110T080426Z-local-credit-alignment-audit-v1-db01fc/report.md) — local-credit-alignment-audit-v1

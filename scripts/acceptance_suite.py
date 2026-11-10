@@ -1,0 +1,228 @@
+"""One-command product acceptance suite measuring the 12 required metrics.
+
+Run:
+    python scripts/acceptance_suite.py                # baseline only
+    python scripts/acceptance_suite.py --teach        # baseline + taught state + restart
+
+Every run happens on a discarded copy; the live session is never opened for
+writing, and its runtime SHA is sampled before and after only to show it moved
+for its own reasons (the idle loop), not because of this suite.
+
+No learning rule, topology, signal, guard threshold or architecture is changed.
+"""
+import argparse
+import json
+import shutil
+import sqlite3
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'src'))
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+from scarx.app.generation import Generation, normalized  # noqa: E402
+from scarx.evaluation.product_acceptance import (  # noqa: E402
+    CASES, HELDOUT, copy_session, guard_report, measure, summarise, weights_sha256,
+)
+
+LIVE = ROOT / 'local' / 'generation1'
+
+# Product teaching set: only prompts whose expected answer the product should give.
+TEACH_SET = [
+    ('bạn là ai', 'Tôi là SCAR-X.'),
+    ('bạn tên gì', 'Tôi là SCAR-X.'),
+    ('chào bạn', 'Chào bạn.'),
+    ('cảm ơn', 'Không có gì.'),
+    ('tạm biệt', 'Tạm biệt bạn.'),
+    ('bạn khỏe không', 'Tôi đang hoạt động.'),
+]
+
+
+def live_sha():
+    try:
+        db = sqlite3.connect(f'file:{(LIVE / "generation1.sqlite").as_posix()}?mode=ro', uri=True)
+        row = db.execute('SELECT sha FROM runtime LIMIT 1').fetchone()
+        db.close()
+        return row[0] if row else None
+    except sqlite3.Error:
+        return None
+
+
+def heldout(app):
+    rows = []
+    for prompt, expect in HELDOUT:
+        text = app.model.generate(prompt)['text']
+        rows.append({'prompt': prompt, 'expect': expect, 'output': text,
+                     'correct': expect in ' '.join(text.lower().split())})
+    return sum(r['correct'] for r in rows) / max(1, len(rows)), rows
+
+
+def snapshot(app):
+    rows = measure(app, CASES)
+    g_rows = guard_report(app, '__acceptance__')
+    h_acc, h_rows = heldout(app)
+    return {
+        'weights_sha256': weights_sha256(app.model),
+        'summary': summarise(rows), 'rows': rows,
+        'guard': g_rows, 'guard_passing': sum(g['pass'] for g in g_rows),
+        'guard_total': len(g_rows),
+        'heldout_acc': h_acc, 'heldout_rows': h_rows,
+        'correct_prompts': sorted(r['prompt'] for r in rows if r['correct']),
+        'rss_bytes': app.process.memory_info().rss,
+        'vms_bytes': getattr(app.process.memory_info(), 'vms', None),
+    }
+
+
+def teach_sequence(app, lessons):
+    results = []
+    for prompt, answer in lessons:
+        rec = {'prompt': prompt, 'answer': answer, 'accepted': False}
+        try:
+            out = app.teach({'prompt': prompt, 'answer': answer,
+                             'repeats': 16, 'confirmation': True})
+            rec['accepted'] = True
+            m = out.get('learning_metrics', {})
+            rec['guard_lost'] = m.get('guard_lost')
+            rec['loss_mean'] = m.get('loss_mean')
+        except Exception as exc:
+            rec['error'] = f'{type(exc).__name__}'
+            rec['guard_lost'] = getattr(exc, 'metrics', {}).get('guard_lost') \
+                if hasattr(exc, 'metrics') else None
+        results.append(rec)
+    return results
+
+
+def run(do_teach, do_restart):
+    work = copy_session(LIVE)
+    out = {}
+    try:
+        app = Generation(work, background=False)
+        try:
+            base = snapshot(app)
+            out['baseline'] = base
+            if do_teach:
+                acquisition = teach_sequence(app, TEACH_SET)
+                taught = snapshot(app)
+                out['acquisition'] = acquisition
+                out['taught'] = taught
+                out['newly_lost'] = sorted(set(base['correct_prompts']) - set(taught['correct_prompts']))
+                out['newly_gained'] = sorted(set(taught['correct_prompts']) - set(base['correct_prompts']))
+                out['weights_changed'] = base['weights_sha256'] != taught['weights_sha256']
+        finally:
+            app.close()
+
+        if do_restart:
+            time.sleep(0.2)
+            reopened = Generation(work, background=False)
+            try:
+                out['after_restart'] = snapshot(reopened)
+            finally:
+                reopened.close()
+    finally:
+        shutil.rmtree(work.parent, ignore_errors=True)
+    return out
+
+
+def metres(out):
+    """Map to the 12 required metrics, each explicitly measured or explicitly absent."""
+    base = out['baseline']
+    taught = out.get('taught')
+    restart = out.get('after_restart')
+    acq = out.get('acquisition', [])
+    m = {}
+    m['1_free_answer_accuracy'] = base['summary']['free_answer_correct']
+    m['2_heldout_generalization'] = base['heldout_acc']
+    if acq:
+        m['3_learning_acquisition'] = sum(a['accepted'] for a in acq) / len(acq)
+        m['5_guard_acceptance'] = sum(a['accepted'] for a in acq) / len(acq)
+        m['6_guard_regression'] = len(out.get('newly_lost', []))
+    else:
+        m['3_learning_acquisition'] = None
+        m['5_guard_acceptance'] = None
+        m['6_guard_regression'] = None
+    m['4_retention'] = (len(set(base['correct_prompts']) & set(taught['correct_prompts']))
+                        / max(1, len(base['correct_prompts']))) if taught else None
+    m['7_guard_passing'] = f"{base['guard_passing']}/{base['guard_total']}"
+    m['8_premature_stop'] = base['summary']['premature_stop']
+    m['9_repetition'] = base['summary']['repetition']
+    m['10_rss_bytes'] = base['rss_bytes']
+    m['10_vms_bytes'] = base['vms_bytes']
+    m['10_under_2gb'] = base['rss_bytes'] < 2_000_000_000
+    m['11_restart_persistence'] = (
+        # Compare WEIGHTS, which must persist. Text comparison is unreliable
+        # because the recurrent working state legitimately keeps moving, so a
+        # text mismatch is not evidence of lost learning.
+        taught['weights_sha256'] == restart['weights_sha256']
+        if (taught and restart) else None)
+    m['11b_restart_text_identical'] = (
+        [r['text'] for r in taught['rows']] == [r['text'] for r in restart['rows']]
+        if (taught and restart) else None)
+    m['12_weights_proven'] = 'weights_sha256 (not the updates counter)'
+    return m
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--teach', action='store_true', help='also run the teaching sequence')
+    ap.add_argument('--json-out', default=None)
+    args = ap.parse_args()
+
+    before = live_sha()
+    out = run(args.teach, args.teach)
+
+    print('=' * 68)
+    print('SCAR-X PRODUCT ACCEPTANCE')
+    print('=' * 68)
+    base = out['baseline']
+    print(f"\nweights_sha256 : {base['weights_sha256']}")
+    print(f"{'prompt':16s} {'correct':8s} {'complete':9s} output")
+    for r in base['rows']:
+        print(f"{r['prompt']:16s} {str(r['correct']):8s} {str(r['complete']):9s} {r['text'][:38]!r}")
+
+    if args.teach:
+        print(f"\nteaching sequence ({len(TEACH_SET)} lessons):")
+        for a in out['acquisition']:
+            state = 'ACCEPTED' if a['accepted'] else 'rejected'
+            extra = '' if a['accepted'] else f"  guard_lost={a.get('guard_lost')}"
+            print(f"  {state:9s} {a['prompt']!r:20s} -> {a['answer']!r:24s}{extra}")
+        print(f"\nnewly_lost   : {out['newly_lost']}")
+        print(f"newly_gained : {out['newly_gained']}")
+        print(f"weights changed: {out['weights_changed']}")
+        if 'after_restart' in out:
+            weights_same = out['taught']['weights_sha256'] == out['after_restart']['weights_sha256']
+            texts_same = ([r['text'] for r in out['taught']['rows']]
+                          == [r['text'] for r in out['after_restart']['rows']])
+            print(f"weights identical after cold restart: {weights_same}")
+            print(f"texts identical after cold restart  : {texts_same}"
+                  + ('' if texts_same else '  (working state drifted, not a loss)'))
+
+    print('\n' + '=' * 68)
+    print('12 REQUIRED METRICS')
+    print('=' * 68)
+    for k, v in metres(out).items():
+        if isinstance(v, float):
+            print(f'  {k:28s}: {v:.4f}')
+        else:
+            print(f'  {k:28s}: {v}')
+
+    after = live_sha()
+    print(f'\nlive runtime sha before/after : {str(before)[:16]} / {str(after)[:16]}')
+    print('  (runtime payload churns because the idle loop keeps writing state;')
+    print('   that is why weights_sha256, not this value, is the weight proof.)')
+
+    if args.json_out:
+        payload = {'metrics': metres(out), **out,
+                   'live_sha_before': before, 'live_sha_after': after,
+                   'scope': 'Product acceptance on a discarded copy. No rule, '
+                            'topology, signal or guard-threshold change.'}
+        Path(args.json_out).write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str),
+                                       encoding='utf-8')
+        print(f'wrote {args.json_out}')
+
+
+if __name__ == '__main__':
+    main()

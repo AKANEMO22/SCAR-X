@@ -919,6 +919,19 @@ chưa được bật. Phán quyết khoa học vẫn PIVOT_NO_SCALE.
 
 ## 13. Change Log
 
+### 1.29 — 2026-11-10 — Hướng tín hiệu học cục bộ có giảm loss thật?
+
+- Đăngký39 trướccode/đo: áp hướng local unchanged35 lên bản sao dùngmộtlần, đo
+  ΔNLL teacher-forced thật so control khớp độ lớn; read only, khônglearner mới.
+- Dev192case:63,54%endpoint đúng hướng, ΔNLL−0,12913, đảodấu+0,08724, chênh
+  +0,21636 CI0,19706..0,23708. Tín hiệu **không** là nhiễu vô hướng và **không**
+  phản tác dụng; xác nhận thay vì phủ định audit38.
+- Phát hiện: Adam chuẩn hoá từng phần tử làm control Gaussian lớn4,91× và hoán vị
+  lớn2,13×; chỉ đảodấu khớp độ lớn. Mọi gain-vi-random bị nhiễu độ lớn, không
+  dùng làm bằng chứng. Bản `d8de33` lỗi đo đã`do_not_cite`.
+- Heldout ΔNLL −8,43e−05 CI−1,93e−04..1,91e−07: đúng hướng từng bài nhưng **không**
+  tổngquát hoá. 214tests; mainALIF/2GB/STOP35–37/PIVOT giữ nguyên, chưa mở learner.
+
 ### 1.28 — 2026-11-10 — Audit tínhphùhợp của mụctiêuhọc
 
 - Đăngký38 sau câuhỏi người dùng: tách task/architecture/update, teacherprefix

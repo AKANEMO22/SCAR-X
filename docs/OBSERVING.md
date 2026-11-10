@@ -74,7 +74,13 @@ phải số lần ghi vào synapse. Không suy ra representation từ ΔW khác0
 
 Guard giữ hoặc rollback hiện riêng. Sau rollback, ΔW giữ lại là0; ΔW/loss của
 lần thử vẫn lưu nếu đã đo được. Lỗi xảy ra trước khi có số đo được ghi thiếu,
-không giả loss0. Dạy thủ công theo policy cũ không chạy guard, có nhãn riêng.
+không giả loss0. **Cập nhật 2026-11-10: dạy thủ công NAY CÓ chạy guard.**
+Trước đây đường dạy thủ công (form web/Hermes) bỏ qua guard hoàn toàn, nên một
+bài dạy có thể được ACCEPTED trong khi câu trả lời đang đúng bị phá (đo được:
+`chào bạn` từ `Chào bạn.` thành `Bạn có bạn.` với `guard_lost` không hề được
+tính). Nay guard chạy trên **mọi** đường dạy; `guard_checked` và `guard_lost`
+luôn có trong metrics. Hệ quả trung thực: tỷ lệ chấp nhận trên bộ sản phẩm chỉ
+còn **12,5%** — đó là trạng thái interference thật, không phải lỗi mới.
 Điểm loss trên đồ thị thuộc các giao dịch có thể khác bài, không là một
 learning curve của dataset cố định. Counter tích lũy có thể khác số log giữ lại.
 

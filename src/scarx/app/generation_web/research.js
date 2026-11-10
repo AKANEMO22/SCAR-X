@@ -144,6 +144,23 @@
       const structure=job.result.corpus_structure;
       if(structure)current.append(node('p',`Corpus hữu hạn: ${structure.targets} mẫu đáp án, ${structure.unique_first_words} từ đầu khác nhau; ${structure.later_positions}/${structure.total_positions_uniform_templates} vị trí nằm sau bước đầu. ${pct(structure.nonempty_prefix_determines_next_fraction)} tiền tố chuẩn không rỗng xác định từ kế tiếp. Đây là thuộc tính corpus, không phải model đã hiểu hoặc bảng tra được triển khai.`,'muted'));
     }
+    if(job.result?.credit_alignment_statistics){
+      const source=job.result.credit_alignment_statistics,wrap=node('div',undefined,'table-scroll'),table=node('table',undefined,'lab-table'),head=node('tr');
+      ['Seed / split','NLL trước','ΔNLL hướng local','ΔNLL đảo dấu','ΔNLL control hoán vị','Tỉ lệ đúng hướng','Độ lớn control/Thật (hoán vị)'].forEach(x=>head.append(node('th',x)));table.append(head);
+      const num=v=>typeof v==='number'?v.toFixed(5):'chưa đo',pct=v=>typeof v==='number'?(v*100).toFixed(2)+'%':'chưa đo';
+      source.rows.forEach(r=>{const row=node('tr');[r.seed+' / '+r.split,num(r.nll_before),num(r.delta_direction),num(r.delta_signflip),num(r.delta_permuted_mean),pct(r.alignment_fraction),typeof r.norm_match_ratio_permuted==='number'?r.norm_match_ratio_permuted.toFixed(2)+'×':'chưa đo'].forEach(x=>row.append(node('td',x)));table.append(row);});
+      wrap.append(table);
+      const m=source.dev_macro||{},ci=source.intervals||{};
+      const range=v=>v?`${num(v.mean)} [${num(v.lower95)}; ${num(v.upper95)}]`:'chưa đo';
+      current.append(node('p','AUDIT 39 · CHỈ ĐỌC · 0 CẬP NHẬT NEURAL','lab-verdict'),
+        node('p',`Áp chính hướng local (trung bình endpoint, Adam/clip của checkpoint) lên BẢN SAO dùng một lần rồi đo lại NLL teacher-forced thật. ΔNLL âm = loss GIẢM. Dev macro: đúng hướng ${pct(m.alignment_fraction)}, ΔNLL ${num(m.delta_direction)}. Chênh so đảo dấu: ${range(ci.gain_vs_signflip)}.`,`muted`),
+        node('p','CẢNH BÁO PHƯƠNG PHÁP: Adam chuẩn hóa theo từng phần tử, nên control Gaussian khớp norm TRƯỚC Adam bị áp lực lớn hơn thật rất nhiều, và control hoán vị cũng lớn hơn. Vì vậy chỉ số "gain so với control" bị nhiễu bởi độ lớn; chỉ control ĐẢO DẤU khớp chính xác độ lớn áp dụng. Đây là lý do gain so đảo dấu mới là bằng chứng chính, không phải gain so random.','muted'),
+        node('p',`Held-out (hướng gộp từ TRAIN, áp một lần, chấm trên dev): ΔNLL trung bình ${num(source.heldout?.mean_dev_delta)}. Đây là con số duy nhất nói về tổng quát hóa, và nó rất nhỏ so với mức cải thiện trên train.`,'muted'),
+        node('p','ĐỌC BẢNG: tỉ lệ đúng hướng ở TRAIN thấp (9–11%) KHÔNG phải quy tắc sai. NLL train đã bão hòa ≈0,0105–0,0157 nên không còn dư địa giảm loss; dev còn dư địa (0,76–0,94) và là nơi tín hiệu thể hiện. Chỉ đọc phần dev khi đánh giá hướng tín hiệu.','muted'),
+        node('p','Không huấn luyện, không tối ưu, không head refit, không Torch. Checkpoint nguồn và trọng số chính không đổi. Bảng này KHÔNG phải câu trả lời model và không phải bằng chứng năng lực ngôn ngữ.','muted'),wrap);
+      if(source.flags)current.append(node('pre',JSON.stringify(source.flags,null,2)),node('p','Flag là mô tả chẩn đoán đã đăng ký trước, không phải cổng chất lượng của dự án.','muted'));
+      const link=node('a','Báo cáo đầy đủ audit 39 ↗');link.href='/api/research/report?run_id='+encodeURIComponent(source.run_id||job.run_id);link.target='_blank';link.rel='noopener';current.append(link);
+    }
     if(job.result?.visual_information_rows){
       const rows=job.result.visual_information_rows,wrap=node('div',undefined,'table-scroll'),table=node('table',undefined,'lab-table'),h=node('tr');
       ['Nguồn / seed','Từ đầu neural','PROBE từ đầu','PROBE thuộc tính','PROBE nhãn tráo','Clip ±5','Rank48'].forEach(x=>h.append(node('th',x)));table.append(h);
