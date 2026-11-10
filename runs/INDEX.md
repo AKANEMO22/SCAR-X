@@ -129,3 +129,4 @@
 - [20261110T135250Z-readout-usefulness-p0-v1-ca2357](20261110T135250Z-readout-usefulness-p0-v1-ca2357/report.md) — readout-usefulness-p0-v1
 - [20261110T142636Z-adaptive-curriculum-grounding-v1-472187](20261110T142636Z-adaptive-curriculum-grounding-v1-472187/report.md) — adaptive-curriculum-grounding-v1
 - [20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646](20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646/report.md) — adaptive-curriculum-grounding-v1
+- [20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc](20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc/report.md) — deepseek-pair-binding-screen-v1
