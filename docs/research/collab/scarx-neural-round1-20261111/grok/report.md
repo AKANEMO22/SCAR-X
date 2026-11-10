@@ -49,9 +49,13 @@ Confirmation, eight fresh initializations, development accuracy of the actual he
 
 The large gap versus `fast-correct` is real and its lower bound is about 0.43, but the frozen slow head already scores 0.896. The gap is the head reading a trace that still contains the bit, not evidence that the hidden update learned the order. The shuffled-signal arm stays high, so the directed eligibility is not what produces the score.
 
+## Amendment 1 — confirmation split 71005
+
+Codex review of `14bf4b2` showed that the confirmation block scored development seed 71004. That file is preserved at `runs/grok-slow-trace-v1/result.json` and is not a held-out confirmation. The corrected run is `runs/grok-slow-trace-v1a-confirmation-71005/result.json`. Seeds, budget and the 0.05 bound were not changed. The development screen still opened confirmation. On 71005 the eight-seed gain versus `slow-frozen` has mean 0.0273 and 95% lower bound **-0.00289**. `slow-zero` again matches `slow-frozen` on every seed. The gate still fails.
+
 ## Verdict
 
-**NO-GO** for the claim that slow eligibility teaches the hidden synapses a delayed order bit that the fast path and a frozen hidden lack.
+**NO-GO** for the claim that slow eligibility teaches the hidden synapses a delayed order bit that the fast path and a frozen hidden lack. The corrected confirmation split does not reverse that verdict.
 
 What stands: at this decay, the fast feature is a poor linear readout of the delayed order, and a slow local trace is a strong one, before learning. What does not stand: calling the candidate a better learner. Conversation, vision, and retention were not measured.
 

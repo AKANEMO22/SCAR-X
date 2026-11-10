@@ -97,6 +97,9 @@ class SlowTraceEligibility(ReadoutEligibility):
         self.segment_active = False
         return self.slow.copy()
 
+    def memory_bytes(self):
+        return super().memory_bytes() + self.slow.nbytes + self.e_s.nbytes
+
     def state_view(self, sequence):
         x = self._sequence(sequence, self.core.config.inputs)
         self.begin(False)
@@ -132,8 +135,14 @@ class SlowTraceEligibility(ReadoutEligibility):
         if len(payload) > 5_000_000:
             raise ValueError('Slow-trace checkpoint bound')
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
-            if set(archive.namelist()) != {'base.zip', 'extra.npz', 'metadata.json'}:
+            infos = archive.infolist()
+            names = [item.filename for item in infos]
+            if len(infos) != 3 or len(set(names)) != 3 or set(names) != {'base.zip', 'extra.npz', 'metadata.json'}:
                 raise ValueError('Slow-trace checkpoint members')
+            if sum(item.file_size for item in infos) > 5_000_000:
+                raise ValueError('Slow-trace checkpoint bound')
+            if archive.getinfo('metadata.json').file_size > 65536 or archive.getinfo('extra.npz').file_size > 2_000_000:
+                raise ValueError('Slow-trace checkpoint bound')
             base = archive.read('base.zip')
             extra = archive.read('extra.npz')
             meta = json.loads(archive.read('metadata.json'))
@@ -160,12 +169,16 @@ class SlowTraceEligibility(ReadoutEligibility):
         with np.load(io.BytesIO(extra), allow_pickle=False) as arrays:
             if set(arrays.files) != {'slow', 'e_s'}:
                 raise ValueError('Slow-trace extra fields')
-            if arrays['slow'].shape != model.slow.shape or arrays['e_s'].shape != model.e_s.shape:
+            slow = arrays['slow']
+            eligibility = arrays['e_s']
+            if slow.dtype != np.float32 or eligibility.dtype != np.float32:
+                raise ValueError('Slow-trace dtype')
+            if slow.shape != model.slow.shape or eligibility.shape != model.e_s.shape:
                 raise ValueError('Slow-trace extra shape')
-            if not np.isfinite(arrays['slow']).all() or not np.isfinite(arrays['e_s']).all():
+            if not np.isfinite(slow).all() or not np.isfinite(eligibility).all() or np.any(slow < 0) or np.any(slow > 1):
                 raise ValueError('Slow-trace extra values')
-            model.slow[:] = arrays['slow']
-            model.e_s[:] = arrays['e_s']
+            model.slow[:] = slow
+            model.e_s[:] = eligibility
         return model
 
 

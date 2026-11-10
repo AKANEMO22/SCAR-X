@@ -52,6 +52,50 @@ def test_failed_update_restores_weights_trace_and_rng():
     assert model.dumps() == before
 
 
+def test_memory_accounting_includes_the_slow_arrays():
+    base = ReadoutEligibility(g1_config(3), 'correct')
+    model = SlowTraceEligibility(g1_config(3), 'correct', 'slow')
+    extra = model.slow.nbytes + model.e_s.nbytes
+    assert extra == 3264
+    assert model.memory_bytes() == base.memory_bytes() + extra
+
+
+def test_loader_rejects_duplicate_members_and_non_float32_without_mutation():
+    import io
+    import json
+    import zipfile
+    model = calibrated('slow', 'correct', seed=9)
+    saved = model.dumps()
+    before = model.core.w_in.copy()
+    with zipfile.ZipFile(io.BytesIO(saved)) as archive:
+        blobs = {name: archive.read(name) for name in archive.namelist()}
+    duplicate = io.BytesIO()
+    with zipfile.ZipFile(duplicate, 'w') as archive:
+        for name, payload in blobs.items():
+            archive.writestr(name, payload)
+        archive.writestr('extra.npz', blobs['extra.npz'])
+    with pytest.raises(ValueError, match='members'):
+        SlowTraceEligibility.loads(duplicate.getvalue())
+    with np.load(io.BytesIO(blobs['extra.npz']), allow_pickle=False) as arrays:
+        slow = arrays['slow'].astype(np.float64)
+        eligibility = arrays['e_s'].astype(np.float64)
+    slow[0] = np.nextafter(np.float64(0.25), np.float64(1))
+    extra = io.BytesIO()
+    np.savez(extra, slow=slow, e_s=eligibility)
+    meta = json.loads(blobs['metadata.json'])
+    meta.pop('metadata_sha256')
+    meta['extra_sha256'] = __import__('hashlib').sha256(extra.getvalue()).hexdigest()
+    meta['metadata_sha256'] = __import__('hashlib').sha256(json.dumps(meta, sort_keys=True).encode()).hexdigest()
+    foreign = io.BytesIO()
+    with zipfile.ZipFile(foreign, 'w') as archive:
+        archive.writestr('base.zip', blobs['base.zip'])
+        archive.writestr('extra.npz', extra.getvalue())
+        archive.writestr('metadata.json', json.dumps(meta))
+    with pytest.raises(ValueError, match='dtype'):
+        SlowTraceEligibility.loads(foreign.getvalue())
+    np.testing.assert_array_equal(model.core.w_in, before)
+
+
 def test_checkpoint_roundtrip_and_foreign_format_rejected():
     model = calibrated('slow', 'correct', seed=9)
     values, _labels = order_sequences(71004, 2)
