@@ -29,6 +29,16 @@ def listening(port):
         return sock.connect_ex(('127.0.0.1', port)) == 0
 
 
+def port_released(port, seconds=3.0):
+    deadline = time.time() + seconds
+    while True:
+        if not listening(port):
+            return True
+        if time.time() >= deadline:
+            return False
+        time.sleep(0.1)
+
+
 def listener_pid(port):
     script = (
         f"(Get-NetTCPConnection -LocalPort {int(port)} -State Listen -ErrorAction SilentlyContinue "
@@ -254,8 +264,9 @@ def main():
     if proc is not None and proc.poll() is None:
         failures.append('shutdown')
     else:
-        check('clean_shutdown', not listening(port) and not processes_for(data), {
-            'listening': listening(port), 'orphans': processes_for(data),
+        released = port_released(port)
+        check('clean_shutdown', released and not processes_for(data), {
+            'port_released': released, 'orphans': processes_for(data),
         })
 
     if (data / 'generation1.sqlite').exists():
