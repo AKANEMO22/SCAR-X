@@ -20,6 +20,10 @@ def math_check():
         if outputs==9:mask[1::3]=False
         matrices.append((w,f,b,mask,0))
     matrices.append((rng.uniform(-20,20,(3,4)),np.ones(4),np.array([1000.,-1000.,0.]),np.ones(3,bool),0))
+    # Probability rounds to1 in float32, yet deleting the20-point contribution
+    # makes all three classes tie and changes the output loss materially.
+    saturation=np.zeros((3,4));saturation[0,0]=20
+    matrices.append((saturation,np.ones(4),np.zeros(3),np.ones(3,bool),0))
     for w,f,b,mask,target in matrices:
         actual=counterfactual_benefit(w,f,b,mask,target);base=oracle_loss(w,f,b,mask,target)
         for k in np.flatnonzero(mask):
@@ -39,7 +43,7 @@ def math_check():
     assert maximum<=1e-9 and fd_maximum<=1e-7
     assert np.max(abs(counterfactual_benefit(np.ones((3,4)),np.zeros(4),np.zeros(3),np.ones(3,bool),0)))<1e-12
     assert not counterfactual_benefit(np.ones((3,4)),np.ones(4),np.zeros(3),np.array([True,False,False]),0).any()
-    return {'deletion_synapses':synapses,'max_absolute_deletion_error':maximum,'finite_difference_elements':finite_differences,'max_absolute_output_derivative_error':fd_maximum,'extreme_logits_checked':True,'masked_and_zero_feature_checked':True,'hidden_derivatives_used':False}
+    return {'deletion_synapses':synapses,'max_absolute_deletion_error':maximum,'finite_difference_elements':finite_differences,'max_absolute_output_derivative_error':fd_maximum,'extreme_logits_checked':True,'rounded_probability_one_transition_checked':True,'masked_and_zero_feature_checked':True,'hidden_derivatives_used':False}
 
 
 def trajectories():
@@ -71,6 +75,7 @@ def checkpoint_check(path):
         assert model.advance()==cold.advance();assert model.dumps()==cold.dumps()
     for identifier in ('p0-gamma','p0-alpha'):
         assert model.teach_fixture(identifier)==cold.teach_fixture(identifier);assert model.dumps()==cold.dumps()
+    model.save(Path(path).with_name(Path(path).stem+'-expected.zip'))
     before=model.dumps();core=model.core
     def reject(m):
         m.draw_fixture();m.permuted_g();m.omega.fill(.75)
@@ -87,7 +92,7 @@ def checkpoint_check(path):
     try:UnifiedCore.loads(before)
     except ValueError:pass
     else:raise AssertionError('Research wrapper must not load as product checkpoint')
-    return {'pending_token_boundary_cold_exact':True,'post_resume_trajectories_exact':True,'rng_fixture_and_shuffle_exact':True,'replay_and_controller_exact':True,'rejected_transaction_full_rollback':True,'core_identity_preserved_on_rollback':True,'unverified_sources_rejected_without_mutation':True,'product_codec_rejects_wrapper':True,'snapshot_bytes':len(pending)}
+    return {'pending_token_boundary_new_instance_exact':True,'post_resume_trajectories_exact':True,'rng_fixture_and_shuffle_exact':True,'replay_and_controller_exact':True,'rejected_transaction_full_rollback':True,'core_identity_preserved_on_rollback':True,'unverified_sources_rejected_without_mutation':True,'product_codec_rejects_wrapper':True,'snapshot_bytes':len(pending)}
 
 
 def budget_check():

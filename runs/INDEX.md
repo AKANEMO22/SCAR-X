@@ -125,3 +125,5 @@
 - [20261110T131423Z-adaptive-curriculum-data-v1-3880a1](20261110T131423Z-adaptive-curriculum-data-v1-3880a1/report.md) — adaptive-curriculum-data-v1
 - [20261110T131758Z-adaptive-curriculum-review-v1-1fbeaf](20261110T131758Z-adaptive-curriculum-review-v1-1fbeaf/report.md) — adaptive-curriculum-review-v1
 - [20261110T131907Z-adaptive-curriculum-reference-v1-072e6e](20261110T131907Z-adaptive-curriculum-reference-v1-072e6e/report.md) — adaptive-curriculum-reference-v1
+- [20261110T134710Z-readout-usefulness-p0-v1-c9a25c](20261110T134710Z-readout-usefulness-p0-v1-c9a25c/report.md) — readout-usefulness-p0-v1
+- [20261110T135250Z-readout-usefulness-p0-v1-ca2357](20261110T135250Z-readout-usefulness-p0-v1-ca2357/report.md) — readout-usefulness-p0-v1

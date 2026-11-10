@@ -1,5 +1,21 @@
 # Trạng thái SCAR-X
 
+## P0 usefulness đã kiểm — pilot P2 chưa duyệt
+
+Người dùng chỉ duyệt P0. [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md),
+master1.32, `artifacts/readout-usefulness-p0.json` (run ca2357) là kết quả kỹ thuật.
+Prototype riêng fresh48ALIF, không import serving, không chạm privateweights.
+
+13.092deletion checks maxerr2.44e-15;56output FD maxerr5.70e-10. Beta0 exact base
+payload3seed×12segment; omega/RNG/replay/controller/rollback và restart process
+riêng exact. 32matched-norm groups qua; halfULP radius dương bị từ chối do float32
+actualnorm0. Không gọi raw norm là appliednorm hoặc loại invalidcase để báo thắng.
+
+276/276tests qua. P0process-tree peakRSS95.49MB/commit92.35MB, cap2GB,1.66s.
+Source neural/mainweights/topology/vocab/encoder/updatecounter/64ALIF giữ nguyên.
+Không qualitydataset, Qwen/AGYcall mới, accuracy/retention hoặc hiddengain claim.
+**Chỉ hoàn tất P0; không chạy pilot168job, trainingchat/vision hoặc deploy U.**
+
 ## Chuẩn bị41 — data AGY mới / P2 usefulness chờ duyệt
 
 [Báo cáo41](research/41_ADAPTIVE_CURRICULUM_AND_P2_PROPOSAL.md), master1.31.

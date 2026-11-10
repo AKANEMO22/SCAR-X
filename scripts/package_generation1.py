@@ -102,6 +102,16 @@ for receipt_name in ('adaptive-curriculum-data.json','adaptive-curriculum-review
     assert snapshot.is_relative_to((root/'runs').resolve()) and snapshot.is_file()
     files.append(snapshot)
 files.append(root/'runs/20261110T131337Z-adaptive-curriculum-data-v1-3c0f41/source.zip')
+files.extend(root/'artifacts'/name for name in ('readout-usefulness-p0.json',
+ 'readout-usefulness-p0-software-validation.json','readout-usefulness-p0-live-preservation.json',
+ 'readout-usefulness-p0-delivery.json','usefulness-p0-fixture-checkpoint.zip',
+ 'usefulness-p0-fixture-checkpoint-expected.zip','usefulness-p0-cold-checkpoint.zip'))
+# Public P0 fixture snapshots only: these are never user-session weights.
+p0=json.loads((root/'artifacts/readout-usefulness-p0.json').read_text(encoding='utf-8'))
+p0_source=(root/p0['run']/'source.zip').resolve()
+assert p0_source.is_relative_to((root/'runs').resolve()) and p0_source.is_file()
+files.append(p0_source)
+files.append(root/'runs/20261110T134710Z-readout-usefulness-p0-v1-c9a25c/source.zip')
 # These12images are owned syntheticrenderer fixtures, not arbitrary userphotos.
 vision_receipt=root/'artifacts/vision-question-path-latest.json'
 if vision_receipt.is_file():

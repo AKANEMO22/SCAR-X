@@ -112,7 +112,9 @@ class UsefulnessPrototype(UnifiedCore):
         if not self._endpoint_ready or pending is None or modality!='language' or mode!='full' or position!=pending['position']:raise ValueError('Only the current verified P0 endpoint may update')
         fixture=P0_FIXTURES[pending['fixture']];targets=[self.ids[t] for t in tokenize(fixture['answer'])]+[0]
         if target!=targets[position] or pending['source_sha256']!=fixture_hash(pending['fixture']):raise ValueError('P0 label/provenance mismatch')
-        c=self.core;p=self.probabilities(modality,position);old=c.w_out.copy();error=-p.copy();error[target]+=1
+        c=self.core;p=self.probabilities(modality,position)
+        if not np.isfinite(p).all() or not np.isfinite(c.features).all():raise ValueError('Nonfinite endpoint before update')
+        old=c.w_out.copy();error=-p.copy();error[target]+=1
         # Use old importance for this update; current correct prediction can
         # influence only subsequent updates. Output error remains baseline G1.
         delta=c.config.readout_lr*error[:,None]*c.features[None,:]

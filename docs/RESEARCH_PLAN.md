@@ -526,9 +526,10 @@ gate lịch sử/ALIF/2GB giữ nguyên, không deploy learner hoặc tự chạ
 
 **Bước chuẩn bị sau review40:** [đề xuất P2 usefulness v2](../experiments/readout-usefulness-proposal-v2.md)
 phân biệt counterfactual output-usefulness với magnitude metaplasticity đã có
-ở Phase2.1. Đây là **CHỜ DUYỆT CODE/PILOT**, không là learner triển khai hay cơ
+ở Phase2.1. Đây là **P0 đã duyệt; pilot chưa duyệt**, không là learner triển khai hay cơ
 chế representation mới. Giữ nguyên draft A v1, lịch sử/gate và stop35–37.
-P0 math/parity/serialization/resource phải qua trước pilot168job tối đa; timing
+P0 kỹ thuật đã được kiểm ở [báo cáo42](research/42_READOUT_USEFULNESS_P0.md);
+pilot168job tối đa vẫn cần duyệt riêng và prerequisites formal;  timing
 amendment bắt buộc trước qualityscore. Không scale, không đưa U vào Hermes.
 
 [Protocol data](../experiments/adaptive-curriculum-data-v1.md) đã tạo128wording
@@ -952,6 +953,17 @@ chưa được bật. Phán quyết khoa học vẫn PIVOT_NO_SCALE.
 | Product-first/MVP đã được duyệt | [ADR0005](decisions/0005-product-first-mvp.md) | Build app ngay bằng core hiện có, không dùng researchgate để chặn MVP; không tăng quy mô |
 
 ## 13. Change Log
+
+### 1.32 — 2026-11-10 — Chỉ P0 được duyệt, đã kiểm kỹ thuật
+
+- Người dùng chọn “Chỉ duyệt kiểm tra P0”; không mở pilot168job hoặc deploy.
+- [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md): utility arithmetic13.092,
+  beta0 exact3seed, full-state/rollback và fresh-process resume qua kiểm tra.
+- Matched appliednorm có halfULP case không biểu diễn được, bắt buộc failclosed;
+  không nới1e-5 hoặc dùng raw norm. Không có quality/retention/representation claim.
+- 276tests qua, source neural/mainweights/64ALIF giữ nguyên. Prototype chỉ ở
+  evaluation, không Transformer/backwardhidden/proxy hoặc pretrainedweight.
+
 
 ### 1.31 — 2026-11-10 — Thiết kế P2 usefulness và chuẩn bị developmentwording
 

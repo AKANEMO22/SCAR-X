@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+**P0 usefulness42:** [báo cáo42](research/42_READOUT_USEFULNESS_P0.md), protocol
+`readout-usefulness-p0-v1.md`; prototype `evaluation/readout_usefulness.py`,
+`usefulness_validation.py`; runner `validate_readout_usefulness_p0.py`, restart
+worker `usefulness_p0_cold.py`,15newtests. P0 đã kiểm; pilot chưa duyệt, no mainchange.
+
+
 **Chuẩn bị41:** `experiments/readout-usefulness-proposal-v2.md` còn chờ duyệt.
 Data/reference protocols `adaptive-curriculum-*.md`, script
 `prepare_adaptive_curriculum.py` / `compare_adaptive_curriculum.py`; receipts

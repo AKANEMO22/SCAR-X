@@ -128,6 +128,11 @@ FREE/GOLDPREFIX và tínhđúngđắn của bài8style trêncheckpoint36, không
 mới. Goldprefix/tokenaccuracy không làfreeanswer hoặc hiểu ngônngữ; localhost
 ghi rõchẩnđoán/nguồn36/Qwen đãđo, khôngtrộn thành modelđangdùng.
 
+[P0 usefulness42](docs/research/42_READOUT_USEFULNESS_P0.md) đã kiểm math/parity/
+checkpoint/restart trong prototype ALIF riêng;276tests qua. Không có bằng chứng
+cải thiện chat/vision/retention từ P0, không đưa prototype vào Hermes. Pilot P2
+chưa được duyệt; matched-norm phải từ chối các state float32 không khớp budget.
+
 [Chuẩn bị41](docs/research/41_ADAPTIVE_CURRICULUM_AND_P2_PROPOSAL.md): AGY128wording
 đã review,127giữ;24chat đối chiếu thật SCAR-X copy/Qwen,10Qwenoutput bị cắt.
 Đây là development/reference, không training hoặc cải thiện chất lượng. P2

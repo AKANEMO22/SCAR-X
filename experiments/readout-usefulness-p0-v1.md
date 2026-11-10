@@ -61,3 +61,17 @@ thức từ kết quả chất lượng vì lượt này không được mở d�
 Pilot P2 cần người dùng duyệt riêng dù P0 pass. Không tải Qwen/Antigravity mới,
 không dùng127wordingdevelopment, không đọc privateweights/DB hoặc gọi teach/
 restore main. Chỉ quan sát status/export nếu cần chứng minh phiên thật không đổi.
+
+## Amendment P0-A — bổ sung coverage trước khi kết luận restart
+
+Run `20261110T134710Z-readout-usefulness-p0-v1-c9a25c` đã hoàn tất6nhóm; trường
+`pending_token_boundary_cold_exact` thực chất là load instance mới cùng process.
+Giữ rawresult, chưa dùng nó làm chứng minh restartOS. Bổ sung worker process
+riêng: load checkpoint giữa segment, tiêu thụ cả2RNG, hoàn tất pending và2fixture,
+so toàn payload với parent. Parent có timeout20s và monitor gồm child.
+
+Bổ sung ma trận logits gap20: p32[target] làm tròn1 nhưng xóa một contribution
+20 làm loss tăng≈log3. Đây là stress chuyển tiếp để bắt lỗi dùng log(1-p32),
+không chỉ saturatedgap1000 có cả hai loss≈0. Không đổi phương trình, tolerances,
+seed, task/gate chất lượng hay mở pilot. Rerun P0 kỹ thuật có runID/source riêng;
+không ghi đè result/report của lượt đầu.

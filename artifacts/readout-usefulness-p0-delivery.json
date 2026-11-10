@@ -1,0 +1,43 @@
+{
+  "scope": "Userapproved P0 only; technical validation, not P2pilot or normalchat/vision",
+  "user_approval": "Chỉ duyệt kiểm tra P0",
+  "master": "docs/RESEARCH_PLAN.md",
+  "master_revision": "1.32",
+  "report": "docs/research/42_READOUT_USEFULNESS_P0.md",
+  "run": "runs/20261110T135250Z-readout-usefulness-p0-v1-ca2357",
+  "receipt": "artifacts/readout-usefulness-p0.json",
+  "decision": "P0_ENGINEERING_PASS_WITH_MATCHING_LIMITATION",
+  "tests_passed": 276,
+  "software_validation": "artifacts/readout-usefulness-p0-software-validation.json",
+  "cold_os_process_continuation_exact": true,
+  "full_transaction_and_atomic_save_rollback_exact": true,
+  "beta0_neural_payload_exact_three_seeds": true,
+  "matched_applied_budget_universally_feasible": false,
+  "half_ulp_unrepresentable_case_rejected": true,
+  "pilot_approved": false,
+  "pilot_run": false,
+  "quality_measured": false,
+  "normal_chat_or_vision_proven": false,
+  "main_preservation": {
+    "weights_preserved": true,
+    "topology_preserved": true,
+    "vocab_encoder_preserved": true,
+    "updates_preserved": true,
+    "allocated_neurons": 64,
+    "main_training": false,
+    "main_restored": false,
+    "llama_servers": 0
+  },
+  "ui_observed": true,
+  "observer": "http://127.0.0.1:8765/#agent-work",
+  "private_weights_or_db_packaged": false,
+  "source_sha256": {
+    "src/scarx/evaluation/readout_usefulness.py": "57735e5f5b4fe42f950187b406b410d926d02e6dd6da015608e2cc2facdebaca",
+    "src/scarx/evaluation/usefulness_validation.py": "c089bec1151e2f63a7124a89f34a212da152fbf639229bb8c54b7e2073b189f2",
+    "scripts/validate_readout_usefulness_p0.py": "bd57b02a3d57f5735c3b4475b4628815cff4dc1babc2283d4a410df387b445ba",
+    "scripts/usefulness_p0_cold.py": "1dbfc33e63ca28d90a480907ad4db0edb45fa56f83abaf39d36b8acca6bbef7f",
+    "experiments/readout-usefulness-p0-v1.md": "ea77de77404b0052e917b64a0f6cadc3a4d3f02414da8dfeb6ac00d99cd77b12"
+  },
+  "git_head_observed": "47cb7e84050b239549f0b00cd476710c34749966",
+  "git_commit_or_push_by_this_work": false
+}
