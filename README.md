@@ -128,6 +128,10 @@ FREE/GOLDPREFIX và tínhđúngđắn của bài8style trêncheckpoint36, không
 mới. Goldprefix/tokenaccuracy không làfreeanswer hoặc hiểu ngônngữ; localhost
 ghi rõchẩnđoán/nguồn36/Qwen đãđo, khôngtrộn thành modelđangdùng.
 
+[Reference data43](docs/research/43_ADAPTIVE_DATA_GROUNDING.md) hoàn thiện đáp án
+chat có nguồn dự án và QA ảnh có pixeloracle, kèm audit giới hạn đầu vào/vốn từ.
+Đây là dữ liệu development riêng, không trả lời thay neural core hoặc mở pilot.
+
 [P0 usefulness42](docs/research/42_READOUT_USEFULNESS_P0.md) đã kiểm math/parity/
 checkpoint/restart trong prototype ALIF riêng;276tests qua. Không có bằng chứng
 cải thiện chat/vision/retention từ P0, không đưa prototype vào Hermes. Pilot P2

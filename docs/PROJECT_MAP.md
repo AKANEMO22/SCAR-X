@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+**Data grounding43:** [báo cáo43](research/43_ADAPTIVE_DATA_GROUNDING.md),
+`adaptive-curriculum-grounding-v1.md`, `evaluation/adaptive_grounding.py`,
+`data/fixtures/adaptive_chat_references_v1.json`. Data-only, không pilot/modelchange.
+
+
 **P0 usefulness42:** [báo cáo42](research/42_READOUT_USEFULNESS_P0.md), protocol
 `readout-usefulness-p0-v1.md`; prototype `evaluation/readout_usefulness.py`,
 `usefulness_validation.py`; runner `validate_readout_usefulness_p0.py`, restart
