@@ -46,8 +46,22 @@ không đụng `local/generation1`:
 python scripts\smoke_release.py
 ```
 
-Smoke kiểm status, câu neural chưa kiểm chứng, và tick còn nguyên sau restart.
-Vision hiện là chữ số, không phải ảnh tổng quát. Chat chưa qua cửa chất lượng.
+Smoke kiểm status, câu neural chưa kiểm chứng, tick còn nguyên sau restart,
+một lượt dạy được guard chấp nhận, và một lượt dạy khác bị guard từ chối. Lần
+từ chối phải giữ nguyên hash của `model.zip` cùng controller, RNG ứng dụng,
+dialogue và chính sách nền. Con trỏ `sequence` và log sự kiện được phép đổi.
+Hai kết quả không được thay thế cho nhau. Vision hiện là chữ số, không phải ảnh
+tổng quát. Chat chưa qua cửa chất lượng.
+
+Bộ test của bản chạy, không gồm control BPTT:
+
+```powershell
+python -m pip install -e '.[vision,test]'
+python -m pytest -q -rs
+```
+
+Extra `control` cài `torch` cho các bài BPTT cô lập. Không có torch thì những bài
+đó bị bỏ qua. Không cài torch vào process đang phục vụ trang localhost.
 
 ## Dùng và quan sát
 

@@ -66,6 +66,7 @@ def test_pooled_cache_sensitivity_matches_independent_fixed_presynaptic_finite_d
 
 
 def test_directvisual_control_frozenparity_and_optimizer_coldcontinuation():
+    pytest.importorskip('torch')
     from scarx.evaluation.controls import DirectVisualLearnabilityControl,torch
     torch.set_num_threads(1);a,image=make('frozen');b=DirectVisualWords.loads(a.dumps());frozen=DirectVisualLearnabilityControl(b)
     assert a.learn('What color?',image,'red')==frozen.learn('What color?',image,'red') and a.dumps()==b.dumps()

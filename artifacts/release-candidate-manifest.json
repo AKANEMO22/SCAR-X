@@ -1,0 +1,145 @@
+{
+  "role": "Measurement record for human review. Not a continuous-integration certificate. Re-run the commands on the commit you are reviewing.",
+  "branch": "cursor/scarx-release-candidate",
+  "measurement_git_sha": "129656b1bb1cc56950c1beab4ad7e8bd3ebb2cb2",
+  "measurement_source": "Clean clone C:\\Users\\hachimi\\AppData\\Local\\Temp\\scarx-clean-rc at that SHA, using its own .venv. The workspace checkout was not the interpreter.",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr 2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "install_command": "python -m pip install -e \".[vision,test]\"",
+  "dependency_environment": {
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "pillow": "13.0.0",
+    "pytest": "9.2.0",
+    "torch": "not installed",
+    "openai": "not installed",
+    "native_cpu_dll": "not built"
+  },
+  "commands": {
+    "pytest": "python -m pytest -q -rs",
+    "smoke": "python scripts/smoke_release.py",
+    "e2e": "python scripts/e2e_release.py"
+  },
+  "automated_pytest": {
+    "source": "python -m pytest -q -rs in the clean venv on measurement_git_sha",
+    "result": "278 passed, 14 skipped, 0 failed",
+    "seconds": 57.65,
+    "skipped": [
+      {
+        "count": 1,
+        "location": "tests/test_classifier_control.py:44",
+        "reason": "Optional isolated control dependency",
+        "meaning": "Isolated BPTT classifier control. Skipped because torch is not installed. The test runs the control in a subprocess when torch is present so it does not enter the serving process."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_credit_noise.py:37",
+        "reason": "Optional control dependency",
+        "meaning": "Isolated paired-score noise control. Same optional torch extra."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_direct_visual.py:69",
+        "reason": "could not import torch: No module named torch",
+        "meaning": "Isolated direct-visual BPTT control. Product install does not include the control extra."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_direct_words.py:53",
+        "reason": "could not import torch: No module named torch",
+        "meaning": "Isolated direct-word BPTT control."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_generation1.py:163",
+        "reason": "could not import openai: No module named openai",
+        "meaning": "OpenAI SDK client against the local server. The SDK is the hermes-test extra, not the page runtime."
+      },
+      {
+        "count": 4,
+        "location": "tests/test_native.py:12",
+        "reason": "Build native kernel with scripts/build_native.py",
+        "meaning": "Parametrized modes frozen, readout, stdp, and full. scarx_cpu.dll is absent. The Python serving core does not require it."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_openai_backend.py:53",
+        "reason": "could not import openai: No module named openai",
+        "meaning": "Second OpenAI SDK streaming test. Same optional extra."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_readout_eligibility.py:73",
+        "reason": "could not import torch: No module named torch",
+        "meaning": "Isolated proposal-30 readout-eligibility BPTT control."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_visual_word_control.py:16",
+        "reason": "could not import torch: No module named torch",
+        "meaning": "Isolated visual-word BPTT control, frozen-head comparison."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_visual_word_control.py:28",
+        "reason": "could not import torch: No module named torch",
+        "meaning": "Isolated visual-word BPTT control, hidden-update continuation."
+      },
+      {
+        "count": 1,
+        "location": "tests/test_word_control.py:37",
+        "reason": "Optional isolated control dependency",
+        "meaning": "Isolated word BPTT control, subprocess when torch exists."
+      }
+    ],
+    "skip_judgment": "These 14 skips are missing optional extras. Pillow is installed, so the digit HTTP test ran. They are not product-install failures."
+  },
+  "automated_smoke": {
+    "source": "python scripts/smoke_release.py in the clean venv on measurement_git_sha",
+    "passed": true,
+    "ram_bytes": 44916736,
+    "accepted": {"http": 200, "updates_before": 241123, "updates_after": 241129, "updates_after_restart": 241129, "ticks_after_restart": 2171845, "newly_acquired_skill": false},
+    "rejected": {
+      "http": 400,
+      "updates": 241123,
+      "model_state_sha": "e4248753f65e7ba5e064e6d15d35688bf6f96f2a93a676b6eaa3fd9df8d7e422",
+      "model_state_sha_unchanged": true,
+      "controller_rng_dialogue_match": true,
+      "audit_sequence_before": 0,
+      "audit_sequence_after": 466,
+      "checkpoints_unchanged": true
+    },
+    "rollback_meaning": "model.zip hash covers neural arrays, ticks, updates, vocabulary and the capacity RNG. Matching session fields cover the app RNG, dialogue, memories and idle policy. sequence is an audit cursor and is allowed to change. The events table may gain teach-reject. tests/test_rollback_full_state.py locks the in-process neural arrays and both RNGs."
+  },
+  "automated_e2e": {
+    "source": "python scripts/e2e_release.py in the clean venv on measurement_git_sha",
+    "passed": true,
+    "ram_bytes_at_start": 44822528,
+    "ram_bytes_after_work": 52346880,
+    "memory_limit_bytes": 2000000000,
+    "memory_limit_enforced": true,
+    "live_port_8765": {"before": 59936, "after": 59936, "status": "unchanged"},
+    "accepted_updates": {"before": 241123, "after": 241129},
+    "accepted_weight_delta": {"w_in": 0.010338295251131058, "w_rec": 0.003911495674401522, "w_out": 0.3590237498283386},
+    "model_state_sha_changed_on_accept": true,
+    "rejected_model_state_sha_unchanged": true,
+    "rejected_controller_rng_dialogue_match": true,
+    "rejected_audit_sequence": {"before": 110, "after": 576},
+    "restore_model_state_sha_matches_snapshot": true,
+    "restore_updates": 241123,
+    "sqlite_integrity_check": "ok",
+    "journal_mode": "wal",
+    "crash_restart_updates": {"before": 241123, "after": 241123},
+    "digit_predicted": 4,
+    "digit_scope": "handwritten_digits_only; not screenshot/OCR/visualQA"
+  },
+  "manual_browser": {
+    "source": "Earlier interactive browser session. Not re-executed for measurement_git_sha.",
+    "status": "historical",
+    "use_for_merge_gate": false
+  },
+  "historical_weights": {
+    "source": "artifacts/generation1-release.json loaded into an empty data directory. Not trained by this run.",
+    "loaded_ticks": 2171755,
+    "loaded_updates": 241123
+  }
+}

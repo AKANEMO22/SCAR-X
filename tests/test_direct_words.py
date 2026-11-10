@@ -50,6 +50,7 @@ def test_word_transaction_restores_all_state_after_hidden_update_failure():
 
 
 def test_word_control_frozen_parity_and_trained_optimizer_continuation():
+    pytest.importorskip('torch')
     from scarx.evaluation.controls import DirectWordLearnabilityControl,torch
     torch.set_num_threads(1);a=make('frozen');control=DirectWordLearnabilityControl(DirectWords.loads(a.dumps()))
     assert a.learn('hello','Hello.')==control.learn('hello','Hello.') and a.dumps()==control.reference.dumps()

@@ -13,6 +13,7 @@ def prepared():
 
 
 def test_recording_control_is_exact_local_reference_and_rejects_target_forward():
+    pytest.importorskip('torch')
     from scarx.evaluation.controls import VisualWordLearnabilityControl,torch
     torch.set_num_threads(1);a,image=prepared();b=VisualWords.loads(a.dumps());control=VisualWordLearnabilityControl(b)
     for question,target in [('What color?','red'),('What shape?','circle'),('Màu gì?','green')]:
@@ -24,6 +25,7 @@ def test_recording_control_is_exact_local_reference_and_rejects_target_forward()
 
 
 def test_isolated_control_updates_hidden_with_parity_and_exact_optimizer_resume():
+    pytest.importorskip('torch')
     from scarx.evaluation.controls import VisualWordLearnabilityControl,torch
     torch.set_num_threads(1);m,image=prepared();initial=m.core.w_in.copy();stable=m.core.stable_in.copy();control=VisualWordLearnabilityControl(m)
     for target in ['red','green','red']:control.learn('What color?',image,target)
