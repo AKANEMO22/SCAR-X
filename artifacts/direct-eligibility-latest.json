@@ -1,0 +1,234 @@
+{
+  "run": "runs/20261110T053510Z-direct-readout-eligibility-v1-9e7f21",
+  "decision": "STOP_DIRECT_READOUT_ELIGIBILITY_V1",
+  "proposal30_approved": true,
+  "selection": {
+    "fixed_rule_no_parameter_selection": true,
+    "screen_tasks": {
+      "order": {
+        "valid_bag_baseline": true,
+        "mean_probe_gain": 0.0234375,
+        "mean_direct": 0.984375,
+        "mean_probe_vs_frozen": 0.0234375,
+        "pass": false
+      },
+      "xor": {
+        "valid_bag_baseline": true,
+        "mean_probe_gain": 0.109375,
+        "mean_direct": 0.91796875,
+        "mean_probe_vs_frozen": 0.109375,
+        "pass": true
+      },
+      "strict_binding": {
+        "valid_bag_baseline": true,
+        "mean_probe_gain": -0.01953125,
+        "mean_direct": 0.6341145833333334,
+        "mean_probe_vs_frozen": -0.01953125,
+        "pass": false
+      }
+    },
+    "screen_pass": false,
+    "confirmation_opened": false
+  },
+  "confirmation_statistics": {},
+  "control_summary": {
+    "order": {
+      "correct": {
+        "direct": 0.984375,
+        "probe": 0.9674479166666666,
+        "probe_gain": 0.0234375,
+        "bag_only": 0.5182291666666666,
+        "train_seconds": 1.390987766664087,
+        "probe_time_permuted": 0.48828125,
+        "probe_state_reset": 0.50390625
+      },
+      "shuffled": {
+        "direct": 0.9739583333333334,
+        "probe": 0.9609375,
+        "probe_gain": 0.016927083333333332,
+        "bag_only": 0.5182291666666666,
+        "train_seconds": 1.3846078666635246,
+        "probe_time_permuted": 0.4921875,
+        "probe_state_reset": 0.5013020833333334
+      },
+      "zero": {
+        "direct": 0.94921875,
+        "probe": 0.9440104166666666,
+        "probe_gain": 0.0,
+        "bag_only": 0.5182291666666666,
+        "train_seconds": 1.3473766000000371,
+        "probe_time_permuted": 0.4973958333333333,
+        "probe_state_reset": 0.49609375
+      },
+      "frozen": {
+        "direct": 0.94921875,
+        "probe": 0.9440104166666666,
+        "probe_gain": 0.0,
+        "bag_only": 0.5182291666666666,
+        "train_seconds": 0.724089599995447,
+        "probe_time_permuted": 0.4973958333333333,
+        "probe_state_reset": 0.49609375
+      },
+      "bptt_control": {
+        "direct": 0.9856770833333334,
+        "probe": 0.9765625,
+        "probe_gain": 0.032552083333333336,
+        "bag_only": 0.5182291666666666,
+        "train_seconds": 5.108118966668068,
+        "probe_time_permuted": 0.4973958333333333,
+        "probe_state_reset": 0.5
+      }
+    },
+    "xor": {
+      "correct": {
+        "direct": 0.91796875,
+        "probe": 0.9140625,
+        "probe_gain": 0.109375,
+        "bag_only": 0.5169270833333334,
+        "train_seconds": 1.413554900000842,
+        "probe_time_permuted": 0.6692708333333334,
+        "probe_state_reset": 0.4921875
+      },
+      "shuffled": {
+        "direct": 0.7291666666666666,
+        "probe": 0.75390625,
+        "probe_gain": -0.05078125,
+        "bag_only": 0.5169270833333334,
+        "train_seconds": 1.4448098333329351,
+        "probe_time_permuted": 0.5963541666666666,
+        "probe_state_reset": 0.5
+      },
+      "zero": {
+        "direct": 0.8125,
+        "probe": 0.8046875,
+        "probe_gain": 0.0,
+        "bag_only": 0.5169270833333334,
+        "train_seconds": 1.3421845666695542,
+        "probe_time_permuted": 0.65625,
+        "probe_state_reset": 0.5
+      },
+      "frozen": {
+        "direct": 0.8125,
+        "probe": 0.8046875,
+        "probe_gain": 0.0,
+        "bag_only": 0.5169270833333334,
+        "train_seconds": 0.7330159666647281,
+        "probe_time_permuted": 0.65625,
+        "probe_state_reset": 0.5
+      },
+      "bptt_control": {
+        "direct": 0.9309895833333334,
+        "probe": 0.9309895833333334,
+        "probe_gain": 0.12630208333333334,
+        "bag_only": 0.5169270833333334,
+        "train_seconds": 5.087986699999116,
+        "probe_time_permuted": 0.69140625,
+        "probe_state_reset": 0.5026041666666666
+      }
+    },
+    "strict_binding": {
+      "correct": {
+        "direct": 0.6341145833333334,
+        "probe": 0.609375,
+        "probe_gain": -0.01953125,
+        "bag_only": 0.5091145833333334,
+        "train_seconds": 1.4097048666638632,
+        "probe_time_permuted": 0.5182291666666666,
+        "probe_state_reset": 0.4973958333333333
+      },
+      "shuffled": {
+        "direct": 0.5924479166666666,
+        "probe": 0.5729166666666666,
+        "probe_gain": -0.055989583333333336,
+        "bag_only": 0.5091145833333334,
+        "train_seconds": 1.3941356333283086,
+        "probe_time_permuted": 0.49609375,
+        "probe_state_reset": 0.4973958333333333
+      },
+      "zero": {
+        "direct": 0.6223958333333334,
+        "probe": 0.62890625,
+        "probe_gain": 0.0,
+        "bag_only": 0.5091145833333334,
+        "train_seconds": 1.3430368333356455,
+        "probe_time_permuted": 0.5520833333333334,
+        "probe_state_reset": 0.5091145833333334
+      },
+      "frozen": {
+        "direct": 0.6223958333333334,
+        "probe": 0.62890625,
+        "probe_gain": 0.0,
+        "bag_only": 0.5091145833333334,
+        "train_seconds": 0.7288331000017934,
+        "probe_time_permuted": 0.5520833333333334,
+        "probe_state_reset": 0.5091145833333334
+      },
+      "bptt_control": {
+        "direct": 0.6354166666666666,
+        "probe": 0.6276041666666666,
+        "probe_gain": -0.0013020833333333333,
+        "bag_only": 0.5091145833333334,
+        "train_seconds": 5.054954533334239,
+        "probe_time_permuted": 0.5546875,
+        "probe_state_reset": 0.4934895833333333
+      }
+    }
+  },
+  "primary_representation_gate": false,
+  "screen_trials": 45,
+  "confirmation_trials": 0,
+  "all_cold_exact": true,
+  "zero_frozen_equivalence": true,
+  "deployed": false,
+  "main_weights_changed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_proven": false,
+  "candidate_network_backward": false,
+  "candidate_signal_locality": "One learned readout-error transport, own-neuron forwardtrace; not fullybiological local/exactgradient.",
+  "engineering_run": "runs/20261110T051354Z-direct-eligibility-engineering-v1-005d49",
+  "resources": {
+    "peak_rss_bytes": 621748224,
+    "peak_commit_or_vms_bytes": 1055830016,
+    "os_process_peak_working_set_bytes": 47366144,
+    "os_process_peak_pagefile_commit_bytes": 34066432,
+    "samples": 721,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 56.027413700008765,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "seconds": 624.8236070189159,
+  "limits": [
+    "Fresh3developmentseeds; confirmation8onlyifscreenpassed. Order isweakrecency/delayed task, not complexreasoning.",
+    "Readout-only localdelta and correct/shuffled/zero hiddenablations; BPTTcontrol separate extra graphcost, not main.",
+    "No word/vision/retention/modelscale or deployment authorization follows from toyrepresentationgate."
+  ],
+  "technical_recovery": {
+    "source_run": "runs/20261110T052542Z-direct-readout-eligibility-v1-fc6452",
+    "failure_kind": "Windows_PermissionError_reading_atomic_heartbeat",
+    "recovery_count": 1,
+    "completed_trials_reused": 38,
+    "original_active_seconds": 57.03924560546875,
+    "original_and_repair_calendar_seconds_charged_to_round": 568.6577246189117,
+    "repair_calendar_seconds": 511.618479013443,
+    "partial_trial_restarted": "development-order-35141-bptt_control",
+    "lost_partial_observed_examples_lower_bound": 832,
+    "lost_partial_exact_example_count": null,
+    "entire_original_active_seconds_conservatively_charged_to_first_restarted_trial": 57.03924560546875,
+    "original_parent_tree_peak_memory_unknown": true,
+    "repair_scope": "Bounded readPermissionError retry and reuse of38completed/coldverified trials ONLY; unchanged algorithm/data/hyperparameters/gates."
+  },
+  "completed_trials_reused_without_retraining": 38,
+  "recovery_active_seconds": 56.16588420000335,
+  "original_and_repair_calendar_seconds_charged": 568.6577246189117,
+  "resource_peak_scope": "Recovery process-tree only; original failed parent/losttrial peak unknown"
+}

@@ -1,0 +1,185 @@
+{
+  "run": "runs/20261109T140620Z-p2-paired-score-diagnostic-v1-c5a357",
+  "decision": "P2_BASELINE_DIAGNOSTIC_ONLY",
+  "summary": {
+    "stream_full_repeat": {
+      "final": 0.30494791666666665,
+      "acquisition": 0.6209635416666667,
+      "mean_forgetting": 0.3391927083333333,
+      "worst_forgetting": 0.6744791666666666,
+      "joint_refit_probe": 0.5013020833333334,
+      "train_seconds": 28.32274119997116,
+      "mean_head_only_drop": 0.0596714721408402,
+      "mean_hidden_only_drop": 0.009745065823033605
+    },
+    "stream_frozen_repeat": {
+      "final": 0.2649739583333333,
+      "acquisition": 0.5670572916666666,
+      "mean_forgetting": 0.322265625,
+      "worst_forgetting": 0.8567708333333334,
+      "joint_refit_probe": 0.44752604166666665,
+      "train_seconds": 26.28712776644291,
+      "mean_head_only_drop": 0.06324680588189835,
+      "mean_hidden_only_drop": 0.0
+    },
+    "stream_full_reservoir": {
+      "final": 0.3473958333333333,
+      "acquisition": 0.5764322916666668,
+      "mean_forgetting": 0.2908854166666667,
+      "worst_forgetting": 0.71875,
+      "joint_refit_probe": 0.5341145833333333,
+      "train_seconds": 28.411866633279715,
+      "mean_head_only_drop": 0.05039274117029625,
+      "mean_hidden_only_drop": 0.014671587429885587
+    },
+    "stream_frozen_reservoir": {
+      "final": 0.28671874999999997,
+      "acquisition": 0.5049479166666667,
+      "mean_forgetting": 0.27044270833333334,
+      "worst_forgetting": 0.8411458333333334,
+      "joint_refit_probe": 0.44752604166666665,
+      "train_seconds": 26.25514803312156,
+      "mean_head_only_drop": 0.0444374889735287,
+      "mean_hidden_only_drop": 0.0
+    },
+    "offline_joint_full": {
+      "final": 0.30833333333333335,
+      "acquisition": null,
+      "mean_forgetting": null,
+      "worst_forgetting": null,
+      "joint_refit_probe": 0.4903645833333334,
+      "train_seconds": 28.52180653319374,
+      "mean_head_only_drop": null,
+      "mean_hidden_only_drop": null
+    },
+    "offline_joint_frozen": {
+      "final": 0.2643229166666667,
+      "acquisition": null,
+      "mean_forgetting": null,
+      "worst_forgetting": null,
+      "joint_refit_probe": 0.44752604166666665,
+      "train_seconds": 26.48847866661769,
+      "mean_head_only_drop": null,
+      "mean_hidden_only_drop": null
+    }
+  },
+  "absolute_gates": {
+    "stream_full_repeat": false,
+    "stream_frozen_repeat": false,
+    "stream_full_reservoir": false,
+    "stream_frozen_reservoir": false
+  },
+  "comparisons": {
+    "stream_full_reservoir minus stream_full_repeat": {
+      "final": {
+        "mean": 0.04244791666666666,
+        "lower95": -0.008203124999999978,
+        "upper95": 0.13124999999999998,
+        "n_seeds": 3
+      },
+      "joint_refit_probe": {
+        "mean": 0.03281249999999999,
+        "lower95": 0.022265624999999956,
+        "upper95": 0.04023437499999999,
+        "n_seeds": 3
+      },
+      "train_seconds": {
+        "mean": 0.08912543330855745,
+        "lower95": -0.1777512998887687,
+        "upper95": 0.3518323001553654,
+        "n_seeds": 3
+      }
+    },
+    "stream_frozen_reservoir minus stream_frozen_repeat": {
+      "final": {
+        "mean": 0.021744791666666662,
+        "lower95": -0.04101562500000003,
+        "upper95": 0.07695312500000001,
+        "n_seeds": 3
+      },
+      "joint_refit_probe": {
+        "mean": 0.0,
+        "lower95": 0.0,
+        "upper95": 0.0,
+        "n_seeds": 3
+      },
+      "train_seconds": {
+        "mean": -0.03197973332135007,
+        "lower95": -0.364683899715601,
+        "upper95": 0.44272489991999464,
+        "n_seeds": 3
+      }
+    },
+    "stream_full_reservoir minus stream_frozen_reservoir": {
+      "final": {
+        "mean": 0.06067708333333333,
+        "lower95": 0.009375000000000022,
+        "upper95": 0.10390625000000002,
+        "n_seeds": 3
+      },
+      "joint_refit_probe": {
+        "mean": 0.08658854166666667,
+        "lower95": 0.06679687500000003,
+        "upper95": 0.099609375,
+        "n_seeds": 3
+      },
+      "train_seconds": {
+        "mean": 2.1567186001581526,
+        "lower95": 1.9437673000720679,
+        "upper95": 2.393128100440663,
+        "n_seeds": 3
+      }
+    },
+    "offline_joint_full minus offline_joint_frozen": {
+      "final": {
+        "mean": 0.04401041666666666,
+        "lower95": 0.007421874999999967,
+        "upper95": 0.06328125000000001,
+        "n_seeds": 3
+      },
+      "joint_refit_probe": {
+        "mean": 0.042838541666666695,
+        "lower95": 0.03281250000000002,
+        "upper95": 0.05312500000000003,
+        "n_seeds": 3
+      },
+      "train_seconds": {
+        "mean": 2.0333278665760495,
+        "lower95": 1.7997804998303764,
+        "upper95": 2.248812599951634,
+        "n_seeds": 3
+      }
+    }
+  },
+  "trials": 18,
+  "resources": {
+    "peak_rss_bytes": 221380608,
+    "peak_commit_or_vms_bytes": 245317632,
+    "os_process_peak_working_set_bytes": 44048384,
+    "os_process_peak_pagefile_commit_bytes": 30846976,
+    "samples": 3052,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 278.0372356000007,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "new_importance_candidate": false,
+  "limits": [
+    "Three development seeds only, no confirmation/equal-time efficacy claim.",
+    "Observable context cues; episode resets; not an unmarked natural-world stream.",
+    "Offlinejoint has futurelabels; refithead diagnostic never imported into runtime.",
+    "Same5760updates across conditions; no hidden rule retuning, no new scale."
+  ]
+}

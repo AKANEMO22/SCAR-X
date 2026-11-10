@@ -1,0 +1,327 @@
+# Fixed-input neural word transfer v2
+
+Actual local training; all structural ablations and seeds retained. No serving migration or general capability claim.
+
+{
+  "run": "runs/20261109T184028Z-g1-word-score-input-transfer-v2-c7a277",
+  "decision": "STOP_WORD_SCORE_INPUT_TRANSFER_V2",
+  "summary": {
+    "legacy": {
+      "frozen": {
+        "train16": {
+          "strict_style_exact": 0.14583333333333334,
+          "normalized_style_exact": 0.16666666666666666,
+          "teacher_token_accuracy": 0.6582837301587302,
+          "teacher_nll": 1.2809500707212176,
+          "first_token_accuracy": 0.5416666666666666
+        },
+        "development": {
+          "strict_style_exact": 0.02150537634408602,
+          "normalized_style_exact": 0.03225806451612903,
+          "teacher_token_accuracy": 0.483026113671275,
+          "teacher_nll": 2.189940906038051,
+          "first_token_accuracy": 0.3010752688172043
+        },
+        "prior": {
+          "strict_style_exact": 0.027777777777777776,
+          "normalized_style_exact": 0.0625,
+          "teacher_token_accuracy": 0.5505621693121693,
+          "teacher_nll": 1.8366171438941998,
+          "first_token_accuracy": 0.34722222222222227
+        }
+      },
+      "full": {
+        "train16": {
+          "strict_style_exact": 0.10416666666666667,
+          "normalized_style_exact": 0.10416666666666667,
+          "teacher_token_accuracy": 0.5741071428571428,
+          "teacher_nll": 1.5391542488762748,
+          "first_token_accuracy": 0.4791666666666667
+        },
+        "development": {
+          "strict_style_exact": 0.06451612903225806,
+          "normalized_style_exact": 0.06451612903225806,
+          "teacher_token_accuracy": 0.5058115719406042,
+          "teacher_nll": 1.8561206871390883,
+          "first_token_accuracy": 0.3333333333333333
+        },
+        "prior": {
+          "strict_style_exact": 0.03472222222222222,
+          "normalized_style_exact": 0.041666666666666664,
+          "teacher_token_accuracy": 0.5248842592592592,
+          "teacher_nll": 1.7057201874010133,
+          "first_token_accuracy": 0.3194444444444445
+        }
+      },
+      "shuffled": {
+        "train16": {
+          "strict_style_exact": 0.041666666666666664,
+          "normalized_style_exact": 0.0625,
+          "teacher_token_accuracy": 0.4757440476190476,
+          "teacher_nll": 2.0321468652099495,
+          "first_token_accuracy": 0.4583333333333333
+        },
+        "development": {
+          "strict_style_exact": 0.0,
+          "normalized_style_exact": 0.02150537634408602,
+          "teacher_token_accuracy": 0.38865847414234506,
+          "teacher_nll": 2.3585337876976262,
+          "first_token_accuracy": 0.3548387096774193
+        },
+        "prior": {
+          "strict_style_exact": 0.0,
+          "normalized_style_exact": 0.020833333333333332,
+          "teacher_token_accuracy": 0.3831349206349206,
+          "teacher_nll": 2.2634601591524928,
+          "first_token_accuracy": 0.3125
+        }
+      }
+    },
+    "known-sparse128-v1": {
+      "frozen": {
+        "train16": {
+          "strict_style_exact": 0.20833333333333334,
+          "normalized_style_exact": 0.22916666666666666,
+          "teacher_token_accuracy": 0.6931051587301585,
+          "teacher_nll": 1.2220596484742468,
+          "first_token_accuracy": 0.6666666666666666
+        },
+        "development": {
+          "strict_style_exact": 0.03225806451612903,
+          "normalized_style_exact": 0.04301075268817204,
+          "teacher_token_accuracy": 0.5177675371223759,
+          "teacher_nll": 1.942567121723383,
+          "first_token_accuracy": 0.3870967741935483
+        },
+        "prior": {
+          "strict_style_exact": 0.125,
+          "normalized_style_exact": 0.13194444444444445,
+          "teacher_token_accuracy": 0.5768022486772487,
+          "teacher_nll": 1.6178288384728725,
+          "first_token_accuracy": 0.375
+        }
+      },
+      "full": {
+        "train16": {
+          "strict_style_exact": 0.3125,
+          "normalized_style_exact": 0.3125,
+          "teacher_token_accuracy": 0.7231646825396826,
+          "teacher_nll": 0.9975033454201645,
+          "first_token_accuracy": 0.4791666666666667
+        },
+        "development": {
+          "strict_style_exact": 0.06451612903225806,
+          "normalized_style_exact": 0.06451612903225806,
+          "teacher_token_accuracy": 0.5685611879160266,
+          "teacher_nll": 1.5461563546785297,
+          "first_token_accuracy": 0.40860215053763443
+        },
+        "prior": {
+          "strict_style_exact": 0.08333333333333333,
+          "normalized_style_exact": 0.09027777777777779,
+          "teacher_token_accuracy": 0.6191468253968253,
+          "teacher_nll": 1.3269995051874794,
+          "first_token_accuracy": 0.3819444444444444
+        }
+      },
+      "shuffled": {
+        "train16": {
+          "strict_style_exact": 0.0625,
+          "normalized_style_exact": 0.0625,
+          "teacher_token_accuracy": 0.4469246031746031,
+          "teacher_nll": 2.1221111805772366,
+          "first_token_accuracy": 0.3125
+        },
+        "development": {
+          "strict_style_exact": 0.02150537634408602,
+          "normalized_style_exact": 0.03225806451612903,
+          "teacher_token_accuracy": 0.4327444956477215,
+          "teacher_nll": 2.0877604997263366,
+          "first_token_accuracy": 0.35483870967741943
+        },
+        "prior": {
+          "strict_style_exact": 0.013888888888888888,
+          "normalized_style_exact": 0.03472222222222222,
+          "teacher_token_accuracy": 0.4443783068783069,
+          "teacher_nll": 2.0106226773507347,
+          "first_token_accuracy": 0.3611111111111111
+        }
+      }
+    },
+    "known-digest128-v1": {
+      "frozen": {
+        "train16": {
+          "strict_style_exact": 0.20833333333333334,
+          "normalized_style_exact": 0.25,
+          "teacher_token_accuracy": 0.6671626984126985,
+          "teacher_nll": 1.245457122924914,
+          "first_token_accuracy": 0.5416666666666666
+        },
+        "development": {
+          "strict_style_exact": 0.07526881720430108,
+          "normalized_style_exact": 0.08602150537634408,
+          "teacher_token_accuracy": 0.5383000512032771,
+          "teacher_nll": 1.958938181862699,
+          "first_token_accuracy": 0.3548387096774193
+        },
+        "prior": {
+          "strict_style_exact": 0.10416666666666669,
+          "normalized_style_exact": 0.13888888888888892,
+          "teacher_token_accuracy": 0.5755125661375661,
+          "teacher_nll": 1.718053132321251,
+          "first_token_accuracy": 0.4375
+        }
+      },
+      "full": {
+        "train16": {
+          "strict_style_exact": 0.125,
+          "normalized_style_exact": 0.125,
+          "teacher_token_accuracy": 0.624454365079365,
+          "teacher_nll": 1.4162797911184484,
+          "first_token_accuracy": 0.5
+        },
+        "development": {
+          "strict_style_exact": 0.06451612903225806,
+          "normalized_style_exact": 0.07526881720430108,
+          "teacher_token_accuracy": 0.529800307219662,
+          "teacher_nll": 1.7968085179323114,
+          "first_token_accuracy": 0.3548387096774193
+        },
+        "prior": {
+          "strict_style_exact": 0.09027777777777778,
+          "normalized_style_exact": 0.09722222222222221,
+          "teacher_token_accuracy": 0.6059027777777778,
+          "teacher_nll": 1.4012805979391276,
+          "first_token_accuracy": 0.4583333333333333
+        }
+      },
+      "shuffled": {
+        "train16": {
+          "strict_style_exact": 0.041666666666666664,
+          "normalized_style_exact": 0.08333333333333333,
+          "teacher_token_accuracy": 0.4390873015873016,
+          "teacher_nll": 2.1445928780476535,
+          "first_token_accuracy": 0.3958333333333333
+        },
+        "development": {
+          "strict_style_exact": 0.03225806451612903,
+          "normalized_style_exact": 0.053763440860215055,
+          "teacher_token_accuracy": 0.4049411162314389,
+          "teacher_nll": 2.10667748009705,
+          "first_token_accuracy": 0.3010752688172043
+        },
+        "prior": {
+          "strict_style_exact": 0.020833333333333332,
+          "normalized_style_exact": 0.0763888888888889,
+          "teacher_token_accuracy": 0.4422619047619047,
+          "teacher_nll": 2.10385535482971,
+          "first_token_accuracy": 0.34722222222222227
+        }
+      }
+    }
+  },
+  "gates": {
+    "absolute_dev40": false,
+    "encoding_dev_gain10_all_positive": false,
+    "hidden_dev_gain10_all_positive": false,
+    "hidden_prior_gain10": false,
+    "all_checkpoint_continuations_exact": true
+  },
+  "paired_encoding_dev_gain": {
+    "mean": 0.01075268817204301,
+    "lower95": -0.03225806451612903,
+    "upper95": 0.09677419354838708,
+    "n_seeds": 3
+  },
+  "paired_hidden_dev_gain": {
+    "mean": -0.01075268817204301,
+    "lower95": -0.03225806451612903,
+    "upper95": 0.03225806451612903,
+    "n_seeds": 3
+  },
+  "paired_hidden_prior_gain": {
+    "mean": -0.04166666666666668,
+    "lower95": -0.06250000000000001,
+    "upper95": 0.0,
+    "n_seeds": 3
+  },
+  "trials": 27,
+  "coverage": {
+    "known-sparse128-v1": {
+      "train": {
+        "mean_known_word_fraction": 1.0,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      },
+      "development": {
+        "mean_known_word_fraction": 0.6985535074244751,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      },
+      "prior": {
+        "mean_known_word_fraction": 0.8606143278018278,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      }
+    },
+    "known-digest128-v1": {
+      "train": {
+        "mean_known_word_fraction": 1.0,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      },
+      "development": {
+        "mean_known_word_fraction": 0.6985535074244751,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      },
+      "prior": {
+        "mean_known_word_fraction": 0.8606143278018278,
+        "all_unknown": 0,
+        "word_types": 299,
+        "channels": 128,
+        "metadata_bytes": 8418
+      }
+    }
+  },
+  "resources": {
+    "peak_rss_bytes": 163454976,
+    "peak_commit_or_vms_bytes": 118403072,
+    "os_process_peak_working_set_bytes": 49147904,
+    "os_process_peak_pagefile_commit_bytes": 34029568,
+    "samples": 10490,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 972.3701858000131,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "new_hidden_rule_tuning": false,
+  "application_route_closed": true,
+  "limits": [
+    "Exploratory3freshseeds, known8styles and previously inspected dev/prior, not freshfinaltest.",
+    "No Transformer/pretrained/LLMproxy/maincorechanges. Fixed numeric frontend is not learnedsemantics.",
+    "Finalword-score applicationround; no extraencoding/LR/epochs/modelsize search or retrospectivegatechange."
+  ]
+}

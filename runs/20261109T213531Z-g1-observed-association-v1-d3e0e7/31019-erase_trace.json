@@ -1,0 +1,1749 @@
+{
+  "record": {
+    "seed": 31019,
+    "condition": "erase_trace",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.125,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.6130952380952381,
+        "teacher_nll": 1.7534815486271593,
+        "first_token_accuracy": 0.5625
+      },
+      "development": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.44093701996927803,
+        "teacher_nll": 2.0179000533469607,
+        "first_token_accuracy": 0.41935483870967744
+      },
+      "prior": {
+        "strict_style_exact": 0.041666666666666664,
+        "normalized_style_exact": 0.08333333333333333,
+        "stopped": 0.9791666666666666,
+        "teacher_token_accuracy": 0.4802083333333333,
+        "teacher_nll": 1.899683394637522,
+        "first_token_accuracy": 0.4166666666666667
+      }
+    },
+    "experiences": 1024,
+    "observations": 1024,
+    "word_updates": 5617,
+    "hidden_transactions": 0,
+    "observation_opportunities": 7168,
+    "actual_ticks": 66003,
+    "array_bytes": 117562,
+    "hidden_input_delta": 0.0,
+    "recurrent_delta": 0.0,
+    "input_block_locality": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "probe": 0.3548387096774194,
+    "initial_probe": 0.3548387096774194,
+    "probe_gain": 0.0,
+    "group_counts": [
+      138,
+      129,
+      132,
+      152,
+      126,
+      105,
+      111,
+      131
+    ],
+    "train_seconds": 1.7929403000016464,
+    "seconds": 2.203406900007394,
+    "mean_training_loss": 1.7699946565873037,
+    "checkpoint": "artifacts/observed-association/20261109T213531Z-g1-observed-association-v1-d3e0e7/31019-erase_trace.association.zip",
+    "sha256": "3cde2d59d6a882926efb0943f0e8db7b5d809c84c3541aaedf97b2946b5f67ce",
+    "resources": {
+      "peak_rss_bytes": 53633024,
+      "peak_commit_or_vms_bytes": 72032256,
+      "os_process_peak_working_set_bytes": 60424192,
+      "os_process_peak_pagefile_commit_bytes": 78270464,
+      "samples": 23,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 2.19726410000294,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  "outputs": {
+    "train16": [
+      {
+        "id": "known-greeting_vi-0",
+        "prompt": "chào",
+        "target": "Chào bạn.",
+        "generated": "Bạn bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.75,
+          "nll": 1.5125089761336477,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005947000026935712
+      },
+      {
+        "id": "known-greeting_vi-1",
+        "prompt": "chào bạn",
+        "target": "Chào bạn.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.75,
+          "nll": 1.452490249022681,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00046470000233966857
+      },
+      {
+        "id": "known-greeting_en-0",
+        "prompt": "hi",
+        "target": "Hello.",
+        "generated": "Hello.",
+        "strict_style_exact": true,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 1.0,
+          "nll": 1.1709639496312587,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004604999994626269
+      },
+      {
+        "id": "known-greeting_en-1",
+        "prompt": "hello",
+        "target": "Hello.",
+        "generated": "Hello",
+        "strict_style_exact": false,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.878850367092566,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00039060000563040376
+      },
+      {
+        "id": "known-identity-0",
+        "prompt": "bạn là ai",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 0.8980539389503444,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0007587000000057742
+      },
+      {
+        "id": "known-identity-1",
+        "prompt": "bạn tên gì",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi là...",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.727926821781957,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 30,
+        "seconds": 0.0006959999882383272
+      },
+      {
+        "id": "known-gratitude-0",
+        "prompt": "cảm ơn",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Rất vui được giúp",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.7142857142857143,
+          "nll": 1.8534735982163697,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0006490000087069348
+      },
+      {
+        "id": "known-gratitude-1",
+        "prompt": "cảm ơn bạn",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Rất vui được giúp",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.7142857142857143,
+          "nll": 1.949054036940296,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0006466999911936
+      },
+      {
+        "id": "known-farewell-0",
+        "prompt": "tạm biệt",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm biệt.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.3228332867522263,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005420000088633969
+      },
+      {
+        "id": "known-farewell-1",
+        "prompt": "tạm biệt bạn",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm biệt scar-x.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.4851656512896294,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0006394000083673745
+      },
+      {
+        "id": "known-activity-0",
+        "prompt": "bạn khỏe không",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Giúp thể dạy thể thể.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.3316060356758084,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 33,
+        "seconds": 0.0008030999888433143
+      },
+      {
+        "id": "known-activity-1",
+        "prompt": "bạn đang làm gì",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Scar-x.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.16666666666666666,
+          "nll": 2.7327305057752818,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0005333000008249655
+      },
+      {
+        "id": "known-capabilities-0",
+        "prompt": "bạn làm được gì",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Bạn giúp bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.076992671062293,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0005989000055706128
+      },
+      {
+        "id": "known-capabilities-1",
+        "prompt": "khả năng của bạn",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5714285714285714,
+          "nll": 1.6185789321089352,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00046379999548662454
+      },
+      {
+        "id": "known-teaching-0",
+        "prompt": "tôi muốn dạy bạn",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Scar-x.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.1773321447548653,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004625000001396984
+      },
+      {
+        "id": "known-teaching-1",
+        "prompt": "dạy bạn thế nào",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Giúp.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 1.8671436128463903,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004732000088552013
+      }
+    ],
+    "development": [
+      {
+        "id": "c1-greeting_vi-09",
+        "prompt": "Kính chào quý trợ lý",
+        "target": "Chào bạn.",
+        "generated": "Bạn",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.75,
+          "nll": 1.3810553375145387,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004820000031031668
+      },
+      {
+        "id": "c1-greeting_vi-10",
+        "prompt": "Chào buổi trưa vui vẻ",
+        "target": "Chào bạn.",
+        "generated": "Chào....",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 1.6026766842026112,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 30,
+        "seconds": 0.0007070999999996275
+      },
+      {
+        "id": "c1-greeting_en-09",
+        "prompt": "A pleasant morning to you",
+        "target": "Hello.",
+        "generated": "Tôi là scar-x",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.751348804725703,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005653999978676438
+      },
+      {
+        "id": "c1-greeting_en-10",
+        "prompt": "Greetings to my assistant",
+        "target": "Hello.",
+        "generated": "Được.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 1.9004348005613292,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00048389998846687376
+      },
+      {
+        "id": "c1-identity-09",
+        "prompt": "Mọi người thường xưng hô với bạn thế nào",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.5459681782609862,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.000490399994305335
+      },
+      {
+        "id": "c1-identity-10",
+        "prompt": "Under what name do you operate",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.4444328245060833,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004755000118166208
+      },
+      {
+        "id": "c1-gratitude-09",
+        "prompt": "Gửi lời cảm ơn chân thành đến bạn",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5714285714285714,
+          "nll": 1.9673759766460965,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00048069999320432544
+      },
+      {
+        "id": "c1-gratitude-10",
+        "prompt": "My sincere appreciation to you",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Được",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.059860149827701,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00039799998921807855
+      },
+      {
+        "id": "c1-farewell-09",
+        "prompt": "Hôm nay dừng ở đây nhé tạm biệt",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm bạn. tôi đang tôi đang",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.7096285814465753,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 36,
+        "seconds": 0.0008328000112669542
+      },
+      {
+        "id": "c1-farewell-10",
+        "prompt": "I am heading off farewell",
+        "target": "Tạm biệt bạn.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 2.1074749948449956,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00047250000352505594
+      },
+      {
+        "id": "c1-activity-09",
+        "prompt": "Tình hình dạo này của bạn ra sao",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.0020545238586442,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004552000027615577
+      },
+      {
+        "id": "c1-activity-10",
+        "prompt": "How are things on your end",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tôi tôi tôi đang",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.313285134045468,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0008603999885963276
+      },
+      {
+        "id": "c1-capabilities-09",
+        "prompt": "Những tác vụ nào bạn có thể thực hiện",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 1.9981361224514746,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004960000078426674
+      },
+      {
+        "id": "c1-capabilities-10",
+        "prompt": "What functions are currently available",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi....",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.000821428525745,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 30,
+        "seconds": 0.0006862000009277835
+      },
+      {
+        "id": "c1-teaching-09",
+        "prompt": "Cách thức để người dùng chỉ dẫn cho bạn là gì",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.1527703536204554,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00048490001063328236
+      },
+      {
+        "id": "c1-teaching-10",
+        "prompt": "Is there a way for me to guide you",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.179589400560082,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004891999997198582
+      },
+      {
+        "id": "c2-greeting_vi-09",
+        "prompt": "Chúc bạn buổi sáng an vui nhé",
+        "target": "Chào bạn.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 1.791834621452506,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004015000013168901
+      },
+      {
+        "id": "c2-greeting_vi-10",
+        "prompt": "Gửi lời chào đầu tuần tươi vui",
+        "target": "Chào bạn.",
+        "generated": "Tạm biệt biệt dạy được giúp biệt biệt bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 1.847343494169307,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 45,
+        "seconds": 0.0010055000020656735
+      },
+      {
+        "id": "c2-greeting_en-10",
+        "prompt": "Greetings on this lovely morning",
+        "target": "Hello.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.514493856071432,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004718999989563599
+      },
+      {
+        "id": "c2-identity-09",
+        "prompt": "Làm ơn tiết lộ danh tính của bạn",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.7860737232069588,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004015000013168901
+      },
+      {
+        "id": "c2-identity-10",
+        "prompt": "By what title should I address you",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi học. được giúp thể tôi học thể.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.8861246413687618,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 45,
+        "seconds": 0.0009981999901356176
+      },
+      {
+        "id": "c2-gratitude-09",
+        "prompt": "Xin bày tỏ lòng biết ơn chân thành",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.0836900471774396,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00039289999403990805
+      },
+      {
+        "id": "c2-gratitude-10",
+        "prompt": "Accept my warmest gratitude",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5714285714285714,
+          "nll": 1.7059787673786888,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0003921000025002286
+      },
+      {
+        "id": "c2-farewell-09",
+        "prompt": "Xin phép dừng cuộc trò chuyện tại đây",
+        "target": "Tạm biệt bạn.",
+        "generated": "Vui",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 2.1970216955410766,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004065000102855265
+      },
+      {
+        "id": "c2-farewell-10",
+        "prompt": "Signing off have a restful evening",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.5368139311019475,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00042869999015238136
+      },
+      {
+        "id": "c2-activity-09",
+        "prompt": "Trạng thái hoạt động của bạn ra sao",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.16666666666666666,
+          "nll": 2.5356567831490513,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004717999981949106
+      },
+      {
+        "id": "c2-activity-10",
+        "prompt": "Are you presently active and ready",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tạm tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.16666666666666666,
+          "nll": 2.1815702221421343,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.000622900013695471
+      },
+      {
+        "id": "c2-capabilities-09",
+        "prompt": "Hệ thống cung cấp những tính năng nào",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Vui",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.6445290836581004,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00041390000842511654
+      },
+      {
+        "id": "c2-capabilities-10",
+        "prompt": "Which automated tasks can you carry out",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.4282553785885748,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00040949998947326094
+      },
+      {
+        "id": "c2-teaching-09",
+        "prompt": "Có cách nào để người dùng đính chính bạn",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.0901685978912083,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004933000018354505
+      },
+      {
+        "id": "c2-teaching-10",
+        "prompt": "How do I offer corrections to you",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Học",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.14285714285714285,
+          "nll": 3.2084335152601127,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004140000091865659
+      }
+    ],
+    "prior": [
+      {
+        "id": "greeting_vi_01",
+        "prompt": "Xin chào bạn.",
+        "target": "Chào bạn.",
+        "generated": "Chào bạn.",
+        "strict_style_exact": true,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 1.0,
+          "nll": 1.2768446596426533,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0008398000063607469
+      },
+      {
+        "id": "greeting_vi_02",
+        "prompt": "Chào buổi sáng nhé.",
+        "target": "Chào bạn.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 1.811275211648753,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00040770000487100333
+      },
+      {
+        "id": "greeting_vi_03",
+        "prompt": "Chào bạn, rất vui được gặp.",
+        "target": "Chào bạn.",
+        "generated": "Giúp",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.25,
+          "nll": 1.9424458317607223,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004023000074084848
+      },
+      {
+        "id": "greeting_vi_04",
+        "prompt": "Alo, xin chào.",
+        "target": "Chào bạn.",
+        "generated": "Tạm bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.75,
+          "nll": 1.3077508840729104,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005266000080155209
+      },
+      {
+        "id": "greeting_vi_05",
+        "prompt": "Gửi lời chào đến bạn.",
+        "target": "Chào bạn.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 1.779038668417361,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004819000023417175
+      },
+      {
+        "id": "greeting_vi_06",
+        "prompt": "Chào trợ lý nhé.",
+        "target": "Chào bạn.",
+        "generated": "Tôi biệt.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.75,
+          "nll": 1.5361621043411342,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005391000013332814
+      },
+      {
+        "id": "greeting_en_01",
+        "prompt": "Hello there!",
+        "target": "Hello.",
+        "generated": "Hello",
+        "strict_style_exact": false,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.5400730476277351,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00039400000241585076
+      },
+      {
+        "id": "greeting_en_02",
+        "prompt": "Good morning to you.",
+        "target": "Hello.",
+        "generated": "Scar-x.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.0677590815816305,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004878000036114827
+      },
+      {
+        "id": "greeting_en_03",
+        "prompt": "Hi, pleased to meet you.",
+        "target": "Hello.",
+        "generated": "Rất",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.4019773704614795,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00040550000267103314
+      },
+      {
+        "id": "greeting_en_04",
+        "prompt": "Hey, greetings!",
+        "target": "Hello.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.072778510141004,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00046799999836366624
+      },
+      {
+        "id": "greeting_en_05",
+        "prompt": "Good day to you.",
+        "target": "Hello.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.6014015902004652,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0006144000071799383
+      },
+      {
+        "id": "greeting_en_06",
+        "prompt": "Hi there, hello.",
+        "target": "Hello.",
+        "generated": "Hello",
+        "strict_style_exact": false,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.9674343342011087,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00040550000267103314
+      },
+      {
+        "id": "identity_01",
+        "prompt": "Tên của bạn là gì?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi là.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.0984172428332724,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005658000009134412
+      },
+      {
+        "id": "identity_02",
+        "prompt": "Bạn là ai vậy?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8,
+          "nll": 1.157813781450786,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0005032000044593588
+      },
+      {
+        "id": "identity_03",
+        "prompt": "Tôi nên gọi bạn là gì?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 2.060006412649116,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0004197999951429665
+      },
+      {
+        "id": "identity_04",
+        "prompt": "What is your name?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Bạn....... tôi...",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 1.9720424182893919,
+          "first_token_correct": false
+        },
+        "stopped": false,
+        "neural_ticks": 48,
+        "seconds": 0.0011525000008987263
+      },
+      {
+        "id": "identity_05",
+        "prompt": "Who are you?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 1.500762081506117,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00048290000995621085
+      },
+      {
+        "id": "identity_06",
+        "prompt": "May I know your identity?",
+        "target": "Tôi là SCAR-X.",
+        "generated": "Scar-x là scar-x là bạn vui",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.4,
+          "nll": 2.629610174618649,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 33,
+        "seconds": 0.0008360999927390367
+      },
+      {
+        "id": "gratitude_01",
+        "prompt": "Cảm ơn bạn rất nhiều.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Vui được giúp",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.7142857142857143,
+          "nll": 1.6842101595482433,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005476999940583482
+      },
+      {
+        "id": "gratitude_02",
+        "prompt": "Rất cảm ơn sự hỗ trợ này.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Vui được giúp thể dạy được giúp",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 1.885349710570465,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 36,
+        "seconds": 0.0008345999958692119
+      },
+      {
+        "id": "gratitude_03",
+        "prompt": "Mình chân thành cảm ơn nhé.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Rất vui được giúp bạn được giúp tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.8571428571428571,
+          "nll": 1.5382926982517025,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 42,
+        "seconds": 0.0009396999957971275
+      },
+      {
+        "id": "gratitude_04",
+        "prompt": "Thank you very much.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.693550962194254,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0007138999935705215
+      },
+      {
+        "id": "gratitude_05",
+        "prompt": "Thanks a lot for that.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Vui",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5714285714285714,
+          "nll": 1.7779347509369272,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00044519999937620014
+      },
+      {
+        "id": "gratitude_06",
+        "prompt": "Much appreciated, thank you.",
+        "target": "Rất vui được giúp bạn.",
+        "generated": "Tôi đang",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.4271132383703957,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0006659999926341698
+      },
+      {
+        "id": "farewell_01",
+        "prompt": "Tạm biệt bạn nhé.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Scar-x",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.8371075345739662,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0006315999926300719
+      },
+      {
+        "id": "farewell_02",
+        "prompt": "Hẹn gặp lại bạn sau.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm biệt bạn.",
+        "strict_style_exact": true,
+        "normalized_style_exact": true,
+        "teacher": {
+          "token_accuracy": 1.0,
+          "nll": 1.057441688884727,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.000603299995418638
+      },
+      {
+        "id": "farewell_03",
+        "prompt": "Chào tạm biệt, chúc một ngày tốt lành.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Scar-x.....",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2,
+          "nll": 2.181118351047238,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 33,
+        "seconds": 0.0007368000078713521
+      },
+      {
+        "id": "farewell_04",
+        "prompt": "Goodbye, take care.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 2.0523349958673163,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004721000004792586
+      },
+      {
+        "id": "farewell_05",
+        "prompt": "See you later.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.4764197324057386,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0003960999893024564
+      },
+      {
+        "id": "farewell_06",
+        "prompt": "Farewell, have a good one.",
+        "target": "Tạm biệt bạn.",
+        "generated": "Tạm.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6,
+          "nll": 1.3954247235977972,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004667000030167401
+      },
+      {
+        "id": "activity_01",
+        "prompt": "Bạn có đang ở đây không?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Đang",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.6666666666666666,
+          "nll": 1.5023805303935684,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00038189999759197235
+      },
+      {
+        "id": "activity_02",
+        "prompt": "Dạo này bạn thế nào rồi?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tạm bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.16666666666666666,
+          "nll": 2.5820990439347957,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005310000124154612
+      },
+      {
+        "id": "activity_03",
+        "prompt": "Hôm nay bạn thấy thế nào?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.16666666666666666,
+          "nll": 2.2671182282859506,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0005206000059843063
+      },
+      {
+        "id": "activity_04",
+        "prompt": "Are you online right now?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.1146445455739453,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0003972999984398484
+      },
+      {
+        "id": "activity_05",
+        "prompt": "How are you doing today?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tôi đang học trả",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.5,
+          "nll": 2.017884789708016,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 27,
+        "seconds": 0.0005791000003227964
+      },
+      {
+        "id": "activity_06",
+        "prompt": "Are you active at the moment?",
+        "target": "Tôi đang hoạt động.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.3333333333333333,
+          "nll": 2.1372626511715875,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004380000027595088
+      },
+      {
+        "id": "capabilities_01",
+        "prompt": "Bạn có thể làm được những việc gì?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Rất bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.14285714285714285,
+          "nll": 2.428316731045664,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 24,
+        "seconds": 0.0005240000027697533
+      },
+      {
+        "id": "capabilities_02",
+        "prompt": "Các chức năng hỗ trợ của bạn là gì?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 1.926024355959596,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00045360000513028353
+      },
+      {
+        "id": "capabilities_03",
+        "prompt": "Bạn có những khả năng nào?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.014130354742388,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.00038469998980872333
+      },
+      {
+        "id": "capabilities_04",
+        "prompt": "What are your capabilities?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 1.8866813034378347,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0003812000068137422
+      },
+      {
+        "id": "capabilities_05",
+        "prompt": "What kinds of tasks can you perform?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi là scar-x biệt tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 1.901408245409078,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 30,
+        "seconds": 0.0006391999922925606
+      },
+      {
+        "id": "capabilities_06",
+        "prompt": "What features do you support?",
+        "target": "Tôi đang học trả lời.",
+        "generated": "Tôi",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.0387587408336776,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 18,
+        "seconds": 0.0003876999981002882
+      },
+      {
+        "id": "teaching_01",
+        "prompt": "Tôi có thể dạy thêm kiến thức cho bạn không?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 1.8814380243657958,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00047199999971780926
+      },
+      {
+        "id": "teaching_02",
+        "prompt": "Làm thế nào để tôi góp ý sửa lỗi cho bạn?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Scar-x.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.14285714285714285,
+          "nll": 2.631539172416653,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004521999944699928
+      },
+      {
+        "id": "teaching_03",
+        "prompt": "Bạn có tiếp nhận hướng dẫn trực tiếp từ người dùng không?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Tôi....",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.115685065195722,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 30,
+        "seconds": 0.0007129999867174774
+      },
+      {
+        "id": "teaching_04",
+        "prompt": "Can I teach you new information?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Tôi.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.14285714285714285,
+          "nll": 2.4879383410877693,
+          "first_token_correct": false
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004504000098677352
+      },
+      {
+        "id": "teaching_05",
+        "prompt": "How can I correct your mistakes?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.42857142857142855,
+          "nll": 2.1951389771888534,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.0004462999932002276
+      },
+      {
+        "id": "teaching_06",
+        "prompt": "Is it possible to give you direct feedback and training?",
+        "target": "Bạn có thể dạy tôi.",
+        "generated": "Bạn.",
+        "strict_style_exact": false,
+        "normalized_style_exact": false,
+        "teacher": {
+          "token_accuracy": 0.2857142857142857,
+          "nll": 2.3264618901570935,
+          "first_token_correct": true
+        },
+        "stopped": true,
+        "neural_ticks": 21,
+        "seconds": 0.00045179999142419547
+      }
+    ]
+  },
+  "probe_predictions": [
+    0,
+    0,
+    5,
+    1,
+    2,
+    6,
+    3,
+    3,
+    5,
+    2,
+    2,
+    6,
+    6,
+    5,
+    7,
+    2,
+    3,
+    0,
+    7,
+    3,
+    6,
+    1,
+    7,
+    3,
+    0,
+    7,
+    5,
+    6,
+    2,
+    0,
+    1
+  ],
+  "neural_sample": {
+    "computed": 48,
+    "allocated": 48,
+    "tick": 66003,
+    "spikes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "voltage": [
+      -3.16729998588562,
+      0.5019000172615051,
+      -0.09019999951124191,
+      -5.543399810791016,
+      0.503000020980835,
+      0.10890000313520432,
+      -1.3681999444961548,
+      -1.315500020980835,
+      0.6478000283241272,
+      -2.0316998958587646,
+      -0.3246000111103058,
+      -2.795300006866455,
+      0.10429999977350235,
+      -1.4328999519348145,
+      2.470099925994873,
+      -0.826200008392334,
+      -0.6926000118255615,
+      0.016899999231100082,
+      3.0862998962402344,
+      0.19709999859333038,
+      -0.558899998664856,
+      -0.6913999915122986,
+      2.3424999713897705,
+      0.04989999905228615,
+      0.2298000007867813,
+      0.5072000026702881,
+      -2.530900001525879,
+      0.5041000247001648,
+      0.367900013923645,
+      -2.394700050354004,
+      0.16680000722408295,
+      -0.9460999965667725,
+      -0.5580999851226807,
+      -2.9804000854492188,
+      0.3955000042915344,
+      -0.42179998755455017,
+      -0.009700000286102295,
+      -4.994999885559082,
+      -0.3075999915599823,
+      -0.18950000405311584,
+      1.023800015449524,
+      -0.21950000524520874,
+      0.4781999886035919,
+      -0.9041000008583069,
+      0.328900009393692,
+      0.09459999948740005,
+      -0.31470000743865967,
+      -1.131700038909912
+    ],
+    "sample_kind": "actual finaltrainingpredictionphase; covarianceupdates happen only separate observationphase"
+  }
+}

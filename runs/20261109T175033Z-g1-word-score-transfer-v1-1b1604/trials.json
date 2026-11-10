@@ -1,0 +1,569 @@
+[
+  {
+    "seed": 27103,
+    "condition": "frozen",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.25,
+        "normalized_style_exact": 0.3125,
+        "stopped": 0.875,
+        "teacher_token_accuracy": 0.7989583333333332,
+        "teacher_nll": 1.105992193353439,
+        "first_token_accuracy": 0.8125
+      },
+      "development": {
+        "strict_style_exact": 0.06451612903225806,
+        "normalized_style_exact": 0.06451612903225806,
+        "stopped": 0.9032258064516129,
+        "teacher_token_accuracy": 0.4647465437788018,
+        "teacher_nll": 2.105111922005494,
+        "first_token_accuracy": 0.45161290322580644
+      },
+      "prior": {
+        "strict_style_exact": 0.125,
+        "normalized_style_exact": 0.14583333333333334,
+        "stopped": 0.8958333333333334,
+        "teacher_token_accuracy": 0.5883432539682539,
+        "teacher_nll": 1.523315130522242,
+        "first_token_accuracy": 0.4166666666666667
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5650,
+    "hidden_updates": 0,
+    "training_ticks": 1008408,
+    "array_bytes": 206514,
+    "hidden_delta_in": 0.0,
+    "hidden_delta_rec": 0.0,
+    "mean_training_loss": 1.498103354556894,
+    "train_seconds": 50.03918830001203,
+    "seconds": 54.10147649999999,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27103-frozen.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 48517120,
+      "peak_commit_or_vms_bytes": 34824192,
+      "os_process_peak_working_set_bytes": 54198272,
+      "os_process_peak_pagefile_commit_bytes": 39309312,
+      "samples": 248,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 53.62022579999757,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27103,
+    "condition": "full",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.1875,
+        "normalized_style_exact": 0.3125,
+        "stopped": 0.9375,
+        "teacher_token_accuracy": 0.7053571428571428,
+        "teacher_nll": 1.0705760354937746,
+        "first_token_accuracy": 0.6875
+      },
+      "development": {
+        "strict_style_exact": 0.03225806451612903,
+        "normalized_style_exact": 0.03225806451612903,
+        "stopped": 0.9032258064516129,
+        "teacher_token_accuracy": 0.5493087557603685,
+        "teacher_nll": 1.7611038277200306,
+        "first_token_accuracy": 0.3870967741935484
+      },
+      "prior": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.0625,
+        "stopped": 0.9166666666666666,
+        "teacher_token_accuracy": 0.5554563492063492,
+        "teacher_nll": 1.511244703655697,
+        "first_token_accuracy": 0.3958333333333333
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5650,
+    "hidden_updates": 22600,
+    "training_ticks": 1008408,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.356867790222168,
+    "hidden_delta_rec": 2.777409076690674,
+    "mean_training_loss": 1.4903505299433184,
+    "train_seconds": 54.04706520000764,
+    "seconds": 58.26852750001126,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27103-full.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 48103424,
+      "peak_commit_or_vms_bytes": 34738176,
+      "os_process_peak_working_set_bytes": 53915648,
+      "os_process_peak_pagefile_commit_bytes": 38875136,
+      "samples": 266,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 57.77492419999908,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27103,
+    "condition": "shuffled",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.125,
+        "stopped": 0.875,
+        "teacher_token_accuracy": 0.5215773809523809,
+        "teacher_nll": 1.8031670689289032,
+        "first_token_accuracy": 0.5
+      },
+      "development": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.8064516129032258,
+        "teacher_token_accuracy": 0.328494623655914,
+        "teacher_nll": 2.220478774038916,
+        "first_token_accuracy": 0.25806451612903225
+      },
+      "prior": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.8333333333333334,
+        "teacher_token_accuracy": 0.42896825396825394,
+        "teacher_nll": 2.07722249847713,
+        "first_token_accuracy": 0.3125
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5650,
+    "hidden_updates": 22600,
+    "training_ticks": 1008408,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.312271118164062,
+    "hidden_delta_rec": 2.8319716453552246,
+    "mean_training_loss": 1.832772483871696,
+    "train_seconds": 53.972433500006446,
+    "seconds": 58.58351080000284,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27103-shuffled.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56479744,
+      "peak_commit_or_vms_bytes": 41246720,
+      "os_process_peak_working_set_bytes": 60358656,
+      "os_process_peak_pagefile_commit_bytes": 45015040,
+      "samples": 267,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 58.11159919999773,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27109,
+    "condition": "frozen",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.125,
+        "normalized_style_exact": 0.125,
+        "stopped": 0.875,
+        "teacher_token_accuracy": 0.6994047619047619,
+        "teacher_nll": 1.0778103725987076,
+        "first_token_accuracy": 0.625
+      },
+      "development": {
+        "strict_style_exact": 0.03225806451612903,
+        "normalized_style_exact": 0.03225806451612903,
+        "stopped": 0.8064516129032258,
+        "teacher_token_accuracy": 0.44769585253456223,
+        "teacher_nll": 2.1407638611016986,
+        "first_token_accuracy": 0.3225806451612903
+      },
+      "prior": {
+        "strict_style_exact": 0.020833333333333332,
+        "normalized_style_exact": 0.020833333333333332,
+        "stopped": 0.8125,
+        "teacher_token_accuracy": 0.5447916666666667,
+        "teacher_nll": 1.7138822658464161,
+        "first_token_accuracy": 0.3125
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5630,
+    "hidden_updates": 0,
+    "training_ticks": 1003056,
+    "array_bytes": 206514,
+    "hidden_delta_in": 0.0,
+    "hidden_delta_rec": 0.0,
+    "mean_training_loss": 1.4189783434305927,
+    "train_seconds": 51.217293099995004,
+    "seconds": 56.17165190000378,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27109-frozen.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 55984128,
+      "peak_commit_or_vms_bytes": 40787968,
+      "os_process_peak_working_set_bytes": 60010496,
+      "os_process_peak_pagefile_commit_bytes": 44781568,
+      "samples": 256,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 55.71400269999867,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27109,
+    "condition": "full",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.25,
+        "normalized_style_exact": 0.3125,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.7706845238095239,
+        "teacher_nll": 0.8720794954307416,
+        "first_token_accuracy": 0.625
+      },
+      "development": {
+        "strict_style_exact": 0.06451612903225806,
+        "normalized_style_exact": 0.06451612903225806,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.5390168970814132,
+        "teacher_nll": 1.662905615893523,
+        "first_token_accuracy": 0.3225806451612903
+      },
+      "prior": {
+        "strict_style_exact": 0.020833333333333332,
+        "normalized_style_exact": 0.020833333333333332,
+        "stopped": 0.875,
+        "teacher_token_accuracy": 0.5524305555555555,
+        "teacher_nll": 1.4065873928652568,
+        "first_token_accuracy": 0.2708333333333333
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5630,
+    "hidden_updates": 22520,
+    "training_ticks": 1003056,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.62978744506836,
+    "hidden_delta_rec": 3.04371976852417,
+    "mean_training_loss": 1.3910615426641861,
+    "train_seconds": 53.445977099996526,
+    "seconds": 57.90221310000925,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27109-full.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56537088,
+      "peak_commit_or_vms_bytes": 41447424,
+      "os_process_peak_working_set_bytes": 60432384,
+      "os_process_peak_pagefile_commit_bytes": 45019136,
+      "samples": 265,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 57.4341301000095,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27109,
+    "condition": "shuffled",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.0625,
+        "stopped": 0.9375,
+        "teacher_token_accuracy": 0.5757440476190476,
+        "teacher_nll": 1.5265561164774846,
+        "first_token_accuracy": 0.5625
+      },
+      "development": {
+        "strict_style_exact": 0.03225806451612903,
+        "normalized_style_exact": 0.06451612903225806,
+        "stopped": 0.7096774193548387,
+        "teacher_token_accuracy": 0.34577572964669734,
+        "teacher_nll": 2.3826203840625335,
+        "first_token_accuracy": 0.16129032258064516
+      },
+      "prior": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.8125,
+        "teacher_token_accuracy": 0.365922619047619,
+        "teacher_nll": 2.1349699040589893,
+        "first_token_accuracy": 0.2708333333333333
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5630,
+    "hidden_updates": 22520,
+    "training_ticks": 1003056,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.211698532104492,
+    "hidden_delta_rec": 2.9341814517974854,
+    "mean_training_loss": 1.8003836492404124,
+    "train_seconds": 54.65779890000704,
+    "seconds": 59.14978880000126,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27109-shuffled.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56311808,
+      "peak_commit_or_vms_bytes": 41058304,
+      "os_process_peak_working_set_bytes": 60010496,
+      "os_process_peak_pagefile_commit_bytes": 44781568,
+      "samples": 270,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 58.68284130000393,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27127,
+    "condition": "frozen",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.4375,
+        "normalized_style_exact": 0.4375,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.7794642857142857,
+        "teacher_nll": 0.8847990254189646,
+        "first_token_accuracy": 0.6875
+      },
+      "development": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.8064516129032258,
+        "teacher_token_accuracy": 0.4504608294930876,
+        "teacher_nll": 2.008949581674729,
+        "first_token_accuracy": 0.3225806451612903
+      },
+      "prior": {
+        "strict_style_exact": 0.10416666666666667,
+        "normalized_style_exact": 0.125,
+        "stopped": 0.9791666666666666,
+        "teacher_token_accuracy": 0.5811011904761904,
+        "teacher_nll": 1.7629510584900878,
+        "first_token_accuracy": 0.3541666666666667
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5600,
+    "hidden_updates": 0,
+    "training_ticks": 997128,
+    "array_bytes": 206514,
+    "hidden_delta_in": 0.0,
+    "hidden_delta_rec": 0.0,
+    "mean_training_loss": 1.3529294639647564,
+    "train_seconds": 51.34661180000694,
+    "seconds": 55.746109700005036,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27127-frozen.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56504320,
+      "peak_commit_or_vms_bytes": 41893888,
+      "os_process_peak_working_set_bytes": 60432384,
+      "os_process_peak_pagefile_commit_bytes": 45019136,
+      "samples": 255,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 55.27309449999302,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27127,
+    "condition": "full",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.9375,
+        "teacher_token_accuracy": 0.590922619047619,
+        "teacher_nll": 1.2640680909442445,
+        "first_token_accuracy": 0.4375
+      },
+      "development": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.967741935483871,
+        "teacher_token_accuracy": 0.47887864823348697,
+        "teacher_nll": 1.8108191748866627,
+        "first_token_accuracy": 0.3548387096774194
+      },
+      "prior": {
+        "strict_style_exact": 0.020833333333333332,
+        "normalized_style_exact": 0.041666666666666664,
+        "stopped": 0.9583333333333334,
+        "teacher_token_accuracy": 0.5214781746031746,
+        "teacher_nll": 1.8022138462195716,
+        "first_token_accuracy": 0.375
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5600,
+    "hidden_updates": 22400,
+    "training_ticks": 997128,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.568763732910156,
+    "hidden_delta_rec": 2.990471839904785,
+    "mean_training_loss": 1.5368093325650867,
+    "train_seconds": 54.361649400001625,
+    "seconds": 58.09914419999404,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27127-full.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56131584,
+      "peak_commit_or_vms_bytes": 40919040,
+      "os_process_peak_working_set_bytes": 60010496,
+      "os_process_peak_pagefile_commit_bytes": 44781568,
+      "samples": 265,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 57.62956120001036,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 27127,
+    "condition": "shuffled",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.0625,
+        "stopped": 0.9375,
+        "teacher_token_accuracy": 0.48511904761904756,
+        "teacher_nll": 1.7659519067747347,
+        "first_token_accuracy": 0.5625
+      },
+      "development": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.0,
+        "stopped": 0.8064516129032258,
+        "teacher_token_accuracy": 0.3786482334869432,
+        "teacher_nll": 2.279895212762621,
+        "first_token_accuracy": 0.25806451612903225
+      },
+      "prior": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.020833333333333332,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.4110615079365079,
+        "teacher_nll": 2.2190512954430877,
+        "first_token_accuracy": 0.3958333333333333
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5600,
+    "hidden_updates": 22400,
+    "training_ticks": 997128,
+    "array_bytes": 206514,
+    "hidden_delta_in": 12.597805976867676,
+    "hidden_delta_rec": 3.1551766395568848,
+    "mean_training_loss": 1.7561716038276747,
+    "train_seconds": 53.22409629999311,
+    "seconds": 57.24921559999348,
+    "checkpoint": "artifacts/word-score-transfer/20261109T175033Z-g1-word-score-transfer-v1-1b1604/27127-shuffled.zip",
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "resources": {
+      "peak_rss_bytes": 56836096,
+      "peak_commit_or_vms_bytes": 41426944,
+      "os_process_peak_working_set_bytes": 60432384,
+      "os_process_peak_pagefile_commit_bytes": 45019136,
+      "samples": 262,
+      "interval_seconds": 0.2,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 56.735702999998466,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  }
+]

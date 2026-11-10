@@ -1,0 +1,34 @@
+{
+  "base_url": "http://127.0.0.1:8765/v1",
+  "model": "scarx-signal-v0.1",
+  "openai_sdk_nonstream": true,
+  "openai_sdk_stream": true,
+  "native_neural_prediction": 1,
+  "automatic_compute": {
+    "automatic": true,
+    "passes": 16,
+    "learned_reasoning": false,
+    "policy": "4 passes; extend to 16 if maximum softmax probability < 0.8. Stochastic averaging, not chain-of-thought."
+  },
+  "learned_weights_unchanged_by_predict": true,
+  "vision": false,
+  "tool_actions": false,
+  "natural_language_generation": false,
+  "framework": "Python stdlib HTTP + NumPy PlasticCore; not llama.cpp/GGUF",
+  "resources": {
+    "rss_bytes": 44920832,
+    "commit_bytes": 28217344,
+    "cpu_percent": 5.7,
+    "peak_rss_bytes": 56496128,
+    "peak_commit_bytes": 30564352,
+    "limit_bytes": 2000000000,
+    "os_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "cpu_percent_note": "CPU tiến trình: 100% tương đương một logical core.",
+    "uptime_seconds": 1.9679999999934807
+  },
+  "hermes_config": "Named provider added; previous selected Qwen route preserved. Actual Hermes GUI selection is left to user."
+}

@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-11-09T12:49:33.163660+00:00",
+  "source_run": "runs/20261109T123739Z-p1-local-classifier-v2-fedda9",
+  "audit_run": "runs/20261109T124335Z-local-classifier-v2-attribution-5e01a0",
+  "decision": "NO_GO_LOCAL_CLASSIFIER_FAMILY",
+  "confirmation_opened": false,
+  "deployed": false,
+  "software_tests": {
+    "passed": 122,
+    "native_baseline_parity_included": true,
+    "initial_suite_issue": "Torch control imported into pytest process polluted runtime RAM checks; fixed by isolated subprocess test; no RAM threshold change"
+  },
+  "ui_verified": {
+    "running_job_seen_at_trials": 40,
+    "final_decision_seen": true,
+    "real_learning_and_tensor_predictions_seen": true,
+    "requires_viewer_start_action": false
+  },
+  "live": {
+    "cores_loaded": 1,
+    "hidden": 128,
+    "active_neurons": 48,
+    "updates": 241347,
+    "ram_bytes": 61599744,
+    "learning": {
+      "enabled": true,
+      "accepted_updates": 56,
+      "rejected_updates": 93,
+      "reviews": 5710,
+      "queued_lessons": 0,
+      "pending_questions": 3,
+      "unverified_self_training": false
+    },
+    "memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  "experiment_loss_events_visible": 100,
+  "screenshots": {
+    "p1-v2-running.png": "b605d0da5b9e6e3747c598d3e7d893d699adbc3951dc02aa9de9e715398e36c1",
+    "p1-v2-final.png": "72bb1522da931112e631afb8b8421daa80a63ed2b2e52693b8cba047df4581ac"
+  },
+  "goal_audit": {
+    "full_goal_complete": false,
+    "normal_conversation": "not achieved; actual serving/candidate utterances previously fail development checks",
+    "normal_photo_understanding": "not achieved; serving digits only, RGB diagnostic below gate",
+    "antigravity_data": "existing real CLI-generated curated corpus retained; no new paid call or synthetic self-label",
+    "qwen_reference": "actual archived 4B outputs retained; not a live backend or truth oracle",
+    "plan_fidelity": "P1 final registered adjustment, fixed48ALIF, same gates, no third family round, no scaling",
+    "local_representation": "v2 failed screen; normalized group improves some metrics but not required joint gate",
+    "bptt_scope": "18 isolated learnability controls only, not serving or main training",
+    "persistence": "9/9 cold-state continuations exact; no quality/retention claim",
+    "next_unresolved": "P1 hidden credit/representation and P2 readout stability under master plan; normalchat/vision still required"
+  },
+  "ponytail_available": false
+}

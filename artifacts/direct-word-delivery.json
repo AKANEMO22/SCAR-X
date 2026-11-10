@@ -1,0 +1,141 @@
+{
+  "run": "runs/20261110T062226Z-direct-word-bridge-v1-a6a908",
+  "qwen_reference_run": "runs/20261110T062343Z-qwen-direct-word-reference-v1-5e4d7d",
+  "master_plan": "docs/RESEARCH_PLAN.md",
+  "master_version": "1.26",
+  "checked_at": "2026-11-10T06:32:42.436125+00:00",
+  "decision": "STOP_DIRECT_WORD_BRIDGE_V1",
+  "summary": {
+    "correct": {
+      "macro_development": 0.359375,
+      "macro_train": 0.9947916666666666,
+      "probe_gain": 0.140625,
+      "restore_initial_hidden_dev": 0.17708333333333334
+    },
+    "shuffled": {
+      "macro_development": 0.171875,
+      "macro_train": 0.765625,
+      "probe_gain": 0.0625,
+      "restore_initial_hidden_dev": 0.11458333333333333
+    },
+    "zero": {
+      "macro_development": 0.16666666666666666,
+      "macro_train": 0.9270833333333334,
+      "probe_gain": 0.0,
+      "restore_initial_hidden_dev": 0.16666666666666666
+    },
+    "frozen": {
+      "macro_development": 0.16666666666666666,
+      "macro_train": 0.9270833333333334,
+      "probe_gain": 0.0,
+      "restore_initial_hidden_dev": 0.16666666666666666
+    },
+    "bptt_control": {
+      "macro_development": 0.3645833333333333,
+      "macro_train": 1.0,
+      "probe_gain": 0.11458333333333333,
+      "restore_initial_hidden_dev": 0.171875
+    }
+  },
+  "gates": {
+    "macro65_eachseed": false,
+    "family50_eachseed": false,
+    "gain10_allpositive_lower95": true,
+    "resethead_probe_gain5_lower95": false
+  },
+  "paired_hidden_dev_gain": {
+    "mean": 0.19270833333333334,
+    "lower95": 0.1875,
+    "upper95": 0.203125,
+    "n_seeds": 3
+  },
+  "paired_resethead_probe_gain": {
+    "mean": 0.140625,
+    "lower95": 0.0,
+    "upper95": 0.25,
+    "n_seeds": 3
+  },
+  "all15_checkpoint_and_freshprocess_continuations_exact": true,
+  "all_consumed_code_data_protocol_SHA_unchanged": true,
+  "consumed_source_files_verified": 17,
+  "eligibility35_unmodified_in_wordbridge": true,
+  "all_stream_wordupdate_tickcounts_matched_by_seed": true,
+  "zero_frozen_weights_head_exact": true,
+  "main_core_code_sha256_unchanged": {
+    "src/scarx/neural/core.py": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+    "src/scarx/neural/unified.py": "dc5dbed2c94ca1274499412a8e40372d9e12fc5e9645efbf976c85c6a0f27c37"
+  },
+  "main_private_weights_topology_vocab_encoding_unchanged": true,
+  "main_updates": 241363,
+  "private_fingerprint_only_local": true,
+  "production_and_candidate_forbidden_framework_or_backward_found": false,
+  "main_model_or_algorithm_changed": false,
+  "main_deployed": false,
+  "actual64public_Qwenreferences_verified": true,
+  "Qwen_truncated": 14,
+  "Qwen_server_stopped": true,
+  "Qwen_reference_not_labels_or_proxy": true,
+  "actual64archive_neural_outputs_targets_and_Qwen_match_source": true,
+  "archive_follows_latest_completed_file_not_accuracy": true,
+  "browser_verified": true,
+  "screenshots": [
+    "artifacts/direct-word-results.png",
+    "artifacts/direct-word-answers.png"
+  ],
+  "software_validation": {
+    "exit_status": 0,
+    "counts": {
+      "passed": 190
+    },
+    "seconds": 47.82470779999858,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "production_guard_weakened": false,
+    "prior_defaultthread_suite_failures": 2,
+    "prior_failure": "Legacyteachingtransaction HTTP507 guard, standalonepassed. Configuredsinglethread suite189passed earlier; no uniqueallocatorcause claimed."
+  },
+  "research_resources": {
+    "peak_rss_bytes": 627220480,
+    "peak_commit_or_vms_bytes": 1024737280,
+    "os_process_peak_working_set_bytes": 46419968,
+    "os_process_peak_pagefile_commit_bytes": 32784384,
+    "samples": 878,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 68.11508920000051,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "Qwen_reference_resources": {
+    "peak_rss_bytes": 3362549760,
+    "peak_commit_or_vms_bytes": 4046532608,
+    "os_process_peak_working_set_bytes": 80990208,
+    "os_process_peak_pagefile_commit_bytes": 706678784,
+    "samples": 2910,
+    "interval_seconds": 0.1,
+    "limit_bytes": 4500000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 320.98723840000457,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "live_ram_bytes": 59211776,
+  "llama_server_process_count": 0,
+  "Qwen_budget_differs_from_SCARX_2GB": true,
+  "proposal30_approved_research_only": true,
+  "goal_completion_audit": {
+    "full_goal_complete": false,
+    "normal_main_conversation": false,
+    "normal_photo_vision": false,
+    "lifelong_retention_gate": false
+  },
+  "next_step": "PIVOT representation/generalization, no directwordv1LR/epoch/data/encodergrid or deployment. Any distinctword/visionmechanism requires registeredprotocol within approvedALIF/signalboundary."
+}

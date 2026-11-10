@@ -1,0 +1,20 @@
+{
+  "protocol": "phase2-v1",
+  "seeds": [17, 29, 43],
+  "hidden": 48,
+  "fan_in": 8,
+  "plastic_rows": 12,
+  "train_examples": 512,
+  "test_examples": 128,
+  "continual_stages": 20,
+  "stage_train_examples": 64,
+  "stage_test_examples": 32,
+  "replay_capacity": 128,
+  "replay_per_stage": 32,
+  "modes": ["frozen", "readout", "stdp", "full", "rate"],
+  "gain_required": 0.10,
+  "forgetting_mean_max": 0.03,
+  "forgetting_group_max": 0.05,
+  "ram_limit": 2000000000,
+  "max_seconds": 86400
+}

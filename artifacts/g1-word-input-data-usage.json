@@ -1,0 +1,38 @@
+{
+  "run": "runs/20261109T184028Z-g1-word-score-input-transfer-v2-c7a277",
+  "source_files": [
+    "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf/reviewed-curriculum.json",
+    "data/dialogue/generation1.json",
+    "data/candidates/20261109T161256Z-antigravity-g1-state-paraphrases-a4d648/reviewed.json"
+  ],
+  "source_sha256": {
+    "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf/reviewed-curriculum.json": "99aea0f2ee31060e501760cdddbb87029eedcc0b57c1cc8dd3e07e99fc477bb8",
+    "data/dialogue/generation1.json": "2f0411c2b410446fee1c94c5ce40cc1eff44ed6b06bad78d7332038f7c5a8ae9",
+    "data/candidates/20261109T161256Z-antigravity-g1-state-paraphrases-a4d648/reviewed.json": "9f9937cd3f2eff86d9aa96374bd54b90f6deba31a5270fcaaca5ffe2a604bf50"
+  },
+  "sampler_stream_verified_against_actual_checkpoint_updates": true,
+  "seed_streams": {
+    "28001": {
+      "antigravity_responses": 648,
+      "authored_responses": 376,
+      "target_token_updates": 5706,
+      "same_stream_repeated_across_variants": 9
+    },
+    "28019": {
+      "antigravity_responses": 675,
+      "authored_responses": 349,
+      "target_token_updates": 5628,
+      "same_stream_repeated_across_variants": 9
+    },
+    "28027": {
+      "antigravity_responses": 656,
+      "authored_responses": 368,
+      "target_token_updates": 5632,
+      "same_stream_repeated_across_variants": 9
+    }
+  },
+  "response_updates_total": 27648,
+  "used_in_actual_experimental_training": true,
+  "live_imported": false,
+  "new_antigravity_or_qwen_call": false
+}

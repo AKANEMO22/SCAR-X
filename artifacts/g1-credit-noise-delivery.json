@@ -1,0 +1,83 @@
+{
+  "run": "runs/20261109T211546Z-g1-credit-noise-audit-v1-941266",
+  "master_plan": "docs/RESEARCH_PLAN.md",
+  "master_version": "1.19",
+  "decision": "PIVOT_MAIN_LOCAL_CREDIT_AND_REPRESENTATION",
+  "read_only_audit": true,
+  "new_training": false,
+  "new_learner": false,
+  "score_v3_opened": false,
+  "all_stopped_families_preserved": true,
+  "checkpoint_sources": 9,
+  "paired_model_seeds": 3,
+  "conditional_inputs": 144,
+  "noise_pairs_per_input": 128,
+  "source_SHA_unchanged": true,
+  "all_source_weights_learningstate_rng_unchanged": true,
+  "first_saved_raw_fixture_statistics_recomputed_exactly": true,
+  "sampling_workingstate_on_discarded_copies_only": true,
+  "main_neural_code_sha256_unchanged": {
+    "src/scarx/neural/core.py": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+    "src/scarx/neural/unified.py": "dc5dbed2c94ca1274499412a8e40372d9e12fc5e9645efbf976c85c6a0f27c37"
+  },
+  "private_weights_topology_vocabulary_encoding_unchanged": true,
+  "private_fingerprint_only_local": true,
+  "live_updates": 241363,
+  "no_transformer_pretrained_or_llm_proxy": true,
+  "production_torch_or_controls_imports": [],
+  "browser_verified": true,
+  "rendered_metric_rows": 9,
+  "screenshot": "artifacts/g1-credit-noise-final.png",
+  "software_tests_passed": 159,
+  "local_signal_summary": {
+    "existing_score": {
+      "replicate_cosine": 0.20188094044524152,
+      "cross_signal_to_pair_noise": 0.0024523568346614213,
+      "pair_noise_energy": 2313.2874086254847,
+      "sample_mean_norm": 4.063969185535336
+    },
+    "crossfit_baseline_score": {
+      "replicate_cosine": 0.24425670087518836,
+      "cross_signal_to_pair_noise": 0.00359947936189858,
+      "pair_noise_energy": 326.2231049385536,
+      "sample_mean_norm": 1.695100140285506
+    },
+    "biased_surrogate": {
+      "replicate_cosine": 0.9986839479425998,
+      "cross_signal_to_pair_noise": 0.7604853100786272,
+      "pair_noise_energy": 0.8686268907759942,
+      "sample_mean_norm": 0.9776323190690048
+    }
+  },
+  "local_paired_statistics": {
+    "crossfit_vs_existing_noise_ratio": {
+      "mean": 0.2273971008138915,
+      "lower95": 0.10350957931812345,
+      "upper95": 0.3822219534195764,
+      "n_seeds": 3
+    },
+    "surrogate_minus_existing_replicate_cosine": {
+      "mean": 0.7908151450824894,
+      "lower95": 0.7689535697287577,
+      "upper95": 0.8267206274922937,
+      "n_seeds": 3
+    }
+  },
+  "crossfit_half_means_coupled_not_independent_replicates": true,
+  "surrogate_is_biased_not_ground_truth": true,
+  "RAM_research_peak_rss_bytes": 594030592,
+  "RAM_research_peak_commit_bytes": 994041856,
+  "research_seconds": 159.04555759999494,
+  "live_ram_bytes": 57761792,
+  "llama_server_process_count": 0,
+  "new_AGY_or_Qwen_call": false,
+  "reason_no_new_teacher_call": "The readonly signal question uses existing actual publictraininginputs, ninecheckpoints and verified95Qwenreferences; no missing data to generate.",
+  "ponytail": "No matching tools available in this session",
+  "goal_completion_audit": {
+    "full_goal_complete": false,
+    "normal_main_conversation": false,
+    "normal_photo_vision": false,
+    "lifelong_retention_gate": false,
+    "remaining": "Effective local representation/credit learning, readout stability and image-language grounding remain unresolved; this audit is diagnostic evidence, not a quality improvement."
+  }
+}

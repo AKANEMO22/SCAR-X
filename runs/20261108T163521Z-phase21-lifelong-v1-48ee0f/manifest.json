@@ -1,0 +1,109 @@
+{
+  "run_id": "20261108T163521Z-phase21-lifelong-v1-48ee0f",
+  "protocol": "phase21-lifelong-v1",
+  "created_utc": "2026-11-08T16:35:21.221273+00:00",
+  "config": {
+    "protocol": "phase21-v1",
+    "development_seeds": [
+      71,
+      73,
+      79
+    ],
+    "confirmation_seeds": [
+      101,
+      127,
+      149,
+      173,
+      197,
+      223,
+      251,
+      277
+    ],
+    "hidden": 48,
+    "fan_in": 8,
+    "plastic_rows": 12,
+    "representation_tasks": [
+      "xor",
+      "order",
+      "binding"
+    ],
+    "representation_train": 512,
+    "probe_train": 128,
+    "test_examples": 256,
+    "continual_stages": 20,
+    "new_per_stage": 64,
+    "replay_per_stage": 32,
+    "replay_capacity": 128,
+    "retention_test_per_context": 64,
+    "local_rules": [
+      "readout",
+      "stdp",
+      "score",
+      "score_meta"
+    ],
+    "replay_policies": [
+      "none",
+      "reservoir",
+      "balanced"
+    ],
+    "consolidations": [
+      "none",
+      "ema",
+      "meta"
+    ],
+    "learning_gain": 0.1,
+    "representation_gain": 0.05,
+    "minimum_accuracy": 0.65,
+    "forgetting_mean_max": 0.03,
+    "forgetting_worst_max": 0.05,
+    "retention_improvement": 0.05,
+    "acquisition_noninferiority": 0.03,
+    "ram_limit": 2000000000,
+    "max_seconds": 10800
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "dependencies": {
+    "numpy": "2.4.6",
+    "psutil": "7.2.2"
+  },
+  "source_sha256": {
+    "src/scarx/__init__.py": "82925ed7c9a0ec33b9f387f187c4db456e63d56665f04e751fb671274127d097",
+    "src/scarx/__main__.py": "cdb69404134e0a8ed7f383003b4bf02ff614498aac7c3d881e95c148c84bb23f",
+    "src/scarx/evaluation/__init__.py": "839abc76fb3b9625f2595e2a2da6ad6821e31011c59bbf557a4b835c0f90362a",
+    "src/scarx/evaluation/audit21.py": "afcf9766c535ad33f838faa14d7faee11aa2f79fdd5c868292c7ef222a614e38",
+    "src/scarx/evaluation/benchmark.py": "6015f66af4c2bd138ef73ceab34a300472fd05aaa21e30611576208acdf00bc9",
+    "src/scarx/evaluation/controls.py": "8037d7366cbca1d5d606c1260bd873a0b88e6332df5bfd19e065cab1847b69fa",
+    "src/scarx/evaluation/lifelong21.py": "3e520cffb5fd01df39812062f6475ada44526a476a8e1cc62bec2ed7cfe49ca5",
+    "src/scarx/evaluation/phase21.py": "186e9dfb8ae2e46436f9092a76c07f7577e94900f645062b15003b8c86441e2a",
+    "src/scarx/evaluation/runs.py": "bf2d1476f0b0931e70e20342cb347842052f5308f5bc685b4cb0a1fc462f09c1",
+    "src/scarx/evaluation/tasks.py": "0d0e5c689abac014807f78087bc731e8048a6d304ebfa1079c0c68d559aa8991",
+    "src/scarx/evaluation/tasks21.py": "60ef420b89fc331cdd0a38da3356eea9bf91862bf5d24ac947dfc6344bc6f6fc",
+    "src/scarx/interfaces/__init__.py": "f33650153eed3eae90bf206c215f5572a60f79f1bd16429dba6f5b188255223b",
+    "src/scarx/interfaces/cli.py": "c8a7ffe08d28295b2c022fa9e43701116856bf61eb95ab24b4417076645e502c",
+    "src/scarx/interfaces/text.py": "b4e1b2fdfcd5eac853e883d1b1e463fb33ca0a7fc3cdb1900efdfdaf2b3a9772",
+    "src/scarx/learning/__init__.py": "f854f5911fe4f3f00b29e31c9058c59d7380e6426005894554c078d0a87a286d",
+    "src/scarx/learning/controller.py": "53637966f48ce92be84ca050402596d0ad4fffffb52e1d40e60ce3ffffbd61f1",
+    "src/scarx/learning/lifelong.py": "105737a99bf9c489e87431aa161b58e4a746bb8addc89d5f16f08b033d6c78c7",
+    "src/scarx/learning/replay.py": "25ec4d659ea959e978e7ce934aa9392db0773b165531c326a00e856592214840",
+    "src/scarx/memory/__init__.py": "7b64dc39777f2b4f9e2b5cf2b07cfa11e82351ef9bd5401a3917a904a1c79c97",
+    "src/scarx/memory/store.py": "e7f8adcc636670167381a560a365c74ab58e1b67629fce35eb53890970429fd2",
+    "src/scarx/neural/__init__.py": "96ff72c593b2bcfea83b22a3c502b31c549c8749a0caabe3fef3108e0f842bc0",
+    "src/scarx/neural/checkpoint.py": "9f1fa1db415ff186913b06c33f7742539e447b37df11fcbf51a4bd86c4a8b72b",
+    "src/scarx/neural/core.py": "50b10924521f0613015ac14ffa5085b8913d6480f37bbfc57900febb70c7813a",
+    "src/scarx/neural/plasticity.py": "f2d165e5cd4596bc3663ede22e11c24108b19742c8a41616f9eede925ef8d96d",
+    "src/scarx/runtime/__init__.py": "dd6b1d7bf835b984b10a9533209235e40a324acd8505142fc6adbc917433d6dc",
+    "src/scarx/runtime/native.py": "84ece39b46122a772c4c71705b81be3abefdee0e786925183e80a9a3e9feadec",
+    "src/scarx/runtime/resources.py": "600188897c934ec124195a25d121a7c8c26019597e704f8edaae7a5bb111c6f7",
+    "native/core.cpp": "90328653284a7c916356caed2ee855bad51686f5c0fb2800a619f2f22d8b15ab",
+    "configs/environment-tested.txt": "6587d77270171df973e4ec8b976df0d0c1627957c6eb37b89d2cd879afa93e2c",
+    "configs/phase2.json": "ee7fba1bd8892b0ce569853d482257f14db51df08aa69932c531cdcc54d031f5",
+    "configs/phase21.json": "d7027b97e77a7ef0f0bddfe0d2b3807e7a795744c8ce5843015e210142c2d36c",
+    "experiments/bptt-control-v1.md": "5680462f769fb0bd686dc8739374e2472cf2a5e6d596524d46bdcc6329640c78",
+    "experiments/phase2-v1.md": "6830bec3fbcc943211fc12428462ed257356ef43b64bd6e1c256e8e4a8a42b65",
+    "experiments/phase21-lifelong-amendment.md": "3636402f6ed4a81969384b04e3b79a8cc55ffc09143c75ce75bf82844155b54b",
+    "experiments/phase21-v1.md": "68b6b94b36a33962807636fc164952f74fa846e6817c84593338f4ced657ffc4",
+    "experiments/runtime-smoke-v1.md": "a71ebe3b7a4b7de8376ed3b8e6660b6fa072b6e05ea7a6fb51e013478770bd4c"
+  },
+  "data": "synthetic-tasks-v1; no downloaded/private data"
+}

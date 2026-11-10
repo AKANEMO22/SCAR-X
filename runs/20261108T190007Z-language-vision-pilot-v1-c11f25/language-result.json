@@ -1,0 +1,367 @@
+{
+  "train_examples": 48,
+  "development_examples": 16,
+  "test_examples": 16,
+  "selected_checkpoint": "artifacts\\language-vision-pilot-v1\\20261108T190007Z-language-vision-pilot-v1-c11f25\\language\\epoch-004",
+  "selected_dev": {
+    "loss": 2.1947102293185217,
+    "token_accuracy": 0.6097560975609756,
+    "exact": 0.0625,
+    "outputs": [
+      {
+        "prompt": "xin chào scar-x",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Bạn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "chào buổi chiều",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Chào bạn, tôi là scar-x.",
+        "stopped": true,
+        "exact": true
+      },
+      {
+        "prompt": "bạn có tên là gì",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "Bạn, tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tự giới thiệu đi",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "Tôi",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cảm ơn scar-x",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Bạn, tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi cảm ơn bạn",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Bạn, tôi là",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tạm biệt nhé",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Bạn,",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi phải đi rồi",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "câu trả lời có thể sai không",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "bạn thông minh chưa",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "Bạn, tôi bằng ví",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cách dạy scar-x",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": "Bạn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi sẽ dạy bạn",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": "Bạn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "hãy xem ảnh",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Bạn hãy gửi ảnh tôi tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi muốn bạn nhận dạng hình",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "giúp tôi làm bài khó",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Tôi",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "trả lời câu hỏi khó",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      }
+    ]
+  },
+  "test": {
+    "loss": 2.1896903296200123,
+    "token_accuracy": 0.5853658536585366,
+    "exact": 0.0,
+    "outputs": [
+      {
+        "prompt": "chào bạn",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Bạn,",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "xin chào nhé",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Bạn, tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cho tôi biết tên của bạn",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "Bạn, tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "ai đang trả lời tôi",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cám ơn bạn nhiều",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Tôi là scar-x, tôi bạn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cảm ơn vì đã trả lời",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Bạn, tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "hẹn bạn lần sau",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "bái bai",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Bạn, tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "bạn có chắc là đúng",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "Tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "có nên tin mọi câu bạn nói",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "Tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi dạy cho bạn nhé",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": "Bạn, bạn, một mạng neuron đang học.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi có thể đưa ví dụ để bạn học",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": "Tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "bạn hãy nhìn hình giúp tôi",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Bạn, tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "phân tích bức ảnh nhé",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Bạn, tôi là scar-x.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "ai thắng trận bóng hôm nay",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Bạn, tôi.",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "hãy giải thích điều bạn chưa học",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Tôi là scar-x",
+        "stopped": true,
+        "exact": false
+      }
+    ]
+  },
+  "initial_dev": {
+    "loss": 3.779509535692634,
+    "token_accuracy": 0.03048780487804878,
+    "exact": 0.0,
+    "outputs": [
+      {
+        "prompt": "xin chào scar-x",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Hẹn ảnh hẹn hẹn đúng mạng dụ hẹn hẹn đúng mạng dụ hẹn ảnh hẹn hẹn hẹn hẹn dụ hẹn tục tục dạy hẹn hẹn nhận ảnh hẹn nhận hẹn ơn dạy",
+        "stopped": false,
+        "exact": false
+      },
+      {
+        "prompt": "chào buổi chiều",
+        "target": "chào bạn, tôi là scar-x.",
+        "generated": "Đang hẹn ảnh bằng dạng bằng dạng dụ hẹn dạng dụ hẹn hẹn dạng dạy bằng hẹn hẹn, hẹn ảnh tục",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "bạn có tên là gì",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "Dụ hẹn nhận bằng dạng ơn bằng dạng nhận bằng dạng bằng dạng nhận bằng dạng ơn hẹn, hẹn đúng ơn nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tự giới thiệu đi",
+        "target": "tôi là scar-x, một mạng neuron đang học.",
+        "generated": "Hẹn dạy dạng dạy bằng dạng dạng dạy tục dạy bằng dạy lời dạy lời dạy lời dạy nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cảm ơn scar-x",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Hẹn hẹn hẹn hẹn hẹn hẹn hẹn hẹn nhận hẹn hẹn bạn hẹn nhận hẹn hẹn hẹn dạy hẹn hẹn nhận hẹn hẹn hẹn hẹn nhận hẹn nhận hẹn dạy hẹn nhận",
+        "stopped": false,
+        "exact": false
+      },
+      {
+        "prompt": "tôi cảm ơn bạn",
+        "target": "cảm ơn bạn, tôi sẽ tiếp tục học.",
+        "generated": "Hẹn, hẹn chào ơn hẹn nhận ơn hẹn chào ơn chào gửi gửi hẹn dạy hẹn chào ơn nhận ơn là hẹn nhận ơn ơn hẹn nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tạm biệt nhé",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Hẹn,, hẹn hẹn dạng, hẹn, hẹn hẹn, hẹn ảnh ơn. hẹn, hẹn, hẹn, hẹn, hẹn ảnh nhận, hẹn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi phải đi rồi",
+        "target": "tạm biệt bạn, hẹn gặp lại.",
+        "generated": "Hẹn hẹn hẹn hẹn, hẹn, hẹn hẹn hẹn, dạng tạm hẹn hẹn hẹn bạn hẹn hẹn hẹn, hẹn hẹn, hẹn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "câu trả lời có thể sai không",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "Hẹn, hẹn ảnh hẹn, hẹn hẹn hẹn hẹn hẹn dạy hẹn ảnh tục hẹn hẹn hẹn hẹn hẹn ảnh tục hẹn hẹn, hẹn ảnh đúng dạng bạn hẹn hẹn",
+        "stopped": false,
+        "exact": false
+      },
+      {
+        "prompt": "bạn thông minh chưa",
+        "target": "tôi đang học và có thể trả lời sai.",
+        "generated": "Hẹn, hẹn, hẹn hẹn, hẹn, hẹn hẹn hẹn hẹn hẹn hẹn, hẹn hẹn hẹn hẹn dạy hẹn hẹn nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "cách dạy scar-x",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": ", hẹn, nhận, hẹn nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi sẽ dạy bạn",
+        "target": "bạn có thể dạy tôi bằng ví dụ đúng.",
+        "generated": "Nhận dạng nhận dạng đúng dạng đúng dạy hẹn nhận ảnh nhận dạng dụ ảnh nhận dạng hẹn nhận",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "hãy xem ảnh",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Biệt hẹn dụ hẹn dụ hẹn dụ hẹn dạng mạng là bạn hẹn",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "tôi muốn bạn nhận dạng hình",
+        "target": "bạn hãy gửi ảnh để tôi thử nhận dạng.",
+        "generated": "Hẹn, hẹn chưa dạng tạm biệt hẹn chưa dạng tạm",
+        "stopped": true,
+        "exact": false
+      },
+      {
+        "prompt": "giúp tôi làm bài khó",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Hẹn bằng biết gửi gửi gửi gửi gửi bạn hẹn dụ hẹn bằng sẽ chào bằng sẽ hẹn bằng dạy bằng dạy thể bằng sẽ gửi bạn bằng sẽ gửi bạn hẹn",
+        "stopped": false,
+        "exact": false
+      },
+      {
+        "prompt": "trả lời câu hỏi khó",
+        "target": "tôi chưa biết, bạn hãy dạy tôi.",
+        "generated": "Hẹn dạy cảm bằng dạng hẹn dạy hẹn dạy hẹn hẹn dạy dụ dạy hẹn dạy hẹn bạn hẹn dạy hẹn dạy hẹn ảnh tục dạy hẹn dạy và hẹn dạy hẹn",
+        "stopped": false,
+        "exact": false
+      }
+    ]
+  },
+  "limited_chat_candidate_pass": false,
+  "restart_equal": true,
+  "seconds": 2.452999999994063,
+  "note": "Autoregressive word output from weights, no target lookup; finite vocabulary and eight authored families. Not normal open-ended chat."
+}

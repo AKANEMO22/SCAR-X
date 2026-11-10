@@ -1,0 +1,578 @@
+# G1 optional surface normalization acceptance
+
+Original rehearsal failures unchanged; actual inference only, personalguards match pre-existing runtime policy. No training or automaticdeployment.
+
+{
+  "run": "runs/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73",
+  "source_run": "runs/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d",
+  "decision": "SURFACE_SCREEN_FAILED_KEEP_LIVE",
+  "conditions": [
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1701,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.873015873015873,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9206349206349206,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.873015873015873,
+          "antigravity": 0.10416666666666667,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9206349206349206,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1701-surface0.zip",
+      "candidate_sha256": "c6311706e268c13e71273c16f65f7c88a4265ed191007a7ef2e70eca0b2854b0",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 6.668326699997124
+    },
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1701,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.873015873015873,
+          "antigravity": 0.20833333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9206349206349206,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.873015873015873,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9206349206349206,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1701-surface1.zip",
+      "candidate_sha256": "36fa41d47fed5a29658b95386ec9c4bc4af05da7cf69ccfc9a2f2437a16e50e1",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 9.931834299997718
+    },
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1709,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 2,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1709-surface0.zip",
+      "candidate_sha256": "f600aa874b4144bba86e31311ebb6aeb8f42830fabb6b3bc361204edbb3f6312",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 13.364548999998078
+    },
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1709,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 5,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1709-surface1.zip",
+      "candidate_sha256": "4fe1c54657eaf69b69fe4ee72f9c63f0fd581e8808adafe2995bd237ab699922",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 16.683442399997148
+    },
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1721,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.873015873015873,
+          "antigravity": 0.10416666666666667,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9365079365079365,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.873015873015873,
+          "antigravity": 0.10416666666666667,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9365079365079365,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1721-surface0.zip",
+      "candidate_sha256": "af25580924156dec202a7f7581a1bafbadf5195fcfda98298796326f3318fc23",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 19.98714430000109
+    },
+    {
+      "mode": "readout",
+      "curriculum_order_seed": 1721,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.873015873015873,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9365079365079365,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.873015873015873,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9365079365079365,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/readout-1721-surface1.zip",
+      "candidate_sha256": "7d92bbb9897b0a7d4438cdca6fd6a0b657be6090016fdd14ce4a4be5986f471e",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 23.253715400001965
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1701,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8571428571428571,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1701-surface0.zip",
+      "candidate_sha256": "5b02773894339ea3eae77a4ac83b2180ed731164a13d9e1c161e74a3454c7997",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 26.518196099998022
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1701,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.20833333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8571428571428571,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.20833333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1701-surface1.zip",
+      "candidate_sha256": "f7d50e92231e86171c96c09397f95771dbea99db93e093414ce5cb22f86ddbcd",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 29.802817799994955
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1709,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.7777777777777778,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 2,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8095238095238095,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1709-surface0.zip",
+      "candidate_sha256": "2b75fa52222b452c483bbb9cc254a7f61aae7d75b884f847b25a2a6a39f6a719",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 33.02905539999483
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1709,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.7777777777777778,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 5,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8095238095238095,
+          "antigravity": 0.10416666666666667,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.8888888888888888,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1709-surface1.zip",
+      "candidate_sha256": "77f5fc69b39b3792ec2dd6f9002dd00f3f0948ab392de25dc9d7cbb80f465865",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 36.3019157000017
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1721,
+      "surface_normalization": false,
+      "states": {
+        "savedstate": {
+          "known": 0.8253968253968254,
+          "antigravity": 0.125,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.1875,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.14583333333333334,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 0,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1721-surface0.zip",
+      "candidate_sha256": "4fb98717e5e37341df24023f57981185613217f7d57ebaa2a2426c206d6cabe4",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 39.62059059999592
+    },
+    {
+      "mode": "full",
+      "curriculum_order_seed": 1721,
+      "surface_normalization": true,
+      "states": {
+        "savedstate": {
+          "known": 0.8253968253968254,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "silent_idle": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "public_idle_probes": {
+          "known": 0.8412698412698413,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        },
+        "canonicalreset": {
+          "known": 0.9047619047619048,
+          "antigravity": 0.16666666666666666,
+          "source_antigravity": 0.0,
+          "lost_personal_runtime_guards": 3,
+          "pass": false
+        }
+      },
+      "screen_pass": false,
+      "lost_old_correct_digits": 0,
+      "digit_accuracy": 0.8125,
+      "weights_unchanged_from_rehearsal": true,
+      "candidate_private_path": "local/g1-surface-acceptance/20261109T163011Z-g1-terminal-surface-acceptance-v1-bf1b73/full-1721-surface1.zip",
+      "candidate_sha256": "46dd70c7f8653ec795f3f5b3b3c080be231259713bab14631a512b99f3dc0c66",
+      "original_source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+      "original_source_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/source-model.zip",
+      "elapsed_seconds": 43.10781909999787
+    }
+  ],
+  "all_order_passes": {
+    "readout": false,
+    "full": false
+  },
+  "selected": null,
+  "terminal_punctuation_overlap_cases": [
+    "greeting_vi_01",
+    "greeting_en_01",
+    "identity_04",
+    "identity_05"
+  ],
+  "terminal_punctuation_overlap_count": 4,
+  "original_rehearsal_failure_rewritten": false,
+  "old_strict_token_metrics_unchanged": true,
+  "personal_runtime_normalization_existed_before_this_run": true,
+  "new_training": false,
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "lifelong_P2_pass": false,
+  "resources": {
+    "peak_rss_bytes": 187715584,
+    "peak_commit_or_vms_bytes": 151920640,
+    "os_process_peak_working_set_bytes": 193650688,
+    "os_process_peak_pagefile_commit_bytes": 158326784,
+    "samples": 366,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 39.612012200006575,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  }
+}

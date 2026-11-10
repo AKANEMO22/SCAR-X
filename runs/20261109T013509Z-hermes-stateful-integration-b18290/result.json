@@ -1,0 +1,115 @@
+{
+  "nonstream": {
+    "real_agent_initialized": true,
+    "stream_requested": false,
+    "host_context_buffer": 4096,
+    "neural_context_capacity_claim": null,
+    "stateful_chat": true,
+    "tools": 0,
+    "calls": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          }
+        ],
+        "tools": null,
+        "model": "scarx-generation1",
+        "stream": null
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "chào bạn"
+          }
+        ],
+        "tools": null,
+        "model": "scarx-generation1",
+        "stream": null
+      }
+    ],
+    "responses": [
+      "Hello",
+      "Chào bạn."
+    ],
+    "ledger_user_messages": [
+      "hi",
+      "chào bạn"
+    ],
+    "elapsed_seconds": 1.2810000000008586,
+    "scarx_neural_code_modified": false,
+    "created_utc": "2026-11-09T01:32:05.165982+00:00"
+  },
+  "stream": {
+    "real_agent_initialized": true,
+    "stream_requested": true,
+    "host_context_buffer": 4096,
+    "neural_context_capacity_claim": null,
+    "stateful_chat": true,
+    "tools": 0,
+    "calls": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          }
+        ],
+        "tools": null,
+        "model": "scarx-generation1",
+        "stream": true
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "chào bạn"
+          }
+        ],
+        "tools": null,
+        "model": "scarx-generation1",
+        "stream": true
+      }
+    ],
+    "responses": [
+      "Hello.",
+      "Chào bạn."
+    ],
+    "ledger_user_messages": [
+      "hi",
+      "chào bạn"
+    ],
+    "elapsed_seconds": 1.5310000000008586,
+    "scarx_neural_code_modified": false,
+    "created_utc": "2026-11-09T01:33:59.399852+00:00"
+  },
+  "neural_source_proof": {
+    "unchanged_from_previous_generation1_package": true,
+    "scope": "all neural source files and published joint checkpoint",
+    "sha256": {
+      "artifacts/generation1/20261109T000625Z-generation1-joint-bd6c92/seed-17.checkpoint.zip": "0c1e8bab2c4ca2ec10578bd4ee0e745366ce1f0b483b4b72b418e09fc5fe10a1",
+      "src/scarx/neural/__init__.py": "96ff72c593b2bcfea83b22a3c502b31c549c8749a0caabe3fef3108e0f842bc0",
+      "src/scarx/neural/checkpoint.py": "98dc63d7cb0ce74b7502d4ac7ef97d8ccedb44873d58b4b881c62944397d056b",
+      "src/scarx/neural/core.py": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "src/scarx/neural/language.py": "8c002be9d334aa968f77ab435b501db0ab2c74048cc36bfff53ba4b8d0f9ab52",
+      "src/scarx/neural/plasticity.py": "76787db2267db94a879d585db5af9a30b32580aede0c97b08b4c551c68733544",
+      "src/scarx/neural/unified.py": "f50bcc148297c51f9522d7ecc4293c3d774227b3b9e15c284e123a43306ac3a1"
+    }
+  },
+  "hermes_changed_source_hashes": {
+    "agent/agent_init.py": "e245912deaa8cb3b39dd77bdec7e10d18ba3836d1942df1bacb10496da7b3afd",
+    "agent/conversation_loop.py": "5943d9a541e751dd8dccb68a449a3043757a451213c9df29d8aafecef0d44f1e",
+    "agent/stateful_chat.py": "cdc4421116084c95d0a8d0d0f2f3c5c9378106b6b72eb021e6580094e1406929",
+    "agent/system_prompt.py": "e5ffcbed78c30465b2c37596cb904312fa7e2b3b5d983b8aba7d6ab17f124348",
+    "agent/title_generator.py": "ec3c34d0259138c69765f480d909fef45e3b45614d3b9b8a0d60945bb380e931",
+    "agent/turn_request_assembly.py": "21f5fb9db155f983c13b9439623c6d07d4c1a9c2899350ffcdb0dba7185d4afd",
+    "hermes_cli/config_providers.py": "f419a66146ad9aac7fdea0606ec157ac0fe27634e1573268adb6bd33e0a9107b",
+    "tests/agent/test_stateful_chat.py": "7bc54ef7868926f450e1609eec6168f22f49bbf0e3381bb36fddca1a8ce34ff7"
+  },
+  "desktop_backend_reload_required": true,
+  "desktop_live_ui_success_claim": false,
+  "memory_suite": "proposed, not measured",
+  "historical_research_criteria": "unchanged"
+}

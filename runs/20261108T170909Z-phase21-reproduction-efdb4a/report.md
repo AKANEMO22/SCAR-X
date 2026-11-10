@@ -1,0 +1,22 @@
+# Phase2.1 reproducibility
+
+```json
+{
+  "source_hashes_ok": true,
+  "statistics_recomputed": true,
+  "replications": [
+    {
+      "budget": "updates",
+      "seed": 101,
+      "same_accuracy_matrix": true,
+      "updates": 1920
+    },
+    {
+      "budget": "time",
+      "seed": 101,
+      "same_accuracy_matrix": true,
+      "updates": 1823
+    }
+  ]
+}
+```

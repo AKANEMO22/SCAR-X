@@ -1,0 +1,27 @@
+# Actual Antigravity visual-question wording
+
+Publiccontract only; no sceneanswers or privateinputs; candidate requires semanticreview. No modeltraining or proposal30approval.
+
+{
+  "run": "runs/20261109T215349Z-antigravity-vision-questions-v1-bfbd17",
+  "data": "data/candidates/20261109T215349Z-antigravity-vision-questions-v1-bfbd17/questions.json",
+  "decision": "VISION_QUESTIONS_READY_FOR_SEMANTIC_REVIEW",
+  "teacher": "gemini-3.8-flash-low",
+  "items": 32,
+  "sha256": "ff579750f952092816a507fbb2fc077d2153204a9df46cf9a3a60cbc20dfd0df",
+  "seconds": 16.02559229999315,
+  "native_finish_count": 0,
+  "usage": {
+    "input_tokens": 14572,
+    "output_tokens": 1317,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 0,
+    "total_tokens": 15889
+  },
+  "trained": false,
+  "validation_pending": true,
+  "automatic_learning_allowed": false,
+  "private_content_sent": false,
+  "teacher_answers_used": false,
+  "proposal30_approved": false
+}

@@ -1,0 +1,122 @@
+{
+  "source": "synthetic:antigravity + explicit Codex editorial curation",
+  "model": "gemini-3.8-flash-low",
+  "created_utc": "20261109T094142Z",
+  "parent_directory": "data/candidates/antigravity-events-repair-20261109T093620Z",
+  "parent_sha256": "a6672d5fead4d1e15dd0656ec8f3c88071868c29fe48079db0abbcb099269a44",
+  "sha256": "5c90d557ffddfa4c823c6ba3187784814f32d7c35540593e546992a611fbf665",
+  "content_review": {
+    "reviewer": "Codex",
+    "scope": "Read every six-turn public dialogue; no independent factual-truth certification",
+    "edits": [
+      {
+        "dialogue_id": "b1-03",
+        "turn": 3,
+        "before": "Tôi có thể giải thích nội dung này.",
+        "after": "Bạn gửi nội dung cần giải thích nhé.",
+        "reason": "Request missing source text instead of promising an explanation without seeing it"
+      },
+      {
+        "dialogue_id": "b2-dialog-03",
+        "turn": 3,
+        "before": "Tôi có thể tóm tắt tại đây.",
+        "after": "Bạn gửi nội dung tài liệu nhé.",
+        "reason": "Request the missing report, no assumed access to yesterday file"
+      },
+      {
+        "dialogue_id": "b2-dialog-08",
+        "turn": 1,
+        "before": "Yes, I hear you clearly.",
+        "after": "Yes.",
+        "reason": "Text-only acknowledgement; do not train unsupported auditory perception claim"
+      },
+      {
+        "dialogue_id": "b3-d07",
+        "turn": 1,
+        "before": "Yes, that was my mistake.",
+        "after": "Thank you. Please give the time.",
+        "reason": "No invented admission about a prior answer absent from the dialogue"
+      },
+      {
+        "dialogue_id": "b1-07",
+        "turn": 5,
+        "before": "You are welcome anytime.",
+        "after": "You are welcome.",
+        "reason": "Common short response vocabulary; same conversational intent"
+      },
+      {
+        "dialogue_id": "b1-10",
+        "turn": 3,
+        "before": "Please review each item carefully.",
+        "after": "Please review the list.",
+        "reason": "Short direct instruction without extra unique vocabulary"
+      },
+      {
+        "dialogue_id": "b4-d10",
+        "turn": 2,
+        "before": "No, it has three sides.",
+        "after": "So it has three sides?",
+        "reason": "Original repair made user disagree with a correct answer; use a coherent follow-up"
+      },
+      {
+        "dialogue_id": "b4-d10",
+        "turn": 3,
+        "before": "That is correct, three sides.",
+        "after": "That is correct.",
+        "reason": "Confirm the grounded geometry statement concisely"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 0,
+        "before": "Màu cam do đỏ và xanh tạo thành?",
+        "after": "Tôi chọn màu đỏ.",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 1,
+        "before": "Không đúng, màu cam từ đỏ và vàng.",
+        "after": "Tôi đã ghi nhận.",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 2,
+        "before": "Sai rồi, phải là đỏ và vàng.",
+        "after": "Đổi thành màu vàng.",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 3,
+        "before": "Đúng rồi, đỏ và vàng tạo màu cam.",
+        "after": "Màu bạn chọn là vàng.",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 4,
+        "before": "Lần sau chú ý hơn nhé.",
+        "after": "Tôi đang chọn màu nào?",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      },
+      {
+        "dialogue_id": "b4-d04",
+        "turn": 5,
+        "before": "Tôi hiểu rồi.",
+        "after": "Màu vàng.",
+        "reason": "Replace ambiguous pigment/light mixing correction with an explicit in-dialogue preference update"
+      }
+    ],
+    "remaining_limits": [
+      "exact-match text style has multiple valid answers",
+      "template IDs do not rule out semantic near-duplicates",
+      "neural memory/unlimited recall not established",
+      "no live auto-import"
+    ]
+  },
+  "target_vocabulary_tokens": 194,
+  "data_contract": "data/contracts/ANTIGRAVITY_DIALOGUE_EVENTS_V1.md",
+  "trained": false,
+  "independently_verified": false
+}

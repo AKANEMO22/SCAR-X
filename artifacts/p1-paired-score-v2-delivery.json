@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-11-09T13:54:52.032149+00:00",
+  "source_run": "runs/20261109T131841Z-p1-paired-score-v2-0dc401",
+  "audit_run": "runs/20261109T134107Z-paired-score-technical-attribution-cac3b6",
+  "decision": "GO_P2_RESEARCH_ONLY",
+  "primary_representation_gate": true,
+  "confirmation_seeds_per_task": 8,
+  "screen_trials": 108,
+  "confirmation_trials": 120,
+  "cold_continuations": 24,
+  "all_cold_exact": true,
+  "tests": {
+    "full_suite_passed": 129,
+    "includes_native_baseline_parity": true,
+    "latest_observer_checks": 5
+  },
+  "ui_verified": {
+    "running_job_and_measured_loss_seen": true,
+    "final_CI_and_failing_binding_seen": true,
+    "passive_follow": true,
+    "terminal_dom_rebuild_avoided": true
+  },
+  "live": {
+    "model": "scarx-generation1",
+    "cores_loaded": 1,
+    "hidden": 128,
+    "updates": 241347,
+    "ram_bytes": 59682816,
+    "commit_bytes": 43081728,
+    "memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  "fresh_live_inference": {
+    "public_case": "b1-09:0",
+    "generated": "Tạm",
+    "quality_claim": false,
+    "weight_learning": false,
+    "context_scope": "latest user text only; archived Qwen full prefix reference retained"
+  },
+  "qwen_server_process_count": 0,
+  "proof_screenshot_sha256": "574561f29c54e286fd70c76bbb099c6bf070c0bfd2626eb9f9a9f9b189fcd87b",
+  "goal_audit": {
+    "full_goal_complete": false,
+    "P1_registered_narrow_gate": "achieved on order/XOR; binding fails; no broad novel-combination or language claim",
+    "normal_chat": "not achieved; new core is D8/O2 diagnostic, never integrated into generation; fresh serving response below is not certification",
+    "normal_vision": "not achieved; serving scope digits only; no new learned image-language capability",
+    "continual_learning_retention": "not established for this rule; P2 acquisition>=65 plus meanforgetting<=3/worst<=5 still required",
+    "experience_to_skill": "not established beyond narrow controlled tasks",
+    "antigravity_cli_data": "prior actual generated curated corpus kept, no fabricated new generation or bulk import",
+    "qwen_comparison": "prior actual archived references retained, not a proxy, not a truth oracle; no fabricated Qwen on tensor tests",
+    "plan_fidelity": "master1.13, preregistered final score-family adjustment; stopped other families preserved, no scaling",
+    "main_no_backward": "preserved; local rule uses score eligibility and scalar return only; Torch controls isolated",
+    "next_required_work": "P2 readout stability/retention and binding/generalization under existing gates, then real language/vision capabilities; no third score-family tuning"
+  },
+  "ponytail_available": false
+}

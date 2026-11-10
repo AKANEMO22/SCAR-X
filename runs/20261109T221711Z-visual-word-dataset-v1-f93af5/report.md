@@ -1,0 +1,20 @@
+# Owned jointvisualword dataset
+
+Fixedcompositions/geometry/question split, all192renderedimages validated, no neuraltraining or teacheranswers.
+
+{
+  "run": "runs/20261109T221711Z-visual-word-dataset-v1-f93af5",
+  "data": "data/candidates/20261109T221711Z-visual-word-dataset-v1-f93af5/dataset.json",
+  "sha256": "0fb04abefe67451952a2d73634fded9c86243d5874356d68299ff047deecf6a2",
+  "decision": "VISUAL_WORD_DATASET_READY_FOR_PREREGISTERED_PILOT",
+  "train_scenes": 96,
+  "development_scenes": 96,
+  "train_cases": 864,
+  "development_cases": 864,
+  "development_novel_composition_cases": 720,
+  "exact_image_hash_overlap": 0,
+  "new_teacher_call": false,
+  "trained": false,
+  "proposal30_approved": false,
+  "seconds": 1.9163600000028964
+}

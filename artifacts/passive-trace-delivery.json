@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-11-09T12:27:05.439337+00:00",
+  "scope": "passive observatory + actual serving inference/learning acceptance",
+  "run": "runs/20261109T121810Z-live-observatory-acceptance-v1-c2c5b7",
+  "requires_viewer_to_select_or_start": false,
+  "poll_starts_model_or_training": false,
+  "observed_answers": 25,
+  "observed_learning_events_with_loss": 20,
+  "controller": {
+    "accepted": 56,
+    "rejected": 93,
+    "queued": 0,
+    "updates": 241347
+  },
+  "learning_source": "Existing explicit lesson channel, unchanged local rule and guard; subsequent idle review is actual learning",
+  "qwen": "Actual archived Qwen3-4B outputs with source timestamp; no Qwen process running",
+  "scope_difference": "Serving receives latest user text, archived Qwen used full prefixes; no equal-condition comparison claim",
+  "software_tests": {
+    "passed": 119,
+    "includes_existing_native_baseline_parity": true,
+    "new_algorithm_training": false
+  },
+  "live": {
+    "models": [
+      "scarx-generation1"
+    ],
+    "cores_loaded": 1,
+    "idle_advances": true,
+    "idle_updates_delta": 0,
+    "idle_weight_learning": true,
+    "ram_bytes": 58138624,
+    "memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "trace_capacity": 256,
+    "llama_server_process_count": 0
+  },
+  "screenshots": {
+    "passive-answer-trace.png": "612f2bd30aec4763c5d1d7be36539dea2515783120efc43da3096db6fbc618f2",
+    "passive-learning-trace.png": "6eaf1ef00af01e9e7ab88d1e58b46c6fe0dce0acf9becef92b0895df522ad0b4"
+  },
+  "goal_audit": {
+    "full_goal_complete": false,
+    "normal_conversation": "not achieved; fresh greeting generated only a short incorrect fragment",
+    "normal_photo_understanding": "not achieved; serving vision limited to digits",
+    "antigravity_data": "generated and evaluated in previous actual experiments; not factual oracle",
+    "qwen_comparison": "archived measurements available; Qwen not serving SCAR-X",
+    "hidden_representation": "not proven; latest local-classifier development gate failed",
+    "retention": "not proven; historical formal gates failed",
+    "next_required_work": "Resolve representation and credit assignment under existing master plan; preserve stop rules and do not scale failed candidates"
+  },
+  "ponytail": "No ponytail tool/plugin found in available tool inventory; followed local AGENTS.md"
+}

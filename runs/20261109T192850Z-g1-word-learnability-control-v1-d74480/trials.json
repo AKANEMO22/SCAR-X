@@ -1,0 +1,428 @@
+[
+  {
+    "seed": 28001,
+    "input_encoding": "legacy",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.9375,
+        "normalized_style_exact": 0.9375,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9910714285714286,
+        "teacher_nll": 0.02151759426856507,
+        "first_token_accuracy": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.25806451612903225,
+        "normalized_style_exact": 0.25806451612903225,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.8071428571428572,
+        "teacher_nll": 0.719306683873559,
+        "first_token_accuracy": 0.5483870967741935
+      },
+      "prior": {
+        "strict_style_exact": 0.7291666666666666,
+        "normalized_style_exact": 0.7291666666666666,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9448908730158729,
+        "teacher_nll": 0.24040934983743653,
+        "first_token_accuracy": 0.7916666666666666
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5706,
+    "hidden_updates": 22824,
+    "numpy_forward_ticks": 1020816,
+    "surrogate_forward_ticks": 1020816,
+    "backward_passes": 22824,
+    "array_bytes": 206514,
+    "max_graph_state_error": 1.9073486328125e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.816226959228516,
+    "hidden_delta_rec": 2.638472080230713,
+    "train_seconds": 229.9466986000043,
+    "seconds": 234.7112718999997,
+    "mean_training_loss": 0.42393816207810137,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28001-legacy.control.zip",
+    "sha256": "6605e316cd91dd58f830beab91102f838bbfb5bdb6c8617c068aca9e4d24e218",
+    "resources": {
+      "peak_rss_bytes": 575787008,
+      "peak_commit_or_vms_bytes": 983597056,
+      "os_process_peak_working_set_bytes": 567250944,
+      "os_process_peak_pagefile_commit_bytes": 982720512,
+      "samples": 2080,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 234.70817030000035,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 747.9224554479733,
+    "cold_exact": true
+  },
+  {
+    "seed": 28001,
+    "input_encoding": "known-digest128-v1",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 1.0,
+        "normalized_style_exact": 1.0,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 1.0,
+        "teacher_nll": 0.004388961658209433,
+        "first_token_accuracy": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.4838709677419355,
+        "normalized_style_exact": 0.4838709677419355,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.8925499231950845,
+        "teacher_nll": 0.5545099953758615,
+        "first_token_accuracy": 0.5483870967741935
+      },
+      "prior": {
+        "strict_style_exact": 0.8541666666666666,
+        "normalized_style_exact": 0.8541666666666666,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9658234126984127,
+        "teacher_nll": 0.12667889628917023,
+        "first_token_accuracy": 0.875
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5706,
+    "hidden_updates": 22824,
+    "numpy_forward_ticks": 1020816,
+    "surrogate_forward_ticks": 1020816,
+    "backward_passes": 22824,
+    "array_bytes": 206514,
+    "max_graph_state_error": 2.86102294921875e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.17943572998047,
+    "hidden_delta_rec": 2.4355030059814453,
+    "train_seconds": 251.00781209999695,
+    "seconds": 255.73816959999385,
+    "mean_training_loss": 0.38703922142969355,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28001-known-digest128-v1.control.zip",
+    "sha256": "fb0bf8f7ef5a153602b35481665979576cade6e2aff19d21877cd0be35f3b56b",
+    "resources": {
+      "peak_rss_bytes": 575406080,
+      "peak_commit_or_vms_bytes": 983576576,
+      "os_process_peak_working_set_bytes": 570597376,
+      "os_process_peak_pagefile_commit_bytes": 982835200,
+      "samples": 2276,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 255.73587699999916,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 255.73816959999385,
+    "cold_exact": true
+  },
+  {
+    "seed": 28019,
+    "input_encoding": "legacy",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.9375,
+        "normalized_style_exact": 0.9375,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9910714285714286,
+        "teacher_nll": 0.017189126635049082,
+        "first_token_accuracy": 0.9375
+      },
+      "development": {
+        "strict_style_exact": 0.3548387096774194,
+        "normalized_style_exact": 0.3870967741935484,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.823195084485407,
+        "teacher_nll": 0.7330616376597824,
+        "first_token_accuracy": 0.6129032258064516
+      },
+      "prior": {
+        "strict_style_exact": 0.7291666666666666,
+        "normalized_style_exact": 0.7291666666666666,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9443452380952381,
+        "teacher_nll": 0.27650734209390343,
+        "first_token_accuracy": 0.7916666666666666
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5628,
+    "hidden_updates": 22512,
+    "numpy_forward_ticks": 1003872,
+    "surrogate_forward_ticks": 1003872,
+    "backward_passes": 22512,
+    "array_bytes": 206514,
+    "max_graph_state_error": 1.9073486328125e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.60436248779297,
+    "hidden_delta_rec": 2.668388843536377,
+    "train_seconds": 248.11697670001013,
+    "seconds": 253.14563660000567,
+    "mean_training_loss": 0.4185599487911754,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28019-legacy.control.zip",
+    "sha256": "de7e903e2fc124258e63f4c5d42976bb47c6fbc62f3f42491c3fbd491bb56883",
+    "resources": {
+      "peak_rss_bytes": 578170880,
+      "peak_commit_or_vms_bytes": 983404544,
+      "os_process_peak_working_set_bytes": 569933824,
+      "os_process_peak_pagefile_commit_bytes": 982679552,
+      "samples": 2262,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 253.1437583000079,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 253.14563660000567,
+    "cold_exact": true
+  },
+  {
+    "seed": 28019,
+    "input_encoding": "known-digest128-v1",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.875,
+        "normalized_style_exact": 0.875,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.975,
+        "teacher_nll": 0.025901836326703977,
+        "first_token_accuracy": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.4838709677419355,
+        "normalized_style_exact": 0.4838709677419355,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.8837173579109063,
+        "teacher_nll": 0.4409694194120255,
+        "first_token_accuracy": 0.5806451612903226
+      },
+      "prior": {
+        "strict_style_exact": 0.75,
+        "normalized_style_exact": 0.75,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9506944444444443,
+        "teacher_nll": 0.14112373958965924,
+        "first_token_accuracy": 0.8541666666666666
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5628,
+    "hidden_updates": 22512,
+    "numpy_forward_ticks": 1003872,
+    "surrogate_forward_ticks": 1003872,
+    "backward_passes": 22512,
+    "array_bytes": 206514,
+    "max_graph_state_error": 2.384185791015625e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.180768966674805,
+    "hidden_delta_rec": 2.5124547481536865,
+    "train_seconds": 239.37162560000434,
+    "seconds": 244.15247140001156,
+    "mean_training_loss": 0.40284775917731763,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28019-known-digest128-v1.control.zip",
+    "sha256": "9718c7dd2116de6b55620bc7545e7cb4a5036e4734487f39e32b26f5e892d82c",
+    "resources": {
+      "peak_rss_bytes": 579321856,
+      "peak_commit_or_vms_bytes": 982650880,
+      "os_process_peak_working_set_bytes": 570802176,
+      "os_process_peak_pagefile_commit_bytes": 981925888,
+      "samples": 2193,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 244.15036820000387,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 244.15247140001156,
+    "cold_exact": true
+  },
+  {
+    "seed": 28027,
+    "input_encoding": "legacy",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.9375,
+        "normalized_style_exact": 0.9375,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9895833333333334,
+        "teacher_nll": 0.013730334264963107,
+        "first_token_accuracy": 0.9375
+      },
+      "development": {
+        "strict_style_exact": 0.45161290322580644,
+        "normalized_style_exact": 0.45161290322580644,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.8563748079877114,
+        "teacher_nll": 0.691586604871172,
+        "first_token_accuracy": 0.5161290322580645
+      },
+      "prior": {
+        "strict_style_exact": 0.7291666666666666,
+        "normalized_style_exact": 0.7291666666666666,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9424107142857142,
+        "teacher_nll": 0.19517140830085164,
+        "first_token_accuracy": 0.7708333333333334
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5632,
+    "hidden_updates": 22528,
+    "numpy_forward_ticks": 1003656,
+    "surrogate_forward_ticks": 1003656,
+    "backward_passes": 22528,
+    "array_bytes": 206514,
+    "max_graph_state_error": 2.384185791015625e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.170734405517578,
+    "hidden_delta_rec": 2.6547746658325195,
+    "train_seconds": 234.81727479999245,
+    "seconds": 239.5478035999986,
+    "mean_training_loss": 0.36563396642715484,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28027-legacy.control.zip",
+    "sha256": "7fd82635387609fb8454a3e16777a66e1d723864010b69e01f3d84d80af33200",
+    "resources": {
+      "peak_rss_bytes": 577015808,
+      "peak_commit_or_vms_bytes": 982478848,
+      "os_process_peak_working_set_bytes": 569516032,
+      "os_process_peak_pagefile_commit_bytes": 981729280,
+      "samples": 2173,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 239.54587970000284,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 239.5478035999986,
+    "cold_exact": true
+  },
+  {
+    "seed": 28027,
+    "input_encoding": "known-digest128-v1",
+    "condition": "full",
+    "method": "isolated_surrogate_bptt",
+    "summary": {
+      "train16": {
+        "strict_style_exact": 0.875,
+        "normalized_style_exact": 0.875,
+        "stopped": 1.0,
+        "teacher_token_accuracy": 0.9791666666666667,
+        "teacher_nll": 0.044425514297368546,
+        "first_token_accuracy": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.3548387096774194,
+        "normalized_style_exact": 0.3548387096774194,
+        "stopped": 0.967741935483871,
+        "teacher_token_accuracy": 0.8626728110599079,
+        "teacher_nll": 0.515482879880407,
+        "first_token_accuracy": 0.5161290322580645
+      },
+      "prior": {
+        "strict_style_exact": 0.7291666666666666,
+        "normalized_style_exact": 0.7291666666666666,
+        "stopped": 0.9791666666666666,
+        "teacher_token_accuracy": 0.9458333333333333,
+        "teacher_nll": 0.15564881957549012,
+        "first_token_accuracy": 0.7916666666666666
+      }
+    },
+    "responses": 1024,
+    "word_target_updates": 5632,
+    "hidden_updates": 22528,
+    "numpy_forward_ticks": 1003656,
+    "surrogate_forward_ticks": 1003656,
+    "backward_passes": 22528,
+    "array_bytes": 206514,
+    "max_graph_state_error": 2.384185791015625e-06,
+    "max_graph_feature_error": 0.0,
+    "hidden_delta_in": 19.66933250427246,
+    "hidden_delta_rec": 2.336900472640991,
+    "train_seconds": 235.62675010001112,
+    "seconds": 240.25778090000676,
+    "mean_training_loss": 0.39234807269014144,
+    "checkpoint": "artifacts/isolated-word-controls/20261109T192850Z-g1-word-learnability-control-v1-d74480/28027-known-digest128-v1.control.zip",
+    "sha256": "df993b1e88c2da6026d6015d21de352be49fc8d1f45845a78fa3a772af01ca9a",
+    "resources": {
+      "peak_rss_bytes": 578605056,
+      "peak_commit_or_vms_bytes": 983007232,
+      "os_process_peak_working_set_bytes": 570773504,
+      "os_process_peak_pagefile_commit_bytes": 982265856,
+      "samples": 2170,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 240.2558180999913,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "torch_version": "2.13.0+cu130",
+    "effective_trial_seconds_including_previous_attempt_and_repair": 240.25778090000676,
+    "cold_exact": true
+  }
+]

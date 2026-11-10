@@ -1,0 +1,539 @@
+# P1 v2 attribution and cold-process audit
+
+Posthoc, no new candidate selection or training. Same stopped decision.
+
+{
+  "run": "runs/20261109T124335Z-local-classifier-v2-attribution-5e01a0",
+  "source_run": "runs/20261109T123739Z-p1-local-classifier-v2-fedda9",
+  "decision": "NO_GO_LOCAL_CLASSIFIER_FAMILY",
+  "selection": {
+    "selected_condition": "norm-last4",
+    "selected_lr": 0.002,
+    "tasks": {
+      "order": {
+        "probe_gain": 0.026041666666666668,
+        "direct": 0.9661458333333334,
+        "initial_probe": 0.9270833333333334
+      },
+      "xor": {
+        "probe_gain": 0.037760416666666664,
+        "direct": 0.9192708333333334,
+        "initial_probe": 0.8619791666666666
+      },
+      "strict_binding": {
+        "probe_gain": 0.0026041666666666665,
+        "direct": 0.6549479166666666,
+        "initial_probe": 0.5833333333333334
+      }
+    },
+    "screen_pass": false,
+    "confirmation_opened": false
+  },
+  "paired_effects": {
+    "order": {
+      "normalization_probe": {
+        "paired_values": [
+          0.0546875,
+          0.07421875,
+          0.01171875
+        ],
+        "bootstrap95": {
+          "mean": 0.046875,
+          "lower95": 0.01171875,
+          "upper95": 0.07421875,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "normalization_direct": {
+        "paired_values": [
+          0.015625,
+          0.03125,
+          0.05859375
+        ],
+        "bootstrap95": {
+          "mean": 0.03515625,
+          "lower95": 0.015625,
+          "upper95": 0.05859375,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25
+      },
+      "final_vs_last_timing_probe": {
+        "paired_values": [
+          0.015625,
+          -0.00390625,
+          0.0
+        ],
+        "bootstrap95": {
+          "mean": 0.00390625,
+          "lower95": -0.00390625,
+          "upper95": 0.015625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 1.0,
+        "holm_3tasks_p": 1.0
+      },
+      "correct_vs_shuffled_probe": {
+        "paired_values": [
+          0.0234375,
+          0.1015625,
+          0.0078125
+        ],
+        "bootstrap95": {
+          "mean": 0.044270833333333336,
+          "lower95": 0.0078125,
+          "upper95": 0.1015625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "correct_vs_shuffled_direct": {
+        "paired_values": [
+          -0.00390625,
+          0.015625,
+          0.05859375
+        ],
+        "bootstrap95": {
+          "mean": 0.0234375,
+          "lower95": -0.00390625,
+          "upper95": 0.05859375,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.5
+      },
+      "bptt_vs_readout_probe": {
+        "paired_values": [
+          0.1171875,
+          0.0703125,
+          0.0078125
+        ],
+        "bootstrap95": {
+          "mean": 0.06510416666666667,
+          "lower95": 0.0078125,
+          "upper95": 0.1171875,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "bptt_vs_readout_direct": {
+        "paired_values": [
+          0.08203125,
+          0.05078125,
+          0.05078125
+        ],
+        "bootstrap95": {
+          "mean": 0.061197916666666664,
+          "lower95": 0.05078125,
+          "upper95": 0.08203125,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25
+      },
+      "selected_gain": {
+        "mean": 0.026041666666666668,
+        "lower95": -0.0078125,
+        "upper95": 0.046875,
+        "n_seeds": 3
+      },
+      "selected_direct": {
+        "mean": 0.9661458333333334,
+        "lower95": 0.9375,
+        "upper95": 0.9921875,
+        "n_seeds": 3
+      },
+      "mean_seconds": {
+        "norm-last4": 1.6674608666653512,
+        "raw-last4": 1.638962700002594,
+        "bptt-readout": 2.133734833330285,
+        "bptt-full": 8.310882333331392
+      }
+    },
+    "xor": {
+      "normalization_probe": {
+        "paired_values": [
+          0.0546875,
+          0.0546875,
+          0.0625
+        ],
+        "bootstrap95": {
+          "mean": 0.057291666666666664,
+          "lower95": 0.0546875,
+          "upper95": 0.0625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "normalization_direct": {
+        "paired_values": [
+          0.02734375,
+          0.06640625,
+          0.0390625
+        ],
+        "bootstrap95": {
+          "mean": 0.044270833333333336,
+          "lower95": 0.02734375,
+          "upper95": 0.06640625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25
+      },
+      "final_vs_last_timing_probe": {
+        "paired_values": [
+          -0.0078125,
+          -0.015625,
+          -0.03515625
+        ],
+        "bootstrap95": {
+          "mean": -0.01953125,
+          "lower95": -0.03515625,
+          "upper95": -0.0078125,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "correct_vs_shuffled_probe": {
+        "paired_values": [
+          0.01953125,
+          0.00390625,
+          0.1015625
+        ],
+        "bootstrap95": {
+          "mean": 0.041666666666666664,
+          "lower95": 0.00390625,
+          "upper95": 0.1015625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "correct_vs_shuffled_direct": {
+        "paired_values": [
+          0.0,
+          0.0703125,
+          0.046875
+        ],
+        "bootstrap95": {
+          "mean": 0.0390625,
+          "lower95": 0.0,
+          "upper95": 0.0703125,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.5
+      },
+      "bptt_vs_readout_probe": {
+        "paired_values": [
+          0.14453125,
+          0.140625,
+          0.12109375
+        ],
+        "bootstrap95": {
+          "mean": 0.13541666666666666,
+          "lower95": 0.12109375,
+          "upper95": 0.14453125,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "bptt_vs_readout_direct": {
+        "paired_values": [
+          0.1015625,
+          0.13671875,
+          0.1015625
+        ],
+        "bootstrap95": {
+          "mean": 0.11328125,
+          "lower95": 0.1015625,
+          "upper95": 0.13671875,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25
+      },
+      "selected_gain": {
+        "mean": 0.037760416666666664,
+        "lower95": 0.0234375,
+        "upper95": 0.0546875,
+        "n_seeds": 3
+      },
+      "selected_direct": {
+        "mean": 0.9192708333333334,
+        "lower95": 0.90625,
+        "upper95": 0.9375,
+        "n_seeds": 3
+      },
+      "mean_seconds": {
+        "norm-last4": 1.7019928333344676,
+        "raw-last4": 1.6076733666656462,
+        "bptt-readout": 2.1525739666661443,
+        "bptt-full": 7.889825766666036
+      }
+    },
+    "strict_binding": {
+      "normalization_probe": {
+        "paired_values": [
+          0.015625,
+          -0.01953125,
+          -0.02734375
+        ],
+        "bootstrap95": {
+          "mean": -0.010416666666666666,
+          "lower95": -0.02734375,
+          "upper95": 0.015625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.5,
+        "holm_3tasks_p": 0.75
+      },
+      "normalization_direct": {
+        "paired_values": [
+          0.0546875,
+          -0.0078125,
+          0.02734375
+        ],
+        "bootstrap95": {
+          "mean": 0.024739583333333332,
+          "lower95": -0.0078125,
+          "upper95": 0.0546875,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.5
+      },
+      "final_vs_last_timing_probe": {
+        "paired_values": [
+          0.06640625,
+          -0.0234375,
+          0.00390625
+        ],
+        "bootstrap95": {
+          "mean": 0.015625,
+          "lower95": -0.0234375,
+          "upper95": 0.06640625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.75,
+        "holm_3tasks_p": 1.0
+      },
+      "correct_vs_shuffled_probe": {
+        "paired_values": [
+          -0.0390625,
+          -0.04296875,
+          -0.00390625
+        ],
+        "bootstrap95": {
+          "mean": -0.028645833333333332,
+          "lower95": -0.04296875,
+          "upper95": -0.00390625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "correct_vs_shuffled_direct": {
+        "paired_values": [
+          0.0625,
+          -0.01953125,
+          -0.0234375
+        ],
+        "bootstrap95": {
+          "mean": 0.006510416666666667,
+          "lower95": -0.0234375,
+          "upper95": 0.0625,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 1.0
+      },
+      "bptt_vs_readout_probe": {
+        "paired_values": [
+          0.375,
+          0.33984375,
+          0.3515625
+        ],
+        "bootstrap95": {
+          "mean": 0.35546875,
+          "lower95": 0.33984375,
+          "upper95": 0.375,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25,
+        "holm_3tasks_p": 0.75
+      },
+      "bptt_vs_readout_direct": {
+        "paired_values": [
+          0.29296875,
+          0.32421875,
+          0.26171875
+        ],
+        "bootstrap95": {
+          "mean": 0.29296875,
+          "lower95": 0.26171875,
+          "upper95": 0.32421875,
+          "n_seeds": 3
+        },
+        "exact_signflip_p": 0.25
+      },
+      "selected_gain": {
+        "mean": 0.0026041666666666665,
+        "lower95": -0.02734375,
+        "upper95": 0.03125,
+        "n_seeds": 3
+      },
+      "selected_direct": {
+        "mean": 0.6549479166666666,
+        "lower95": 0.6328125,
+        "upper95": 0.66796875,
+        "n_seeds": 3
+      },
+      "mean_seconds": {
+        "norm-last4": 1.7012978333368665,
+        "raw-last4": 1.6612443666696588,
+        "bptt-readout": 2.1371183333346075,
+        "bptt-full": 7.841781633333691
+      }
+    }
+  },
+  "control_summary": {
+    "order": {
+      "bptt-readout": 0.9375,
+      "bptt-full": 0.9986979166666666
+    },
+    "xor": {
+      "bptt-readout": 0.88671875,
+      "bptt-full": 1.0
+    },
+    "strict_binding": {
+      "bptt-readout": 0.6236979166666666,
+      "bptt-full": 0.9166666666666666
+    }
+  },
+  "matched_readout": [
+    {
+      "task": "order",
+      "seed": 12101,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "order",
+      "seed": 12109,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "order",
+      "seed": 12113,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "xor",
+      "seed": 12101,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "xor",
+      "seed": 12109,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "xor",
+      "seed": 12113,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12101,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12109,
+      "identical_targets": true,
+      "identical_predictions": true
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12113,
+      "identical_targets": true,
+      "identical_predictions": true
+    }
+  ],
+  "cold_checks": [
+    {
+      "task": "order",
+      "seed": 12101,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "b7f807a2857f58080e5a076760f847c93a07ca6e594b2151d4237e06b4d617d9"
+    },
+    {
+      "task": "order",
+      "seed": 12109,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "42cb1d64813fddfb6a9194a757fcc77f1ec0440cde469a74f7a009da6b48e170"
+    },
+    {
+      "task": "order",
+      "seed": 12113,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "96b1c85cae9c4ced35c0e9bf6091a3fae7a845aa9c920bcfda6da2b05ee12ca8"
+    },
+    {
+      "task": "xor",
+      "seed": 12101,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "c5ff9cf323e80535022f691ddda94a8dc0ee5be7c48b17958add752cb9c4c908"
+    },
+    {
+      "task": "xor",
+      "seed": 12109,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "92aaac157dc7eafa6536f43664909029542932f3f1a428a85a5ecf797b0e87cc"
+    },
+    {
+      "task": "xor",
+      "seed": 12113,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "979221d6a4a8580f4dab8c745da359ea8dc0cc4464e2b4e56d75af0166e3c662"
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12101,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "b2c8c1c5cf38061f5512f6c0afaac5cc04a6d1441f3430cf94b5d399f1f5585f"
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12109,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "e9b336bd990accd2688a84fd7c8e4fe40809d6121c5538b94901887e5d2927d0"
+    },
+    {
+      "task": "strict_binding",
+      "seed": 12113,
+      "exact_rng_trace_continuation": true,
+      "checkpoint_sha256": "4d25bfcc9eef04fa8b578b811ea39e89adbce8f0315b86692500b25a13e98b72"
+    }
+  ],
+  "all_matched": true,
+  "all_cold_exact": true,
+  "posthoc": true,
+  "confirmation_opened": false,
+  "gate_changed": false,
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_proven": false,
+  "limits": [
+    "Three development seeds; bootstrap exploratory; these data already selected the candidate, not an independent confirmation.",
+    "Same forward/head/examples; hidden optimizers/update density and computation differ, so no equal-time efficiency superiority claim.",
+    "Local auxiliary loss transports G-transpose teacher error, not task W_out or BPTT; not a faithful published DECOLLE reproduction."
+  ]
+}

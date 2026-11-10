@@ -1,0 +1,209 @@
+{
+  "decoders": {
+    "eos": {
+      "development_exact": 0.375,
+      "outputs": [
+        {
+          "prompt": "xin chào scar-x",
+          "output": "Bạn",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "chào bạn nhé",
+          "output": "Chào bạn.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "hey scar-x",
+          "output": "Bạn. hello.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "hello there",
+          "output": "Hello.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "bạn có tên gì",
+          "output": "Tạm bạn.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "hãy nói tên bạn",
+          "output": "Bạn đang học trả lời bạn.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "cảm ơn bạn nhé",
+          "output": "Rất vui được giúp bạn.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "thanks scar-x",
+          "output": "Bạn bạn.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "tạm biệt scar-x",
+          "output": "Tạm biệt bạn.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "bye friend",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "scar-x đang làm gì",
+          "output": "Tôi đang hoạt động.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "bạn vẫn hoạt động chứ",
+          "output": "Hello.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "scar-x làm được gì",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "bạn có khả năng gì",
+          "output": "Tôi đang học trả lời.",
+          "exact": true,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "tôi có thể dạy bạn không",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "bạn có muốn học không",
+          "output": "Tôi đang học trả lời bạn.",
+          "exact": false,
+          "stop_reason": "eos"
+        }
+      ]
+    },
+    "sentence": {
+      "development_exact": 0.25,
+      "outputs": [
+        {
+          "prompt": "xin chào scar-x",
+          "output": "Bạn",
+          "exact": false,
+          "stop_reason": "eos"
+        },
+        {
+          "prompt": "chào bạn nhé",
+          "output": "Chào bạn.",
+          "exact": true,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "hey scar-x",
+          "output": "Bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "hello there",
+          "output": "Hello.",
+          "exact": true,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "bạn có tên gì",
+          "output": "Tạm bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "hãy nói tên bạn",
+          "output": "Bạn đang hoạt động động bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "cảm ơn bạn nhé",
+          "output": "Rất vui được giúp bạn.",
+          "exact": true,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "thanks scar-x",
+          "output": "Bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "tạm biệt scar-x",
+          "output": "Tạm biệt bạn.",
+          "exact": true,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "bye friend",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "scar-x đang làm gì",
+          "output": "Tôi đang tôi đang.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "bạn vẫn hoạt động chứ",
+          "output": "Hello.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "scar-x làm được gì",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "bạn có khả năng gì",
+          "output": "Tôi đang học trả lời bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "tôi có thể dạy bạn không",
+          "output": "Tôi.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        },
+        {
+          "prompt": "bạn có muốn học không",
+          "output": "Tôi đang học trả lời bạn.",
+          "exact": false,
+          "stop_reason": "sentence_boundary"
+        }
+      ]
+    }
+  },
+  "test_opened": false,
+  "weights_updated": false,
+  "learning_improvement_claim": false
+}

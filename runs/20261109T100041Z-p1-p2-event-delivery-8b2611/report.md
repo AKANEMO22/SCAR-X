@@ -1,0 +1,72 @@
+# P1/P2 event progress and completion audit
+
+The full user objective remains incomplete. Requirements and evidence are recorded below; passing engineering checks does not establish natural conversation or vision.
+
+{
+  "run": "runs/20261109T100041Z-p1-p2-event-delivery-8b2611",
+  "goal_complete": false,
+  "requirements": {
+    "natural_vi_en_conversation": {
+      "complete": false,
+      "evidence": "artifacts/event-dialogue-latest.json; artifacts/qwen-dialogue-reference-latest.json",
+      "finding": "Every experimental condition dev exact0/24; literal review finds incoherent/repeating output"
+    },
+    "normal_photo_understanding": {
+      "complete": false,
+      "evidence": "artifacts/p1-input-events-latest.json; capabilities.json",
+      "finding": "RGB event path distinguishes colors but image-grounded word learning/held-out natural photos absent; live vision digits only"
+    },
+    "local_synaptic_learning": {
+      "complete": true,
+      "evidence": "tests/test_local_target.py; tests/test_event_dialogue.py; source/protocol snapshots",
+      "scope": "Updates/checkpoint continuation, not useful representation or biological fidelity"
+    },
+    "lifelong_retention": {
+      "complete": false,
+      "evidence": "artifacts/p2-conditioning-confirmation-latest.json",
+      "finding": "Every20context condition fails joint acquisition/retention gate"
+    },
+    "antigravity_dataset": {
+      "complete": true,
+      "evidence": "artifacts/antigravity-events-validation.json",
+      "scope": "40dialogues/120responses,194targettypes,14editorialrepairs; synthetic style labels, no independent truth claim"
+    },
+    "qwen_comparison": {
+      "complete": true,
+      "evidence": "artifacts/qwen-dialogue-reference-latest.json",
+      "scope": "24same public dialogue prefixes only,11truncated; source-known comparison, no general-equivalence claim"
+    },
+    "under_2gb_scarx": {
+      "complete": true,
+      "evidence": "artifacts/generation1-live-check.json; trial resources",
+      "scope": "Observed small workloads and live backend only; not comprehensive8h proof/whole browser app; Qwen reference exceeded2GB and stopped"
+    },
+    "adaptive_deep_and_idle_exploration": {
+      "complete": false,
+      "evidence": "docs/research/12_ADAPTIVE_COMPUTE_AND_IDLE_COGNITION.md",
+      "finding": "Still proposed; current fixed ticks and accepted-label review do not implement those capabilities"
+    }
+  },
+  "tests_passed": 106,
+  "native_baseline_parity_tests_included": 4,
+  "live_rss_bytes": 44691456,
+  "live_hidden_allocated": 64,
+  "live_core_files_unchanged_since_previous_delivery": {
+    "src/scarx/neural/core.py": true,
+    "src/scarx/neural/unified.py": true,
+    "src/scarx/app/generation.py": true,
+    "src/scarx/app/generation_server.py": true
+  },
+  "main_model_count": 1,
+  "normal_chat_or_vision_proven": false,
+  "private_weights_replaced": false,
+  "local_target_family": "NO_GO_AFTER_TWO_ROUNDS",
+  "readout_conditioning": "DIRECT_TASK_GAIN_CONFIRMED_BUT_CONTINUAL_RETENTION_FAILED",
+  "next_priorities": [
+    "open_vocabulary_codec_design_and_counterexamples",
+    "temporal_credit_assignment_and_hidden_representation",
+    "acquisition_retention_joint_gate",
+    "image_grounded_learning_with_real_holdout_and_image_ablation"
+  ],
+  "decision": "PIVOT_NO_SCALE; goal remains active"
+}

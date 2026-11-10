@@ -1,0 +1,143 @@
+# Live identical-guard stop acceptance
+
+Actual model/controller events; no forced failure, guard relaxation, clone import or capability claim.
+
+{
+  "run": "runs/20261109T170237Z-g1-identical-guard-stop-acceptance-c8d690",
+  "decision": "CONTROLLER_GUARD_STOP_OBSERVED",
+  "example": "hi",
+  "before_actual_neural": "Hello",
+  "after_actual_neural": "Hello",
+  "updates_before": 241363,
+  "updates_after": 241363,
+  "weights_unchanged": true,
+  "learning_before": {
+    "enabled": true,
+    "accepted_updates": 60,
+    "rejected_updates": 153,
+    "reviews": 9277,
+    "queued_lessons": 0,
+    "pending_questions": 3,
+    "unverified_self_training": false
+  },
+  "learning_after": {
+    "enabled": true,
+    "accepted_updates": 60,
+    "rejected_updates": 155,
+    "reviews": 9277,
+    "queued_lessons": 0,
+    "pending_questions": 3,
+    "unverified_self_training": false
+  },
+  "actual_events": [
+    {
+      "prompt": "hi",
+      "target": "Hello.",
+      "passes": 1,
+      "losses": [
+        3.0386302478510423
+      ],
+      "loss_mean": 3.0386302478510423,
+      "loss_definition": "Mean teacher-forced token negative log likelihood, natural log, including EOS; not accuracy",
+      "update_steps": 3,
+      "changed_synapses": {
+        "w_in": 54,
+        "w_rec": 27,
+        "w_out": 659
+      },
+      "attempted_weight_delta": {
+        "w_in": 0.0010761214653030038,
+        "w_rec": 0.000736898451577872,
+        "w_out": 0.157279834151268
+      },
+      "before": "Hello",
+      "after_attempt": "Hello",
+      "guard_checked": true,
+      "guard_probe_count": 9,
+      "guard_lost": 1,
+      "accepted": false,
+      "rolled_back": true,
+      "source": "project_fixture_supervision",
+      "lesson": "6e61e13923094ce1b766e1c8164e5b7c",
+      "reason": "Learning guard rejected: lost a previously correct probe; stopped repeating the identical rejected proposal, guard unchanged",
+      "weight_delta": {
+        "w_in": 0.0,
+        "w_rec": 0.0,
+        "w_out": 0.0
+      },
+      "identical_guard_rejections": 2,
+      "stopped_identical_proposal": true,
+      "event_id": "live-181",
+      "time": 1794243757.951155,
+      "kind": "learning",
+      "action": "online-reject",
+      "scope": "L\u00f5i \u0111ang d\u00f9ng",
+      "run_id": null
+    },
+    {
+      "prompt": "hi",
+      "target": "Hello.",
+      "passes": 1,
+      "losses": [
+        3.0386302478510423
+      ],
+      "loss_mean": 3.0386302478510423,
+      "loss_definition": "Mean teacher-forced token negative log likelihood, natural log, including EOS; not accuracy",
+      "update_steps": 3,
+      "changed_synapses": {
+        "w_in": 54,
+        "w_rec": 27,
+        "w_out": 659
+      },
+      "attempted_weight_delta": {
+        "w_in": 0.0010761214653030038,
+        "w_rec": 0.000736898451577872,
+        "w_out": 0.157279834151268
+      },
+      "before": "Hello",
+      "after_attempt": "Hello",
+      "guard_checked": true,
+      "guard_probe_count": 9,
+      "guard_lost": 1,
+      "accepted": false,
+      "rolled_back": true,
+      "source": "project_fixture_supervision",
+      "lesson": "6e61e13923094ce1b766e1c8164e5b7c",
+      "reason": "Learning guard rejected: lost a previously correct probe",
+      "weight_delta": {
+        "w_in": 0.0,
+        "w_rec": 0.0,
+        "w_out": 0.0
+      },
+      "identical_guard_rejections": 1,
+      "event_id": "live-180",
+      "time": 1794243757.886438,
+      "kind": "learning",
+      "action": "online-reject",
+      "scope": "L\u00f5i \u0111ang d\u00f9ng",
+      "run_id": null
+    }
+  ],
+  "stopped_identical_proposal": true,
+  "checkpoint_before": "dbb91a9475cf4e44b63b42a5b50e54c6",
+  "lesson_id": "6e61e13923094ce1b766e1c8164e5b7c",
+  "new_hidden_rule": false,
+  "guard_quality_threshold_changed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "resources": {
+    "peak_rss_bytes": 69582848,
+    "peak_commit_or_vms_bytes": 44347392,
+    "os_process_peak_working_set_bytes": 63287296,
+    "os_process_peak_pagefile_commit_bytes": 47349760,
+    "samples": 69,
+    "interval_seconds": 0.5,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 22.29042959999788,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  }
+}

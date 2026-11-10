@@ -1,0 +1,431 @@
+# ALIF fixed timescale views
+
+Exploratory immutable checkpoint dynamics, not a new learner or deployed ability.
+
+{
+  "run": "runs/20261109T144816Z-p2-timescale-view-audit-v1-689d02",
+  "source_run": "runs/20261109T140620Z-p2-paired-score-diagnostic-v1-c5a357",
+  "decision": "STOP_TIMESCALE_VIEW_SCREEN_V1",
+  "summary": {
+    "offline_joint_full": {
+      "baseline": {
+        "direct": 0.30078125,
+        "probe": 0.4744791666666666,
+        "gain": 0.0
+      },
+      "leak_spread": {
+        "direct": 0.29531250000000003,
+        "probe": 0.4747395833333334,
+        "gain": 0.00026041666666665186
+      },
+      "leak_mean": {
+        "direct": 0.31015624999999997,
+        "probe": 0.519921875,
+        "gain": 0.045442708333333304
+      },
+      "adaptation_spread": {
+        "direct": 0.3029947916666667,
+        "probe": 0.4821614583333333,
+        "gain": 0.007682291666666656
+      },
+      "adaptation_mean": {
+        "direct": 0.3028645833333334,
+        "probe": 0.4799479166666667,
+        "gain": 0.005468749999999985
+      },
+      "feature_spread": {
+        "direct": 0.27317708333333335,
+        "probe": 0.4609375,
+        "gain": -0.013541666666666674
+      },
+      "feature_mean": {
+        "direct": 0.2701822916666667,
+        "probe": 0.4989583333333334,
+        "gain": 0.02447916666666668
+      },
+      "all_spread": {
+        "direct": 0.26484375,
+        "probe": 0.4727864583333334,
+        "gain": -0.0016927083333333481
+      },
+      "all_mean": {
+        "direct": 0.2779947916666667,
+        "probe": 0.5411458333333333,
+        "gain": 0.06666666666666665
+      },
+      "all_independent_spread": {
+        "direct": 0.2760416666666667,
+        "probe": 0.45481770833333335,
+        "gain": -0.019661458333333343
+      }
+    },
+    "offline_joint_frozen": {
+      "baseline": {
+        "direct": 0.2657552083333334,
+        "probe": 0.4468750000000001,
+        "gain": 0.0
+      },
+      "leak_spread": {
+        "direct": 0.2580729166666667,
+        "probe": 0.44609375,
+        "gain": -0.0007812500000000111
+      },
+      "leak_mean": {
+        "direct": 0.26666666666666666,
+        "probe": 0.4822916666666666,
+        "gain": 0.03541666666666665
+      },
+      "adaptation_spread": {
+        "direct": 0.27057291666666666,
+        "probe": 0.4552083333333334,
+        "gain": 0.00833333333333334
+      },
+      "adaptation_mean": {
+        "direct": 0.2638020833333333,
+        "probe": 0.443359375,
+        "gain": -0.0035156250000000036
+      },
+      "feature_spread": {
+        "direct": 0.2674479166666667,
+        "probe": 0.43710937499999997,
+        "gain": -0.009765625
+      },
+      "feature_mean": {
+        "direct": 0.25781250000000006,
+        "probe": 0.4740885416666667,
+        "gain": 0.027213541666666674
+      },
+      "all_spread": {
+        "direct": 0.26783854166666665,
+        "probe": 0.44830729166666666,
+        "gain": 0.0014322916666666592
+      },
+      "all_mean": {
+        "direct": 0.2584635416666667,
+        "probe": 0.512109375,
+        "gain": 0.065234375
+      },
+      "all_independent_spread": {
+        "direct": 0.27317708333333335,
+        "probe": 0.42617187500000003,
+        "gain": -0.020703125000000006
+      }
+    }
+  },
+  "informative_screen": {
+    "offline_joint_full": {
+      "baseline": false,
+      "leak_spread": false,
+      "leak_mean": false,
+      "adaptation_spread": false,
+      "adaptation_mean": false,
+      "feature_spread": false,
+      "feature_mean": false,
+      "all_spread": false,
+      "all_mean": false,
+      "all_independent_spread": false
+    },
+    "offline_joint_frozen": {
+      "baseline": false,
+      "leak_spread": false,
+      "leak_mean": false,
+      "adaptation_spread": false,
+      "adaptation_mean": false,
+      "feature_spread": false,
+      "feature_mean": false,
+      "all_spread": false,
+      "all_mean": false,
+      "all_independent_spread": false
+    }
+  },
+  "contrasts": {
+    "offline_joint_full": {
+      "baseline": {
+        "gain": {
+          "mean": 0.0,
+          "lower95": 0.0,
+          "upper95": 0.0,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_spread": {
+        "gain": {
+          "mean": 0.00026041666666665186,
+          "lower95": -0.009374999999999967,
+          "upper95": 0.006640624999999956,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_mean": {
+        "gain": {
+          "mean": 0.045442708333333304,
+          "lower95": 0.04023437499999993,
+          "upper95": 0.048828125,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_spread": {
+        "gain": {
+          "mean": 0.007682291666666656,
+          "lower95": 0.004687499999999956,
+          "upper95": 0.010546875000000011,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_mean": {
+        "gain": {
+          "mean": 0.005468749999999985,
+          "lower95": 0.003515625000000022,
+          "upper95": 0.0078125,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_spread": {
+        "gain": {
+          "mean": -0.013541666666666674,
+          "lower95": -0.021874999999999978,
+          "upper95": 0.0003906249999999778,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_mean": {
+        "gain": {
+          "mean": 0.02447916666666668,
+          "lower95": 0.017968750000000033,
+          "upper95": 0.03437499999999999,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_spread": {
+        "gain": {
+          "mean": -0.0016927083333333481,
+          "lower95": -0.009374999999999967,
+          "upper95": 0.0035156249999999667,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_mean": {
+        "gain": {
+          "mean": 0.06666666666666665,
+          "lower95": 0.064453125,
+          "upper95": 0.06796875000000002,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_independent_spread": {
+        "gain": {
+          "mean": -0.019661458333333343,
+          "lower95": -0.04843750000000002,
+          "upper95": 0.005468750000000022,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_spread_minus_mean": {
+        "effect": {
+          "mean": -0.04518229166666665,
+          "lower95": -0.056640624999999944,
+          "upper95": -0.03359374999999998,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_spread_minus_mean": {
+        "effect": {
+          "mean": 0.0022135416666666705,
+          "lower95": -0.0003906249999999778,
+          "upper95": 0.007031249999999989,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_spread_minus_mean": {
+        "effect": {
+          "mean": -0.03802083333333336,
+          "lower95": -0.040234375000000044,
+          "upper95": -0.03398437500000001,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_spread_minus_mean": {
+        "effect": {
+          "mean": -0.068359375,
+          "lower95": -0.07734374999999999,
+          "upper95": -0.06093750000000003,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      }
+    },
+    "offline_joint_frozen": {
+      "baseline": {
+        "gain": {
+          "mean": 0.0,
+          "lower95": 0.0,
+          "upper95": 0.0,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_spread": {
+        "gain": {
+          "mean": -0.0007812500000000111,
+          "lower95": -0.013281250000000022,
+          "upper95": 0.014453124999999956,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_mean": {
+        "gain": {
+          "mean": 0.03541666666666665,
+          "lower95": 0.021484375,
+          "upper95": 0.04414062499999999,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_spread": {
+        "gain": {
+          "mean": 0.00833333333333334,
+          "lower95": 0.005859375,
+          "upper95": 0.009765625,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_mean": {
+        "gain": {
+          "mean": -0.0035156250000000036,
+          "lower95": -0.005078124999999989,
+          "upper95": -0.0023437500000000333,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_spread": {
+        "gain": {
+          "mean": -0.009765625,
+          "lower95": -0.021484375,
+          "upper95": 0.004296874999999978,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_mean": {
+        "gain": {
+          "mean": 0.027213541666666674,
+          "lower95": 0.021093750000000022,
+          "upper95": 0.03671874999999997,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_spread": {
+        "gain": {
+          "mean": 0.0014322916666666592,
+          "lower95": -0.021093750000000022,
+          "upper95": 0.02265624999999999,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_mean": {
+        "gain": {
+          "mean": 0.065234375,
+          "lower95": 0.05390624999999999,
+          "upper95": 0.08242187499999998,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_independent_spread": {
+        "gain": {
+          "mean": -0.020703125000000006,
+          "lower95": -0.03671875000000002,
+          "upper95": 0.0007812500000000111,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "leak_spread_minus_mean": {
+        "effect": {
+          "mean": -0.03619791666666666,
+          "lower95": -0.047656249999999956,
+          "upper95": -0.02617187500000001,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "adaptation_spread_minus_mean": {
+        "effect": {
+          "mean": 0.011848958333333345,
+          "lower95": 0.008203125000000033,
+          "upper95": 0.014453125000000011,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "feature_spread_minus_mean": {
+        "effect": {
+          "mean": -0.036979166666666674,
+          "lower95": -0.04257812500000002,
+          "upper95": -0.03242187499999999,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      },
+      "all_spread_minus_mean": {
+        "effect": {
+          "mean": -0.06380208333333333,
+          "lower95": -0.07500000000000001,
+          "upper95": -0.056640625,
+          "n_seeds": 3
+        },
+        "exploratory_source_data_reuse": true
+      }
+    }
+  },
+  "all_state_unchanged": true,
+  "reference_parity": true,
+  "new_training": false,
+  "new_local_rule": false,
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "resources": {
+    "peak_rss_bytes": 78307328,
+    "peak_commit_or_vms_bytes": 97456128,
+    "os_process_peak_working_set_bytes": 85053440,
+    "os_process_peak_pagefile_commit_bytes": 104271872,
+    "samples": 383,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 35.806896800000686,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "limits": [
+    "Weights learned under different dynamics; no inference-view result is a trained architecture or new efficacy gate.",
+    "No borrowed paper performance/energy claim; source uses other training algorithms.",
+    "No test-based production winner, hidden-rule retuning or larger model."
+  ]
+}

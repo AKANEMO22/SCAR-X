@@ -1,0 +1,118 @@
+{
+  "created_utc": "2026-11-09T17:24:00.699969+00:00",
+  "master_plan": "docs/RESEARCH_PLAN.md",
+  "master_version": "1.15",
+  "decision": "PIVOT_REPRESENTATION_AND_GENERALIZATION",
+  "source_runs": {
+    "timescale_view": "runs/20261109T144816Z-p2-timescale-view-audit-v1-689d02",
+    "state_audit": "runs/20261109T161548Z-g1-conversational-state-audit-v1-e7b5e8",
+    "curated_training": "runs/20261109T164331Z-g1-curated-curriculum-v1-d1489c",
+    "qwen_reference": "runs/20261109T162356Z-qwen-g1-state-reference-v1-360a02",
+    "live_guard_stop": "runs/20261109T170237Z-g1-identical-guard-stop-acceptance-c8d690",
+    "latest_live_inference": "runs/20261109T171819Z-g1-live-new-prompts-observation-a9c6a1"
+  },
+  "actual_antigravity": {
+    "diagnostic_prompts": 48,
+    "curriculum_generated": 160,
+    "retained_train": 117,
+    "retained_development": 31,
+    "quarantined": 12,
+    "all_reviewed": true,
+    "new_teacher_calls_for_recovery": 0,
+    "native_schema_finish_rejection_corrected": true,
+    "private_inputs_sent": false
+  },
+  "actual_student_training": {
+    "conditions": 4,
+    "curriculum_orders": 3,
+    "examples_per_trial": 3072,
+    "hidden_weights_frozen_in_curated_trial": true,
+    "development_selected_condition": "surface_expanded",
+    "development_mean": 0.11559139784946237,
+    "all_acceptance_failed": true,
+    "candidate_imported": false
+  },
+  "actual_qwen": {
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "responses": 48,
+    "truncated": 17,
+    "server_stopped": true,
+    "peak_reference_rss_bytes": 3196772352,
+    "separate_reference_cap_bytes": 4500000000,
+    "scarx_ram_success_claim": false,
+    "scarx_proxy": false
+  },
+  "actual_live": {
+    "model": "scarx-generation1",
+    "cores_loaded": 1,
+    "hidden": 128,
+    "active_neurons": 48,
+    "updates": 241363,
+    "ram_bytes": 58769408,
+    "commit_bytes": 41955328,
+    "memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "learning": {
+      "enabled": true,
+      "accepted_updates": 60,
+      "rejected_updates": 155,
+      "reviews": 9579,
+      "queued_lessons": 0,
+      "pending_questions": 3,
+      "unverified_self_training": false
+    }
+  },
+  "live_teaching": "Two project-source examples through unchanged existing localrule/guard,4acceptedupdates/60rollbacks,16retainedtokenupdatecountersteps; before/afterresponses not improved. No failedweights/normalizerimport.",
+  "controller_fix": {
+    "stops_after": 2,
+    "condition": "identical modelstate+prompt+target rejected by unchanged guard",
+    "actual_acceptance_passed": true,
+    "weights_unchanged_during_stop_check": true,
+    "signature_counter_persisted_and_validated": true
+  },
+  "actual_live_inference": {
+    "responses": 48,
+    "synapse_updates_delta": 0,
+    "archived_qwen_attached_in_visible_feed": 54,
+    "no_user_start_selection_required": true,
+    "no_fake_experience_or_selflabel": true
+  },
+  "regression": {
+    "digits_n": 48,
+    "before": 0.8125,
+    "after": 0.8125,
+    "lost_old_correct_digits": 0,
+    "old_correct_math_lost": 0,
+    "scope": "known diagnostics only, not ordinaryphotos/longtermretention"
+  },
+  "verification": {
+    "full_pytest_passed": 140,
+    "native_baseline_parity_included": true,
+    "latest_http_live_check_passed": true,
+    "capacity_completion_persisted_before_exposure": true,
+    "raw_personalweights_and_outputs_excluded_from_package": true
+  },
+  "ui_screenshots": {
+    "g1-live-qwen-trace.png": "f85e4eba0953638289cbcddfb99336afc37be68fb3d1f1fcb86416515057db5a",
+    "g1-guard-stop-trace.png": "26d785ea3871123edf52cfaccc5c01100c8f2b78ef9c751609e845740f4e75bf",
+    "g1-live-project-rollback.png": "ecfd2fe3a589295e4868958d95e5cf3c414eef1f199f9e193e99b0bb1ffe8c6e"
+  },
+  "goal_completion_audit": {
+    "full_goal_complete": false,
+    "normal_dialogue": "not achieved; new public phrasing still often yields short inappropriate outputs, no broad instruction/knowledge/reasoning proof",
+    "normal_vision": "not achieved; serving digits8x8only, no ordinaryphotoVQA/OCR/screenshotunderstanding",
+    "computer_actions": "not implemented by neuralcore; no toolcallingpolicyclaim",
+    "autonomous_thinking": "measured idle dynamics/review available; adaptivehalting/verifiedautonomousexploration not proven",
+    "neurons_and_synapses": "one live ALIFpool, bounded48-128allocation, actual localupdates and persistence; no new usefulcapacityadvantage established",
+    "local_learning": "production/main no BPTT/globalbackward/pretrainedproxy; controlledbackprop remains isolated evaluation only",
+    "continual_retention": "not achieved, historicalP2gates stillfailed; controllerfix is resourcecontrol not knowledgegain",
+    "RAM": "live below2GB with Windowsprocesscommitcap; strongqualitywithin2GB stillunproven; QwenreferenceRAMexplicitlyseparate",
+    "plan_fidelity": "master1.15; existing topology/privatehistory retained, no researchscale expansion or stoppedfamilyretuning",
+    "next_required_work": "Improve input/temporal representation and transferable language/visual grounding under separate registered hypotheses; do not repeat moreepochs/replay or claim narrowstyle/countertest as normalintelligence"
+  },
+  "ponytail_available": false,
+  "llama_server_process_count": 0
+}

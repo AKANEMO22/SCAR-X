@@ -1,0 +1,60 @@
+{
+  "conditional_sample_intervals": [
+    {
+      "seed": 17,
+      "greeting": {
+        "n": 6,
+        "k": 3,
+        "wilson95": [
+          0.18761630648265576,
+          0.8123836935173443
+        ]
+      },
+      "text": {
+        "n": 18,
+        "k": 6,
+        "wilson95": [
+          0.16278774750834019,
+          0.5625053270405429
+        ]
+      },
+      "digits": {
+        "n": 360,
+        "k": 318,
+        "wilson95": [
+          0.8460528614897204,
+          0.912519294895615
+        ]
+      }
+    },
+    {
+      "seed": 29,
+      "greeting": {
+        "n": 6,
+        "k": 3,
+        "wilson95": [
+          0.18761630648265576,
+          0.8123836935173443
+        ]
+      },
+      "text": {
+        "n": 18,
+        "k": 4,
+        "wilson95": [
+          0.09000928108601916,
+          0.4521458431621196
+        ]
+      },
+      "digits": {
+        "n": 360,
+        "k": 322,
+        "wilson95": [
+          0.8584338798741689,
+          0.9221258752469734
+        ]
+      }
+    }
+  ],
+  "independent_seeds": 2,
+  "note": "Wilson intervals do not capture family/dependency/seed uncertainty. Two seeds cannot establish a robust population advantage."
+}

@@ -1,0 +1,466 @@
+# P2 cue information diagnostic
+
+Read-only neural checkpoints, diagnostic heads; no core training or new efficacy gate.
+
+{
+  "run": "runs/20261109T141355Z-p2-cue-information-audit-v1-a427f6",
+  "source_run": "runs/20261109T140620Z-p2-paired-score-diagnostic-v1-c5a357",
+  "decision": "CUE_INFORMATION_DIAGNOSTIC_ONLY",
+  "summary": {
+    "offline_joint_full": {
+      "8": {
+        "2": 0.5156249999999999,
+        "6": 0.5444010416666666,
+        "12": 0.484375
+      },
+      "64": {
+        "2": 0.6486979166666668,
+        "6": 0.6765624999999998,
+        "12": 0.5981770833333334
+      }
+    },
+    "offline_joint_frozen": {
+      "8": {
+        "2": 0.5,
+        "6": 0.5294270833333333,
+        "12": 0.4513020833333334
+      },
+      "64": {
+        "2": 0.6578125,
+        "6": 0.6794270833333332,
+        "12": 0.5609375
+      }
+    }
+  },
+  "input_controls": [
+    {
+      "seed": 15217,
+      "kind": "raw_inputs",
+      "accuracy": 0.4234375,
+      "features": 24
+    },
+    {
+      "seed": 15217,
+      "kind": "cue_context_product",
+      "accuracy": 1.0,
+      "features": 80
+    },
+    {
+      "seed": 15227,
+      "kind": "raw_inputs",
+      "accuracy": 0.400390625,
+      "features": 24
+    },
+    {
+      "seed": 15227,
+      "kind": "cue_context_product",
+      "accuracy": 1.0,
+      "features": 80
+    },
+    {
+      "seed": 15241,
+      "kind": "raw_inputs",
+      "accuracy": 0.394140625,
+      "features": 24
+    },
+    {
+      "seed": 15241,
+      "kind": "cue_context_product",
+      "accuracy": 1.0,
+      "features": 80
+    }
+  ],
+  "measurements": [
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.50625,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.23781980000057956
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.521484375,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.5951128999950015
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.455859375,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.1958204999973532
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.657421875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 2.0310709999976098
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.67578125,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 4.868605600000592
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.56015625,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 9.58792999999423
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.522265625,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.17024120000132825
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.5203125,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.4927341000002343
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.487890625,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.0944603000025381
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.650390625,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.951384899999539
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.665625,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 4.3532692000007955
+    },
+    {
+      "seed": 15217,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.598828125,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 9.153000300000713
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.47578125,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.18072859999665525
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.501953125,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.46221919999516103
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.442578125,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.989128699999128
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.635546875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.7362573999998858
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.6421875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 3.8304887999984203
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.54140625,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 7.973783699999331
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.51796875,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.16917129999637837
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.55703125,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.4565692999967723
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.478515625,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.0118375999954878
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.63515625,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.7760794999994687
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.671875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 3.9196736000012606
+    },
+    {
+      "seed": 15227,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.593359375,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 8.080103100000997
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.51796875,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.17621340000187047
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.56484375,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.4608675000054063
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.45546875,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.0054477000012412
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.68046875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.739433700000518
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.7203125,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 3.8505202000014833
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_frozen",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.58125,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 8.011974900000496
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 8,
+      "accuracy": 0.506640625,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.1503822000013315
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 8,
+      "accuracy": 0.555859375,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.4405907999971532
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 8,
+      "accuracy": 0.48671875,
+      "extra_compute_diagnostic": false,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 0.9812142000009771
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 2,
+      "rollouts": 64,
+      "accuracy": 0.660546875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 1.7371389999971143
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 6,
+      "rollouts": 64,
+      "accuracy": 0.6921875,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 3.8661524999988615
+    },
+    {
+      "seed": 15241,
+      "condition": "offline_joint_full",
+      "prefix_ticks": 12,
+      "rollouts": 64,
+      "accuracy": 0.60234375,
+      "extra_compute_diagnostic": true,
+      "core_updates": 5760,
+      "elapsed_model_seconds": 8.04701280000154
+    }
+  ],
+  "all_model_state_unchanged": true,
+  "new_training": false,
+  "new_candidate": false,
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "resources": {
+    "peak_rss_bytes": 64389120,
+    "peak_commit_or_vms_bytes": 83222528,
+    "os_process_peak_working_set_bytes": 73392128,
+    "os_process_peak_pagefile_commit_bytes": 92577792,
+    "samples": 497,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 50.94125269999495,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "limits": [
+    "Posthoc diagnostic only, no new gate/selection.",
+    "64rollouts add inference compute; not a deployed or equal-budget improvement.",
+    "Engineered input products are an informationcontrol, not neural skill or matchedcapacity algorithm."
+  ]
+}

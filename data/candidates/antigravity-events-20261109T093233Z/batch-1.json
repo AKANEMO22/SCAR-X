@@ -1,0 +1,335 @@
+{
+  "dialogs": [
+    {
+      "id": "b1-01",
+      "language": "vi",
+      "scenario_id": "ordinary_greetings",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Chào bạn, ngày mới tốt lành nhé!"
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn, chúc ngày vui vẻ!"
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn thấy thế nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẵn sàng hỗ trợ bạn."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhiều nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được giúp bạn."
+        }
+      ]
+    },
+    {
+      "id": "b1-02",
+      "language": "vi",
+      "scenario_id": "short_instruction",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-instr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy viết một câu chào buổi sáng."
+        },
+        {
+          "role": "assistant",
+          "text": "Chúc bạn buổi sáng tốt lành!"
+        },
+        {
+          "role": "user",
+          "text": "Thêm từ ngắn gọn hơn nữa."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào buổi sáng bạn nhé!"
+        },
+        {
+          "role": "user",
+          "text": "Tốt rồi, cảm ơn."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có chi, bạn nhé."
+        }
+      ]
+    },
+    {
+      "id": "b1-03",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-clarif-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi cần thông tin về phần này."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn cần thông tin phần nào?"
+        },
+        {
+          "role": "user",
+          "text": "Phần tài liệu hướng dẫn sử dụng."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẽ gửi ngay bây giờ."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn đã giải thích."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b1-04",
+      "language": "vi",
+      "scenario_id": "explicit_preference",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-pref-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Từ giờ hãy trả lời thật ngắn gọn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã hiểu và ghi nhận."
+        },
+        {
+          "role": "user",
+          "text": "Bạn nhớ yêu cầu chưa?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi luôn nhớ rõ điều này."
+        },
+        {
+          "role": "user",
+          "text": "Tốt lắm, cảm ơn bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi luôn sẵn sàng giúp."
+        }
+      ]
+    },
+    {
+      "id": "b1-05",
+      "language": "vi",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-corr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hôm trước bạn nói nhầm số rồi."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi xin lỗi vì sai sót."
+        },
+        {
+          "role": "user",
+          "text": "Hãy sửa lại số đúng là năm nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Đã sửa lại thành năm."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn đã sửa lại."
+        },
+        {
+          "role": "assistant",
+          "text": "Cảm ơn bạn đã nhắc nhở."
+        }
+      ]
+    },
+    {
+      "id": "b1-06",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-uncert-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Bạn có biết ngày mai trời mưa không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không có thông tin này."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể đoán thử được không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không chắc chắn điều đó."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, tôi hiểu rồi."
+        },
+        {
+          "role": "assistant",
+          "text": "Cảm ơn bạn đã thông cảm."
+        }
+      ]
+    },
+    {
+      "id": "b1-07",
+      "language": "en",
+      "scenario_id": "ordinary_greetings",
+      "split": "train",
+      "template_id": "b1-tmpl-en-tr-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hello, hope you have a nice day!"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello, have a wonderful day!"
+        },
+        {
+          "role": "user",
+          "text": "Are you ready to help me?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am ready to help."
+        },
+        {
+          "role": "user",
+          "text": "Thank you very much."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome anytime."
+        }
+      ]
+    },
+    {
+      "id": "b1-08",
+      "language": "en",
+      "scenario_id": "short_instruction",
+      "split": "train",
+      "template_id": "b1-tmpl-en-tr-instr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please give me a short greeting."
+        },
+        {
+          "role": "assistant",
+          "text": "Welcome and good morning to you!"
+        },
+        {
+          "role": "user",
+          "text": "Make it even shorter."
+        },
+        {
+          "role": "assistant",
+          "text": "Good morning, welcome!"
+        },
+        {
+          "role": "user",
+          "text": "That is perfect, thanks."
+        },
+        {
+          "role": "assistant",
+          "text": "Glad to help you out."
+        }
+      ]
+    },
+    {
+      "id": "b1-09",
+      "language": "vi",
+      "scenario_id": "ordinary_greetings",
+      "split": "development",
+      "template_id": "b1-tmpl-vi-dev-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Xin chào, rất vui được gặp bạn hôm nay."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào bạn, rất hân hạnh!"
+        },
+        {
+          "role": "user",
+          "text": "Bạn có khỏe không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn nhiều."
+        },
+        {
+          "role": "user",
+          "text": "Chúc bạn làm việc vui nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Chúc bạn một ngày an lành!"
+        }
+      ]
+    },
+    {
+      "id": "b1-10",
+      "language": "en",
+      "scenario_id": "clarification",
+      "split": "development",
+      "template_id": "b1-tmpl-en-dev-clarif-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Can you explain the next step?"
+        },
+        {
+          "role": "assistant",
+          "text": "Which step do you mean?"
+        },
+        {
+          "role": "user",
+          "text": "The final review step in the list."
+        },
+        {
+          "role": "assistant",
+          "text": "Please verify each item carefully."
+        },
+        {
+          "role": "user",
+          "text": "Got it, thank you."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to assist you further."
+        }
+      ]
+    }
+  ],
+  "notes": "Batch 1/4 completed. Returned 10 dialogues: 8 train (6 vi + 2 en) and 2 development (1 vi + 1 en). All id and template_id prefixed with b1-. Roles alternate strictly (3 user, 3 assistant turns per dialogue). Every assistant turn contains 1–8 words. Development templates do not overlap with train templates. Controlled vocabulary across assistant turns. No external tools, files, or web lookups were used."
+}

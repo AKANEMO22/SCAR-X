@@ -1,0 +1,66 @@
+{
+  "run": "runs/20261110T000339Z-visual-information-audit-v1-882afb",
+  "master_plan": "docs/RESEARCH_PLAN.md",
+  "master_version": "1.24",
+  "checked_at": "2026-11-10T00:12:28.956664+00:00",
+  "decision": "VISUAL_INFORMATION_DIAGNOSTIC_ONLY",
+  "diagnostic_flags": {
+    "observed_component_information_collapse": true,
+    "BOS_readout_training_gap": {
+      "frozen32": false,
+      "bptt_control33": false
+    },
+    "CONTROL_representation_gain": false
+  },
+  "component_collapse_flag_scope": "Question-only branch lacksRGB bydesign; not evidence of fullcore loss.",
+  "all_consumed_source_protocol_data_SHA_unchanged": true,
+  "consumed_files_verified": 224,
+  "all_6_source_checkpoint_files_unchanged": true,
+  "source_copy_protected_fields_unchanged": "Weights/stable/indices/headstats/learningcounters/sampler+calibrationRNG. Discarded workingstate advances; sourcefiles immutable.",
+  "all_5184_development_BOSwords_match_archived_full_generation_firsttokens": true,
+  "all_core_path_dev_semantic_exact_collision_ceilings100_except_question_only": true,
+  "new_conflicting_pairs_due_to_clip": 0,
+  "actual_probe_rows_on_localhost_exact": 6,
+  "actual_stage_rows_on_localhost_exact": 16,
+  "archive_still_original_source_and_timestamp": true,
+  "main_private_weights_topology_vocab_encoding_unchanged": true,
+  "private_fingerprint_only_local": true,
+  "main_neural_code_sha256_unchanged": {
+    "src/scarx/neural/core.py": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+    "src/scarx/neural/unified.py": "dc5dbed2c94ca1274499412a8e40372d9e12fc5e9645efbf976c85c6a0f27c37"
+  },
+  "live_updates": 241363,
+  "main_architecture_or_algorithm_changed": false,
+  "proposal30_approved": false,
+  "browser_verified": true,
+  "screenshot": "artifacts/visual-information-final.png",
+  "software_tests_passed": 176,
+  "software_tests_seconds": 64.97,
+  "frontend_syntax_checked": true,
+  "resources": {
+    "peak_rss_bytes": 133386240,
+    "peak_commit_or_vms_bytes": 150056960,
+    "os_process_peak_working_set_bytes": 134443008,
+    "os_process_peak_pagefile_commit_bytes": 150884352,
+    "samples": 428,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 47.60268759999599,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "live_ram_bytes": 75833344,
+  "llama_server_process_count": 0,
+  "neural_training": false,
+  "torch_imported": false,
+  "goal_completion_audit": {
+    "full_goal_complete": false,
+    "normal_main_conversation": false,
+    "normal_photo_vision": false,
+    "lifelong_retention_gate": false
+  },
+  "next_required_decision": "Newlearner requires agreedallowedsignal/protocol; proposal30 remains pending, no implementation implied."
+}

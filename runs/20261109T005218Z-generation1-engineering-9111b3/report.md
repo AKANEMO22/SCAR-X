@@ -1,0 +1,63 @@
+# Generation1 engineering acceptance
+
+{
+  "models": [
+    "scarx-generation1"
+  ],
+  "cores_loaded": 1,
+  "idle_advanced_ticks": 34,
+  "idle_weights_unchanged": true,
+  "training_prompt_outputs_not_generalization": [
+    {
+      "prompt": "hi",
+      "text": "Hello.",
+      "seconds": 0.026070399999298388
+    },
+    {
+      "prompt": "chào",
+      "text": "Chào bạn.",
+      "seconds": 0.03099969999948371
+    },
+    {
+      "prompt": "chào bạn",
+      "text": "Chào bạn.",
+      "seconds": 0.030792000000474218
+    }
+  ],
+  "digit_example": {
+    "expected": 4,
+    "predicted": 4
+  },
+  "explicit_learning_weight_delta": {
+    "w_in": 0.0011190444929525256,
+    "w_rec": 0.0005972073413431644,
+    "w_out": 0.132493257522583
+  },
+  "session_exact_continuation": true,
+  "ram_bytes": 56926208,
+  "resources": {
+    "peak_rss_bytes": 53489664,
+    "peak_commit_or_vms_bytes": 36270080,
+    "os_process_peak_working_set_bytes": 54468608,
+    "os_process_peak_pagefile_commit_bytes": 37040128,
+    "samples": 13,
+    "interval_seconds": 0.5,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 1.6354219000004377,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "memory_cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "runtime_auto_idle_learning": false,
+  "large_model_started": false,
+  "research_decision": "PIVOT_NO_SCALE"
+}
+
+Isolated public-fixture check, not a generalization/retention/endurance benchmark.

@@ -1,0 +1,226 @@
+# RGB real-object diagnostic
+
+Small independent-image classification, fixed48ALIFcore, source dataset labels. Not normal vision, captioning or learned hidden representation.
+
+{
+  "run": "runs/20261109T112104Z-rgb-object-grounding-v1-1fae49",
+  "summary": {
+    "raw": {
+      "accuracy": 0.18958333333333333,
+      "train_accuracy": 0.2046875,
+      "blank_accuracy": 0.10000000000000002,
+      "mismatched_image_accuracy": 0.17708333333333334,
+      "gain_over_blank": 0.08958333333333333,
+      "gain_over_mismatched": 0.012500000000000002
+    },
+    "normalized": {
+      "accuracy": 0.2041666666666667,
+      "train_accuracy": 0.33437500000000003,
+      "blank_accuracy": 0.10000000000000002,
+      "mismatched_image_accuracy": 0.19375,
+      "gain_over_blank": 0.10416666666666667,
+      "gain_over_mismatched": 0.010416666666666657
+    }
+  },
+  "trials": [
+    {
+      "seed": 10111,
+      "condition": "raw",
+      "accuracy": 0.18125,
+      "train_accuracy": 0.203125,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.1625,
+      "gain_over_blank": 0.08124999999999999,
+      "gain_over_mismatched": 0.01874999999999999,
+      "per_class_accuracy": {
+        "airplane": 0.6875,
+        "automobile": 0.0,
+        "bird": 0.0,
+        "cat": 0.1875,
+        "deer": 0.8125,
+        "dog": 0.0,
+        "frog": 0.0,
+        "horse": 0.0,
+        "ship": 0.125,
+        "truck": 0.0
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.2039129190098237,
+      "informative": false
+    },
+    {
+      "seed": 10111,
+      "condition": "normalized",
+      "accuracy": 0.21875,
+      "train_accuracy": 0.35625,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.2,
+      "gain_over_blank": 0.11875,
+      "gain_over_mismatched": 0.01874999999999999,
+      "per_class_accuracy": {
+        "airplane": 0.4375,
+        "automobile": 0.0625,
+        "bird": 0.125,
+        "cat": 0.1875,
+        "deer": 0.5,
+        "dog": 0.0,
+        "frog": 0.375,
+        "horse": 0.25,
+        "ship": 0.0625,
+        "truck": 0.1875
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.081272907395354,
+      "informative": false
+    },
+    {
+      "seed": 10133,
+      "condition": "raw",
+      "accuracy": 0.2,
+      "train_accuracy": 0.2265625,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.19375,
+      "gain_over_blank": 0.1,
+      "gain_over_mismatched": 0.0062500000000000056,
+      "per_class_accuracy": {
+        "airplane": 0.125,
+        "automobile": 0.0,
+        "bird": 0.5,
+        "cat": 0.0,
+        "deer": 0.0,
+        "dog": 0.0,
+        "frog": 0.4375,
+        "horse": 0.0,
+        "ship": 0.4375,
+        "truck": 0.5
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.2119314089220667,
+      "informative": false
+    },
+    {
+      "seed": 10133,
+      "condition": "normalized",
+      "accuracy": 0.1875,
+      "train_accuracy": 0.3390625,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.18125,
+      "gain_over_blank": 0.0875,
+      "gain_over_mismatched": 0.0062500000000000056,
+      "per_class_accuracy": {
+        "airplane": 0.3125,
+        "automobile": 0.1875,
+        "bird": 0.1875,
+        "cat": 0.125,
+        "deer": 0.1875,
+        "dog": 0.125,
+        "frog": 0.3125,
+        "horse": 0.125,
+        "ship": 0.1875,
+        "truck": 0.125
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.085426030609871,
+      "informative": false
+    },
+    {
+      "seed": 10139,
+      "condition": "raw",
+      "accuracy": 0.1875,
+      "train_accuracy": 0.184375,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.175,
+      "gain_over_blank": 0.0875,
+      "gain_over_mismatched": 0.012500000000000011,
+      "per_class_accuracy": {
+        "airplane": 0.0625,
+        "automobile": 0.0,
+        "bird": 0.0,
+        "cat": 0.0,
+        "deer": 0.125,
+        "dog": 0.0,
+        "frog": 0.75,
+        "horse": 0.0,
+        "ship": 0.9375,
+        "truck": 0.0
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.252580072929999,
+      "informative": false
+    },
+    {
+      "seed": 10139,
+      "condition": "normalized",
+      "accuracy": 0.20625,
+      "train_accuracy": 0.3078125,
+      "blank_accuracy": 0.1,
+      "mismatched_image_accuracy": 0.2,
+      "gain_over_blank": 0.10624999999999998,
+      "gain_over_mismatched": 0.006249999999999978,
+      "per_class_accuracy": {
+        "airplane": 0.375,
+        "automobile": 0.0,
+        "bird": 0.0625,
+        "cat": 0.125,
+        "deer": 0.125,
+        "dog": 0.0625,
+        "frog": 0.5,
+        "horse": 0.1875,
+        "ship": 0.3125,
+        "truck": 0.3125
+      },
+      "updates": 2560,
+      "hidden_changed": false,
+      "mean_train_loss": 2.1160380013600237,
+      "informative": false
+    }
+  ],
+  "source_receipt": {
+    "source_url": "https://huggingface.co/datasets/uoft-cs/cifar10",
+    "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+    "train_parquet_sha256": "8428b53a88a11ac374111006708df51469e315a22ac6d66470afd9c78d2ae883",
+    "train_parquet_bytes": 119705255,
+    "reference": "AlexKrizhevsky2009, Learning Multiple Layers of Features from Tiny Images",
+    "binary_format": "first10000pinnedHFtrainrows converted to label+3072planarRGB; not asserted same order as officialbinarybatch1",
+    "batch_sha256": "014e562d6e23c72197cc727519169a60359f5eccd8945ad5a09d710285ff4e48",
+    "single_binary_batch_bytes": 30730000,
+    "original_test_opened": false,
+    "dataset_redistributed": false,
+    "license_status": "unknown on sourcecard; localresearch only",
+    "protocol_amendment": "experiments/rgb-object-grounding-v1-source-amendment.md",
+    "seconds": 5.014999999999418
+  },
+  "resources": {
+    "peak_rss_bytes": 103956480,
+    "peak_commit_or_vms_bytes": 122400768,
+    "os_process_peak_working_set_bytes": 104988672,
+    "os_process_peak_pagefile_commit_bytes": 123203584,
+    "samples": 22,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.2335955999951693,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "image_path_informative_screen": false,
+  "normal_photo_qa_proven": false,
+  "learned_caption_or_language_proven": false,
+  "class_name_formatting_is_not_language_generation": true,
+  "hidden_representation_learning": false,
+  "deployed": false,
+  "original_test_used": false,
+  "decision": "PIVOT_VISUAL_REPRESENTATION_NO_SCALE"
+}

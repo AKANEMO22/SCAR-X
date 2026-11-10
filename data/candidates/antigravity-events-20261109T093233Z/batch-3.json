@@ -1,0 +1,335 @@
+{
+  "dialogs": [
+    {
+      "id": "b3-d01",
+      "language": "vi",
+      "scenario_id": "greetings",
+      "split": "train",
+      "template_id": "b3-vi-tr-greet",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Chào bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn, tôi có thể giúp gì?"
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn thế nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn nhiều nhé."
+        },
+        {
+          "role": "user",
+          "text": "Tốt rồi, cảm ơn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b3-d02",
+      "language": "vi",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b3-vi-tr-inst",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy viết một lời chào ngắn."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào, chúc ngày mới an lành."
+        },
+        {
+          "role": "user",
+          "text": "Rút gọn hơn nữa được không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào bạn nhé."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, cảm ơn."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có chi."
+        }
+      ]
+    },
+    {
+      "id": "b3-d03",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b3-vi-tr-clar",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Mở tài liệu giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn cần mở tệp nào vậy?"
+        },
+        {
+          "role": "user",
+          "text": "Tệp ghi chú hôm qua."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã hiểu, xin chờ chút."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi luôn sẵn sàng hỗ trợ."
+        }
+      ]
+    },
+    {
+      "id": "b3-d04",
+      "language": "vi",
+      "scenario_id": "preference",
+      "split": "train",
+      "template_id": "b3-vi-tr-pref",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi thích câu trả lời ngắn gọn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẽ luôn trả lời ngắn gọn."
+        },
+        {
+          "role": "user",
+          "text": "Nhớ ghi nhớ điều đó nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Vâng, tôi đã ghi nhớ rồi."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn trợ lý."
+        },
+        {
+          "role": "assistant",
+          "text": "Dạ vâng, cảm ơn bạn."
+        }
+      ]
+    },
+    {
+      "id": "b3-d05",
+      "language": "en",
+      "scenario_id": "greetings",
+      "split": "train",
+      "template_id": "b3-en-tr-greet",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hello there."
+        },
+        {
+          "role": "assistant",
+          "text": "Hello, how can I help you?"
+        },
+        {
+          "role": "user",
+          "text": "Just checking in today."
+        },
+        {
+          "role": "assistant",
+          "text": "I am doing well, thank you."
+        },
+        {
+          "role": "user",
+          "text": "Have a nice day."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you, have a good day."
+        }
+      ]
+    },
+    {
+      "id": "b3-d06",
+      "language": "en",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b3-en-tr-inst",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please write a short note."
+        },
+        {
+          "role": "assistant",
+          "text": "Here is your short note today."
+        },
+        {
+          "role": "user",
+          "text": "Make it even shorter please."
+        },
+        {
+          "role": "assistant",
+          "text": "Note saved for you now."
+        },
+        {
+          "role": "user",
+          "text": "Thanks for the help."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome."
+        }
+      ]
+    },
+    {
+      "id": "b3-d07",
+      "language": "en",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b3-en-tr-corr",
+      "turns": [
+        {
+          "role": "user",
+          "text": "You said my meeting was at two."
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, that was my previous answer."
+        },
+        {
+          "role": "user",
+          "text": "No, it is at three today."
+        },
+        {
+          "role": "assistant",
+          "text": "Sorry, I have corrected the time."
+        },
+        {
+          "role": "user",
+          "text": "Great, thank you."
+        },
+        {
+          "role": "assistant",
+          "text": "Glad to fix that mistake."
+        }
+      ]
+    },
+    {
+      "id": "b3-d08",
+      "language": "en",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b3-en-tr-unc",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Who won the small match nearby?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am not sure about that."
+        },
+        {
+          "role": "user",
+          "text": "Can you find out now?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not have that information."
+        },
+        {
+          "role": "user",
+          "text": "Fair enough, no problem."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you for your understanding."
+        }
+      ]
+    },
+    {
+      "id": "b3-d09",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "development",
+      "template_id": "b3-vi-dev-unc",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Cuộc họp tiếp theo khi nào bắt đầu?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi chưa rõ thông tin này."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể kiểm tra không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi thật sự không biết lúc này."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, tôi sẽ tự xem."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin lỗi vì sự bất tiện này."
+        }
+      ]
+    },
+    {
+      "id": "b3-d10",
+      "language": "en",
+      "scenario_id": "preference",
+      "split": "development",
+      "template_id": "b3-en-dev-pref",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Always call me friend."
+        },
+        {
+          "role": "assistant",
+          "text": "Understood, hello my friend."
+        },
+        {
+          "role": "user",
+          "text": "Keep that format from now on."
+        },
+        {
+          "role": "assistant",
+          "text": "Sure thing, my friend."
+        },
+        {
+          "role": "user",
+          "text": "Appreciate it."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help anytime, friend."
+        }
+      ]
+    }
+  ],
+  "notes": "Batch 3/4 generated: exactly 10 dialogues (8 train: 4 vi + 4 en; 2 dev: 1 vi + 1 en). All IDs and template IDs prefixed with 'b3-'. Each assistant turn is strictly 1-8 words. Roles alternate user/assistant (3 exchanges = 6 turns each). No external tools/private data used. Labels not independently verified."
+}

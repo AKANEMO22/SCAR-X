@@ -1,0 +1,33 @@
+# Actual Windows held-reader recovery
+
+An open reader preserves the old complete payload while a bounded-retry writer publishes a complete new file after reader close. No modellearning.
+
+{
+  "run": "runs/20261109T192742Z-g1-observer-atomic-recovery-v1-a5de0a",
+  "decision": "ATOMIC_REPLACE_READER_RECOVERY_VERIFIED",
+  "software_only": true,
+  "real_held_reader_test": true,
+  "replace_blocked_until_reader_closed": true,
+  "complete_payload_preserved": true,
+  "runtime_retry_bounded": true,
+  "prior_failure": {
+    "source_run": "runs/20261109T192017Z-g1-word-learnability-control-v1-446c16",
+    "failure_kind": "windows_atomic_replace_sharing",
+    "error": "PermissionError WinError5 at experiment_status._write os.replace",
+    "terminal_verified": true,
+    "quality_evaluated": false,
+    "last_worker_responses": 448,
+    "budget_consumed_seconds": 88.18021559715271,
+    "technical_retry_count": 1,
+    "main_model_changed": false,
+    "cause_scope": "Concurrent observer reader/atomic replace sharing is tested separately; no neural failure inferred."
+  },
+  "new_training": false,
+  "normal_chat_or_vision_proven": false,
+  "math_and_protocol_unchanged": true,
+  "source_sha256": {
+    "src/scarx/runtime/atomic_file.py": "9939d99dadeca620ce15ab901823eae320eebb5a3a79aae62a18169f19e47cb8",
+    "src/scarx/runtime/experiment_status.py": "20fdbfa82209aefe501a0031a48d38906eca09d9d20cb24ae24a274e03e42370",
+    "scripts/word_control_worker.py": "bbd5e1e7af3ab73eebfe8c5e666fdbc4ea375d7c55b26e6b12ae2b0802c16f0f"
+  }
+}

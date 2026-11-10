@@ -1,0 +1,1325 @@
+{
+  "dialogs": [
+    {
+      "id": "b1-01",
+      "language": "vi",
+      "scenario_id": "ordinary_greetings",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Chào bạn, ngày mới tốt lành nhé!"
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn, chúc ngày tốt lành!"
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn thấy thế nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẵn sàng hỗ trợ bạn."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhiều nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b1-02",
+      "language": "vi",
+      "scenario_id": "short_instruction",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-instr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy viết một câu chào buổi sáng."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn, chúc ngày mới tốt lành!"
+        },
+        {
+          "role": "user",
+          "text": "Thêm từ ngắn gọn hơn nữa."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn nhé!"
+        },
+        {
+          "role": "user",
+          "text": "Tốt rồi, cảm ơn."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có gì, bạn nhé."
+        }
+      ]
+    },
+    {
+      "id": "b1-03",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-clarif-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi cần thông tin về phần này."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn cần thông tin phần nào?"
+        },
+        {
+          "role": "user",
+          "text": "Phần tài liệu hướng dẫn sử dụng."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn gửi nội dung cần giải thích nhé."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn đã giải thích."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b1-04",
+      "language": "vi",
+      "scenario_id": "explicit_preference",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-pref-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Từ giờ hãy trả lời thật ngắn gọn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận yêu cầu này."
+        },
+        {
+          "role": "user",
+          "text": "Bạn nhớ yêu cầu chưa?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã hiểu yêu cầu này."
+        },
+        {
+          "role": "user",
+          "text": "Tốt lắm, cảm ơn bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi luôn sẵn sàng hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b1-05",
+      "language": "vi",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-corr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hôm trước bạn nói nhầm số rồi."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi xin lỗi vì sai sót."
+        },
+        {
+          "role": "user",
+          "text": "Hãy sửa lại số đúng là năm nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Đã sửa lại thành năm."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn đã sửa lại."
+        },
+        {
+          "role": "assistant",
+          "text": "Cảm ơn bạn đã nhắc nhở."
+        }
+      ]
+    },
+    {
+      "id": "b1-06",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b1-tmpl-vi-tr-uncert-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Bạn có biết ngày mai trời mưa không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không có thông tin thời tiết."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể đoán thử được không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không chắc chắn điều đó."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, tôi hiểu rồi."
+        },
+        {
+          "role": "assistant",
+          "text": "Cảm ơn bạn đã thông cảm."
+        }
+      ]
+    },
+    {
+      "id": "b1-07",
+      "language": "en",
+      "scenario_id": "ordinary_greetings",
+      "split": "train",
+      "template_id": "b1-tmpl-en-tr-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hello, hope you have a nice day!"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello, have a good day!"
+        },
+        {
+          "role": "user",
+          "text": "Are you ready to help me?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am ready to help you."
+        },
+        {
+          "role": "user",
+          "text": "Thank you very much."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome."
+        }
+      ]
+    },
+    {
+      "id": "b1-08",
+      "language": "en",
+      "scenario_id": "short_instruction",
+      "split": "train",
+      "template_id": "b1-tmpl-en-tr-instr-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please give me a short greeting."
+        },
+        {
+          "role": "assistant",
+          "text": "Good morning, welcome to you!"
+        },
+        {
+          "role": "user",
+          "text": "Make it even shorter."
+        },
+        {
+          "role": "assistant",
+          "text": "Good morning, welcome!"
+        },
+        {
+          "role": "user",
+          "text": "That is perfect, thanks."
+        },
+        {
+          "role": "assistant",
+          "text": "Glad to help you out."
+        }
+      ]
+    },
+    {
+      "id": "b1-09",
+      "language": "vi",
+      "scenario_id": "ordinary_greetings",
+      "split": "development",
+      "template_id": "b1-tmpl-vi-dev-greet-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Xin chào, rất vui được gặp bạn hôm nay."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào bạn, rất vui!"
+        },
+        {
+          "role": "user",
+          "text": "Bạn có khỏe không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn nhiều."
+        },
+        {
+          "role": "user",
+          "text": "Chúc bạn làm việc vui nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Chúc bạn ngày mới tốt lành!"
+        }
+      ]
+    },
+    {
+      "id": "b1-10",
+      "language": "en",
+      "scenario_id": "clarification",
+      "split": "development",
+      "template_id": "b1-tmpl-en-dev-clarif-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Can you explain the next step?"
+        },
+        {
+          "role": "assistant",
+          "text": "Which step do you mean?"
+        },
+        {
+          "role": "user",
+          "text": "The final review step in the list."
+        },
+        {
+          "role": "assistant",
+          "text": "Please review the list."
+        },
+        {
+          "role": "user",
+          "text": "Got it, thank you."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help you out."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-01",
+      "language": "vi",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Xin chào bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào. Tôi có thể giúp gì?"
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn thế nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn."
+        },
+        {
+          "role": "user",
+          "text": "Tốt rồi, cảm ơn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-02",
+      "language": "vi",
+      "scenario_id": "instruction_following",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-02",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy đếm từ một đến ba."
+        },
+        {
+          "role": "assistant",
+          "text": "Một, hai, ba."
+        },
+        {
+          "role": "user",
+          "text": "Đếm tiếp đến năm đi."
+        },
+        {
+          "role": "assistant",
+          "text": "Bốn, năm."
+        },
+        {
+          "role": "user",
+          "text": "Viết lại từ đầu nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Một, hai, ba, bốn, năm."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-03",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-03",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Gửi cho tôi tài liệu đó."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn cần thông tin tài liệu nào?"
+        },
+        {
+          "role": "user",
+          "text": "Bản báo cáo tóm tắt hôm qua."
+        },
+        {
+          "role": "assistant",
+          "text": "Bạn gửi nội dung tài liệu nhé."
+        },
+        {
+          "role": "user",
+          "text": "Định dạng văn bản ngắn thôi nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Vâng, tôi sẽ tóm tắt ngắn gọn."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-04",
+      "language": "vi",
+      "scenario_id": "stated_preferences",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-04",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Từ giờ hãy trả lời thật ngắn gọn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẽ trả lời ngắn gọn."
+        },
+        {
+          "role": "user",
+          "text": "Tôi thích dùng tiếng Việt hơn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận điều này."
+        },
+        {
+          "role": "user",
+          "text": "Không cần chào hỏi rườm rà."
+        },
+        {
+          "role": "assistant",
+          "text": "Đã ghi nhận yêu cầu của bạn."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-05",
+      "language": "vi",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-05",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hai cộng hai bằng năm đúng không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Không đúng, hai cộng hai bằng bốn."
+        },
+        {
+          "role": "user",
+          "text": "Tôi nhầm, vậy ba cộng ba là sáu?"
+        },
+        {
+          "role": "assistant",
+          "text": "Đúng rồi, ba cộng ba bằng sáu."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn vì đã sửa giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có gì, rất sẵn lòng."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-06",
+      "language": "vi",
+      "scenario_id": "acknowledging_uncertainty",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-vi-06",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Ngày mai trời có mưa ở đây không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không rõ thông tin thời tiết."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có đoán được phần nào không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể đoán trước được."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, tôi sẽ tự tra cứu."
+        },
+        {
+          "role": "assistant",
+          "text": "Chúc bạn một ngày tốt lành."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-07",
+      "language": "en",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-en-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hello there!"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello! How can I help today?"
+        },
+        {
+          "role": "user",
+          "text": "Just checking in with you."
+        },
+        {
+          "role": "assistant",
+          "text": "I am ready to help you."
+        },
+        {
+          "role": "user",
+          "text": "Thanks, have a good day."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you, you too!"
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-08",
+      "language": "en",
+      "scenario_id": "instruction_following",
+      "split": "train",
+      "template_id": "b2-tmpl-tr-en-02",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Say yes if you hear me."
+        },
+        {
+          "role": "assistant",
+          "text": "Yes."
+        },
+        {
+          "role": "user",
+          "text": "Now repeat the word blue."
+        },
+        {
+          "role": "assistant",
+          "text": "Blue."
+        },
+        {
+          "role": "user",
+          "text": "Spell it out please."
+        },
+        {
+          "role": "assistant",
+          "text": "B, L, U, E."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-09",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "development",
+      "template_id": "b2-tmpl-dev-vi-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy mở mục đã lưu giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin cho biết tên mục cần mở?"
+        },
+        {
+          "role": "user",
+          "text": "Thư mục ghi chú làm việc."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể mở tệp trực tiếp."
+        },
+        {
+          "role": "user",
+          "text": "Liệt kê tệp mới nhất xem nào."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi chỉ hỗ trợ giải đáp văn bản."
+        }
+      ]
+    },
+    {
+      "id": "b2-dialog-10",
+      "language": "en",
+      "scenario_id": "acknowledging_uncertainty",
+      "split": "development",
+      "template_id": "b2-tmpl-dev-en-01",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Who won the local game today?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not know the result."
+        },
+        {
+          "role": "user",
+          "text": "Can you find the winner now?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not have live updates."
+        },
+        {
+          "role": "user",
+          "text": "Understood, no problem at all."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help with other questions."
+        }
+      ]
+    },
+    {
+      "id": "b3-d01",
+      "language": "vi",
+      "scenario_id": "greetings",
+      "split": "train",
+      "template_id": "b3-vi-tr-greet",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Chào bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn, tôi có thể giúp gì?"
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn thế nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn nhiều nhé."
+        },
+        {
+          "role": "user",
+          "text": "Tốt rồi, cảm ơn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b3-d02",
+      "language": "vi",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b3-vi-tr-inst",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy viết một lời chào ngắn."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào, chúc ngày mới tốt lành."
+        },
+        {
+          "role": "user",
+          "text": "Rút gọn hơn nữa được không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Xin chào bạn nhé."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, cảm ơn."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có gì bạn nhé."
+        }
+      ]
+    },
+    {
+      "id": "b3-d03",
+      "language": "vi",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b3-vi-tr-clar",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Mở tài liệu giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể mở tệp trực tiếp."
+        },
+        {
+          "role": "user",
+          "text": "Tệp ghi chú hôm qua."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi có thể đọc văn bản bạn gửi."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi luôn sẵn sàng hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b3-d04",
+      "language": "vi",
+      "scenario_id": "preference",
+      "split": "train",
+      "template_id": "b3-vi-tr-pref",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi thích câu trả lời ngắn gọn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẽ trả lời ngắn gọn."
+        },
+        {
+          "role": "user",
+          "text": "Nhớ ghi nhớ điều đó nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận điều đó."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn trợ lý."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b3-d05",
+      "language": "en",
+      "scenario_id": "greetings",
+      "split": "train",
+      "template_id": "b3-en-tr-greet",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hello there."
+        },
+        {
+          "role": "assistant",
+          "text": "Hello, how can I help you?"
+        },
+        {
+          "role": "user",
+          "text": "Just checking in today."
+        },
+        {
+          "role": "assistant",
+          "text": "I am doing well, thank you."
+        },
+        {
+          "role": "user",
+          "text": "Have a nice day."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you, have a good day."
+        }
+      ]
+    },
+    {
+      "id": "b3-d06",
+      "language": "en",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b3-en-tr-inst",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please write a short note."
+        },
+        {
+          "role": "assistant",
+          "text": "Here is a short note: Welcome!"
+        },
+        {
+          "role": "user",
+          "text": "Make it even shorter please."
+        },
+        {
+          "role": "assistant",
+          "text": "Short note: Hello."
+        },
+        {
+          "role": "user",
+          "text": "Thanks for the help."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome."
+        }
+      ]
+    },
+    {
+      "id": "b3-d07",
+      "language": "en",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b3-en-tr-corr",
+      "turns": [
+        {
+          "role": "user",
+          "text": "You said my meeting was at two."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you. Please give the time."
+        },
+        {
+          "role": "user",
+          "text": "No, it is at three today."
+        },
+        {
+          "role": "assistant",
+          "text": "Sorry, I have corrected the time."
+        },
+        {
+          "role": "user",
+          "text": "Great, thank you."
+        },
+        {
+          "role": "assistant",
+          "text": "Glad to fix that mistake."
+        }
+      ]
+    },
+    {
+      "id": "b3-d08",
+      "language": "en",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b3-en-tr-unc",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Who won the small match nearby?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am not sure about that."
+        },
+        {
+          "role": "user",
+          "text": "Can you find out now?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not have that information."
+        },
+        {
+          "role": "user",
+          "text": "Fair enough, no problem."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you for your understanding."
+        }
+      ]
+    },
+    {
+      "id": "b3-d09",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "development",
+      "template_id": "b3-vi-dev-unc",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Cuộc họp tiếp theo khi nào bắt đầu?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không có thông tin này."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể kiểm tra không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể kiểm tra lúc này."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, tôi sẽ tự xem."
+        },
+        {
+          "role": "assistant",
+          "text": "Xin lỗi vì sự bất tiện này."
+        }
+      ]
+    },
+    {
+      "id": "b3-d10",
+      "language": "en",
+      "scenario_id": "preference",
+      "split": "development",
+      "template_id": "b3-en-dev-pref",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Always call me friend."
+        },
+        {
+          "role": "assistant",
+          "text": "Understood, hello friend."
+        },
+        {
+          "role": "user",
+          "text": "Keep that format from now on."
+        },
+        {
+          "role": "assistant",
+          "text": "Understood, friend."
+        },
+        {
+          "role": "user",
+          "text": "Appreciate it."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help, friend."
+        }
+      ]
+    },
+    {
+      "id": "b4-d01",
+      "language": "vi",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b4-t-vi-greet-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Xin chào bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn."
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn khỏe không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi ổn, cảm ơn bạn."
+        },
+        {
+          "role": "user",
+          "text": "Rất vui được gặp bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi cũng vậy."
+        }
+      ]
+    },
+    {
+      "id": "b4-d02",
+      "language": "vi",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b4-t-vi-inst-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy đếm từ một đến ba."
+        },
+        {
+          "role": "assistant",
+          "text": "Một, hai, ba."
+        },
+        {
+          "role": "user",
+          "text": "Đọc ngược lại giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Ba, hai, một."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhiều."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có gì."
+        }
+      ]
+    },
+    {
+      "id": "b4-d03",
+      "language": "vi",
+      "scenario_id": "preference",
+      "split": "train",
+      "template_id": "b4-t-vi-pref-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi thích đọc sách buổi sáng."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận điều đó."
+        },
+        {
+          "role": "user",
+          "text": "Tôi hay đọc sách lịch sử."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận sở thích này."
+        },
+        {
+          "role": "user",
+          "text": "Hãy nhớ sở thích này nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận."
+        }
+      ]
+    },
+    {
+      "id": "b4-d04",
+      "language": "vi",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b4-t-vi-corr-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi chọn màu đỏ."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi đã ghi nhận."
+        },
+        {
+          "role": "user",
+          "text": "Đổi thành màu vàng."
+        },
+        {
+          "role": "assistant",
+          "text": "Màu bạn chọn là vàng."
+        },
+        {
+          "role": "user",
+          "text": "Tôi đang chọn màu nào?"
+        },
+        {
+          "role": "assistant",
+          "text": "Màu vàng."
+        }
+      ]
+    },
+    {
+      "id": "b4-d05",
+      "language": "en",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b4-t-en-greet-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Good morning."
+        },
+        {
+          "role": "assistant",
+          "text": "Good morning to you."
+        },
+        {
+          "role": "user",
+          "text": "How are you doing today?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am doing well."
+        },
+        {
+          "role": "user",
+          "text": "Have a nice day."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you, you too."
+        }
+      ]
+    },
+    {
+      "id": "b4-d06",
+      "language": "en",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b4-t-en-inst-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please say hello in French."
+        },
+        {
+          "role": "assistant",
+          "text": "Bonjour."
+        },
+        {
+          "role": "user",
+          "text": "Now write it in English."
+        },
+        {
+          "role": "assistant",
+          "text": "Hello."
+        },
+        {
+          "role": "user",
+          "text": "That was very fast."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help."
+        }
+      ]
+    },
+    {
+      "id": "b4-d07",
+      "language": "en",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b4-t-en-clar-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Can you open it for me?"
+        },
+        {
+          "role": "assistant",
+          "text": "Which item do you mean?"
+        },
+        {
+          "role": "user",
+          "text": "I mean the small box."
+        },
+        {
+          "role": "assistant",
+          "text": "I cannot open items directly."
+        },
+        {
+          "role": "user",
+          "text": "Thanks for checking."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome."
+        }
+      ]
+    },
+    {
+      "id": "b4-d08",
+      "language": "en",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b4-t-en-unc-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Who will win tomorrow?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not know."
+        },
+        {
+          "role": "user",
+          "text": "Can you guess?"
+        },
+        {
+          "role": "assistant",
+          "text": "I cannot predict that."
+        },
+        {
+          "role": "user",
+          "text": "Fair enough."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you."
+        }
+      ]
+    },
+    {
+      "id": "b4-d09",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "development",
+      "template_id": "b4-dev-vi-unc-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Mai trời mưa lúc mấy giờ?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không có thông tin thời tiết."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể đoán không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể đoán trước."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, cảm ơn bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Rất vui được hỗ trợ bạn."
+        }
+      ]
+    },
+    {
+      "id": "b4-d10",
+      "language": "en",
+      "scenario_id": "correction",
+      "split": "development",
+      "template_id": "b4-dev-en-corr-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "A triangle has four sides right?"
+        },
+        {
+          "role": "assistant",
+          "text": "No, a triangle has three sides."
+        },
+        {
+          "role": "user",
+          "text": "So it has three sides?"
+        },
+        {
+          "role": "assistant",
+          "text": "That is correct."
+        },
+        {
+          "role": "user",
+          "text": "Please remember that."
+        },
+        {
+          "role": "assistant",
+          "text": "Understood, I have noted that."
+        }
+      ]
+    }
+  ],
+  "notes": "Corrected 40-dialogue corpus meeting codec vocabulary constraints (<=150 unique lowercased words/punctuation across all assistant turns), 1-8 words per reply, and strict factual and tool grounding without false agreements or ungrounded capability claims."
+}

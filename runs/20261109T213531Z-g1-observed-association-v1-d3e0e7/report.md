@@ -1,0 +1,187 @@
+# Observed-response covariance association
+
+Actual label-conditioned localpre/post learning on experimentalALIF48. Nocurrenttarget at inference/probe. Fixedcontrols/gates; no servingimport or broadqualityclaim.
+
+{
+  "run": "runs/20261109T213531Z-g1-observed-association-v1-d3e0e7",
+  "decision": "STOP_OBSERVED_ASSOCIATION_V1",
+  "summary": {
+    "frozen": {
+      "train16": {
+        "strict_style_exact": 0.041666666666666664,
+        "normalized_style_exact": 0.10416666666666667,
+        "teacher_token_accuracy": 0.5253472222222223,
+        "teacher_nll": 1.7950708740595758,
+        "first_token_accuracy": 0.5,
+        "stopped": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.02150537634408602,
+        "normalized_style_exact": 0.02150537634408602,
+        "teacher_token_accuracy": 0.4291858678955453,
+        "teacher_nll": 2.0418607839236045,
+        "first_token_accuracy": 0.3333333333333333,
+        "stopped": 0.978494623655914
+      },
+      "prior": {
+        "strict_style_exact": 0.041666666666666664,
+        "normalized_style_exact": 0.06944444444444443,
+        "teacher_token_accuracy": 0.4489914021164021,
+        "teacher_nll": 1.8918820471422089,
+        "first_token_accuracy": 0.3819444444444445,
+        "stopped": 0.9791666666666666
+      }
+    },
+    "paired": {
+      "train16": {
+        "strict_style_exact": 0.020833333333333332,
+        "normalized_style_exact": 0.0625,
+        "teacher_token_accuracy": 0.496875,
+        "teacher_nll": 1.8410026492964453,
+        "first_token_accuracy": 0.4375,
+        "stopped": 0.9791666666666666
+      },
+      "development": {
+        "strict_style_exact": 0.02150537634408602,
+        "normalized_style_exact": 0.02150537634408602,
+        "teacher_token_accuracy": 0.4050179211469535,
+        "teacher_nll": 2.089192269335442,
+        "first_token_accuracy": 0.3440860215053763,
+        "stopped": 0.967741935483871
+      },
+      "prior": {
+        "strict_style_exact": 0.006944444444444444,
+        "normalized_style_exact": 0.027777777777777776,
+        "teacher_token_accuracy": 0.44826388888888885,
+        "teacher_nll": 1.9289400545170423,
+        "first_token_accuracy": 0.3263888888888889,
+        "stopped": 0.9791666666666666
+      }
+    },
+    "cross_family": {
+      "train16": {
+        "strict_style_exact": 0.020833333333333332,
+        "normalized_style_exact": 0.08333333333333333,
+        "teacher_token_accuracy": 0.4668650793650793,
+        "teacher_nll": 1.8576318811764196,
+        "first_token_accuracy": 0.4375,
+        "stopped": 0.9791666666666666
+      },
+      "development": {
+        "strict_style_exact": 0.02150537634408602,
+        "normalized_style_exact": 0.02150537634408602,
+        "teacher_token_accuracy": 0.4231182795698925,
+        "teacher_nll": 2.095116233357551,
+        "first_token_accuracy": 0.3763440860215053,
+        "stopped": 0.978494623655914
+      },
+      "prior": {
+        "strict_style_exact": 0.027777777777777776,
+        "normalized_style_exact": 0.048611111111111105,
+        "teacher_token_accuracy": 0.44996693121693115,
+        "teacher_nll": 1.9369244811631567,
+        "first_token_accuracy": 0.42361111111111116,
+        "stopped": 0.986111111111111
+      }
+    },
+    "erase_trace": {
+      "train16": {
+        "strict_style_exact": 0.041666666666666664,
+        "normalized_style_exact": 0.10416666666666667,
+        "teacher_token_accuracy": 0.5253472222222223,
+        "teacher_nll": 1.7950708740595758,
+        "first_token_accuracy": 0.5,
+        "stopped": 1.0
+      },
+      "development": {
+        "strict_style_exact": 0.02150537634408602,
+        "normalized_style_exact": 0.02150537634408602,
+        "teacher_token_accuracy": 0.4291858678955453,
+        "teacher_nll": 2.0418607839236045,
+        "first_token_accuracy": 0.3333333333333333,
+        "stopped": 0.978494623655914
+      },
+      "prior": {
+        "strict_style_exact": 0.041666666666666664,
+        "normalized_style_exact": 0.06944444444444443,
+        "teacher_token_accuracy": 0.4489914021164021,
+        "teacher_nll": 1.8918820471422089,
+        "first_token_accuracy": 0.3819444444444445,
+        "stopped": 0.9791666666666666
+      }
+    }
+  },
+  "gates": {
+    "paired_dev40": false,
+    "paired_vs_frozen_dev10_all_positive": false,
+    "paired_vs_frozen_prior10": false,
+    "paired_vs_crossfamily_dev5_all_positive": false,
+    "prompt_only_probe_gain5_all_positive": false,
+    "erased_frozen_exact_allseeds": true,
+    "all_checkpoint_continuations_exact": true
+  },
+  "paired_dev_gain": {
+    "mean": 0.0,
+    "lower95": -0.06451612903225806,
+    "upper95": 0.06451612903225806,
+    "n_seeds": 3
+  },
+  "paired_prior_gain": {
+    "mean": -0.041666666666666664,
+    "lower95": -0.0625,
+    "upper95": -0.020833333333333332,
+    "n_seeds": 3
+  },
+  "paired_crossfamily_dev_gain": {
+    "mean": 0.0,
+    "lower95": -0.03225806451612903,
+    "upper95": 0.06451612903225806,
+    "n_seeds": 3
+  },
+  "paired_prompt_probe_gain": {
+    "mean": -0.021505376344086002,
+    "lower95": -0.06451612903225806,
+    "upper95": 0.03225806451612906,
+    "n_seeds": 3
+  },
+  "probe_by_condition": {
+    "frozen": 0.3118279569892473,
+    "paired": 0.2903225806451613,
+    "cross_family": 0.3763440860215053,
+    "erase_trace": 0.3118279569892473
+  },
+  "trials": 12,
+  "resources": {
+    "peak_rss_bytes": 155742208,
+    "peak_commit_or_vms_bytes": 179007488,
+    "os_process_peak_working_set_bytes": 49147904,
+    "os_process_peak_pagefile_commit_bytes": 33529856,
+    "samples": 165,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 14.226078099993174,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "new_hidden_backward": false,
+  "label_conditioned_learning": true,
+  "inference_gold_input": false,
+  "historical_stopped_families_preserved": true,
+  "limits": [
+    "Only3freshseeds,8knownstyleanswers and inspecteddev/prior; not originalP1confirmation or normalchat/vision.",
+    "Teacheranswer is privilegedtraininginput in separateobservationphase, not unsupervised or verifiedtruth.",
+    "Onlyinputcontextsynapseslearn. DeterministicG1forward/rawhead differs from stochasticScoreWord; compare own matchedcontrols only.",
+    "One registeredscreen, no autoLR/encoder/epoch/round2/modelscale tune or mainimport."
+  ]
+}

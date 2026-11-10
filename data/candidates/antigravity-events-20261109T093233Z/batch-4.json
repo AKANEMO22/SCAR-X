@@ -1,0 +1,335 @@
+{
+  "dialogs": [
+    {
+      "id": "b4-d01",
+      "language": "vi",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b4-t-vi-greet-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Xin chào bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Chào bạn."
+        },
+        {
+          "role": "user",
+          "text": "Hôm nay bạn khỏe không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi khỏe, cảm ơn bạn."
+        },
+        {
+          "role": "user",
+          "text": "Rất vui được gặp bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi cũng vậy."
+        }
+      ]
+    },
+    {
+      "id": "b4-d02",
+      "language": "vi",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b4-t-vi-inst-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Hãy đếm từ một đến ba."
+        },
+        {
+          "role": "assistant",
+          "text": "Một, hai, ba."
+        },
+        {
+          "role": "user",
+          "text": "Đọc ngược lại giúp tôi."
+        },
+        {
+          "role": "assistant",
+          "text": "Ba, hai, một."
+        },
+        {
+          "role": "user",
+          "text": "Cảm ơn bạn nhiều."
+        },
+        {
+          "role": "assistant",
+          "text": "Không có chi."
+        }
+      ]
+    },
+    {
+      "id": "b4-d03",
+      "language": "vi",
+      "scenario_id": "preference",
+      "split": "train",
+      "template_id": "b4-t-vi-pref-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Tôi thích đọc sách buổi sáng."
+        },
+        {
+          "role": "assistant",
+          "text": "Thói quen đó rất tốt."
+        },
+        {
+          "role": "user",
+          "text": "Tôi hay đọc sách lịch sử."
+        },
+        {
+          "role": "assistant",
+          "text": "Sách lịch sử rất thú vị."
+        },
+        {
+          "role": "user",
+          "text": "Hãy nhớ sở thích này nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi sẽ ghi nhớ."
+        }
+      ]
+    },
+    {
+      "id": "b4-d04",
+      "language": "vi",
+      "scenario_id": "correction",
+      "split": "train",
+      "template_id": "b4-t-vi-corr-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Màu cam do đỏ và xanh tạo thành?"
+        },
+        {
+          "role": "assistant",
+          "text": "Đúng vậy."
+        },
+        {
+          "role": "user",
+          "text": "Sai rồi, phải là đỏ và vàng."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi xin lỗi, bạn nói đúng."
+        },
+        {
+          "role": "user",
+          "text": "Lần sau chú ý hơn nhé."
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi hiểu rồi."
+        }
+      ]
+    },
+    {
+      "id": "b4-d05",
+      "language": "en",
+      "scenario_id": "greeting",
+      "split": "train",
+      "template_id": "b4-t-en-greet-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Good morning."
+        },
+        {
+          "role": "assistant",
+          "text": "Good morning to you."
+        },
+        {
+          "role": "user",
+          "text": "How are you doing today?"
+        },
+        {
+          "role": "assistant",
+          "text": "I am doing well."
+        },
+        {
+          "role": "user",
+          "text": "Have a nice day."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you, you too."
+        }
+      ]
+    },
+    {
+      "id": "b4-d06",
+      "language": "en",
+      "scenario_id": "instruction",
+      "split": "train",
+      "template_id": "b4-t-en-inst-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Please say hello in French."
+        },
+        {
+          "role": "assistant",
+          "text": "Bonjour."
+        },
+        {
+          "role": "user",
+          "text": "Now write it in English."
+        },
+        {
+          "role": "assistant",
+          "text": "Hello."
+        },
+        {
+          "role": "user",
+          "text": "That was very fast."
+        },
+        {
+          "role": "assistant",
+          "text": "Happy to help."
+        }
+      ]
+    },
+    {
+      "id": "b4-d07",
+      "language": "en",
+      "scenario_id": "clarification",
+      "split": "train",
+      "template_id": "b4-t-en-clar-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Can you open it for me?"
+        },
+        {
+          "role": "assistant",
+          "text": "Which item do you mean?"
+        },
+        {
+          "role": "user",
+          "text": "I mean the small box."
+        },
+        {
+          "role": "assistant",
+          "text": "I understand now."
+        },
+        {
+          "role": "user",
+          "text": "Thanks for checking."
+        },
+        {
+          "role": "assistant",
+          "text": "You are welcome."
+        }
+      ]
+    },
+    {
+      "id": "b4-d08",
+      "language": "en",
+      "scenario_id": "uncertainty",
+      "split": "train",
+      "template_id": "b4-t-en-unc-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Who will win tomorrow?"
+        },
+        {
+          "role": "assistant",
+          "text": "I do not know."
+        },
+        {
+          "role": "user",
+          "text": "Can you guess?"
+        },
+        {
+          "role": "assistant",
+          "text": "I cannot predict that."
+        },
+        {
+          "role": "user",
+          "text": "Fair enough."
+        },
+        {
+          "role": "assistant",
+          "text": "Thank you."
+        }
+      ]
+    },
+    {
+      "id": "b4-d09",
+      "language": "vi",
+      "scenario_id": "uncertainty",
+      "split": "development",
+      "template_id": "b4-dev-vi-unc-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "Mai trời mưa lúc mấy giờ?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không biết chắc."
+        },
+        {
+          "role": "user",
+          "text": "Bạn có thể đoán không?"
+        },
+        {
+          "role": "assistant",
+          "text": "Tôi không thể đoán trước."
+        },
+        {
+          "role": "user",
+          "text": "Được rồi, cảm ơn bạn."
+        },
+        {
+          "role": "assistant",
+          "text": "Dạ, không sao."
+        }
+      ]
+    },
+    {
+      "id": "b4-d10",
+      "language": "en",
+      "scenario_id": "correction",
+      "split": "development",
+      "template_id": "b4-dev-en-corr-1",
+      "turns": [
+        {
+          "role": "user",
+          "text": "A triangle has four sides right?"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, four sides."
+        },
+        {
+          "role": "user",
+          "text": "No, it has three sides."
+        },
+        {
+          "role": "assistant",
+          "text": "Sorry, my mistake."
+        },
+        {
+          "role": "user",
+          "text": "Please remember that."
+        },
+        {
+          "role": "assistant",
+          "text": "I will remember."
+        }
+      ]
+    }
+  ],
+  "notes": "Batch 4/4 repair corpus: 10 dialogues total (8 train: 4 vi + 4 en; 2 development: 1 vi + 1 en). All IDs prefixed with b4-. Disjoint templates between splits. Every assistant turn is 1-8 tokens with restrained shared vocabulary. Generated labels are unverified synthetic curriculum data."
+}

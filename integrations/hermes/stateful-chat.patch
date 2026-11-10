@@ -1,0 +1,735 @@
+--- a/agent/agent_init.py
++++ b/agent/agent_init.py
+@@ -1928,7 +1928,8 @@
+         and not isinstance(agent._config_context_length, bool)
+         and agent._config_context_length > 0
+     )
+-    if _ctx and _ctx < MINIMUM_CONTEXT_LENGTH and not _allow_lmstudio_explicit_below_floor:
++    _stateful_tool_free = getattr(agent, "_stateful_chat_backend", False) and not getattr(agent, "tools", None)
++    if _ctx and _ctx < MINIMUM_CONTEXT_LENGTH and not (_allow_lmstudio_explicit_below_floor or _stateful_tool_free):
+         raise ValueError(
+             f"Model {agent.model} has a context window of {_ctx:,} tokens, "
+             f"which is below the minimum {MINIMUM_CONTEXT_LENGTH:,} required "
+@@ -1960,6 +1961,8 @@
+ 
+ 
+ def _inject_context_engine_tools(agent):
++    if getattr(agent, "_stateful_chat_backend", False):
++        return
+     # Context engine tool schemas (lcm_*), deduped against existing names (plugins may
+     # register the same schemas; duplicates 400 provider-side) and gated on enabled_toolsets
+     # so `platform_toolsets: telegram: []` can't leak them.
+@@ -2310,7 +2313,11 @@
+     _set_defaults(agent, _STREAM_STATE)
+     _build_client(agent, api_key, base_url, fallback_model)
+     _init_fallback_chain(agent, fallback_model)
+-    _load_tools(agent, enabled_toolsets, disabled_toolsets)
++    from hermes_cli.config import load_config_readonly as _stateful_load_config
++    from agent.stateful_chat import configure_stateful_chat
++    _stateful_chat = configure_stateful_chat(agent, _stateful_load_config())
++    if not _stateful_chat:
++        _load_tools(agent, enabled_toolsets, disabled_toolsets)
+     _init_session_state(
+         agent, session_id, session_db, parent_session_id, reasoning_config, max_tokens,
+         checkpoints_enabled, checkpoint_max_snapshots, checkpoint_max_total_size_mb, checkpoint_max_file_size_mb,
+@@ -2324,13 +2331,15 @@
+         _agent_cfg = {}
+ 
+     _apply_display_config(agent, _agent_cfg, platform)
+-    _init_memory(agent, _agent_cfg, skip_memory, platform)
++    _init_memory(agent, _agent_cfg, skip_memory or _stateful_chat, platform)
+     _apply_agent_section(agent, _agent_cfg)
+     cs = _parse_compression_config(agent, _agent_cfg)
+     _config_context_length, _custom_providers, _effective_context_length, _model_cfg = _resolve_context_length(
+         agent, _agent_cfg, base_url
+     )
+     _build_context_engine(agent, _agent_cfg, cs, _custom_providers, _effective_context_length, session_db)
++    if _stateful_chat:
++        agent.context_compressor._stateful_input_limit_characters = agent._stateful_chat_max_input_characters
+     _enforce_minimum_context(agent)
+     _warn_nonagentic_hermes_model(agent)
+     _inject_context_engine_tools(agent)
+--- a/agent/system_prompt.py
++++ b/agent/system_prompt.py
+@@ -636,6 +636,8 @@
+     timestamp line, runtime environment hints).  Worktree-dependent blocks follow project context so a
+     shared context file can remain in the longest common prefix across worktrees.
+     Never re-rendered mid-session."""
++    if getattr(agent, "_stateful_chat_backend", False):
++        return {"stable": "", "context": "", "volatile": ""}
+     # Model context window scales the context-file caps; stable per conversation.
+     _cc_len = getattr(getattr(agent, "context_compressor", None), "context_length", None)
+     _ctx_len = _cc_len if isinstance(_cc_len, int) and _cc_len > 0 else None
+--- a/agent/conversation_loop.py
++++ b/agent/conversation_loop.py
+@@ -1445,6 +1445,13 @@
+     store when ``user_message`` carries API-only synthetic prefixes; timestamp / platform id are
+     stored as metadata (platform id lets restart drain recovery dedup). ``persist_user_display_*``:
+     display-only event rendering; the model still receives the message unchanged."""
++    if getattr(agent, "_stateful_chat_backend", False):
++        from agent.stateful_chat import prepare_stateful_chat_turn
++        if moa_config:
++            raise ValueError("stateful_chat does not support MoA orchestration")
++        user_message = prepare_stateful_chat_turn(agent, user_message)
++        conversation_history = None
++        system_message = None
+     if moa_config is None:
+         user_message, moa_config, persist_user_message = _decode_inline_moa_turn(
+             user_message, persist_user_message
+--- /dev/null
++++ b/agent/stateful_chat.py
+@@ -0,0 +1,103 @@
++"""Explicit provider-owned stateful chat, separate from prompt-based agents.
++
++The transcript is a UI ledger; the backend owns working state and learning.
++No assumption that its input buffer describes neural memory or intelligence.
++"""
++from copy import deepcopy
++import json
++import uuid
++from urllib.request import Request,urlopen
++from urllib.error import URLError
++
++
++def configure_stateful_chat(agent, config):
++    agent._stateful_chat_backend = False
++    endpoint = str(getattr(agent, 'base_url', '') or '').rstrip('/')
++    model = str(getattr(agent, 'model', '') or '')
++    providers = config.get('providers', {})
++    if not endpoint or not isinstance(providers, dict):
++        return False
++    profile = next((p for p in providers.values() if isinstance(p, dict)
++                    and p.get('interaction_mode') == 'stateful_chat'
++                    and str(p.get('api', '')).rstrip('/') == endpoint
++                    and isinstance(p.get('models'), (dict, list, tuple))
++                    and model in p['models']), None)
++    if profile is None:
++        return False
++    maximum = profile.get('max_input_characters')
++    if type(maximum) is not int or maximum <= 0:
++        raise ValueError('stateful_chat requires a positive max_input_characters')
++    agent._stateful_chat_backend = True
++    agent._stateful_chat_max_input_characters = maximum
++    agent._stateful_workload_url = endpoint+'/workload'
++    agent._stateful_question_surface = (profile.get('extra_body') or {}).get('scarx_question_surface','inline')
++    agent._stateful_questions_enabled = profile.get('proactive_questions') is True and agent._stateful_question_surface!='learning_tab'
++    agent.tools = []
++    agent.valid_tool_names = set()
++    agent._tool_capability_names = frozenset()
++    agent._tool_snapshot_generation = 0
++    agent._kanban_worker_guidance = ''
++    agent.enabled_toolsets = []
++    agent.skip_context_files = True
++    agent.skip_background_review = True
++    agent.disable_persistent_search = True
++    agent.ephemeral_system_prompt = None
++    # A failed request must stay on the selected stateful service, rather than
++    # falling back to a prompt-model with different state and learning semantics.
++    agent._fallback_chain = []
++    agent._fallback_model = None
++    return True
++
++
++def prepare_stateful_chat_turn(agent, user_message):
++    if getattr(agent, 'tools', None):
++        raise ValueError('stateful_chat does not support agent tools')
++    maximum = agent._stateful_chat_max_input_characters
++    if isinstance(user_message, str):
++        text = user_message
++    elif isinstance(user_message, list):
++        text = '\n'.join(p.get('text', '') for p in user_message
++                         if isinstance(p, dict) and p.get('type') == 'text')
++    else:
++        raise ValueError('stateful_chat needs text or multimodal content parts')
++    if len(text) > maximum:
++        raise ValueError(f'Stateful backend input limit: {maximum} characters per message; this is not a memory/context-capacity score.')
++    if not text.strip() and not isinstance(user_message, list):
++        raise ValueError('User message is empty')
++    # Keep the actual caller data and persisted transcript immutable.
++    agent._stateful_chat_raw_user_message = deepcopy(user_message)
++    agent._stateful_request_id=uuid.uuid4().hex
++    images=sum(1 for p in user_message if isinstance(p,dict) and p.get('type')=='image_url') if isinstance(user_message,list) else 0
++    agent._stateful_request_load={'request_id':agent._stateful_request_id,'phase':'prepared','modality':'image_and_text' if images else 'text',
++        'input_characters':len(text),'input_utf8_bytes':len(text.encode('utf-8')),'image_count':images,
++        'replayed_messages':0,'retrieved_episodes':0,'tool_schemas':0,'source':'actual outgoing user payload'}
++    compressor=getattr(agent,'context_compressor',None)
++    if compressor is not None:compressor._stateful_request_load=agent._stateful_request_load
++    from agent.stateful_questions import activate_question_watcher
++    activate_question_watcher(agent)
++    return deepcopy(user_message)
++
++
++def stateful_workload_display(agent):
++    """Only adopt backend metrics for THIS request; never another chat's load."""
++    load=dict(getattr(agent,'_stateful_request_load',{}))
++    if not load:return None
++    try:
++        headers={}
++        if getattr(agent,'api_key',None):headers['Authorization']='Bearer '+agent.api_key
++        with urlopen(Request(agent._stateful_workload_url,headers=headers),timeout=.3) as response:
++            data=json.loads(response.read(16384))
++        backend=data.get('workload')
++        if data.get('model')==agent.model and isinstance(backend,dict) and backend.get('request_id')==load['request_id']:
++            fields=('phase','modality','input_characters','input_utf8_bytes','image_count','neural_image_pixels','prompt_features_nonzero',
++                'neural_input_channels','neural_input_buffer_bytes','active_neurons','allocated_neurons','max_neurons',
++                'output_connected_neurons','neural_arrays_bytes','process_rss_bytes','allocation_reason','note')
++            load.update({k:backend[k] for k in fields if k in backend})
++            load['source']='measured backend workset matched by request ID'
++    except (URLError,TimeoutError,OSError,ValueError,KeyError):
++        # A previous backend may have no telemetry endpoint. Keep measured host
++        # payload sizes and leave core allocation unknown rather than guessing.
++        pass
++    agent._stateful_request_load=load
++    agent.context_compressor._stateful_request_load=load
++    return load
+--- /dev/null
++++ b/tests/agent/test_stateful_chat.py
+@@ -0,0 +1,46 @@
++"""Provider opt-in and real agent-init floor invariants."""
++from types import SimpleNamespace
++import pytest
++from agent.stateful_chat import configure_stateful_chat, prepare_stateful_chat_turn
++from agent.agent_init import _enforce_minimum_context
++
++
++def test_provider_mode_binds_endpoint_and_model_and_preserves_default_guard():
++    config = {'providers': {'example': {'api': 'http://127.0.0.1:8765/v1',
++        'models': {'stateful-test': {}}, 'interaction_mode': 'stateful_chat', 'max_input_characters': 20}}}
++    def candidate(model='stateful-test', url='http://127.0.0.1:8765/v1'):
++        return SimpleNamespace(model=model,base_url=url,provider='custom',tools=[{'function':{'name':'old'}}],
++            _config_context_length=4096,context_compressor=SimpleNamespace(context_length=4096))
++    opted=candidate();assert configure_stateful_chat(opted,config)
++    assert opted.tools==[] and opted._fallback_chain==[]
++    _enforce_minimum_context(opted)
++    from agent.context_breakdown import context_usage_fields, compute_session_context_breakdown
++    opted.context_compressor._stateful_input_limit_characters=20
++    fields=context_usage_fields(opted.context_compressor)
++    assert fields['context_mode']=='backend_state' and fields['context_max']==0
++    assert compute_session_context_breakdown(opted,[{'role':'user','content':'old transcript'}])['categories']==[]
++    for other in (candidate('other'),candidate(url='http://127.0.0.1:9999/v1')):
++        assert configure_stateful_chat(other,config) is False
++        with pytest.raises(ValueError,match='minimum'):_enforce_minimum_context(other)
++    opted.tools=[{'function':{'name':'injected'}}]
++    with pytest.raises(ValueError):_enforce_minimum_context(opted)
++
++
++def test_stateful_turn_keeps_caller_content_and_enforces_actual_input_limit():
++    agent=SimpleNamespace(tools=[],_stateful_chat_max_input_characters=12)
++    content=[{'type':'text','text':'hello'},{'type':'image_url','image_url':{'url':'data:image/png;base64,AA=='}}]
++    copy=prepare_stateful_chat_turn(agent,content)
++    assert agent._stateful_request_load['input_characters']==5 and agent._stateful_request_load['image_count']==1
++    assert copy==content and copy is not content
++    copy[0]['text']='changed';assert content[0]['text']=='hello'
++    from agent.turn_request_assembly import assemble_api_request
++    agent._stateful_chat_backend=True
++    scaffold=[{'role':'system','content':'LLM tools scaffold'},{'role':'user','content':'injected task state'}]
++    assembled=assemble_api_request(agent,messages=scaffold,current_turn_user_idx=1,_ext_prefetch_cache=None,
++        _plugin_user_context='injected policy',moa_config=None,active_system_prompt='LLM system',
++        original_user_message=content,pending_moa_prepared_request=None,request_logger=None)
++    assert assembled.api_messages==[{'role':'user','content':content}] and assembled.tools_for_api==[]
++    assert scaffold[1]['content']=='injected task state'
++    with pytest.raises(ValueError,match='input limit'):prepare_stateful_chat_turn(agent,'x'*13)
++    agent.tools=[{}]
++    with pytest.raises(ValueError,match='tools'):prepare_stateful_chat_turn(agent,'hi')
+--- a/hermes_cli/config_providers.py
++++ b/hermes_cli/config_providers.py
+@@ -117,7 +117,8 @@
+     "name", "api", "url", "base_url", "api_key", "key_env", "api_key_env", "key_cmd",
+     "api_mode", "transport", "model", "default_model", "models", "models_discovered",
+     "context_length", "rate_limit_delay", "request_timeout_seconds", "stale_timeout_seconds",
+-    "discover_models", "extra_body", "extra_headers", "capabilities", "ssl_ca_cert", "ssl_verify"}
++    "discover_models", "extra_body", "extra_headers", "capabilities", "ssl_ca_cert", "ssl_verify",
++    "interaction_mode", "max_input_characters", "proactive_questions"}
+ 
+ 
+ def _pick_provider_base_url(entry: Dict[str, Any], provider_key: str) -> str:
+@@ -255,6 +256,9 @@
+         ("context_length", lambda v: isinstance(v, int) and v > 0),
+         ("rate_limit_delay", lambda v: isinstance(v, (int, float)) and v >= 0),
+         ("discover_models", lambda v: isinstance(v, (bool, str))),
++        ("interaction_mode", lambda v: v in ("agent", "stateful_chat")),
++        ("max_input_characters", lambda v: type(v) is int and v > 0),
++        ("proactive_questions", lambda v: type(v) is bool),
+     ):
+         if ok(entry.get(field)):
+             normalized[field] = entry[field]
+@@ -285,7 +289,7 @@
+     for field in (
+         "name", "api_key", "key_env", "key_cmd", "models", "models_discovered", "context_length",
+         "rate_limit_delay", "discover_models", "extra_body", "extra_headers",
+-        "ssl_ca_cert", "ssl_verify"):
++        "ssl_ca_cert", "ssl_verify", "interaction_mode", "max_input_characters", "proactive_questions"):
+         if field in normalized:
+             provider_entry[field] = normalized[field]
+     if "model" in normalized:
+--- a/agent/turn_request_assembly.py
++++ b/agent/turn_request_assembly.py
+@@ -117,6 +117,12 @@
+     )
+     from agent.model_metadata import estimate_messages_tokens_rough
+ 
++    if getattr(agent, "_stateful_chat_backend", False):
++        from copy import deepcopy
++        api_messages = [{"role": "user", "content": deepcopy(agent._stateful_chat_raw_user_message)}]
++        approx_tokens = estimate_messages_tokens_rough(api_messages)
++        return AssembledRequest("fallthrough", api_messages, [], None, None, approx_tokens, approx_tokens, approx_tokens * 4)
++
+     api_messages, effective_system = build_api_messages(
+         agent, messages, current_turn_user_idx=current_turn_user_idx,
+         ext_prefetch_cache=_ext_prefetch_cache, plugin_user_context=_plugin_user_context,
+--- a/agent/title_generator.py
++++ b/agent/title_generator.py
+@@ -448,7 +448,7 @@
+         host = (urlsplit(str(runtime.get("base_url") or "")).hostname or "").lower()
+     except ValueError:
+         host = ""
+-    if provider in {"custom", "local", "llama-cpp"} and host in {"127.0.0.1", "localhost", "::1"}:
++    if (provider in {"custom", "local", "llama-cpp"} or provider.startswith("custom:")) and host in {"127.0.0.1", "localhost", "::1"}:
+         logger.debug("LLM title upgrade skipped: serial loopback runtime; keeping derived title")
+         return
+     threading.Thread(
+--- a/agent/context_breakdown.py
++++ b/agent/context_breakdown.py
+@@ -102,6 +102,10 @@
+ 
+ def context_usage_fields(compressor: Any) -> Dict[str, Any]:
+     """Current occupancy only; lifetime throughput is never a context fallback."""
++    input_limit = getattr(compressor, "_stateful_input_limit_characters", None)
++    if input_limit is not None:
++        return {"context_mode": "backend_state", "input_limit_characters": input_limit,
++                "context_max": 0, "context_used": 0, "context_percent": 0, "context_source": "backend_state", "context_estimated": False, "request_load": getattr(compressor, "_stateful_request_load", None)}
+     used = max(0, getattr(compressor, "last_prompt_tokens", 0) or 0)
+     maximum = getattr(compressor, "context_length", 0) or 0
+     if not used or not maximum:
+@@ -118,6 +122,11 @@
+     from agent.usage_anchor import anchored_context_tokens
+     from agent.system_prompt import build_system_prompt_parts
+ 
++    if getattr(agent, "_stateful_chat_backend", False):
++        from agent.stateful_chat import stateful_workload_display
++        load = stateful_workload_display(agent)
++        return {"categories": [], "estimated_total": 0, "model": agent.model,
++                **context_usage_fields(agent.context_compressor), "request_load": load}
+     messages = messages or []
+     parts = build_system_prompt_parts(agent)
+     stable = parts.get("stable", "") or ""
+--- a/apps/desktop/src/types/hermes.ts
++++ b/apps/desktop/src/types/hermes.ts
+@@ -751,7 +751,30 @@
+   effective_mode_badge?: string
+ }
+ 
++export interface RequestLoad {
++  phase?: string
++  modality?: string
++  input_characters: number
++  input_utf8_bytes: number
++  image_count: number
++  neural_image_pixels?: number
++  prompt_features_nonzero?: number
++  neural_input_channels?: number
++  neural_input_buffer_bytes?: number
++  active_neurons?: number
++  allocated_neurons?: number
++  max_neurons?: number
++  output_connected_neurons?: number
++  neural_arrays_bytes?: number
++  process_rss_bytes?: number
++  source?: string
++  allocation_reason?: string
++}
++
+ export interface UsageStats {
++  context_mode?: 'backend_state'
++  input_limit_characters?: number
++  request_load?: RequestLoad | null
+   /** Rolling tokens-per-second over the last ~10 API calls (tui_gateway `_get_usage`). */
+   avg_tps?: number
+   /** Session prompt-cache hit rate, 0–100. Omitted (not 0) when the provider reports no cache reads. */
+@@ -817,6 +840,9 @@
+ }
+ 
+ export interface ContextBreakdown {
++  context_mode?: 'backend_state'
++  input_limit_characters?: number
++  request_load?: RequestLoad | null
+   categories: ContextUsageCategory[]
+   context_max: number
+   context_percent: number
+--- a/apps/desktop/src/lib/statusbar.tsx
++++ b/apps/desktop/src/lib/statusbar.tsx
+@@ -42,6 +42,10 @@
+ }
+ 
+ export function usageContextLabel(usage: UsageStats): string {
++  if (usage.context_mode === 'backend_state') {
++    const load = usage.request_load
++    return load ? `Nạp ${load.input_characters} ký tự${load.image_count ? ` + ${load.image_count} ảnh` : ''}${load.active_neurons ? ` · ${load.active_neurons} neuron` : ''}` : 'Chưa có lượt nạp'
++  }
+   if (usage.context_max) {
+     return `${usage.context_estimated ? '~' : ''}${compactNumber(usage.context_used ?? 0)}/${compactNumber(usage.context_max)}`
+   }
+@@ -50,6 +54,7 @@
+ }
+ 
+ export function contextBarLabel(usage: UsageStats): string {
++  if (usage.context_mode === 'backend_state') return ''
+   if (!usage.context_max) {
+     return ''
+   }
+--- a/apps/desktop/src/app/shell/hooks/use-statusbar-items.tsx
++++ b/apps/desktop/src/app/shell/hooks/use-statusbar-items.tsx
+@@ -284,6 +284,9 @@
+             ...currentUsage,
+             context_estimated: contextBreakdown.context_estimated,
+             context_source: contextBreakdown.context_source,
++            context_mode: contextBreakdown.context_mode,
++            input_limit_characters: contextBreakdown.input_limit_characters,
++            request_load: contextBreakdown.request_load,
+             context_max: contextBreakdown.context_max,
+             context_percent: contextBreakdown.context_percent,
+             context_used: contextBreakdown.context_used
+--- a/apps/desktop/src/app/shell/context-usage-panel.tsx
++++ b/apps/desktop/src/app/shell/context-usage-panel.tsx
+@@ -31,6 +31,20 @@
+       })),
+     [breakdown?.categories, copy]
+   )
++
++  if (usage.context_mode === 'backend_state') {
++    return (
++      <div className="flex w-72 flex-col gap-3 p-3 text-[0.75rem]" data-slot="stateful-memory-panel">
++        <p className="font-medium text-foreground">Thông tin nạp cho lượt xử lý</p>
++        <p>{usage.request_load ? `${usage.request_load.input_characters} / ${usage.input_limit_characters} ký tự · ${usage.request_load.input_utf8_bytes} byte UTF-8 · ${usage.request_load.image_count} ảnh` : 'Chưa có lượt nạp trong phiên này.'}</p>
++        {usage.request_load?.active_neurons != null && <p>Neuron đang tính: {usage.request_load.active_neurons} · đã cấp: {usage.request_load.allocated_neurons} · trần: {usage.request_load.max_neurons}</p>}
++        {usage.request_load?.neural_input_buffer_bytes != null && <p>Vector đầu vào: {usage.request_load.neural_input_channels} kênh / {usage.request_load.neural_input_buffer_bytes} byte. Prompt có {usage.request_load.prompt_features_nonzero} kênh khác 0.</p>}
++        {usage.request_load?.neural_image_pixels != null && <p>Ảnh vào lõi: {usage.request_load.neural_image_pixels} pixel.</p>}
++        <p className="text-muted-foreground">Lượt nạp gần nhất; tự đổi theo đầu vào. Không gửi lại lịch sử, không nạp tools hoặc truy xuất. Trọng số core vẫn nằm trong RAM.</p>
++        <p className="text-muted-foreground">Neuron mới cần học; cấp nhiều hơn chưa chứng minh trả lời tốt hơn. Dung lượng trí nhớ và kỹ năng: chưa đo.</p>
++      </div>
++    )
++  }
+ 
+   const segmentTotal = categories.reduce((sum, category) => sum + category.tokens, 0) || contextUsed || 1
+ 
+--- /dev/null
++++ b/apps/desktop/src/app/shell/stateful-memory-panel.test.tsx
+@@ -0,0 +1,34 @@
++import { cleanup, render, screen } from '@testing-library/react'
++import { afterEach, expect, it } from 'vitest'
++
++import { contextBarLabel, usageContextLabel } from '@/lib/statusbar'
++import type { UsageStats } from '@/types/hermes'
++
++import { ContextUsagePanel } from './context-usage-panel'
++
++afterEach(cleanup)
++
++it('does not display a transcript occupancy percentage as neural memory capacity', () => {
++  const usage: UsageStats = {
++    calls: 1, input: 0, output: 0, total: 0,
++    context_mode: 'backend_state', input_limit_characters: 2048,
++    context_max: 4096, context_used: 1800, context_percent: 44
++  }
++  expect(usageContextLabel(usage)).toBe('Chưa có lượt nạp')
++  expect(contextBarLabel(usage)).toBe('')
++  render(<ContextUsagePanel breakdown={null} loading={false} usage={usage} />)
++  expect(screen.getByText(/Chưa có lượt nạp trong phiên này/)).toBeTruthy()
++  expect(screen.getByText(/Dung lượng trí nhớ và kỹ năng: chưa đo/)).toBeTruthy()
++  expect(screen.queryByText(/44%/)).toBeNull()
++})
++
++it('changes actual load and neuron counts for each request without inventing memory fullness', () => {
++  const usage: UsageStats = {calls:1,input:0,output:0,total:0,context_mode:'backend_state',input_limit_characters:2048,
++    request_load:{input_characters:80,input_utf8_bytes:110,image_count:1,active_neurons:64,allocated_neurons:96,max_neurons:128,
++      neural_input_channels:240,neural_input_buffer_bytes:960,prompt_features_nonzero:30,neural_image_pixels:64}}
++  expect(usageContextLabel(usage)).toBe('Nạp 80 ký tự + 1 ảnh · 64 neuron')
++  render(<ContextUsagePanel breakdown={null} loading={false} usage={usage} />)
++  expect(screen.getByText(/Neuron đang tính: 64 · đã cấp: 96 · trần: 128/)).toBeTruthy()
++  expect(screen.getByText(/960 byte/)).toBeTruthy()
++  expect(usageContextLabel({...usage,request_load:{input_characters:2,input_utf8_bytes:2,image_count:0,active_neurons:48}})).toBe('Nạp 2 ký tự · 48 neuron')
++})
+--- a/agent/turn_api_request.py
++++ b/agent/turn_api_request.py
+@@ -123,6 +123,12 @@
+     from agent.local_vision_grounding import apply_vision_request
+ 
+     api_kwargs = apply_vision_request(agent, api_kwargs)
++    if getattr(agent, "_stateful_chat_backend", False):
++        extra = dict(api_kwargs.get("extra_body") or {})
++        extra["scarx_request_id"] = agent._stateful_request_id
++        extra["scarx_session_id"] = agent.session_id
++        extra["scarx_question_surface"] = getattr(agent, "_stateful_question_surface", "inline")
++        api_kwargs["extra_body"] = extra
+     # Surrogate chokepoint: tool descriptions, extra_body and kwargs strings can carry
+     # invalid code points (HTTP 400). One walk makes the payload json.dumps()-safe.
+     # Outbound-request surrogate chokepoint (#50959): the messages were scrubbed above, but the rest of the
+--- /dev/null
++++ b/agent/stateful_questions.py
+@@ -0,0 +1,75 @@
++"""One opt-in watcher for questions from the stateful neural backend.
++
++Uses Hermes's existing human clarification callback. No model tool call,
++auxiliary LLM, or invented thinking trace. A timeout never becomes a label.
++"""
++import json
++import threading
++import weakref
++import inspect
++from urllib.parse import urlencode
++from urllib.request import Request,urlopen
++from urllib.error import URLError
++
++_agent_ref=None
++_thread=None
++_lock=threading.Lock()
++_wake=threading.Event()
++
++
++def _request(agent,path,data=None):
++    headers={'Content-Type':'application/json'}
++    if getattr(agent,'api_key',None):headers['Authorization']='Bearer '+str(agent.api_key)
++    request=Request(str(agent.base_url).rstrip('/')+path,
++        None if data is None else json.dumps(data,ensure_ascii=False).encode('utf-8'),headers=headers)
++    with urlopen(request,timeout=10 if data is not None else 2) as response:return json.loads(response.read(65536))
++
++
++def activate_question_watcher(agent):
++    global _agent_ref,_thread
++    if not getattr(agent,'_stateful_questions_enabled',False) or not callable(getattr(agent,'clarify_callback',None)):return
++    with _lock:
++        _agent_ref=weakref.ref(agent)
++        if _thread is None or not _thread.is_alive():
++            _thread=threading.Thread(target=_watch,name='stateful-human-questions',daemon=True);_thread.start()
++
++
++def _watch():
++    last=None
++    while not _wake.wait(2):
++        with _lock:agent=_agent_ref() if _agent_ref else None
++        if agent is None or not getattr(agent,'_stateful_chat_backend',False) or not getattr(agent,'_stateful_questions_enabled',False):
++            agent=None;continue
++        session=getattr(agent,'session_id',None)
++        if not session:agent=None;continue
++        stage='poll'
++        try:
++            result=_request(agent,'/questions?'+urlencode({'session_id':session}))
++            question=result.get('question')
++            if not question:
++                last=None;continue
++            key=(session,question['id'])
++            if key==last:continue
++            last=key
++            callback=agent.clarify_callback
++            parameters=inspect.signature(callback).parameters
++            standalone='standalone' in parameters or any(p.kind==inspect.Parameter.VAR_KEYWORD for p in parameters.values())
++            kwargs={'standalone':True} if standalone else {}
++            answer=callback('[SCAR-X · hỏi để học] '+question['question'],None,**kwargs)
++            if answer is None or not str(answer).strip() or str(answer).startswith('The user did not provide a response'):
++                answer='bỏ qua'
++            elif not isinstance(answer,str):answer=str(answer)
++            stage='feedback'
++            _request(agent,'/feedback',{'session_id':session,'question_id':question['id'],'answer':answer})
++            if callable(getattr(agent,'_emit_status',None)):
++                agent._emit_status('SCAR-X đã ghi phản hồi. Local learning và idle review có guard; chưa bảo đảm giữ mọi kỹ năng.')
++        except (URLError,TimeoutError,OSError,ValueError,KeyError,RuntimeError):
++            # Endpoint/callback may disappear on a model/session switch. No
++            # fallback answer is fabricated and no failed response is learned.
++            if stage=='feedback':
++                last=None
++                if callable(getattr(agent,'_emit_status',None)):
++                    agent._emit_status('SCAR-X chưa chấp nhận được phản hồi; câu hỏi vẫn chờ, chưa dùng phản hồi lỗi làm nhãn học.')
++            continue
++        finally:
++            agent=None
+--- /dev/null
++++ b/tests/agent/test_stateful_questions.py
+@@ -0,0 +1,35 @@
++import weakref
++from agent import stateful_questions as questions
++
++
++class Agent:
++    session_id='test-session';base_url='http://127.0.0.1:8765/v1'
++    _stateful_chat_backend=True;_stateful_questions_enabled=True
++
++
++def one_poll(monkeypatch,agent):
++    counter=iter((False,True))
++    monkeypatch.setattr(questions,'_wake',type('Wake',(),{'wait':lambda self,_:next(counter)})())
++    monkeypatch.setattr(questions,'_agent_ref',weakref.ref(agent))
++
++
++def test_clarification_answer_is_linked_to_exact_question_and_session(monkeypatch):
++    agent=Agent();seen=[]
++    agent.clarify_callback=lambda prompt,choices:'2'
++    def request(_,path,data=None):
++        seen.append((path,data))
++        return {'question':{'id':'q-public','question':'1+1?'}} if data is None else {'recorded':True}
++    monkeypatch.setattr(questions,'_request',request);one_poll(monkeypatch,agent)
++    questions._watch()
++    assert seen[0][0]=='/questions?session_id=test-session'
++    assert seen[1]==('/feedback',{'session_id':'test-session','question_id':'q-public','answer':'2'})
++
++
++def test_empty_or_cancelled_clarification_never_becomes_a_learning_label(monkeypatch):
++    agent=Agent();agent.clarify_callback=lambda prompt,choices:'';posted=[]
++    def request(_,path,data=None):
++        if data is None:return {'question':{'id':'q-public','question':'unknown'}}
++        posted.append(data);return {'recorded':True}
++    monkeypatch.setattr(questions,'_request',request);one_poll(monkeypatch,agent)
++    questions._watch()
++    assert posted==[{'session_id':'test-session','question_id':'q-public','answer':'bỏ qua'}]
+--- a/tui_gateway/agent_callbacks.py
++++ b/tui_gateway/agent_callbacks.py
+@@ -77,6 +77,11 @@
+ 
+ 
+ def _agent_cbs(sid: str) -> dict:
++    def _question_callback(q, c, multi_select=False, questions=None, standalone=False):
++        if standalone:
++            from tui_gateway.controller_questions import standalone_clarify
++            return standalone_clarify(sid, q, c, _block, _emit, _clarify_timeout_seconds())
++        return _clarify_block(sid, q, c, multi_select=multi_select, questions=questions)
+     def _read_block(event: str, timeout: int):
+         # read_terminal / read_preview (desktop GUI): blocking bridge like clarify; the preview
+         # read gets longer since a URL tab extracts text from a live page.
+@@ -104,8 +109,7 @@
+             "notification.show", sid,
+             {"text": n.text, "level": n.level, "kind": n.kind, "ttl_ms": n.ttl_ms, "key": n.key, "id": n.id}),
+         "notice_clear_callback": lambda key: _emit("notification.clear", sid, {"key": key}),
+-        "clarify_callback": lambda q, c, multi_select=False, questions=None: (
+-            _clarify_block(sid, q, c, multi_select=multi_select, questions=questions)),
++        "clarify_callback": _question_callback,
+         "read_terminal_callback": _read_block("terminal.read.request", 30),
+         "read_preview_callback": _read_block("preview.read.request", 45),
+         # drive_preview / annotate_preview (desktop GUI): same budget as the preview read it ends with.
+--- a/apps/desktop/src/app/session/hooks/use-message-stream/gateway-event/input-requests.ts
++++ b/apps/desktop/src/app/session/hooks/use-message-stream/gateway-event/input-requests.ts
+@@ -157,6 +157,29 @@
+     return true
+   }
+ 
++  if (event.type === 'clarify.resolved') {
++    if (!sessionId) return true
++    const requestId = typeof payload?.request_id === 'string' ? payload.request_id : ''
++    const request = $clarifyRequests.get()[sessionId]
++    if (!requestId || (request && request.requestId !== requestId)) return true
++    // clarify.respond may acknowledge and clear the store before this event.
++    // Retain the correlated metadata in the terminal event for that ordering.
++    const question = request?.question ?? (payload?.standalone === true && typeof payload?.question === 'string' ? payload.question : '')
++    if (!question) return true
++    const answer = typeof payload?.user_response === 'string' ? payload.user_response : ''
++    upsertToolCall(sessionId, {
++      tool_id: requestId, name: 'clarify',
++      args: { question, choices: request?.choices ?? payload?.choices ?? [] },
++      result: { question, user_response: answer, source: 'standalone controller' }
++    }, 'complete', event.type, occurredAt)
++    clearClarifyRequest(requestId, sessionId)
++    updateSessionState(sessionId, state => ({
++      ...state, needsInput: false, awaitingResponse: false,
++      streamId: state.busy ? state.streamId : null
++    }))
++    return true
++  }
++
+   if (event.type === 'clarify.expire') {
+     if (!sessionId) {
+       return true
+--- /dev/null
++++ b/tui_gateway/controller_questions.py
+@@ -0,0 +1,15 @@
++"""Complete standalone human questions without waiting for an LLM tool turn."""
++
++
++def standalone_clarify(session_id,question,choices,block,emit,timeout):
++    payload={'question':question,'choices':choices,'standalone':True}
++    answer=block('clarify.request',session_id,payload,timeout=timeout)
++    # block() writes its wire request_id into this payload. The renderer needs
++    # a matching terminal event because no LLM tool.complete follows an idle
++    # controller question. The answer here is user input, not a model result.
++    if payload.get('request_id'):
++        emit('clarify.resolved',session_id,{'request_id':payload['request_id'],
++            'user_response':answer if isinstance(answer,str) else '',
++            'question':question,'choices':choices,'standalone':True,
++            'source':'standalone learning controller'})
++    return answer
+--- /dev/null
++++ b/tests/tui_gateway/test_controller_questions.py
+@@ -0,0 +1,18 @@
++from tui_gateway.controller_questions import standalone_clarify
++
++
++def test_standalone_question_emits_correlated_terminal_event_after_answer():
++    events=[]
++    def block(event,sid,payload,timeout):
++        assert event=='clarify.request' and sid=='qa' and payload['standalone']
++        payload['request_id']='wire-id';return '2'
++    answer=standalone_clarify('qa','1+1?',None,block,lambda *a:events.append(a),300)
++    assert answer=='2'
++    assert events==[('clarify.resolved','qa',{'request_id':'wire-id','user_response':'2','question':'1+1?','choices':None,'standalone':True,'source':'standalone learning controller'})]
++
++
++def test_cancelled_standalone_question_settles_without_fabricated_answer():
++    events=[]
++    def block(event,sid,payload,timeout):payload['request_id']='cancelled';return ''
++    assert standalone_clarify('qa','unknown',None,block,lambda *a:events.append(a),1)==''
++    assert events[0][2]['user_response']=='' and events[0][2]['request_id']=='cancelled'
+--- /dev/null
++++ b/apps/desktop/src/app/session/hooks/use-message-stream/gateway-event/input-requests.standalone.test.ts
+@@ -0,0 +1,44 @@
++import { afterEach, expect, it, vi } from 'vitest'
++import { $clarifyRequests, clearClarifyRequest, setClarifyRequest } from '@/store/clarify'
++import { handleInputRequestEvent } from './input-requests'
++import type { GatewayEventContext } from './types'
++
++afterEach(() => clearClarifyRequest())
++
++it('settles an idle controller question without waiting for an LLM tool continuation', () => {
++  setClarifyRequest({sessionId:'qa',requestId:'wire',question:'1+1?',choices:null})
++  let state={busy:false,needsInput:true,awaitingResponse:true,streamId:'question'}
++  const upsert=vi.fn()
++  const ctx={event:{type:'clarify.resolved'},payload:{request_id:'wire',user_response:'2'},sessionId:'qa',occurredAt:1,
++    deps:{activeSessionIdRef:{current:'qa'},sessionInterrupted:()=>false,upsertToolCall:upsert,
++      updateSessionState:(_sid:string,update:(value:typeof state)=>typeof state)=>state=update(state)}} as unknown as GatewayEventContext
++  expect(handleInputRequestEvent(ctx)).toBe(true)
++  expect($clarifyRequests.get().qa).toBeUndefined()
++  expect(state.needsInput).toBe(false)
++  expect(state.streamId).toBeNull()
++  expect(upsert.mock.calls[0][1].result.user_response).toBe('2')
++})
++
++it('does not close another question when an older resolved event arrives late', () => {
++  setClarifyRequest({sessionId:'qa',requestId:'newer',question:'new question',choices:null})
++  const update=vi.fn(),upsert=vi.fn()
++  const ctx={event:{type:'clarify.resolved'},payload:{request_id:'older',user_response:'2'},sessionId:'qa',occurredAt:1,
++    deps:{activeSessionIdRef:{current:'qa'},sessionInterrupted:()=>false,upsertToolCall:upsert,updateSessionState:update}} as unknown as GatewayEventContext
++  handleInputRequestEvent(ctx)
++  expect($clarifyRequests.get().qa?.requestId).toBe('newer')
++  expect(update).not.toHaveBeenCalled()
++  expect(upsert).not.toHaveBeenCalled()
++})
++
++it('settles after respond acknowledgement already cleared the pending store', () => {
++  clearClarifyRequest()
++  let state={busy:false,needsInput:true,awaitingResponse:true,streamId:'question'}
++  const upsert=vi.fn()
++  const ctx={event:{type:'clarify.resolved'},payload:{request_id:'wire',user_response:'4',question:'2+2?',standalone:true},sessionId:'qa',occurredAt:1,
++    deps:{activeSessionIdRef:{current:'qa'},sessionInterrupted:()=>false,upsertToolCall:upsert,
++      updateSessionState:(_sid:string,update:(value:typeof state)=>typeof state)=>state=update(state)}} as unknown as GatewayEventContext
++  handleInputRequestEvent(ctx)
++  expect(state.needsInput).toBe(false)
++  expect(state.streamId).toBeNull()
++  expect(upsert.mock.calls[0][1].result.user_response).toBe('4')
++})
+--- a/tui_gateway/compute_host_bridge.py
++++ b/tui_gateway/compute_host_bridge.py
+@@ -101,7 +101,7 @@
+                         session["_compute_host_activity_ns"] = params.get("activity_ns")
+         return True  # Internal observation, not a client event or replay entry.
+     kind = params.get("type") if isinstance(params, dict) else None
+-    if kind in {"clarify.request", "clarify.expire"}:
++    if kind in {"clarify.request", "clarify.expire", "clarify.resolved"}:
+         session = _sessions.get(str(params.get("session_id") or ""))
+         payload = params.get("payload")
+         request_id = payload.get("request_id") if isinstance(payload, dict) else None

@@ -1,0 +1,143 @@
+{
+  "run": "runs/20261109T222354Z-visual-word-readout-v1-a11424",
+  "decision": "STOP_VISUAL_WORD_READOUT_V1",
+  "summary": {
+    "full": {
+      "macro_exact": 0.18880208333333334,
+      "novel_composition_macro": 0.16939484126984128,
+      "by_kind": {
+        "single_color": 0.2986111111111111,
+        "single_shape": 0.06597222222222222,
+        "object_count": 0.057291666666666664,
+        "left_color": 0.3333333333333333
+      }
+    },
+    "no_image": {
+      "macro_exact": 0.1796875,
+      "novel_composition_macro": 0.1830357142857143,
+      "by_kind": {
+        "single_color": 0.3333333333333333,
+        "single_shape": 0.0,
+        "object_count": 0.09375,
+        "left_color": 0.2916666666666667
+      }
+    },
+    "no_question": {
+      "macro_exact": 0.21498842592592593,
+      "novel_composition_macro": 0.2203207671957672,
+      "by_kind": {
+        "single_color": 0.34722222222222215,
+        "single_shape": 0.041666666666666664,
+        "object_count": 0.34375,
+        "left_color": 0.1273148148148148
+      }
+    }
+  },
+  "paired_trained_control_gains": {
+    "no_image": {
+      "mean": 0.009114583333333334,
+      "lower95": -0.046875,
+      "upper95": 0.05989583333333334,
+      "n_seeds": 3
+    },
+    "no_question": {
+      "mean": -0.026186342592592587,
+      "lower95": -0.045138888888888895,
+      "upper95": -0.00694444444444442,
+      "n_seeds": 3
+    }
+  },
+  "paired_causal_drops": {
+    "blank_image": {
+      "mean": 0.09244791666666667,
+      "lower95": 0.015625,
+      "upper95": 0.14713541666666666,
+      "n_seeds": 3
+    },
+    "blank_question": {
+      "mean": 0.1222511574074074,
+      "lower95": 0.04296874999999997,
+      "upper95": 0.19618055555555555,
+      "n_seeds": 3
+    },
+    "swapped_image": {
+      "mean": 0.032552083333333336,
+      "lower95": 0.020833333333333343,
+      "upper95": 0.04557291666666666,
+      "n_seeds": 3
+    }
+  },
+  "gates": {
+    "full_macro65_everyseed": false,
+    "each_kind50_everyseed": false,
+    "novel_macro60_everyseed": false,
+    "trained_controls20_allpositive_lowerCIpositive": false,
+    "all_causal_drops20": false,
+    "all_checkpoints_exact_hidden_frozen": true
+  },
+  "dataset": "data/candidates/20261109T221711Z-visual-word-dataset-v1-f93af5/dataset.json",
+  "dataset_sha256": "0fb04abefe67451952a2d73634fded9c86243d5874356d68299ff047deecf6a2",
+  "trials": 9,
+  "deployed": false,
+  "hidden_representation_learning": false,
+  "normal_photo_qa_proven": false,
+  "retention_confirmed": false,
+  "proposal30_approved": false,
+  "main_weights_changed": false,
+  "resources": {
+    "peak_rss_bytes": 197386240,
+    "peak_commit_or_vms_bytes": 150335488,
+    "os_process_peak_working_set_bytes": 55959552,
+    "os_process_peak_pagefile_commit_bytes": 40378368,
+    "samples": 365,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 32.91398179999669,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "technical_recovery": {
+    "source_run": "runs/20261109T222030Z-visual-word-readout-v1-b774f5",
+    "failure_kind": "empty_diagnostic_subset_macro_NaN_JSON_rejection",
+    "checkpoint_sources": [
+      {
+        "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+        "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-full.visualword.zip",
+        "sha256": "bc1c0ac48b132a21318d4107f21c590f974688620a8fcefd33244fd568cf7986",
+        "prior_active_seconds": 12.440353870391846
+      },
+      {
+        "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+        "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-no_image.visualword.zip",
+        "sha256": "1b8ee4e4b61d4bc72a3ad971003939e78b028d2d76c71ca2600324849f2f11d3",
+        "prior_active_seconds": 12.440353870391846
+      }
+    ],
+    "prior_active_program_seconds": 12.440353870391846,
+    "original_active_seconds": 12.18582820892334,
+    "failed_recovery_wrappers": [
+      {
+        "run": "runs/20261109T222305Z-visual-word-readout-v1-59b089",
+        "active_seconds": 0.25452566146850586,
+        "neural_training_started": false
+      }
+    ],
+    "unknown_prior_peak_memory": true,
+    "repair_scope": "MissingmetricNone and recoveryargumentplumbing only; no algorithm/gate/data/hyperparameterchange. Recoveredmodels NOT retrained."
+  },
+  "total_program_active_seconds_including_failed_attempt": 45.58098887039523,
+  "limits": [
+    "Syntheticattributes/ownedgeometricimages,3freshmodels; not naturalphoto/OCR/generalVQA/lifelong or originalP1hiddenlearning.",
+    "Outputlocalreadout only, hiddenfrozen. Fullwordoutputs are neural, rendererlabels never inferenceinput.",
+    "Onefixedscreen; no after-results encoder/LR/epoch/cachemixture/modelsize/gridextension or mainimport.",
+    "Qwen4Btext-only not visionbaseline, no fakeimage-as-text or VLMdownload/9Bstartup."
+  ]
+}

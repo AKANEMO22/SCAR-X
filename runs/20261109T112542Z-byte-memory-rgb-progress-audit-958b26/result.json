@@ -1,0 +1,69 @@
+{
+  "run": "runs/20261109T112542Z-byte-memory-rgb-progress-audit-958b26",
+  "objective_complete": false,
+  "requirements": {
+    "normal_vi_en_chat": {
+      "complete": false,
+      "evidence": "runs/20261109T100856Z-byte-dialogue-prototype-v1-e4e370",
+      "reason": "All12localbyteconditions0developmentutteranceexact; visibleoutputsremainincoherent"
+    },
+    "normal_photo_understanding": {
+      "complete": false,
+      "evidence": "runs/20261109T112204Z-rgb-object-grounding-negative-audit-6517c5",
+      "reason": "TinyRGBobjecthead20.42%,notimagequestion/caption/visionlanguagegate"
+    },
+    "local_learning_without_global_backward": {
+      "implemented": true,
+      "useful_hidden_learning_proven": false,
+      "evidence": "production importboundary tests and isolated protocol runs"
+    },
+    "open_vocabulary_representability": {
+      "complete_in_experimental_codec": true,
+      "evidence": "runs/20261109T100856Z-byte-dialogue-prototype-v1-e4e370",
+      "scope": "FixedUTF8alphabet/hostsyntaxcursor; notsemanticability orliveintegration"
+    },
+    "neural_working_memory": {
+      "complete_as_useful_skill": false,
+      "evidence": "runs/20261109T111202Z-byte-working-memory-v2-288db8",
+      "reason": "Held192byteactivationand12864extrareadoutsynapsesdidnotimproveutteranceexact"
+    },
+    "antigravity_data_generation": {
+      "done": true,
+      "scope": "Samecurated40dialogues/120responseexamples,96train;source/usagepublished;notfactualoracle"
+    },
+    "qwen_comparison": {
+      "text_done": true,
+      "vision_done": false,
+      "scope": "PinnedQwen3-4Btextreferencefrompreviousruns;notvisionmodelorproxy"
+    },
+    "lifelong_retention": {
+      "complete": false,
+      "evidence": "artifacts/p2-conditioning-confirmation-latest.json",
+      "reason": "Joint3pp/5ppretention/acquisitiongatefailed"
+    },
+    "ram_2gb": {
+      "observed_small_scarx_workloads_within_limit": true,
+      "all_modes_8h_certified": false,
+      "live_rss_bytes": 37285888,
+      "control_peak_rss_bytes": 737263616
+    },
+    "deep_and_autonomous_modes": {
+      "complete": false,
+      "scope": "Stillproposed;syntaxmask/counterfactualauditnotlearnedthinking"
+    }
+  },
+  "byte_family_status": "STOP_AFTER_TWO_ROUNDS",
+  "local_target_family_status": "NO_GO_AFTER_TWO_ROUNDS",
+  "rgb_grounding_status": "PIVOT_REPRESENTATION_NO_SCALE",
+  "tests_passed": 110,
+  "native_baseline_parity_tests_included": 4,
+  "private_weights_replaced": false,
+  "main_model_count": 1,
+  "main_files_unchanged": {
+    "src/scarx/neural/core.py": true,
+    "src/scarx/neural/unified.py": true,
+    "src/scarx/app/generation.py": true,
+    "src/scarx/app/generation_server.py": true
+  },
+  "decision": "PIVOT_NO_SCALE;goalremainsactive"
+}

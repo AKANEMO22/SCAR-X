@@ -1,0 +1,56 @@
+# Wordbridgepreflight
+
+No devquality/selection, mainunchanged.
+
+{
+  "run": "runs/20261110T061535Z-direct-word-preflight-v1-6591af",
+  "decision": "DIRECT_WORD_PREFLIGHT_PASS",
+  "timing": {
+    "correct": {
+      "responses": 64,
+      "training_seconds": 0.23012569999264088,
+      "setup_seconds": 0.07072630000766367,
+      "forecast_trial_seconds": 29.690921874862397,
+      "array_bytes": 374662,
+      "checkpoint_bytes": 398741,
+      "continuation_exact": true
+    },
+    "bptt_control": {
+      "responses": 64,
+      "training_seconds": 0.5971789000032004,
+      "setup_seconds": 1.3065066000126535,
+      "forecast_trial_seconds": 38.576711250079825,
+      "array_bytes": 374662,
+      "checkpoint_bytes": 399393,
+      "continuation_exact": true,
+      "max_graph_state_error": 1.9073486328125e-06,
+      "max_graph_feature_error": 0.0,
+      "max_graph_loss_error": 4.436737919277789e-07
+    }
+  },
+  "forecast_round_seconds": 472.02119624858824,
+  "formal_training_permitted": true,
+  "zero_frozen64exact": true,
+  "no_development_quality_evaluated": true,
+  "deployed": false,
+  "resources": {
+    "peak_rss_bytes": 562577408,
+    "peak_commit_or_vms_bytes": 983068672,
+    "os_process_peak_working_set_bytes": 563572736,
+    "os_process_peak_pagefile_commit_bytes": 983846912,
+    "samples": 26,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.7600513999932446,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  }
+}

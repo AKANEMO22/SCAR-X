@@ -1,0 +1,508 @@
+{
+  "summary": {
+    "lessons_presented": 32,
+    "trained_prompt_exact": 0.0,
+    "unseen_wording_exact": 0.0,
+    "current_block_exact": 0.0,
+    "current_block_gain_vs_frozen": 0.0,
+    "old_skills_exact": 0.25,
+    "old_mean_forgetting_pp": 0.0,
+    "old_worst_family_forgetting_pp": 0.0,
+    "retention": {
+      "acquired": 0,
+      "retained": 0,
+      "rate": null,
+      "wilson95": null,
+      "status": "undefined: no acquired examples"
+    },
+    "slots": 1024,
+    "actual_neural_updates": 0,
+    "seconds": 1.375
+  },
+  "current": [
+    {
+      "id": "fact-084",
+      "target": "29",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-083",
+      "target": "0",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-015",
+      "target": "-5",
+      "generated": "Rất.",
+      "correct": false
+    },
+    {
+      "id": "fact-078",
+      "target": "34",
+      "generated": "Có.",
+      "correct": false
+    },
+    {
+      "id": "fact-080",
+      "target": "9",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-030",
+      "target": "19",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-046",
+      "target": "14",
+      "generated": "Có.",
+      "correct": false
+    },
+    {
+      "id": "fact-063",
+      "target": "-13",
+      "generated": "Bạn. tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-090",
+      "target": "30",
+      "generated": "Lời.",
+      "correct": false
+    },
+    {
+      "id": "fact-102",
+      "target": "5",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-051",
+      "target": "8",
+      "generated": "Bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-058",
+      "target": "19",
+      "generated": "Bạn biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-119",
+      "target": "8",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-060",
+      "target": "28",
+      "generated": "Bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-073",
+      "target": "10",
+      "generated": "Tôi đang bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-104",
+      "target": "21",
+      "generated": "Lời....",
+      "correct": false
+    },
+    {
+      "id": "fact-040",
+      "target": "12",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-034",
+      "target": "17",
+      "generated": "Bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-071",
+      "target": "1",
+      "generated": "Tạm lời bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-016",
+      "target": "9",
+      "generated": "Rất..",
+      "correct": false
+    },
+    {
+      "id": "fact-077",
+      "target": "1",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-124",
+      "target": "23",
+      "generated": "Rất...",
+      "correct": false
+    },
+    {
+      "id": "fact-057",
+      "target": "-2",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-108",
+      "target": "16",
+      "generated": "Bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-103",
+      "target": "-3",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-026",
+      "target": "26",
+      "generated": "Lời bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-093",
+      "target": "-7",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-081",
+      "target": "-4",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-069",
+      "target": "-10",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-011",
+      "target": "5",
+      "generated": "Tạm biệt bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-101",
+      "target": "7",
+      "generated": "Tôi đang tạm dạy tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-019",
+      "target": "7",
+      "generated": "Tạm.",
+      "correct": false
+    }
+  ],
+  "old": [
+    {
+      "id": "old-0-0",
+      "target": "Chào bạn.",
+      "generated": "Chào bạn",
+      "correct": false
+    },
+    {
+      "id": "old-0-1",
+      "target": "Chào bạn.",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "old-1-0",
+      "target": "Hello.",
+      "generated": "Hello.",
+      "correct": true
+    },
+    {
+      "id": "old-1-1",
+      "target": "Hello.",
+      "generated": "Hello.",
+      "correct": true
+    },
+    {
+      "id": "old-2-0",
+      "target": "Tôi là SCAR-X.",
+      "generated": "Tạm bạn.",
+      "correct": false
+    },
+    {
+      "id": "old-2-1",
+      "target": "Tôi là SCAR-X.",
+      "generated": "Bạn có đang hoạt động động động động động động động bạn.",
+      "correct": false
+    },
+    {
+      "id": "old-3-0",
+      "target": "Rất vui được giúp bạn.",
+      "generated": "Rất vui được giúp bạn.",
+      "correct": true
+    },
+    {
+      "id": "old-3-1",
+      "target": "Rất vui được giúp bạn.",
+      "generated": "Bạn. bạn. bạn.",
+      "correct": false
+    },
+    {
+      "id": "old-4-0",
+      "target": "Tạm biệt bạn.",
+      "generated": "Tạm biệt bạn.",
+      "correct": true
+    },
+    {
+      "id": "old-4-1",
+      "target": "Tạm biệt bạn.",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "old-5-0",
+      "target": "Tôi đang hoạt động.",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "old-5-1",
+      "target": "Tôi đang hoạt động.",
+      "generated": "Tôi là scar-x.",
+      "correct": false
+    },
+    {
+      "id": "old-6-0",
+      "target": "Tôi đang học trả lời.",
+      "generated": "Hello.",
+      "correct": false
+    },
+    {
+      "id": "old-6-1",
+      "target": "Tôi đang học trả lời.",
+      "generated": "Rất.",
+      "correct": false
+    },
+    {
+      "id": "old-7-0",
+      "target": "Bạn có thể dạy tôi.",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "old-7-1",
+      "target": "Bạn có thể dạy tôi.",
+      "generated": "Tôi đang học trả lời bạn.",
+      "correct": false
+    }
+  ],
+  "immediate": [
+    {
+      "id": "fact-084",
+      "target": "29",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-083",
+      "target": "0",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-015",
+      "target": "-5",
+      "generated": "Rất.",
+      "correct": false
+    },
+    {
+      "id": "fact-078",
+      "target": "34",
+      "generated": "Có.",
+      "correct": false
+    },
+    {
+      "id": "fact-080",
+      "target": "9",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-030",
+      "target": "19",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-046",
+      "target": "14",
+      "generated": "Có.",
+      "correct": false
+    },
+    {
+      "id": "fact-063",
+      "target": "-13",
+      "generated": "Bạn. tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-090",
+      "target": "30",
+      "generated": "Lời.",
+      "correct": false
+    },
+    {
+      "id": "fact-102",
+      "target": "5",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-051",
+      "target": "8",
+      "generated": "Bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-058",
+      "target": "19",
+      "generated": "Bạn biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-119",
+      "target": "8",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-060",
+      "target": "28",
+      "generated": "Bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-073",
+      "target": "10",
+      "generated": "Tôi đang bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-104",
+      "target": "21",
+      "generated": "Lời....",
+      "correct": false
+    },
+    {
+      "id": "fact-040",
+      "target": "12",
+      "generated": "Tạm biệt.",
+      "correct": false
+    },
+    {
+      "id": "fact-034",
+      "target": "17",
+      "generated": "Bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-071",
+      "target": "1",
+      "generated": "Tạm lời bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-016",
+      "target": "9",
+      "generated": "Rất..",
+      "correct": false
+    },
+    {
+      "id": "fact-077",
+      "target": "1",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-124",
+      "target": "23",
+      "generated": "Rất...",
+      "correct": false
+    },
+    {
+      "id": "fact-057",
+      "target": "-2",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-108",
+      "target": "16",
+      "generated": "Bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-103",
+      "target": "-3",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-026",
+      "target": "26",
+      "generated": "Lời bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-093",
+      "target": "-7",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-081",
+      "target": "-4",
+      "generated": "Tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-069",
+      "target": "-10",
+      "generated": "Tạm biệt bạn.",
+      "correct": false
+    },
+    {
+      "id": "fact-011",
+      "target": "5",
+      "generated": "Tạm biệt bạn..",
+      "correct": false
+    },
+    {
+      "id": "fact-101",
+      "target": "7",
+      "generated": "Tôi đang tạm dạy tôi.",
+      "correct": false
+    },
+    {
+      "id": "fact-019",
+      "target": "7",
+      "generated": "Tạm.",
+      "correct": false
+    }
+  ]
+}

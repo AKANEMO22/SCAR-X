@@ -1,0 +1,57 @@
+{
+  "completed_scope": "SCAR-X Product-first MVP V0.1, packaged local release and Hermes structured-model transport/configuration",
+  "app_live": "http://127.0.0.1:8765",
+  "launch_command": "python run_app.py",
+  "real_neural_teaching": "tests/test_app.py and mvp acceptance report; PlasticCore/LifelongLearner, no LLM replacement",
+  "before_after_unseen_variants": "runs/20261108T180632Z-mvp-v01-acceptance-534d0a/report.md",
+  "restart_and_rollback": "50 passing tests including interrupted process, DB fault, exact learner/replay/RNG state, import/restore",
+  "resources": {
+    "rss_bytes": 44949504,
+    "commit_bytes": 28168192,
+    "cpu_percent": 3.6,
+    "peak_rss_bytes": 56573952,
+    "peak_commit_bytes": 30629888,
+    "limit_bytes": 2000000000,
+    "os_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "cpu_percent_note": "CPU tiến trình: 100% tương đương một logical core.",
+    "uptime_seconds": 96.2960000000021
+  },
+  "hermes_backend": "artifacts/hermes-backend-check.json; OpenAI SDK SSE/nonstream; real Hermes source schema validated",
+  "package_independent_start_and_import": {
+    "package_sha256": "890ccc6d6f9bb86749267a3c4f462d5e5a0312f366eca49fa66cad3109b73ce2",
+    "manifest_verified": true,
+    "extracted_checkout_started": true,
+    "assets": {
+      "": 200,
+      "app.js": 200,
+      "style.css": 200,
+      "responsive.css": 200
+    },
+    "demo_neural_checkpoint_imported": true,
+    "updates": 1120,
+    "openai_backend_response": true,
+    "os_memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "personal_data_included": false,
+    "hermes_mode": "model-backend; structured JSON only"
+  },
+  "feature_and_limit_guide": "README.md",
+  "source_changes": "src/scarx/app, persistence integration, runtime/limits.py; see README section6",
+  "next_version": "README section7 and docs/RESEARCH_PLAN.md",
+  "historical_data": "Existing protocol/run files unchanged; old runs/INDEX.md preserved as an exact prefix, new acceptance runs appended",
+  "not_claimed": [
+    "native vision understanding",
+    "computer action policy",
+    "learned language reasoning",
+    "hidden representation advantage",
+    "passed lifelong research gate"
+  ],
+  "hermes_selected_model": "Original Qwen3.5-9B-Q4_K_M remains selected; scarx-local added as a separate named provider"
+}

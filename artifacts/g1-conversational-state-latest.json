@@ -1,0 +1,93 @@
+{
+  "run": "runs/20261109T161548Z-g1-conversational-state-audit-v1-e7b5e8",
+  "data": "data/candidates/20261109T161256Z-antigravity-g1-state-paraphrases-a4d648/reviewed.json",
+  "decision": "G1_STATE_DIAGNOSTIC_ONLY",
+  "summary": {
+    "public_release": {
+      "savedstate": {
+        "strict_style_exact": 0.48214285714285715,
+        "disagreement_vs_reset": 0.41964285714285715,
+        "known_control_exact": 0.75,
+        "antigravity_exact": 0.125
+      },
+      "silent_idle": {
+        "strict_style_exact": 0.5446428571428571,
+        "disagreement_vs_reset": 0.026785714285714284,
+        "known_control_exact": 0.859375,
+        "antigravity_exact": 0.125
+      },
+      "public_idle_probes": {
+        "strict_style_exact": 0.5089285714285714,
+        "disagreement_vs_reset": 0.36607142857142855,
+        "known_control_exact": 0.828125,
+        "antigravity_exact": 0.08333333333333333
+      },
+      "canonicalreset": {
+        "strict_style_exact": 0.5446428571428571,
+        "disagreement_vs_reset": 0.0,
+        "known_control_exact": 0.859375,
+        "antigravity_exact": 0.125
+      }
+    },
+    "current_private": {
+      "savedstate": {
+        "strict_style_exact": 0.008928571428571428,
+        "disagreement_vs_reset": 0.4017857142857143,
+        "known_control_exact": 0.015625,
+        "antigravity_exact": 0.0
+      },
+      "silent_idle": {
+        "strict_style_exact": 0.017857142857142856,
+        "disagreement_vs_reset": 0.008928571428571428,
+        "known_control_exact": 0.03125,
+        "antigravity_exact": 0.0
+      },
+      "public_idle_probes": {
+        "strict_style_exact": 0.017857142857142856,
+        "disagreement_vs_reset": 0.39285714285714285,
+        "known_control_exact": 0.03125,
+        "antigravity_exact": 0.0
+      },
+      "canonicalreset": {
+        "strict_style_exact": 0.017857142857142856,
+        "disagreement_vs_reset": 0.0,
+        "known_control_exact": 0.03125,
+        "antigravity_exact": 0.0
+      }
+    }
+  },
+  "cases": 112,
+  "inferences": 896,
+  "weights_unchanged": true,
+  "private_model_sha256": "b21c5769ff1a0d8a2657e4cab46709befc64f0b215fbe4f0fc3a4ce12c3be8cb",
+  "serving_updates_before": 241347,
+  "serving_updates_after": 241347,
+  "resources": {
+    "peak_rss_bytes": 54063104,
+    "peak_commit_or_vms_bytes": 38387712,
+    "os_process_peak_working_set_bytes": 55099392,
+    "os_process_peak_pagefile_commit_bytes": 40333312,
+    "samples": 99,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 10.145096199994441,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "deployed": false,
+  "new_training": false,
+  "normal_chat_or_vision_proven": false,
+  "limits": [
+    "One reference phrase/known8intent taxonomy, not general language or semantic correctness.",
+    "Current/release scopes differ learnedweights and allocation, not matched architecturecontrols.",
+    "Private model/rawoutputs remain local only; no private context sent to teacher."
+  ]
+}

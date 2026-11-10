@@ -1,0 +1,227 @@
+{
+  "all_15_trials_recomputed_and_checkpoints_verified": true,
+  "metrics": [
+    {
+      "seed": 17,
+      "mode": "frozen",
+      "diagonal_acquisition": 0.3015625,
+      "final_accuracy": 0.3015625,
+      "best_to_final_forgetting": 0.0,
+      "signed_after_learning_drop": 0.0,
+      "max_selection_excess": 0.0
+    },
+    {
+      "seed": 17,
+      "mode": "readout",
+      "diagonal_acquisition": 0.40625,
+      "final_accuracy": 0.325,
+      "best_to_final_forgetting": 0.18125,
+      "signed_after_learning_drop": 0.08125,
+      "max_selection_excess": 0.1
+    },
+    {
+      "seed": 17,
+      "mode": "stdp",
+      "diagonal_acquisition": 0.33125,
+      "final_accuracy": 0.25625,
+      "best_to_final_forgetting": 0.2375,
+      "signed_after_learning_drop": 0.075,
+      "max_selection_excess": 0.1625
+    },
+    {
+      "seed": 17,
+      "mode": "full",
+      "diagonal_acquisition": 0.4171875,
+      "final_accuracy": 0.315625,
+      "best_to_final_forgetting": 0.2078125,
+      "signed_after_learning_drop": 0.1015625,
+      "max_selection_excess": 0.10625
+    },
+    {
+      "seed": 17,
+      "mode": "rate",
+      "diagonal_acquisition": 0.8328125,
+      "final_accuracy": 0.384375,
+      "best_to_final_forgetting": 0.509375,
+      "signed_after_learning_drop": 0.4484375,
+      "max_selection_excess": 0.0609375
+    },
+    {
+      "seed": 29,
+      "mode": "frozen",
+      "diagonal_acquisition": 0.290625,
+      "final_accuracy": 0.290625,
+      "best_to_final_forgetting": 0.0,
+      "signed_after_learning_drop": 0.0,
+      "max_selection_excess": 0.0
+    },
+    {
+      "seed": 29,
+      "mode": "readout",
+      "diagonal_acquisition": 0.4671875,
+      "final_accuracy": 0.3421875,
+      "best_to_final_forgetting": 0.2421875,
+      "signed_after_learning_drop": 0.125,
+      "max_selection_excess": 0.1171875
+    },
+    {
+      "seed": 29,
+      "mode": "stdp",
+      "diagonal_acquisition": 0.3515625,
+      "final_accuracy": 0.271875,
+      "best_to_final_forgetting": 0.2484375,
+      "signed_after_learning_drop": 0.0796875,
+      "max_selection_excess": 0.16875
+    },
+    {
+      "seed": 29,
+      "mode": "full",
+      "diagonal_acquisition": 0.4640625,
+      "final_accuracy": 0.35,
+      "best_to_final_forgetting": 0.2390625,
+      "signed_after_learning_drop": 0.1140625,
+      "max_selection_excess": 0.125
+    },
+    {
+      "seed": 29,
+      "mode": "rate",
+      "diagonal_acquisition": 0.79375,
+      "final_accuracy": 0.4015625,
+      "best_to_final_forgetting": 0.471875,
+      "signed_after_learning_drop": 0.3921875,
+      "max_selection_excess": 0.0796875
+    },
+    {
+      "seed": 43,
+      "mode": "frozen",
+      "diagonal_acquisition": 0.278125,
+      "final_accuracy": 0.278125,
+      "best_to_final_forgetting": 0.0,
+      "signed_after_learning_drop": 0.0,
+      "max_selection_excess": 0.0
+    },
+    {
+      "seed": 43,
+      "mode": "readout",
+      "diagonal_acquisition": 0.48125,
+      "final_accuracy": 0.353125,
+      "best_to_final_forgetting": 0.24375,
+      "signed_after_learning_drop": 0.128125,
+      "max_selection_excess": 0.115625
+    },
+    {
+      "seed": 43,
+      "mode": "stdp",
+      "diagonal_acquisition": 0.43125,
+      "final_accuracy": 0.3734375,
+      "best_to_final_forgetting": 0.221875,
+      "signed_after_learning_drop": 0.0578125,
+      "max_selection_excess": 0.1640625
+    },
+    {
+      "seed": 43,
+      "mode": "full",
+      "diagonal_acquisition": 0.4796875,
+      "final_accuracy": 0.359375,
+      "best_to_final_forgetting": 0.221875,
+      "signed_after_learning_drop": 0.1203125,
+      "max_selection_excess": 0.1015625
+    },
+    {
+      "seed": 43,
+      "mode": "rate",
+      "diagonal_acquisition": 0.7375,
+      "final_accuracy": 0.3703125,
+      "best_to_final_forgetting": 0.4203125,
+      "signed_after_learning_drop": 0.3671875,
+      "max_selection_excess": 0.053125
+    }
+  ],
+  "counterfactuals": [
+    {
+      "seed": 17,
+      "mode": "readout",
+      "task0_after_learning": 0.640625,
+      "task0_final": 0.3046875,
+      "task0_old_head_final_hidden": 0.640625,
+      "task0_old_hidden_final_head": 0.3046875,
+      "replay_groups_covered": 65,
+      "possible_groups": 80,
+      "missing_groups": 15,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.5369036197662354,
+      "hidden_l2_drift": 0.0
+    },
+    {
+      "seed": 17,
+      "mode": "full",
+      "task0_after_learning": 0.7265625,
+      "task0_final": 0.265625,
+      "task0_old_head_final_hidden": 0.71875,
+      "task0_old_hidden_final_head": 0.2734375,
+      "replay_groups_covered": 65,
+      "possible_groups": 80,
+      "missing_groups": 15,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.5470263957977295,
+      "hidden_l2_drift": 0.06437228620052338
+    },
+    {
+      "seed": 29,
+      "mode": "readout",
+      "task0_after_learning": 0.8359375,
+      "task0_final": 0.3125,
+      "task0_old_head_final_hidden": 0.8359375,
+      "task0_old_hidden_final_head": 0.3125,
+      "replay_groups_covered": 63,
+      "possible_groups": 80,
+      "missing_groups": 17,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.1614372730255127,
+      "hidden_l2_drift": 0.0
+    },
+    {
+      "seed": 29,
+      "mode": "full",
+      "task0_after_learning": 0.8203125,
+      "task0_final": 0.328125,
+      "task0_old_head_final_hidden": 0.828125,
+      "task0_old_hidden_final_head": 0.3203125,
+      "replay_groups_covered": 63,
+      "possible_groups": 80,
+      "missing_groups": 17,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.161715507507324,
+      "hidden_l2_drift": 0.04619770497083664
+    },
+    {
+      "seed": 43,
+      "mode": "readout",
+      "task0_after_learning": 0.75,
+      "task0_final": 0.34375,
+      "task0_old_head_final_hidden": 0.75,
+      "task0_old_hidden_final_head": 0.34375,
+      "replay_groups_covered": 64,
+      "possible_groups": 80,
+      "missing_groups": 16,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.6066734790802,
+      "hidden_l2_drift": 0.0
+    },
+    {
+      "seed": 43,
+      "mode": "full",
+      "task0_after_learning": 0.75,
+      "task0_final": 0.3515625,
+      "task0_old_head_final_hidden": 0.75,
+      "task0_old_hidden_final_head": 0.34375,
+      "replay_groups_covered": 64,
+      "possible_groups": 80,
+      "missing_groups": 16,
+      "buffer_size": 128,
+      "readout_l2_drift": 3.6035027503967285,
+      "hidden_l2_drift": 0.05185139179229736
+    }
+  ],
+  "interpretation": "Counterfactual head/hidden swaps on task0, not an additive causal decomposition; max-over-checkpoints is optimistic with finite test samples."
+}

@@ -1,0 +1,45 @@
+# P1 input information audit
+
+{
+  "run": "runs/20261109T083101Z-p1-input-information-audit-v1-1a6bac",
+  "protocol": "experiments/p1-input-information-audit-v1.md",
+  "text_pairs": 128,
+  "exact_context_collisions": 128,
+  "max_context_difference": 0.0,
+  "same_state_output_equal": true,
+  "vision": {
+    "different_rgb_png": true,
+    "different_input_hash": true,
+    "pixel_arrays_identical": true,
+    "pixel_max_difference": 0.0,
+    "current_output_classes": 10,
+    "red_prediction": 5,
+    "green_prediction": 5,
+    "scope": "digit-supported synthetic inputs with distinguishable colors, not normal-photo recognition"
+  },
+  "resources": {
+    "peak_rss_bytes": 44789760,
+    "peak_commit_or_vms_bytes": 30302208,
+    "os_process_peak_working_set_bytes": 45748224,
+    "os_process_peak_pagefile_commit_bytes": 31051776,
+    "samples": 138,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 1.3137234000023454,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "training_updates": 0,
+  "deployed": false,
+  "interpretation": "If counterexamples collide before the core, fix input information preservation before scaling/reward tuning. Does not by itself establish learned representation."
+}
+
+Raw text pairs and synthetic color PNGs are stored beside this report. Same-state information bounds do not assert global model accuracy. No live/private model changed.

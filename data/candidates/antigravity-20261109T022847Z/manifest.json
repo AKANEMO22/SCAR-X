@@ -1,0 +1,80 @@
+{
+  "generator": "installed Antigravity CLI",
+  "cli_version": "1.5.3",
+  "model": "gemini-3.8-flash-high",
+  "created_utc": "20261109T022847Z",
+  "public_brief_sha256": "d60adccc6a9367cd4a67819499df4c44bcaf0ce6ec45682d3346d6879c1e5ec0",
+  "private_data_sent": false,
+  "batches": [
+    {
+      "batch": 1,
+      "topic": "dialogue",
+      "examples": 60,
+      "seconds": 187.5,
+      "conversation_id": "fd529c38-cc38-4500-b131-61d65c40f780",
+      "usage": {
+        "input_tokens": 15665,
+        "output_tokens": 28505,
+        "thinking_tokens": 20801,
+        "cache_read_tokens": 0,
+        "total_tokens": 44170
+      },
+      "sha256": "bd59f7897eb36054923be49087a72696ae9b0d69cf90cac0e29e653a715be096",
+      "file": "batch-1-dialogue.jsonl",
+      "notes": "SCAR-X Batch 1/4 pilot curriculum dataset generated with exactly 60 examples (48 train, 12 development). Target vocabulary is strictly constrained to a tiny closed set (< 30 tokens). Development templates and sentence structures are strictly disjoint from training with zero overlap or input leakage. All arithmetic verification fields provide exact integer verification metadata and decimal targets. Clarification examples constitute exactly 10% (6/60) with clear criteria."
+    },
+    {
+      "batch": 2,
+      "topic": "arithmetic",
+      "examples": 60,
+      "seconds": 209.20300000000134,
+      "conversation_id": "ac03cb65-657e-4ce0-8123-4c65663371e0",
+      "usage": {
+        "input_tokens": 15684,
+        "output_tokens": 32609,
+        "thinking_tokens": 24822,
+        "cache_read_tokens": 0,
+        "total_tokens": 48293
+      },
+      "sha256": "cf13716b991261a1aa7a8e9a1c96b6c7398e9d60aa23477e4b34727a849c92b0",
+      "file": "batch-2-arithmetic.jsonl",
+      "notes": "Generated 60 examples (Batch 2/4): 48 train and 12 development. Contains 42 integer_arithmetic records with operands 0-9 and non-negative subtraction results, matching operands, operator, and expected integer exactly. Development split uses completely disjoint template IDs and distinct sentence phrasing from training, with no input overlap. All targets use the small shared vocabulary, with all IDs prefixed by 'arithmetic-' and family IDs prefixed by 'arithmetic_'."
+    },
+    {
+      "batch": 3,
+      "topic": "relations",
+      "examples": 60,
+      "seconds": 178.88999999999942,
+      "conversation_id": "dee015e5-83fe-463f-a15e-9d7ac863aa0b",
+      "usage": {
+        "input_tokens": 15669,
+        "output_tokens": 26648,
+        "thinking_tokens": 17765,
+        "cache_read_tokens": 0,
+        "total_tokens": 42317
+      },
+      "sha256": "1150668d46f7aaa7279d84854158c455cf6a6fa9dd9a41763980cfd00dc33195",
+      "file": "batch-3-relations.jsonl",
+      "notes": "Generated Batch 3/4 SCAR-X curriculum dataset consisting of exactly 60 examples (48 train, 12 development). All examples follow the 'relations-' ID prefix and 'relations_' family_id prefix. Training and development splits use disjoint template_id values and distinct phrasing constructions with no input leakage. Target vocabulary is strictly restricted to small shared set (Chào bạn., Hello., Cảm ơn bạn., Tạm biệt., Tôi là SCAR-X., Bạn nói rõ hơn nhé., neutral names An, Bình, Chi, Dũng, colors đỏ, xanh, vàng, and single-digit arithmetic outputs). Integer arithmetic items include operands, operator, and expected_integer fields. Rubrics provide explicit reasoning evidence without claiming independent verification. Clarification prompts constitute 10% (6/60) of the dataset."
+    },
+    {
+      "batch": 4,
+      "topic": "corrections",
+      "examples": 60,
+      "seconds": 189.6880000000001,
+      "conversation_id": "f0a8d689-ed69-4077-a7ea-66b1e9d9ec59",
+      "usage": {
+        "input_tokens": 15671,
+        "output_tokens": 28917,
+        "thinking_tokens": 20894,
+        "cache_read_tokens": 0,
+        "total_tokens": 44588
+      },
+      "sha256": "025fdfd80c28d6a5803e2b193c0a521a4d903edb05644566e68a92334fef84e0",
+      "file": "batch-4-corrections.jsonl",
+      "notes": "Generated Batch 4/4 of SCAR-X curriculum dataset consisting of exactly 60 examples (48 train, 12 development). All examples are prefixed with 'corrections-' for id and 'corrections_' for family_id. Target vocabulary strictly adheres to the specified minimal shared token set (Chào bạn., Hello., Cảm ơn bạn., Tạm biệt., Tôi là SCAR-X., Bạn nói rõ hơn nhé., digits, names An/Bình/Chi/Dũng, colors đỏ/xanh/vàng). Train and development sets have zero identical inputs and completely disjoint template_id sets with distinctive phrasing constructions. Arithmetic examples are strictly validated with operator (+/-), operands, expected_integer, and exact decimal digit targets. Clarification items handle missing operands and incompatible instructions with specific rubric criteria."
+    }
+  ],
+  "source": "synthetic:antigravity",
+  "independently_verified": false
+}

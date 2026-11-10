@@ -1,0 +1,37 @@
+{
+  "run": "runs/20261109T184028Z-g1-word-score-input-transfer-v2-c7a277",
+  "audit_run": "runs/20261109T185653Z-g1-word-score-input-audit-v1-b8c38e",
+  "decision": "STOP_WORD_SCORE_INPUT_TRANSFER_V2",
+  "trials": 27,
+  "software_tests_passed": 152,
+  "cold_process_continuations_exact": 27,
+  "serving_core_sha256_unchanged": {
+    "src/scarx/neural/core.py": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+    "src/scarx/neural/unified.py": "dc5dbed2c94ca1274499412a8e40372d9e12fc5e9645efbf976c85c6a0f27c37"
+  },
+  "no_transformer_or_llm_proxy": true,
+  "live_model_replaced": false,
+  "live_updates_before": 241363,
+  "live_updates_after": 241363,
+  "live_ram_bytes": 55562240,
+  "research_peak_rss_bytes": 163454976,
+  "research_seconds": 972.3701858000131,
+  "source_usage": "artifacts/g1-word-input-data-usage.json",
+  "antigravity_data_actual_training": true,
+  "new_teacher_call": false,
+  "qwen_reference": "artifacts/qwen-g1-state-reference-latest.json",
+  "browser_verified": true,
+  "source_quality_visible_even_after_technical_audit": true,
+  "screenshots": [
+    "artifacts/g1-word-input-running.png",
+    "artifacts/g1-word-input-final.png"
+  ],
+  "goal_completion_audit": {
+    "full_goal_complete": false,
+    "normal_conversation": false,
+    "normal_photo_vision": false,
+    "lifelong_retention": false,
+    "remaining": "Conditional representation, effective credit assignment, readout retention and image-language grounding; do not reopen stopped word-score application with more encoder/LR/epoch/model-size variants."
+  },
+  "next_step": "Separate preregistered matched ALIF learnability control, isolated evaluation only; not a replacement for local main learning."
+}

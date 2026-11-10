@@ -1,0 +1,22 @@
+# Learning channel engineering acceptance
+
+{
+  "real_plugin_discovery_and_auth": true,
+  "unauthenticated_rejected": true,
+  "real_scarx_http": true,
+  "ordinary_message_not_training_label": true,
+  "false_numeric_feedback_rejected": true,
+  "correct_feedback_verified": true,
+  "same_client_id_exactly_once": true,
+  "main_chat_nonblocking_routing_notice": true,
+  "history_retained_across_neural_restore": true,
+  "controller_questions_separate_from_neural_output": true,
+  "ram_bytes": 106811392,
+  "memory_cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "native_visual_verification": "recorded separately; this is API acceptance",
+  "learning_quality_claim": false
+}

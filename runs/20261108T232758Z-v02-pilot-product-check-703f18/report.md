@@ -1,0 +1,154 @@
+# V0.2 experimental product check
+
+```json
+{
+  "before": {
+    "text": "Chào bạn, tôi là scar-x, tôi là scar-x.",
+    "tokens": [
+      "chào",
+      "bạn",
+      ",",
+      "tôi",
+      "là",
+      "scar-x",
+      ",",
+      "tôi",
+      "là",
+      "scar-x",
+      "."
+    ],
+    "stopped": true,
+    "mean_probability": 0.6808284955720106,
+    "source": "autoregressive learned ALIF readout; no answer retrieval",
+    "scope": "small-vocabulary conversational pilot",
+    "experimental": true,
+    "quality_gate_passed": false,
+    "vocabulary_size": 44,
+    "checkpoint": "6e54557ae368433283d6f0cde6ecfadf"
+  },
+  "manual_teach": {
+    "before": {
+      "text": "Chào bạn, tôi là scar-x, tôi là scar-x.",
+      "tokens": [
+        "chào",
+        "bạn",
+        ",",
+        "tôi",
+        "là",
+        "scar-x",
+        ",",
+        "tôi",
+        "là",
+        "scar-x",
+        "."
+      ],
+      "stopped": true,
+      "mean_probability": 0.6808284955720106,
+      "source": "autoregressive learned ALIF readout; no answer retrieval",
+      "scope": "small-vocabulary conversational pilot"
+    },
+    "after": {
+      "text": "Chào bạn, tôi là scar-x.",
+      "tokens": [
+        "chào",
+        "bạn",
+        ",",
+        "tôi",
+        "là",
+        "scar-x",
+        "."
+      ],
+      "stopped": true,
+      "mean_probability": 0.7894630804657936,
+      "source": "autoregressive learned ALIF readout; no answer retrieval",
+      "scope": "small-vocabulary conversational pilot"
+    },
+    "new_vocabulary_tokens": 0,
+    "weights_changed": true,
+    "updates": 128,
+    "note": "Ví dụ do người dùng cung cấp, chưa kiểm chứng nội dung; không tự dùng làm factual truth/replay.",
+    "checkpoint": "d510c3deae224a4fbf427662c668fe14"
+  },
+  "after": {
+    "text": "Chào bạn, tôi là scar-x.",
+    "tokens": [
+      "chào",
+      "bạn",
+      ",",
+      "tôi",
+      "là",
+      "scar-x",
+      "."
+    ],
+    "stopped": true,
+    "mean_probability": 0.7894630804657936,
+    "source": "autoregressive learned ALIF readout; no answer retrieval",
+    "scope": "small-vocabulary conversational pilot",
+    "experimental": true,
+    "quality_gate_passed": false,
+    "vocabulary_size": 44,
+    "checkpoint": "d510c3deae224a4fbf427662c668fe14"
+  },
+  "restart_equal": true,
+  "restore_equal": true,
+  "v01_model_unchanged": true,
+  "image_fixtures": [
+    {
+      "index": 1,
+      "expected": 4,
+      "predicted": 4
+    },
+    {
+      "index": 2,
+      "expected": 5,
+      "predicted": 5
+    },
+    {
+      "index": 3,
+      "expected": 9,
+      "predicted": 9
+    },
+    {
+      "index": 4,
+      "expected": 8,
+      "predicted": 8
+    },
+    {
+      "index": 5,
+      "expected": 6,
+      "predicted": 6
+    },
+    {
+      "index": 6,
+      "expected": 7,
+      "predicted": 7
+    },
+    {
+      "index": 7,
+      "expected": 3,
+      "predicted": 3
+    },
+    {
+      "index": 8,
+      "expected": 7,
+      "predicted": 7
+    }
+  ],
+  "neural_hermes_language_and_image_transport": true,
+  "resources": {
+    "rss_bytes": 48472064,
+    "commit_bytes": 32636928,
+    "cpu_percent": 116.4,
+    "peak_rss_bytes": 48472064,
+    "peak_commit_bytes": 32636928,
+    "limit_bytes": 2000000000,
+    "os_limit": {
+      "enforced": false,
+      "reason": "Chạy qua service/test; launcher báo giới hạn OS riêng."
+    },
+    "cpu_percent_note": "CPU tiến trình: 100% tương đương một logical core.",
+    "uptime_seconds": 0.09400000000005093
+  },
+  "limitations": "Language quality gate failed; one trained correction is not heldout generalization. Digits-only vision; screenshot/visualQA not implemented."
+}
+```

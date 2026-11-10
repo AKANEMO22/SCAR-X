@@ -1,0 +1,53 @@
+# Recover actual Antigravity curriculum output
+
+Original run stopped before import because a native JSON-schemafinish event was treated as an externaltool. Allfinish payloads exactly match finalstructuredoutput; no newCLI call or neuraltraining. Originaljournal retained.
+
+{
+  "run": "runs/20261109T163853Z-g1-curriculum-output-recovery-301fdf",
+  "source_generation_run": "runs/20261109T163500Z-antigravity-g1-curriculum-v1-4c2593",
+  "candidate_directory": "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf",
+  "decision": "CURRICULUM_RECOVERED_REVIEW_PENDING",
+  "batches": [
+    {
+      "batch": 1,
+      "items": 80,
+      "usage": {
+        "input_tokens": 15751,
+        "output_tokens": 7961,
+        "thinking_tokens": 4546,
+        "cache_read_tokens": 0,
+        "total_tokens": 23712
+      },
+      "native_schema_finalizers": 0,
+      "forbidden_surface_duplicates": [],
+      "internal_surface_duplicates": 0,
+      "original_event_log_sha256": "0d411a9bed8d2ff2e38f0bf1e64fbff24740770413c26860c67836bacd798790"
+    },
+    {
+      "batch": 2,
+      "items": 80,
+      "usage": {
+        "input_tokens": 16388,
+        "output_tokens": 3456,
+        "thinking_tokens": 0,
+        "cache_read_tokens": 0,
+        "total_tokens": 19844
+      },
+      "native_schema_finalizers": 1,
+      "forbidden_surface_duplicates": [],
+      "internal_surface_duplicates": 0,
+      "original_event_log_sha256": "dd25cf6ca2964c580961fa9b7b600287ac0e26a860e0674d7594b8e4063cd27f"
+    }
+  ],
+  "items": 160,
+  "train": 128,
+  "development": 32,
+  "source": "actual Antigravity gemini-3.8-flash-low CLI, output recovered without new teacher call",
+  "native_finish_matches_final_payload": true,
+  "original_failure_retained": true,
+  "new_teacher_calls": 0,
+  "new_training": false,
+  "validation_pending": true,
+  "automatic_learning_allowed": false,
+  "sha256": "58bd9763438dc2710ab9ef7b39b83f5390084bf7b9b4131ae1e98a261aebfbfb"
+}

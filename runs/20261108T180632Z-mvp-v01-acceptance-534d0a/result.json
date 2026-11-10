@@ -1,0 +1,274 @@
+{
+  "before": {
+    "A": {
+      "accuracy": 0.5,
+      "correct": 64,
+      "count": 128,
+      "seen_exact": 0,
+      "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+    },
+    "B": {
+      "accuracy": 0.5,
+      "correct": 64,
+      "count": 128,
+      "seen_exact": 0,
+      "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+    }
+  },
+  "steps": [
+    {
+      "task": "A",
+      "before": {
+        "A": {
+          "accuracy": 0.5,
+          "correct": 64,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.5,
+          "correct": 64,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "after": {
+        "A": {
+          "accuracy": 0.640625,
+          "correct": 82,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.4765625,
+          "correct": 61,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "weight_changes": {
+        "w_in": 0.22408199310302734,
+        "w_rec": 0.3262149393558502,
+        "w_out": 1.7345060110092163,
+        "bias": 0.02587238885462284
+      },
+      "updates": 256,
+      "new_examples": 64,
+      "replayed": 0,
+      "seconds": 0.26600000000325963,
+      "label_evidence": "Quy tắc builtin-rule-v1 kiểm tra độc lập; cờ verified không được dùng làm bằng chứng.",
+      "retrieval_used": false,
+      "note": "Thay đổi hidden weights chưa chứng minh hidden representation tốt hơn; readout cũng được học.",
+      "checkpoint": "96856adbc0fa4096993fb07dc072d827"
+    },
+    {
+      "task": "A",
+      "before": {
+        "A": {
+          "accuracy": 0.640625,
+          "correct": 82,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.4765625,
+          "correct": 61,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "after": {
+        "A": {
+          "accuracy": 0.9921875,
+          "correct": 127,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.4765625,
+          "correct": 61,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "weight_changes": {
+        "w_in": 0.15318946540355682,
+        "w_rec": 0.2075251340866089,
+        "w_out": 1.6113712787628174,
+        "bias": 0.17437028884887695
+      },
+      "updates": 288,
+      "new_examples": 64,
+      "replayed": 32,
+      "seconds": 0.3129999999946449,
+      "label_evidence": "Quy tắc builtin-rule-v1 kiểm tra độc lập; cờ verified không được dùng làm bằng chứng.",
+      "retrieval_used": false,
+      "note": "Thay đổi hidden weights chưa chứng minh hidden representation tốt hơn; readout cũng được học.",
+      "checkpoint": "1f734c867f74435da57db3d355900cc9"
+    },
+    {
+      "task": "B",
+      "before": {
+        "A": {
+          "accuracy": 0.9921875,
+          "correct": 127,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.4765625,
+          "correct": 61,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "after": {
+        "A": {
+          "accuracy": 0.953125,
+          "correct": 122,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.6796875,
+          "correct": 87,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "weight_changes": {
+        "w_in": 0.3056134283542633,
+        "w_rec": 0.45189353823661804,
+        "w_out": 1.5976430177688599,
+        "bias": 0.2539709210395813
+      },
+      "updates": 288,
+      "new_examples": 64,
+      "replayed": 32,
+      "seconds": 0.3600000000005821,
+      "label_evidence": "Quy tắc builtin-rule-v1 kiểm tra độc lập; cờ verified không được dùng làm bằng chứng.",
+      "retrieval_used": false,
+      "note": "Thay đổi hidden weights chưa chứng minh hidden representation tốt hơn; readout cũng được học.",
+      "checkpoint": "06d02e58e58b47e7929f5cfb88bab0f4"
+    },
+    {
+      "task": "B",
+      "before": {
+        "A": {
+          "accuracy": 0.953125,
+          "correct": 122,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.6796875,
+          "correct": 87,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "after": {
+        "A": {
+          "accuracy": 0.8984375,
+          "correct": 115,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        },
+        "B": {
+          "accuracy": 0.7421875,
+          "correct": 95,
+          "count": 128,
+          "seen_exact": 0,
+          "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+        }
+      },
+      "weight_changes": {
+        "w_in": 0.2642558515071869,
+        "w_rec": 0.3704369068145752,
+        "w_out": 1.3077000379562378,
+        "bias": 0.04628950357437134
+      },
+      "updates": 288,
+      "new_examples": 64,
+      "replayed": 32,
+      "seconds": 0.3279999999940628,
+      "label_evidence": "Quy tắc builtin-rule-v1 kiểm tra độc lập; cờ verified không được dùng làm bằng chứng.",
+      "retrieval_used": false,
+      "note": "Thay đổi hidden weights chưa chứng minh hidden representation tốt hơn; readout cũng được học.",
+      "checkpoint": "ac75149f938d4164bda074d444f88bb4"
+    }
+  ],
+  "final": {
+    "A": {
+      "accuracy": 0.8984375,
+      "correct": 115,
+      "count": 128,
+      "seen_exact": 0,
+      "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+    },
+    "B": {
+      "accuracy": 0.7421875,
+      "correct": 95,
+      "count": 128,
+      "seen_exact": 0,
+      "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+    }
+  },
+  "restart": {
+    "scores": {
+      "A": {
+        "accuracy": 0.8984375,
+        "correct": 115,
+        "count": 128,
+        "seen_exact": 0,
+        "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+      },
+      "B": {
+        "accuracy": 0.7421875,
+        "correct": 95,
+        "count": 128,
+        "seen_exact": 0,
+        "scope": "Biến thể cường độ/nhiễu mới của 4 tín hiệu; không phải khái niệm hay kỹ năng ngôn ngữ mới."
+      }
+    },
+    "sha256": "0a46c61c195fb759915a237dc94837405d9cf45f2c5b82dd2a6aa0183473a23e",
+    "updates": 1120
+  },
+  "restore_exact": true,
+  "resources": {
+    "rss_bytes": 44183552,
+    "commit_bytes": 61763584,
+    "cpu_percent": 95.6,
+    "peak_rss_bytes": 44183552,
+    "peak_commit_bytes": 61763584,
+    "limit_bytes": 2000000000,
+    "os_limit": {
+      "enforced": false,
+      "reason": "Chạy qua service/test; launcher báo giới hạn OS riêng."
+    },
+    "cpu_percent_note": "CPU tiến trình: 100% tương đương một logical core.",
+    "uptime_seconds": 1.4220000000059372
+  },
+  "data_directory": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\mvp-acceptance\\be221c24925b4bddba43c73484328bf7",
+  "initial_checkpoint": "760c86507cdf42e68b3e0e51792869b9",
+  "learned_checkpoint": "ac75149f938d4164bda074d444f88bb4",
+  "acceptance_pass": true,
+  "research_gate_pass": false,
+  "scope": "Product regression/demo after iterative development; 4 known signal types with unseen amplitude/noise variants. No claim of learned language, novel concepts, hidden representation advantage or solved continual learning.",
+  "first_smoke_failure": "One A batch gained14.0625pp, below20pp target. Build iteration2 uses two A batches then two B batches; no neural rule/encoder changes."
+}

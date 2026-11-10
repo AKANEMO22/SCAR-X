@@ -1,0 +1,53 @@
+{
+  "condition": "surface_old",
+  "curriculum_order_seed": 1801,
+  "development_by_state": {
+    "savedstate": 0.03225806451612903,
+    "silent_idle": 0.03225806451612903,
+    "public_idle_probes": 0.03225806451612903,
+    "canonicalreset": 0.03225806451612903
+  },
+  "development_mean": 0.03225806451612903,
+  "training_examples": 3072,
+  "label_group_counts": [
+    304,
+    330,
+    292,
+    302,
+    340,
+    286,
+    288,
+    315,
+    615
+  ],
+  "neural_updates": 14647,
+  "neural_ticks": 150846,
+  "hidden_weights_unchanged": true,
+  "allocation_unchanged": true,
+  "mean_loss": 0.28064904359622217,
+  "first256_loss": 1.2205699744009748,
+  "last256_loss": 0.11721486199846978,
+  "candidate_private_path": "local/g1-curated-curriculum/20261109T164331Z-g1-curated-curriculum-v1-d1489c/surface_old-1801.zip",
+  "candidate_sha256": "dd3cbc25774c0adb784870a65a47fe1e0ced4ba1a99e8645358e626762c85fbf",
+  "seconds": 21.834485100000165,
+  "resources": {
+    "peak_rss_bytes": 53170176,
+    "peak_commit_or_vms_bytes": 38309888,
+    "os_process_peak_working_set_bytes": 57753600,
+    "os_process_peak_pagefile_commit_bytes": 42332160,
+    "samples": 112,
+    "interval_seconds": 0.2,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 21.825679800000216,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  }
+}

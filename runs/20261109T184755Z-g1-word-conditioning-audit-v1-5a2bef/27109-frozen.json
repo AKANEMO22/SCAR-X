@@ -1,0 +1,1817 @@
+{
+  "train16": {
+    "summary": {
+      "real": {
+        "first_token_accuracy": 0.5,
+        "nll": 1.4633617401123047
+      },
+      "zero": {
+        "first_token_accuracy": 0.3125,
+        "nll": 2.2589783668518066,
+        "argmax_flip_vs_real": 0.75,
+        "probability_l1_vs_real": 1.1423413753509521,
+        "hidden_rms_vs_real": 0.31518757343292236
+      },
+      "cross_family": {
+        "first_token_accuracy": 0.0625,
+        "nll": 3.762209415435791,
+        "argmax_flip_vs_real": 0.875,
+        "probability_l1_vs_real": 1.3193914890289307,
+        "hidden_rms_vs_real": 0.4150705635547638
+      }
+    },
+    "outputs": {
+      "real": [
+        {
+          "id": "known-greeting_vi-0",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "chào",
+          "correct": true
+        },
+        {
+          "id": "known-greeting_vi-1",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "chào",
+          "correct": true
+        },
+        {
+          "id": "known-greeting_en-0",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "hello",
+          "correct": true
+        },
+        {
+          "id": "known-greeting_en-1",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "known-identity-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-identity-1",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-gratitude-0",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "rất",
+          "correct": true
+        },
+        {
+          "id": "known-gratitude-1",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "rất",
+          "correct": true
+        },
+        {
+          "id": "known-farewell-0",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "tạm",
+          "correct": true
+        },
+        {
+          "id": "known-farewell-1",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "known-activity-0",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-activity-1",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-capabilities-0",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-capabilities-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-teaching-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "known-teaching-1",
+          "actual_first_token": "biệt",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ],
+      "zero": [
+        {
+          "id": "known-greeting_vi-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_vi-1",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_en-0",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_en-1",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "hello",
+          "correct": true
+        },
+        {
+          "id": "known-identity-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-identity-1",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-gratitude-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "known-gratitude-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "known-farewell-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "known-farewell-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "known-activity-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-activity-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-capabilities-0",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-capabilities-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-teaching-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "known-teaching-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ],
+      "cross_family": [
+        {
+          "id": "known-greeting_vi-0",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_vi-1",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_en-0",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "known-greeting_en-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "known-identity-0",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-identity-1",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-gratitude-0",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "known-gratitude-1",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "known-farewell-0",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "known-farewell-1",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "known-activity-0",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-activity-1",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-capabilities-0",
+          "actual_first_token": "dạy",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "known-capabilities-1",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "known-teaching-0",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "known-teaching-1",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ]
+    },
+    "model_unchanged": true,
+    "cases": 16,
+    "actual_ticks": 5760,
+    "input_array_bytes": 639360,
+    "scope": "firsttokenonly, not full utterance or original v1 decoder RNG scores"
+  },
+  "development": {
+    "summary": {
+      "real": {
+        "first_token_accuracy": 0.25806451612903225,
+        "nll": 2.767763614654541
+      },
+      "zero": {
+        "first_token_accuracy": 0.3548387096774194,
+        "nll": 2.3031110763549805,
+        "argmax_flip_vs_real": 0.4838709677419355,
+        "probability_l1_vs_real": 1.0400341749191284,
+        "hidden_rms_vs_real": 0.30672332644462585
+      },
+      "cross_family": {
+        "first_token_accuracy": 0.25806451612903225,
+        "nll": 2.7736947536468506,
+        "argmax_flip_vs_real": 0.8387096774193549,
+        "probability_l1_vs_real": 1.394720196723938,
+        "hidden_rms_vs_real": 0.40588870644569397
+      }
+    },
+    "outputs": {
+      "real": [
+        {
+          "id": "c1-greeting_vi-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_vi-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-10",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "chào",
+          "correct": true
+        },
+        {
+          "id": "c1-greeting_en-09",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "hello",
+          "correct": true
+        },
+        {
+          "id": "c1-greeting_en-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_en-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c1-identity-09",
+          "actual_first_token": "động",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-identity-10",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-identity-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-identity-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-gratitude-09",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-gratitude-10",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-10",
+          "actual_first_token": "biệt",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-activity-09",
+          "actual_first_token": "có",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-activity-10",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-activity-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-activity-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-capabilities-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-capabilities-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-teaching-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "c1-teaching-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "c2-teaching-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "c2-teaching-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ],
+      "zero": [
+        {
+          "id": "c1-greeting_vi-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_vi-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_en-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_en-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_en-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c1-identity-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-identity-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-identity-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-identity-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-gratitude-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-gratitude-10",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-activity-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-activity-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-activity-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-activity-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-capabilities-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-capabilities-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-teaching-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "c1-teaching-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "c2-teaching-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "c2-teaching-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ],
+      "cross_family": [
+        {
+          "id": "c1-greeting_vi-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_vi-10",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-09",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_vi-10",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_en-09",
+          "actual_first_token": "động",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c1-greeting_en-10",
+          "actual_first_token": "động",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c2-greeting_en-10",
+          "actual_first_token": "động",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "c1-identity-09",
+          "actual_first_token": "vui",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-identity-10",
+          "actual_first_token": "vui",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-identity-09",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-identity-10",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-gratitude-09",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-gratitude-10",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-09",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c2-gratitude-10",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-farewell-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c2-farewell-10",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "c1-activity-09",
+          "actual_first_token": "động",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-activity-10",
+          "actual_first_token": "động",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-activity-09",
+          "actual_first_token": "động",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c2-activity-10",
+          "actual_first_token": "động",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "c1-capabilities-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-capabilities-09",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c2-capabilities-10",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "c1-teaching-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "c1-teaching-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "c2-teaching-09",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "c2-teaching-10",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        }
+      ]
+    },
+    "model_unchanged": true,
+    "cases": 31,
+    "actual_ticks": 11160,
+    "input_array_bytes": 1238760,
+    "scope": "firsttokenonly, not full utterance or original v1 decoder RNG scores"
+  },
+  "prior": {
+    "summary": {
+      "real": {
+        "first_token_accuracy": 0.2708333333333333,
+        "nll": 2.3478987216949463
+      },
+      "zero": {
+        "first_token_accuracy": 0.3333333333333333,
+        "nll": 2.3622629642486572,
+        "argmax_flip_vs_real": 0.6458333333333334,
+        "probability_l1_vs_real": 1.137081265449524,
+        "hidden_rms_vs_real": 0.3136104941368103
+      },
+      "cross_family": {
+        "first_token_accuracy": 0.1875,
+        "nll": 3.495800733566284,
+        "argmax_flip_vs_real": 0.7291666666666666,
+        "probability_l1_vs_real": 1.2887581586837769,
+        "hidden_rms_vs_real": 0.38944607973098755
+      }
+    },
+    "outputs": {
+      "real": [
+        {
+          "id": "greeting_vi_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_02",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "chào",
+          "correct": true
+        },
+        {
+          "id": "greeting_vi_03",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_05",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_06",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "chào",
+          "correct": true
+        },
+        {
+          "id": "greeting_en_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_02",
+          "actual_first_token": "dạy",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_04",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_05",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "identity_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_03",
+          "actual_first_token": "trả",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "gratitude_01",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "rất",
+          "correct": true
+        },
+        {
+          "id": "gratitude_02",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_03",
+          "actual_first_token": "dạy",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_04",
+          "actual_first_token": "trả",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "farewell_01",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_02",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_03",
+          "actual_first_token": "chào",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_05",
+          "actual_first_token": "giúp",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_06",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "activity_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_04",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_05",
+          "actual_first_token": "học",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_06",
+          "actual_first_token": "có",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "teaching_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_06",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        }
+      ],
+      "zero": [
+        {
+          "id": "greeting_vi_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_05",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_04",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "identity_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "identity_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "gratitude_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_02",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "farewell_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "activity_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "teaching_01",
+          "actual_first_token": "hello",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        },
+        {
+          "id": "teaching_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "bạn",
+          "correct": false
+        }
+      ],
+      "cross_family": [
+        {
+          "id": "greeting_vi_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_vi_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "chào",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_02",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_04",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "greeting_en_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "hello",
+          "correct": false
+        },
+        {
+          "id": "identity_01",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_02",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_03",
+          "actual_first_token": "trả",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_04",
+          "actual_first_token": "tạm",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_05",
+          "actual_first_token": "rất",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "identity_06",
+          "actual_first_token": "vui",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "gratitude_01",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_02",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_03",
+          "actual_first_token": "giúp",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_04",
+          "actual_first_token": "trả",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_05",
+          "actual_first_token": "giúp",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "gratitude_06",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "rất",
+          "correct": false
+        },
+        {
+          "id": "farewell_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_02",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_03",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_04",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "farewell_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tạm",
+          "correct": false
+        },
+        {
+          "id": "activity_01",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_02",
+          "actual_first_token": "lời",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_03",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_04",
+          "actual_first_token": "đang",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "activity_05",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "activity_06",
+          "actual_first_token": "tôi",
+          "one_reference_first_token": "tôi",
+          "correct": true
+        },
+        {
+          "id": "capabilities_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "capabilities_06",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "tôi",
+          "correct": false
+        },
+        {
+          "id": "teaching_01",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_02",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_03",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_04",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_05",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        },
+        {
+          "id": "teaching_06",
+          "actual_first_token": "bạn",
+          "one_reference_first_token": "bạn",
+          "correct": true
+        }
+      ]
+    },
+    "model_unchanged": true,
+    "cases": 48,
+    "actual_ticks": 17280,
+    "input_array_bytes": 1918080,
+    "scope": "firsttokenonly, not full utterance or original v1 decoder RNG scores"
+  }
+}

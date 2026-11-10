@@ -1,0 +1,69 @@
+{
+  "mode": "readout",
+  "curriculum_order_seed": 1701,
+  "states": {
+    "savedstate": {
+      "known": 0.873015873015873,
+      "antigravity": 0.125,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 1,
+      "pass": false
+    },
+    "silent_idle": {
+      "known": 0.9206349206349206,
+      "antigravity": 0.16666666666666666,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 0,
+      "pass": false
+    },
+    "public_idle_probes": {
+      "known": 0.873015873015873,
+      "antigravity": 0.10416666666666667,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 1,
+      "pass": false
+    },
+    "canonicalreset": {
+      "known": 0.9206349206349206,
+      "antigravity": 0.16666666666666666,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 0,
+      "pass": false
+    }
+  },
+  "screen_pass": false,
+  "digit_accuracy": 0.8125,
+  "source_digit_accuracy": 0.8125,
+  "lost_old_correct_digits": 0,
+  "passes": 24,
+  "training_examples": 1608,
+  "neural_updates": 8544,
+  "mean_loss": 0.3499299761101853,
+  "source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+  "candidate_sha256": "c6311706e268c13e71273c16f65f7c88a4265ed191007a7ef2e70eca0b2854b0",
+  "candidate_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/readout-1701.zip",
+  "new_vocabulary": false,
+  "hidden_allocated": 128,
+  "seconds": 7.229898899997352,
+  "resources": {
+    "peak_rss_bytes": 59199488,
+    "peak_commit_or_vms_bytes": 43708416,
+    "os_process_peak_working_set_bytes": 61038592,
+    "os_process_peak_pagefile_commit_bytes": 45408256,
+    "samples": 57,
+    "interval_seconds": 0.2,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 7.21653449999576,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "checkpoint_exact": true
+}

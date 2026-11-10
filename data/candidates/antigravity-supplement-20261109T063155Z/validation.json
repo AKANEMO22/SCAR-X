@@ -1,0 +1,41 @@
+{
+  "candidate_directory": "data/candidates/antigravity-supplement-20261109T063155Z",
+  "dialogs": 40,
+  "dialogue_response_targets": 120,
+  "language_split_counts": {
+    "('vi', 'train')": 32,
+    "('en', 'development')": 8
+  },
+  "target_vocabulary_tokens": 141,
+  "held_out_scenarios": [
+    "admitting_uncertainty",
+    "correcting_mistake"
+  ],
+  "conflicting_raw_prompts": 0,
+  "evaluation_limit": "All train dialogues are Vietnamese; all development dialogues are English. Language and scenario shifts are confounded. Do not infer bilingual generalization or flatten multi-turn memory tasks into independent pairs.",
+  "photos": [
+    {
+      "image": "china.jpg",
+      "sha256": "8378025ad2519d649d02e32bd98990db4ab572357d9f09841c2fbfbb4fefad29",
+      "native_read_file_completed": true,
+      "caption_and_qa_visually_reviewed_by_codex": true,
+      "review_limit": "Broad objects/colors/relations match the displayed public photos. Exact lighting direction/natural light and distant boat type are not independently established.",
+      "independently_verified_factual_labels": false,
+      "automatic_learning_allowed": false
+    },
+    {
+      "image": "flower.jpg",
+      "sha256": "a77f6ec41e353afdf8bdff2ea981b2955535d8d83294f8cfa49cf4e423dd5638",
+      "native_read_file_completed": true,
+      "caption_and_qa_visually_reviewed_by_codex": true,
+      "review_limit": "Broad objects/colors/relations match the displayed public photos. Exact lighting direction/natural light and distant boat type are not independently established.",
+      "independently_verified_factual_labels": false,
+      "automatic_learning_allowed": false
+    }
+  ],
+  "visual_qa_pairs": 16,
+  "captions": 2,
+  "current_model_supports_normal_photo_qa": false,
+  "trained": false,
+  "decision": "CANDIDATES_ONLY; style review required; photo encoder/cross-modal learning missing; no live auto-import"
+}

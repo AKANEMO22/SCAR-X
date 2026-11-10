@@ -1,0 +1,57 @@
+# Semantic review of small G1 curriculum
+
+All160prompts inspected before studenttraining;12ambiguous/awkward examples quarantined, no performance-based relabeling.
+
+{
+  "run": "runs/20261109T164114Z-g1-curriculum-semantic-review-0c3a3f",
+  "source_run": "runs/20261109T163853Z-g1-curriculum-output-recovery-301fdf",
+  "source_generation_run": "runs/20261109T163500Z-antigravity-g1-curriculum-v1-4c2593",
+  "data": "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf/reviewed-curriculum.json",
+  "sha256": "99aea0f2ee31060e501760cdddbb87029eedcc0b57c1cc8dd3e07e99fc477bb8",
+  "decision": "CURATED_PUBLIC_STYLE_CURRICULUM",
+  "retained": 148,
+  "quarantined": 12,
+  "counts": {
+    "greeting_vi": {
+      "train": 14,
+      "development": 4
+    },
+    "greeting_en": {
+      "train": 13,
+      "development": 3
+    },
+    "identity": {
+      "train": 16,
+      "development": 4
+    },
+    "gratitude": {
+      "train": 16,
+      "development": 4
+    },
+    "farewell": {
+      "train": 12,
+      "development": 4
+    },
+    "activity": {
+      "train": 16,
+      "development": 4
+    },
+    "capabilities": {
+      "train": 16,
+      "development": 4
+    },
+    "teaching": {
+      "train": 14,
+      "development": 4
+    }
+  },
+  "train": 117,
+  "development": 31,
+  "new_training": false,
+  "validation_pending": false,
+  "automatic_learning_allowed": false,
+  "limits": [
+    "Known8intent style targets, not factual labels; English questions may map to oldVietnamese style response.",
+    "Train/dev exactsurface disjoint, not a guarantee of novel semantic templates or broad normal conversation."
+  ]
+}

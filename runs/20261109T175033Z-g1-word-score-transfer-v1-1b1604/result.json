@@ -1,0 +1,118 @@
+{
+  "run": "runs/20261109T175033Z-g1-word-score-transfer-v1-1b1604",
+  "decision": "STOP_WORD_SCORE_TRANSFER_V1",
+  "summary": {
+    "frozen": {
+      "train16": {
+        "strict_style_exact": 0.2708333333333333,
+        "normalized_style_exact": 0.2916666666666667,
+        "teacher_token_accuracy": 0.7592757936507937,
+        "teacher_nll": 1.0228671971237038,
+        "first_token_accuracy": 0.7083333333333334
+      },
+      "development": {
+        "strict_style_exact": 0.03225806451612903,
+        "normalized_style_exact": 0.03225806451612903,
+        "teacher_token_accuracy": 0.45430107526881724,
+        "teacher_nll": 2.084941788260641,
+        "first_token_accuracy": 0.3655913978494623
+      },
+      "prior": {
+        "strict_style_exact": 0.08333333333333333,
+        "normalized_style_exact": 0.09722222222222222,
+        "teacher_token_accuracy": 0.571412037037037,
+        "teacher_nll": 1.6667161516195819,
+        "first_token_accuracy": 0.36111111111111116
+      }
+    },
+    "full": {
+      "train16": {
+        "strict_style_exact": 0.14583333333333334,
+        "normalized_style_exact": 0.20833333333333334,
+        "teacher_token_accuracy": 0.6889880952380952,
+        "teacher_nll": 1.0689078739562536,
+        "first_token_accuracy": 0.5833333333333334
+      },
+      "development": {
+        "strict_style_exact": 0.03225806451612903,
+        "normalized_style_exact": 0.03225806451612903,
+        "teacher_token_accuracy": 0.5224014336917563,
+        "teacher_nll": 1.7449428728334055,
+        "first_token_accuracy": 0.3548387096774193
+      },
+      "prior": {
+        "strict_style_exact": 0.03472222222222222,
+        "normalized_style_exact": 0.041666666666666664,
+        "teacher_token_accuracy": 0.5431216931216931,
+        "teacher_nll": 1.5733486475801752,
+        "first_token_accuracy": 0.34722222222222215
+      }
+    },
+    "shuffled": {
+      "train16": {
+        "strict_style_exact": 0.0625,
+        "normalized_style_exact": 0.08333333333333333,
+        "teacher_token_accuracy": 0.5274801587301586,
+        "teacher_nll": 1.698558364060374,
+        "first_token_accuracy": 0.5416666666666666
+      },
+      "development": {
+        "strict_style_exact": 0.01075268817204301,
+        "normalized_style_exact": 0.02150537634408602,
+        "teacher_token_accuracy": 0.35097286226318486,
+        "teacher_nll": 2.29433145695469,
+        "first_token_accuracy": 0.22580645161290322
+      },
+      "prior": {
+        "strict_style_exact": 0.0,
+        "normalized_style_exact": 0.006944444444444444,
+        "teacher_token_accuracy": 0.40198412698412694,
+        "teacher_nll": 2.1437478993264025,
+        "first_token_accuracy": 0.32638888888888884
+      }
+    }
+  },
+  "paired_dev_gain": {
+    "mean": 0.0,
+    "lower95": -0.03225806451612903,
+    "upper95": 0.03225806451612903,
+    "n_seeds": 3
+  },
+  "paired_prior_gain": {
+    "mean": -0.05555555555555556,
+    "lower95": -0.08333333333333333,
+    "upper95": 0.0,
+    "n_seeds": 3
+  },
+  "informative_screen": false,
+  "trials": 9,
+  "resources": {
+    "peak_rss_bytes": 155078656,
+    "peak_commit_or_vms_bytes": 112185344,
+    "os_process_peak_working_set_bytes": 43773952,
+    "os_process_peak_pagefile_commit_bytes": 30842880,
+    "samples": 3098,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 283.93195349999587,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "deployed": false,
+  "normal_chat_or_vision_proven": false,
+  "retention_confirmed": false,
+  "new_hidden_rule_tuning": false,
+  "limits": [
+    "Only3freshmodels and8knownstylefamilies; pilot not formalP1/P2or normalchat.",
+    "Canonicalstochasticprefixreplay differs from runtimecontinuousstate; no migration/visiontraining.",
+    "Lockedruletransfer, no hyperparameter/gridextension or pretrainedweights."
+  ]
+}

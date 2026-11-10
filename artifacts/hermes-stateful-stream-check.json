@@ -1,0 +1,81 @@
+{
+  "real_agent_initialized": true,
+  "stream_requested": true,
+  "host_context_buffer": 4096,
+  "memory_display": {
+    "categories": [],
+    "estimated_total": 0,
+    "model": "scarx-generation1",
+    "context_mode": "backend_state",
+    "input_limit_characters": 2048,
+    "context_max": 0,
+    "context_used": 0,
+    "context_percent": 0,
+    "context_source": "backend_state",
+    "context_estimated": false,
+    "request_load": null
+  },
+  "last_request_load": {
+    "request_id": "31627ceb3f32443d9ac156ea6fe67a05",
+    "phase": "complete",
+    "modality": "text",
+    "input_characters": 8,
+    "input_utf8_bytes": 11,
+    "image_count": 0,
+    "replayed_messages": 0,
+    "retrieved_episodes": 0,
+    "tool_schemas": 0,
+    "source": "measured backend workset matched by request ID",
+    "neural_image_pixels": 0,
+    "prompt_features_nonzero": 7,
+    "neural_input_channels": 223,
+    "neural_input_buffer_bytes": 892,
+    "active_neurons": 64,
+    "allocated_neurons": 64,
+    "max_neurons": 128,
+    "output_connected_neurons": 55,
+    "neural_arrays_bytes": 152084,
+    "process_rss_bytes": 49840128,
+    "allocation_reason": "observable input volume/modality heuristic, not validated task difficulty",
+    "note": "New neuron readout columns start zero and need learning; allocation alone adds no skill. All weights remain resident."
+  },
+  "neural_context_capacity_claim": null,
+  "stateful_chat": true,
+  "tools": 0,
+  "calls": [
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hi"
+        }
+      ],
+      "tools": null,
+      "model": "scarx-generation1",
+      "stream": true
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "chào bạn"
+        }
+      ],
+      "tools": null,
+      "model": "scarx-generation1",
+      "stream": true
+    }
+  ],
+  "responses": [
+    "Hello.",
+    "Chào bạn."
+  ],
+  "ledger_user_messages": [
+    "hi",
+    "chào bạn"
+  ],
+  "elapsed_seconds": 0.6709999999984575,
+  "model_weights_updated_by_this_check": false,
+  "neural_code_modified_by_hermes_adapter": false,
+  "created_utc": "2026-11-09T06:59:27.358272+00:00"
+}

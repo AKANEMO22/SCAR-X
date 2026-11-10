@@ -1,0 +1,102 @@
+{
+  "run": "runs/20261109T222632Z-visual-word-audit-v1-75fa9f",
+  "source_run": "runs/20261109T222354Z-visual-word-readout-v1-a11424",
+  "decision": "VISUAL_WORD_TECHNICAL_PASS_QUALITY_UNCHANGED",
+  "source_quality_decision": "STOP_VISUAL_WORD_READOUT_V1",
+  "all_cold_exact": true,
+  "all_hidden_exactinitial": true,
+  "all_source_SHA_unchanged": true,
+  "two_recovered_models_byteidentical_without_retraining": true,
+  "same_sampler_wordupdate_trainingtick_budget_by_seed": true,
+  "array_bytes_each": 112844,
+  "checks": [
+    {
+      "seed": 33113,
+      "condition": "no_image",
+      "cold_exact": true,
+      "source_sha256": "1b8ee4e4b61d4bc72a3ad971003939e78b028d2d76c71ca2600324849f2f11d3",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33113,
+      "condition": "no_question",
+      "cold_exact": true,
+      "source_sha256": "2698dc5a655547cd61296c2dbf4560cc2134cac9f9e34e430db8449a72fe1b2e",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33113,
+      "condition": "full",
+      "cold_exact": true,
+      "source_sha256": "bc1c0ac48b132a21318d4107f21c590f974688620a8fcefd33244fd568cf7986",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33119,
+      "condition": "no_image",
+      "cold_exact": true,
+      "source_sha256": "ab5f5263849a997b07a5e4cf422dbae408f642008fcb189a613d73e58f12c44f",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33119,
+      "condition": "no_question",
+      "cold_exact": true,
+      "source_sha256": "f5c6eb565a77ec5916cfcc07c77eac208799fff23a4ea9b2be61522b749ead2d",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33119,
+      "condition": "full",
+      "cold_exact": true,
+      "source_sha256": "bf7dd1623cdb76432605e24ced929301c03fe72d2c9299433017e72337efd631",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33133,
+      "condition": "no_image",
+      "cold_exact": true,
+      "source_sha256": "a7a62d14e5d5d858093e198093517b415f848b4abcd4295bd6caebddb6bbbcf5",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33133,
+      "condition": "no_question",
+      "cold_exact": true,
+      "source_sha256": "8ca77daf51e8cceeed05d34c139b0b9bdc5137955f3c5f1bc513e084abb08ab0",
+      "hidden_exactinitial": true
+    },
+    {
+      "seed": 33133,
+      "condition": "full",
+      "cold_exact": true,
+      "source_sha256": "e3a17efbeb2d854a7584db2fe734633df749a00ff556620bf034ad2a320df8d1",
+      "hidden_exactinitial": true
+    }
+  ],
+  "new_training": false,
+  "deployed": false,
+  "normal_photo_qa_proven": false,
+  "hidden_representation_learning": false,
+  "proposal30_approved": false,
+  "resources": {
+    "peak_rss_bytes": 106672128,
+    "peak_commit_or_vms_bytes": 69902336,
+    "os_process_peak_working_set_bytes": 52699136,
+    "os_process_peak_pagefile_commit_bytes": 36753408,
+    "samples": 33,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.571317200010526,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  }
+}

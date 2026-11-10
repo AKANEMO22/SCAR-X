@@ -1,0 +1,21 @@
+{
+  "run": "runs/20261109T192850Z-g1-word-learnability-control-v1-d74480",
+  "source_files": [
+    "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf/reviewed-curriculum.json",
+    "data/dialogue/generation1.json",
+    "data/candidates/20261109T161256Z-antigravity-g1-state-paraphrases-a4d648/reviewed.json"
+  ],
+  "source_sha256": {
+    "data/candidates/20261109T163853Z-g1-curriculum-output-recovery-301fdf/reviewed-curriculum.json": "99aea0f2ee31060e501760cdddbb87029eedcc0b57c1cc8dd3e07e99fc477bb8",
+    "data/dialogue/generation1.json": "2f0411c2b410446fee1c94c5ce40cc1eff44ed6b06bad78d7332038f7c5a8ae9",
+    "data/candidates/20261109T161256Z-antigravity-g1-state-paraphrases-a4d648/reviewed.json": "9f9937cd3f2eff86d9aa96374bd54b90f6deba31a5270fcaaca5ffe2a604bf50"
+  },
+  "actual_response_updates": 6144,
+  "actual_target_token_updates": 33932,
+  "antigravity_response_updates": 3958,
+  "authored_response_updates": 2186,
+  "source_sampler_stream_and_checkpoint_counters_match": true,
+  "scope": "ISOLATED BPTT CONTROL ONLY; main local learning unchanged",
+  "labels_from_qwen": 0,
+  "private_examples_used": 0
+}

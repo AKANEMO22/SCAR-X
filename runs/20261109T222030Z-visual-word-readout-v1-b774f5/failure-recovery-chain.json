@@ -1,0 +1,29 @@
+{
+  "source_run": "runs/20261109T222030Z-visual-word-readout-v1-b774f5",
+  "failure_kind": "empty_diagnostic_subset_macro_NaN_JSON_rejection",
+  "checkpoint_sources": [
+    {
+      "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+      "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-full.visualword.zip",
+      "sha256": "bc1c0ac48b132a21318d4107f21c590f974688620a8fcefd33244fd568cf7986",
+      "prior_active_seconds": 12.440353870391846
+    },
+    {
+      "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+      "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-no_image.visualword.zip",
+      "sha256": "1b8ee4e4b61d4bc72a3ad971003939e78b028d2d76c71ca2600324849f2f11d3",
+      "prior_active_seconds": 12.440353870391846
+    }
+  ],
+  "prior_active_program_seconds": 12.440353870391846,
+  "original_active_seconds": 12.18582820892334,
+  "failed_recovery_wrappers": [
+    {
+      "run": "runs/20261109T222305Z-visual-word-readout-v1-59b089",
+      "active_seconds": 0.25452566146850586,
+      "neural_training_started": false
+    }
+  ],
+  "unknown_prior_peak_memory": true,
+  "repair_scope": "MissingmetricNone and recoveryargumentplumbing only; no algorithm/gate/data/hyperparameterchange. Recoveredmodels NOT retrained."
+}

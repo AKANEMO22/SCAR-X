@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-11-09T13:04:50.982981+00:00",
+  "source_run": "runs/20261109T125432Z-p1-control-factor-audit-v1-c52f61",
+  "decision": "DIAGNOSTIC_ONLY",
+  "software_tests": {
+    "passed": 122,
+    "native_baseline_parity_included": true,
+    "masked_weights_and_moments_verified": true
+  },
+  "ui_verified": {
+    "running_seen": true,
+    "table_from_measured_result_seen": true,
+    "passive_follow": true,
+    "real_learning_and_predictions_published": true
+  },
+  "live": {
+    "model": "scarx-generation1",
+    "cores_loaded": 1,
+    "hidden": 128,
+    "updates": 241347,
+    "ram_bytes": 59101184,
+    "commit_bytes": 43208704,
+    "memory_limit": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  "qwen_server_process_count": 0,
+  "screenshots": {
+    "p1-control-factors-running.png": "3e36d67fc9afdf95eff95e8655ad95d36c94b81f769228671ce51044eaa7b62c",
+    "p1-control-factors-final.png": "10396485805498cf700cfefaad7e3d4b8cff017c62f5e249b293ed98a131a0dd"
+  },
+  "goal_audit": {
+    "full_goal_complete": false,
+    "normal_chat": "not achieved; actual serving output and prior development tests remain weak",
+    "normal_vision": "not achieved; serving digits only, real RGB benchmark below gate",
+    "antigravity_cli_dataset": "previous actual generated corpus retained; not dumped into weak learner to claim progress",
+    "qwen_comparison": "actual prior reference retained; never used as serving proxy or fabricated on tensor tests",
+    "master_plan": "1.12; P1 registered control-factor diagnostic, no reopened stopped family or scaling",
+    "local_credit_representation": "not solved; optimizer and coverage confounds are material in current control budget",
+    "retention": "not remeasured or solved by these controls",
+    "next_required_work": "A different P1 local-learning hypothesis must account for effective step and coverage; P2 stability/acquisition joint gate still required. Do not reopen stopped family as another optimizer trial."
+  },
+  "ponytail_available": false
+}

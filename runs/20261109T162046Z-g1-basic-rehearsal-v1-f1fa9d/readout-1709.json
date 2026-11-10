@@ -1,0 +1,69 @@
+{
+  "mode": "readout",
+  "curriculum_order_seed": 1709,
+  "states": {
+    "savedstate": {
+      "known": 0.8412698412698413,
+      "antigravity": 0.14583333333333334,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 1,
+      "pass": false
+    },
+    "silent_idle": {
+      "known": 0.8888888888888888,
+      "antigravity": 0.1875,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 0,
+      "pass": false
+    },
+    "public_idle_probes": {
+      "known": 0.8888888888888888,
+      "antigravity": 0.125,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 1,
+      "pass": false
+    },
+    "canonicalreset": {
+      "known": 0.8888888888888888,
+      "antigravity": 0.1875,
+      "source_antigravity": 0.0,
+      "lost_personal_guards": 0,
+      "pass": false
+    }
+  },
+  "screen_pass": false,
+  "digit_accuracy": 0.8125,
+  "source_digit_accuracy": 0.8125,
+  "lost_old_correct_digits": 0,
+  "passes": 24,
+  "training_examples": 1608,
+  "neural_updates": 8544,
+  "mean_loss": 0.3533976141679352,
+  "source_sha256": "58f965b67134f5a03a1f0eed8fe318fa478c539582e515ba6a910dd46907ccf6",
+  "candidate_sha256": "f600aa874b4144bba86e31311ebb6aeb8f42830fabb6b3bc361204edbb3f6312",
+  "candidate_private_path": "local/g1-rehearsal/20261109T162046Z-g1-basic-rehearsal-v1-f1fa9d/readout-1709.zip",
+  "new_vocabulary": false,
+  "hidden_allocated": 128,
+  "seconds": 7.239460799995868,
+  "resources": {
+    "peak_rss_bytes": 59256832,
+    "peak_commit_or_vms_bytes": 43892736,
+    "os_process_peak_working_set_bytes": 61034496,
+    "os_process_peak_pagefile_commit_bytes": 45801472,
+    "samples": 58,
+    "interval_seconds": 0.2,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 7.227157599998463,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "checkpoint_exact": true
+}

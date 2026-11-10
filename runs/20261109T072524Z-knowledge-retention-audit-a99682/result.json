@@ -1,0 +1,1612 @@
+{
+  "run": "runs/20261109T072524Z-knowledge-retention-audit-a99682",
+  "primary_run": "runs/20261109T071930Z-knowledge-load-retention-v1r1-c674ae",
+  "reference_run": "runs/20261109T072118Z-qwen4b-numeric-reference-bda43a",
+  "groups": {
+    "frozen": {
+      "orders": 3,
+      "presented": [
+        128
+      ],
+      "trained_wording_mean": 0.0,
+      "primary_paraphrase_mean": 0.0,
+      "shared_format_mean": 0.0,
+      "old_mean_forgetting_pp": 0.0,
+      "old_worst_family_pp": 0.0,
+      "rote_remembered_before": 0,
+      "rote_retained_after_interference": 0,
+      "rote_retained_with_replay": 0
+    },
+    "full": {
+      "orders": 3,
+      "presented": [
+        16
+      ],
+      "trained_wording_mean": 0.14583333333333334,
+      "primary_paraphrase_mean": 0.0,
+      "shared_format_mean": 0.0020833333333333333,
+      "old_mean_forgetting_pp": 25.0,
+      "old_worst_family_pp": 100.0,
+      "rote_remembered_before": 7,
+      "rote_retained_after_interference": 0,
+      "rote_retained_with_replay": 0
+    },
+    "readout": {
+      "orders": 3,
+      "presented": [
+        16
+      ],
+      "trained_wording_mean": 0.20833333333333334,
+      "primary_paraphrase_mean": 0.0,
+      "shared_format_mean": 0.0020833333333333333,
+      "old_mean_forgetting_pp": 25.0,
+      "old_worst_family_pp": 100.0,
+      "rote_remembered_before": 10,
+      "rote_retained_after_interference": 0,
+      "rote_retained_with_replay": 0
+    },
+    "full_replay": {
+      "orders": 3,
+      "presented": [
+        16
+      ],
+      "trained_wording_mean": 0.3125,
+      "primary_paraphrase_mean": 0.0,
+      "shared_format_mean": 0.0020833333333333333,
+      "old_mean_forgetting_pp": 25.0,
+      "old_worst_family_pp": 100.0,
+      "rote_remembered_before": 15,
+      "rote_retained_after_interference": 1,
+      "rote_retained_with_replay": 3
+    },
+    "guarded": {
+      "orders": 3,
+      "presented": [
+        16
+      ],
+      "trained_wording_mean": 0.0,
+      "primary_paraphrase_mean": 0.0,
+      "shared_format_mean": 0.0,
+      "old_mean_forgetting_pp": 8.333333333333334,
+      "old_worst_family_pp": 50.0,
+      "rote_remembered_before": 0,
+      "rote_retained_after_interference": 0,
+      "rote_retained_with_replay": 0
+    }
+  },
+  "results": [
+    {
+      "condition": "frozen",
+      "order_seed": 17,
+      "lessons_presented": 128,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 32,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 64,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 128,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.3280000000013388
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.26599999999962165
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.26599999999962165
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "frozen",
+      "order_seed": 29,
+      "lessons_presented": 128,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 32,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 64,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 128,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.3440000000009604
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.2649999999994179
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.26599999999962165
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "frozen",
+      "order_seed": 43,
+      "lessons_presented": 128,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 32,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 64,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        },
+        {
+          "lessons_presented": 128,
+          "mean_forgetting_pp": 0.0,
+          "worst_family_forgetting_pp": 0.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": true
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.3120000000017171
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.25
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.2649999999994179
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full",
+      "order_seed": 17,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.1875,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.1875,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 3,
+            "retained": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385029682449546,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23500000000058208
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 3,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              5.551115123125783e-17,
+              0.5614970317550454
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.2180000000007567
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 3,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              5.551115123125783e-17,
+              0.5614970317550454
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full",
+      "order_seed": 29,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.125,
+      "shared_format_exact_160": 0.00625,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21799999999711872
+        },
+        "interference_replay": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23399999999674037
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full",
+      "order_seed": 43,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.125,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.25
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        },
+        "interference_replay": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "readout",
+      "order_seed": 17,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.25,
+      "shared_format_exact_160": 0.00625,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.25,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101091635454027,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21899999999732245
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "readout",
+      "order_seed": 29,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.125,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        },
+        "interference_replay": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "readout",
+      "order_seed": 43,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.25,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.25,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101091635454027,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23500000000058208
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.2029999999977008
+        },
+        "interference_replay": {
+          "exact": 0.1875,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.2040000000015425
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full_replay",
+      "order_seed": 17,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.25,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.25,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101091635454027,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21900000000096043
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.2180000000007567
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 4,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.4898908364545973
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full_replay",
+      "order_seed": 29,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.125,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.21799999999711872
+        },
+        "interference_replay": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 2,
+            "retained": 0,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23399999999674037
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "full_replay",
+      "order_seed": 43,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 25.0,
+          "worst_family_forgetting_pp": 100.0,
+          "family_forgetting_pp": [
+            0.0,
+            100.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 25.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.5625,
+      "shared_format_exact_160": 0.00625,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.5625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 9,
+            "retained": 9,
+            "rate": 1.0,
+            "wilson95": [
+              0.7008549515804559,
+              1.0
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 9,
+            "retained": 1,
+            "rate": 0.1111111111111111,
+            "wilson95": [
+              0.019890887638544907,
+              0.434999705576656
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23500000000058208
+        },
+        "interference_replay": {
+          "exact": 0.1875,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 9,
+            "retained": 3,
+            "rate": 0.3333333333333333,
+            "wilson95": [
+              0.1205838183869109,
+              0.6457978644196036
+            ],
+            "status": "descriptive sample interval; examples share arithmetic structure"
+          },
+          "seconds": 0.23400000000037835
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "guarded",
+      "order_seed": 17,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 12.5,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 6.25,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 12.5,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 6.25,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.23500000000058208
+        },
+        "interference": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference_replay": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.25
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "guarded",
+      "order_seed": 29,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 6.25,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 6.25,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.25
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.23400000000037835
+        },
+        "interference_replay": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.23400000000037835
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    },
+    {
+      "condition": "guarded",
+      "order_seed": 43,
+      "lessons_presented": 16,
+      "audited_forgetting": [
+        {
+          "lessons_presented": 8,
+          "mean_forgetting_pp": 6.25,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": false
+        },
+        {
+          "lessons_presented": 16,
+          "mean_forgetting_pp": 6.25,
+          "worst_family_forgetting_pp": 50.0,
+          "family_forgetting_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            50.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "original_mislabeled_net_drop_pp": 0.0,
+          "historical_gate_met": false
+        }
+      ],
+      "primary_paraphrase_exact": 0.0,
+      "trained_wording_exact": 0.0,
+      "shared_format_exact_160": 0.0,
+      "shared_format_unseen32": 0.0,
+      "rote_probe": {
+        "quiet": {
+          "exact": 0.0,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.26599999999962165
+        },
+        "interference": {
+          "exact": 0.0625,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.25
+        },
+        "interference_replay": {
+          "exact": 0.125,
+          "retention_from_start_of_secondary_probe": {
+            "acquired": 0,
+            "retained": 0,
+            "rate": null,
+            "wilson95": null,
+            "status": "undefined: no acquired examples"
+          },
+          "seconds": 0.21900000000096043
+        }
+      },
+      "primary_useful_acquisition": 0,
+      "cold_process_restart_exact": true
+    }
+  ],
+  "qwen_exact": 1.0,
+  "qwen_unseen_exact": 1.0,
+  "qwen_completed": 160,
+  "qwen_server_stopped": true,
+  "qwen_ram": {
+    "peak_rss_bytes": 2923950080,
+    "peak_commit_or_vms_bytes": 3604324352,
+    "os_process_peak_working_set_bytes": 45826048,
+    "os_process_peak_pagefile_commit_bytes": 670593024,
+    "samples": 1001,
+    "interval_seconds": 0.1,
+    "limit_bytes": 4500000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 96.11857099999906,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "scarx_primary_ram": {
+    "peak_rss_bytes": 102662144,
+    "peak_commit_or_vms_bytes": 66527232,
+    "os_process_peak_working_set_bytes": 53911552,
+    "os_process_peak_pagefile_commit_bytes": 38567936,
+    "samples": 2060,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 179.51875479999944,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "audit_ram": {
+    "peak_rss_bytes": 44883968,
+    "peak_commit_or_vms_bytes": 31125504,
+    "os_process_peak_working_set_bytes": 45834240,
+    "os_process_peak_pagefile_commit_bytes": 31879168,
+    "samples": 135,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 13.362754100002348,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "hard_cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "hidden_vs_readout_paraphrase": {
+    "mean": 0.0,
+    "lower95": 0.0,
+    "upper95": 0.0,
+    "independent_seeds": 3,
+    "method": "paired seed-cluster bootstrap; exploratory with only three clusters"
+  },
+  "stats_scope": "Three curriculum-order seeds, ONE pretrained initialization; bootstrap cannot establish population-level equality.",
+  "metric_correction": "Original old_mean_forgetting_pp was NET overall drop. This audit averages per-family forgetting from maximum past performance; thresholds unchanged, no stopping decisions affected.",
+  "signed_answer_decoder_limitation_unresolved": true,
+  "primary_retention_undefined_no_useful_acquisition": true,
+  "calendar_long_term_retention_tested": false,
+  "four_billion_equivalence": false,
+  "deployed": false,
+  "decision": "PIVOT_NO_SCALE"
+}

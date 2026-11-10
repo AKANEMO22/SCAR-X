@@ -1,0 +1,42 @@
+{
+  "control_only": true,
+  "trials": [
+    {
+      "seed": 17,
+      "accuracy": 1.0,
+      "delayed_accuracy": 1.0,
+      "seconds": 4.316861899991636
+    },
+    {
+      "seed": 29,
+      "accuracy": 1.0,
+      "delayed_accuracy": 1.0,
+      "seconds": 4.296447000000626
+    },
+    {
+      "seed": 43,
+      "accuracy": 1.0,
+      "delayed_accuracy": 1.0,
+      "seconds": 4.269734800007427
+    }
+  ],
+  "resources": {
+    "peak_rss_bytes": 632307712,
+    "peak_commit_or_vms_bytes": 1692934144,
+    "os_process_peak_working_set_bytes": 633274368,
+    "os_process_peak_pagefile_commit_bytes": 1693696000,
+    "samples": 519,
+    "interval_seconds": 0.01,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 16.256851700003608,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "torch_version": "2.13.0+cu130",
+  "device": "cpu",
+  "continual_test": "not_run",
+  "note": "Matched forward ALIF/topology/initialization and 512 training examples; surrogate BPTT updates all weights, uses temporal graph. Not local learning."
+}

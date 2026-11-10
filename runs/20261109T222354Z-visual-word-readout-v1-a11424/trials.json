@@ -1,0 +1,1221 @@
+[
+  {
+    "seed": 33113,
+    "condition": "no_image",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.4166666666666667,
+        "micro_exact": 0.4375,
+        "strict_macro_exact": 0.4166666666666667,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.4166666666666667,
+        "by_kind": {
+          "single_color": 0.75,
+          "single_shape": 0.5,
+          "object_count": 0.0,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.3333333333333333,
+          "en": 0.5
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2526,
+        "teacher_token_accuracy": 0.7447916666666666,
+        "teacher_nll": 0.5468554150683671
+      },
+      "development": {
+        "macro_exact": 0.234375,
+        "micro_exact": 0.25,
+        "strict_macro_exact": 0.234375,
+        "novel_composition_macro": 0.24107142857142858,
+        "seen_composition_macro": 0.125,
+        "by_kind": {
+          "single_color": 0.375,
+          "single_shape": 0.0,
+          "object_count": 0.1875,
+          "left_color": 0.375
+        },
+        "by_language": {
+          "vi": 0.296875,
+          "en": 0.171875
+        },
+        "stopped_fraction": 0.9722222222222222,
+        "actual_ticks": 34488,
+        "teacher_token_accuracy": 0.5347222222222222,
+        "teacher_nll": 2.016655609603691
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3495,
+    "training_ticks": 61173,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_shape/vi/hình tam giác": 56,
+      "single_color/en/red": 121,
+      "single_shape/vi/hình tròn": 82,
+      "object_count/en/1": 61,
+      "single_shape/en/square": 55,
+      "single_shape/en/triangle": 68,
+      "object_count/vi/3": 70,
+      "object_count/en/3": 64,
+      "single_color/vi/đỏ": 107,
+      "left_color/en/green": 91,
+      "single_color/en/green": 96,
+      "left_color/en/red": 94,
+      "object_count/en/2": 55,
+      "left_color/vi/đỏ": 95,
+      "left_color/vi/xanh lá": 94,
+      "single_shape/vi/hình vuông": 57,
+      "single_shape/en/circle": 60,
+      "object_count/vi/2": 73,
+      "single_color/vi/xanh lá": 78,
+      "object_count/vi/1": 59
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33113-no_image.visualword.zip",
+    "sha256": "1b8ee4e4b61d4bc72a3ad971003939e78b028d2d76c71ca2600324849f2f11d3",
+    "train_seconds": null,
+    "seconds": 3.0255539000063436,
+    "mean_training_loss": 0.903569566985376,
+    "recovered_without_retraining": true,
+    "source_recovery": {
+      "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+      "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-no_image.visualword.zip",
+      "sha256": "1b8ee4e4b61d4bc72a3ad971003939e78b028d2d76c71ca2600324849f2f11d3",
+      "prior_active_seconds": 12.440353870391846
+    },
+    "effective_trial_active_seconds": 15.46592487039743,
+    "resources": {
+      "peak_rss_bytes": 63692800,
+      "peak_commit_or_vms_bytes": 47640576,
+      "os_process_peak_working_set_bytes": 67059712,
+      "os_process_peak_pagefile_commit_bytes": 51060736,
+      "samples": 26,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 2.8461936000094283,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33113,
+    "condition": "no_question",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.16666666666666666,
+        "micro_exact": 0.1875,
+        "strict_macro_exact": 0.16666666666666666,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.16666666666666666,
+        "by_kind": {
+          "single_color": 0.5,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.3333333333333333,
+          "en": 0.0
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2496,
+        "teacher_token_accuracy": 0.609375,
+        "teacher_nll": 1.2064609740999488
+      },
+      "development": {
+        "macro_exact": 0.2326388888888889,
+        "micro_exact": 0.2523148148148148,
+        "strict_macro_exact": 0.2326388888888889,
+        "novel_composition_macro": 0.24007936507936511,
+        "seen_composition_macro": 0.15277777777777776,
+        "by_kind": {
+          "single_color": 0.3958333333333333,
+          "single_shape": 0.041666666666666664,
+          "object_count": 0.3541666666666667,
+          "left_color": 0.1388888888888889
+        },
+        "by_language": {
+          "vi": 0.2725694444444444,
+          "en": 0.19270833333333334
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 33900,
+        "teacher_token_accuracy": 0.6427469135802468,
+        "teacher_nll": 1.0543468795376456
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3495,
+    "training_ticks": 61173,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_shape/vi/hình tam giác": 56,
+      "single_color/en/red": 121,
+      "single_shape/vi/hình tròn": 82,
+      "object_count/en/1": 61,
+      "single_shape/en/square": 55,
+      "single_shape/en/triangle": 68,
+      "object_count/vi/3": 70,
+      "object_count/en/3": 64,
+      "single_color/vi/đỏ": 107,
+      "left_color/en/green": 91,
+      "single_color/en/green": 96,
+      "left_color/en/red": 94,
+      "object_count/en/2": 55,
+      "left_color/vi/đỏ": 95,
+      "left_color/vi/xanh lá": 94,
+      "single_shape/vi/hình vuông": 57,
+      "single_shape/en/circle": 60,
+      "object_count/vi/2": 73,
+      "single_color/vi/xanh lá": 78,
+      "object_count/vi/1": 59
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33113-no_question.visualword.zip",
+    "sha256": "2698dc5a655547cd61296c2dbf4560cc2134cac9f9e34e430db8449a72fe1b2e",
+    "train_seconds": 2.4998429999977816,
+    "seconds": 5.164161499997135,
+    "mean_training_loss": 1.1251003916500644,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 5.164216599994688,
+    "resources": {
+      "peak_rss_bytes": 69885952,
+      "peak_commit_or_vms_bytes": 54018048,
+      "os_process_peak_working_set_bytes": 73150464,
+      "os_process_peak_pagefile_commit_bytes": 58494976,
+      "samples": 51,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 5.004179399998975,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33113,
+    "condition": "full",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.5666666666666667,
+        "micro_exact": 0.59375,
+        "strict_macro_exact": 0.5666666666666667,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.5666666666666667,
+        "by_kind": {
+          "single_color": 1.0,
+          "single_shape": 0.5,
+          "object_count": 0.2,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.3333333333333333,
+          "en": 0.7999999999999999
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2526,
+        "teacher_token_accuracy": 0.8229166666666666,
+        "teacher_nll": 0.4911078880665387
+      },
+      "development": {
+        "macro_exact": 0.1875,
+        "micro_exact": 0.1840277777777778,
+        "strict_macro_exact": 0.1875,
+        "novel_composition_macro": 0.17113095238095238,
+        "seen_composition_macro": 0.13194444444444445,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.07291666666666667,
+          "object_count": 0.052083333333333336,
+          "left_color": 0.375
+        },
+        "by_language": {
+          "vi": 0.28645833333333337,
+          "en": 0.08854166666666667
+        },
+        "stopped_fraction": 0.84375,
+        "actual_ticks": 38478,
+        "teacher_token_accuracy": 0.32966820987654327,
+        "teacher_nll": 3.215605860575732
+      },
+      "initial_head": {
+        "macro_exact": 0.0,
+        "micro_exact": 0.0,
+        "strict_macro_exact": 0.0,
+        "novel_composition_macro": 0.0,
+        "seen_composition_macro": 0.0,
+        "by_kind": {
+          "single_color": 0.0,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.0
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.0
+        },
+        "stopped_fraction": 0.22453703703703703,
+        "actual_ticks": 48159,
+        "teacher_token_accuracy": 0.05439814814814815,
+        "teacher_nll": 2.7700601325542635
+      }
+    },
+    "causal": {
+      "blank_image": {
+        "macro_exact": 0.171875,
+        "micro_exact": 0.19444444444444445,
+        "strict_macro_exact": 0.171875,
+        "novel_composition_macro": 0.17857142857142858,
+        "seen_composition_macro": 0.08333333333333333,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.0,
+          "object_count": 0.1875,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.25,
+          "en": 0.09375
+        },
+        "stopped_fraction": 0.8611111111111112,
+        "actual_ticks": 35928
+      },
+      "blank_question": {
+        "macro_exact": 0.059895833333333336,
+        "micro_exact": 0.09953703703703703,
+        "strict_macro_exact": 0.059895833333333336,
+        "novel_composition_macro": 0.0625,
+        "seen_composition_macro": 0.013888888888888888,
+        "by_kind": {
+          "single_color": 0.020833333333333332,
+          "single_shape": 0.0,
+          "object_count": 0.21875,
+          "left_color": 0.0
+        },
+        "by_language": {
+          "vi": 0.06510416666666667,
+          "en": 0.0546875
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 33696
+      },
+      "swapped_image": {
+        "macro_exact": 0.15625,
+        "micro_exact": 0.1527777777777778,
+        "strict_macro_exact": 0.15625,
+        "novel_composition_macro": 0.15625,
+        "seen_composition_macro": 0.08333333333333333,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.375
+        },
+        "by_language": {
+          "vi": 0.25,
+          "en": 0.0625
+        },
+        "stopped_fraction": 0.7777777777777778,
+        "actual_ticks": 38466
+      }
+    },
+    "experiences": 1536,
+    "word_updates": 3495,
+    "training_ticks": 61173,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_shape/vi/hình tam giác": 56,
+      "single_color/en/red": 121,
+      "single_shape/vi/hình tròn": 82,
+      "object_count/en/1": 61,
+      "single_shape/en/square": 55,
+      "single_shape/en/triangle": 68,
+      "object_count/vi/3": 70,
+      "object_count/en/3": 64,
+      "single_color/vi/đỏ": 107,
+      "left_color/en/green": 91,
+      "single_color/en/green": 96,
+      "left_color/en/red": 94,
+      "object_count/en/2": 55,
+      "left_color/vi/đỏ": 95,
+      "left_color/vi/xanh lá": 94,
+      "single_shape/vi/hình vuông": 57,
+      "single_shape/en/circle": 60,
+      "object_count/vi/2": 73,
+      "single_color/vi/xanh lá": 78,
+      "object_count/vi/1": 59
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33113-full.visualword.zip",
+    "sha256": "bc1c0ac48b132a21318d4107f21c590f974688620a8fcefd33244fd568cf7986",
+    "train_seconds": null,
+    "seconds": 9.712672399997246,
+    "mean_training_loss": 0.8144968969989029,
+    "recovered_without_retraining": true,
+    "source_recovery": {
+      "source_run_id": "20261109T222030Z-visual-word-readout-v1-b774f5",
+      "checkpoint": "artifacts/visual-word-readout/20261109T222030Z-visual-word-readout-v1-b774f5/33113-full.visualword.zip",
+      "sha256": "bc1c0ac48b132a21318d4107f21c590f974688620a8fcefd33244fd568cf7986",
+      "prior_active_seconds": 12.440353870391846
+    },
+    "effective_trial_active_seconds": 22.15304027039383,
+    "resources": {
+      "peak_rss_bytes": 68354048,
+      "peak_commit_or_vms_bytes": 52965376,
+      "os_process_peak_working_set_bytes": 69357568,
+      "os_process_peak_pagefile_commit_bytes": 53727232,
+      "samples": 86,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 9.535918499997933,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33119,
+    "condition": "no_image",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.25,
+        "micro_exact": 0.28125,
+        "strict_macro_exact": 0.25,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.25,
+        "by_kind": {
+          "single_color": 0.75,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.16666666666666666,
+          "en": 0.3333333333333333
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2514,
+        "teacher_token_accuracy": 0.6276041666666666,
+        "teacher_nll": 1.255832670645655
+      },
+      "development": {
+        "macro_exact": 0.15625,
+        "micro_exact": 0.125,
+        "strict_macro_exact": 0.15625,
+        "novel_composition_macro": 0.15625,
+        "seen_composition_macro": 0.125,
+        "by_kind": {
+          "single_color": 0.375,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.1875,
+          "en": 0.125
+        },
+        "stopped_fraction": 0.6111111111111112,
+        "actual_ticks": 40536,
+        "teacher_token_accuracy": 0.2725694444444444,
+        "teacher_nll": 4.160441281546433
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3527,
+    "training_ticks": 61269,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "object_count/en/1": 65,
+      "single_color/vi/đỏ": 93,
+      "single_shape/vi/hình tròn": 76,
+      "left_color/en/red": 92,
+      "left_color/vi/đỏ": 93,
+      "object_count/vi/3": 62,
+      "single_color/en/red": 97,
+      "single_shape/en/circle": 69,
+      "left_color/en/green": 99,
+      "single_color/en/green": 90,
+      "object_count/vi/2": 68,
+      "object_count/en/3": 77,
+      "left_color/vi/xanh lá": 84,
+      "object_count/en/2": 55,
+      "object_count/vi/1": 53,
+      "single_color/vi/xanh lá": 104,
+      "single_shape/en/square": 63,
+      "single_shape/en/triangle": 70,
+      "single_shape/vi/hình vuông": 61,
+      "single_shape/vi/hình tam giác": 65
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33119-no_image.visualword.zip",
+    "sha256": "ab5f5263849a997b07a5e4cf422dbae408f642008fcb189a613d73e58f12c44f",
+    "train_seconds": 2.503371300001163,
+    "seconds": 5.367537500002072,
+    "mean_training_loss": 1.0272554805757828,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 5.3675951000041096,
+    "resources": {
+      "peak_rss_bytes": 72384512,
+      "peak_commit_or_vms_bytes": 56225792,
+      "os_process_peak_working_set_bytes": 79212544,
+      "os_process_peak_pagefile_commit_bytes": 65982464,
+      "samples": 53,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 5.209555200010072,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33119,
+    "condition": "no_question",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.1388888888888889,
+        "micro_exact": 0.15625,
+        "strict_macro_exact": 0.1388888888888889,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.1388888888888889,
+        "by_kind": {
+          "single_color": 0.4166666666666667,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.2777777777777778
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2532,
+        "teacher_token_accuracy": 0.5625,
+        "teacher_nll": 1.2988543998549495
+      },
+      "development": {
+        "macro_exact": 0.1970486111111111,
+        "micro_exact": 0.2199074074074074,
+        "strict_macro_exact": 0.1970486111111111,
+        "novel_composition_macro": 0.2204861111111111,
+        "seen_composition_macro": 0.1111111111111111,
+        "by_kind": {
+          "single_color": 0.2916666666666667,
+          "single_shape": 0.08333333333333333,
+          "object_count": 0.3645833333333333,
+          "left_color": 0.048611111111111105
+        },
+        "by_language": {
+          "vi": 0.16406249999999997,
+          "en": 0.2300347222222222
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 34176,
+        "teacher_token_accuracy": 0.6219135802469137,
+        "teacher_nll": 1.0541773010356463
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3527,
+    "training_ticks": 61269,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "object_count/en/1": 65,
+      "single_color/vi/đỏ": 93,
+      "single_shape/vi/hình tròn": 76,
+      "left_color/en/red": 92,
+      "left_color/vi/đỏ": 93,
+      "object_count/vi/3": 62,
+      "single_color/en/red": 97,
+      "single_shape/en/circle": 69,
+      "left_color/en/green": 99,
+      "single_color/en/green": 90,
+      "object_count/vi/2": 68,
+      "object_count/en/3": 77,
+      "left_color/vi/xanh lá": 84,
+      "object_count/en/2": 55,
+      "object_count/vi/1": 53,
+      "single_color/vi/xanh lá": 104,
+      "single_shape/en/square": 63,
+      "single_shape/en/triangle": 70,
+      "single_shape/vi/hình vuông": 61,
+      "single_shape/vi/hình tam giác": 65
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33119-no_question.visualword.zip",
+    "sha256": "f5c6eb565a77ec5916cfcc07c77eac208799fff23a4ea9b2be61522b749ead2d",
+    "train_seconds": 2.509291000009398,
+    "seconds": 5.22297050000634,
+    "mean_training_loss": 1.1638007244500044,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 5.2230331000027945,
+    "resources": {
+      "peak_rss_bytes": 68722688,
+      "peak_commit_or_vms_bytes": 53014528,
+      "os_process_peak_working_set_bytes": 79212544,
+      "os_process_peak_pagefile_commit_bytes": 65982464,
+      "samples": 52,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 5.061827800003812,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33119,
+    "condition": "full",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.26666666666666666,
+        "micro_exact": 0.296875,
+        "strict_macro_exact": 0.26666666666666666,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.26666666666666666,
+        "by_kind": {
+          "single_color": 0.75,
+          "single_shape": 0.0,
+          "object_count": 0.05,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.16666666666666666,
+          "en": 0.3666666666666667
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2574,
+        "teacher_token_accuracy": 0.6744791666666666,
+        "teacher_nll": 1.0236264922039913
+      },
+      "development": {
+        "macro_exact": 0.17057291666666666,
+        "micro_exact": 0.1712962962962963,
+        "strict_macro_exact": 0.17057291666666666,
+        "novel_composition_macro": 0.17038690476190477,
+        "seen_composition_macro": 0.14583333333333334,
+        "by_kind": {
+          "single_color": 0.29166666666666663,
+          "single_shape": 0.020833333333333332,
+          "object_count": 0.11979166666666667,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.07421875,
+          "en": 0.2669270833333333
+        },
+        "stopped_fraction": 0.7743055555555556,
+        "actual_ticks": 38232,
+        "teacher_token_accuracy": 0.42939814814814814,
+        "teacher_nll": 2.487664473145666
+      },
+      "initial_head": {
+        "macro_exact": 0.0,
+        "micro_exact": 0.0,
+        "strict_macro_exact": 0.0,
+        "novel_composition_macro": 0.0,
+        "seen_composition_macro": 0.0,
+        "by_kind": {
+          "single_color": 0.0,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.0
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.0
+        },
+        "stopped_fraction": 0.125,
+        "actual_ticks": 48543,
+        "teacher_token_accuracy": 0.04735725308641975,
+        "teacher_nll": 2.797704934598212
+      }
+    },
+    "causal": {
+      "blank_image": {
+        "macro_exact": 0.0234375,
+        "micro_exact": 0.041666666666666664,
+        "strict_macro_exact": 0.0234375,
+        "novel_composition_macro": 0.026785714285714284,
+        "seen_composition_macro": 0.0,
+        "by_kind": {
+          "single_color": 0.0,
+          "single_shape": 0.0,
+          "object_count": 0.09375,
+          "left_color": 0.0
+        },
+        "by_language": {
+          "vi": 0.046875,
+          "en": 0.0
+        },
+        "stopped_fraction": 0.7777777777777778,
+        "actual_ticks": 38808
+      },
+      "blank_question": {
+        "macro_exact": 0.12760416666666669,
+        "micro_exact": 0.11574074074074074,
+        "strict_macro_exact": 0.12760416666666669,
+        "novel_composition_macro": 0.12797619047619047,
+        "seen_composition_macro": 0.08333333333333333,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.0,
+          "object_count": 0.010416666666666666,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.25260416666666663,
+          "en": 0.0026041666666666665
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 33696
+      },
+      "swapped_image": {
+        "macro_exact": 0.125,
+        "micro_exact": 0.1111111111111111,
+        "strict_macro_exact": 0.125,
+        "novel_composition_macro": 0.125,
+        "seen_composition_macro": 0.08333333333333333,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.0625,
+          "en": 0.1875
+        },
+        "stopped_fraction": 0.7847222222222222,
+        "actual_ticks": 39366
+      }
+    },
+    "experiences": 1536,
+    "word_updates": 3527,
+    "training_ticks": 61269,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "object_count/en/1": 65,
+      "single_color/vi/đỏ": 93,
+      "single_shape/vi/hình tròn": 76,
+      "left_color/en/red": 92,
+      "left_color/vi/đỏ": 93,
+      "object_count/vi/3": 62,
+      "single_color/en/red": 97,
+      "single_shape/en/circle": 69,
+      "left_color/en/green": 99,
+      "single_color/en/green": 90,
+      "object_count/vi/2": 68,
+      "object_count/en/3": 77,
+      "left_color/vi/xanh lá": 84,
+      "object_count/en/2": 55,
+      "object_count/vi/1": 53,
+      "single_color/vi/xanh lá": 104,
+      "single_shape/en/square": 63,
+      "single_shape/en/triangle": 70,
+      "single_shape/vi/hình vuông": 61,
+      "single_shape/vi/hình tam giác": 65
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33119-full.visualword.zip",
+    "sha256": "bf7dd1623cdb76432605e24ced929301c03fe72d2c9299433017e72337efd631",
+    "train_seconds": 2.512612300008186,
+    "seconds": 12.133797300004517,
+    "mean_training_loss": 0.8106746060735999,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 12.13385460000427,
+    "resources": {
+      "peak_rss_bytes": 70094848,
+      "peak_commit_or_vms_bytes": 54370304,
+      "os_process_peak_working_set_bytes": 75108352,
+      "os_process_peak_pagefile_commit_bytes": 60571648,
+      "samples": 114,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 11.970642600004794,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33133,
+    "condition": "no_image",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.4166666666666667,
+        "micro_exact": 0.4375,
+        "strict_macro_exact": 0.4166666666666667,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.4166666666666667,
+        "by_kind": {
+          "single_color": 0.75,
+          "single_shape": 0.25,
+          "object_count": 0.25,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.16666666666666666,
+          "en": 0.6666666666666666
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2559,
+        "teacher_token_accuracy": 0.7447916666666666,
+        "teacher_nll": 0.763230086919034
+      },
+      "development": {
+        "macro_exact": 0.1484375,
+        "micro_exact": 0.1527777777777778,
+        "strict_macro_exact": 0.1484375,
+        "novel_composition_macro": 0.1517857142857143,
+        "seen_composition_macro": 0.08333333333333333,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.0,
+          "object_count": 0.09375,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.296875
+        },
+        "stopped_fraction": 0.7777777777777778,
+        "actual_ticks": 38736,
+        "teacher_token_accuracy": 0.44849537037037035,
+        "teacher_nll": 2.0796504394576867
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3512,
+    "training_ticks": 61224,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_color/en/red": 90,
+      "single_shape/vi/hình tam giác": 56,
+      "single_shape/en/triangle": 58,
+      "left_color/en/red": 112,
+      "single_shape/en/circle": 71,
+      "single_color/en/green": 91,
+      "object_count/en/2": 65,
+      "single_shape/vi/hình vuông": 73,
+      "object_count/en/1": 53,
+      "left_color/vi/xanh lá": 96,
+      "object_count/vi/3": 68,
+      "single_shape/vi/hình tròn": 61,
+      "single_shape/en/square": 56,
+      "object_count/en/3": 58,
+      "object_count/vi/1": 61,
+      "object_count/vi/2": 74,
+      "left_color/en/green": 93,
+      "single_color/vi/đỏ": 107,
+      "left_color/vi/đỏ": 95,
+      "single_color/vi/xanh lá": 98
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33133-no_image.visualword.zip",
+    "sha256": "a7a62d14e5d5d858093e198093517b415f848b4abcd4295bd6caebddb6bbbcf5",
+    "train_seconds": 2.613838199991733,
+    "seconds": 5.651643899996998,
+    "mean_training_loss": 0.8886310900471273,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 5.651703399998951,
+    "resources": {
+      "peak_rss_bytes": 67293184,
+      "peak_commit_or_vms_bytes": 52154368,
+      "os_process_peak_working_set_bytes": 75108352,
+      "os_process_peak_pagefile_commit_bytes": 60571648,
+      "samples": 55,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 5.489973200004897,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33133,
+    "condition": "no_question",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.16666666666666666,
+        "micro_exact": 0.1875,
+        "strict_macro_exact": 0.16666666666666666,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.16666666666666666,
+        "by_kind": {
+          "single_color": 0.5,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.3333333333333333
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2496,
+        "teacher_token_accuracy": 0.5677083333333333,
+        "teacher_nll": 1.178318129079296
+      },
+      "development": {
+        "macro_exact": 0.21527777777777776,
+        "micro_exact": 0.24305555555555555,
+        "strict_macro_exact": 0.21527777777777776,
+        "novel_composition_macro": 0.2003968253968254,
+        "seen_composition_macro": 0.1527777777777778,
+        "by_kind": {
+          "single_color": 0.35416666666666663,
+          "single_shape": 0.0,
+          "object_count": 0.3125,
+          "left_color": 0.19444444444444445
+        },
+        "by_language": {
+          "vi": 0.2204861111111111,
+          "en": 0.21006944444444445
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 34620,
+        "teacher_token_accuracy": 0.6300154320987654,
+        "teacher_nll": 1.0601060718273967
+      }
+    },
+    "causal": {},
+    "experiences": 1536,
+    "word_updates": 3512,
+    "training_ticks": 61224,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_color/en/red": 90,
+      "single_shape/vi/hình tam giác": 56,
+      "single_shape/en/triangle": 58,
+      "left_color/en/red": 112,
+      "single_shape/en/circle": 71,
+      "single_color/en/green": 91,
+      "object_count/en/2": 65,
+      "single_shape/vi/hình vuông": 73,
+      "object_count/en/1": 53,
+      "left_color/vi/xanh lá": 96,
+      "object_count/vi/3": 68,
+      "single_shape/vi/hình tròn": 61,
+      "single_shape/en/square": 56,
+      "object_count/en/3": 58,
+      "object_count/vi/1": 61,
+      "object_count/vi/2": 74,
+      "left_color/en/green": 93,
+      "single_color/vi/đỏ": 107,
+      "left_color/vi/đỏ": 95,
+      "single_color/vi/xanh lá": 98
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33133-no_question.visualword.zip",
+    "sha256": "8ca77daf51e8cceeed05d34c139b0b9bdc5137955f3c5f1bc513e084abb08ab0",
+    "train_seconds": 2.628642800002126,
+    "seconds": 5.282658800002537,
+    "mean_training_loss": 1.1115433949983489,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 5.282715900000767,
+    "resources": {
+      "peak_rss_bytes": 72171520,
+      "peak_commit_or_vms_bytes": 56139776,
+      "os_process_peak_working_set_bytes": 76423168,
+      "os_process_peak_pagefile_commit_bytes": 61480960,
+      "samples": 52,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 5.120676500009722,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  {
+    "seed": 33133,
+    "condition": "full",
+    "summary": {
+      "train64": {
+        "macro_exact": 0.40277777777777773,
+        "micro_exact": 0.421875,
+        "strict_macro_exact": 0.40277777777777773,
+        "novel_composition_macro": null,
+        "seen_composition_macro": 0.40277777777777773,
+        "by_kind": {
+          "single_color": 0.7083333333333333,
+          "single_shape": 0.25,
+          "object_count": 0.25,
+          "left_color": null
+        },
+        "by_language": {
+          "vi": 0.16666666666666666,
+          "en": 0.6388888888888888
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 2544,
+        "teacher_token_accuracy": 0.7369791666666666,
+        "teacher_nll": 0.7400267212602671
+      },
+      "development": {
+        "macro_exact": 0.20833333333333334,
+        "micro_exact": 0.17592592592592593,
+        "strict_macro_exact": 0.20833333333333334,
+        "novel_composition_macro": 0.16666666666666669,
+        "seen_composition_macro": 0.20833333333333334,
+        "by_kind": {
+          "single_color": 0.3541666666666667,
+          "single_shape": 0.10416666666666667,
+          "object_count": 0.0,
+          "left_color": 0.375
+        },
+        "by_language": {
+          "vi": 0.0625,
+          "en": 0.3541666666666667
+        },
+        "stopped_fraction": 0.9861111111111112,
+        "actual_ticks": 35655,
+        "teacher_token_accuracy": 0.5241126543209876,
+        "teacher_nll": 1.6809880366403207
+      },
+      "initial_head": {
+        "macro_exact": 0.0,
+        "micro_exact": 0.0,
+        "strict_macro_exact": 0.0,
+        "novel_composition_macro": 0.0,
+        "seen_composition_macro": 0.0,
+        "by_kind": {
+          "single_color": 0.0,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.0
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.0
+        },
+        "stopped_fraction": 0.36689814814814814,
+        "actual_ticks": 44982,
+        "teacher_token_accuracy": 0.07407407407407407,
+        "teacher_nll": 2.8044745844192702
+      }
+    },
+    "causal": {
+      "blank_image": {
+        "macro_exact": 0.09375,
+        "micro_exact": 0.09722222222222222,
+        "strict_macro_exact": 0.09375,
+        "novel_composition_macro": 0.09375,
+        "seen_composition_macro": 0.041666666666666664,
+        "by_kind": {
+          "single_color": 0.125,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.25
+        },
+        "by_language": {
+          "vi": 0.0,
+          "en": 0.1875
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 33696
+      },
+      "blank_question": {
+        "macro_exact": 0.012152777777777778,
+        "micro_exact": 0.016203703703703703,
+        "strict_macro_exact": 0.012152777777777778,
+        "novel_composition_macro": 0.012152777777777778,
+        "seen_composition_macro": 0.0,
+        "by_kind": {
+          "single_color": 0.0,
+          "single_shape": 0.0,
+          "object_count": 0.0,
+          "left_color": 0.04861111111111111
+        },
+        "by_language": {
+          "vi": 0.024305555555555556,
+          "en": 0.0
+        },
+        "stopped_fraction": 1.0,
+        "actual_ticks": 34128
+      },
+      "swapped_image": {
+        "macro_exact": 0.1875,
+        "micro_exact": 0.16666666666666666,
+        "strict_macro_exact": 0.1875,
+        "novel_composition_macro": 0.15625,
+        "seen_composition_macro": 0.16666666666666666,
+        "by_kind": {
+          "single_color": 0.25,
+          "single_shape": 0.125,
+          "object_count": 0.0,
+          "left_color": 0.375
+        },
+        "by_language": {
+          "vi": 0.0625,
+          "en": 0.3125
+        },
+        "stopped_fraction": 0.9861111111111112,
+        "actual_ticks": 35676
+      }
+    },
+    "experiences": 1536,
+    "word_updates": 3512,
+    "training_ticks": 61224,
+    "calibration_count": 128,
+    "array_bytes": 112844,
+    "vocabulary": 18,
+    "hidden_unchanged": true,
+    "checkpoint_exact": true,
+    "continuation_exact": true,
+    "stratum_counts": {
+      "single_color/en/red": 90,
+      "single_shape/vi/hình tam giác": 56,
+      "single_shape/en/triangle": 58,
+      "left_color/en/red": 112,
+      "single_shape/en/circle": 71,
+      "single_color/en/green": 91,
+      "object_count/en/2": 65,
+      "single_shape/vi/hình vuông": 73,
+      "object_count/en/1": 53,
+      "left_color/vi/xanh lá": 96,
+      "object_count/vi/3": 68,
+      "single_shape/vi/hình tròn": 61,
+      "single_shape/en/square": 56,
+      "object_count/en/3": 58,
+      "object_count/vi/1": 61,
+      "object_count/vi/2": 74,
+      "left_color/en/green": 93,
+      "single_color/vi/đỏ": 107,
+      "left_color/vi/đỏ": 95,
+      "single_color/vi/xanh lá": 98
+    },
+    "checkpoint": "artifacts/visual-word-readout/20261109T222354Z-visual-word-readout-v1-a11424/33133-full.visualword.zip",
+    "sha256": "e3a17efbeb2d854a7584db2fe734633df749a00ff556620bf034ad2a320df8d1",
+    "train_seconds": 2.6002480999886757,
+    "seconds": 12.060000999990734,
+    "mean_training_loss": 0.7488311098904986,
+    "recovered_without_retraining": false,
+    "source_recovery": null,
+    "effective_trial_active_seconds": 12.06007549999049,
+    "resources": {
+      "peak_rss_bytes": 67362816,
+      "peak_commit_or_vms_bytes": 51638272,
+      "os_process_peak_working_set_bytes": 79212544,
+      "os_process_peak_pagefile_commit_bytes": 65982464,
+      "samples": 113,
+      "interval_seconds": 0.1,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 11.90092270000605,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  }
+]

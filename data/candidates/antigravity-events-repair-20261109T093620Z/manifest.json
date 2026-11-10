@@ -1,0 +1,1384 @@
+{
+  "source": "synthetic:antigravity",
+  "model": "gemini-3.8-flash-low",
+  "created_utc": "20261109T093620Z",
+  "conversation_id": "50c5529d-02bc-4e16-85de-3843acb28ff2",
+  "usage": {
+    "input_tokens": 44803,
+    "output_tokens": 6683,
+    "thinking_tokens": 0,
+    "cache_read_tokens": 23855,
+    "total_tokens": 51486
+  },
+  "seconds": 116.93799999999464,
+  "sha256": "a6672d5fead4d1e15dd0656ec8f3c88071868c29fe48079db0abbcb099269a44",
+  "tool_steps": [
+    {
+      "name": "read_file",
+      "state": "ACTIVE",
+      "parameters": {
+        "Path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\antigravity-event-dialogue-jobs\\20261109T093620Z\\dialogue.json"
+      }
+    },
+    {
+      "name": "read_file",
+      "state": "DONE",
+      "parameters": {
+        "Path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\antigravity-event-dialogue-jobs\\20261109T093620Z\\dialogue.json"
+      }
+    },
+    {
+      "name": "read_file",
+      "state": "ACTIVE",
+      "parameters": {
+        "ByteOffset": 0,
+        "EndLine": 1350,
+        "Path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\antigravity-event-dialogue-jobs\\20261109T093620Z\\dialogue.json",
+        "StartLine": 801
+      }
+    },
+    {
+      "name": "read_file",
+      "state": "DONE",
+      "parameters": {
+        "ByteOffset": 0,
+        "EndLine": 1350,
+        "Path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\antigravity-event-dialogue-jobs\\20261109T093620Z\\dialogue.json",
+        "StartLine": 801
+      }
+    },
+    {
+      "name": "finish",
+      "state": "ACTIVE",
+      "parameters": {
+        "dialogs": [
+          {
+            "id": "b1-01",
+            "language": "vi",
+            "scenario_id": "ordinary_greetings",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-greet-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Ch\u00e0o b\u1ea1n, ng\u00e0y m\u1edbi t\u1ed1t l\u00e0nh nh\u00e9!"
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00e0o b\u1ea1n, ch\u00fac ng\u00e0y t\u1ed1t l\u00e0nh!"
+              },
+              {
+                "role": "user",
+                "text": "H\u00f4m nay b\u1ea1n th\u1ea5y th\u1ebf n\u00e0o?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i s\u1eb5n s\u00e0ng h\u1ed7 tr\u1ee3 b\u1ea1n."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n nhi\u1ec1u nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b1-02",
+            "language": "vi",
+            "scenario_id": "short_instruction",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-instr-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00e3y vi\u1ebft m\u1ed9t c\u00e2u ch\u00e0o bu\u1ed5i s\u00e1ng."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00e0o b\u1ea1n, ch\u00fac ng\u00e0y m\u1edbi t\u1ed1t l\u00e0nh!"
+              },
+              {
+                "role": "user",
+                "text": "Th\u00eam t\u1eeb ng\u1eafn g\u1ecdn h\u01a1n n\u1eefa."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00e0o b\u1ea1n nh\u00e9!"
+              },
+              {
+                "role": "user",
+                "text": "T\u1ed1t r\u1ed3i, c\u1ea3m \u01a1n."
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng c\u00f3 g\u00ec, b\u1ea1n nh\u00e9."
+              }
+            ]
+          },
+          {
+            "id": "b1-03",
+            "language": "vi",
+            "scenario_id": "clarification",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-clarif-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "T\u00f4i c\u1ea7n th\u00f4ng tin v\u1ec1 ph\u1ea7n n\u00e0y."
+              },
+              {
+                "role": "assistant",
+                "text": "B\u1ea1n c\u1ea7n th\u00f4ng tin ph\u1ea7n n\u00e0o?"
+              },
+              {
+                "role": "user",
+                "text": "Ph\u1ea7n t\u00e0i li\u1ec7u h\u01b0\u1edbng d\u1eabn s\u1eed d\u1ee5ng."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i c\u00f3 th\u1ec3 gi\u1ea3i th\u00edch n\u1ed9i dung n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 gi\u1ea3i th\u00edch."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b1-04",
+            "language": "vi",
+            "scenario_id": "explicit_preference",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-pref-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "T\u1eeb gi\u1edd h\u00e3y tr\u1ea3 l\u1eddi th\u1eadt ng\u1eafn g\u1ecdn."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn y\u00eau c\u1ea7u n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n nh\u1edb y\u00eau c\u1ea7u ch\u01b0a?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 hi\u1ec3u y\u00eau c\u1ea7u n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "T\u1ed1t l\u1eafm, c\u1ea3m \u01a1n b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i lu\u00f4n s\u1eb5n s\u00e0ng h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b1-05",
+            "language": "vi",
+            "scenario_id": "correction",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-corr-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00f4m tr\u01b0\u1edbc b\u1ea1n n\u00f3i nh\u1ea7m s\u1ed1 r\u1ed3i."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i xin l\u1ed7i v\u00ec sai s\u00f3t."
+              },
+              {
+                "role": "user",
+                "text": "H\u00e3y s\u1eeda l\u1ea1i s\u1ed1 \u0111\u00fang l\u00e0 n\u0103m nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "\u0110\u00e3 s\u1eeda l\u1ea1i th\u00e0nh n\u0103m."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 s\u1eeda l\u1ea1i."
+              },
+              {
+                "role": "assistant",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 nh\u1eafc nh\u1edf."
+              }
+            ]
+          },
+          {
+            "id": "b1-06",
+            "language": "vi",
+            "scenario_id": "uncertainty",
+            "split": "train",
+            "template_id": "b1-tmpl-vi-tr-uncert-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 bi\u1ebft ng\u00e0y mai tr\u1eddi m\u01b0a kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng c\u00f3 th\u00f4ng tin th\u1eddi ti\u1ebft."
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 th\u1ec3 \u0111o\u00e1n th\u1eed \u0111\u01b0\u1ee3c kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng ch\u1eafc ch\u1eafn \u0111i\u1ec1u \u0111\u00f3."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u01b0\u1ee3c r\u1ed3i, t\u00f4i hi\u1ec3u r\u1ed3i."
+              },
+              {
+                "role": "assistant",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 th\u00f4ng c\u1ea3m."
+              }
+            ]
+          },
+          {
+            "id": "b1-07",
+            "language": "en",
+            "scenario_id": "ordinary_greetings",
+            "split": "train",
+            "template_id": "b1-tmpl-en-tr-greet-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Hello, hope you have a nice day!"
+              },
+              {
+                "role": "assistant",
+                "text": "Hello, have a good day!"
+              },
+              {
+                "role": "user",
+                "text": "Are you ready to help me?"
+              },
+              {
+                "role": "assistant",
+                "text": "I am ready to help you."
+              },
+              {
+                "role": "user",
+                "text": "Thank you very much."
+              },
+              {
+                "role": "assistant",
+                "text": "You are welcome anytime."
+              }
+            ]
+          },
+          {
+            "id": "b1-08",
+            "language": "en",
+            "scenario_id": "short_instruction",
+            "split": "train",
+            "template_id": "b1-tmpl-en-tr-instr-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Please give me a short greeting."
+              },
+              {
+                "role": "assistant",
+                "text": "Good morning, welcome to you!"
+              },
+              {
+                "role": "user",
+                "text": "Make it even shorter."
+              },
+              {
+                "role": "assistant",
+                "text": "Good morning, welcome!"
+              },
+              {
+                "role": "user",
+                "text": "That is perfect, thanks."
+              },
+              {
+                "role": "assistant",
+                "text": "Glad to help you out."
+              }
+            ]
+          },
+          {
+            "id": "b1-09",
+            "language": "vi",
+            "scenario_id": "ordinary_greetings",
+            "split": "development",
+            "template_id": "b1-tmpl-vi-dev-greet-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Xin ch\u00e0o, r\u1ea5t vui \u0111\u01b0\u1ee3c g\u1eb7p b\u1ea1n h\u00f4m nay."
+              },
+              {
+                "role": "assistant",
+                "text": "Xin ch\u00e0o b\u1ea1n, r\u1ea5t vui!"
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 kh\u1ecfe kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u1ed5n, c\u1ea3m \u01a1n b\u1ea1n nhi\u1ec1u."
+              },
+              {
+                "role": "user",
+                "text": "Ch\u00fac b\u1ea1n l\u00e0m vi\u1ec7c vui nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00fac b\u1ea1n ng\u00e0y m\u1edbi t\u1ed1t l\u00e0nh!"
+              }
+            ]
+          },
+          {
+            "id": "b1-10",
+            "language": "en",
+            "scenario_id": "clarification",
+            "split": "development",
+            "template_id": "b1-tmpl-en-dev-clarif-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Can you explain the next step?"
+              },
+              {
+                "role": "assistant",
+                "text": "Which step do you mean?"
+              },
+              {
+                "role": "user",
+                "text": "The final review step in the list."
+              },
+              {
+                "role": "assistant",
+                "text": "Please review each item carefully."
+              },
+              {
+                "role": "user",
+                "text": "Got it, thank you."
+              },
+              {
+                "role": "assistant",
+                "text": "Happy to help you out."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-01",
+            "language": "vi",
+            "scenario_id": "greeting",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Xin ch\u00e0o b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "Xin ch\u00e0o. T\u00f4i c\u00f3 th\u1ec3 gi\u00fap g\u00ec?"
+              },
+              {
+                "role": "user",
+                "text": "H\u00f4m nay b\u1ea1n th\u1ebf n\u00e0o?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u1ed5n, c\u1ea3m \u01a1n b\u1ea1n."
+              },
+              {
+                "role": "user",
+                "text": "T\u1ed1t r\u1ed3i, c\u1ea3m \u01a1n nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-02",
+            "language": "vi",
+            "scenario_id": "instruction_following",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-02",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00e3y \u0111\u1ebfm t\u1eeb m\u1ed9t \u0111\u1ebfn ba."
+              },
+              {
+                "role": "assistant",
+                "text": "M\u1ed9t, hai, ba."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u1ebfm ti\u1ebfp \u0111\u1ebfn n\u0103m \u0111i."
+              },
+              {
+                "role": "assistant",
+                "text": "B\u1ed1n, n\u0103m."
+              },
+              {
+                "role": "user",
+                "text": "Vi\u1ebft l\u1ea1i t\u1eeb \u0111\u1ea7u nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "M\u1ed9t, hai, ba, b\u1ed1n, n\u0103m."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-03",
+            "language": "vi",
+            "scenario_id": "clarification",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-03",
+            "turns": [
+              {
+                "role": "user",
+                "text": "G\u1eedi cho t\u00f4i t\u00e0i li\u1ec7u \u0111\u00f3."
+              },
+              {
+                "role": "assistant",
+                "text": "B\u1ea1n c\u1ea7n th\u00f4ng tin t\u00e0i li\u1ec7u n\u00e0o?"
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea3n b\u00e1o c\u00e1o t\u00f3m t\u1eaft h\u00f4m qua."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i c\u00f3 th\u1ec3 t\u00f3m t\u1eaft t\u1ea1i \u0111\u00e2y."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u1ecbnh d\u1ea1ng v\u0103n b\u1ea3n ng\u1eafn th\u00f4i nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "V\u00e2ng, t\u00f4i s\u1ebd t\u00f3m t\u1eaft ng\u1eafn g\u1ecdn."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-04",
+            "language": "vi",
+            "scenario_id": "stated_preferences",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-04",
+            "turns": [
+              {
+                "role": "user",
+                "text": "T\u1eeb gi\u1edd h\u00e3y tr\u1ea3 l\u1eddi th\u1eadt ng\u1eafn g\u1ecdn."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i s\u1ebd tr\u1ea3 l\u1eddi ng\u1eafn g\u1ecdn."
+              },
+              {
+                "role": "user",
+                "text": "T\u00f4i th\u00edch d\u00f9ng ti\u1ebfng Vi\u1ec7t h\u01a1n."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn \u0111i\u1ec1u n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "Kh\u00f4ng c\u1ea7n ch\u00e0o h\u1ecfi r\u01b0\u1eddm r\u00e0."
+              },
+              {
+                "role": "assistant",
+                "text": "\u0110\u00e3 ghi nh\u1eadn y\u00eau c\u1ea7u c\u1ee7a b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-05",
+            "language": "vi",
+            "scenario_id": "correction",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-05",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Hai c\u1ed9ng hai b\u1eb1ng n\u0103m \u0111\u00fang kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng \u0111\u00fang, hai c\u1ed9ng hai b\u1eb1ng b\u1ed1n."
+              },
+              {
+                "role": "user",
+                "text": "T\u00f4i nh\u1ea7m, v\u1eady ba c\u1ed9ng ba l\u00e0 s\u00e1u?"
+              },
+              {
+                "role": "assistant",
+                "text": "\u0110\u00fang r\u1ed3i, ba c\u1ed9ng ba b\u1eb1ng s\u00e1u."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n v\u00ec \u0111\u00e3 s\u1eeda gi\u00fap t\u00f4i."
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng c\u00f3 g\u00ec, r\u1ea5t s\u1eb5n l\u00f2ng."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-06",
+            "language": "vi",
+            "scenario_id": "acknowledging_uncertainty",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-vi-06",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Ng\u00e0y mai tr\u1eddi c\u00f3 m\u01b0a \u1edf \u0111\u00e2y kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng r\u00f5 th\u00f4ng tin th\u1eddi ti\u1ebft."
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 \u0111o\u00e1n \u0111\u01b0\u1ee3c ph\u1ea7n n\u00e0o kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng th\u1ec3 \u0111o\u00e1n tr\u01b0\u1edbc \u0111\u01b0\u1ee3c."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u01b0\u1ee3c r\u1ed3i, t\u00f4i s\u1ebd t\u1ef1 tra c\u1ee9u."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00fac b\u1ea1n m\u1ed9t ng\u00e0y t\u1ed1t l\u00e0nh."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-07",
+            "language": "en",
+            "scenario_id": "greeting",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-en-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Hello there!"
+              },
+              {
+                "role": "assistant",
+                "text": "Hello! How can I help today?"
+              },
+              {
+                "role": "user",
+                "text": "Just checking in with you."
+              },
+              {
+                "role": "assistant",
+                "text": "I am ready to help you."
+              },
+              {
+                "role": "user",
+                "text": "Thanks, have a good day."
+              },
+              {
+                "role": "assistant",
+                "text": "Thank you, you too!"
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-08",
+            "language": "en",
+            "scenario_id": "instruction_following",
+            "split": "train",
+            "template_id": "b2-tmpl-tr-en-02",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Say yes if you hear me."
+              },
+              {
+                "role": "assistant",
+                "text": "Yes, I hear you clearly."
+              },
+              {
+                "role": "user",
+                "text": "Now repeat the word blue."
+              },
+              {
+                "role": "assistant",
+                "text": "Blue."
+              },
+              {
+                "role": "user",
+                "text": "Spell it out please."
+              },
+              {
+                "role": "assistant",
+                "text": "B, L, U, E."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-09",
+            "language": "vi",
+            "scenario_id": "clarification",
+            "split": "development",
+            "template_id": "b2-tmpl-dev-vi-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00e3y m\u1edf m\u1ee5c \u0111\u00e3 l\u01b0u gi\u00fap t\u00f4i."
+              },
+              {
+                "role": "assistant",
+                "text": "Xin cho bi\u1ebft t\u00ean m\u1ee5c c\u1ea7n m\u1edf?"
+              },
+              {
+                "role": "user",
+                "text": "Th\u01b0 m\u1ee5c ghi ch\u00fa l\u00e0m vi\u1ec7c."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng th\u1ec3 m\u1edf t\u1ec7p tr\u1ef1c ti\u1ebfp."
+              },
+              {
+                "role": "user",
+                "text": "Li\u1ec7t k\u00ea t\u1ec7p m\u1edbi nh\u1ea5t xem n\u00e0o."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i ch\u1ec9 h\u1ed7 tr\u1ee3 gi\u1ea3i \u0111\u00e1p v\u0103n b\u1ea3n."
+              }
+            ]
+          },
+          {
+            "id": "b2-dialog-10",
+            "language": "en",
+            "scenario_id": "acknowledging_uncertainty",
+            "split": "development",
+            "template_id": "b2-tmpl-dev-en-01",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Who won the local game today?"
+              },
+              {
+                "role": "assistant",
+                "text": "I do not know the result."
+              },
+              {
+                "role": "user",
+                "text": "Can you find the winner now?"
+              },
+              {
+                "role": "assistant",
+                "text": "I do not have live updates."
+              },
+              {
+                "role": "user",
+                "text": "Understood, no problem at all."
+              },
+              {
+                "role": "assistant",
+                "text": "Happy to help with other questions."
+              }
+            ]
+          },
+          {
+            "id": "b3-d01",
+            "language": "vi",
+            "scenario_id": "greetings",
+            "split": "train",
+            "template_id": "b3-vi-tr-greet",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Ch\u00e0o b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00e0o b\u1ea1n, t\u00f4i c\u00f3 th\u1ec3 gi\u00fap g\u00ec?"
+              },
+              {
+                "role": "user",
+                "text": "H\u00f4m nay b\u1ea1n th\u1ebf n\u00e0o?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u1ed5n, c\u1ea3m \u01a1n b\u1ea1n nhi\u1ec1u nh\u00e9."
+              },
+              {
+                "role": "user",
+                "text": "T\u1ed1t r\u1ed3i, c\u1ea3m \u01a1n nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b3-d02",
+            "language": "vi",
+            "scenario_id": "instruction",
+            "split": "train",
+            "template_id": "b3-vi-tr-inst",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00e3y vi\u1ebft m\u1ed9t l\u1eddi ch\u00e0o ng\u1eafn."
+              },
+              {
+                "role": "assistant",
+                "text": "Xin ch\u00e0o, ch\u00fac ng\u00e0y m\u1edbi t\u1ed1t l\u00e0nh."
+              },
+              {
+                "role": "user",
+                "text": "R\u00fat g\u1ecdn h\u01a1n n\u1eefa \u0111\u01b0\u1ee3c kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "Xin ch\u00e0o b\u1ea1n nh\u00e9."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u01b0\u1ee3c r\u1ed3i, c\u1ea3m \u01a1n."
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng c\u00f3 g\u00ec b\u1ea1n nh\u00e9."
+              }
+            ]
+          },
+          {
+            "id": "b3-d03",
+            "language": "vi",
+            "scenario_id": "clarification",
+            "split": "train",
+            "template_id": "b3-vi-tr-clar",
+            "turns": [
+              {
+                "role": "user",
+                "text": "M\u1edf t\u00e0i li\u1ec7u gi\u00fap t\u00f4i."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng th\u1ec3 m\u1edf t\u1ec7p tr\u1ef1c ti\u1ebfp."
+              },
+              {
+                "role": "user",
+                "text": "T\u1ec7p ghi ch\u00fa h\u00f4m qua."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i c\u00f3 th\u1ec3 \u0111\u1ecdc v\u0103n b\u1ea3n b\u1ea1n g\u1eedi."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i lu\u00f4n s\u1eb5n s\u00e0ng h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b3-d04",
+            "language": "vi",
+            "scenario_id": "preference",
+            "split": "train",
+            "template_id": "b3-vi-tr-pref",
+            "turns": [
+              {
+                "role": "user",
+                "text": "T\u00f4i th\u00edch c\u00e2u tr\u1ea3 l\u1eddi ng\u1eafn g\u1ecdn."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i s\u1ebd tr\u1ea3 l\u1eddi ng\u1eafn g\u1ecdn."
+              },
+              {
+                "role": "user",
+                "text": "Nh\u1edb ghi nh\u1edb \u0111i\u1ec1u \u0111\u00f3 nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn \u0111i\u1ec1u \u0111\u00f3."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n tr\u1ee3 l\u00fd."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b3-d05",
+            "language": "en",
+            "scenario_id": "greetings",
+            "split": "train",
+            "template_id": "b3-en-tr-greet",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Hello there."
+              },
+              {
+                "role": "assistant",
+                "text": "Hello, how can I help you?"
+              },
+              {
+                "role": "user",
+                "text": "Just checking in today."
+              },
+              {
+                "role": "assistant",
+                "text": "I am doing well, thank you."
+              },
+              {
+                "role": "user",
+                "text": "Have a nice day."
+              },
+              {
+                "role": "assistant",
+                "text": "Thank you, have a good day."
+              }
+            ]
+          },
+          {
+            "id": "b3-d06",
+            "language": "en",
+            "scenario_id": "instruction",
+            "split": "train",
+            "template_id": "b3-en-tr-inst",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Please write a short note."
+              },
+              {
+                "role": "assistant",
+                "text": "Here is a short note: Welcome!"
+              },
+              {
+                "role": "user",
+                "text": "Make it even shorter please."
+              },
+              {
+                "role": "assistant",
+                "text": "Short note: Hello."
+              },
+              {
+                "role": "user",
+                "text": "Thanks for the help."
+              },
+              {
+                "role": "assistant",
+                "text": "You are welcome."
+              }
+            ]
+          },
+          {
+            "id": "b3-d07",
+            "language": "en",
+            "scenario_id": "correction",
+            "split": "train",
+            "template_id": "b3-en-tr-corr",
+            "turns": [
+              {
+                "role": "user",
+                "text": "You said my meeting was at two."
+              },
+              {
+                "role": "assistant",
+                "text": "Yes, that was my mistake."
+              },
+              {
+                "role": "user",
+                "text": "No, it is at three today."
+              },
+              {
+                "role": "assistant",
+                "text": "Sorry, I have corrected the time."
+              },
+              {
+                "role": "user",
+                "text": "Great, thank you."
+              },
+              {
+                "role": "assistant",
+                "text": "Glad to fix that mistake."
+              }
+            ]
+          },
+          {
+            "id": "b3-d08",
+            "language": "en",
+            "scenario_id": "uncertainty",
+            "split": "train",
+            "template_id": "b3-en-tr-unc",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Who won the small match nearby?"
+              },
+              {
+                "role": "assistant",
+                "text": "I am not sure about that."
+              },
+              {
+                "role": "user",
+                "text": "Can you find out now?"
+              },
+              {
+                "role": "assistant",
+                "text": "I do not have that information."
+              },
+              {
+                "role": "user",
+                "text": "Fair enough, no problem."
+              },
+              {
+                "role": "assistant",
+                "text": "Thank you for your understanding."
+              }
+            ]
+          },
+          {
+            "id": "b3-d09",
+            "language": "vi",
+            "scenario_id": "uncertainty",
+            "split": "development",
+            "template_id": "b3-vi-dev-unc",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Cu\u1ed9c h\u1ecdp ti\u1ebfp theo khi n\u00e0o b\u1eaft \u0111\u1ea7u?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng c\u00f3 th\u00f4ng tin n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 th\u1ec3 ki\u1ec3m tra kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng th\u1ec3 ki\u1ec3m tra l\u00fac n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u01b0\u1ee3c r\u1ed3i, t\u00f4i s\u1ebd t\u1ef1 xem."
+              },
+              {
+                "role": "assistant",
+                "text": "Xin l\u1ed7i v\u00ec s\u1ef1 b\u1ea5t ti\u1ec7n n\u00e0y."
+              }
+            ]
+          },
+          {
+            "id": "b3-d10",
+            "language": "en",
+            "scenario_id": "preference",
+            "split": "development",
+            "template_id": "b3-en-dev-pref",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Always call me friend."
+              },
+              {
+                "role": "assistant",
+                "text": "Understood, hello friend."
+              },
+              {
+                "role": "user",
+                "text": "Keep that format from now on."
+              },
+              {
+                "role": "assistant",
+                "text": "Understood, friend."
+              },
+              {
+                "role": "user",
+                "text": "Appreciate it."
+              },
+              {
+                "role": "assistant",
+                "text": "Happy to help, friend."
+              }
+            ]
+          },
+          {
+            "id": "b4-d01",
+            "language": "vi",
+            "scenario_id": "greeting",
+            "split": "train",
+            "template_id": "b4-t-vi-greet-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Xin ch\u00e0o b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "Ch\u00e0o b\u1ea1n."
+              },
+              {
+                "role": "user",
+                "text": "H\u00f4m nay b\u1ea1n kh\u1ecfe kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u1ed5n, c\u1ea3m \u01a1n b\u1ea1n."
+              },
+              {
+                "role": "user",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c g\u1eb7p b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i c\u0169ng v\u1eady."
+              }
+            ]
+          },
+          {
+            "id": "b4-d02",
+            "language": "vi",
+            "scenario_id": "instruction",
+            "split": "train",
+            "template_id": "b4-t-vi-inst-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "H\u00e3y \u0111\u1ebfm t\u1eeb m\u1ed9t \u0111\u1ebfn ba."
+              },
+              {
+                "role": "assistant",
+                "text": "M\u1ed9t, hai, ba."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u1ecdc ng\u01b0\u1ee3c l\u1ea1i gi\u00fap t\u00f4i."
+              },
+              {
+                "role": "assistant",
+                "text": "Ba, hai, m\u1ed9t."
+              },
+              {
+                "role": "user",
+                "text": "C\u1ea3m \u01a1n b\u1ea1n nhi\u1ec1u."
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng c\u00f3 g\u00ec."
+              }
+            ]
+          },
+          {
+            "id": "b4-d03",
+            "language": "vi",
+            "scenario_id": "preference",
+            "split": "train",
+            "template_id": "b4-t-vi-pref-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "T\u00f4i th\u00edch \u0111\u1ecdc s\u00e1ch bu\u1ed5i s\u00e1ng."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn \u0111i\u1ec1u \u0111\u00f3."
+              },
+              {
+                "role": "user",
+                "text": "T\u00f4i hay \u0111\u1ecdc s\u00e1ch l\u1ecbch s\u1eed."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn s\u1edf th\u00edch n\u00e0y."
+              },
+              {
+                "role": "user",
+                "text": "H\u00e3y nh\u1edb s\u1edf th\u00edch n\u00e0y nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i \u0111\u00e3 ghi nh\u1eadn."
+              }
+            ]
+          },
+          {
+            "id": "b4-d04",
+            "language": "vi",
+            "scenario_id": "correction",
+            "split": "train",
+            "template_id": "b4-t-vi-corr-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "M\u00e0u cam do \u0111\u1ecf v\u00e0 xanh t\u1ea1o th\u00e0nh?"
+              },
+              {
+                "role": "assistant",
+                "text": "Kh\u00f4ng \u0111\u00fang, m\u00e0u cam t\u1eeb \u0111\u1ecf v\u00e0 v\u00e0ng."
+              },
+              {
+                "role": "user",
+                "text": "Sai r\u1ed3i, ph\u1ea3i l\u00e0 \u0111\u1ecf v\u00e0 v\u00e0ng."
+              },
+              {
+                "role": "assistant",
+                "text": "\u0110\u00fang r\u1ed3i, \u0111\u1ecf v\u00e0 v\u00e0ng t\u1ea1o m\u00e0u cam."
+              },
+              {
+                "role": "user",
+                "text": "L\u1ea7n sau ch\u00fa \u00fd h\u01a1n nh\u00e9."
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i hi\u1ec3u r\u1ed3i."
+              }
+            ]
+          },
+          {
+            "id": "b4-d05",
+            "language": "en",
+            "scenario_id": "greeting",
+            "split": "train",
+            "template_id": "b4-t-en-greet-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Good morning."
+              },
+              {
+                "role": "assistant",
+                "text": "Good morning to you."
+              },
+              {
+                "role": "user",
+                "text": "How are you doing today?"
+              },
+              {
+                "role": "assistant",
+                "text": "I am doing well."
+              },
+              {
+                "role": "user",
+                "text": "Have a nice day."
+              },
+              {
+                "role": "assistant",
+                "text": "Thank you, you too."
+              }
+            ]
+          },
+          {
+            "id": "b4-d06",
+            "language": "en",
+            "scenario_id": "instruction",
+            "split": "train",
+            "template_id": "b4-t-en-inst-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Please say hello in French."
+              },
+              {
+                "role": "assistant",
+                "text": "Bonjour."
+              },
+              {
+                "role": "user",
+                "text": "Now write it in English."
+              },
+              {
+                "role": "assistant",
+                "text": "Hello."
+              },
+              {
+                "role": "user",
+                "text": "That was very fast."
+              },
+              {
+                "role": "assistant",
+                "text": "Happy to help."
+              }
+            ]
+          },
+          {
+            "id": "b4-d07",
+            "language": "en",
+            "scenario_id": "clarification",
+            "split": "train",
+            "template_id": "b4-t-en-clar-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Can you open it for me?"
+              },
+              {
+                "role": "assistant",
+                "text": "Which item do you mean?"
+              },
+              {
+                "role": "user",
+                "text": "I mean the small box."
+              },
+              {
+                "role": "assistant",
+                "text": "I cannot open items directly."
+              },
+              {
+                "role": "user",
+                "text": "Thanks for checking."
+              },
+              {
+                "role": "assistant",
+                "text": "You are welcome."
+              }
+            ]
+          },
+          {
+            "id": "b4-d08",
+            "language": "en",
+            "scenario_id": "uncertainty",
+            "split": "train",
+            "template_id": "b4-t-en-unc-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Who will win tomorrow?"
+              },
+              {
+                "role": "assistant",
+                "text": "I do not know."
+              },
+              {
+                "role": "user",
+                "text": "Can you guess?"
+              },
+              {
+                "role": "assistant",
+                "text": "I cannot predict that."
+              },
+              {
+                "role": "user",
+                "text": "Fair enough."
+              },
+              {
+                "role": "assistant",
+                "text": "Thank you."
+              }
+            ]
+          },
+          {
+            "id": "b4-d09",
+            "language": "vi",
+            "scenario_id": "uncertainty",
+            "split": "development",
+            "template_id": "b4-dev-vi-unc-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "Mai tr\u1eddi m\u01b0a l\u00fac m\u1ea5y gi\u1edd?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng c\u00f3 th\u00f4ng tin th\u1eddi ti\u1ebft."
+              },
+              {
+                "role": "user",
+                "text": "B\u1ea1n c\u00f3 th\u1ec3 \u0111o\u00e1n kh\u00f4ng?"
+              },
+              {
+                "role": "assistant",
+                "text": "T\u00f4i kh\u00f4ng th\u1ec3 \u0111o\u00e1n tr\u01b0\u1edbc."
+              },
+              {
+                "role": "user",
+                "text": "\u0110\u01b0\u1ee3c r\u1ed3i, c\u1ea3m \u01a1n b\u1ea1n."
+              },
+              {
+                "role": "assistant",
+                "text": "R\u1ea5t vui \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 b\u1ea1n."
+              }
+            ]
+          },
+          {
+            "id": "b4-d10",
+            "language": "en",
+            "scenario_id": "correction",
+            "split": "development",
+            "template_id": "b4-dev-en-corr-1",
+            "turns": [
+              {
+                "role": "user",
+                "text": "A triangle has four sides right?"
+              },
+              {
+                "role": "assistant",
+                "text": "No, a triangle has three sides."
+              },
+              {
+                "role": "user",
+                "text": "No, it has three sides."
+              },
+              {
+                "role": "assistant",
+                "text": "That is correct, three sides."
+              },
+              {
+                "role": "user",
+                "text": "Please remember that."
+              },
+              {
+                "role": "assistant",
+                "text": "Understood, I have noted that."
+              }
+            ]
+          }
+        ],
+        "notes": "Corrected 40-dialogue corpus meeting codec vocabulary constraints (<=150 unique lowercased words/punctuation across all assistant turns), 1-8 words per reply, and strict factual and tool grounding without false agreements or ungrounded capability claims."
+      }
+    }
+  ],
+  "repair_of": "data/candidates/antigravity-events-20261109T093233Z",
+  "data_contract": "data/contracts/ANTIGRAVITY_DIALOGUE_EVENTS_V1.md",
+  "trained": false,
+  "independently_verified": false
+}
