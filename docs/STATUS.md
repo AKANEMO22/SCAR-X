@@ -1,5 +1,35 @@
 # Trạng thái SCAR-X
 
+## Vòng 24: interference là READOUT OVERWRITE, không phải hidden
+
+Chẩn đoán cơ chế theo đúng ưu tiên 4 của người dùng (readout interference,
+hidden contribution, từng bước cập nhật). Dạy `'hi' -> 'Hello.'` từng bước, theo
+dõi cặp nào mất và trọng số nào đổi:
+
+| Chế độ | Bước mất `'chào bạn'` | `\|Δw_out\|` | `\|Δw_in\|` | `\|Δw_rec\|` |
+|---|---:|---:|---:|---:|
+| Full local | **5** | 0,392 | 0,00161 | 0,00093 |
+| **Readout only** (hidden đóng băng) | **4** | **0,519** | 0 | 0 |
+
+**`w_out` thay đổi lớn hơn `w_in` 244 lần và `w_rec` 422 lần.**
+
+Hai kết luận có bằng chứng:
+
+1. **Readout-only còn tệ hơn** — mất sớm hơn một bước và `Δw_out` lớn hơn. Vậy
+   interference **không** đến từ hidden representation.
+2. **Hidden plasticity đóng góp gần như bằng 0** vào cả việc học lẫn việc phá.
+
+Nói cách khác: readout học rất nhanh (`readout_lr=.025`) trong khi hidden học rất
+chậm (`hidden_lr=.0001`) — chênh **250 lần**. Readout ghi đè lên chính các cột nó
+đã dùng cho cặp khác, và hidden không kịp hình thành biểu diễn tách biệt để giúp.
+
+Khớp với: audit 39 (tín hiệu đúng hướng nhưng held-out ≈ 0), `full_local` ≡
+`readout_only` ở round 13, và "hidden contribution: không đo được" ở vòng trước.
+
+**Chưa sửa.** Đây là đặc tính của learning rule hiện tại; thay đổi `readout_lr`,
+`hidden_lr`, selective-synapse hay replay đều là **đổi learning rule** — cần
+protocol và phê duyệt riêng, đúng như người dùng yêu cầu.
+
 ## Vòng 23: rollback ĐÃ ĐÚNG — không sửa; và guard đã chặt hơn
 
 ### Mục 2 (rollback toàn bộ state): KHÔNG có bug
