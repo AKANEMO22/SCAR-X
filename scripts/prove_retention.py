@@ -45,8 +45,14 @@ def correct_set(app):
     return {r['prompt'] for r in measure(app, CASES) if r['correct']}
 
 
-def guard_pass_set(app):
-    return {g['prompt'] for g in guard_report(app, '__retention__') if g['pass']}
+def guard_pass_set(app, changing_prompt='__retention__'):
+    """Pass the SAME exclude prompt teach() will use, or the list differs.
+
+    guard_report() drops the prompt being taught from the pair list, so measuring
+    with a different sentinel produces a different set and the before/after
+    comparison is meaningless. Use the actual lesson prompt.
+    """
+    return {g['prompt'] for g in guard_report(app, changing_prompt) if g['pass']}
 
 
 work = copy_session(ROOT / 'local' / 'generation1')
@@ -65,6 +71,9 @@ try:
 
     for prompt, answer, steps in CANDIDATES:
         sha_before = weights_sha256(app.model)
+        # Measure the guard set with THIS lesson's exclude prompt, matching teach().
+        prev_guard = guard_pass_set(app, prompt)
+        prev_correct = correct_set(app)
         accepted = False
         guard_lost = None
         try:
@@ -75,7 +84,7 @@ try:
             guard_lost = getattr(exc, 'metrics', {}).get('guard_lost')
 
         after_correct = correct_set(app)
-        after_guard = guard_pass_set(app)
+        after_guard = guard_pass_set(app, prompt)
         sha_after = weights_sha256(app.model)
 
         lost_correct = sorted(prev_correct - after_correct)

@@ -1,6 +1,61 @@
 # Trạng thái SCAR-X
 
-## Vòng 21: vì sao "dạy mà không có tác dụng" — model chọn EOS thay dấu chấm
+## Vòng 23: rollback ĐÃ ĐÚNG — không sửa; và guard đã chặt hơn
+
+### Mục 2 (rollback toàn bộ state): KHÔNG có bug
+
+Thí nghiệm cô lập, `background=False` (không idle thread), không `generate()` xen
+vào, từ chối được tiêm xác định qua `_online_microstep`:
+
+| Thành phần | Kết quả |
+|---|---|
+| `w_in`, `w_rec`, `w_out`, `bias` | **identical** |
+| `stable_in/rec/out/bias` | **identical** |
+| `voltage`, `adaptation`, `spikes` | **identical** |
+| `pre`, `post`, `features` | **identical** |
+| `elig_in`, `elig_rec`, `rows` | **identical** |
+| `indices` (topology) | **identical** |
+| `vocabulary` | **identical** |
+| `ticks`, `updates` | **identical** |
+| `capacity_rng`, `app_rng` | **identical** |
+| `probe`, `replay_cursor`, `memories` | **identical** |
+| `weights_sha256` | `26e597a4b8373807` → `26e597a4b8373807` |
+| Hành vi sinh câu (4 prompt) | **identical 4/4** |
+
+Chỉ `sequence` (bộ đếm trace) và `dialogue` (đếm `rejected_updates`) thay đổi —
+**bookkeeping sự kiện**, không phải trạng thái neural.
+
+**Kết luận: rollback khôi phục chính xác toàn bộ neural state. Không sửa gì**,
+đúng chỉ dẫn *"Nếu rollback đã đúng, không sửa vô ích."*
+
+### Vì sao trước đây tưởng rollback hỏng
+
+Đo lại: `fresh` (reset clone) **ổn định** qua mọi lần; `live` **trôi**:
+
+```
+fresh('hi') trước : 'Hello'
+live('hi')  lần 1 : 'Hello.'
+live('hi')  lần 2 : 'Hello'
+live('hi')  lần 3 : 'Hello'
+fresh('hi') sau   : 'Hello'
+```
+
+Sự "trôi" đến từ **`generate()` trên live state**, đúng ADR0006, **không** phải
+rollback. Đây là lần thứ 3 một phép đo của tôi bị nhiễu bởi chính state.
+
+### Mục 1 (guard): ba lỗi đã sửa, guard CHẶT HƠN
+
+| Lỗi | Trước | Sau |
+|---|---|---|
+| `complete_ok` không cần content | `'Lời.'` → complete=**True** | complete=**False** |
+| Target ngắn là chuỗi con | `'bạn tên gì'` lưu `'scar-x'`, không bao giờ khớp | `'Tôi là SCAR-X.'` khớp đúng |
+| Dashboard lệch guard | `guard_report` bỏ dấu câu | dùng chung `_pair_verdict` |
+
+`content_ok` so **chính xác** (`norm==tgt_norm`), không substring. Threshold
+`if metrics['guard_lost']: raise` **nguyên vẹn**. Câu chứa đáp án + thừa vẫn bị
+chặn (`'Hello world.'` vs `'Hello.'` → `content=False`).
+
+## Vòng 22: audit guard phát hiện 3 lỗi
 
 Sau restore (5/8), đã thử **7 bài dạy không xung đột** (prompt chưa đúng, đáp án
 ngắn, quét 1/2/4 bước). Kết quả: **0/7 học được mà không gây hại**.
