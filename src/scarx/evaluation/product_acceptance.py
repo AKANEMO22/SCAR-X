@@ -16,6 +16,7 @@ import json
 import math
 import shutil
 import tempfile
+import sqlite3
 from pathlib import Path
 
 import numpy as np
@@ -118,7 +119,7 @@ def _normalized(text):
     return ' '.join(tokenize(text)).strip(' .!?')
 
 
-def _judge(text, expect, prompt, require_all=None):
+def _judge_v1(text, expect, prompt, require_all=None):
     words = text.split()
     norm = _normalized(text)
     ref = REFERENCE.get(prompt, '')
@@ -149,7 +150,38 @@ def _judge(text, expect, prompt, require_all=None):
     }
 
 
-def measure(app, cases=None, reset_state=None):
+def _judge(text, expect, prompt, require_all=None, expected_answer=None):
+    """Version2: closed-fixture content, not substring or generalsemanticgrade.
+
+    Preserve v1 for historical comparison. Reference labels are only scorerdata;
+    they are never given to model.generate(). Valid alternative phrasings may
+    fail this deliberately narrow canonical-style metric.
+    """
+    row=_judge_v1(text,expect,prompt,require_all)
+    tokens=_normalized(text).split();required=tuple(require_all or (expect,))
+    def contains(term):
+        target=_normalized(term).split()
+        return bool(target) and any(tokens[i:i+len(target)]==target for i in range(len(tokens)-len(target)+1))
+    row['has_expected_words']=all(contains(term) for term in required)
+    reference=expected_answer if expected_answer is not None else REFERENCE.get(prompt,expect)
+    row['content_ok']=_normalized(text)==_normalized(reference) and not row['repetition'] and not row['routed']
+    row['complete']=bool(text.strip()) and text.strip()[-1] in '.!?'
+    row['premature_stop']=bool(text.strip()) and not row['complete']
+    row['correct']=row['content_ok'] and row['complete']
+    row['metric_version']='product-canonical-v2';row['expected_reference']=reference
+    return row
+
+
+def canonical_reply(model,prompt):
+    """Pure product probe: reset a clone and use available requestcapacity only."""
+    from ..neural.unified import UnifiedCore
+    from ..app.workload import plan_workload
+    clone=UnifiedCore.loads(model.dumps());clone.core.reset_state();clone.last_active[:]=clone.ticks
+    clone.select_capacity(min(clone.core.config.hidden,plan_workload(clone,prompt)['requested_neurons']))
+    return clone.generate(prompt)
+
+
+def measure(app, cases=None, reset_state=None, metric_version='product-canonical-v2'):
     """Score the product set.
 
     IMPORTANT — measurement semantics. `generate()` intentionally never resets the
@@ -167,19 +199,23 @@ def measure(app, cases=None, reset_state=None):
     cases = cases or CASES
     if reset_state is None:
         reset_state = True
+    if metric_version not in ('product-canonical-v2','legacy-keywords-v1'):raise ValueError('Unknown product metricversion')
     rows = []
     for case in cases:
         prompt, expect = case[0], case[1]
         require_all = case[2] if len(case) > 2 else None
         if reset_state:
-            from ..neural.unified import UnifiedCore
-            clone = UnifiedCore.loads(app.model.dumps())
-            clone.core.reset_state()
-            clone.last_active[:] = clone.ticks
-            result = clone.generate(prompt)
+            if metric_version=='legacy-keywords-v1':
+                # Preserve the original default capacity/state convention too.
+                from ..neural.unified import UnifiedCore
+                clone=UnifiedCore.loads(app.model.dumps());clone.core.reset_state();clone.last_active[:]=clone.ticks
+                result=clone.generate(prompt)
+            else:result = canonical_reply(app.model,prompt)
         else:
             result = app.model.generate(prompt)
-        row = _judge(result['text'], expect, prompt, require_all)
+        if metric_version=='legacy-keywords-v1':
+            row=_judge_v1(result['text'],expect,prompt,require_all);row['metric_version']=metric_version
+        else:row = _judge(result['text'], expect, prompt, require_all,case[3] if len(case)>3 else None)
         row['prompt'] = prompt
         row['expect'] = expect
         row['require_all'] = list(require_all or (expect,))
@@ -227,10 +263,15 @@ def guard_report(app, exclude=None):
     return rows
 
 
-def copy_session(source):
-    """Fresh writable copy of a session; caller owns cleanup."""
-    work = Path(tempfile.mkdtemp(prefix='scarx-acc-')) / 'session'
-    shutil.copytree(Path(source), work, ignore=shutil.ignore_patterns('session.lock'))
+def copy_session(source,*,destination_parent=None):
+    """Coherent onlineSQLite snapshot, never race copying liveDB/WAL/lockfiles."""
+    database=(Path(source)/'generation1.sqlite').resolve()
+    if not database.is_file():raise FileNotFoundError(database)
+    if destination_parent is not None:Path(destination_parent).mkdir(parents=True,exist_ok=True)
+    work = Path(tempfile.mkdtemp(prefix='scarx-acc-',dir=destination_parent)) / 'session'
+    work.mkdir()
+    with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True,timeout=5) as origin,sqlite3.connect(work/'generation1.sqlite') as target:
+        origin.backup(target,pages=256,sleep=.01)
     return work
 
 

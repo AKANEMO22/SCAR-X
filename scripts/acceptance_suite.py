@@ -26,7 +26,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 from scarx.app.generation import Generation, normalized  # noqa: E402
 from scarx.evaluation.product_acceptance import (  # noqa: E402
-    CASES, HELDOUT, copy_session, guard_report, measure, summarise, weights_sha256,
+    CASES, HELDOUT, copy_session, guard_report, measure, summarise, weights_sha256,canonical_reply,
 )
 
 LIVE = ROOT / 'local' / 'generation1'
@@ -52,7 +52,11 @@ def live_sha():
         return None
 
 
-def heldout(app):
+def heldout(app,metric_version='product-canonical-v2'):
+    if metric_version!='legacy-keywords-v1':
+        references={'chào':'Chào bạn.','scar-x':'Tôi là SCAR-X.','cảm ơn':'Không có gì.','tạm biệt':'Tạm biệt bạn.'}
+        rows=measure(app,[(p,e,(e,),references[e]) for p,e in HELDOUT],metric_version=metric_version)
+        return summarise(rows)['free_answer_correct'],rows
     rows = []
     for prompt, expect in HELDOUT:
         text = app.model.generate(prompt)['text']
@@ -61,10 +65,10 @@ def heldout(app):
     return sum(r['correct'] for r in rows) / max(1, len(rows)), rows
 
 
-def snapshot(app):
-    rows = measure(app, CASES)
+def snapshot(app,metric_version='product-canonical-v2'):
+    rows = measure(app, CASES,metric_version=metric_version)
     g_rows = guard_report(app, '__acceptance__')
-    h_acc, h_rows = heldout(app)
+    h_acc, h_rows = heldout(app,metric_version)
     return {
         'weights_sha256': weights_sha256(app.model),
         'summary': summarise(rows), 'rows': rows,
@@ -74,13 +78,15 @@ def snapshot(app):
         'correct_prompts': sorted(r['prompt'] for r in rows if r['correct']),
         'rss_bytes': app.process.memory_info().rss,
         'vms_bytes': getattr(app.process.memory_info(), 'vms', None),
+        'metric_version':metric_version,'paraphrase_scope':'Six reused developmentphrases, NOT unseenfinaltest',
     }
 
 
 def teach_sequence(app, lessons):
     results = []
     for prompt, answer in lessons:
-        rec = {'prompt': prompt, 'answer': answer, 'accepted': False}
+        before=Generation._pair_verdict(canonical_reply(app.model,prompt)['text'],answer)
+        rec = {'prompt': prompt, 'answer': answer, 'accepted': False,'baseline_target_complete':before['complete_ok']}
         try:
             out = app.teach({'prompt': prompt, 'answer': answer,
                              'repeats': 16, 'confirmation': True})
@@ -92,21 +98,26 @@ def teach_sequence(app, lessons):
             rec['error'] = f'{type(exc).__name__}'
             rec['guard_lost'] = getattr(exc, 'metrics', {}).get('guard_lost') \
                 if hasattr(exc, 'metrics') else None
+        after=Generation._pair_verdict(canonical_reply(app.model,prompt)['text'],answer)
+        rec['target_complete_after_attempt']=after['complete_ok']
+        rec['newly_acquired']=not before['complete_ok'] and after['complete_ok']
+        rec['accepted_without_acquisition']=rec['accepted'] and not rec['newly_acquired']
         results.append(rec)
     return results
 
 
-def run(do_teach, do_restart):
+def run(do_teach, do_restart,metric_version='product-canonical-v2'):
     work = copy_session(LIVE)
     out = {}
     try:
         app = Generation(work, background=False)
         try:
-            base = snapshot(app)
+            base = snapshot(app,metric_version)
             out['baseline'] = base
             if do_teach:
                 acquisition = teach_sequence(app, TEACH_SET)
-                taught = snapshot(app)
+                for lesson in acquisition:lesson['target_complete_final']=Generation._pair_verdict(canonical_reply(app.model,lesson['prompt'])['text'],lesson['answer'])['complete_ok']
+                taught = snapshot(app,metric_version)
                 out['acquisition'] = acquisition
                 out['taught'] = taught
                 out['newly_lost'] = sorted(set(base['correct_prompts']) - set(taught['correct_prompts']))
@@ -119,7 +130,7 @@ def run(do_teach, do_restart):
             time.sleep(0.2)
             reopened = Generation(work, background=False)
             try:
-                out['after_restart'] = snapshot(reopened)
+                out['after_restart'] = snapshot(reopened,metric_version)
             finally:
                 reopened.close()
     finally:
@@ -137,7 +148,10 @@ def metres(out):
     m['1_free_answer_accuracy'] = base['summary']['free_answer_correct']
     m['2_heldout_generalization'] = base['heldout_acc']
     if acq:
-        m['3_learning_acquisition'] = sum(a['accepted'] for a in acq) / len(acq)
+        eligible=[a for a in acq if a.get('baseline_target_complete') is False]
+        m['3_learning_acquisition'] = sum(a.get('newly_acquired',False) for a in eligible)/len(eligible) if eligible else None
+        m['3b_acquisition_denominator']=len(eligible)
+        m['3c_final_new_targets_retained']=sum(a.get('target_complete_final',False) for a in eligible)/len(eligible) if eligible else None
         m['5_guard_acceptance'] = sum(a['accepted'] for a in acq) / len(acq)
         m['6_guard_regression'] = len(out.get('newly_lost', []))
     else:
@@ -145,7 +159,7 @@ def metres(out):
         m['5_guard_acceptance'] = None
         m['6_guard_regression'] = None
     m['4_retention'] = (len(set(base['correct_prompts']) & set(taught['correct_prompts']))
-                        / max(1, len(base['correct_prompts']))) if taught else None
+                        / len(base['correct_prompts'])) if taught and base['correct_prompts'] else None
     m['7_guard_passing'] = f"{base['guard_passing']}/{base['guard_total']}"
     m['8_premature_stop'] = base['summary']['premature_stop']
     m['9_repetition'] = base['summary']['repetition']
@@ -162,6 +176,7 @@ def metres(out):
         [r['text'] for r in taught['rows']] == [r['text'] for r in restart['rows']]
         if (taught and restart) else None)
     m['12_weights_proven'] = 'weights_sha256 (not the updates counter)'
+    m['metric_version']=base.get('metric_version','legacy-keywords-v1')
     return m
 
 
@@ -169,10 +184,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--teach', action='store_true', help='also run the teaching sequence')
     ap.add_argument('--json-out', default=None)
+    ap.add_argument('--metric-version',choices=['product-canonical-v2','legacy-keywords-v1'],default='product-canonical-v2')
     args = ap.parse_args()
 
     before = live_sha()
-    out = run(args.teach, args.teach)
+    out = run(args.teach, args.teach,args.metric_version)
 
     print('=' * 68)
     print('SCAR-X PRODUCT ACCEPTANCE')
