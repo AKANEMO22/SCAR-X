@@ -139,11 +139,15 @@ def main():
             'predicted': vision.get('digit'), 'expected_label_not_fed_to_model': sample.get('expected_digit'), 'scope': vision.get('scope'),
         })
 
+        seen = smoke.wait_status(port, proc)
+        saved_code, saved = smoke.call(port, '/api/checkpoint', {}, seen['token'])
         baseline = smoke.wait_status(port, proc)
         baseline_sha = smoke.model_sha(smoke.download(port, '/api/export', baseline['token']))
         baseline_ids = checkpoint_ids(port, baseline['token'])
-        baseline_id = baseline['checkpoint']
-        check('baseline_checkpoint_listed', baseline_id in baseline_ids, baseline_id)
+        baseline_id = saved.get('checkpoint') if saved_code == 200 else None
+        check('manual_checkpoint', saved_code == 200 and baseline_id in baseline_ids and baseline['updates'] == seen['updates'], {
+            'http': saved_code, 'checkpoint': baseline_id, 'updates': baseline['updates'],
+        })
 
         code, taught = smoke.call(port, '/api/teach', {
             'prompt': 'smoke lesson', 'answer': 'Day la bai thu.', 'repeats': 1, 'confirmation': True,
@@ -175,7 +179,13 @@ def main():
         restore_sha = smoke.model_sha(smoke.download(port, '/api/export', after_restore['token']))
         restore_ids = checkpoint_ids(port, after_restore['token'])
         check('restore_baseline', restored_code == 200 and after_restore['updates'] == baseline['updates'] and restore_sha == baseline_sha and baseline_id in restore_ids and taught.get('checkpoint') in restore_ids, {
-            'http': restored_code, 'updates': after_restore['updates'], 'body': restored if restored_code != 200 else restored.get('restored_from'),
+            'http': restored_code,
+            'updates': after_restore['updates'],
+            'expected_updates': baseline['updates'],
+            'model_sha_matches_snapshot': restore_sha == baseline_sha,
+            'snapshot_kept': baseline_id in restore_ids,
+            'accepted_checkpoint_kept': taught.get('checkpoint') in restore_ids,
+            'restored_from': restored.get('restored_from') if isinstance(restored, dict) else restored,
         })
         report['committed_updates_after_restore'] = after_restore['updates']
 
