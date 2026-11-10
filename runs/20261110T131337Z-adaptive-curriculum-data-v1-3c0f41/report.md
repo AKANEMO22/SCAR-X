@@ -1,0 +1,30 @@
+# AGY actualdevelopmentwording
+
+No maintraining, no newlearner, candidate review required.
+
+{
+  "run": "runs/20261110T131337Z-adaptive-curriculum-data-v1-3c0f41",
+  "decision": "ADAPTIVE_WORDING_GENERATION_FAILED",
+  "candidate_rows": 0,
+  "error": "MemoryError: Observed process-tree memory exceeded budget",
+  "seconds": 1.0632030999986455,
+  "resources": {
+    "peak_rss_bytes": 534417408,
+    "peak_commit_or_vms_bytes": 1206927360,
+    "os_process_peak_working_set_bytes": 44265472,
+    "os_process_peak_pagefile_commit_bytes": 669409280,
+    "samples": 12,
+    "interval_seconds": 0.1,
+    "limit_bytes": 1000000000,
+    "observed_over_limit": true,
+    "elapsed_seconds": 1.0592189999879338,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "private_content_sent": false,
+  "main_training": false,
+  "new_learning_rule_implemented": false,
+  "automatic_learning_allowed": false
+}

@@ -1,6 +1,6 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
-**Phiên bản tài liệu:** 1.30 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+**Phiên bản tài liệu:** 1.31 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
 
 **Đối chiếu cập nhật DeepSeek:** [review40](research/40_DEEPSEEK_REVIEW.md) kiểm
 guard/rollback/đo state và interference trên copiedmodels, không đổi learning
@@ -518,6 +518,20 @@ trên bản sao, phân biệt baseline sai và newlylost; không lấy norm/LR h
 checkpoint được chọn làm chứng minh đóng góp hidden hoặc seed độc lập. P1/P2,
 gate lịch sử/ALIF/2GB giữ nguyên, không deploy learner hoặc tự chạy protection.
 
+**Bước chuẩn bị sau review40:** [đề xuất P2 usefulness v2](../experiments/readout-usefulness-proposal-v2.md)
+phân biệt counterfactual output-usefulness với magnitude metaplasticity đã có
+ở Phase2.1. Đây là **CHỜ DUYỆT CODE/PILOT**, không là learner triển khai hay cơ
+chế representation mới. Giữ nguyên draft A v1, lịch sử/gate và stop35–37.
+P0 math/parity/serialization/resource phải qua trước pilot168job tối đa; timing
+amendment bắt buộc trước qualityscore. Không scale, không đưa U vào Hermes.
+
+[Protocol data](../experiments/adaptive-curriculum-data-v1.md) đã tạo128wording
+qua AntigravityCLI thật; đọc toàn bộ, giữ127/tách1. Chỉ là developmentwording,
+không tự thành nhãn train;32câu vision chưa có ảnh mới. Reference24chat trên
+copy SCAR-X và Qwen riêng dùng [protocol riêng](../experiments/adaptive-curriculum-reference-v1.md),
+không train, không chấm “ngang4B” hoặc dùng Qwen làm nhãn. Đây là chuẩn bị dữ
+liệu/đối chiếu được phép, không ngầm phê duyệt U hoặc mở lại family đã STOP.
+
 ### 4.2 Experience-to-Skill và phân công trách nhiệm
 
 | Mục tiêu | Neural core phải làm gì | Memory hỗ trợ gì | Learning controller phải làm gì | Hiện trạng |
@@ -932,6 +946,16 @@ chưa được bật. Phán quyết khoa học vẫn PIVOT_NO_SCALE.
 | Product-first/MVP đã được duyệt | [ADR0005](decisions/0005-product-first-mvp.md) | Build app ngay bằng core hiện có, không dùng researchgate để chặn MVP; không tăng quy mô |
 
 ## 13. Change Log
+
+### 1.31 — 2026-11-10 — Thiết kế P2 usefulness và chuẩn bị developmentwording
+
+- V2 đề xuất counterfactual readout-usefulness, đối chiếu magnitude/Phase2.1,
+  shuffled importance và scalar LR với applied-delta matching; chưa code U.
+- AGY128wording thật,1hàng identity+origin tách ra,127giữ sau all-row review.
+  Không finaltest/trainlabels hoặc normalchat/vision claim;32vision chưa có ảnh.
+- Reference24chat cố định, modelcopy/canonical và Qwen4B riêng; không mainchange.
+  Giữ stage/gate và các phê duyệt trước, không tự mở training/pilot mới.
+
 
 ### 1.29 — 2026-11-10 — Hướng tín hiệu học cục bộ có giảm loss thật?
 

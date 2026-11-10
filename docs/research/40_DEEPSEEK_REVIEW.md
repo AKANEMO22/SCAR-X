@@ -109,6 +109,23 @@ Kết quả one-step loss không chứng minh retention, ngôn ngữ, hay một 
 thất bại duy nhất. Không chạy lại audit, đổi thuật toán hoặc sửa ngưỡng dựa vào
 kết quả này; muốn kiểm định mạnh hơn phải đăng ký control applied-delta phù hợp.
 
+## Kiểm tra phần mềm và bản đang chạy
+
+**258/258 tests qua** (82,85 giây pytest; wrapper84,04 giây), gồm native CPU
+parity, rollback/RNG và checkpoint regression. Lượt trước257pass/1fail được giữ
+ở receipt initial: bản sửa cursor đã giữ cả discarded ticks khi persist lỗi;
+đã sửa chỉ giữ ID của rejection còn lại, rồi chạy lại toàn suite. JavaScript
+`node --check` qua; UI thật đã hiện bảng24rows và nhãn COPY ONLY rõ ràng.
+
+Trước restart tạo checkpoint và backup riêng tư; sau restart xác nhận cùng
+weights,64ALIF,topology,vocabulary,encoder và update counter. Neural source
+`core.py`/`unified.py` giữ nguyên so review baseline27b6c10. Không đưa dữ liệu
+riêng vào ZIP, không restore model48/128 từ phiên khác.
+[Kiểm thử](../../artifacts/deepseek-review-software-validation.json),
+[bảo toàn phiên thật](../../artifacts/deepseek-review-live-preservation.json),
+[acceptance đã loại fingerprint riêng](../../artifacts/deepseek-review-acceptance.json),
+[receipt bàn giao](../../artifacts/deepseek-review-delivery.json).
+
 ## Quyết định và việc tiếp theo
 
 **GO cho các sửa tính đúng đắn/quan sát trên; PIVOT cho cơ chế học; không scale.**

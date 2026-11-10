@@ -121,3 +121,7 @@
 - [20261110T080003Z-local-credit-alignment-audit-v1-d8de33](20261110T080003Z-local-credit-alignment-audit-v1-d8de33/report.md) — local-credit-alignment-audit-v1
 - [20261110T080426Z-local-credit-alignment-audit-v1-db01fc](20261110T080426Z-local-credit-alignment-audit-v1-db01fc/report.md) — local-credit-alignment-audit-v1
 - [20261110T124259Z-deepseek-product-review-v1-f302b6](20261110T124259Z-deepseek-product-review-v1-f302b6/report.md) — deepseek-product-review-v1
+- [20261110T131337Z-adaptive-curriculum-data-v1-3c0f41](20261110T131337Z-adaptive-curriculum-data-v1-3c0f41/report.md) — adaptive-curriculum-data-v1
+- [20261110T131423Z-adaptive-curriculum-data-v1-3880a1](20261110T131423Z-adaptive-curriculum-data-v1-3880a1/report.md) — adaptive-curriculum-data-v1
+- [20261110T131758Z-adaptive-curriculum-review-v1-1fbeaf](20261110T131758Z-adaptive-curriculum-review-v1-1fbeaf/report.md) — adaptive-curriculum-review-v1
+- [20261110T131907Z-adaptive-curriculum-reference-v1-072e6e](20261110T131907Z-adaptive-curriculum-reference-v1-072e6e/report.md) — adaptive-curriculum-reference-v1

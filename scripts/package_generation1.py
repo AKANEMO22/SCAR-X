@@ -87,6 +87,10 @@ files.extend(root/'artifacts'/name for name in ('antigravity-direct-word-prompts
 files.extend(root/'artifacts'/name for name in ('direct-visual-preflight.json','direct-visual-bridge-latest.json',
  'direct-visual-software-validation.json','direct-visual-data-usage.json','direct-visual-delivery.json',
  'direct-visual-running.png','direct-visual-results.png','direct-visual-answers.png'))
+files.extend(root/'artifacts'/name for name in ('local-credit-alignment.json',
+ 'deepseek-product-review.json','deepseek-review-software-validation-initial.json',
+ 'deepseek-review-software-validation.json','deepseek-review-live-preservation.json',
+ 'deepseek-review-acceptance.json','deepseek-review-delivery.json','deepseek-review-final.jpg'))
 # These12images are owned syntheticrenderer fixtures, not arbitrary userphotos.
 vision_receipt=root/'artifacts/vision-question-path-latest.json'
 if vision_receipt.is_file():

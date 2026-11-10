@@ -81,6 +81,33 @@ bài dạy có thể được ACCEPTED trong khi câu trả lời đang đúng b
 tính). Nay guard chạy trên **mọi** đường dạy; `guard_checked` và `guard_lost`
 luôn có trong metrics. Hệ quả trung thực: tỷ lệ chấp nhận trên bộ sản phẩm chỉ
 còn **12,5%** — đó là trạng thái interference thật, không phải lỗi mới.
+
+**Cập nhật 2026-11-10 (lần 2): guard chấm theo HAI tiêu chí độc lập.**
+Trước đây chỉ có một phép so `normalized()`, phép này **bỏ dấu câu cuối**
+(`.strip(' .!?')`), nên `'Hello'` và `'Hello.'` được coi là bằng nhau. Hệ quả đo
+được: guard **bảo vệ dạng cụt** và từ chối mọi bài dạy sửa nó — một cơ chế bảo vệ
+đang bảo vệ khiếm khuyết. Nay `Generation._pair_verdict()` trả hai cờ:
+
+| Cờ | Nghĩa | Guard có chặn? |
+|---|---|---|
+| `content_ok` | Đủ từ **và** không lặp (so khớp **chính xác**, không chuỗi con) | **Có** |
+| `complete_ok` | Kết thúc bằng `.` `!` `?` **và** `content_ok` đúng | Không — chỉ báo cáo (`guard_style_lost`) |
+
+Vì sao tách như vậy: một dạng cụt **phải còn sửa được**. Nếu tính thiếu dấu câu là
+"mất kỹ năng" thì guard sẽ khoá vĩnh viễn khiếm khuyết đó. Ngược lại, **lặp**
+(`'Chào bạn. chào bạn'`) và **mất từ** là mất nội dung thật và **bị chặn**.
+
+`complete_ok` yêu cầu `content_ok` trước: đo được trước khi sửa, câu rác `'Lời.'`
+được tính là "hoàn chỉnh" chỉ vì có dấu chấm.
+
+Dashboard (`guard_report`) và acceptance suite gọi **cùng** `_pair_verdict`, nên
+không còn trường hợp dashboard báo PASS trong khi guard coi là fail.
+
+**Đã kiểm chứng sau khi sửa:** retention violations **0/9 lượt**; `content_ok` so
+chính xác nên câu chứa đáp án kèm nội dung thừa vẫn bị chặn (`'Hello world.'` vs
+`'Hello.'` → `content_ok=False`). Ngưỡng `if metrics['guard_lost']: raise` giữ
+nguyên, **không nới**.
+
 Điểm loss trên đồ thị thuộc các giao dịch có thể khác bài, không là một
 learning curve của dataset cố định. Counter tích lũy có thể khác số log giữ lại.
 

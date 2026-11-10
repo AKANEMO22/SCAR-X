@@ -340,11 +340,12 @@
     rows.slice(0,30).forEach((row,index)=>{
       const card=node('details',undefined,'trace-card');card.open=index===0;
       const accepted=row.accepted??row.action!=='online-reject';
-      card.append(node('summary',`${stamp(row)} · ${accepted?(row.guard_checked?'GUARD GIỮ':'ĐÃ GIỮ · guard chưa ghi/không dùng'):'ROLLBACK'} · loss ${fmt(row.loss_mean)} · ${row.prompt||row.run_id}`));
+      const copyOnly=String(row.scope||'').startsWith('COPY ONLY');
+      card.append(node('summary',`${stamp(row)} · ${copyOnly?'CHẨN ĐOÁN TRÊN BẢN SAO':accepted?(row.guard_checked?'GUARD GIỮ':'ĐÃ GIỮ · guard chưa ghi/không dùng'):'ROLLBACK'} · loss ${fmt(row.loss_mean)} · ${row.prompt||row.run_id}`));
       field(card,'Nguồn / bài học',`${row.scope||'Bản thử nghiệm'} · ${row.prompt||'chưa ghi'} → ${row.target||'chưa ghi'}`);
       field(card,'Lượt học / loss',`${row.passes??row.repeats??'chưa ghi'} lượt · loss TB ${fmt(row.loss_mean)} · ${(row.losses||[]).map(fmt).join(' → ')||'chưa ghi từng lượt'}`);
       field(card,'Cập nhật synapse',`${row.update_steps??'chưa ghi'} bước ${row.update_unit||'token'} · số trọng số đổi ròng: ${row.changed_synapses?Object.entries(row.changed_synapses).map(([k,v])=>`${k}: ${v}`).join(' · '):'chưa ghi'}${row.hidden_update_steps!==undefined?' · '+row.hidden_update_steps+' hidden updates':''}`);
-      field(card,'ΔW thử trước guard',weights(row.attempted_weight_delta));field(card,'ΔW giữ lại sau giao dịch',weights(row.weight_delta));
+      field(card,'ΔW thử trước guard',weights(row.attempted_weight_delta));field(card,copyOnly?'ΔW trên bản sao, không lưu vào phiên thật':'ΔW giữ lại sau giao dịch',weights(row.weight_delta));
       field(card,'Guard',row.reason||`${row.guard_probe_count??'chưa ghi'} probe · mất ${row.guard_lost??'chưa ghi'} probe · ${row.rolled_back?'đã hoàn tác':accepted?'giao dịch được giữ':'chưa rõ'}`);
       if(row.stopped_identical_proposal)card.append(node('p',`Đã dừng sau ${row.identical_guard_rejections} đề xuất giống hệt bị guard từ chối. Trọng số giữ nguyên; không hạ ngưỡng để ép học.`, 'lab-verdict'));
       if(row.before!==undefined)field(card,'Sinh trước học → sau lần thử',`${row.before||'[rỗng]'} → ${row.after_attempt||'[rỗng]'}${row.rolled_back?' (bản thử này đã bị hoàn tác)':''}`);

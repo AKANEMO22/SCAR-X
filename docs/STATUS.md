@@ -1,23 +1,33 @@
 # Trạng thái SCAR-X
 
-## Đang kiểm tra độc lập cập nhật DeepSeek — review 40
+## Hoàn tất đối chiếu DeepSeek — review 40
 
-Giữ các sửa guard thủ công, before-clone, log reject và kiểm tra rollback có
-ích. Không coi đo trên state reset là hành vi live hoặc restore checkpoint là
-học được kỹ năng mới. Nhận định rollback hỏng trong A4 báo cáo cũ đã được phép
-đo cô lập vòng 23 thay thế; không sửa neural rollback vốn đã đúng.
+[Review40](research/40_DEEPSEEK_REVIEW.md), master1.30 và
+`artifacts/deepseek-review-delivery.json` ghi đầy đủ thay đổi/bằng chứng.
+**258/258 tests qua**, gồm rollback/RNG/checkpoint và CPU/native parity;
+JavaScript syntax và bảng localhost đã kiểm. Bản sửa đã nạp vào server.
 
-Đã sửa lỗi transplant trong `interference_evidence_v2.py`: bias/hidden/head
-phải thật sự chép đúng nhóm AFTER, giữ nhóm khác BEFORE. Thêm helper có test.
-Đã bỏ fallback gọi live.generate khi observation clone lỗi, chuyển sang abort/
-rollback; chụp SQLite dùng online backup. Metric sản phẩm v2 chặn false positive
-substring/phủ định, giữ v1 để đối chiếu, acquisition tách khỏi ACCEPTED. Các
-gate nghiên cứu/learning rule/weights phiên thật không đổi; đang chạy kiểm tra.
+Giữ sửa guard thủ công/before-clone/rollback isolation của DeepSeek. Sửa lỗi
+transplant nhóm AFTER, fallback clone lỗi chạm live, snapshot SQLite/WAL,
+metric substring, acquisition bị đồng nhất ACCEPTED và trace cursor sau reject.
+Metric canonical v2 tách khỏi v1; sáu paraphrase cũ là development đã xem.
 
-Các kết luận vòng 24 bên dưới về “hidden gần như 0” dựa vào norm/LR và một bài
-không được xem là kết luận nhân quả tổng quát. Readout-only quên chứng minh
-readout có thể đủ gây quên ở trường hợp đó, không chứng minh hidden vô ích.
-Bản `readout-protection-v1.md` mới vẫn CHƯA DUYỆT, chưa code hoặc chạy.
+24 can thiệp trên 3 trạng thái ×4 bài ×2 nhánh, mỗi nhánh6bước: chỉ snapshot
+hiện tại, bài hi, hai nhánh full/readout mất1cặp đã biết từ bước5. Chỉ w_out
+AFTER đủ tái tạo lỗi này; hidden/bias riêng không tái tạo. Không suy rộng thành
+hidden=0 hoặc mọi forgetting do readout; checkpoint không là seed độc lập.
+Same24outputs chấm v1/v2 cùng14pass, không nhận đây là cải thiện model.
+
+Acceptance trên copy:5/8canonical,3/6development;2/6 giao dịch giữ, chỉ1/3target
+vốn chưa đúng chuyển thành đúng và còn đúng sau chuỗi. Không mất8probe cũ;
+không là bằng chứng solvedP2/20context/skillgeneralization. Cả RSS và commit
+đều đo dưới2GB ở các lượt nhỏ. Main không học/restore trong review; trước/sau
+restart weights/topology/vocabulary/encoder giữ nguyên,64ALIF đã cấp.
+
+**PIVOT learning mechanism/no scale** giữ nguyên. Readout Protection mới vẫn
+CHƯA DUYỆT, không code/chạy. Các vòng lịch sử phía dưới giữ nguyên; nhận định
+rollback hỏng A4 được kiểm tra cô lập mới thay thế. Norm/LR và một bài không đủ
+cho kết luận nhân quả “hidden gần như 0” của vòng24.
 
 ## Vòng 24: interference là READOUT OVERWRITE, không phải hidden
 

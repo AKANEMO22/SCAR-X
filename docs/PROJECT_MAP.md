@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+**Chuẩn bị41:** `experiments/readout-usefulness-proposal-v2.md` còn chờ duyệt.
+Data/reference protocols `adaptive-curriculum-*.md`, script
+`prepare_adaptive_curriculum.py` / `compare_adaptive_curriculum.py`; receipts
+`artifacts/adaptive-curriculum-{data,reviewed,reference}.json`. Chỉ wording
+development và reference, chưa train/import U hoặc thay phiên Hermes.
+
+
 **Review cập nhật DeepSeek 40:** [báo cáo40](research/40_DEEPSEEK_REVIEW.md),
 `experiments/deepseek-product-review-v1.md`, `evaluation/parameter_interventions.py`,
 `evaluation/product_acceptance.py` (v1/v2 tách nhãn), `scripts/review_deepseek_product.py`.
