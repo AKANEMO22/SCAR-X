@@ -1,8 +1,11 @@
-"""Release smoke test on a temporary data directory.
+"""Release smoke test on temporary data directories.
 
-Does not open local/generation1 and does not teach. A live session on port 8765
-can keep running.
+Does not open local/generation1. A live session on port 8765 can keep running.
+Accepted teaching and rejected teaching are separate sessions. Neither result
+is allowed to satisfy the other.
 """
+import hashlib
+import io
 import json
 import os
 import shutil
@@ -13,6 +16,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+import zipfile
 from pathlib import Path
 
 
@@ -43,6 +47,21 @@ def call(port, path, payload=None, token=None, timeout=30):
         except json.JSONDecodeError:
             body = {'error': raw.decode('utf-8', 'replace')}
         return exc.code, body
+
+
+def download(port, path, token=None, timeout=30):
+    headers = {'Host': f'127.0.0.1:{port}', 'Origin': f'http://127.0.0.1:{port}'}
+    if token:
+        headers['X-SCARX-Token'] = token
+    req = urllib.request.Request(f'http://127.0.0.1:{port}{path}', headers=headers)
+    with urllib.request.urlopen(req, timeout=timeout) as response:
+        return response.read()
+
+
+def model_sha(blob):
+    with zipfile.ZipFile(io.BytesIO(blob)) as archive:
+        model = archive.read('model.zip')
+    return hashlib.sha256(model).hexdigest()
 
 
 def request(port, path, payload=None, token=None):
@@ -127,24 +146,20 @@ def main():
             code, taught = call(port, '/api/teach', {
                 'prompt': 'smoke lesson', 'answer': 'Day la bai thu.', 'repeats': 1, 'confirmation': True,
             }, taught_status['token'], timeout=90)
-            report['teach_http'] = code
+            report['accepted_http'] = code
             report['updates_before_teach'] = taught_status['updates']
-            message = json.dumps(taught, ensure_ascii=False)
-            if code == 200:
-                metrics = taught.get('learning_metrics') or {}
-                if metrics.get('accepted') is not True or metrics.get('rolled_back') is not False:
-                    raise RuntimeError(f'teach 200 without an accepted update: {message}')
-                report['teach'] = 'accepted'
-            elif code == 400 and 'guard' in message.lower():
-                report['teach'] = 'rejected_and_rolled_back'
-            else:
-                raise RuntimeError(f'unexpected teach result {code}: {message}')
+            if code != 200:
+                raise RuntimeError(f'accepted scenario was not accepted: {code} {taught}')
+            metrics = taught.get('learning_metrics') or {}
+            if metrics.get('accepted') is not True or metrics.get('rolled_back') is not False or not taught.get('checkpoint'):
+                raise RuntimeError(f'accepted scenario missing checkpoint or metrics: {taught}')
+            report['accepted_checkpoint'] = taught['checkpoint']
+            report['teach'] = 'accepted'
+            report['newly_acquired'] = False
             after_teach = wait_status(port, proc)
             report['updates_after_teach'] = after_teach['updates']
             if report['teach'] == 'accepted' and after_teach['updates'] <= taught_status['updates']:
                 raise RuntimeError('accepted teach did not advance the update counter')
-            if report['teach'] != 'accepted' and after_teach['updates'] != taught_status['updates']:
-                raise RuntimeError('rejected teach changed the update counter')
             after = after_teach
             report['ticks_after_chat'] = after['ticks']
             if after['ticks'] <= first['ticks']:
@@ -160,6 +175,33 @@ def main():
             if restored['updates'] != report['updates_after_teach']:
                 raise RuntimeError(f'restart lost updates: {report["updates_after_teach"]} -> {restored["updates"]}')
             report['updates_after_restart'] = restored['updates']
+            reject_port = free_port()
+            reject_data = Path(tempfile.mkdtemp(prefix='scarx-smoke-reject-'))
+            report['reject_data_dir'] = str(reject_data)
+            reject = launch(reject_port, reject_data)
+            try:
+                base = wait_status(reject_port, reject)
+                before_ids = [item['id'] for item in request(reject_port, '/api/checkpoints', None, base['token'])[1]]
+                before_model = model_sha(download(reject_port, '/api/export', base['token']))
+                code, refused = call(reject_port, '/api/teach', {
+                    'prompt': 'cảm ơn', 'answer': 'Không có gì.', 'repeats': 16, 'confirmation': True,
+                }, base['token'], timeout=120)
+                text = json.dumps(refused, ensure_ascii=False)
+                if code != 400 or 'guard' not in text.lower():
+                    raise RuntimeError(f'rejected scenario was not refused by the guard: {code} {text}')
+                after = wait_status(reject_port, reject)
+                after_ids = [item['id'] for item in request(reject_port, '/api/checkpoints', None, after['token'])[1]]
+                after_model = model_sha(download(reject_port, '/api/export', after['token']))
+                if after['updates'] != base['updates'] or after_model != before_model or after_ids != before_ids:
+                    raise RuntimeError('rejected teach did not restore the committed neural session')
+                report['rejected_http'] = code
+                report['rejected_updates'] = after['updates']
+                report['rejected_model_unchanged'] = True
+                report['rejected_checkpoints_unchanged'] = True
+            finally:
+                stop(reject)
+                if report.get('rejected_model_unchanged'):
+                    shutil.rmtree(reject_data, ignore_errors=True)
             report['passed'] = True
         finally:
             stop(proc)
