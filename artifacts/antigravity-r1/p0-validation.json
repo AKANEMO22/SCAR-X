@@ -1,0 +1,181 @@
+{
+  "scope": "P0 technical validation only; no capability claim",
+  "checks": [
+    {
+      "check": "forward parity: 3 identical decays == production feature",
+      "pass": true,
+      "detail": "max abs diff 0.000e+00"
+    },
+    {
+      "check": "forward parity: == SpikingCore deterministic neuron",
+      "pass": true,
+      "detail": "max abs diff 1.192e-07 <= 4.768e-07 (float32 ULP); spikes identical=True"
+    },
+    {
+      "check": "forward parity: spike trains identical to SpikingCore",
+      "pass": true,
+      "detail": "bit-equal spikes (the quantity that matters for the readout)"
+    },
+    {
+      "check": "forward parity: == PlasticCore stochastic neuron (shared stream)",
+      "pass": true,
+      "detail": "max abs diff 0.000e+00"
+    },
+    {
+      "check": "spike trains bit-identical across all arms",
+      "pass": true,
+      "detail": "1 distinct hash(es): cb5125634de2c3ee…"
+    },
+    {
+      "check": "hidden update independent of readout width (equal reward)",
+      "pass": true,
+      "detail": "w_in/w_rec bit-equal"
+    },
+    {
+      "check": "readout width actually differs between arms",
+      "pass": true,
+      "detail": "(2, 48) vs (2, 240)"
+    },
+    {
+      "check": "target never enters the input tensor",
+      "pass": true,
+      "detail": "input hash unchanged under label permutation"
+    },
+    {
+      "check": "hidden update independent of the target label (equal reward)",
+      "pass": true,
+      "detail": "w_in/w_rec bit-equal under permuted labels"
+    },
+    {
+      "check": "checkpoint contains every weight/state/eligibility array",
+      "pass": true,
+      "detail": "19 arrays"
+    },
+    {
+      "check": "multi-timescale feature bank is preserved",
+      "pass": true,
+      "detail": "features shape (5, 48)"
+    },
+    {
+      "check": "round-trip restores all arrays bit-exactly",
+      "pass": true,
+      "detail": "all arrays equal"
+    },
+    {
+      "check": "RNG state restored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "counters/baseline restored",
+      "pass": true,
+      "detail": "updates=8 ticks=96"
+    },
+    {
+      "check": "cold-process resume == warm continuation",
+      "pass": true,
+      "detail": "next learning step reproduces bit-exactly"
+    },
+    {
+      "check": "rollback restores full previous state",
+      "pass": true,
+      "detail": "all array hashes match"
+    },
+    {
+      "check": "rejected update did not corrupt live state",
+      "pass": true,
+      "detail": "no array lost"
+    },
+    {
+      "check": "loader rejects wrong format tag",
+      "pass": true,
+      "detail": "IndexError"
+    },
+    {
+      "check": "loader rejects missing required array",
+      "pass": true,
+      "detail": "ValueError"
+    },
+    {
+      "check": "loader rejects tampered array hash",
+      "pass": true,
+      "detail": "TypeError"
+    },
+    {
+      "check": "loader rejects non-finite array value",
+      "pass": true,
+      "detail": "KeyError"
+    },
+    {
+      "check": "loader rejects truncated payload",
+      "pass": true,
+      "detail": "BadZipFile"
+    },
+    {
+      "check": "loader rejects empty payload",
+      "pass": true,
+      "detail": "BadZipFile"
+    },
+    {
+      "check": "loader rejects not a zip",
+      "pass": true,
+      "detail": "BadZipFile"
+    },
+    {
+      "check": "loader rejects oversized payload",
+      "pass": true,
+      "detail": "ValueError"
+    },
+    {
+      "check": "peak commit under 2,000,000,000 B",
+      "pass": true,
+      "detail": "peak_commit=700,301,312 B"
+    },
+    {
+      "check": "monitor took samples (not a vacuous zero)",
+      "pass": true,
+      "detail": "4 samples"
+    },
+    {
+      "check": "all learned state is in RAM arrays",
+      "pass": true,
+      "detail": "14,528 B across 19 arrays"
+    },
+    {
+      "check": "no file-backed (memmap) arrays",
+      "pass": true,
+      "detail": "ndarray only"
+    },
+    {
+      "check": "process-tree commit measurable",
+      "pass": true,
+      "detail": "tree commit=700,248,064 B over 1 process(es)"
+    }
+  ],
+  "passed": 30,
+  "total": 30,
+  "verdict": "P0_PASS",
+  "resources": {
+    "peak_rss_bytes": 41857024,
+    "peak_commit_or_vms_bytes": 700301312,
+    "os_process_peak_working_set_bytes": 141725696,
+    "os_process_peak_pagefile_commit_bytes": 800497664,
+    "samples": 4,
+    "interval_seconds": 0.05,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 0.08737729999120347,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  }
+}

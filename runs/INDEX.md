@@ -129,3 +129,5 @@
 - [20261110T135250Z-readout-usefulness-p0-v1-ca2357](20261110T135250Z-readout-usefulness-p0-v1-ca2357/report.md) — readout-usefulness-p0-v1
 - [20261110T142636Z-adaptive-curriculum-grounding-v1-472187](20261110T142636Z-adaptive-curriculum-grounding-v1-472187/report.md) — adaptive-curriculum-grounding-v1
 - [20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646](20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646/report.md) — adaptive-curriculum-grounding-v1
+- [20261110T192339Z-collab-mtb-screen-v1-a7409e](20261110T192339Z-collab-mtb-screen-v1-a7409e/report.md) — collab-mtb-screen-v1
+- [20261110T194509Z-collab-mtb-screen-v1-de8c62](20261110T194509Z-collab-mtb-screen-v1-de8c62/report.md) — collab-mtb-screen-v1
