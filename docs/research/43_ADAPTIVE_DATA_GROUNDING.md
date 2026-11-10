@@ -61,32 +61,51 @@ Phân bố:
 
 ---
 
-## 3. Vocabulary — con số bàn giao có sai lệch
+## 3. Vocabulary — hai đại lượng khác nhau, cả hai đều đúng
 
-Bàn giao ghi **388 token**. Artifact ghi **386**. Tôi tính lại: **386 đúng**.
+Bàn giao ghi **388**, artifact ghi **386**. Ở bản trước tôi kết luận 388 là sai.
+**Đó là kết luận của tôi sai.** Hai con số đo hai thứ khác nhau.
 
-| Cách tính | Kết quả |
-|---|---:|
-| Token chat (distinct) | **360** |
-| Token vision (distinct) | **35** |
-| Tổng thô 360 + 35 | 395 |
-| Token chung (overlap) | **9** |
-| **Union thật** | **386** |
+Code xác nhận (`src/scarx/neural/language.py:31`, `src/scarx/neural/unified.py:24`):
 
-`388` không khớp bất kỳ cách tính nào (không phải 386, không phải 395). Ghi nhận
-sai lệch này; **kết luận định tính không đổi**: 386 > cap 256.
+```python
+if self.vocabulary[:2] != ['<eos>', '<bos>'] or not 3 <= len(vocabulary) <= 256
+```
+
+Hai token điều khiển `<eos>` và `<bos>` **luôn chiếm 2 vị trí đầu**, và chúng
+**không nằm trong** tập token nội dung (`'<eos>' in union → False`,
+`'<bos>' in union → False`).
+
+| Đại lượng | Công thức | Giá trị |
+|---|---|---:|
+| Token nội dung — chat | distinct | **360** |
+| Token nội dung — vision | distinct | **35** |
+| Giao nhau | intersection | **9** |
+| **Token nội dung khác nhau** | union = 360+35−9 | **386** |
+| `<eos>` + `<bos>` | hằng số | **2** |
+| **Vị trí vocabulary tối thiểu** | 386 + 2 | **388** ✅ |
+
+**388 là đúng** khi nói về *vị trí vocabulary cần cấp*.
+**386 là đúng** khi nói về *số token nội dung khác nhau*.
+
+Tổng thô `360+35 = 395` **sai** vì đếm trùng 9 token; `395−9 = 386` là union.
 
 ```
-vocabulary cap trong code      : 256
-vocabulary live hiện tại       :  24
-token cần                      : 386
-vượt cap                       : 130 token
-token model CHƯA có            : 362/386
-reference dài quá 24 token     : 0  (giới hạn độ dài không bị vượt)
+vocabulary cap trong code        : 256   (trần vị trí)
+vị trí cần                       : 388
+thiếu theo vị trí vocabulary     : 132   (388 − 256)
+thiếu theo token nội dung        : 130   (386 − 256)
+reference dài quá 24 token       : 0
 ```
 
 **Hệ quả:** mọi reference đều cần ít nhất một token core chưa có →
 **decoder không thể sinh câu nào nguyên văn**, kể cả sau huấn luyện hoàn hảo.
+
+**Lưu ý phương pháp:** số token "chưa biết" **không** được tính bằng
+`386 − kích thước vocabulary hiện tại`, vì phép trừ kích thước không cho biết tập
+nào giao tập nào. Muốn con số đó phải tính **giao** giữa tập token cần và tập
+token đang có. Báo cáo này **không xuất vocabulary thật** (chỉ số lượng tổng hợp).
+
 
 ---
 
@@ -145,7 +164,22 @@ không learning rule nào tách được điều không tồn tại trong số l
 
 ### Tầng 1 — Thiết kế câu hỏi (dataset)
 
-Nếu chỉ nhìn câu hỏi mà không nhìn ảnh, đoán giá trị phổ biến nhất đã được:
+Đây **không phải lỗi cần hạ xuống**. Đây là **optimal majority baseline** của tập
+câu hỏi hiện tại: nếu model không nhìn ảnh, cách tốt nhất là đoán giá trị phổ biến
+nhất cho mỗi câu hỏi. Không chiến lược mù nào làm tốt hơn.
+
+Chance baseline tách riêng theo số lớp đáp án:
+
+| Số lớp đáp án | Số câu | Majority baseline | Uniform chance |
+|---|---:|---:|---:|
+| **2 lớp** (binary: đỏ/xanh, tròn/vuông…) | 192 | **0,5000** | 0,5000 |
+| **3 lớp** (three-class: 1/2/3 vật thể) | 384 | **0,3333** | 0,3333 |
+| **Tổng** | 576 | **0,3889** | 0,3889 |
+
+Trong tập này majority **bằng đúng** uniform, vì mỗi câu hỏi có số đáp án cân
+bằng tuyệt đối (36 câu × 3 lớp = 12 mỗi lớp; 36 câu × 2 lớp = 18 mỗi lớp).
+
+Theo từng kind:
 
 | Kind | Trần "mù" |
 |---|---:|
@@ -154,6 +188,12 @@ Nếu chỉ nhìn câu hỏi mà không nhìn ảnh, đoán giá trị phổ bi�
 | object_count | 0,3333 |
 | single_shape | 0,3333 |
 | **Tổng** | **0,3889** (224/576) |
+
+**Cách đọc đúng:** mọi kết quả ≥ 38,89% có thể đạt được **không cần nhìn ảnh**.
+Vì vậy accuracy của model phải được so với **38,89%**, không phải so với 0%.
+Con số này **không** phải khuyết điểm của dataset — một tập cân bằng là thuộc tính
+tốt. Nếu muốn một bộ thử thách khó hơn, đó là **dataset version mới**, phải trình
+thiết kế riêng; **không sửa tập hiện tại**.
 
 ### Tầng 2 — Tiền xử lý ảnh (mất thông tin)
 
