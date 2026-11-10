@@ -83,3 +83,17 @@ def test_identical_rejection_twice_stops_instead_of_retrying(app, monkeypatch):
     assert current['status'] == 'needs_help'
     assert current['remaining'] == 0
     assert second.get('stopped_identical_proposal') is True
+
+
+def test_before_probe_failure_never_falls_back_to_live_inference_or_teaching(app,monkeypatch):
+    from scarx.neural.unified import UnifiedCore
+    before=app._pack();calls={'loads':0,'live_generate':0};original=UnifiedCore.loads
+    monkeypatch.setattr(app,'_guard_pairs',lambda _p:[])
+    def fail_first(payload):
+        calls['loads']+=1
+        if calls['loads']==1:raise RuntimeError('Injected observation clone failure')
+        return original(payload)
+    def live_generate(*args,**kwargs):calls['live_generate']+=1;raise AssertionError('Live observation forbidden')
+    monkeypatch.setattr(UnifiedCore,'loads',staticmethod(fail_first));monkeypatch.setattr(app.model,'generate',live_generate)
+    with pytest.raises(RuntimeError,match='observation clone failure'):app.teach({'prompt':'hi','answer':'Hello.','repeats':1,'confirmation':True})
+    assert calls['live_generate']==0 and app._pack()==before

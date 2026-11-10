@@ -307,12 +307,12 @@ class Generation:
                 # step-isolation test: train_pair alone produced the correct
                 # answer 3/3 times, while generate()-then-train broke the read.
                 # The clone is discarded, so the session keeps ADR0006 continuity.
-                try:
-                    probe=UnifiedCore.loads(self.model.dumps())
-                    output_before=probe.generate(prompt)
-                    del probe
-                except Exception:
-                    output_before=self.model.generate(prompt)
+                # If the observation clone fails, abort and roll back. Falling
+                # back to live.generate() would silently reintroduce the exact
+                # state perturbation this observation is supposed to avoid.
+                probe=UnifiedCore.loads(self.model.dumps())
+                output_before=probe.generate(prompt)
+                del probe
                 began=time.monotonic()
                 planned=plan_workload(self.model,prompt,budget=data.get('neuron_budget'))
                 self.model.select_capacity(planned['requested_neurons'])
@@ -400,8 +400,8 @@ class Generation:
         their EXPECTED answer, and the caller's existing before/after scoring
         naturally ignores any candidate that was not already passing, because a
         pair only counts as lost when it passed before and fails after.
-        So adding a candidate cannot reject more, and it cannot protect a wrong
-        answer: a pair the model does not answer correctly is never "lost".
+        Adding a passing candidate can reject more regressions, which is the
+        purpose of coverage. A pair not already answered correctly is not lost.
 
         Threshold and scoring are unchanged.
         """
