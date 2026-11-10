@@ -1403,3 +1403,44 @@ Học được liên kết nhỏ, nhưng readout-only cũng đạt100%. Hidden p
 Lý do: gate nghiên cứu bắt buộc đã không đạt; không được diễn giải những mục này là hoàn thành.
 
 Tra cứu: [Phase 2.1](research/08_PHASE21_RESULTS.md), [Phase 2 lịch sử](research/06_FEASIBILITY_VERDICT.md), [run index](../runs/INDEX.md), [bản đồ](PROJECT_MAP.md).
+
+## 2026-11-11 — MTB multi-timescale readout (collab round 1, antigravity): PIVOT
+
+Nhánh 
+esearch/antigravity/scarx-neural-round1-20261111, Draft PR #3,
+candidate 9a9581. Environment: DeepSeek Harness; model thật:
+deepseek-ai/deepseek-v4.1-flash-1017 (Antigravity là nhãn agent/môi trường,
+không phải tên model).
+
+Giả thuyết: nền readout đa thang thời gian (5 decay 0,10–0,90 trên một W_out
+chung) sẽ tăng acquisition **và** tăng gain hidden, vì readout một-decay che mất
+phần hidden đã học. Neuron/dynamics/luật học hidden giữ nguyên; P0 xác nhận spike
+train bit-identical giữa các arm trên cùng trọng số (30/30 check).
+
+Screen 297 trial (11 arm × 3 task × 3 dev seed × 3 readout_lr): **mọi gate fail**.
+mtb − mtb_frozen = **+0,43pp [−0,91; +1,87]** và mtb − mtb_shuffle =
++0,65pp [−0,95; +2,30] ⇒ hidden learning đóng góp ~0 và tín hiệu học không quan
+trọng. Toàn bộ chênh lệch nằm ở task order, và mtb_only_slow (một decay 0,90,
+48 chiều, hidden đóng băng) đã đạt 65,89 ⇒ hiệu ứng là của **readout basis**, không
+phải học. xor và strict_binding không đổi (48–53%).
+
+Theo stop rule đã khóa: **không tune, không thêm seed, confirmation không mở**.
+Kết quả còn lại chỉ là chẩn đoán, không phải cải thiện học. Không claim
+chat/vision/reasoning/retention. Không đề xuất tích hợp vào Hermes.
+
+Phát hiện phụ có giá trị cho cả campaign: strict_binding cần feature **bậc 3**
+(order-1 0,52; order-2 0,54; order-3 1,00; label-shuffled 0,45), nên không thể
+giải bởi point neuron cộng tính + readout tuyến tính ở **bất kỳ** chất lượng luật
+học nào. Mọi báo cáo binding fail một phần là artifact của task.
+
+Cross-review: grok d509878 = **PARTIAL** (tái lập chính xác 6 arm mean và CI;
+phát hiện họ dùng t-interval chứ không phải bootstrap của repo, và trên cùng 8 số
+bootstrap cho lower bound dương còn t-interval chứa 0 ⇒ phương pháp quyết định
+verdict). Nhánh deepseek **không tồn tại trên remote** nên không thể review;
+ghi rõ là blocked, không phát tín hiệu cho target vắng mặt.
+
+Tra cứu: [protocol](../experiments/collab/scarx-neural-round1-20261111/antigravity/protocol-v1.md),
+[report](collab/scarx-neural-round1-20261111/antigravity/report.md),
+[lessons](collab/scarx-neural-round1-20261111/antigravity/lessons-learned.md),
+[run](../runs/20261110T194509Z-collab-mtb-screen-v1-de8c62/result.json).
+
