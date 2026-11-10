@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+**Grok round1:** `evaluation/slow_trace.py`, `grok_slow_trace_screen.py`, protocol
+`experiments/collab/scarx-neural-round1-20261111/grok/`; [rereview](research/collab/scarx-neural-round1-20261111/orchestrator/rereview-grok-d509878.md).
+NO-GO nghiên cứu, source/evidence integration only; không serving import.
+
+
 **Data grounding43:** [báo cáo43](research/43_ADAPTIVE_DATA_GROUNDING.md),
 `adaptive-curriculum-grounding-v1.md`, `evaluation/adaptive_grounding.py`,
 `data/fixtures/adaptive_chat_references_v1.json`. Data-only, không pilot/modelchange.

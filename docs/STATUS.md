@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Round1 Grok — review nghiên cứu, NO-GO giữ nguyên
+
+[Rereview d509878](research/collab/scarx-neural-round1-20261111/orchestrator/rereview-grok-d509878.md):
+corrected71005 replay exact, lowerCI−0.0028908<0.05, slowzero=frozen8/8.
+300tests qua, source app/neural/learning và G1release không đổi. Code/evidence
+được chuẩn bị trên nhánh integration nghiên cứu; main chưa được cập nhật và
+learner không được kích hoạt trong Hermes.
+Old14bf results giữ nguyên với phạm vi DEV_REUSE, không gọi heldout confirmation.
+
+
 ## P0 usefulness đã kiểm — pilot P2 chưa duyệt
 
 Người dùng chỉ duyệt P0. [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md),

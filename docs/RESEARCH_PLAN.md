@@ -1,6 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
-**Phiên bản tài liệu:** 1.32 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+**Phiên bản tài liệu:** 1.33 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+
+**Round1 Grok, nghiên cứu đã review:** [rereview d509878](research/collab/scarx-neural-round1-20261111/orchestrator/rereview-grok-d509878.md)
+xác nhận lại đúng split71005 và toàn bộ metric/prediction bằng replay độc lập.
+LowerCI95% hiddengain so frozen−0,0028908<0,05: **NO-GO** cho giả thuyết này,
+không là GO cho P1 rộng/chat/vision/retention. Tích hợp chỉ code/evidence nghiên
+cứu và kiểm loader; app/neural/learning, G1weights và các gate giữ nguyên.
 
 **Phê duyệt mới:** người dùng chọn **“Chỉ duyệt kiểm tra P0”** cho đề xuất
 usefulness v2. [Protocol P0](../experiments/readout-usefulness-p0-v1.md) chỉ mở
@@ -953,6 +959,14 @@ chưa được bật. Phán quyết khoa học vẫn PIVOT_NO_SCALE.
 | Product-first/MVP đã được duyệt | [ADR0005](decisions/0005-product-first-mvp.md) | Build app ngay bằng core hiện có, không dùng researchgate để chặn MVP; không tăng quy mô |
 
 ## 13. Change Log
+
+### 1.33 — 2026-11-11 — Round1 Grok review, source nghiên cứu riêng
+
+- Giữ protocol/result cũ, thêm confirmation71005 đúng và reproducibility evidence.
+- NO-GO hiddenlearning giữ nguyên; không hạ gate, không kích hoạt learner trong G1.
+-300tests qua; innerNPZ malformed validation có2regression mới, production source
+  không đổi. Đây là research integration, không nghiệm thu production.
+
 
 ### 1.32 — 2026-11-10 — Chỉ P0 được duyệt, đã kiểm kỹ thuật
 
