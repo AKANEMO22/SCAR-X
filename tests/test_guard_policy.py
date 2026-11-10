@@ -94,6 +94,10 @@ def test_before_probe_failure_never_falls_back_to_live_inference_or_teaching(app
         if calls['loads']==1:raise RuntimeError('Injected observation clone failure')
         return original(payload)
     def live_generate(*args,**kwargs):calls['live_generate']+=1;raise AssertionError('Live observation forbidden')
+    # A rejected teach restores the model by clearing its instance dict. Put the
+    # original method on the instance first so pytest puts it back with setattr.
+    # Deleting it on undo fails once rollback has already removed that entry.
+    app.model.generate = UnifiedCore.generate.__get__(app.model, UnifiedCore)
     monkeypatch.setattr(UnifiedCore,'loads',staticmethod(fail_first));monkeypatch.setattr(app.model,'generate',live_generate)
     with pytest.raises(RuntimeError,match='observation clone failure'):app.teach({'prompt':'hi','answer':'Hello.','repeats':1,'confirmation':True})
     assert calls['live_generate']==0 and app._pack()==before

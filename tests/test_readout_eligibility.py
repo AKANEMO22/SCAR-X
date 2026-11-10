@@ -70,6 +70,7 @@ def test_error_signal_stays_at_its_postsynaptic_row_and_clip_derivative_can_cut_
 
 
 def test_isolated_bptt_control_has_matched_frozen_head_and_exact_optimizer_continuation():
+    pytest.importorskip('torch')
     from scarx.evaluation.controls import EligibilityLearnabilityControl,torch
     torch.set_num_threads(1);a=make('frozen');b=ReadoutEligibility.loads(a.dumps());frozen=EligibilityLearnabilityControl(b);x,y=representation('xor',15119,4)
     for seq,label in zip(x,y):assert a.learn(seq,int(label))==frozen.learn(seq,int(label))

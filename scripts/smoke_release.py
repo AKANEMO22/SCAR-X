@@ -103,12 +103,15 @@ def stop(proc):
         log.close()
 
 
-def launch(port, data_dir):
+def launch(port, data_dir, idle=False):
     env = os.environ.copy()
     env.update(OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', MKL_NUM_THREADS='1')
     log = open(Path(data_dir) / 'server.log', 'w', encoding='utf-8')
+    command = [sys.executable, str(ROOT / 'run_app.py'), '--port', str(port), '--data-dir', str(data_dir)]
+    if not idle:
+        command.append('--no-idle')
     proc = subprocess.Popen(
-        [sys.executable, str(ROOT / 'run_app.py'), '--port', str(port), '--data-dir', str(data_dir), '--no-idle'],
+        command,
         cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, text=True,
     )
     proc.log = log
