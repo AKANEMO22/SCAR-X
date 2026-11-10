@@ -451,7 +451,7 @@ class Generation:
                 if flat[start:start+size]==flat[start+size:start+2*size]:
                     looping=True;break
             if looping:break
-        content_ok = (norm==tgt_norm or tgt_norm in norm) and not looping
+        content_ok = (norm==tgt_norm) and not looping
         # A reply only counts as complete if it really ends on punctuation.
         # 'Hello' vs target 'Hello.' is content-ok but NOT complete.
         complete_ok = bool(output.strip()) and output.strip()[-1] in '.!?'
