@@ -77,6 +77,61 @@ def test_union_is_not_the_naive_sum(token_sets):
     assert naive - overlap == len(token_sets['union'])
 
 
+def test_vocabulary_shortfall_is_measured_in_slots_not_content_tokens(token_sets):
+    """132 missing SLOTS, not 130 content tokens.
+
+    The artifact's needed_vocabulary_size (388) includes <eos>/<bos>, so the
+    shortfall against the 256 cap is 388-256 = 132 slots. Reporting 130 (the
+    content-only difference) understates what the vocabulary must allocate.
+    """
+    content = len(token_sets['union'])
+    slots_needed = content + 2
+    cap = 256
+    assert content == 386
+    assert slots_needed == 388
+    assert slots_needed - cap == 132, 'slot shortfall must be 132'
+    assert content - cap == 130, 'content-only overflow is 130 and is a different number'
+    assert slots_needed - cap != content - cap
+    # The artifact must agree with the slot basis.
+    art = json.loads(
+        (ROOT / 'artifacts' / 'adaptive-curriculum-grounding.json').read_text(encoding='utf-8'))
+    assert art['compatibility']['combined_public_release']['needed_vocabulary_size'] == 388
+
+
+def test_fully_known_reference_count_is_one_and_that_is_not_a_contradiction(data):
+    """Artifact says fully_known_reference_count = 1; docs used to say 'all'.
+
+    Verify the artifact is right: exactly one chat reference is covered by the
+    live vocabulary, none in vision. The vocabulary itself is never printed.
+    """
+    from scarx.app.generation import Generation
+    from scarx.evaluation.product_acceptance import copy_session
+    import shutil
+
+    work = copy_session(ROOT / 'local' / 'generation1')
+    app = Generation(work, background=False)
+    try:
+        live = set(app.model.vocabulary)
+    finally:
+        app.close()
+        shutil.rmtree(work.parent, ignore_errors=True)
+
+    chat_fully = [r['id'] for r in data['chat']
+                  if not (set(tokenize(r['reference_answer'])) - live)]
+    vis_fully = [r['id'] for r in data['vision']
+                 if not (set(tokenize(r['reference_answer'])) - live)]
+
+    art = json.loads(
+        (ROOT / 'artifacts' / 'adaptive-curriculum-grounding.json').read_text(encoding='utf-8'))
+    assert art['compatibility']['chat_public_release']['fully_known_reference_count'] == 1
+    assert art['compatibility']['vision_public_release']['fully_known_reference_count'] == 0
+
+    assert len(chat_fully) == 1, f'expected exactly 1 fully-known chat reference, got {chat_fully}'
+    assert len(vis_fully) == 0
+    # 670 of 671 references are still missing at least one token.
+    assert (len(data['chat']) - len(chat_fully)) + (len(data['vision']) - len(vis_fully)) == 670
+
+
 def test_unknown_token_count_must_use_intersection_not_size_difference(token_sets):
     """Subtracting vocabulary SIZE cannot tell you which tokens are missing.
 
@@ -119,33 +174,79 @@ def test_chance_baseline_split_by_class_count(data):
 
 
 # --------------------------------------------------- 4. colour loss is detected
-def test_grayscale_step_merges_colour_pairs(data):
-    """The pipeline must be shown to lose colour, and the test must catch it."""
-    import io
-    import numpy as np
-    from PIL import Image
+def test_colour_pairs_collapse_in_the_REAL_preprocessing_pipeline(data):
+    """Must exercise PilotLab.pixels() itself, not a private grayscale imitation.
+
+    The first version of this test re-implemented `img.convert('L').resize((8,8))`.
+    That could pass even if the production pipeline changed to keep colour, because
+    it tested my copy rather than the code the product runs. This calls the real
+    entry point and compares the vectors it returns.
+    """
+    import base64
+
+    from scarx.app.pilots import PilotLab
 
     imgdir = DATA.parent / 'images'
     by_group = defaultdict(set)
     for scene in data['scenes']:
         by_group[scene['counterfactual_group']].add(scene['file'])
 
-    merged = 0
+    def vector(rel_path):
+        raw = (DATA.parent / rel_path).read_bytes()
+        uri = 'data:image/png;base64,' + base64.b64encode(raw).decode()
+        pixels, _digest = PilotLab.pixels(uri)   # the REAL pipeline
+        return pixels.tobytes()
+
     pairs = 0
+    merged = 0
+    distinct_vectors = set()
     for files in by_group.values():
         if len(files) != 2:
             continue
-        keys = []
-        for rel in files:
-            raw = (imgdir.parent / rel).read_bytes() if not (imgdir.parent / rel).is_file() \
-                else (imgdir.parent / rel).read_bytes()
-            with Image.open(io.BytesIO(raw)) as img:
-                keys.append(np.asarray(img.convert('L').resize((8, 8)), np.uint8).tobytes())
+        a, b = sorted(files)
         pairs += 1
-        if keys[0] == keys[1]:
+        va, vb = vector(a), vector(b)
+        distinct_vectors.update({va, vb})
+        if va == vb:
             merged += 1
+
     assert pairs == 18, 'expected 18 pure colour-swap pairs'
-    assert merged == pairs, 'grayscale conversion should merge every colour pair'
+    assert merged == pairs, (
+        'the real PilotLab.pixels pipeline should merge every colour pair; '
+        'if this fails the pipeline changed and colour may now be preserved')
+
+
+def test_real_pipeline_yields_64_numbers_per_image(data):
+    """The documented input width, read from the production function."""
+    import base64
+
+    from scarx.app.pilots import PilotLab
+
+    scene = data['scenes'][0]
+    raw = (DATA.parent / scene['file']).read_bytes()
+    uri = 'data:image/png;base64,' + base64.b64encode(raw).decode()
+    pixels, _digest = PilotLab.pixels(uri)
+    assert pixels.size == 64, f'PilotLab.pixels must return 64 numbers, got {pixels.size}'
+    assert pixels.ndim == 2 and pixels.shape == (8, 8), 'expected the 8x8 digit grid'
+
+
+def test_distinct_64px_inputs_are_fewer_than_images(data):
+    """36 owned scenes must collapse to 18 distinct model inputs."""
+    import base64
+
+    from scarx.app.pilots import PilotLab
+
+    imgdir = DATA.parent / 'images'
+    vectors = set()
+    count = 0
+    for png in sorted(imgdir.glob('*.png')):
+        uri = 'data:image/png;base64,' + base64.b64encode(png.read_bytes()).decode()
+        pixels, _digest = PilotLab.pixels(uri)
+        vectors.add(pixels.tobytes())
+        count += 1
+    assert count == 36
+    assert len(vectors) == 18, (
+        f'colour information loss changed: {len(vectors)} distinct inputs for {count} images')
 
 
 # --------------------------------------- 5. development data is not final test

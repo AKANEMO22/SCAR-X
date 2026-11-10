@@ -94,12 +94,45 @@ Tổng thô `360+35 = 395` **sai** vì đếm trùng 9 token; `395−9 = 386` l�
 vocabulary cap trong code        : 256   (trần vị trí)
 vị trí cần                       : 388
 thiếu theo vị trí vocabulary     : 132   (388 − 256)
-thiếu theo token nội dung        : 130   (386 − 256)
+content token cần                : 386
+content token vượt cap           : 130   (386 − 256)
 reference dài quá 24 token       : 0
 ```
 
-**Hệ quả:** mọi reference đều cần ít nhất một token core chưa có →
-**decoder không thể sinh câu nào nguyên văn**, kể cả sau huấn luyện hoàn hảo.
+**Dùng số nào:** khi nói "vocabulary còn thiếu bao nhiêu" phải dùng **132 vị trí**,
+vì vocabulary chứa cả `<eos>`/`<bos>`. `130` chỉ là số **content token** vượt cap
+và **không** phải số slot còn thiếu.
+
+**Hệ quả:** 670/671 reference cần ít nhất một token core chưa có (xem §3b) →
+**decoder không thể sinh câu nào trong số đó nguyên văn**, kể cả sau huấn luyện
+hoàn hảo.
+
+### 3b. `fully_known_reference_count = 1` — giải thích chính xác
+
+Artifact ghi `fully_known_reference_count: 1` cho chat và `0` cho vision. Điều này
+**không** mâu thuẫn với kết luận trên; nó chỉ ra **một ngoại lệ**.
+
+Đã truy đúng reference đó (không xuất vocabulary):
+
+| Trường | Giá trị |
+|---|---|
+| `id` | `chat_identity_vi_07` |
+| Ngôn ngữ / family | `vi` / `identity` |
+| `reference_kind` | `project_behavior` |
+| Số token | **4** — tất cả đều có trong live vocabulary |
+| Độ dài | 14 ký tự |
+
+Phân bố số token thiếu:
+
+| Chat | | Vision | |
+|---|---:|---|---:|
+| fully known | **1**/95 | fully known | **0**/576 |
+| thiếu 1–21 token | 94/95 | thiếu 1–6 token | 576/576 |
+
+**Phát biểu đúng:** *1 trong 671 reference* (một câu identity tiếng Việt rất ngắn)
+được vocabulary hiện tại phủ đầy đủ; **670/671 còn lại đều thiếu ít nhất một token**.
+Docs trước ghi "mọi reference đều thiếu" là **sai** và đã sửa.
+
 
 **Lưu ý phương pháp:** số token "chưa biết" **không** được tính bằng
 `386 − kích thước vocabulary hiện tại`, vì phép trừ kích thước không cho biết tập
@@ -189,10 +222,25 @@ Theo từng kind:
 | single_shape | 0,3333 |
 | **Tổng** | **0,3889** (224/576) |
 
-**Cách đọc đúng:** mọi kết quả ≥ 38,89% có thể đạt được **không cần nhìn ảnh**.
-Vì vậy accuracy của model phải được so với **38,89%**, không phải so với 0%.
-Con số này **không** phải khuyết điểm của dataset — một tập cân bằng là thuộc tính
-tốt. Nếu muốn một bộ thử thách khó hơn, đó là **dataset version mới**, phải trình
+**Cách đọc đúng:** 38,89% là **mức tối ưu của một bộ dự đoán chỉ nhìn câu hỏi**
+trên đúng tập này — tức đoán giá trị phổ biến nhất cho mỗi câu hỏi, không dùng
+pixel. Đây là **một mốc so sánh**, **không phải** bằng chứng neural vision, và
+**không** phải khuyết điểm của dataset; một tập cân bằng là thuộc tính tốt.
+
+**Điều KHÔNG được suy ra:** không được nói "mọi accuracy cao hơn 38,89% đều có
+thể đạt bằng cách không nhìn ảnh". Sai, vì:
+
+- Con số này đo một **bộ dự đoán cố định** (majority per question), không đo mọi
+  chiến lược mù có thể có.
+- Một model có thể vượt 38,89% bằng **học thuộc câu hỏi → đáp án** mà vẫn không
+  nhìn ảnh (vì mỗi prompt lặp 36 lần với 1 trong 2–3 đáp án).
+- Ngược lại, vượt 38,89% **không** tự động chứng minh model dùng pixel.
+
+Vì vậy 38,89% là **sàn cần vượt**, và để chứng minh vision thật cần thêm phép đo
+tách biệt (ví dụ: cùng câu hỏi, đổi ảnh, kiểm tra đáp án đổi theo). Bước đó **chưa
+làm** và **chưa có số**.
+
+Nếu muốn một bộ thử thách khó hơn, đó là **dataset version mới**, phải trình
 thiết kế riêng; **không sửa tập hiện tại**.
 
 ### Tầng 2 — Tiền xử lý ảnh (mất thông tin)

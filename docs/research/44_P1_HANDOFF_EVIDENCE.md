@@ -72,13 +72,29 @@ và `3 <= len(vocabulary) <= 256`.
 | `<eos>` + `<bos>` | 2 |
 | **Vị trí vocabulary tối thiểu** | **388** |
 | Cap trong code | 256 |
-| **Thiếu theo vị trí** | **132** |
-| Thiếu theo token nội dung | 130 |
+| **Thiếu theo vị trí vocabulary** | **132** |
+| Content token vượt cap (khác nghĩa) | 130 |
 
 `<eos>`/`<bos>` **không** nằm trong tập token nội dung (đã kiểm).
 
-**Hệ quả:** mọi reference cần ít nhất một token core chưa có → decoder **không thể
-sinh câu nào nguyên văn**, kể cả sau huấn luyện hoàn hảo.
+**Dùng 132, không dùng 130.** Khi nói "vocabulary thiếu bao nhiêu" phải tính theo
+**vị trí** vì vocabulary chứa cả 2 token điều khiển. `130` chỉ là số content token
+vượt cap và không phải số slot cần cấp thêm.
+
+### `fully_known_reference_count = 1` — ngoại lệ có thật
+
+| | |
+|---|---|
+| Chat fully-known | **1**/95 — `chat_identity_vi_07` (vi, identity, 4 token, 14 ký tự) |
+| Vision fully-known | **0**/576 |
+| **Còn lại thiếu token** | **670/671** |
+
+Phát biểu đúng là *"670/671 reference thiếu ít nhất một token"*, **không** phải
+"mọi reference". Một câu identity tiếng Việt rất ngắn tình cờ được vocabulary hiện
+tại phủ đầy đủ.
+
+**Hệ quả:** 670/671 reference **không thể** sinh nguyên văn; 1 câu có thể về mặt
+token, nhưng vẫn phụ thuộc readout có chọn đúng token hay không — điều **chưa đo**.
 
 ### 1.5 Baseline "mù" của tập câu hỏi
 
@@ -90,9 +106,35 @@ Không nhìn ảnh, đoán giá trị phổ biến nhất mỗi câu hỏi:
 | 3 (three-class) | 384 | **0,3333** | 0,3333 |
 | **Tổng** | 576 | **0,3889** | 0,3889 |
 
-Majority = uniform vì mỗi câu hỏi cân bằng tuyệt đối. Đây là **optimal majority
-baseline**, **không phải lỗi cần hạ xuống**. Mọi accuracy ≥ 38,89% có thể đạt mà
-không cần nhìn ảnh.
+Majority = uniform vì mỗi câu hỏi cân bằng tuyệt đối.
+
+**Đây là mức tối ưu của bộ dự đoán chỉ nhìn câu hỏi** trên đúng tập này — một
+**mốc so sánh**, không phải bằng chứng neural vision, không phải khuyết điểm của
+dataset.
+
+**Không được suy ra** "mọi accuracy cao hơn 38,89% đều đạt được mà không nhìn ảnh".
+Sai, vì:
+
+- Đại lượng này đo **một** bộ dự đoán cố định (majority mỗi câu), không đo mọi
+  chiến lược mù.
+- Một model có thể vượt 38,89% bằng **học thuộc câu hỏi → đáp án** (mỗi prompt lặp
+  36 lần) mà không nhìn ảnh.
+- Ngược lại, vượt 38,89% **không** tự chứng minh model dùng pixel.
+
+Để chứng minh vision thật cần phép đo tách biệt (cùng câu hỏi, đổi ảnh, đáp án phải
+đổi theo). **Bước đó chưa làm, chưa có số.**
+
+### 1.6 Regression test cho mất màu dùng ĐÚNG pipeline thật
+
+Test không mô phỏng lại grayscale; nó gọi `PilotLab.pixels()` thật. Đã kiểm chứng
+bằng cách **tiêm lỗi**: đổi `convert('L')` → `convert('RGB')` trong
+`src/scarx/app/pilots.py` làm **3 test fail**, sau đó khôi phục nguyên vẹn.
+
+| Kịch bản | Kết quả |
+|---|---|
+| Pipeline hiện tại | 3 test pass |
+| Tiêm `convert('RGB')` | **3 test fail** ✅ bắt được |
+| Sau khôi phục | pass, `git diff` rỗng |
 
 ---
 
