@@ -6,7 +6,8 @@ real rule would apply (mean over endpoints, as `ReadoutEligibility.finish` does)
 to a disposable copy, using the checkpoint's own Adam/clip, and measure the real
 teacher-forced NLL change against norm-matched controls.
 
-No neuraltraining, optimizer, headrefit, newlearner, Torch or serving import.
+No persistentlearnertraining, headrefit, newlearner, Torch or serving import.
+One optimizerstep IS evaluated on disposablecopies; sourceobjects stayfixed.
 Source checkpoint objects are never mutated: every application happens on a
 deep copy and every protected field is asserted unchanged.
 """
@@ -73,7 +74,8 @@ def norm_matched(direction, rng):
     NOTE: this control does NOT match the POST-Adam applied magnitude, because
     Adam normalises elementwise and the real direction is sparse while a Gaussian
     is dense. Use `permuted` as the primary control; this one is secondary and
-    both applied norms are reported so the mismatch stays visible.
+    both applied norms are reported so the mismatch stays visible. Permutation
+    also fails to match post-Adam magnitude when synapsehistories differ.
     """
     raw = rng.standard_normal(direction.shape).astype(np.float32)
     norm = float(np.linalg.norm(raw.astype(np.float64)))
@@ -84,12 +86,13 @@ def norm_matched(direction, rng):
 
 
 def permuted(direction, rng):
-    """Primary control: the direction's own values in a shuffled position order.
+    """Shuffle the direction's values; retain the original historicalcontrol.
 
     Preserves the exact value multiset, the exact sparsity pattern size, the norm
-    and therefore the exact Adam/clip behaviour and applied magnitude, while
-    destroying which synapse receives which credit. This isolates alignment from
-    mere energy: if the local rule is informative it must beat its own shuffle.
+    but NOT Adam/clip behaviour or applied magnitude: per-synapse moments stay
+    attached to their synapses. It is a descriptive, magnitude-confoundedcontrol,
+    not a clean separation of alignment from stepenergy. Signflip before Adam
+    is also not an exact opposite appliedstep when momentum/clipping are present.
     """
     flat = np.asarray(direction, np.float32).ravel().copy()
     if not np.isfinite(flat).all():

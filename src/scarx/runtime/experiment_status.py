@@ -7,6 +7,7 @@ from .atomic_file import replace_with_retry
 _owned={};_lock=threading.RLock()
 RUN_ID=re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]{0,160}$')
 CATALOG=(
+ ('Review DeepSeek / kiểm chứng kỹ thuật độc lập','deepseek-product-review.json'),
  ('CáchdạyALIF / readonlyFREE-vs-GOLDPREFIX','word-training-objective-audit.json'),
  ('Directvisual37 / cachedeligibility và imageQA thật','direct-visual-bridge-latest.json'),
  ('Directvisual37 / math/parity/timing','direct-visual-preflight.json'),
@@ -147,6 +148,7 @@ def _summary(value):
       'main_local_learning_success','weights_imported_into_scarx','scarx_uses_qwen_proxy','normal_chat_or_vision_equivalence',
       'credit_signal_rows','credit_noise_contrasts','all_source_checkpoints_unchanged','all_weights_learningstate_rng_unchanged',
       'proposal30_approved','zero_frozen_equivalence','formal_screen_permitted','forecast_screen_seconds','candidate_signal_locality','zero_frozen_exact',
+      'deepseek_review_rows','metric_comparison_rows','source_count','main_training','main_restored','learning_rule_changed',
       'word_objective_rows','corpus_structure','all_source_freeoutputs_and_teachermetrics_reproduced',
       'visual_information_rows','information_collapse_rows','diagnostic_flags','neural_training','neural_update_steps',
       'scene_count','question_count','question_context_channels_nonzero_total','all_scene_question_inputs_identical',

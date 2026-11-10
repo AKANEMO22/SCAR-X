@@ -1,6 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
-**Phiên bản tài liệu:** 1.28 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+**Phiên bản tài liệu:** 1.30 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+
+**Đối chiếu cập nhật DeepSeek:** [review40](research/40_DEEPSEEK_REVIEW.md) kiểm
+guard/rollback/đo state và interference trên copiedmodels, không đổi learning
+rule/weights phiên người dùng đã restore. Productmetric v2 tách khỏi v1 để
+không viết lại số cũ; ACCEPTED khác acquisition. Workspace hiện đã có Git từ
+các cập nhật khác; review không init/commit/push. ProtocolReadoutProtection mới
+vẫn CHƯA DUYỆT, cần sửa thiết kế/đối chứng trước khi trình triển khai.
 
 **Phê duyệt mới ngày10/11/2026:** người dùng duyệt nghiên cứu đềxuất30,
 one-stepreadout-errorfeedback + neuron-localforwardeligibility trong prototype
@@ -504,6 +511,13 @@ Prefixrelianceflag khôngđạt, khôngtựkếtluận bỏquaquestion/loạib�
 FREEstrict32,81% khớp strictnguồn36, khác normalized35,94% do phạmvi metric,
 không đổi lịch sử.201tests/18,84s/0training, giữALIF/STOP/P1/P2 vàchưa learner mới.
 
+[Review40](research/40_DEEPSEEK_REVIEW.md) xử lý lỗi đo kỹ thuật sau cập nhật:
+transplant đúng nhóm AFTER/BEFORE, observation không fallback sang live, online
+SQLitebackup và metric/acquisition có version. Can thiệp unchangedlocalrule chỉ
+trên bản sao, phân biệt baseline sai và newlylost; không lấy norm/LR hoặc các
+checkpoint được chọn làm chứng minh đóng góp hidden hoặc seed độc lập. P1/P2,
+gate lịch sử/ALIF/2GB giữ nguyên, không deploy learner hoặc tự chạy protection.
+
 ### 4.2 Experience-to-Skill và phân công trách nhiệm
 
 | Mục tiêu | Neural core phải làm gì | Memory hỗ trợ gì | Learning controller phải làm gì | Hiện trạng |
@@ -931,6 +945,13 @@ chưa được bật. Phán quyết khoa học vẫn PIVOT_NO_SCALE.
   dùng làm bằng chứng. Bản `d8de33` lỗi đo đã`do_not_cite`.
 - Heldout ΔNLL −8,43e−05 CI−1,93e−04..1,91e−07: đúng hướng từng bài nhưng **không**
   tổngquát hoá. 214tests; mainALIF/2GB/STOP35–37/PIVOT giữ nguyên, chưa mở learner.
+
+### 1.30 — 2026-11-10 — Review cập nhật DeepSeek và lỗi đo sản phẩm
+
+- Giữ sửa guard/clone/isolation có ích, kiểm lại transplant/metric/acquisition.
+  v1 lịch sử giữ được; v2 canonical chặn substring/phủ định, không đổi gate.
+- Không sửa learning rule, source restoredweights hoặc kết luận hidden=0 từ
+  norm. ReadoutProtection còn dự thảo chưa duyệt; workspace Git được ghi nhận.
 
 ### 1.28 — 2026-11-10 — Audit tínhphùhợp của mụctiêuhọc
 

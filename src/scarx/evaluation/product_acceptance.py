@@ -276,10 +276,17 @@ def copy_session(source,*,destination_parent=None):
 
 
 def resources(app):
+    rss=commit=None
     try:
         info = app.process.memory_info()
         rss = int(info.rss)
+        commit=int(getattr(info,'private',info.vms))
     except Exception:
-        rss = None
-    return {'rss_bytes': rss, 'ram_limit_bytes': 2_000_000_000,
-            'under_limit': (rss is None or rss < 2_000_000_000)}
+        pass
+    monitor=getattr(app,'monitor',None)
+    peak_rss=getattr(monitor,'peak_rss',None);peak_commit=getattr(monitor,'peak_commit',None)
+    known=[v for v in (rss,commit,peak_rss,peak_commit) if isinstance(v,int)]
+    under=False if any(v>=2_000_000_000 for v in known) else (True if rss is not None and commit is not None else None)
+    return {'rss_bytes':rss,'commit_bytes':commit,'peak_rss_bytes':peak_rss,'peak_commit_bytes':peak_commit,
+        'ram_limit_bytes':2_000_000_000,'under_limit':under,'os_limit':getattr(app,'limit_status',None),
+        'scope':'Observedresident/commit/monitorpeaks; missingmeasurements never count as pass.'}

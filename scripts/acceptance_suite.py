@@ -11,6 +11,7 @@ for its own reasons (the idle loop), not because of this suite.
 No learning rule, topology, signal, guard threshold or architecture is changed.
 """
 import argparse
+import os
 import json
 import shutil
 import sqlite3
@@ -20,13 +21,16 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Bound this CLI's numerical workers before importing Generation/NumPy. This
+# changes processresource use only, never the user's persistent environment.
+for key in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS'):os.environ[key]='1'
 sys.path.insert(0, str(ROOT / 'src'))
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 from scarx.app.generation import Generation, normalized  # noqa: E402
 from scarx.evaluation.product_acceptance import (  # noqa: E402
-    CASES, HELDOUT, copy_session, guard_report, measure, summarise, weights_sha256,canonical_reply,
+    CASES, HELDOUT, copy_session, guard_report, measure, summarise, weights_sha256,canonical_reply,resources,
 )
 
 LIVE = ROOT / 'local' / 'generation1'
@@ -79,14 +83,16 @@ def snapshot(app,metric_version='product-canonical-v2'):
         'rss_bytes': app.process.memory_info().rss,
         'vms_bytes': getattr(app.process.memory_info(), 'vms', None),
         'metric_version':metric_version,'paraphrase_scope':'Six reused developmentphrases, NOT unseenfinaltest',
+        'resource_measurement':resources(app),
     }
 
 
 def teach_sequence(app, lessons):
     results = []
     for prompt, answer in lessons:
-        before=Generation._pair_verdict(canonical_reply(app.model,prompt)['text'],answer)
-        rec = {'prompt': prompt, 'answer': answer, 'accepted': False,'baseline_target_complete':before['complete_ok']}
+        before_text=canonical_reply(app.model,prompt)['text'];before=Generation._pair_verdict(before_text,answer)
+        rec = {'prompt': prompt, 'answer': answer, 'accepted': False,'before_generated':before_text,
+            'baseline_target_complete':before['complete_ok'],'baseline_target_content':before['content_ok']}
         try:
             out = app.teach({'prompt': prompt, 'answer': answer,
                              'repeats': 16, 'confirmation': True})
@@ -98,7 +104,9 @@ def teach_sequence(app, lessons):
             rec['error'] = f'{type(exc).__name__}'
             rec['guard_lost'] = getattr(exc, 'metrics', {}).get('guard_lost') \
                 if hasattr(exc, 'metrics') else None
-        after=Generation._pair_verdict(canonical_reply(app.model,prompt)['text'],answer)
+        after_text=canonical_reply(app.model,prompt)['text'];after=Generation._pair_verdict(after_text,answer)
+        rec['after_generated']=after_text;rec['target_content_after_attempt']=after['content_ok']
+        rec['new_content_acquired']=not before['content_ok'] and after['content_ok']
         rec['target_complete_after_attempt']=after['complete_ok']
         rec['newly_acquired']=not before['complete_ok'] and after['complete_ok']
         rec['accepted_without_acquisition']=rec['accepted'] and not rec['newly_acquired']
@@ -116,7 +124,9 @@ def run(do_teach, do_restart,metric_version='product-canonical-v2'):
             out['baseline'] = base
             if do_teach:
                 acquisition = teach_sequence(app, TEACH_SET)
-                for lesson in acquisition:lesson['target_complete_final']=Generation._pair_verdict(canonical_reply(app.model,lesson['prompt'])['text'],lesson['answer'])['complete_ok']
+                for lesson in acquisition:
+                    final=Generation._pair_verdict(canonical_reply(app.model,lesson['prompt'])['text'],lesson['answer'])
+                    lesson['target_complete_final']=final['complete_ok'];lesson['target_content_final']=final['content_ok']
                 taught = snapshot(app,metric_version)
                 out['acquisition'] = acquisition
                 out['taught'] = taught
@@ -134,7 +144,9 @@ def run(do_teach, do_restart,metric_version='product-canonical-v2'):
             finally:
                 reopened.close()
     finally:
-        shutil.rmtree(work.parent, ignore_errors=True)
+        cleanup=work.parent.resolve()
+        if cleanup.parent!=Path(tempfile.gettempdir()).resolve() or not cleanup.name.startswith('scarx-acc-') or work.name!='session':raise ValueError('Refusing cleanup outside owned acceptance scratchdirectory')
+        shutil.rmtree(cleanup, ignore_errors=True)
     return out
 
 
@@ -146,13 +158,20 @@ def metres(out):
     acq = out.get('acquisition', [])
     m = {}
     m['1_free_answer_accuracy'] = base['summary']['free_answer_correct']
-    m['2_heldout_generalization'] = base['heldout_acc']
+    m['2_heldout_generalization'] = None
+    m['2b_reused_development_paraphrases'] = base['heldout_acc']
+    m['2_evaluation_scope']='Six previously inspected developmentphrases; unseenfinalgeneralization NOT measured'
     if acq:
         eligible=[a for a in acq if a.get('baseline_target_complete') is False]
         m['3_learning_acquisition'] = sum(a.get('newly_acquired',False) for a in eligible)/len(eligible) if eligible else None
         m['3b_acquisition_denominator']=len(eligible)
         m['3c_final_new_targets_retained']=sum(a.get('target_complete_final',False) for a in eligible)/len(eligible) if eligible else None
+        content_eligible=[a for a in acq if a.get('baseline_target_content') is False]
+        m['3d_content_acquisition']=sum(a.get('new_content_acquired',False) for a in content_eligible)/len(content_eligible) if content_eligible else None
+        m['3e_content_acquisition_denominator']=len(content_eligible)
+        m['3_acquisition_scope']='Primary: newlycompletecanonicalreply, not broadskill; content-onlychange reportedseparately'
         m['5_guard_acceptance'] = sum(a['accepted'] for a in acq) / len(acq)
+        m['3_legacy_accepted_as_acquisition']=m['5_guard_acceptance']
         m['6_guard_regression'] = len(out.get('newly_lost', []))
     else:
         m['3_learning_acquisition'] = None
@@ -165,7 +184,10 @@ def metres(out):
     m['9_repetition'] = base['summary']['repetition']
     m['10_rss_bytes'] = base['rss_bytes']
     m['10_vms_bytes'] = base['vms_bytes']
-    m['10_under_2gb'] = base['rss_bytes'] < 2_000_000_000
+    m['10_under_2gb'] = base.get('resource_measurement',{}).get('under_limit')
+    m['10_commit_bytes']=base.get('resource_measurement',{}).get('commit_bytes')
+    m['10_peak_rss_bytes']=base.get('resource_measurement',{}).get('peak_rss_bytes')
+    m['10_peak_commit_bytes']=base.get('resource_measurement',{}).get('peak_commit_bytes')
     m['11_restart_persistence'] = (
         # Compare WEIGHTS, which must persist. Text comparison is unreliable
         # because the recurrent working state legitimately keeps moving, so a
@@ -177,6 +199,7 @@ def metres(out):
         if (taught and restart) else None)
     m['12_weights_proven'] = 'weights_sha256 (not the updates counter)'
     m['metric_version']=base.get('metric_version','legacy-keywords-v1')
+    m['thread_environment']={k:os.environ.get(k) for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS')}
     return m
 
 

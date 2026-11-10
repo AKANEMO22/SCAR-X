@@ -379,13 +379,22 @@ class Generation:
                 self.sequence+=1;self.trace.append({'id':self.sequence,'time':time.time(),'kind':'learning_update','mode':'foreground','weights_updated':True,'delta':delta,'source':prompt})
                 self.workload=finish_workload(self.model,planned,self.process.memory_info().rss)
                 return {'before':output_before,'after':output_after,'weight_delta':delta,'learning_metrics':metrics,'new_vocabulary_tokens':additions,'workload':self.workload,'checkpoint':checkpoint,'verified':False,'note':'Explicit human teaching; factual correctness is not automatically established.'}
-            except BaseException:
+            except BaseException as exc:
                 # Keep the rejection record (if any) so the observer can explain a
                 # refusal; only discard the in-flight working trace otherwise.
                 rejected_events=[e for e in self.trace if e.get('kind')=='learning_rejected']
                 self._unpack(original)
+                # Retained rejection IDs must stay visible to polling clients.
+                # Discarded working ticks must still roll back on other errors.
+                self.sequence=max([self.sequence]+[e['id'] for e in rejected_events])
                 self.trace.clear()
                 self.trace.extend(rejected_events[-4:])
+                if isinstance(exc,LearningGuardRejected) and not _automatic:
+                    # Persist the restoredmodel + rejectionevidence atomically.
+                    # Automaticpath records its own online-reject transaction.
+                    with self.db:
+                        self._persist()
+                        self._observation_event('teach-reject',exc.metrics,800)
                 raise
 
     def _guard_pairs(self,changing_prompt):
@@ -487,7 +496,8 @@ class Generation:
             current=next(l for l in self.dialogue.lessons if l['id']==identifier)
             record={**result['learning_metrics'],'accepted':True,'source':source,'lesson':identifier,'checkpoint':result['checkpoint']}
         except Exception as exc:
-            self._unpack(before);current=next(l for l in self.dialogue.lessons if l['id']==identifier)
+            observed_sequence=self.sequence
+            self._unpack(before);self.sequence=max(self.sequence,observed_sequence);current=next(l for l in self.dialogue.lessons if l['id']==identifier)
             current['remaining']=max(0,current['remaining']-1);current['attempts']+=1
             if current['remaining']==0:current['status']='needs_help'
             self.dialogue.rejected_updates+=1

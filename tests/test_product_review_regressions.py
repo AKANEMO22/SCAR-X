@@ -31,3 +31,16 @@ def test_guard_acceptance_is_not_newskill_acquisition():
     out={'baseline':base,'taught':base,'newly_lost':[],'acquisition':[{'accepted':True,'baseline_target_complete':True,'newly_acquired':False},
         {'accepted':True,'baseline_target_complete':False,'newly_acquired':False,'target_complete_final':False}]}
     metrics=metres(out);assert metrics['5_guard_acceptance']==1. and metrics['3_learning_acquisition']==0. and metrics['3b_acquisition_denominator']==1
+    out['acquisition'][1].update(baseline_target_content=True,newly_acquired=True,new_content_acquired=False,target_complete_final=True)
+    metrics=metres(out);assert metrics['3_learning_acquisition']==1. and metrics['3d_content_acquisition'] is None and metrics['3e_content_acquisition_denominator']==0
+
+
+def test_missing_ram_is_unknown_and_commit_breach_fails_even_with_low_rss():
+    from types import SimpleNamespace
+    from scarx.evaluation.product_acceptance import resources
+    class Missing:
+        def memory_info(self):raise RuntimeError('unavailable')
+    assert resources(SimpleNamespace(process=Missing()))['under_limit'] is None
+    class Commit:
+        def memory_info(self):return SimpleNamespace(rss=100,private=2_100_000_000,vms=2_100_000_000)
+    assert resources(SimpleNamespace(process=Commit()))['under_limit'] is False

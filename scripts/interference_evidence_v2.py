@@ -53,7 +53,7 @@ def reset_read(model, prompt):
 
 
 def margins(model, prompt):
-    """Top-2 logit margin at the first decision — a continuous signal, not norm."""
+    """Top-2 softmax probability margin, not a logit margin or weightnorm."""
     c = UnifiedCore.loads(model.dumps())
     c.core.reset_state()
     c.last_active[:] = c.ticks

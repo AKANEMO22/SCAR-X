@@ -1,5 +1,12 @@
 # Báo cáo A–I: Product-first + Root-cause Debugging
 
+> **Đối chiếu mới:** báo cáo này lưu phiên 22 vòng, không phải trạng thái mới
+> nhất. Kết luận A4 về rollback đã bị phép đo cô lập ở STATUS vòng 23 thay thế:
+> neural rollback đúng; idle và các lệnh đọc live xen kẽ làm nhiễu phép so sánh.
+> Giữ nguyên phần dưới làm lịch sử. [Review 40](research/40_DEEPSEEK_REVIEW.md)
+> còn kiểm chứng transplant, metric và acquisition. Các số phiên cũ không tự
+> trở thành kết quả của metric sản phẩm v2.
+
 Ngày 2026-11-10. Phiên làm việc 22 vòng liên tục trên SCAR-X Generation 1.
 Mọi con số dưới đây đều từ lệnh chạy thật trong session này; chỗ nào chưa đo
 được thì ghi rõ **chưa đo**, không suy diễn.

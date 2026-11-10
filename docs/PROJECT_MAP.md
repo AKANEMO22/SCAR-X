@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+**Review cập nhật DeepSeek 40:** [báo cáo40](research/40_DEEPSEEK_REVIEW.md),
+`experiments/deepseek-product-review-v1.md`, `evaluation/parameter_interventions.py`,
+`evaluation/product_acceptance.py` (v1/v2 tách nhãn), `scripts/review_deepseek_product.py`.
+Sửa before-clone failover/SQLitebackup/transplants/acquisition metrics; không
+đổi ALIF/learning rule hoặc restore phiên thật. Git đã có trong workspace do
+các cập nhật trước review; ghi nhận commit/hash, không init/commit/push ở đây.
+`readout-protection-v1.md` vẫn là đề xuất CHƯA DUYỆT, không code/chạy.
+
 **Credit alignment39:** [báo cáo39](research/39_LOCAL_CREDIT_ALIGNMENT.md), protocol
 `experiments/local-credit-alignment-audit-v1.md`, `evaluation/credit_alignment.py`,
 `scripts/audit_local_credit_alignment.py`; receipt`artifacts/local-credit-alignment.json`.

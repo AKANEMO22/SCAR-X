@@ -120,3 +120,4 @@
 - [20261110T072222Z-word-training-objective-audit-v1-6a768d](20261110T072222Z-word-training-objective-audit-v1-6a768d/report.md) — word-training-objective-audit-v1
 - [20261110T080003Z-local-credit-alignment-audit-v1-d8de33](20261110T080003Z-local-credit-alignment-audit-v1-d8de33/report.md) — local-credit-alignment-audit-v1
 - [20261110T080426Z-local-credit-alignment-audit-v1-db01fc](20261110T080426Z-local-credit-alignment-audit-v1-db01fc/report.md) — local-credit-alignment-audit-v1
+- [20261110T124259Z-deepseek-product-review-v1-f302b6](20261110T124259Z-deepseek-product-review-v1-f302b6/report.md) — deepseek-product-review-v1

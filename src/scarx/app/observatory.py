@@ -55,7 +55,7 @@ def observe_reviewed_state_prompt(app,root,data):
 
 def feed(app,root):
     with app.lock:
-        rows=app.db.execute("SELECT id,created,action,details FROM events WHERE action IN ('answer-trace','teach','online-learn','online-reject') ORDER BY id DESC LIMIT 180").fetchall()
+        rows=app.db.execute("SELECT id,created,action,details FROM events WHERE action IN ('answer-trace','teach','teach-reject','online-learn','online-reject') ORDER BY id DESC LIMIT 180").fetchall()
         controller={'accepted':app.dialogue.accepted_updates,'rejected':app.dialogue.rejected_updates,
             'queued':sum(l['status']=='queued' for l in app.dialogue.lessons),'updates':app.model.core.updates}
         live=[]

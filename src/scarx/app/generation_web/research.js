@@ -135,6 +135,14 @@
       job.result.vision_path_rows.forEach(r=>{const row=node('tr');[r.scene,r.cases,r.distinct_renderer_targets,yes(r.all_questions_same_neural_input),yes(r.all_questions_same_neural_probabilities),r.prototype_distinct_multimodal_sequences].forEach(x=>row.append(node('td',String(x??'chưa đo'))));table.append(row);});
       wrap.append(table);current.append(node('p','240lần gọi Generation.vision thật trên publicclone, cùngstate/48neurons; không học. Rawdigitreadout, không VQA. Đổi câu hỏi nhưng input giống nhau là giới hạn đường vào; khác biệt ở RGBprototype không chứng minh learnedgrounding. Qwen4Btext-only không là visionreference.','muted'),wrap);
     }
+    if(job.result?.deepseek_review_rows){
+      const rows=job.result.deepseek_review_rows,wrap=node('div',undefined,'table-scroll'),table=node('table',undefined,'lab-table'),h=node('tr');
+      ['Nguồn / bài / nhánh','Đúng trước','Mất sau học trên bản sao','Chỉ head gây mất','Chỉ hidden gây mất','Chỉ bias gây mất','Bước mất đầu'].forEach(x=>h.append(node('th',x)));table.append(h);
+      rows.forEach(r=>{const tr=node('tr');[r.source+' / '+r.lesson+' / '+r.arm,r.baseline_pass_count,r.newly_lost_count,r.head_loss_count,r.hidden_loss_count,r.bias_loss_count,r.first_loss_step??'không mất'].forEach(x=>tr.append(node('td',String(x))));table.append(tr);});wrap.append(table);
+      current.append(node('p','REVIEW DEEPSEEK · CAN THIỆP TRÊN BẢN SAO, KHÔNG DẠY PHIÊN THẬT','lab-verdict'),node('p','Mỗi nhóm được ghép đúng trọng số sau/trước học, cùng topology/vocabulary và trạng thái đo canonical. Chỉ đếm mất trên các câu đã đúng trước đó; câu vốn sai được tách riêng. Các checkpoint là trạng thái khởi đầu, không là seed độc lập. Norm/LR hoặc một cặp mất không chứng minh hidden vô ích. Đây là chẩn đoán kỹ thuật, không là model mới hoặc gate P1/P2.','muted'),wrap);
+      if(job.result.metric_comparison_rows){const legacy=job.result.metric_comparison_rows.filter(r=>r.legacy_v1_correct).length,strict=job.result.metric_comparison_rows.filter(r=>r.canonical_v2_correct).length;
+        current.append(node('p',`Cùng ${job.result.metric_comparison_rows.length} đầu ra neural được chấm bằng v1 (${legacy} pass) và v2 canonical (${strict} pass). Khác biệt metric không phải model học tốt hơn; v2 chỉ chấm kiểu đáp án cố định, không đo chất lượng hội thoại đa năng.`,'muted'));}
+    }
     if(job.result?.word_objective_rows){
       const rows=job.result.word_objective_rows,wrap=node('div',undefined,'table-scroll'),table=node('table',undefined,'lab-table'),head=node('tr');
       ['Nguồn / seed / split','FREE đúng token + EOS','Từ đầu (BOS)','Từ sau với tiền tố đúng','Từ sau khi đổi câu hỏi','Gap trên cùng vị trí','Vị trí chưa đến do dừng sớm','Cosine tín hiệu đầu/sau'].forEach(x=>head.append(node('th',x)));table.append(head);

@@ -1,5 +1,24 @@
 # Trạng thái SCAR-X
 
+## Đang kiểm tra độc lập cập nhật DeepSeek — review 40
+
+Giữ các sửa guard thủ công, before-clone, log reject và kiểm tra rollback có
+ích. Không coi đo trên state reset là hành vi live hoặc restore checkpoint là
+học được kỹ năng mới. Nhận định rollback hỏng trong A4 báo cáo cũ đã được phép
+đo cô lập vòng 23 thay thế; không sửa neural rollback vốn đã đúng.
+
+Đã sửa lỗi transplant trong `interference_evidence_v2.py`: bias/hidden/head
+phải thật sự chép đúng nhóm AFTER, giữ nhóm khác BEFORE. Thêm helper có test.
+Đã bỏ fallback gọi live.generate khi observation clone lỗi, chuyển sang abort/
+rollback; chụp SQLite dùng online backup. Metric sản phẩm v2 chặn false positive
+substring/phủ định, giữ v1 để đối chiếu, acquisition tách khỏi ACCEPTED. Các
+gate nghiên cứu/learning rule/weights phiên thật không đổi; đang chạy kiểm tra.
+
+Các kết luận vòng 24 bên dưới về “hidden gần như 0” dựa vào norm/LR và một bài
+không được xem là kết luận nhân quả tổng quát. Readout-only quên chứng minh
+readout có thể đủ gây quên ở trường hợp đó, không chứng minh hidden vô ích.
+Bản `readout-protection-v1.md` mới vẫn CHƯA DUYỆT, chưa code hoặc chạy.
+
 ## Vòng 24: interference là READOUT OVERWRITE, không phải hidden
 
 Chẩn đoán cơ chế theo đúng ưu tiên 4 của người dùng (readout interference,

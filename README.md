@@ -128,6 +128,12 @@ FREE/GOLDPREFIX và tínhđúngđắn của bài8style trêncheckpoint36, không
 mới. Goldprefix/tokenaccuracy không làfreeanswer hoặc hiểu ngônngữ; localhost
 ghi rõchẩnđoán/nguồn36/Qwen đãđo, khôngtrộn thành modelđangdùng.
 
+[Review DeepSeek40](docs/research/40_DEEPSEEK_REVIEW.md) giữ các sửa guard/state có ích,
+sửa lỗi intervention/metric/SQLite/trace và đo lại trên bản sao. Readout có thể
+ghi đè một cặp đã biết; chưa chứng minh hidden representation hoặc lifelong
+learning. Không đổi ALIF/learning rule/weights phiên thật, không chạy draft
+Readout Protection chưa duyệt. Kết quả thật tự hiện trên localhost.
+
 P2 hiện tại: [retention và cue/state diagnostic](docs/research/21_P2_RETENTION_AND_CUE_INFORMATION.md)
 chưa đạt acquisition/forgetting. Replay chưa đủ; đang ưu tiên representation,
 working-state và readout stability, chưa triển khai importance hoặc model mới.

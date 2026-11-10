@@ -1,5 +1,17 @@
 # Tín hiệu học cục bộ có thực sự đúng hướng?
 
+> **Lưu ý từ review 40:** giữ nguyên số liệu và protocol lịch sử, nhưng cần
+> thu hẹp kết luận. Tráo vị trí một vector không giữ nguyên bước Adam khi mỗi
+> synapse có moment/variance riêng; đảo dấu trước Adam cũng không tạo đúng
+> vector cập nhật đối nghịch. Tỷ lệ norm 0,995× là gần bằng, không phải khớp
+> chính xác. Test `test_credit_control_caveat.py` kiểm tra phản ví dụ này.
+> NLL train gần 0 là một cách giải thích có thể có, chưa chứng minh hiệu ứng
+> sàn là nguyên nhân duy nhất và không đủ lý do loại train khỏi kết luận.
+> Eligibility × readout error có dùng đạo hàm surrogate/xấp xỉ cục bộ; không
+> gọi autograd không có nghĩa là “không xấp xỉ gradient”. Các kết quả này là
+> bằng chứng can thiệp hẹp, chưa chứng minh dấu luôn đúng hoặc nguyên nhân
+> tổng quát hóa đã được phân lập duy nhất. [Review 40](40_DEEPSEEK_REVIEW.md).
+
 2026-11-10. **Đã hoàn tất audit chỉ đọc. Không huấn luyện, không cập nhật trọng số
 nguồn.** [Protocol39](../../experiments/local-credit-alignment-audit-v1.md) đăng ký
 trước khi viết code và đo. Đây là bước tiếp theo mà [audit38](38_WORD_TRAINING_OBJECTIVE_AUDIT.md)
