@@ -25,17 +25,22 @@ ROOT = Path(__file__).resolve().parents[3]
 
 # Product prompts whose currently-correct answers count as a protected skill.
 # Used only to decide WHICH passing pairs to guard; it is not an answer table and
-# is never consulted during generation. A pair is added only if the model already
-# answers it correctly, so this cannot manufacture capability.
+# is never consulted during generation. A candidate is added as a pair and the
+# existing before/after scoring decides whether it protects anything: a pair that
+# is not already correct cannot be "lost", so it can never block an update.
+#
+# Targets are the FULL expected reply, not a keyword. Measured defect: storing a
+# short target such as 'scar-x' while the model answers 'Tôi là scar-x.' made the
+# exact comparison fail forever, so the pair protected nothing (audit round 22).
 PRODUCT_GUARD_PROMPTS = {
-    'hi': 'hello',
-    'hello': 'hello',
-    'chào': 'chào bạn',
-    'chào bạn': 'chào bạn',
-    'bạn là ai': 'scar-x',
-    'bạn tên gì': 'scar-x',
-    'cảm ơn': 'không có gì',
-    'tạm biệt': 'tạm biệt',
+    'hi': 'Hello.',
+    'hello': 'Hello.',
+    'chào': 'Chào bạn.',
+    'chào bạn': 'Chào bạn.',
+    'bạn là ai': 'Tôi là SCAR-X.',
+    'bạn tên gì': 'Tôi là SCAR-X.',
+    'cảm ơn': 'Rất vui được giúp bạn.',
+    'tạm biệt': 'Tạm biệt bạn.',
 }
 
 
@@ -452,9 +457,11 @@ class Generation:
                     looping=True;break
             if looping:break
         content_ok = (norm==tgt_norm) and not looping
-        # A reply only counts as complete if it really ends on punctuation.
-        # 'Hello' vs target 'Hello.' is content-ok but NOT complete.
-        complete_ok = bool(output.strip()) and output.strip()[-1] in '.!?'
+        # Completeness requires the content to be right AND a real terminator.
+        # Measured defect: 'bạn làm được gì' answered 'Lời.' scored complete_ok=True
+        # while content_ok was False, so a junk one-word reply counted as a
+        # finished answer. Completeness alone is meaningless without content.
+        complete_ok = content_ok and bool(output.strip()) and output.strip()[-1] in '.!?'
         return {'content_ok':content_ok,'complete_ok':complete_ok,'repetition':looping}
 
     @staticmethod

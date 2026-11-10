@@ -202,8 +202,15 @@ def summarise(rows):
 
 
 def guard_report(app, exclude=None):
-    """Which guard pairs pass, scored exactly as the product guard scores them."""
+    """Which guard pairs pass, scored EXACTLY as the product guard scores them.
+
+    Uses Generation._pair_verdict so the dashboard, the acceptance suite and the
+    guard can never disagree about what "passing" means. They previously used two
+    different comparisons (this one ignored trailing punctuation), so the dashboard
+    could show a pair as PASS while the guard treated it as failing.
+    """
     from ..neural.unified import UnifiedCore
+    from ..app.generation import Generation
     pairs = app._guard_pairs(exclude or '__acceptance_probe__')
     rows = []
     for prompt, target in pairs:
@@ -211,8 +218,12 @@ def guard_report(app, exclude=None):
         clone.core.reset_state()
         clone.last_active[:] = clone.ticks
         out = clone.generate(prompt)['text']
+        verdict = Generation._pair_verdict(out, target)
         rows.append({'prompt': prompt, 'target': target, 'output': out,
-                     'pass': _normalized(out) == _normalized(target)})
+                     'content_ok': verdict['content_ok'],
+                     'complete_ok': verdict['complete_ok'],
+                     'repetition': verdict['repetition'],
+                     'pass': verdict['content_ok']})
     return rows
 
 

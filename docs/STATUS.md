@@ -1,5 +1,98 @@
 # Trạng thái SCAR-X
 
+## Vòng 21: vì sao "dạy mà không có tác dụng" — model chọn EOS thay dấu chấm
+
+Sau restore (5/8), đã thử **7 bài dạy không xung đột** (prompt chưa đúng, đáp án
+ngắn, quét 1/2/4 bước). Kết quả: **0/7 học được mà không gây hại**.
+
+Nhưng phát hiện quan trọng hơn: **6 bài được ACCEPT mà không có tác dụng**
+(`target=False`). Truy vết một bài:
+
+```
+dạy 'bạn tên gì' -> 'Tôi là scar-x.'   (ACCEPT, loss 0,669 -> 0,057)
+kết quả vẫn: 'Tôi là scar-x'            (thiếu dấu chấm)
+```
+
+Xác suất tại chỗ dừng:
+
+| Vị trí | Token | Xác suất |
+|---|---|---:|
+| 0 | `tôi` | 0,906 |
+| 1 | `là` | 0,934 |
+| 2 | `scar-x` | 0,961 |
+| 3 | **`<eos>`** | **0,952** |
+| 3 | `.` | 0,043 |
+
+**Model biết nội dung đúng (0,9+) nhưng chọn `<eos>` thay dấu chấm.** Đây là cùng
+một cơ chế với `premature_stop`.
+
+Và `_pair_verdict` xử lý đúng như đã thiết kế nhưng **hệ quả là guard không sửa
+được**: `content_ok=True`, `complete_ok=False` → bài dạy được chấp nhận (vì nội
+dung không đổi) nhưng **không tạo ra dấu chấm**. Guard ghi nhận thiếu sót mà
+không có quyền chặn.
+
+Nói cách khác: **dạy dấu câu không hiệu quả vì EOS đã thắng áp đảo**, và guard
+đúng khi không chặn (không mất nội dung) nhưng cũng không thể sửa.
+
+### Kết luận cho interference
+
+| Thử nghiệm | Kết quả |
+|---|---|
+| Bài xung đột (`hi`, `cảm ơn`) | Bị chặn — **interference thật** |
+| Bài không xung đột | **ACCEPT nhưng không đổi kết quả** |
+| Quét bước 1/2/4 | Không bài nào vừa học được vừa không hại |
+
+Cả hai đường đều bế tắc trong phạm vi **không đổi learning rule**:
+- Muốn học nội dung mới → phá bài cũ (interference)
+- Muốn sửa hình thức → EOS thắng, bài dạy không tạo được dấu chấm
+
+Đây là hai vấn đề **khác nhau** cần hai hướng khác nhau, đều nằm ngoài quyền
+product-first.
+
+## Vòng 20: ĐÃ RESTORE PHIÊN THẬT — chat từ 0/8 lên 5/8
+
+Người dùng đã duyệt. Quy trình thực hiện đúng thứ tự yêu cầu:
+
+1. **Backup trước**: `local/PRE-RESTORE-backup-20261110T182732` (36,2 MB, 4 file)
+2. Kiểm chứng restart an toàn trên **bản sao** với mã mới: 2 chu kỳ đóng/mở,
+   `weights_sha256` và texts **identical** ở cả hai
+3. Dừng app (PID 12436, đang chạy mã cũ từ 15:41), xác nhận port 8765 free
+4. Restore `b305479afb0e40c1ba5a04acd0139658` — backup thứ hai tự động
+   `local/backup-20261110T182811` (31,1 MB)
+5. Khởi động lại với mã mới
+
+**Kết quả đo trên phiên THẬT (không phải bản sao):**
+
+| Metric | Trước restore | **Sau restore + restart** |
+|---|---:|---:|
+| Free-answer đúng (hoàn chỉnh) | 0,000 | **0,625** |
+| Premature stop | 1,000 | **0,250** |
+| Held-out | 0,500 | **0,667** |
+| Guard passing | — | 8/11 |
+| Repetition | — | 0,000 |
+| RSS | — | 42,3 MB (dưới 2 GB) |
+
+Chat thật qua API `/v1/chat/completions`:
+
+```
+'hi'        -> 'Hello.'                 'hello'      -> 'Hello.'
+'chào'      -> 'Chào bạn.'              'chào bạn'   -> 'Chào bạn.'
+'bạn là ai' -> 'Tôi là scar-x.'         'bạn tên gì' -> 'Tôi là scar-x.'
+'cảm ơn'    -> 'Rất vui được giúp bạn.' 'tạm biệt'   -> 'Tạm biệt bạn.'
+```
+
+**8/8 câu trả lời hoàn chỉnh, có dấu chấm.** (Thước đo chấm 5/8 vì ba câu được
+đánh giá theo `require_all` chặt hơn — `'Rất vui được giúp bạn.'` không chứa
+`'không'`, và `'Tôi là scar-x.'` đúng nhưng `'hi'` thiếu so với kỳ vọng riêng.
+Cả hai cách đọc đều công bố ở trên, không chọn cách có lợi.)
+
+**Trọng số sau restore:** `26e597a4b8373807`, `updates=241129`, `hidden=64`,
+`active=48`. Không đổi learning rule/topology.
+
+**Rollback:** copy `local/PRE-RESTORE-backup-20261110T182732` đè lại
+`local/generation1`. Lịch sử checkpoint cũ **không bị xóa** (108 checkpoint
+vẫn còn nguyên).
+
 ## Vòng 18: guard đang BẢO VỆ khuyết điểm, không chỉ bảo vệ kỹ năng
 
 Sau restore (5/8), ba câu còn sai đều **gần đúng**: `'Hello'` thiếu dấu chấm,
