@@ -1,0 +1,20 @@
+{
+  "per_arm": {
+    "prod": 0.05,
+    "mtb": 0.05,
+    "prod_x240": 0.1,
+    "mtb_one_decay": 0.05,
+    "prod_frozen": 0.025,
+    "mtb_frozen": 0.1,
+    "prod_readout": 0.025,
+    "mtb_readout": 0.1,
+    "mtb_shuffle": 0.05,
+    "mtb_only_fast": 0.025,
+    "mtb_only_slow": 0.1
+  },
+  "selected_on": "development seeds only",
+  "selection_metric": "mean dev_direct across 3 tasks x 3 dev seeds",
+  "screen_run": "20261110T194509Z-collab-mtb-screen-v1-de8c62",
+  "screen_pass": false,
+  "note": "Written before any confirmation trial. Never re-tuned after."
+}
