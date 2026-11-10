@@ -8,6 +8,14 @@
 <p class="source-note">Hàng số phía dưới đọc từ <code>/api/status</code> của phiên đang mở. Đây không phải điểm benchmark và không phải kết quả nghiên cứu cũ.</p>
 <div class="metrics"><div><span>Trạng thái phiên</span><strong id="mode">—</strong></div><div><span>Neuron đang tính / đã cấp</span><strong id="neuron-now">—</strong></div><div><span>Nhịp neuron tích lũy</span><strong id="ticks">—</strong></div><div><span>Cập nhật synapse</span><strong id="updates">—</strong></div><div><span>RAM tiến trình / 2 GB</span><strong id="ram">—</strong></div><div><span>CPU · 100% = 1 core</span><strong id="cpu">—</strong></div><div><span>Guard chấp nhận</span><strong id="guard-accepted">—</strong></div><div><span>Guard từ chối</span><strong id="guard-rejected">—</strong></div></div>
 <p class="source-note" id="limits">Giới hạn năng lực đang đọc từ phiên…</p>
+<section class="panel roadmap-panel" id="neural-modes"><div class="panel-head"><div><p class="eyebrow">MỘT LÕI ALIF · BA CHẾ ĐỘ · KHÔNG PHẢI BA MODEL</p><h2>Neural Processing Modes</h2></div></div>
+<div class="mode-grid">
+<article><h3>Fast</h3><p id="mode-fast">Đang đọc phiên…</p><p class="muted">Đã có: request người dùng chiếm foreground. Mỗi từ chạy đúng 3 tick trên cùng lõi. Đây là xử lý nhanh, không phải hội thoại đã kiểm chứng.</p></article>
+<article><h3>Deep</h3><p id="mode-deep">Chưa triển khai. Không có nút suy nghĩ sâu.</p><p class="muted">Adaptive Computation Time và dừng theo độ khó chưa có trong serving. Thêm tick không được coi là suy luận tốt hơn. Ngân sách neuron chỉ theo lượng đầu vào.</p></article>
+<article><h3>Idle</h3><p id="mode-idle">Đang đọc phiên…</p><p class="muted">Đã có: tick nền khi không có request, và học có guard từ nhãn đã chấp nhận. Model không tự lấy câu nó vừa sinh làm sự thật. Tự đặt giả thuyết và tự thí nghiệm chưa triển khai.</p></article>
+</div>
+<p class="source-note">Fast và Idle lấy số từ <code>/api/status</code>. Deep không có số đo vì chế độ đó chưa chạy.</p>
+</section>
 <section class="panel roadmap-panel" id="roadmap"><div class="panel-head"><div><p class="eyebrow">TÀI LIỆU ĐÃ LƯU · KHÔNG ĐO LẠI TRÊN TRANG NÀY</p><h2>P0–P5 và các quyết định đã công bố</h2></div></div>
 <ul class="roadmap">
 <li><b>P0 Usefulness</b><span>Kiểm tra kỹ thuật đã xong theo báo cáo 42. Pilot 168 job chưa chạy và chưa được duyệt.</span></li>

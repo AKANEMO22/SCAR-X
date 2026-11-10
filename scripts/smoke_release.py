@@ -25,7 +25,7 @@ def free_port():
         return sock.getsockname()[1]
 
 
-def request(port, path, payload=None, token=None):
+def call(port, path, payload=None, token=None, timeout=30):
     headers = {'Host': f'127.0.0.1:{port}', 'Origin': f'http://127.0.0.1:{port}'}
     data = None
     if payload is not None:
@@ -33,9 +33,23 @@ def request(port, path, payload=None, token=None):
         headers['Content-Type'] = 'application/json'
         headers['X-SCARX-Token'] = token or ''
     req = urllib.request.Request(f'http://127.0.0.1:{port}{path}', data=data, headers=headers)
-    with urllib.request.urlopen(req, timeout=30) as response:
-        body = response.read()
-        return response.status, json.loads(body)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            return response.status, json.loads(response.read())
+    except urllib.error.HTTPError as exc:
+        raw = exc.read()
+        try:
+            body = json.loads(raw)
+        except json.JSONDecodeError:
+            body = {'error': raw.decode('utf-8', 'replace')}
+        return exc.code, body
+
+
+def request(port, path, payload=None, token=None):
+    status, body = call(port, path, payload, token)
+    if status >= 400:
+        raise urllib.error.HTTPError(path, status, str(body), hdrs=None, fp=None)
+    return status, body
 
 
 def wait_status(port, proc):
@@ -109,7 +123,29 @@ def main():
             report['neural_draft'] = neural
             report['chat_source'] = chat['source']
             report['openai_exposes_neural_draft'] = draft
-            after = wait_status(port, proc)
+            taught_status = wait_status(port, proc)
+            code, taught = call(port, '/api/teach', {
+                'prompt': 'smoke lesson', 'answer': 'Day la bai thu.', 'repeats': 1, 'confirmation': True,
+            }, taught_status['token'], timeout=90)
+            report['teach_http'] = code
+            report['updates_before_teach'] = taught_status['updates']
+            message = json.dumps(taught, ensure_ascii=False)
+            if code == 200:
+                metrics = taught.get('learning_metrics') or {}
+                if metrics.get('accepted') is not True or metrics.get('rolled_back') is not False:
+                    raise RuntimeError(f'teach 200 without an accepted update: {message}')
+                report['teach'] = 'accepted'
+            elif code == 400 and 'guard' in message.lower():
+                report['teach'] = 'rejected_and_rolled_back'
+            else:
+                raise RuntimeError(f'unexpected teach result {code}: {message}')
+            after_teach = wait_status(port, proc)
+            report['updates_after_teach'] = after_teach['updates']
+            if report['teach'] == 'accepted' and after_teach['updates'] <= taught_status['updates']:
+                raise RuntimeError('accepted teach did not advance the update counter')
+            if report['teach'] != 'accepted' and after_teach['updates'] != taught_status['updates']:
+                raise RuntimeError('rejected teach changed the update counter')
+            after = after_teach
             report['ticks_after_chat'] = after['ticks']
             if after['ticks'] <= first['ticks']:
                 raise RuntimeError('chat did not advance the neural clock')
@@ -121,6 +157,9 @@ def main():
             report['ticks_after_restart'] = restored['ticks']
             if restored['ticks'] != report['ticks_after_chat']:
                 raise RuntimeError(f'restart lost ticks: {report["ticks_after_chat"]} -> {restored["ticks"]}')
+            if restored['updates'] != report['updates_after_teach']:
+                raise RuntimeError(f'restart lost updates: {report["updates_after_teach"]} -> {restored["updates"]}')
+            report['updates_after_restart'] = restored['updates']
             report['passed'] = True
         finally:
             stop(proc)
