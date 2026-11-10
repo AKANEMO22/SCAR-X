@@ -145,7 +145,8 @@ def test_foreground_pending_preempts_idle_scheduler(tmp_path):
 
 @pytest.fixture
 def endpoint(app):
-    server=make_server(app,0);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+    server=make_server(app,0);assert server.daemon_threads is False
+    thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     yield app,'http://127.0.0.1:'+str(server.server_port)
     server.shutdown();server.server_close();thread.join()
 

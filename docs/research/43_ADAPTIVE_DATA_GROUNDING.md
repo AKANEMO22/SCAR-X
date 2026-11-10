@@ -257,7 +257,24 @@ Câu hỏi về **màu** không thể trả lời: hai ảnh khác màu cho **c�
 
 ### Tầng 3 — Decoder / vocabulary
 
-386 token cần, cap 256, live vocab 24 → không câu nào sinh được nguyên văn.
+**670/671 reference không thể sinh nguyên văn** vì thiếu ít nhất một token trong
+vocabulary hiện tại (386 content token + 2 control = 388 vị trí, cap 256, **thiếu
+132 vị trí**).
+
+**1/671 reference có đủ token** (`chat_identity_vi_07`, 4 token, vi/identity) —
+tức về mặt *từ vựng* nó **có thể** được sinh. Nhưng điều đó **chưa được chứng
+minh**: chưa có phép đo nào cho thấy readout của model thực sự chọn đúng 4 token
+đó. Có đủ token là điều kiện **cần**, không phải điều kiện **đủ**.
+
+Vì vậy phát biểu chính xác là:
+
+| Reference | Đủ token? | Sinh được nguyên văn? |
+|---|---|---|
+| 670/671 | ❌ thiếu ≥1 token | **Không thể** — thiếu token |
+| 1/671 (`chat_identity_vi_07`) | ✅ đủ | **Chưa chứng minh** |
+
+Không được viết "không câu nào sinh được" (sai với 1 reference đủ token), cũng
+không được viết "1 câu sinh được" (chưa đo readout).
 
 ### Phân biệt rõ bốn loại lỗi
 

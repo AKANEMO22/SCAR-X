@@ -251,7 +251,7 @@
     if(loading)return;loading=true;
     try{
       const data=await call('/api/research');el('research-connection').textContent='● Trạng thái được cập nhật';el('research-error').hidden=true;
-      const live=data.live_capacity;el('capacity-live').textContent=`Lõi trò chuyện hiện: ${live.active} đang tính / ${live.allocated} đã cấp / ${live.maximum} tối đa.`;
+      const live=data.live_capacity;el('capacity-live').textContent=`Lõi neural đang mở: ${live.active} đang tính / ${live.allocated} đã cấp / ${live.maximum} tối đa.`;
       if(live.workload)el('capacity-live').textContent+=` Lượt gần nhất: ${live.workload.input_characters} ký tự, ${live.workload.active_neurons} neuron.`;
       drawDemo(data.capacity_demo);drawJobs(data.jobs);drawHistory(data.history);drawArchive(data.answer_archive);
     }catch(error){el('research-connection').textContent='○ Chưa kết nối';el('research-error').hidden=false;el('research-error').textContent=error.message;}

@@ -50,6 +50,7 @@ def chat(app, data):
        'checkpoint':result['checkpoint'],'stopped':result['stopped'],
        'workload':result['workload'],
        'learning_question':result.get('learning_question'),'generation_source':result.get('source'),
+       'neural_draft':result.get('neural_draft',result.get('text')),
        'context_scope':'latest user text only; system/history not yet learned','thinking_trace':'local dashboard; measured events, not reasoning_content'})
 
 
@@ -156,7 +157,7 @@ def make_server(app, port=8765):
             except (MemoryError,TimeoutError) as exc:return self.send({'error':str(exc),'rolled_back':True},507)
             except Exception as exc:
                 print(f'POST: {type(exc).__name__}: {exc}',flush=True);return self.send({'error':'Thao tác lỗi; đợt học lỗi giữ state trước đó.'},500)
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler);server.daemon_threads=True;server.workbench=app;server.capacity_lab=capacity_lab
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler);server.daemon_threads=False;server.workbench=app;server.capacity_lab=capacity_lab
     original_close=server.server_close
     def close_server():capacity_lab.close();original_close()
     server.server_close=close_server
@@ -184,7 +185,7 @@ def main():
         print(f'SCAR-X · Thế hệ đầu: http://127.0.0.1:{args.port}\nModel: {MODEL}\nData: {app.directory.resolve()}\nMemory cap: {limit}',flush=True)
         try:server.serve_forever(poll_interval=.3)
         except KeyboardInterrupt:pass
-        finally:server.server_close()
+        finally:server.server_close()  # joins in-flight requests before the database close below
     finally:app.close()
 
 

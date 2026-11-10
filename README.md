@@ -35,7 +35,19 @@ trước khi force-stop; lần commit cuối được giữ. Không cần bật 
 Data mặc định `local/generation1/generation1.sqlite`. Nền lưu state mỗi30s;
 chat/dạy/checkpoint/dừng bình thường lưu ngay. Crash có thể mất tối đa30s hoạt
 động nền. Dữ liệu cũ `local/mvp` giữ lịch sử, không nạp hai pilot không tương
-thích vào neuron mới. G1 được huấn luyện lại từ đầu, không ghép hai checkpoint.
+thích vào neuron mới. Thư mục dữ liệu trống được nạp từ
+`artifacts/generation1-release.json`, không huấn luyện lại từ số ngẫu nhiên.
+
+`Start-SCARX.ps1` từ chối mở lần thứ hai nếu cổng đã có process.listen.
+`Stop-SCARX.ps1` chỉ dừng process của đúng checkout này. Kiểm tra một phiên tạm,
+không đụng `local/generation1`:
+
+```powershell
+python scripts\smoke_release.py
+```
+
+Smoke kiểm status, câu neural chưa kiểm chứng, và tick còn nguyên sau restart.
+Vision hiện là chữ số, không phải ảnh tổng quát. Chat chưa qua cửa chất lượng.
 
 ## Dùng và quan sát
 

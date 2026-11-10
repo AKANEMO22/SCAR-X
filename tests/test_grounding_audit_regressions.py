@@ -98,23 +98,30 @@ def test_vocabulary_shortfall_is_measured_in_slots_not_content_tokens(token_sets
     assert art['compatibility']['combined_public_release']['needed_vocabulary_size'] == 388
 
 
+RELEASE_CHECKPOINT = (ROOT / 'artifacts' / 'generation1'
+                      / '20261109T000625Z-generation1-joint-bd6c92'
+                      / 'seed-17.checkpoint.zip')
+
+
+def _release_vocabulary():
+    """Vocabulary of the COMMITTED generation1 release checkpoint.
+
+    Uses the versioned artifact, never the private live session. The live session
+    is not committed and does not exist on a clean clone, so a test that read it
+    could not run there. This checkpoint is in git and carries the same 24-token
+    vocabulary the product ships with.
+    """
+    from scarx.neural.unified import UnifiedCore
+    return set(UnifiedCore.loads(RELEASE_CHECKPOINT.read_bytes()).vocabulary)
+
+
 def test_fully_known_reference_count_is_one_and_that_is_not_a_contradiction(data):
     """Artifact says fully_known_reference_count = 1; docs used to say 'all'.
 
-    Verify the artifact is right: exactly one chat reference is covered by the
-    live vocabulary, none in vision. The vocabulary itself is never printed.
+    Verified against the COMMITTED release checkpoint, so this runs on a clean
+    clone with no local/ session. The vocabulary itself is never printed.
     """
-    from scarx.app.generation import Generation
-    from scarx.evaluation.product_acceptance import copy_session
-    import shutil
-
-    work = copy_session(ROOT / 'local' / 'generation1')
-    app = Generation(work, background=False)
-    try:
-        live = set(app.model.vocabulary)
-    finally:
-        app.close()
-        shutil.rmtree(work.parent, ignore_errors=True)
+    live = _release_vocabulary()
 
     chat_fully = [r['id'] for r in data['chat']
                   if not (set(tokenize(r['reference_answer'])) - live)]
@@ -127,9 +134,20 @@ def test_fully_known_reference_count_is_one_and_that_is_not_a_contradiction(data
     assert art['compatibility']['vision_public_release']['fully_known_reference_count'] == 0
 
     assert len(chat_fully) == 1, f'expected exactly 1 fully-known chat reference, got {chat_fully}'
+    assert chat_fully == ['chat_identity_vi_07']
     assert len(vis_fully) == 0
     # 670 of 671 references are still missing at least one token.
     assert (len(data['chat']) - len(chat_fully)) + (len(data['vision']) - len(vis_fully)) == 670
+
+
+def test_release_checkpoint_vocabulary_matches_the_shipped_contract():
+    """The committed checkpoint must satisfy the vocabulary contract the code enforces."""
+    vocab = _release_vocabulary()
+    assert len(vocab) == 24, f'release vocabulary size changed: {len(vocab)}'
+    from scarx.neural.unified import UnifiedCore
+    model = UnifiedCore.loads(RELEASE_CHECKPOINT.read_bytes())
+    assert model.vocabulary[:2] == ['<eos>', '<bos>']
+    assert 3 <= len(model.vocabulary) <= 256, 'must stay inside the code cap'
 
 
 def test_unknown_token_count_must_use_intersection_not_size_difference(token_sets):
