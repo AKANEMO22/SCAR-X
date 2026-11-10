@@ -1,6 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
-**Phiên bản tài liệu:** 1.31 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+**Phiên bản tài liệu:** 1.32 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
+
+**Phê duyệt mới:** người dùng chọn **“Chỉ duyệt kiểm tra P0”** cho đề xuất
+usefulness v2. [Protocol P0](../experiments/readout-usefulness-p0-v1.md) chỉ mở
+math/parity/codec/rollback/budget trong prototype ALIF riêng; **chưa duyệt pilot
+P2**, trainingchat/vision hoặc deploy. Các thông báo pending P0 phía dưới là
+lịch sử trước câu trả lời này. Không coi P0 pass là quality/retention pass.
 
 **Đối chiếu cập nhật DeepSeek:** [review40](research/40_DEEPSEEK_REVIEW.md) kiểm
 guard/rollback/đo state và interference trên copiedmodels, không đổi learning

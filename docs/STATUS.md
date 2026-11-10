@@ -1,5 +1,24 @@
 # Trạng thái SCAR-X
 
+## Chuẩn bị41 — data AGY mới / P2 usefulness chờ duyệt
+
+[Báo cáo41](research/41_ADAPTIVE_CURRICULUM_AND_P2_PROPOSAL.md), master1.31.
+AGY128wording thật, đọc128/giữ127/tách1;95chat+32visionquestions, chưa target
+train/ảnh mới/finaltest. Lượt đầu memoryfail được giữ; retry pinthread xong
+81.43s, peakcommit744MB. Không mở lại learner35–37 đã STOP bằng data này. 261/261tests qua;
+UI localhost đã kiểm, privateweights/64ALIF/source neural giữ nguyên.
+
+24case cố định đã đo trên currentmodelcopy và Qwen3-4B riêng;24/24 hoàn tất,
+10Qwenlengthcut, peakcommitreference3.210GB (budget4.5GB riêng), ownedserver đã
+tắt. SCAR-X vẫn câu cụt/sai ý định; Qwen cũng có câu nói quá hoặc hiểu nhầm.
+Không lấy Qwen làm nhãn, không score intelligence/equivalence. Rawpairs tự lên
+localhost. Sourcecopy không đổi; main không học/restore hoặc thêm neuron.
+
+`experiments/readout-usefulness-proposal-v2.md` là kế hoạch **CHỜ DUYỆT CODE**:
+P0 rồi pilot bounded, usefulness vs magnitude/shuffle/scalarLR, matchedΔWbank,
+eightfreshseeds, jointgates giữ nguyên. Không thay representation/P1 bằng
+protection-only, không code U khi chưa duyệt. MainALIF/2GB/no-scale giữ nguyên.
+
 ## Hoàn tất đối chiếu DeepSeek — review 40
 
 [Review40](research/40_DEEPSEEK_REVIEW.md), master1.30 và

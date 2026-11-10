@@ -128,6 +128,11 @@ FREE/GOLDPREFIX và tínhđúngđắn của bài8style trêncheckpoint36, không
 mới. Goldprefix/tokenaccuracy không làfreeanswer hoặc hiểu ngônngữ; localhost
 ghi rõchẩnđoán/nguồn36/Qwen đãđo, khôngtrộn thành modelđangdùng.
 
+[Chuẩn bị41](docs/research/41_ADAPTIVE_CURRICULUM_AND_P2_PROPOSAL.md): AGY128wording
+đã review,127giữ;24chat đối chiếu thật SCAR-X copy/Qwen,10Qwenoutput bị cắt.
+Đây là development/reference, không training hoặc cải thiện chất lượng. P2
+usefulness v2 đang chờ duyệt; chưa sửa model đang dùng hoặc mở lại familySTOP.
+
 [Review DeepSeek40](docs/research/40_DEEPSEEK_REVIEW.md) giữ các sửa guard/state có ích,
 sửa lỗi intervention/metric/SQLite/trace và đo lại trên bản sao. Readout có thể
 ghi đè một cặp đã biết; chưa chứng minh hidden representation hoặc lifelong

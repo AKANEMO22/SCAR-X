@@ -45,5 +45,30 @@
     "deep_thinking_adaptive_halting": "proposed",
     "idle_review": "experimental",
     "autonomous_idle_exploration": "proposed"
+  },
+  "measured_2026_11_10": {
+    "note": "Số đo thật trong phiên làm việc 2026-11-10. Không phải mục tiêu, không phải trung bình nhiều seed.",
+    "chat_product": {
+      "free_answer_accuracy": 0.625,
+      "premature_stop": 0.25,
+      "scope": "8 câu mẫu cố định, chấm từ reset state; phiên đã restore checkpoint b305479afb0e",
+      "before_restore": 0.0
+    },
+    "vision_digits": {
+      "synthetic_seven_segment_accuracy": 0.1,
+      "synthetic_antialiased_accuracy": 0.3,
+      "scope": "chỉ hình 7-segment tổng hợp; KHÔNG phải chữ viết tay; không suy ra general vision"
+    },
+    "retention_guard": {
+      "violations_over_9_lessons": 0,
+      "rollback_restores_all_neural_state": true,
+      "scope": "rollback khôi phục weights, voltage, adaptation, spikes, traces, eligibility, topology, vocabulary, RNG, clocks; chỉ bộ đếm sự kiện thay đổi"
+    },
+    "continual_learning": {
+      "newly_acquired_skills": 0,
+      "status": "not_achieved",
+      "root_cause": "interference: readout ghi đè; dạy nội dung mới phá cặp cũ. Can thiệp transplant chỉ-readout tái tạo được sự mất; hidden-only thì không.",
+      "guard_acceptance_rate": 0.333
+    }
   }
 }

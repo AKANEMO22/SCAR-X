@@ -1,7 +1,7 @@
 # P2 — Readout usefulness / bản thiết kế v2
 
-2026-11-10. **CHỜ DUYỆT CODE/THÍ NGHIỆM HỌC.** Chỉ cập nhật thiết kế và chuẩn
-bị dữ liệu được phép ở lượt này. Không thay draft v1, kết quả lịch sử hoặc gate.
+2026-11-10. **P0 ĐÃ DUYỆT RIÊNG; PILOT P2 CHƯA DUYỆT.** Thông báo chờ duyệt ở dưới mô tả lịch sử thiết kế;
+người dùng hiện chỉ duyệt [P0 kỹ thuật](readout-usefulness-p0-v1.md). Không thay draft v1, kết quả lịch sử hoặc gate.
 Master: `docs/RESEARCH_PLAN.md` §3.3, §7.2/P1/P2 và §11. Review căn cứ: báo cáo40.
 
 ## Câu hỏi và giới hạn

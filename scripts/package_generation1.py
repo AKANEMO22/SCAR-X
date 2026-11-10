@@ -91,6 +91,17 @@ files.extend(root/'artifacts'/name for name in ('local-credit-alignment.json',
  'deepseek-product-review.json','deepseek-review-software-validation-initial.json',
  'deepseek-review-software-validation.json','deepseek-review-live-preservation.json',
  'deepseek-review-acceptance.json','deepseek-review-delivery.json','deepseek-review-final.jpg'))
+files.extend(root/'artifacts'/name for name in ('adaptive-curriculum-data.json',
+ 'adaptive-curriculum-reviewed.json','adaptive-curriculum-reference.json',
+ 'adaptive-curriculum-software-validation.json','adaptive-curriculum-delivery.json',
+ 'adaptive-curriculum-reference-final.jpg'))
+# As-executed source snapshots, never private CLI logs/session DB/weights.
+for receipt_name in ('adaptive-curriculum-data.json','adaptive-curriculum-reviewed.json','adaptive-curriculum-reference.json'):
+    receipt=json.loads((root/'artifacts'/receipt_name).read_text(encoding='utf-8'))
+    snapshot=(root/receipt['run']/'source.zip').resolve()
+    assert snapshot.is_relative_to((root/'runs').resolve()) and snapshot.is_file()
+    files.append(snapshot)
+files.append(root/'runs/20261110T131337Z-adaptive-curriculum-data-v1-3c0f41/source.zip')
 # These12images are owned syntheticrenderer fixtures, not arbitrary userphotos.
 vision_receipt=root/'artifacts/vision-question-path-latest.json'
 if vision_receipt.is_file():
