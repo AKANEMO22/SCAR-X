@@ -24,9 +24,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def free_port():
-    with socket.socket() as sock:
-        sock.bind(('127.0.0.1', 0))
-        return sock.getsockname()[1]
+    for _ in range(16):
+        with socket.socket() as sock:
+            sock.bind(('127.0.0.1', 0))
+            port = sock.getsockname()[1]
+        if port != 8765:
+            return port
+    raise RuntimeError('could not reserve a port other than 8765')
 
 
 def call(port, path, payload=None, token=None, timeout=30):
@@ -58,10 +62,61 @@ def download(port, path, token=None, timeout=30):
         return response.read()
 
 
-def model_sha(blob):
+# session.json fields restored by a rejected teach. `sequence` is the audit
+# cursor: a refusal may keep a rejection event id, so it is not part of the
+# neural/controller identity. The events table is a log and may gain a row.
+RESTORED_SESSION_FIELDS = (
+    'format', 'sha256', 'dialogue_learning', 'rng', 'memories', 'probe',
+    'replay_cursor', 'idle_enabled', 'idle_hz', 'idle_steps', 'active',
+)
+
+
+def export_parts(blob):
     with zipfile.ZipFile(io.BytesIO(blob)) as archive:
         model = archive.read('model.zip')
+        session = json.loads(archive.read('session.json'))
+    return model, session
+
+
+def model_state_sha(blob):
+    """SHA-256 of model.zip only.
+
+    That blob is the neural dump: weights, recurrent state, ticks, update
+    counter, vocabulary and the capacity RNG. It is not a full-session hash.
+    Controller policy and the app RNG live in session.json.
+    """
+    model, _session = export_parts(blob)
     return hashlib.sha256(model).hexdigest()
+
+
+def model_sha(blob):
+    return model_state_sha(blob)
+
+
+def restored_session(session):
+    missing = [name for name in RESTORED_SESSION_FIELDS if name not in session]
+    if missing:
+        raise KeyError('session export missing ' + ', '.join(missing))
+    return {name: session[name] for name in RESTORED_SESSION_FIELDS}
+
+
+def rollback_observation(before_blob, after_blob):
+    """Compare a rejected or restored export without calling it a byte-identical session."""
+    before_model, before_session = export_parts(before_blob)
+    after_model, after_session = export_parts(after_blob)
+    before_sha = hashlib.sha256(before_model).hexdigest()
+    after_sha = hashlib.sha256(after_model).hexdigest()
+    return {
+        'model_state_sha_before': before_sha,
+        'model_state_sha_after': after_sha,
+        'model_state_sha_unchanged': before_sha == after_sha,
+        'controller_rng_dialogue_match': restored_session(before_session) == restored_session(after_session),
+        'audit_sequence_before': before_session.get('sequence'),
+        'audit_sequence_after': after_session.get('sequence'),
+        'identity': 'model.zip plus session controller, app RNG, dialogue, memories and idle policy',
+        'excluded_audit': 'sequence cursor and the events/trace log may change',
+        'regression_test': 'tests/test_rollback_full_state.py',
+    }
 
 
 def request(port, path, payload=None, token=None):
@@ -185,7 +240,7 @@ def main():
             try:
                 base = wait_status(reject_port, reject)
                 before_ids = [item['id'] for item in request(reject_port, '/api/checkpoints', None, base['token'])[1]]
-                before_model = model_sha(download(reject_port, '/api/export', base['token']))
+                before_blob = download(reject_port, '/api/export', base['token'])
                 code, refused = call(reject_port, '/api/teach', {
                     'prompt': 'cảm ơn', 'answer': 'Không có gì.', 'repeats': 16, 'confirmation': True,
                 }, base['token'], timeout=120)
@@ -194,16 +249,16 @@ def main():
                     raise RuntimeError(f'rejected scenario was not refused by the guard: {code} {text}')
                 after = wait_status(reject_port, reject)
                 after_ids = [item['id'] for item in request(reject_port, '/api/checkpoints', None, after['token'])[1]]
-                after_model = model_sha(download(reject_port, '/api/export', after['token']))
-                if after['updates'] != base['updates'] or after_model != before_model or after_ids != before_ids:
-                    raise RuntimeError('rejected teach did not restore the committed neural session')
+                observed = rollback_observation(before_blob, download(reject_port, '/api/export', after['token']))
+                if after['updates'] != base['updates'] or after_ids != before_ids or not observed['model_state_sha_unchanged'] or not observed['controller_rng_dialogue_match']:
+                    raise RuntimeError('rejected teach did not restore model state and controller/RNG session fields')
                 report['rejected_http'] = code
                 report['rejected_updates'] = after['updates']
-                report['rejected_model_unchanged'] = True
+                report['rollback'] = observed
                 report['rejected_checkpoints_unchanged'] = True
             finally:
                 stop(reject)
-                if report.get('rejected_model_unchanged'):
+                if report.get('rollback', {}).get('model_state_sha_unchanged'):
                     shutil.rmtree(reject_data, ignore_errors=True)
             report['passed'] = True
         finally:

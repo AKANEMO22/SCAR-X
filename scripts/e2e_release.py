@@ -78,10 +78,31 @@ def checkpoint_ids(port, token):
     return [row['id'] for row in rows]
 
 
+def reserve_port():
+    port = smoke.free_port()
+    if port == 8765:
+        raise RuntimeError('refusing to bind the live-session port')
+    return port
+
+
+def provenance():
+    sha = subprocess.run(
+        ['git', 'rev-parse', 'HEAD'], cwd=ROOT, capture_output=True, text=True, timeout=15,
+    )
+    return {
+        'role': 'automated_e2e',
+        'command': 'python scripts/e2e_release.py',
+        'python': sys.version,
+        'git_sha': (sha.stdout or '').strip() or None,
+        'not_a_ci_certificate': True,
+    }
+
+
 def main():
     live_before = listener_pid(8765)
     report = {
-        'live_port_8765_pid_before': live_before,
+        'provenance': provenance(),
+        'live_port_8765': {'before': live_before, 'status': 'present' if live_before is not None else 'N/A'},
         'live_generation1_untouched': True,
         'checks': {},
     }
@@ -93,9 +114,7 @@ def main():
             failures.append(name)
 
     data = Path(tempfile.mkdtemp(prefix='scarx-e2e-'))
-    port = smoke.free_port()
-    if port == 8765:
-        raise RuntimeError('free port collided with the live session')
+    port = reserve_port()
     report['port'] = port
     report['data_dir'] = str(data)
     proc = None
@@ -142,7 +161,8 @@ def main():
         seen = smoke.wait_status(port, proc)
         saved_code, saved = smoke.call(port, '/api/checkpoint', {}, seen['token'])
         baseline = smoke.wait_status(port, proc)
-        baseline_sha = smoke.model_sha(smoke.download(port, '/api/export', baseline['token']))
+        baseline_blob = smoke.download(port, '/api/export', baseline['token'])
+        baseline_sha = smoke.model_state_sha(baseline_blob)
         baseline_ids = checkpoint_ids(port, baseline['token'])
         baseline_id = saved.get('checkpoint') if saved_code == 200 else None
         check('manual_checkpoint', saved_code == 200 and baseline_id in baseline_ids and baseline['updates'] == seen['updates'], {
@@ -155,11 +175,13 @@ def main():
         metrics = (taught or {}).get('learning_metrics') or {}
         accepted = code == 200 and metrics.get('accepted') is True and metrics.get('rolled_back') is False and bool(taught.get('checkpoint'))
         after_accept = smoke.wait_status(port, proc)
-        accept_sha = smoke.model_sha(smoke.download(port, '/api/export', after_accept['token']))
+        accept_blob = smoke.download(port, '/api/export', after_accept['token'])
+        accept_sha = smoke.model_state_sha(accept_blob)
         accept_ids = checkpoint_ids(port, after_accept['token'])
         check('accepted_teach', accepted and after_accept['updates'] > baseline['updates'] and accept_sha != baseline_sha and taught['checkpoint'] in accept_ids and baseline_id in accept_ids, {
             'http': code, 'updates_before': baseline['updates'], 'updates_after': after_accept['updates'],
             'checkpoint': taught.get('checkpoint'), 'weight_delta': taught.get('weight_delta'),
+            'model_state_sha_changed': accept_sha != baseline_sha,
             'newly_acquired_skill': False,
         })
 
@@ -168,21 +190,30 @@ def main():
         }, after_accept['token'], timeout=120)
         text = json.dumps(refused, ensure_ascii=False)
         after_reject = smoke.wait_status(port, proc)
-        reject_sha = smoke.model_sha(smoke.download(port, '/api/export', after_reject['token']))
+        reject_obs = smoke.rollback_observation(accept_blob, smoke.download(port, '/api/export', after_reject['token']))
         reject_ids = checkpoint_ids(port, after_reject['token'])
-        check('rejected_rollback_keeps_prior_checkpoint', code == 400 and 'guard' in text.lower() and after_reject['updates'] == after_accept['updates'] and reject_sha == accept_sha and reject_ids == accept_ids and taught.get('checkpoint') in reject_ids, {
-            'http': code, 'message': refused, 'updates': after_reject['updates'],
+        check('rejected_model_and_controller_rollback', code == 400 and 'guard' in text.lower() and after_reject['updates'] == after_accept['updates'] and reject_obs['model_state_sha_unchanged'] and reject_obs['controller_rng_dialogue_match'] and reject_ids == accept_ids and taught.get('checkpoint') in reject_ids, {
+            'http': code, 'message': refused, 'updates': after_reject['updates'], 'rollback': reject_obs,
         })
 
         restored_code, restored = smoke.call(port, '/api/restore', {'checkpoint': baseline_id}, after_reject['token'], timeout=60)
         after_restore = smoke.wait_status(port, proc)
-        restore_sha = smoke.model_sha(smoke.download(port, '/api/export', after_restore['token']))
+        restore_blob = smoke.download(port, '/api/export', after_restore['token'])
+        restore_sha = smoke.model_state_sha(restore_blob)
+        _, baseline_session = smoke.export_parts(baseline_blob)
+        _, restore_session = smoke.export_parts(restore_blob)
+        policy = [name for name in smoke.RESTORED_SESSION_FIELDS if name != 'active']
+        policy_match = {name: baseline_session[name] for name in policy} == {name: restore_session[name] for name in policy}
         restore_ids = checkpoint_ids(port, after_restore['token'])
-        check('restore_baseline', restored_code == 200 and after_restore['updates'] == baseline['updates'] and restore_sha == baseline_sha and baseline_id in restore_ids and taught.get('checkpoint') in restore_ids, {
+        check('restore_baseline', restored_code == 200 and after_restore['updates'] == baseline['updates'] and restore_sha == baseline_sha and policy_match and baseline_id in restore_ids and taught.get('checkpoint') in restore_ids, {
             'http': restored_code,
             'updates': after_restore['updates'],
             'expected_updates': baseline['updates'],
-            'model_sha_matches_snapshot': restore_sha == baseline_sha,
+            'model_state_sha_matches_snapshot': restore_sha == baseline_sha,
+            'controller_rng_dialogue_match_except_new_checkpoint_id': policy_match,
+            'active_checkpoint_after_restore': restore_session.get('active'),
+            'audit_sequence_before': baseline_session.get('sequence'),
+            'audit_sequence_after': restore_session.get('sequence'),
             'snapshot_kept': baseline_id in restore_ids,
             'accepted_checkpoint_kept': taught.get('checkpoint') in restore_ids,
             'restored_from': restored.get('restored_from') if isinstance(restored, dict) else restored,
@@ -199,7 +230,7 @@ def main():
         })
         shutil.rmtree(other, ignore_errors=True)
 
-        locked_port = smoke.free_port()
+        locked_port = reserve_port()
         lock_env = os.environ.copy()
         lock_env['PYTHONIOENCODING'] = 'utf-8'
         locker = subprocess.run(
@@ -235,7 +266,7 @@ def main():
             shutil.copytree(data, backup, dirs_exist_ok=True)
             copy_sql = sqlite_report(backup)
             check('backup_copy_integrity', copy_sql['integrity_check'] == 'ok', copy_sql)
-            copy_port = smoke.free_port()
+            copy_port = reserve_port()
             copy_proc = smoke.launch(copy_port, backup)
             try:
                 copy_status = smoke.wait_status(copy_port, copy_proc)
@@ -263,7 +294,7 @@ def main():
             check('stability_exception', False, f'{type(exc).__name__}: {exc}')
 
     idle_data = Path(tempfile.mkdtemp(prefix='scarx-e2e-idle-'))
-    idle_port = smoke.free_port()
+    idle_port = reserve_port()
     idle = smoke.launch(idle_port, idle_data, idle=True)
     report['idle_port'] = idle_port
     try:
@@ -287,7 +318,7 @@ def main():
             shutil.rmtree(idle_data, ignore_errors=True)
 
     ui_data = Path(tempfile.mkdtemp(prefix='scarx-e2e-ui16-'))
-    ui_port = smoke.free_port()
+    ui_port = reserve_port()
     ui = smoke.launch(ui_port, ui_data)
     report['ui_repeats_16'] = []
     try:
@@ -310,10 +341,17 @@ def main():
         smoke.stop(ui)
         shutil.rmtree(ui_data, ignore_errors=True)
 
-    report['live_port_8765_pid_after'] = listener_pid(8765)
-    check('live_8765_unchanged', isinstance(live_before, int) and live_before == report['live_port_8765_pid_after'], {
-        'before': live_before, 'after': report['live_port_8765_pid_after'],
-    })
+    live_after = listener_pid(8765)
+    report['live_port_8765']['after'] = live_after
+    if live_before is None and live_after is None:
+        report['live_port_8765']['status'] = 'N/A'
+        report['checks']['live_8765'] = {'pass': True, 'status': 'N/A', 'detail': 'no listener on 8765'}
+    elif live_before is not None and live_after == live_before:
+        report['live_port_8765']['status'] = 'unchanged'
+        check('live_8765_unchanged', True, {'before': live_before, 'after': live_after})
+    else:
+        report['live_port_8765']['status'] = 'changed'
+        check('live_8765_unchanged', False, {'before': live_before, 'after': live_after})
     report['failures'] = failures
     report['passed'] = not failures
     if report['passed']:
