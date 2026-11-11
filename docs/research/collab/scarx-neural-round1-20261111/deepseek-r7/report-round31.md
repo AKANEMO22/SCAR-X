@@ -137,3 +137,27 @@ than of the mechanism.
 `scripts/r7_r31_nonlinear_90.py` · `artifacts/deepseek-r7/nonlinear-90cells.json` (90 cells,
 per-cell per-task deltas, both aggregations) · `report-round30.md` (whose 14/15 this explains) ·
 `report-round22.md` (the linear-head acquisition cost this compares against)
+
+---
+
+> ## GENERALITY REFUTED by round 32 — the result is T=3-specific
+>
+> Everything this report measures is real **at three tasks**. Round 32 ran the identical
+> protocol with **six** tasks on 12 fresh seeds:
+>
+> | config | mean forgetting | worst | seeds passing every gate |
+> |---|---:|---:|---:|
+> | **T=3** (this report) | **0.42pp** | 0.65pp | **15/15** |
+> | **T=6** (round 32) | **27.57pp** | 58.00pp | **0/12** |
+>
+> All three T=6 orders failed identically (27.57 / 28.92 / 29.94pp), so it is not an order
+> effect. And a confound check rules out the reduced per-task budget I used: T=3 at the same
+> reduced budget gives **0.71pp**, slightly *better* than 1.38pp at full budget.
+>
+> **So the 0.36pp nonlinear floor was a property of T=3, not a stable property.** The claims in
+> this report that survive are the T=3 mechanism findings; the implicit claim that they
+> generalise does not.
+>
+> This also means the mission's second goal is **not** met: it is met at T=3 and fails at T=6.
+>
+> See `report-round32.md`.

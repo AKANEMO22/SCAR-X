@@ -1,0 +1,1641 @@
+{
+  "tasks": [
+    "sim_xor",
+    "parity3",
+    "order_short",
+    "and3",
+    "maj3",
+    "xnor_delay"
+  ],
+  "n_tasks": 6,
+  "seeds": [
+    320001,
+    320007,
+    320013,
+    320019,
+    320025,
+    320031,
+    320037,
+    320043,
+    320049,
+    320055,
+    320061,
+    320067
+  ],
+  "orders": [
+    [
+      "sim_xor",
+      "parity3",
+      "order_short",
+      "and3",
+      "maj3",
+      "xnor_delay"
+    ],
+    [
+      "xnor_delay",
+      "maj3",
+      "and3",
+      "order_short",
+      "parity3",
+      "sim_xor"
+    ],
+    [
+      "and3",
+      "order_short",
+      "maj3",
+      "sim_xor",
+      "xnor_delay",
+      "parity3"
+    ]
+  ],
+  "arms": [
+    "noreplay",
+    "replay_tail"
+  ],
+  "by_order": {
+    "sim_xor..xnor_delay": {
+      "meanF": 28.916666666666668,
+      "worstF": 59.166666666666664,
+      "acq": 0.8547222222222222,
+      "seeds_ok": 0
+    },
+    "xnor_delay..sim_xor": {
+      "meanF": 27.566666666666666,
+      "worstF": 58.0,
+      "acq": 0.8527083333333333,
+      "seeds_ok": 0
+    },
+    "and3..parity3": {
+      "meanF": 29.941666666666666,
+      "worstF": 60.791666666666664,
+      "acq": 0.8753472222222222,
+      "seeds_ok": 0
+    }
+  },
+  "best_order": "xnor_delay..sim_xor",
+  "replay_acq_delta": {
+    "mean": -0.08430555555555559,
+    "ci95": [
+      -0.08941890470324469,
+      -0.07919220640786649
+    ]
+  },
+  "predictions": {
+    "P1_t6_gate": false,
+    "P2_replay_free": false
+  },
+  "verdict": "tier3_fails_t6",
+  "cells": [
+    {
+      "seed": 320001,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 42.19999999999999,
+          "meanF_signed": 42.19999999999999,
+          "worstF": 70.5,
+          "acq": 0.9458333333333333,
+          "final": 0.5941666666666666,
+          "delta": [
+            70.5,
+            66.0,
+            14.5,
+            36.0,
+            24.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 25.999999999999996,
+          "meanF_signed": 25.999999999999996,
+          "worstF": 55.00000000000001,
+          "acq": 0.8658333333333333,
+          "final": 0.6491666666666667,
+          "delta": [
+            55.0,
+            43.0,
+            2.5,
+            9.0,
+            20.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320001,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 41.0,
+          "meanF_signed": 38.9,
+          "worstF": 81.5,
+          "acq": 0.9325,
+          "final": 0.6083333333333333,
+          "delta": [
+            68.0,
+            81.5,
+            46.5,
+            -10.5,
+            9.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 25.5,
+          "meanF_signed": 23.899999999999995,
+          "worstF": 54.49999999999999,
+          "acq": 0.8566666666666668,
+          "final": 0.6575000000000001,
+          "delta": [
+            54.5,
+            51.5,
+            21.5,
+            -2.0,
+            -6.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320001,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 41.5,
+          "meanF_signed": 41.4,
+          "worstF": 81.5,
+          "acq": 0.9566666666666667,
+          "final": 0.6116666666666667,
+          "delta": [
+            36.0,
+            20.5,
+            69.5,
+            -0.5,
+            81.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.200000000000003,
+          "meanF_signed": 28.200000000000003,
+          "worstF": 57.00000000000001,
+          "acq": 0.8916666666666667,
+          "final": 0.6566666666666666,
+          "delta": [
+            29.5,
+            4.5,
+            57.0,
+            0.5,
+            49.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320007,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 43.2,
+          "meanF_signed": 43.2,
+          "worstF": 70.5,
+          "acq": 0.96,
+          "final": 0.6,
+          "delta": [
+            70.5,
+            69.0,
+            15.5,
+            29.5,
+            31.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 31.099999999999994,
+          "meanF_signed": 31.099999999999994,
+          "worstF": 58.5,
+          "acq": 0.8866666666666667,
+          "final": 0.6275000000000001,
+          "delta": [
+            58.5,
+            54.5,
+            2.5,
+            20.0,
+            20.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320007,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 45.50000000000001,
+          "meanF_signed": 45.50000000000001,
+          "worstF": 82.0,
+          "acq": 0.9674999999999999,
+          "final": 0.5883333333333334,
+          "delta": [
+            82.0,
+            78.0,
+            41.5,
+            26.0,
+            0.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.1,
+          "meanF_signed": 27.0,
+          "worstF": 57.49999999999999,
+          "acq": 0.8674999999999998,
+          "final": 0.6425,
+          "delta": [
+            57.5,
+            52.0,
+            27.5,
+            3.5,
+            -5.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320007,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 41.8,
+          "meanF_signed": 41.699999999999996,
+          "worstF": 85.0,
+          "acq": 0.9058333333333334,
+          "final": 0.5583333333333333,
+          "delta": [
+            39.5,
+            6.5,
+            78.0,
+            -0.5,
+            85.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 32.300000000000004,
+          "meanF_signed": 23.3,
+          "worstF": 67.0,
+          "acq": 0.8358333333333333,
+          "final": 0.6416666666666666,
+          "delta": [
+            35.0,
+            -42.5,
+            67.0,
+            -2.5,
+            59.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320013,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 52.1,
+          "meanF_signed": 52.1,
+          "worstF": 83.0,
+          "acq": 0.9891666666666666,
+          "final": 0.555,
+          "delta": [
+            83.0,
+            66.5,
+            44.0,
+            31.0,
+            36.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.900000000000006,
+          "meanF_signed": 30.500000000000004,
+          "worstF": 61.5,
+          "acq": 0.9008333333333333,
+          "final": 0.6466666666666666,
+          "delta": [
+            61.5,
+            50.0,
+            -2.0,
+            13.0,
+            30.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320013,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 36.5,
+          "meanF_signed": 36.5,
+          "worstF": 70.5,
+          "acq": 0.9833333333333334,
+          "final": 0.6791666666666667,
+          "delta": [
+            70.5,
+            67.5,
+            39.0,
+            3.5,
+            2.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 24.9,
+          "meanF_signed": 24.699999999999996,
+          "worstF": 54.49999999999999,
+          "acq": 0.8933333333333332,
+          "final": 0.6875,
+          "delta": [
+            54.5,
+            47.0,
+            22.0,
+            1.0,
+            -1.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320013,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 41.6,
+          "meanF_signed": 41.6,
+          "worstF": 89.0,
+          "acq": 0.93,
+          "final": 0.5833333333333334,
+          "delta": [
+            36.0,
+            10.5,
+            72.0,
+            0.5,
+            89.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.0,
+          "meanF_signed": 22.199999999999996,
+          "worstF": 62.999999999999986,
+          "acq": 0.8625000000000002,
+          "final": 0.6774999999999999,
+          "delta": [
+            33.5,
+            -39.0,
+            63.0,
+            5.0,
+            48.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320019,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 50.3,
+          "meanF_signed": 50.3,
+          "worstF": 92.5,
+          "acq": 0.9116666666666666,
+          "final": 0.4925,
+          "delta": [
+            92.5,
+            82.0,
+            2.0,
+            56.5,
+            18.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.500000000000004,
+          "meanF_signed": 29.100000000000005,
+          "worstF": 56.00000000000001,
+          "acq": 0.8041666666666667,
+          "final": 0.5616666666666666,
+          "delta": [
+            56.0,
+            45.5,
+            -2.0,
+            21.5,
+            24.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320019,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 41.099999999999994,
+          "meanF_signed": 40.39999999999999,
+          "worstF": 91.0,
+          "acq": 0.91,
+          "final": 0.5733333333333334,
+          "delta": [
+            91.0,
+            76.5,
+            35.0,
+            -3.5,
+            3.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.300000000000004,
+          "meanF_signed": 27.500000000000004,
+          "worstF": 64.0,
+          "acq": 0.8183333333333334,
+          "final": 0.5891666666666667,
+          "delta": [
+            64.0,
+            56.5,
+            26.0,
+            -4.5,
+            -4.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320019,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 42.1,
+          "meanF_signed": 42.1,
+          "worstF": 94.5,
+          "acq": 0.9291666666666667,
+          "final": 0.5783333333333334,
+          "delta": [
+            34.5,
+            3.5,
+            76.5,
+            1.5,
+            94.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 31.3,
+          "meanF_signed": 30.5,
+          "worstF": 65.5,
+          "acq": 0.8608333333333332,
+          "final": 0.6066666666666666,
+          "delta": [
+            30.0,
+            -4.0,
+            65.5,
+            14.0,
+            47.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320025,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 50.5,
+          "meanF_signed": 50.5,
+          "worstF": 97.5,
+          "acq": 0.975,
+          "final": 0.5541666666666667,
+          "delta": [
+            97.5,
+            81.0,
+            12.0,
+            47.0,
+            15.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.7,
+          "meanF_signed": 28.7,
+          "worstF": 57.00000000000001,
+          "acq": 0.88,
+          "final": 0.6408333333333333,
+          "delta": [
+            57.0,
+            48.0,
+            4.5,
+            14.0,
+            20.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320025,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 45.599999999999994,
+          "meanF_signed": 45.599999999999994,
+          "worstF": 77.5,
+          "acq": 0.9758333333333332,
+          "final": 0.5958333333333333,
+          "delta": [
+            75.0,
+            77.5,
+            42.5,
+            32.5,
+            0.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.400000000000006,
+          "meanF_signed": 29.400000000000006,
+          "worstF": 59.5,
+          "acq": 0.8916666666666666,
+          "final": 0.6466666666666666,
+          "delta": [
+            59.5,
+            41.5,
+            33.5,
+            6.5,
+            6.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320025,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 48.9,
+          "meanF_signed": 48.8,
+          "worstF": 89.5,
+          "acq": 0.9925,
+          "final": 0.5858333333333333,
+          "delta": [
+            40.0,
+            41.0,
+            74.0,
+            -0.5,
+            89.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.500000000000004,
+          "meanF_signed": 30.500000000000004,
+          "worstF": 54.50000000000001,
+          "acq": 0.9133333333333332,
+          "final": 0.6591666666666667,
+          "delta": [
+            30.0,
+            14.5,
+            54.5,
+            2.0,
+            51.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320031,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 43.4,
+          "meanF_signed": 43.4,
+          "worstF": 74.0,
+          "acq": 0.9041666666666667,
+          "final": 0.5425,
+          "delta": [
+            74.0,
+            71.0,
+            0.5,
+            39.5,
+            32.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.900000000000006,
+          "meanF_signed": 27.500000000000004,
+          "worstF": 67.5,
+          "acq": 0.8133333333333334,
+          "final": 0.5841666666666666,
+          "delta": [
+            67.5,
+            48.5,
+            -17.0,
+            18.5,
+            20.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320031,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 36.6,
+          "meanF_signed": 36.6,
+          "worstF": 72.5,
+          "acq": 0.8983333333333333,
+          "final": 0.5933333333333334,
+          "delta": [
+            69.5,
+            72.5,
+            39.0,
+            0.0,
+            2.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 25.900000000000002,
+          "meanF_signed": 24.500000000000004,
+          "worstF": 56.00000000000001,
+          "acq": 0.7983333333333333,
+          "final": 0.5941666666666666,
+          "delta": [
+            56.0,
+            47.5,
+            26.0,
+            -2.0,
+            -5.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320031,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 43.10000000000001,
+          "meanF_signed": 42.9,
+          "worstF": 82.0,
+          "acq": 0.965,
+          "final": 0.6075,
+          "delta": [
+            37.5,
+            21.0,
+            75.0,
+            -1.0,
+            82.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.3,
+          "meanF_signed": 30.3,
+          "worstF": 61.5,
+          "acq": 0.9,
+          "final": 0.6475,
+          "delta": [
+            30.0,
+            9.5,
+            61.5,
+            6.0,
+            44.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320037,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 46.699999999999996,
+          "meanF_signed": 46.699999999999996,
+          "worstF": 82.5,
+          "acq": 0.9525000000000001,
+          "final": 0.5633333333333334,
+          "delta": [
+            82.5,
+            67.5,
+            14.0,
+            45.0,
+            24.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.0,
+          "meanF_signed": 29.000000000000004,
+          "worstF": 61.5,
+          "acq": 0.8641666666666666,
+          "final": 0.6225,
+          "delta": [
+            61.5,
+            53.0,
+            -5.0,
+            19.5,
+            16.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320037,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 43.2,
+          "meanF_signed": 43.2,
+          "worstF": 80.5,
+          "acq": 0.9566666666666667,
+          "final": 0.5966666666666666,
+          "delta": [
+            80.5,
+            73.5,
+            37.5,
+            24.5,
+            0.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.9,
+          "meanF_signed": 28.4,
+          "worstF": 55.49999999999999,
+          "acq": 0.8566666666666665,
+          "final": 0.62,
+          "delta": [
+            51.0,
+            55.5,
+            34.5,
+            3.5,
+            -2.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320037,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 40.199999999999996,
+          "meanF_signed": 40.199999999999996,
+          "worstF": 84.0,
+          "acq": 0.9674999999999999,
+          "final": 0.6325,
+          "delta": [
+            36.0,
+            4.0,
+            75.5,
+            1.5,
+            84.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 31.899999999999995,
+          "meanF_signed": 31.899999999999995,
+          "worstF": 64.99999999999999,
+          "acq": 0.9008333333333333,
+          "final": 0.635,
+          "delta": [
+            31.0,
+            7.0,
+            65.0,
+            11.5,
+            45.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320043,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 46.3,
+          "meanF_signed": 46.3,
+          "worstF": 74.5,
+          "acq": 0.9525,
+          "final": 0.5666666666666668,
+          "delta": [
+            74.5,
+            61.5,
+            27.0,
+            33.0,
+            35.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.0,
+          "meanF_signed": 23.200000000000003,
+          "worstF": 57.00000000000001,
+          "acq": 0.8316666666666666,
+          "final": 0.6383333333333333,
+          "delta": [
+            57.0,
+            51.5,
+            -34.0,
+            23.5,
+            18.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320043,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 39.699999999999996,
+          "meanF_signed": 39.699999999999996,
+          "worstF": 73.5,
+          "acq": 0.935,
+          "final": 0.6041666666666666,
+          "delta": [
+            73.5,
+            71.5,
+            35.5,
+            16.0,
+            2.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 24.6,
+          "meanF_signed": 22.4,
+          "worstF": 56.00000000000001,
+          "acq": 0.8275000000000001,
+          "final": 0.6408333333333333,
+          "delta": [
+            56.0,
+            50.0,
+            17.0,
+            -6.0,
+            -5.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320043,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 39.4,
+          "meanF_signed": 39.3,
+          "worstF": 75.5,
+          "acq": 0.935,
+          "final": 0.6075,
+          "delta": [
+            33.5,
+            13.0,
+            75.0,
+            -0.5,
+            75.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.700000000000003,
+          "meanF_signed": 23.599999999999998,
+          "worstF": 61.999999999999986,
+          "acq": 0.8458333333333332,
+          "final": 0.6491666666666667,
+          "delta": [
+            27.0,
+            -25.5,
+            62.0,
+            2.5,
+            52.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320049,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 48.4,
+          "meanF_signed": 48.4,
+          "worstF": 83.5,
+          "acq": 0.9725,
+          "final": 0.5691666666666667,
+          "delta": [
+            83.5,
+            79.0,
+            24.0,
+            42.0,
+            13.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.000000000000004,
+          "meanF_signed": 29.000000000000004,
+          "worstF": 57.49999999999999,
+          "acq": 0.8933333333333332,
+          "final": 0.6516666666666667,
+          "delta": [
+            57.5,
+            45.0,
+            6.0,
+            14.0,
+            22.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320049,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 40.199999999999996,
+          "meanF_signed": 40.099999999999994,
+          "worstF": 80.5,
+          "acq": 0.9783333333333334,
+          "final": 0.6441666666666667,
+          "delta": [
+            80.5,
+            76.5,
+            38.5,
+            5.5,
+            -0.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.9,
+          "meanF_signed": 29.9,
+          "worstF": 57.49999999999999,
+          "acq": 0.8849999999999999,
+          "final": 0.6358333333333334,
+          "delta": [
+            57.5,
+            52.5,
+            32.5,
+            2.0,
+            5.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320049,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 46.5,
+          "meanF_signed": 46.4,
+          "worstF": 96.5,
+          "acq": 0.9758333333333334,
+          "final": 0.5891666666666667,
+          "delta": [
+            40.0,
+            22.5,
+            73.5,
+            -0.5,
+            96.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 31.6,
+          "meanF_signed": 31.0,
+          "worstF": 61.00000000000001,
+          "acq": 0.895,
+          "final": 0.6366666666666667,
+          "delta": [
+            33.0,
+            7.5,
+            61.0,
+            -3.0,
+            56.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320055,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 44.699999999999996,
+          "meanF_signed": 44.699999999999996,
+          "worstF": 88.5,
+          "acq": 0.9141666666666666,
+          "final": 0.5416666666666666,
+          "delta": [
+            88.5,
+            71.5,
+            6.5,
+            35.5,
+            21.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 25.900000000000002,
+          "meanF_signed": 19.199999999999996,
+          "worstF": 59.5,
+          "acq": 0.8183333333333332,
+          "final": 0.6583333333333333,
+          "delta": [
+            59.5,
+            51.5,
+            -33.5,
+            10.5,
+            8.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320055,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 37.89999999999999,
+          "meanF_signed": 37.89999999999999,
+          "worstF": 75.0,
+          "acq": 0.9158333333333334,
+          "final": 0.6,
+          "delta": [
+            75.0,
+            59.0,
+            44.5,
+            6.5,
+            4.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 25.999999999999996,
+          "meanF_signed": 18.299999999999994,
+          "worstF": 58.5,
+          "acq": 0.8341666666666666,
+          "final": 0.6816666666666666,
+          "delta": [
+            58.5,
+            44.5,
+            27.0,
+            -32.5,
+            -6.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320055,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 36.7,
+          "meanF_signed": 36.7,
+          "worstF": 76.0,
+          "acq": 0.915,
+          "final": 0.6091666666666667,
+          "delta": [
+            39.5,
+            1.0,
+            67.0,
+            0.0,
+            76.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 24.500000000000004,
+          "meanF_signed": 17.200000000000003,
+          "worstF": 49.00000000000001,
+          "acq": 0.8441666666666666,
+          "final": 0.7008333333333333,
+          "delta": [
+            29.0,
+            -36.5,
+            49.0,
+            1.0,
+            43.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320061,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 40.300000000000004,
+          "meanF_signed": 40.300000000000004,
+          "worstF": 74.0,
+          "acq": 0.9291666666666667,
+          "final": 0.5933333333333334,
+          "delta": [
+            74.0,
+            47.0,
+            16.0,
+            19.0,
+            45.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 23.200000000000003,
+          "meanF_signed": 22.199999999999996,
+          "worstF": 55.00000000000001,
+          "acq": 0.8266666666666667,
+          "final": 0.6416666666666666,
+          "delta": [
+            55.0,
+            37.5,
+            -5.0,
+            4.5,
+            19.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320061,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 37.4,
+          "meanF_signed": 37.4,
+          "worstF": 78.0,
+          "acq": 0.9075000000000001,
+          "final": 0.5958333333333333,
+          "delta": [
+            78.0,
+            71.0,
+            31.5,
+            1.0,
+            5.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.0,
+          "meanF_signed": 28.599999999999998,
+          "worstF": 64.99999999999999,
+          "acq": 0.8391666666666667,
+          "final": 0.6008333333333334,
+          "delta": [
+            65.0,
+            55.0,
+            26.0,
+            -7.0,
+            4.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320061,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 37.0,
+          "meanF_signed": 35.6,
+          "worstF": 83.5,
+          "acq": 0.9058333333333334,
+          "final": 0.6091666666666666,
+          "delta": [
+            30.0,
+            -7.0,
+            71.5,
+            0.0,
+            83.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 30.3,
+          "meanF_signed": 30.3,
+          "worstF": 60.5,
+          "acq": 0.8658333333333333,
+          "final": 0.6133333333333333,
+          "delta": [
+            26.0,
+            7.0,
+            60.5,
+            7.0,
+            51.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320067,
+      "order": [
+        "sim_xor",
+        "parity3",
+        "order_short",
+        "and3",
+        "maj3",
+        "xnor_delay"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 54.6,
+          "meanF_signed": 54.6,
+          "worstF": 96.5,
+          "acq": 0.9566666666666666,
+          "final": 0.5016666666666666,
+          "delta": [
+            96.5,
+            86.5,
+            19.5,
+            56.0,
+            14.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 31.799999999999994,
+          "meanF_signed": 31.100000000000005,
+          "worstF": 63.99999999999999,
+          "acq": 0.8716666666666666,
+          "final": 0.6125,
+          "delta": [
+            64.0,
+            54.0,
+            -3.5,
+            18.0,
+            23.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320067,
+      "order": [
+        "xnor_delay",
+        "maj3",
+        "and3",
+        "order_short",
+        "parity3",
+        "sim_xor"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 38.7,
+          "meanF_signed": 38.7,
+          "worstF": 75.0,
+          "acq": 0.9575,
+          "final": 0.6349999999999999,
+          "delta": [
+            71.0,
+            75.0,
+            33.0,
+            10.0,
+            4.5,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 28.300000000000004,
+          "meanF_signed": 28.300000000000004,
+          "worstF": 57.49999999999999,
+          "acq": 0.8641666666666666,
+          "final": 0.6283333333333333,
+          "delta": [
+            57.5,
+            54.0,
+            25.0,
+            2.0,
+            3.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "seed": 320067,
+      "order": [
+        "and3",
+        "order_short",
+        "maj3",
+        "sim_xor",
+        "xnor_delay",
+        "parity3"
+      ],
+      "arms": {
+        "noreplay": {
+          "meanF": 46.5,
+          "meanF_signed": 46.400000000000006,
+          "worstF": 87.0,
+          "acq": 0.9683333333333334,
+          "final": 0.5816666666666667,
+          "delta": [
+            38.5,
+            31.5,
+            75.5,
+            -0.5,
+            87.0,
+            0.0
+          ]
+        },
+        "replay_tail": {
+          "meanF": 29.7,
+          "meanF_signed": 28.999999999999996,
+          "worstF": 63.5,
+          "acq": 0.8883333333333333,
+          "final": 0.6466666666666666,
+          "delta": [
+            29.0,
+            1.0,
+            63.5,
+            -3.5,
+            55.0,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "n_tr_per_task": 320,
+  "epochs": 600,
+  "tail": 250
+}
