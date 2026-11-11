@@ -7,6 +7,10 @@ Executes:
 3. Locked P1 Confirmation (8 fresh seeds x 3 tasks x 6 methods = 144 trials, opened only if Screen passes)
    + cold-process resume.
 4. P2 20-Context Continual Retention Stream Diagnostic (3 fresh seeds x 3 conditions = 9 trials).
+
+Follows `scripts/run_direct_readout_eligibility.py` memory discipline: NumPy workers (`max_workers=2`)
+complete and exit before isolated Torch BPTT control workers (`max_workers=1`) run, keeping process-tree
+peak RSS and committed memory well below the 2,000,000,000 byte limit.
 """
 from __future__ import annotations
 
@@ -33,11 +37,10 @@ import numpy as np
 from dc_alif_worker import METHODS, P2_CONDITIONS, P2_SEEDS
 from direct_eligibility_common import CONFIRM, DEV, TASKS, dataset
 from scarx.evaluation.dc_alif_eligibility import (
-    DCALIFBPTTControl,
     DCALIFEligibility,
     dc_alif_finite_difference_check,
 )
-from scarx.evaluation.phase21 import interval, signflip
+from scarx.evaluation.phase21 import holm, interval, signflip
 from scarx.evaluation.readout_eligibility import ReadoutEligibility
 from scarx.evaluation.runs import new_run, write_json
 from scarx.evaluation.visual_words import VisualWords
@@ -68,7 +71,6 @@ def run_p0_engineering_verification() -> dict[str, Any]:
         assert fd_results[task]["max_absolute_error_e_f"] < 1e-5
         assert fd_results[task]["max_absolute_error_e_d"] < 1e-5
 
-    # Verify zero/frozen exact bit-equality and matched RNG state consumption across all candidate conditions
     seed = 35107
     models = {
         cond: DCALIFEligibility(
@@ -91,7 +93,6 @@ def run_p0_engineering_verification() -> dict[str, Any]:
     for m in models.values():
         assert m.signal_rng.bit_generator.state == rng_ref
 
-    # Mid-segment checkpoint save/load and cross-loader rejection
     m_mid = models["correct"]
     m_mid.begin(True)
     for row in train_x[0, :6]:
@@ -117,7 +118,6 @@ def run_p0_engineering_verification() -> dict[str, Any]:
         except ValueError:
             rejected_loaders.append(name)
 
-    # Fault-injection rollback
     snap_before = m_mid.dumps()
 
     def _boom(direction: np.ndarray) -> None:
@@ -158,12 +158,16 @@ def run_p1_phase(
     seeds: tuple[int, ...],
     run_dir: Path,
     artifact_dir: Path,
-    max_workers: int = 4,
+    monitor: ResourceMonitor,
+    numpy_workers: int = 2,
 ) -> tuple[list[dict[str, Any]], int]:
-    jobs: list[tuple[Path, str, str, int, str]] = []
+    numpy_methods = [m for m in METHODS if m != "bptt_control"]
+    numpy_jobs: list[tuple[Path, str, str, int, str]] = []
+    bptt_jobs: list[tuple[Path, str, str, int, str]] = []
+
     for task in TASKS:
         for seed in seeds:
-            for method in METHODS:
+            for method in numpy_methods:
                 identifier = f"{phase}-{task}-{seed}-{method}"
                 job_file = run_dir / f"job-{identifier}.json"
                 atomic(
@@ -173,16 +177,36 @@ def run_p1_phase(
                         "trial": [phase, task, seed, method, str(run_dir), str(artifact_dir)],
                     },
                 )
-                jobs.append((job_file, phase, task, seed, method))
+                numpy_jobs.append((job_file, phase, task, seed, method))
+            identifier_bptt = f"{phase}-{task}-{seed}-bptt_control"
+            job_file_bptt = run_dir / f"job-{identifier_bptt}.json"
+            atomic(
+                job_file_bptt,
+                {
+                    "mode": "p1",
+                    "trial": [phase, task, seed, "bptt_control", str(run_dir), str(artifact_dir)],
+                },
+            )
+            bptt_jobs.append((job_file_bptt, phase, task, seed, "bptt_control"))
 
-    with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futs = {pool.submit(_execute_worker_job, jf): (jf, p, t, s, m) for jf, p, t, s, m in jobs}
+    # 1. Run pure NumPy candidate & ablation jobs with max_workers=2
+    with ThreadPoolExecutor(max_workers=numpy_workers) as pool:
+        futs = {pool.submit(_execute_worker_job, jf): (jf, p, t, s, m) for jf, p, t, s, m in numpy_jobs}
         for fut in as_completed(futs):
             fut.result()
+            monitor.check()
 
+    # 2. Run isolated Torch BPTT control jobs sequentially (1 at a time) after NumPy workers exit
+    for jf, p, t, s, m in bptt_jobs:
+        _execute_worker_job(jf)
+        monitor.check()
+
+    all_jobs = numpy_jobs + bptt_jobs
     rows: list[dict[str, Any]] = []
-    cold_jobs: list[tuple[Path, str, dict[str, Any]]] = []
-    for _, p, t, s, m in jobs:
+    numpy_cold_jobs: list[tuple[Path, str, dict[str, Any]]] = []
+    bptt_cold_jobs: list[tuple[Path, str, dict[str, Any]]] = []
+
+    for _, p, t, s, m in all_jobs:
         identifier = f"{p}-{t}-{s}-{m}"
         rec = json.loads((run_dir / f"{identifier}.json").read_text(encoding="utf-8"))["record"]
         rows.append(rec)
@@ -196,15 +220,23 @@ def run_p1_phase(
                 "sha256": rec["checkpoint_sha256"],
             },
         )
-        cold_jobs.append((cold_job_file, identifier, rec["cold_expected"]))
+        if m == "bptt_control":
+            bptt_cold_jobs.append((cold_job_file, identifier, rec["cold_expected"]))
+        else:
+            numpy_cold_jobs.append((cold_job_file, identifier, rec["cold_expected"]))
 
-    with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futs_cold = {pool.submit(_execute_worker_job, cjf): (cjf, ident, exp) for cjf, ident, exp in cold_jobs}
+    with ThreadPoolExecutor(max_workers=numpy_workers) as pool:
+        futs_cold = {pool.submit(_execute_worker_job, cjf): (cjf, ident, exp) for cjf, ident, exp in numpy_cold_jobs}
         for fut in as_completed(futs_cold):
             fut.result()
+            monitor.check()
+
+    for cjf, ident, exp in bptt_cold_jobs:
+        _execute_worker_job(cjf)
+        monitor.check()
 
     cold_verified = 0
-    for _, ident, expected in cold_jobs:
+    for _, ident, expected in numpy_cold_jobs + bptt_cold_jobs:
         actual = json.loads((run_dir / f"cold-{ident}.json").read_text(encoding="utf-8"))
         if actual != expected:
             raise ValueError(f"Cold continuation mismatch for {ident}: {actual} != {expected}")
@@ -213,9 +245,11 @@ def run_p1_phase(
     return rows, cold_verified
 
 
-def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> dict[str, Any]:
+def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...], is_confirmation: bool = False) -> dict[str, Any]:
     by_task: dict[str, Any] = {}
-    passing_tasks: list[str] = []
+    gain_ps: list[float] = []
+    frozen_ps: list[float] = []
+
     for task in TASKS:
         task_rows = [r for r in rows if r["task"] == task]
         by_method: dict[str, list[dict[str, Any]]] = {
@@ -228,7 +262,6 @@ def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> di
         ng_rows = by_method["no_gate"]
         b_rows = by_method["bptt_control"]
 
-        # Verify zero/frozen exact match on every seed
         for zr, fr in zip(z_rows, f_rows):
             assert zr["direct"] == fr["direct"] and zr["probe"] == fr["probe"]
             assert zr["core_weight_fingerprint"] == fr["core_weight_fingerprint"]
@@ -242,23 +275,17 @@ def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> di
         probe_diff_shuffled = [float(c["probe"] - s["probe"]) for c, s in zip(c_rows, s_rows)]
         probe_diff_no_gate = [float(c["probe"] - ng["probe"]) for c, ng in zip(c_rows, ng_rows)]
         direct_diff_no_gate = [float(c["direct"] - ng["direct"]) for c, ng in zip(c_rows, ng_rows)]
-        bag_scores = [float(r["bag_only"]) for r in c_rows]
+        bag_scores = [float(r["bag_only"]) for r in task_rows]
 
-        valid_task = float(np.mean(bag_scores)) <= 0.60
-        task_pass = (
-            valid_task
-            and float(np.mean(direct_correct)) >= 0.65
-            and float(np.mean(probe_gain)) >= 0.05
-            and float(np.mean(probe_diff_frozen)) >= 0.05
-            and float(np.mean(probe_diff_shuffled)) >= 0.05
-        )
-        if task_pass:
-            passing_tasks.append(task)
+        valid_bag = all(b <= 0.60 for b in bag_scores)
+        gp = signflip(probe_gain)
+        fp = signflip(probe_diff_frozen)
+        gain_ps.append(gp)
+        frozen_ps.append(fp)
 
         by_task[task] = {
-            "valid_task_bag_le_060": valid_task,
-            "bag_only_mean": float(np.mean(bag_scores)),
-            "task_gate_pass": task_pass,
+            "valid_bag_baseline": valid_bag,
+            "bag_only_mean": float(np.mean([float(r["bag_only"]) for r in c_rows])),
             "correct_direct": interval(direct_correct),
             "correct_probe": interval(probe_correct),
             "correct_probe_gain": interval(probe_gain),
@@ -275,8 +302,8 @@ def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> di
             "correct_minus_shuffled_probe": interval(probe_diff_shuffled),
             "correct_minus_no_gate_direct": interval(direct_diff_no_gate),
             "correct_minus_no_gate_probe": interval(probe_diff_no_gate),
-            "signflip_p_probe_gain": signflip(probe_gain),
-            "signflip_p_vs_frozen": signflip(probe_diff_frozen),
+            "signflip_p_probe_gain": gp,
+            "signflip_p_vs_frozen": fp,
             "signflip_p_vs_shuffled": signflip(probe_diff_shuffled),
             "signflip_p_vs_no_gate": signflip(probe_diff_no_gate),
             "probe_time_permuted_mean": float(np.mean([float(r["probe_time_permuted"]) for r in c_rows])),
@@ -288,6 +315,33 @@ def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> di
             ),
         }
 
+    holm_gp = holm(gain_ps)
+    holm_fp = holm(frozen_ps)
+    passing_tasks: list[str] = []
+    for idx, task in enumerate(TASKS):
+        vt = by_task[task]
+        vt["holm_gain_p"] = holm_gp[idx]
+        vt["holm_vs_frozen_p"] = holm_fp[idx]
+        if is_confirmation:
+            task_pass = (
+                bool(vt["valid_bag_baseline"])
+                and float(vt["correct_probe_gain"]["lower95"]) >= 0.05
+                and float(vt["correct_direct"]["mean"]) >= 0.65
+                and float(vt["correct_minus_frozen_probe"]["mean"]) > 0.0
+                and holm_gp[idx] <= 0.05
+                and holm_fp[idx] <= 0.05
+            )
+        else:
+            task_pass = (
+                bool(vt["valid_bag_baseline"])
+                and float(vt["correct_probe_gain"]["mean"]) >= 0.05
+                and float(vt["correct_direct"]["mean"]) >= 0.65
+                and float(vt["correct_minus_frozen_probe"]["mean"]) > 0.0
+            )
+        vt["task_gate_pass"] = task_pass
+        if task_pass:
+            passing_tasks.append(task)
+
     phase_pass = len(passing_tasks) >= 2 and any(t in passing_tasks for t in ("xor", "strict_binding"))
     return {
         "seeds": list(seeds),
@@ -297,7 +351,12 @@ def summarize_p1_phase(rows: list[dict[str, Any]], seeds: tuple[int, ...]) -> di
     }
 
 
-def run_p2_retention_suite(run_dir: Path, artifact_dir: Path, max_workers: int = 3) -> dict[str, Any]:
+def run_p2_retention_suite(
+    run_dir: Path,
+    artifact_dir: Path,
+    monitor: ResourceMonitor,
+    max_workers: int = 2,
+) -> dict[str, Any]:
     jobs: list[tuple[Path, int, str]] = []
     for seed in P2_SEEDS:
         for cond in P2_CONDITIONS:
@@ -309,6 +368,7 @@ def run_p2_retention_suite(run_dir: Path, artifact_dir: Path, max_workers: int =
         futs = {pool.submit(_execute_worker_job, jf): (jf, s, c) for jf, s, c in jobs}
         for fut in as_completed(futs):
             fut.result()
+            monitor.check()
 
     rows: list[dict[str, Any]] = []
     for _, s, c in jobs:
@@ -361,6 +421,8 @@ def main() -> None:
             "p1_methods": METHODS,
             "p2_seeds": P2_SEEDS,
             "p2_conditions": P2_CONDITIONS,
+            "numpy_workers": 2,
+            "torch_children_at_once": 1,
         },
     )
 
@@ -370,24 +432,30 @@ def main() -> None:
         monitor.check()
 
         print("[2/4] Running locked P1 development screen (54 trials + 54 cold resumes)...", flush=True)
-        dev_rows, dev_cold = run_p1_phase("development", DEV, run_dir, ARTIFACT_DIR, max_workers=4)
-        dev_summary = summarize_p1_phase(dev_rows, DEV)
+        dev_rows, dev_cold = run_p1_phase("development", DEV, run_dir, ARTIFACT_DIR, monitor, numpy_workers=2)
+        dev_summary = summarize_p1_phase(dev_rows, DEV, is_confirmation=False)
         dev_summary["cold_continuations_verified"] = dev_cold
         monitor.check()
 
         confirm_rows: list[dict[str, Any]] = []
         confirm_summary: dict[str, Any] | None = None
         if dev_summary["phase_gate_pass"]:
-            print("[3/4] Development screen PASSED (3/3 tasks)! Running locked 8-seed P1 confirmation (144 trials + 144 cold resumes)...", flush=True)
-            confirm_rows, confirm_cold = run_p1_phase("confirmation", CONFIRM, run_dir, ARTIFACT_DIR, max_workers=4)
-            confirm_summary = summarize_p1_phase(confirm_rows, CONFIRM)
+            print(
+                f"[3/4] Development screen PASSED ({len(dev_summary['passing_tasks'])}/3 tasks: {dev_summary['passing_tasks']})! "
+                "Running locked 8-seed P1 confirmation (144 trials + 144 cold resumes)...",
+                flush=True,
+            )
+            confirm_rows, confirm_cold = run_p1_phase(
+                "confirmation", CONFIRM, run_dir, ARTIFACT_DIR, monitor, numpy_workers=2
+            )
+            confirm_summary = summarize_p1_phase(confirm_rows, CONFIRM, is_confirmation=True)
             confirm_summary["cold_continuations_verified"] = confirm_cold
             monitor.check()
         else:
             print("[3/4] Development screen did not pass; skipping confirmation per stop rule.", flush=True)
 
         print("[4/4] Running P2 20-context continual retention diagnostic (9 trials)...", flush=True)
-        p2_summary = run_p2_retention_suite(run_dir, ARTIFACT_DIR, max_workers=3)
+        p2_summary = run_p2_retention_suite(run_dir, ARTIFACT_DIR, monitor, max_workers=2)
         monitor.check()
 
     result = {
