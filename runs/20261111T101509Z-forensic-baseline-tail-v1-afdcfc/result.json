@@ -1,0 +1,123 @@
+{
+  "decision": "AUDIT_EXECUTION_COMPLETE_REQUIRES_ANALYSIS",
+  "phase": "baseline-tail",
+  "run_class": "ENGINEERING_CHECK",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-rs",
+        "-p",
+        "no:cacheprovider",
+        "tests\\test_visual_word_control.py",
+        "tests\\test_visual_word_metrics.py",
+        "tests\\test_visual_words.py",
+        "tests\\test_word_conditioning.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T101509Z-forensic-baseline-tail-v1-afdcfc\\tail1.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 4.621252899996762,
+      "resources": {
+        "peak_rss_bytes": 686919680,
+        "peak_commit_or_vms_bytes": 1120194560,
+        "os_process_peak_working_set_bytes": 41656320,
+        "os_process_peak_pagefile_commit_bytes": 29315072,
+        "samples": 52,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 4.621053400005621,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "tail1.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-rs",
+        "-p",
+        "no:cacheprovider",
+        "tests\\test_word_control.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T101509Z-forensic-baseline-tail-v1-afdcfc\\tail2.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 7.178375700001197,
+      "resources": {
+        "peak_rss_bytes": 732905472,
+        "peak_commit_or_vms_bytes": 1112997888,
+        "os_process_peak_working_set_bytes": 41705472,
+        "os_process_peak_pagefile_commit_bytes": 29315072,
+        "samples": 80,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 7.178236400002788,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "tail2.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-rs",
+        "-p",
+        "no:cacheprovider",
+        "tests\\test_word_training_audit.py",
+        "tests\\test_working_byte_dialogue.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T101509Z-forensic-baseline-tail-v1-afdcfc\\tail3.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 2.063623199996073,
+      "resources": {
+        "peak_rss_bytes": 174940160,
+        "peak_commit_or_vms_bytes": 172732416,
+        "os_process_peak_working_set_bytes": 41709568,
+        "os_process_peak_pagefile_commit_bytes": 29315072,
+        "samples": 24,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.063456199997745,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "tail3.log"
+    }
+  ],
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "source_commits": {
+    "r6d": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+    "r6b": "c39e9db7771582d9933af402a209917328b71119"
+  },
+  "fresh_confirmation": false,
+  "candidate_equations_changed": false,
+  "production_or_live_state_modified": false,
+  "error": null
+}

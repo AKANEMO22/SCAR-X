@@ -1,0 +1,26 @@
+{
+  "source_sha": "8f24a5abde0598201e558eee559564ccde889145",
+  "scope": "Bounded engineering counterexamples, not accuracy/representation/retention experiments",
+  "shared_postquery_trunk_counterexample": {
+    "historical_seed": 121011,
+    "pair_seed": 521011,
+    "pairs": 32,
+    "max_post_state_difference_between_queries": 1.8024804592132568,
+    "unit_coordinate_readout_query_margin_difference": 1.8024804592132568,
+    "coordinate": 79,
+    "row": 18,
+    "conclusion": "Original R5 post-query trunk is not necessarily query invariant. A theorem assuming the same s for both queries cannot be applied to it without that condition."
+  },
+  "ablation_optimizer_counterexample": {
+    "all_toy_targets": 0,
+    "ablation_weight_max": 0.0,
+    "ckcer_weight_max": 0.07500000298023224,
+    "conclusion": "Pre-gating ablation uses hard argmax perceptron errors; CKCER uses softmax probability errors. The ladder changes more than just the named feature factor."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "new_scored_experiment": false
+}

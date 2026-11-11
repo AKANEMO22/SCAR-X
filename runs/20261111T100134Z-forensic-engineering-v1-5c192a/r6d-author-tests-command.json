@@ -1,0 +1,32 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r6d_audit.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T100134Z-forensic-engineering-v1-5c192a\\r6d-author-tests.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-r6d-4bacd7b",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 1.5511274999953457,
+  "resources": {
+    "peak_rss_bytes": 173428736,
+    "peak_commit_or_vms_bytes": 171712512,
+    "os_process_peak_working_set_bytes": 41828352,
+    "os_process_peak_pagefile_commit_bytes": 29478912,
+    "samples": 18,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 1.550818399999116,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "r6d-author-tests.log"
+}

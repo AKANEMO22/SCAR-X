@@ -1,0 +1,122 @@
+{
+  "source_sha": "8f24a5abde0598201e558eee559564ccde889145",
+  "replay_run": "runs/20261111T102246Z-forensic-gemini-replay-v1-8ad15f",
+  "entire_seed_records_exact": false,
+  "primary_ckcer_accuracy_both_A_equal_to_published": true,
+  "both_A_means": {
+    "clean": {
+      "r5": 0.7519748693475128,
+      "ckcer_mode_a": 0.9959677419354839,
+      "ckcer_mode_b": 0.9959677419354839
+    },
+    "ood_clean_to_shift": {
+      "r5": 0.7579516509681723,
+      "ckcer_mode_a": 0.9959427486003732,
+      "ckcer_mode_b": 0.9959427486003732
+    },
+    "train_shift_test_shift": {
+      "r5": 0.7744805486501561,
+      "ckcer_mode_a": 0.9959677419354839,
+      "ckcer_mode_b": 0.9959677419354839
+    },
+    "reversed_writes": {
+      "r5": 0.7449525329316362,
+      "ckcer_mode_a": 0.9940908967485214,
+      "ckcer_mode_b": 0.9940908967485214
+    },
+    "distractors": {
+      "r5": 0.4845332209487095,
+      "ckcer_mode_a": 0.9733329887118354,
+      "ckcer_mode_b": 0.9733329887118354
+    },
+    "paired_same_sample_distractors": {
+      "r5": 0.43415800453502207,
+      "ckcer_mode_a": 0.9658437334784469,
+      "ckcer_mode_b": 0.9658437334784469
+    },
+    "noise_change": {
+      "r5": 0.4905505348758713,
+      "ckcer_mode_a": 0.9368166577847991,
+      "ckcer_mode_b": 0.9358975401377402
+    },
+    "query_tick_variation": {
+      "r5": 0.6991169903141214,
+      "ckcer_mode_a": 0.9959677419354839,
+      "ckcer_mode_b": 0.9959677419354839
+    },
+    "aux_structured_third_write_windowed": {
+      "r5": 0.5396382101930872,
+      "ckcer_mode_a": 0.977834521177365,
+      "ckcer_mode_b": 0.977834521177365
+    },
+    "aux_key_overwrite": {
+      "r5": 0.5274732053612572,
+      "ckcer_mode_a": 0.8502787433418988,
+      "ckcer_mode_b": 0.8502787433418988
+    }
+  },
+  "engineering": {
+    "inactive_branch_weight_delta_max": 0.0,
+    "inactive_query_scores_change_due_to_shared_bias_max": 0.02500000037252903,
+    "recurrent_hidden_training_present": false,
+    "oja_gate_location": "CKCERHead.w_q, outside frozen recurrent weights"
+  },
+  "prediction_groups_independently_scored": 344,
+  "original_confirmation_history": [
+    {
+      "version": "before",
+      "run": "20261111T095646Z-r6c-confirmation-v1-d215bc",
+      "source_zip_sha256": "f06317676522227b6cfe1c0daa19f0ef5c9497ba22cf78ec3bc1a8ec5756bc58",
+      "module_sha256": "2e1e8a4ccff709a7bce5ba3c28db5d5215efec586623eac1caa9fa79ae9fd5ac",
+      "manifest_module_sha256_matches": true,
+      "gates": {
+        "gates": {
+          "G1_direct_beats_fk_plus_10pp_and_r5": true,
+          "G2_clean_caseA_both_correct_ge_075_and_beats_r5": true,
+          "G3_clean_caseB_both_correct_ge_090": true,
+          "G4_timing_shift_direct_ge_080_caseA_ge_065": true,
+          "G5_reversed_writes_direct_ge_080_caseA_ge_065": true,
+          "G6_distractors_caseA_ge_060": true,
+          "G7_noise_change_caseA_ge_060": true,
+          "G8_protected_tasks_no_regression_gt_1pp": false,
+          "G9_integrity_and_falsification_controls": true,
+          "G10_resource_limit_le_2gb": true
+        },
+        "all_passed": false,
+        "verdict": "STOP"
+      },
+      "protocol_sha256": "239e88b8a2f925c7b8cd4d47f23c95fc713a594c36ee82fffb0376270a54d88b"
+    },
+    {
+      "version": "after",
+      "run": "20261111T100240Z-r6c-confirmation-v1-f8d321",
+      "source_zip_sha256": "e46178b9168b4a41f05b6a2169b6b4f994f9a0ea44d09944bdbf658815da7e3e",
+      "module_sha256": "4f23d511e511accc26312627130c9ad73b0cbee7553319857bd47d5ad19f37bf",
+      "manifest_module_sha256_matches": true,
+      "gates": {
+        "gates": {
+          "G1_direct_beats_fk_plus_10pp_and_r5": true,
+          "G2_clean_caseA_both_correct_ge_075_and_beats_r5": true,
+          "G3_clean_caseB_both_correct_ge_090": true,
+          "G4_timing_shift_direct_ge_080_caseA_ge_065": true,
+          "G5_reversed_writes_direct_ge_080_caseA_ge_065": true,
+          "G6_distractors_caseA_ge_060": true,
+          "G7_noise_change_caseA_ge_060": true,
+          "G8_protected_tasks_no_regression_gt_1pp": true,
+          "G9_integrity_and_falsification_controls": true,
+          "G10_resource_limit_le_2gb": true
+        },
+        "all_passed": true,
+        "verdict": "GO_CONFIRMATION"
+      },
+      "protocol_sha256": "239e88b8a2f925c7b8cd4d47f23c95fc713a594c36ee82fffb0376270a54d88b"
+    }
+  ],
+  "verdict": "REQUEST_CHANGES_RESEARCH_ONLY_NO_MAIN_ADOPTION",
+  "limits": [
+    "Strict reproduction fails on margin rounding and one R5 reversed-write prediction.",
+    "Protected generators and baseline features changed after first confirmation failed.",
+    "Hidden recurrent weights frozen; Oja is query readout.",
+    "Not all auxiliary/noise raw event oracles independently validated."
+  ]
+}

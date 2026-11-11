@@ -4,6 +4,7 @@ from test_forensic_evaluator import fixture_pairs
 from scarx.evaluation.forensic.reference_evaluator import (AuditViolation,pair_metrics,
  validate_pair_inputs,scaled_features,require_scaled,require_active_shift,checked_threshold,
  ensure_joinable,unique_top_level_definitions)
+from scarx.evaluation.forensic.reference_evaluator import sample_fingerprints,require_disjoint,effective_definition_source
 
 
 def test_wrong_query_tick_mutation_is_detected_on_actual_inputs():
@@ -55,3 +56,19 @@ def test_order_changed_between_matched_control_is_not_joinable():
 
 def test_duplicate_function_shadow_cannot_pass_audit():
     with pytest.raises(AuditViolation,match='shadowed'):unique_top_level_definitions('def score(): pass\ndef score(): return True')
+
+
+def test_audit_normalization_keeps_only_the_actual_last_python_binding():
+    source='def score(): return False\n\ndef score(): return True\nanswer=score()\n'
+    clean,removed=effective_definition_source(source);before={};after={}
+    exec(source,before);exec(clean,after)
+    assert before['answer'] is after['answer'] is True
+    assert before['score'].__code__.co_firstlineno==after['score'].__code__.co_firstlineno
+    assert removed==[{'name':'score','start':1,'end':1}]
+
+
+def test_distinct_seed_names_do_not_hide_an_actual_episode_leak():
+    left=np.zeros((2,12,8),np.float32);right=left.copy()
+    with pytest.raises(AuditViolation,match='episode overlap'):require_disjoint(sample_fingerprints(left),sample_fingerprints(right))
+    right+=1
+    require_disjoint(sample_fingerprints(left),sample_fingerprints(right))

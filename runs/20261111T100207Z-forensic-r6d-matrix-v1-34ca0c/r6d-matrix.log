@@ -1,0 +1,28 @@
+  seed130001 done (stress valid: True)
+  seed130007 done (stress valid: True)
+  seed130013 done (stress valid: True)
+  seed130019 done (stress valid: True)
+  seed130023 done (stress valid: True)
+  seed130029 done (stress valid: True)
+  seed130031 done (stress valid: True)
+  seed130037 done (stress valid: True)
+
+==========================================================================================
+FRESH_CONFIRMATION — 2x2 both_A matrix
+==========================================================================================
+  scaler       n=1024    n=16384               gain
+  r5b          0.6873     0.9178  +23.05pp [+17.16,+29.48]
+  r6a          0.7138     0.8942  +18.05pp [+12.98,+22.71]
+
+  preprocessing effect at n=1024 :   +2.65pp [ -1.37, +7.11]
+  preprocessing effect at n=16384:   -2.36pp [ -4.85, +0.25]
+  interaction                    :   -5.01pp
+
+  matched unique-repeated (r5b)  :  +15.08pp [ +9.68,+22.23] worst +5.74pp
+  matched unique-repeated (r6a)  :  +19.84pp
+
+  stress both_A: temporal 0.9099 (worst 0.7167) | distractor 0.5502 (worst 0.3401)
+  stress transforms valid: True
+  gates: {"G1_bothA_16k_ge_075": true, "G2_gain_16k_minus_1k_ge_5pp": true, "G3_matched_unique_gt_repeated": true, "G4_random_labels_chance": null, "G5_shortcuts_ok": null, "G6_stress_ge_075": false, "G7_deterministic": true, "G8_forward_parity": null}
+RESULT C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-forensic-r6-20261111\runs\20261111T100207Z-forensic-r6d-matrix-v1-34ca0c\replay\original-output
+{"phase": "r6d-matrix", "output": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T100207Z-forensic-r6d-matrix-v1-34ca0c\\replay", "observations": 104, "seconds": 157.11765330000344}

@@ -1,0 +1,85 @@
+--- first-confirmation-source
+
++++ second-confirmation-source
+
+@@ -755,36 +755,17 @@
+
+         values[index, 10, 7] += G.PULSE
+     return values, labels
+ 
+ 
+ def separated_xor_set_v1(seed: int, count: int) -> tuple[np.ndarray, np.ndarray]:
+-    rng = np.random.default_rng(seed)
+-    values = rng.normal(0, 0.08, (count, 12, 8)).astype(np.float32)
+-    labels = rng.integers(0, 2, count).astype(np.int32)
+-    for index in range(count):
+-        first = int(rng.integers(2))
+-        second = first ^ int(labels[index])
+-        values[index, 2, 0] += G.PULSE * first
+-        values[index, 6, 1] += G.PULSE * second
+-        values[index, 11, 5] += G.PULSE
+-    return values, labels
++    from scarx.evaluation.tasks21 import representation
++    return representation("xor", seed, count)
+ 
+ 
+ def order_task_set_v1(seed: int, count: int) -> tuple[np.ndarray, np.ndarray]:
+-    rng = np.random.default_rng(seed)
+-    values = rng.normal(0, 0.08, (count, 12, 8)).astype(np.float32)
+-    labels = (np.arange(count) % 2).astype(np.int32)
+-    for index in range(count):
+-        if labels[index] == 1:
+-            values[index, 2, 0] += G.PULSE
+-            values[index, 6, 1] += G.PULSE
+-        else:
+-            values[index, 6, 0] += G.PULSE
+-            values[index, 2, 1] += G.PULSE
+-        values[index, 11, 5] += G.PULSE
+-    perm = rng.permutation(count)
+-    return values[perm], labels[perm]
++    from scarx.evaluation.tasks21 import representation
++    return representation("order", seed, count)
+ 
+ 
+ def run_protected_benchmarks(seed: int) -> dict[str, dict[str, float]]:
+     """Run protected benchmarks (sim_xor, xor_separated, order_task) for R5 Head vs CKCER."""
+     out: dict[str, dict[str, float]] = {"r5": {}, "ckcer": {}}
+@@ -792,31 +773,31 @@
+
+     x_tr, y_tr = sim_xor_set_v1(seed + 101, 1024)
+     x_te, y_te = sim_xor_set_v1(seed + 151, 512)
+     c_tr = capture_r6(seed, x_tr, query_tick=10)
+     c_te = capture_r6(seed, x_te, query_tick=10)
+ 
+-    h_r5 = P.train_head(c_tr["sum_s"], y_tr, seed=seed)
+-    out["r5"]["sim_xor"] = h_r5.acc(c_te["sum_s"], y_te)
++    h_r5 = P.train_head(c_tr["m_pre"], y_tr, seed=seed)
++    out["r5"]["sim_xor"] = h_r5.acc(c_te["m_pre"], y_te)
+ 
+     h_ck = CKCERHead(dim=96, mode="ungated", seed=seed)
+     h_ck.train_online(c_tr["m_pre"], y_tr)
+     out["ckcer"]["sim_xor"] = float(np.mean(h_ck.predict(c_te["m_pre"]) == y_te))
+ 
+-    # 2. separated_xor
++    # 2. separated_xor (canonical tasks21 temporal XOR)
+     x_tr, y_tr = separated_xor_set_v1(seed + 201, 1024)
+     x_te, y_te = separated_xor_set_v1(seed + 251, 512)
+     c_tr = capture_r6(seed, x_tr, query_tick=11)
+     c_te = capture_r6(seed, x_te, query_tick=11)
+ 
+-    h_r5 = P.train_head(c_tr["sum_s"], y_tr, seed=seed)
+-    out["r5"]["xor_separated"] = h_r5.acc(c_te["sum_s"], y_te)
++    h_r5 = P.train_head(c_tr["m_pre"], y_tr, seed=seed)
++    out["r5"]["xor_separated"] = h_r5.acc(c_te["m_pre"], y_te)
+ 
+     h_ck = CKCERHead(dim=96, mode="ungated", seed=seed)
+     h_ck.train_online(c_tr["m_pre"], y_tr)
+     out["ckcer"]["xor_separated"] = float(np.mean(h_ck.predict(c_te["m_pre"]) == y_te))
+ 
+-    # 3. temporal_order
++    # 3. temporal_order (canonical tasks21 temporal order)
+     x_tr, y_tr = order_task_set_v1(seed + 301, 1024)
+     x_te, y_te = order_task_set_v1(seed + 351, 512)
+     c_tr = capture_r6(seed, x_tr, query_tick=11)
+     c_te = capture_r6(seed, x_te, query_tick=11)
+ 

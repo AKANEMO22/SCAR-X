@@ -1,0 +1,55 @@
+# Forensic gemini-engineering
+
+{
+  "decision": "AUDIT_EXECUTION_COMPLETE_REQUIRES_ANALYSIS",
+  "phase": "gemini-engineering",
+  "run_class": "HISTORICAL_REPRODUCTION",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r6_associative.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T102243Z-forensic-gemini-engineering-v1-9559a0\\gemini-tests.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-gemini-8f24a5a",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 1.5859798999954364,
+      "resources": {
+        "peak_rss_bytes": 173805568,
+        "peak_commit_or_vms_bytes": 171311104,
+        "os_process_peak_working_set_bytes": 41775104,
+        "os_process_peak_pagefile_commit_bytes": 29245440,
+        "samples": 19,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 1.5857057000030181,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "gemini-tests.log"
+    }
+  ],
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "source_commits": {
+    "r6d": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+    "r6b": "c39e9db7771582d9933af402a209917328b71119",
+    "gemini": "8f24a5abde0598201e558eee559564ccde889145"
+  },
+  "fresh_confirmation": false,
+  "candidate_equations_changed": false,
+  "production_or_live_state_modified": false,
+  "error": null
+}

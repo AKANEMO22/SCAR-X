@@ -22,6 +22,15 @@ def tensor_digest(a):
     return hashlib.sha256(str(a.dtype).encode()+repr(a.shape).encode()+a.tobytes()).hexdigest()
 
 
+def sample_fingerprints(x):
+    return {hashlib.sha256(np.ascontiguousarray(row).tobytes()).hexdigest() for row in np.asarray(x)}
+
+
+def require_disjoint(left,right):
+    overlap=set(left)&set(right)
+    if overlap:raise AuditViolation('raw episode overlap: '+str(len(overlap)))
+
+
 def binary(a,name):
     a=np.asarray(a)
     if a.ndim!=1 or not np.isin(a,[0,1]).all():raise AuditViolation(name+': binary vector required')
@@ -150,3 +159,22 @@ def unique_top_level_definitions(source):
     duplicates={k:v for k,v in Counter(names).items() if v>1}
     if duplicates:raise AuditViolation('shadowed top-level definitions: '+str(duplicates))
     return names
+
+
+def effective_definition_source(source):
+    """Remove only shadowed earlier definitions, retaining source line numbers.
+
+    This reflects Python's effective last top-level binding; it is not a choice
+    between algorithms. Last-definition AST bodies must remain byte-for-byte.
+    """
+    tree=ast.parse(source);last={}
+    for node in tree.body:
+        if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)):last[node.name]=node
+    lines=source.splitlines(keepends=True);removed=[]
+    for node in tree.body:
+        if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)) and last[node.name] is not node:
+            start=min([node.lineno]+[d.lineno for d in getattr(node,'decorator_list',[])])
+            for i in range(start-1,node.end_lineno):lines[i]='\n'
+            removed.append({'name':node.name,'start':start,'end':node.end_lineno})
+    result=''.join(lines);unique_top_level_definitions(result)
+    return result,removed

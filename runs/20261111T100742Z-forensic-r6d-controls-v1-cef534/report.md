@@ -1,0 +1,54 @@
+# Forensic r6d-controls
+
+{
+  "decision": "AUDIT_EXECUTION_COMPLETE_REQUIRES_ANALYSIS",
+  "phase": "r6d-controls",
+  "run_class": "HISTORICAL_REPRODUCTION",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\scripts\\forensic_replay_worker.py",
+        "--source",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-r6d-4bacd7b",
+        "--output",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T100742Z-forensic-r6d-controls-v1-cef534\\replay",
+        "--phase",
+        "r6d-controls"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-r6d-4bacd7b",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 33.528559099999256,
+      "resources": {
+        "peak_rss_bytes": 252305408,
+        "peak_commit_or_vms_bytes": 263340032,
+        "os_process_peak_working_set_bytes": 41369600,
+        "os_process_peak_pagefile_commit_bytes": 28856320,
+        "samples": 333,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 33.52826780000032,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "r6d-controls.log"
+    }
+  ],
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "source_commits": {
+    "r6d": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+    "r6b": "c39e9db7771582d9933af402a209917328b71119"
+  },
+  "fresh_confirmation": false,
+  "candidate_equations_changed": false,
+  "production_or_live_state_modified": false,
+  "error": null
+}

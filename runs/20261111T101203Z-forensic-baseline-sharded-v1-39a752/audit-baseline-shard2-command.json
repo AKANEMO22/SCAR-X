@@ -1,0 +1,39 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-rs",
+    "-p",
+    "no:cacheprovider",
+    "tests\\test_visual_word_control.py",
+    "tests\\test_visual_word_metrics.py",
+    "tests\\test_visual_words.py",
+    "tests\\test_word_conditioning.py",
+    "tests\\test_word_control.py",
+    "tests\\test_word_training_audit.py",
+    "tests\\test_working_byte_dialogue.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T101203Z-forensic-baseline-sharded-v1-39a752\\shard2.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+  "exit_code": 1,
+  "error": "MemoryError: Observed process-tree memory exceeded budget",
+  "seconds": 5.220055099998717,
+  "resources": {
+    "peak_rss_bytes": 1204711424,
+    "peak_commit_or_vms_bytes": 2032844800,
+    "os_process_peak_working_set_bytes": 41590784,
+    "os_process_peak_pagefile_commit_bytes": 29409280,
+    "samples": 59,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": true,
+    "elapsed_seconds": 5.219853700000385,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "audit-baseline-shard2.log"
+}

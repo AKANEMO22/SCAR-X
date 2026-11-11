@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## Codex forensic audit R6 — 11/11/2026, research only
+
+[Audit handoff](research/forensic-r6-20261111/README.md) records pinned R6D/R6B
+historical reproduction and the newly pushed Gemini8f24a5a review. R6D matrix/
+controls and Grok scientific fields reproduce; CKCER accuracy agrees but its
+preregistered-GO claim has protocol/post-hoc/attribution defects. No learner
+promotion, main merge, architecture change, live weights or new P2pilot.
+Independent prediction scoring/mutation tests and all306collected test cases
+have PASS evidence across bounded partitions; one-process fullsuite memory
+failures remain explicitly recorded. R6E/R7 are drafts awaiting approval.
+
 ## P0 usefulness đã kiểm — pilot P2 chưa duyệt
 
 Người dùng chỉ duyệt P0. [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md),

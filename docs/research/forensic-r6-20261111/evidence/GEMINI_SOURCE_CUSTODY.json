@@ -1,0 +1,50 @@
+[
+  {
+    "version": "before",
+    "run": "20261111T095646Z-r6c-confirmation-v1-d215bc",
+    "source_zip_sha256": "f06317676522227b6cfe1c0daa19f0ef5c9497ba22cf78ec3bc1a8ec5756bc58",
+    "module_sha256": "2e1e8a4ccff709a7bce5ba3c28db5d5215efec586623eac1caa9fa79ae9fd5ac",
+    "manifest_module_sha256_matches": true,
+    "gates": {
+      "gates": {
+        "G1_direct_beats_fk_plus_10pp_and_r5": true,
+        "G2_clean_caseA_both_correct_ge_075_and_beats_r5": true,
+        "G3_clean_caseB_both_correct_ge_090": true,
+        "G4_timing_shift_direct_ge_080_caseA_ge_065": true,
+        "G5_reversed_writes_direct_ge_080_caseA_ge_065": true,
+        "G6_distractors_caseA_ge_060": true,
+        "G7_noise_change_caseA_ge_060": true,
+        "G8_protected_tasks_no_regression_gt_1pp": false,
+        "G9_integrity_and_falsification_controls": true,
+        "G10_resource_limit_le_2gb": true
+      },
+      "all_passed": false,
+      "verdict": "STOP"
+    },
+    "protocol_sha256": "239e88b8a2f925c7b8cd4d47f23c95fc713a594c36ee82fffb0376270a54d88b"
+  },
+  {
+    "version": "after",
+    "run": "20261111T100240Z-r6c-confirmation-v1-f8d321",
+    "source_zip_sha256": "e46178b9168b4a41f05b6a2169b6b4f994f9a0ea44d09944bdbf658815da7e3e",
+    "module_sha256": "4f23d511e511accc26312627130c9ad73b0cbee7553319857bd47d5ad19f37bf",
+    "manifest_module_sha256_matches": true,
+    "gates": {
+      "gates": {
+        "G1_direct_beats_fk_plus_10pp_and_r5": true,
+        "G2_clean_caseA_both_correct_ge_075_and_beats_r5": true,
+        "G3_clean_caseB_both_correct_ge_090": true,
+        "G4_timing_shift_direct_ge_080_caseA_ge_065": true,
+        "G5_reversed_writes_direct_ge_080_caseA_ge_065": true,
+        "G6_distractors_caseA_ge_060": true,
+        "G7_noise_change_caseA_ge_060": true,
+        "G8_protected_tasks_no_regression_gt_1pp": true,
+        "G9_integrity_and_falsification_controls": true,
+        "G10_resource_limit_le_2gb": true
+      },
+      "all_passed": true,
+      "verdict": "GO_CONFIRMATION"
+    },
+    "protocol_sha256": "239e88b8a2f925c7b8cd4d47f23c95fc713a594c36ee82fffb0376270a54d88b"
+  }
+]
