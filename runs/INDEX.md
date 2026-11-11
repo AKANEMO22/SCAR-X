@@ -129,3 +129,5 @@
 - [20261110T135250Z-readout-usefulness-p0-v1-ca2357](20261110T135250Z-readout-usefulness-p0-v1-ca2357/report.md) — readout-usefulness-p0-v1
 - [20261110T142636Z-adaptive-curriculum-grounding-v1-472187](20261110T142636Z-adaptive-curriculum-grounding-v1-472187/report.md) — adaptive-curriculum-grounding-v1
 - [20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646](20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646/report.md) — adaptive-curriculum-grounding-v1
+- [20261111T005037Z-collab-antigravity-dc-alif-v1-934cff](20261111T005037Z-collab-antigravity-dc-alif-v1-934cff/report.md) — collab-antigravity-dc-alif-v1
+- [20261111T005708Z-collab-antigravity-dc-alif-v1-81d4b2](20261111T005708Z-collab-antigravity-dc-alif-v1-81d4b2/report.md) — collab-antigravity-dc-alif-v1

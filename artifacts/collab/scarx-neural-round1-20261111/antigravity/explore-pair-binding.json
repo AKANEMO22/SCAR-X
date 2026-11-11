@@ -1,0 +1,97 @@
+{
+  "scope": "post-hoc exploratory; pair_binding generator from research/deepseek (read-only); locked hyperparameters; NOT a protocol-v1 gate",
+  "generator_file_sha256": "4d443ee4ff9a8dab38c6ad06ff97b1c9b4fe5055a382dd327bf3551f011acb1a",
+  "seeds": [
+    36011,
+    36017,
+    36029,
+    36037,
+    36041,
+    36053,
+    36059,
+    36061
+  ],
+  "rows": [
+    {
+      "seed": 36011,
+      "correct": 0.51171875,
+      "no_gate": 0.75390625,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36017,
+      "correct": 0.501953125,
+      "no_gate": 0.71875,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36029,
+      "correct": 0.5,
+      "no_gate": 0.703125,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36037,
+      "correct": 0.5078125,
+      "no_gate": 0.73046875,
+      "frozen": 0.5,
+      "shuffled": 0.501953125
+    },
+    {
+      "seed": 36041,
+      "correct": 0.51171875,
+      "no_gate": 0.921875,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36053,
+      "correct": 0.5,
+      "no_gate": 0.92578125,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36059,
+      "correct": 0.5,
+      "no_gate": 0.763671875,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    },
+    {
+      "seed": 36061,
+      "correct": 0.5078125,
+      "no_gate": 0.75390625,
+      "frozen": 0.5,
+      "shuffled": 0.5
+    }
+  ],
+  "mean": {
+    "correct": 0.505126953125,
+    "no_gate": 0.783935546875,
+    "frozen": 0.5,
+    "shuffled": 0.500244140625
+  },
+  "correct_minus_frozen": {
+    "mean": 0.005126953125,
+    "lower95": 0.001953125,
+    "upper95": 0.008544921875,
+    "n_seeds": 8
+  },
+  "correct_minus_no_gate": {
+    "mean": -0.27880859375,
+    "lower95": -0.34423828125,
+    "upper95": -0.226806640625,
+    "n_seeds": 8
+  },
+  "correct_minus_shuffled": {
+    "mean": 0.0048828125,
+    "lower95": 0.001708984375,
+    "upper95": 0.00830078125,
+    "n_seeds": 8
+  },
+  "seconds": 139.94720599999982
+}
