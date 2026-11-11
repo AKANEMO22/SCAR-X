@@ -1,0 +1,69 @@
+{
+  "tasks": [
+    "sim_xor",
+    "parity3",
+    "order_short",
+    "and3",
+    "maj3",
+    "xnor_delay"
+  ],
+  "order": [
+    "xnor_delay",
+    "maj3",
+    "and3",
+    "order_short",
+    "parity3",
+    "sim_xor"
+  ],
+  "seeds": [
+    320001,
+    320007,
+    320013,
+    320019,
+    320025,
+    320031,
+    320037,
+    320043,
+    320049,
+    320055,
+    320061,
+    320067
+  ],
+  "arms": {
+    "buf100_ep600": {
+      "meanF": 27.566666666666666,
+      "worstF": 58.0,
+      "acq": 0.8527083333333333,
+      "seeds_ok": 0,
+      "replay_ratio": 1.875
+    },
+    "buf_ratio_ep600": {
+      "meanF": 35.291666666666664,
+      "worstF": 71.41666666666667,
+      "acq": 0.9250694444444445,
+      "seeds_ok": 0,
+      "replay_ratio": 0.31875000000000003
+    },
+    "buf100_ep1200": {
+      "meanF": 26.45,
+      "worstF": 57.291666666666664,
+      "acq": 0.8572222222222222,
+      "seeds_ok": 0,
+      "replay_ratio": 1.875
+    },
+    "buf_ratio_ep1200": {
+      "meanF": 35.300000000000004,
+      "worstF": 71.54166666666667,
+      "acq": 0.927152777777778,
+      "seeds_ok": 0,
+      "replay_ratio": 0.31875000000000003
+    }
+  },
+  "best_arm": "buf100_ep1200",
+  "verdict": "genuine_scale_limit",
+  "t3_reference": {
+    "meanF": 0.42,
+    "seeds_ok": 15,
+    "n": 15
+  }
+}
