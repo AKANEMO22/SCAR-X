@@ -80,7 +80,11 @@ def reproduce():
 
 
 def projections(seed=98001):
-    return [{"projection": value, **{k: one_seed(seed, projection=value)[k] for k in ("both_A", "direct")}} for value in PROJECTIONS]
+    rows = []
+    for value in PROJECTIONS:
+        stats = one_seed(seed, projection=value)
+        rows.append({"projection": value, "both_A": stats["both_A"], "direct_on_pairs": stats["direct_on_pairs"]})
+    return rows
 
 
 def screen_seed(seed, cls, order_kind="original"):
