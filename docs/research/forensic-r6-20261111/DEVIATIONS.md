@@ -30,3 +30,7 @@
 10. The initial generic Gemini-engineering receipt used the historical-reproduction
     class label. Its actual command ran only5unit tests. Treat it as ENGINEERING_CHECK;
     future supervisor labels are corrected. The original receipt is not overwritten.
+11. Limitation7 was addressed after delivery by a separate data-only follow-up.
+    RAW_EVENT_LABEL_ADDENDUM.md records135,168row checks,0mismatched latent labels,
+    raw marker ambiguities and cue/pairing limitations. It does not change the
+    scope of the already delivered24453bdpackage or authorize new training.

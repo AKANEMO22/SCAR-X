@@ -1,0 +1,4465 @@
+{
+  "decision": "RAW_EVENT_LABELS_SOURCE_VERIFIED",
+  "records": [
+    {
+      "seed": 121011,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "87409a5f350b7cc9c24808f568c603ee85e94fd44b565496716631d07b7f5ee5",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 268
+    },
+    {
+      "seed": 121011,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "ac7b081f84990b663f6e493620d206ff8b4ef0bd1c4a3f14461e9216a59c959a",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "8ce0d00f9dde006ae1953f9506d155d28d586d9f0ecca20a706952f753bbb375",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "a844552a97bbb18e8a69e97ca7e960a8fbfddde6ef51b756b27573e71cef591e",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "3ef508e9baedbbc8bcd9aa1bcc19d355e46fbd3f40123cdb3cc3412b7057badb",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "fad554ca2c9c49ffb28608d0d80744e1404671028259d40caa431721ffcce8bc",
+      "target_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "oracle_sha256": "eaac47f4bae0322d397107358a8ae54234399ce8b573d3048e1047bbe60f1d2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row9: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "d7dc118fe1af42030d04f7a036eeed8131ab7bb6744bafe0903e8175375262b8",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 131
+    },
+    {
+      "seed": 121011,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "879e1b992d0c7881bcbebc6c94d794abf3fd58981cf25d6e5cf9cba0691c5365",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "9bd701fe2dd4210ddef053b5adcdc9419beb48ba4e54c9b3c5447e4db59ebae9",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "98eec5f8a763c75fbe2a68125cac28f276eb32190f9b5b6792a8db4594a58c80",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "dd6a4046ba20d1464e9de0801f94e326a642ecbe0624be4ab5adf0f45b139f84",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "c35222dc84dafa89665e9d7ac21c14bb430f249b8d19930d15a4d05c47cc53b2",
+      "target_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "oracle_sha256": "867291e73f9982a3e5a52a42526b683a1f9019657aba87cffcd5b1d54b9363ff",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row8: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "2ecacd6680e171229c86bc53c04fad01a87c0c06aee22e2f2da37bc2dca35473",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 142
+    },
+    {
+      "seed": 121011,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "4a0f5f8652e54eaa6b80cf872863c27070e2bf5ce3e02f33aca3cc28f31a2916",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.38821594417095184,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d915b9389833aa7409947fb7aefae2863d4bacff9bd5e97ce1ff1b0c11ca1bfb",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "a9818ab3b79eb8aef3a684ea2ea6e76aeca226d0cff52bd4f25ac8b156b2694a",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "fa235f79f5e1a7f9c541af60e88377c6e05fcd5fde8c77a6aeee61f55620bd1f",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "f76dbe90e93bd41dfa26b5dc01a53e9bf79bee47a521b3987f1305eb17ad1220",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row7: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.9716421961784363,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "6eda8980f01a379c9c2bf89b8439a29271cbd8d928a7f7acd28ffdb99f2ce76a",
+      "target_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "oracle_sha256": "866a21ba93768f37589673824586bcc3666359b2da905011bec02f47519ea2b4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "35693beb3665015a11750747bad257de9f6f934eeb1c80d94fd121e3d50ef625",
+      "target_sha256": "a4fe317d0f56c324a04c4194f869544eec04b21b9506b0d056ac0b2f0ec517c5",
+      "oracle_sha256": "a4fe317d0f56c324a04c4194f869544eec04b21b9506b0d056ac0b2f0ec517c5",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "7e77f7bb8e33ab696f2e3b79ac4b3e98ff04f47084e277d06950d94ea106782a",
+      "target_sha256": "bd2b040496208ac0c8eaf04d0ba9f5c3844f56876bb99853a534f88c04337c30",
+      "oracle_sha256": "bd2b040496208ac0c8eaf04d0ba9f5c3844f56876bb99853a534f88c04337c30",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "c9a8e91db4772bb5c04c620c5208c826fc447f1e884b28a405627932ccbac621",
+      "target_sha256": "7cc0a24194bd362f871f1cd132bf9b293e98c92c3d6d31fba4e18b44448ceb29",
+      "oracle_sha256": "7cc0a24194bd362f871f1cd132bf9b293e98c92c3d6d31fba4e18b44448ceb29",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "8b2faae6263654e1026ef0eae33a4d96f7f058bf769aff74548136d8373f6fb8",
+      "target_sha256": "b2d2432de69be165e0957fa146b3c7b3fce589d62d2bc8b7e709ec5d4825f2c8",
+      "oracle_sha256": "b2d2432de69be165e0957fa146b3c7b3fce589d62d2bc8b7e709ec5d4825f2c8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "dea841691390d2a203304eee24f78534ee5758f591d679147e77a2476a169be4",
+      "target_sha256": "27010570cd9b9abf511331ac8d1ae0ad1adfda0d0137c37493b94a430ac61705",
+      "oracle_sha256": "27010570cd9b9abf511331ac8d1ae0ad1adfda0d0137c37493b94a430ac61705",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121011,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "01dfcb71cf79f3e31c73a66b2f92dc1de617f3f2f80ed2b7ef4c297d5a1f8d0b",
+      "target_sha256": "08b8b56752ea78a43f966ceecbb97e6ee5a7cd7928817f584abb29ef59ac30e4",
+      "oracle_sha256": "08b8b56752ea78a43f966ceecbb97e6ee5a7cd7928817f584abb29ef59ac30e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "2aaa0626df8dd32d251e3bd52790a07acfcc44ca0a70992b2a9eb0a57ca11140",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 251
+    },
+    {
+      "seed": 121017,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "c6f759360711a2401205ae81294e2063c3b84e687b09208bbcb184c7c1e04035",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "dd4f6a02908aeed1f045dee80f0fc0ae9b5775f1fe340bfb321214bf248f4253",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e56b74ffcdb5833fb9b0c10e540cc385951bfc6011b86a878e0a36f58c20bbc0",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "0b38160a1d76ccc9d895e2cdb016c121bd31f789da98f7b658c1509f2e9d825f",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e4afddefca09ed73e36f90adbc8d2e140e1c07282a406f6a4d75acf77eddafd8",
+      "target_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "oracle_sha256": "0a72c8c8f55a85c93eb93016dd70d5943d911d0a3ff227a0d16cbd0b81ae7648",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row50: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [
+        120
+      ],
+      "source_cue_disagrees_with_latent_query_count": 1
+    },
+    {
+      "seed": 121017,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "5e0d41763a44f867d09ea1710555e1e616c027b50432dce1b23507542a429010",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 124
+    },
+    {
+      "seed": 121017,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "e1d02236e3c311572099db4ddf9f0dbf857d5bbe49ca41e83e5c5cf4103b4d0a",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "6a8552c7c8c50bc900b64d902c556c76c977159ace8a6ce480cad3a85b950007",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "6458bfc0f21e5d1c1011d3699cb085c1c422ba36b49011dc28741d941af02a15",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "30ea771f3d48cff4600a42a0c7fb6a5a456c1fa12eb87d1f2d9f45664af3c62a",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "7f60afc352cf0af295234ace202c02e270b700b7d6050fbd68f1ef0b4752767e",
+      "target_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "oracle_sha256": "6fb6e72444d5f98737e997c6391cd2a6340640e299d6f1824c5ec2f7c93d07f8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row2: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "26aab179fa4cc5811443846e9aa15e3c5d436401f49f826fd8a1771b387c8e1a",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 104
+    },
+    {
+      "seed": 121017,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "1f9b0b491efa98fef3deeb898d05c6c2d04e5e472dfbc8930a12d19b6fbca31c",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.43113723397254944,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "932fa81c1998041be5c9a4044cd2469296f8289860b515f9be719ddbc72d28f0",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "e89c8f24901fd9deb521b7c1dde2de9fbf2ee03f7c531fc9f03b13a06d6eee29",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "6c2ad8dc460ece6c8b6f43eeb93d34576cce92247456bac05181adda44647e38",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 2,
+        "different_nonquery_noise_pairs": 254,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "3b1df08b397d9f79177d02f4ce6d4cbb5e38c4ea93c79a2341fe621e6b42b0d7",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row18: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.8626765012741089,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "61a894a971589122f1cc7568e609869cd6a43b2473e983d8ad4fac66ff180450",
+      "target_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "oracle_sha256": "cf590d9c2222b28361e9b0ddd3256b05945337541c8ca0c12766c37dcd509b34",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "c6cbea222403fdd66da96c60b0631fdbb861f2f96377d8f24079ff52813f62c9",
+      "target_sha256": "500eea4a9a0583c119f08c605e928e01ce72eb2c5c8710666205ae38d25f3bcd",
+      "oracle_sha256": "500eea4a9a0583c119f08c605e928e01ce72eb2c5c8710666205ae38d25f3bcd",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "c4b2fc654314f01076599642e87be7e7deba729e58eb5fbacb6a366fa6140803",
+      "target_sha256": "7d98a36ed39028a686fc7d8ccf18db42cbad863ab1622949d5441ced849f3349",
+      "oracle_sha256": "7d98a36ed39028a686fc7d8ccf18db42cbad863ab1622949d5441ced849f3349",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "a3c1fd8fbd7aa356b75e296a6e3b1e4ed1f34c6ca6ecba48dadee612117f1da8",
+      "target_sha256": "1d627b796c113942fa3b65835bbc6f5bb4c9f50e2501a795abd470979e8c8c5c",
+      "oracle_sha256": "1d627b796c113942fa3b65835bbc6f5bb4c9f50e2501a795abd470979e8c8c5c",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "63a2022599629e5ce1dfe2a81f4088304c0ffff8184d95c89fb2e2a41aeece62",
+      "target_sha256": "764af5113daeecb9a97c6914e619da369e78bca23101e3f1222b1bba71c1ba49",
+      "oracle_sha256": "764af5113daeecb9a97c6914e619da369e78bca23101e3f1222b1bba71c1ba49",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "be266bebe49de2a5b3c11efa8100c609490e34391abae7649a5ff71e63c8f4a3",
+      "target_sha256": "0c5947d64de7bd50a209aeae8d5315e948f4dab60afa197948f70774e9cd34f6",
+      "oracle_sha256": "0c5947d64de7bd50a209aeae8d5315e948f4dab60afa197948f70774e9cd34f6",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121017,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "42f751ffd6f5a832be337c14717d07a74b8b398d8ced7d26d5fcb008aa366799",
+      "target_sha256": "a8d23dd6c9bda2b1f3c9593644aae088ce5e2c42e8618e2e63e8f39ecd352423",
+      "oracle_sha256": "a8d23dd6c9bda2b1f3c9593644aae088ce5e2c42e8618e2e63e8f39ecd352423",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "b58fe86706c27d0e7948c47cdcff6406df7ba33aa813851ccd2f159ad83942dc",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 270
+    },
+    {
+      "seed": 121023,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "04750556b343961130802f6bb3c712d602fb70ba88814b066c4fdddb27594350",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "81ab2eec2ff1416b40a786615a222cf9c6744100f1c173288ebd22f6cdd32375",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "d3460810ef5810c472d1894ec5a1616eb5b4fdd9679d81bc8eb13c4ef9d2d186",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "aef5e82f7e04779be68e6a3e88984621d50f703956b20ef8888516d1f64c7f0e",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "6c165cec6164e58e9fc3999525be587fe3bb4d3bf7ea111b66cf11e43fa161a7",
+      "target_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "oracle_sha256": "22a5c44320e41f4c05cf9ebafdb8f76cf70dde52e3e94c2c82a307cc2443cfc3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row55: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "f6a2c9ae86356bcc723d4829896666f630cac1d3a6ca78a6150c0b36e199e4b9",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 126
+    },
+    {
+      "seed": 121023,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "d6d7179e60bd8f8e925f8de8f22b1f2825ab51841da28f7ab3d97747307aa8e8",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "72e08f33c4534020e0f74a438b81e82c18eb0efe3c440711e7ac85138ba76d4a",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "70ab47f74e18aa052c44762c95e75e4ee3123e136d7995f38e80c361d2c4df78",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "3b8c591f2bcf1ce0c012fe2032a74d2e847109fac1d4bd05d01c0dbec85e9a85",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "a6e4bd0dc7a22329b83378b43db6c04fa49261cd24fc6f39e68b31083bec2696",
+      "target_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "oracle_sha256": "92ed2d4503d91d8ed2a33812923ac93bdd1b018bbed24cf0f893f916485437c2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row40: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "7361db5522fbd0032b2b5d1c72a325c88598601bacc267a5d5a679663c1c6eed",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 112
+    },
+    {
+      "seed": 121023,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "f05101c52d23b1bdb594e332ddd2c0a8f799dd9a7284eb69cfed067c0bdf03b6",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.4008933901786804,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d7587522fca9f171d4ff3ca938cd4960ea9cd07ced579f6e0b89cf8ff3fcdfe1",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "2c8776b79123fe3a0f27bb97586487ffe3b5a5fcad932ff05ff6927ddb9bfe99",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.0803341865539551e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5e2d0a3bb8a3873569995cca51fdeffa365cb7ec51ea3bb0ebe5cecd5e1ef773",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 2,
+        "different_nonquery_noise_pairs": 254,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "6211cc705e37ba54cf08a434c83b186c1b4fdf1ac73a4440851b60650de18c3f",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row48: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 1.02534818649292,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "63a3548eb474ccb4ef376aed9b3ca1562888164a6de6ca336e452ea1c6e45dd9",
+      "target_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "oracle_sha256": "fdd98d8f41ede754ac8f3958550535ba5680d0a78e4e023f574705a28c023c2b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "d5a953b2a74473e0c64fc5af9d213904e8be99df64874a62d41e46b7cc3a0324",
+      "target_sha256": "8ae88db3361a569134bcd75ef44f73ea3e5e90126395fddd5854c4fb8b13af8d",
+      "oracle_sha256": "8ae88db3361a569134bcd75ef44f73ea3e5e90126395fddd5854c4fb8b13af8d",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "9148e6a65e702ab6522ed7a41e228522c9b203f6f7b7ac3e24ef701f8a746bcb",
+      "target_sha256": "7ec206f919e31596d151352a5fcc1dd81dd6dfec73026fccd5f66bc02b9a29bb",
+      "oracle_sha256": "7ec206f919e31596d151352a5fcc1dd81dd6dfec73026fccd5f66bc02b9a29bb",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "61995391b865f03016f766301f1cd3ee54623485980a3df9a2c330c4fbc29a1a",
+      "target_sha256": "a0f1cd54a8e77e5735649a28269bf4a3d765e5061a86428d85c6692d9a334fb6",
+      "oracle_sha256": "a0f1cd54a8e77e5735649a28269bf4a3d765e5061a86428d85c6692d9a334fb6",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "2cd34bc8244acc03770c2140b93887a5855efc326810074ee6a6a1e9417e3bcf",
+      "target_sha256": "7a00fff1e919b5c96246495397509262bdadc036052298d1f34d0cf828f3e801",
+      "oracle_sha256": "7a00fff1e919b5c96246495397509262bdadc036052298d1f34d0cf828f3e801",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "59c62d98a6e9c0e9bc6c3e853af4e042eeca63a1a42bc98ee0e502ca0eaaccc0",
+      "target_sha256": "b2808337ca3366603af93974cc7fa6111896d4adc16cba7f9e344f0fef382572",
+      "oracle_sha256": "b2808337ca3366603af93974cc7fa6111896d4adc16cba7f9e344f0fef382572",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121023,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "b1a7d04821bb4b7d45aae4658c0995db4b95d9f13a5ca94310c7b37dec359cf2",
+      "target_sha256": "dc4449be7598965712930a39648d46309fb252cca44bad8a83e12209a609108f",
+      "oracle_sha256": "dc4449be7598965712930a39648d46309fb252cca44bad8a83e12209a609108f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "afdd422d1388edde658342262b51cf856a3df3d1efc94ab692ea9e21fb1b2e08",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 257
+    },
+    {
+      "seed": 121029,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "0b39481ef80f28b589b4610dc7344434bf2b1c37c4de0a8b6a8c19f7f4fde735",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "2ff97eb560bab1b146e40ab93d4665a5ad3c84cb8f1a0c59d1e0ff376524ed15",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "2264e07a75282754aecea9279ea608f79179454d8fa24ee6ee53b32df99f531c",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "6c304cb6e9ee13b303623c08cf97531e7988add3fd3f6a456f6527c2e5f6d833",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "a49edc5faef35cb5d93881bc9da12037c894c47803bd83f8c6f0b1dba20443b8",
+      "target_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "oracle_sha256": "ed1192013ef571b44bebb57a703d43c0e9a264a45ef39697874cae27ef4546e4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row16: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "325c55d2adb7da3fe7380aa4b46bdf3f661983c65cb2e60f8018141a0cdcc7bd",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 133
+    },
+    {
+      "seed": 121029,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "499131537eba29f1ab1a26935dfd5869419a2609dc49c0104dfc1faeec553e7b",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "ae3a0d6f798bcfde02bf5cb30154812e832c3fa7cf7bd89100649907215d496a",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "fce81be7278d073cf044f978f2017d14e6c32e66ac7bde6526187a430d6d07a7",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "ab53028588a6aa06062be713837223aba3a6b98fee112482fdd4a5adab1705cd",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "80a902dd3c647a8392df36676c001abf50bfb48379d5f10dfd4e29ca0091ff39",
+      "target_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "oracle_sha256": "e9349be2075e626c194a3b4c4c818c96740075f7cfbeb9495cddf40386ec5b10",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row1: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5f32606b97f02fba1e45f0375811c90a3f27d616482bcdbf684e08d7254bb456",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 156
+    },
+    {
+      "seed": 121029,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "04458d3c04b91f5bad51b491491759d26922e88e00f4a90a69b7bc1b31682122",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.381817951798439,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "bb1fb73de86f956c5d939bab009fb6629bc2c1ce956ba1cdee4400f411da8b16",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "b5931ae87ed7f343e0424e3c950b5a7ecb77c07fd4e67966f9fc5dfa79e97390",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "284dcacd9c0ff7c316411cee2e9b15b6ed8792a652a5c7193c505d40806aa4ad",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 3,
+        "different_nonquery_noise_pairs": 253,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "772b939ba372905fa12d4acbe6cffb6be4e036861e23851fac57b71ca4ef63bd",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row15: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.9206025898456573,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "1b40c4918843baa66b277877b68a57825d7ad1154f46c2188485b4854e263a4c",
+      "target_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "oracle_sha256": "0d909ae34d6185e68e8b8aaab66f7127f6e4760c84538d46911d43de18e4b0d3",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "05a626b96d3eea005c831da8d989b960093b73f8d1ee82950eb2e592179d4282",
+      "target_sha256": "c49575f0755b461476e511b2e9ea7c498f82c6b7bbe01ce4898b7e0fcd39d07f",
+      "oracle_sha256": "c49575f0755b461476e511b2e9ea7c498f82c6b7bbe01ce4898b7e0fcd39d07f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "116df24c4193eb4b36a5a0109e20751958e64363e723cdf581fa4b20e39be8c3",
+      "target_sha256": "702fa6a43fbce8cf1ea6baee8dc58b59e41581a6a2b9ffc5240f99235efd1784",
+      "oracle_sha256": "702fa6a43fbce8cf1ea6baee8dc58b59e41581a6a2b9ffc5240f99235efd1784",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "01db46f15897cdcd110b5d2adc49c14c08f69875001caeb16e7396c16533fa09",
+      "target_sha256": "e6451cb9be888239bfeb97ca468fdbf1cbe6675d5544a11b691f6c96185cbc59",
+      "oracle_sha256": "e6451cb9be888239bfeb97ca468fdbf1cbe6675d5544a11b691f6c96185cbc59",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "a81a684ae099925e46786da5cb47d92d6cfb40ac1b7249079ba836ff5cf62301",
+      "target_sha256": "733102f497a64fefe0f5799b765242f9c9b051e03fd74927edb4c9bba6a33a11",
+      "oracle_sha256": "733102f497a64fefe0f5799b765242f9c9b051e03fd74927edb4c9bba6a33a11",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "f4635bce3dc0e68e08712cc30e622017d3d8d9f991ca1d6587556ec59f472b56",
+      "target_sha256": "d7e4e5fee71b39c49ae867aca8aacbba8a2e5a5df2be3428bab31588e72a8146",
+      "oracle_sha256": "d7e4e5fee71b39c49ae867aca8aacbba8a2e5a5df2be3428bab31588e72a8146",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121029,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "b31e1929e102c25a8330eb1d10111e0270a6ee3527b9b62a582f56e14b245949",
+      "target_sha256": "4da2976bf1140552b1ef41b315dde9885da7dc1d5d6943312582b077bf1e33cb",
+      "oracle_sha256": "4da2976bf1140552b1ef41b315dde9885da7dc1d5d6943312582b077bf1e33cb",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "06b13f6347f7d3050e56da199a8cbaf0888f57476bd0133d349bc94cf38cb93f",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 249
+    },
+    {
+      "seed": 121031,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "3b7cb6786c0aaa6b5d53da368e12a027fed31777967a235a5c7e48e1a44ef424",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "b863b64f54214b377c6a549a16d3301ed419640ccb2e38f6c70f69738807379a",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "715a2232a9ce7cbc044d86c1ba1dea253cdc42411c1bb5affbcf6f95d1e0e908",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "de4dd04d488b20309b951d2fbcf816e45b0a72bd2d30d4b4bed5e87d12938d0e",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "239f2b1c07e0c873c78f23f8eb79abde64953d43515ad0569ea54a2198cf63fd",
+      "target_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "oracle_sha256": "b17d26e39255919921d241a533511971db3f3f28d91f2c42a6e33e92cfef5c98",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row15: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "f1c34770fa1777d366ae61fef0b630867ec9d23d99b23770a649f3850900beca",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 115
+    },
+    {
+      "seed": 121031,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "ffee81805f16ea45c0e4dbf0d332b54577a60f47fd0f9712c10ba9c5812af68b",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "a39f888f2108bd3bbf0c623b20b0da43a48b753395e5fcc985393d40736e943c",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "6d53f73555ce3e9d94240d9133b361f7936dbc1edbf056b81b5f851ec619e5dd",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "2ef34ae3bcf96113ae999d7eecf2ca42f1d147bbe494b0970c58f50ac244edd8",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "3624a1dc08fa818b9c1a65366c8c8cf15f263e39acfcde4922cae22f0ef9c00b",
+      "target_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "oracle_sha256": "4837fa8f38f1693efab73cc65ddd33d340501036c6b444aa168f4fe87e6f17f1",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row0: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [
+        378
+      ],
+      "source_cue_disagrees_with_latent_query_count": 1
+    },
+    {
+      "seed": 121031,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "358e1f37e2f306784ed11d91a57cf300bfb703070e6bd5cf723b7627a815607d",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 138
+    },
+    {
+      "seed": 121031,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "332c8971e1d0ca3d1c95d6a35bcb3307add80c323d48f55ac85a14e1ce7fbc82",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.3850306272506714,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5dfda1e73f391511290bd9183761beec5c274219c7cc722d63ea0c04beccea20",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "2e9ff50f384e23aa220cc509cd91f7ef1c8351846b00d6cfee6335a7fa483af1",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.0803341865539551e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "881a173602de0a1f07227be5ac23fe265a2171e42cc69034c4e79dbc334fa6a7",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 1,
+        "different_nonquery_noise_pairs": 255,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "53e1d28b79c6148a8f5c1cc2c795c080d1a19c16de2f7e14533ff89716d70adb",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row3: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.9222871959209442,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "887c71568199346c6bba73670a033b575e6dd248e0148cec7c293dc441bb69ad",
+      "target_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "oracle_sha256": "ba06c9b8c89e3c5b4baa973fbe43bdba2afd8afbd3cb963395b7df6b0b8fe73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "47e7bb25bd1de88d02746c5aca5bec0dc33b731e32c0c5640b8aa3ba5ea5e131",
+      "target_sha256": "44caf2e77c1b51c34d90d2ef85466355262f8db4442e131a22a58afd28340873",
+      "oracle_sha256": "44caf2e77c1b51c34d90d2ef85466355262f8db4442e131a22a58afd28340873",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "a35bf89f316e4f937ec1c3a9b709523b8c631fe74f75c826078ccedecdc478df",
+      "target_sha256": "03b3b6bfd4cbd7a86625bf81a470cf2ff995c8e400839d1cec03b3d176c4d73b",
+      "oracle_sha256": "03b3b6bfd4cbd7a86625bf81a470cf2ff995c8e400839d1cec03b3d176c4d73b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "e3e0048e7c701ca0d268b054876b86d00ef4c838273b97139446aca35e176bbc",
+      "target_sha256": "c497ae99d5930eab312e7e1970b81ace36b3fdfa0bb0a0b1c5b4bf43210a3520",
+      "oracle_sha256": "c497ae99d5930eab312e7e1970b81ace36b3fdfa0bb0a0b1c5b4bf43210a3520",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "0407cda3fe7ce41f1e49898a08951a86756df942586fa9e56c969a057854d352",
+      "target_sha256": "c1201e86cfa8ee2b587f512d6998a9c2a694f5fb4615c0294b5bcafff753b873",
+      "oracle_sha256": "c1201e86cfa8ee2b587f512d6998a9c2a694f5fb4615c0294b5bcafff753b873",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "deb702f518caa13294b2700edfc4b761e5761b1f4b71aabb8b94887acc4583be",
+      "target_sha256": "294622f9dbcea74ffe196d7c0a3590b71faaa54103186c24f5329fcbb6165a79",
+      "oracle_sha256": "294622f9dbcea74ffe196d7c0a3590b71faaa54103186c24f5329fcbb6165a79",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121031,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "8cdb49b389ea5b0f3ad3391957c4e655675355fd0ab133c92cabd3edff4ae95d",
+      "target_sha256": "5ba14f0c0095aa2fe6c5c1def074e9d7a94266cb9a621204eb80a6245836eb5e",
+      "oracle_sha256": "5ba14f0c0095aa2fe6c5c1def074e9d7a94266cb9a621204eb80a6245836eb5e",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "ed17d7f14dd2113a407ad0aebf606a5dfe50d5fe78fa7718426416fa21d846c8",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 250
+    },
+    {
+      "seed": 121037,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "1784275fae76636f8745746b44fc1ea45e6cb16e880b568e6a06cb845b780a53",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "8719219c6ba6c2706d6a66596d7c7a8eee311a1235fdb8d90415697a7a0aa3dc",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "c843596d1832d22eb168e117dab7302d7cb5fbcbbde506bcb9fe331c7f0689a9",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": "row680: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "235a534903f071d937c89a7cb0fdb7ad77f6d8a5474ea7f54d5370091c9e9abd",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "f0413e6811db476bc0478ff731e4aa542428b6b3475da26b8daa405ee973e633",
+      "target_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "oracle_sha256": "1890c03d80c81fa10c92246f6b56969d70fb2c2fb6991d8fadf4fc4ea6b49501",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row28: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "68f91cd06ab350c3d1d4155f512f24e9281a19aa77d1797dd07ade605f50616f",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 132
+    },
+    {
+      "seed": 121037,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "35a2f4570e63d6ea1a98ff13165bb75557a177688156a7c77e68674725bf6324",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "65710200e95543fa35ebe5eeaf508fabbf3619ca288f63a10d03f77b59ae4465",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "2d746570a7bc493d59dbe0ca7b0e3181d432370c3216fedd8ab43cae7d9fd268",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "176077cb760a4bf8bd3cacf65cf5dc50f7d9943b5968ed3ff9c9b9a8b46f90b9",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "96b30587a477925078bd2332311648c43143f3ddc82d9e8cbc20b276cbf85412",
+      "target_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "oracle_sha256": "449c6e369add649cd280ffd49ee23348f141cfce2aff07c2db4c2b98c757d3be",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row4: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "142026610df2940ed8c28cb6332b7e4e5455fe51bbef228dc5cafe5550e320cb",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 112
+    },
+    {
+      "seed": 121037,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "50655f12b483b871a8865195f3b7b6750f6aee0cf529d41bf17bc1c3e0117c82",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.3809327259659767,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "c1617b5e14e5221f10170d6ebd10ad3e5163528fe98b495c965669591be13cb3",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "febe5533538167e9f9a8feece6b3568d0c3b47f77e32d5f9a028e07d8ea17f11",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "be7723ae518e3629086a01fca50b1dc90ba3c2a066a1271628efdd2591fb2d32",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 2,
+        "different_nonquery_noise_pairs": 254,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5c184645e73f8f3e457ca7dc7f0a11aa58653776018c547705e9d20f809ac5f6",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row5: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.9091522097587585,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "07b92b919088f83fb11ae22281a81ba223ee2d3fa331e78fd4bfd22d4e6cbea6",
+      "target_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "oracle_sha256": "eda6e616f2c747162aca575e2326b75cedfc08347c4a79b173255d69c9e44fd4",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "b67ef1209d5f89557c879d2d709f00ce5ed67dbe0728137933d7e428814502b0",
+      "target_sha256": "70e360702b266eded961ca4c0ebf920172030eb6f84aab2c3989b52e2ef62739",
+      "oracle_sha256": "70e360702b266eded961ca4c0ebf920172030eb6f84aab2c3989b52e2ef62739",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "9028b59da9a04ba9793a9f9f976d0981c56b26e45740480ab9cf1dd9b4f6c1c8",
+      "target_sha256": "0e813d925ca6655df6b9024d5db771b3f3fcc57f11a42c4c1c1cd90fb5703305",
+      "oracle_sha256": "0e813d925ca6655df6b9024d5db771b3f3fcc57f11a42c4c1c1cd90fb5703305",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d65b3fd6400b0bf5f09b02513f66a13e271b8bb4ca66a460165173f7a5442eaf",
+      "target_sha256": "01cc22b60c8a2cbe903562a8c3c061c10387acfd6a1b1c62b033e7a63c78e5fc",
+      "oracle_sha256": "01cc22b60c8a2cbe903562a8c3c061c10387acfd6a1b1c62b033e7a63c78e5fc",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "17468eb8399f9c4e8d7ea9603b101cce52a0aa978eced722712de73cfdfbcd2d",
+      "target_sha256": "0c7902dd7b3547a72ca64dbb338c7afdef36d84666c723072ba3ba6b2fade590",
+      "oracle_sha256": "0c7902dd7b3547a72ca64dbb338c7afdef36d84666c723072ba3ba6b2fade590",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "d09ad2e408802bd43e0e8f3a00d9a701262578148610627f3ce7ce0bc92fe987",
+      "target_sha256": "8fb8b25775fe72bd9d933a5f9f5203e87c2ea9bb3beb6aa93d9ecc61b199c59f",
+      "oracle_sha256": "8fb8b25775fe72bd9d933a5f9f5203e87c2ea9bb3beb6aa93d9ecc61b199c59f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121037,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "8171b052b74cb7d5454b840987b886b44c89b338bf5d1ea23604b0fd046efc21",
+      "target_sha256": "a11cb5f672cf3551017a562bddf2e42545aba56003dd63fb62d79289b4c2945a",
+      "oracle_sha256": "a11cb5f672cf3551017a562bddf2e42545aba56003dd63fb62d79289b4c2945a",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "08d3ebd2f68dc838c11e36f83523d8a47b7220f8411cbc48140ed46adb9db97d",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 261
+    },
+    {
+      "seed": 121041,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "d756dbf8452dd34c56c14bf08026159dfa194b0149bca7b608a2db08f82302cc",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "848cdde481bb4a1b295d8e104424cd5e05a25c4399a3650cf2a3b649256b214b",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "bd3b9b7c13d62d60d008c17622aaeb528c8ee7ba906cc79cd1dab61050e5bc92",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "884a9c577149c00d8e98bbcdce75ac1fd2755573e2b319c65bfb15bc25fc3e25",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "acc49d8445ad74daccb381520ce689f1b43c5a6c9300e03443617c6df8e00244",
+      "target_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "oracle_sha256": "f47be9736fb0c4d5b71b164d679be40684ed349f08930431211de914a256a028",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row24: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "f310c484c497eb4d6b86d028a20a561622337cddac8fe301f46c35e995834676",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 124
+    },
+    {
+      "seed": 121041,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "7688e22fe782a8dbfbe29791c214de7e5adb9a1a86b7becf080c69b27c23bc5a",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "e710b6dfb1c378015bffe59abd7f0c01d777cba423572d9e85e7a7d0ba8b946d",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "312f1b9a9c52b32dc12c1916f69edb89daebc33eb4ceb142ee60e7cf1f5fa403",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "afb8f47b775ab2ce4310d4f98e94192d3b8704dac3a967ee475f75afcff6cbfa",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "37e5b7f302bd90d8a90791abfb19b289d85698ea8d2f43656b6ceea40747503d",
+      "target_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "oracle_sha256": "260b86a13899f3836c427251fa2b367336caca3f7b7402227359397b9915b28b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row2: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "51393d720a0a6b1a4c4aa7ec433d0c24f1edabe2ff44d5da860dd8e9c2198f37",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 138
+    },
+    {
+      "seed": 121041,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "fbdae1ecf931ef94d7e67a3d11ddbb6ba27c4fb44662b9b3cc76b8b775fcc018",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.39469774067401886,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "b72f0956a1ababeaecb10a304f6b2d5db17620bf200800a41d41a642fd4f86bc",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "e744b95521389f9674f1661d9bf7fa65ee6c7744f2f9642c1ad078c3a50f84c2",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d2389e58c612dd9df34c1bbb03f0a06528798ccb5adc9d2755b92acc44dd2287",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 4,
+        "different_nonquery_noise_pairs": 252,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d36c27a0cdf070a713ecdace1b9f7f8579957c637059e3cbbe95e17561d98e42",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row13: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.9502516090869904,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "9663710f41183dc8f8c583dc656f1e19c92d204c8366a8679a0e11088cc3e852",
+      "target_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "oracle_sha256": "97520908384b303d27de2cd7f7217865df66522147fbe4497688ce50c9c1f487",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "41f09637d4a25e06c1e73fbf00482bb26e7e719f99c94fc0dd16d70bbb53e181",
+      "target_sha256": "f2ab1a709053df376ecb79b683c70951f1a2b04223be51e360ba821aaf4b0184",
+      "oracle_sha256": "f2ab1a709053df376ecb79b683c70951f1a2b04223be51e360ba821aaf4b0184",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "79aa5dadb94f839c657498c30218e9ff3bbc57737d727c21f504c435decc1a15",
+      "target_sha256": "a1f21a8515e3999920be4b1fbfc8af1f35de1c346548da163abb07dcaee5b0b5",
+      "oracle_sha256": "a1f21a8515e3999920be4b1fbfc8af1f35de1c346548da163abb07dcaee5b0b5",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "f64a04771309602b32f9b4a59cc85d3bc2415111b393ea17e5cf1c38504b225b",
+      "target_sha256": "f055dfe910895a46ad755e957848fd1a7e336472e32ba364d44ed52cae5c8aad",
+      "oracle_sha256": "f055dfe910895a46ad755e957848fd1a7e336472e32ba364d44ed52cae5c8aad",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e4c5f177ff0a11fca29794ec69bae1440be541a2c0b0f9c718d7874c683e0fbc",
+      "target_sha256": "dde9ca860010df6da854aa2c4ddb550b88775ff42c9d5310104790c53bc2b0e5",
+      "oracle_sha256": "dde9ca860010df6da854aa2c4ddb550b88775ff42c9d5310104790c53bc2b0e5",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "c4f2157fa8856f8fbd7a5ae0150d76bb9c54c517e5d89ea67c76cb0f21ab5a5f",
+      "target_sha256": "3d61ae85c6699136df2557032d63ba40ba0b9a558f0e7bdd144cd30f8c3592bf",
+      "oracle_sha256": "3d61ae85c6699136df2557032d63ba40ba0b9a558f0e7bdd144cd30f8c3592bf",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121041,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "3f7ffee9d3ad343299d1b387509f0f8776ae751d75eb5ed24572afa9dd14ec6e",
+      "target_sha256": "ea6b6a74776f6ba315436bf8ffa54ac2c8e6dfc7ffad7f4569c62e1c9cb8687b",
+      "oracle_sha256": "ea6b6a74776f6ba315436bf8ffa54ac2c8e6dfc7ffad7f4569c62e1c9cb8687b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "clean",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e017edbd58d2162030e4abddb0df7f5f658c10f8f11d114779abe70c5a0bde9c",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 279
+    },
+    {
+      "seed": 121043,
+      "condition": "shift_plus_one",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "2a59ce1444c38c195d31625ddeb60b06a6ee651728dcf3eb5cacca110e708507",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "reversed_writes",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "5ad5ba230c1779df26408e2cf7928d72371d474aae21bcffd31d786669885fb0",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "query_tick_variation",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "5ac339f2e44f43db13a13629b9d21b6384274091fd87b8d2191e0296181262bc",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "distractors",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "5a2ac64bedd6f3ecc493974660270412b2d306d666ce0345772da6c53e841834",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "noise_change",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "cc53ff437b3940612a105effa5bbad4d4cac5760a401856ed861755276f9ac76",
+      "target_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "oracle_sha256": "9654ef6ef687ba7f25046f80bc66f9ff86a48126a2b5a1d37af964f0c3c4b9e2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row13: marker count ambiguous: writes=3, query=1",
+      "source_cue_disagrees_with_latent_query_rows": [
+        696
+      ],
+      "source_cue_disagrees_with_latent_query_count": 1
+    },
+    {
+      "seed": 121043,
+      "condition": "clean",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "c9132f542beb2fd8cc606b3bd4117d9cfc78da58e67eeac6d56736d8139ed7bc",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 132
+    },
+    {
+      "seed": 121043,
+      "condition": "shift_plus_one",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "c7cdb9a5d49909c0d84acfc1e314080d5f6867fc5a7ab543fcc3b94b6872ef4b",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "reversed_writes",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "321c1eaa453b902a89cb5cad139a10d69d23176923a332af1225d65306c764fa",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "query_tick_variation",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "4656142ce725db3a1e72b6750930826c26d8cbe4e85e0c2946228e9eed7dc10c",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "distractors",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "b33bd55f23420ace873941fc525ad9d62110483e7df9628256b4110c2d117513",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "noise_change",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "2e767fc655aa200dc02b82ba733bf91d68957e515730b006bb68541d6c4cf58a",
+      "target_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "oracle_sha256": "6e42b0fb5238dd9cc1b87000e77a07eb1a41f9876f5143ad61efe193eb1d5d9f",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row3: marker count ambiguous: writes=2, query=2",
+      "source_cue_disagrees_with_latent_query_rows": [
+        397
+      ],
+      "source_cue_disagrees_with_latent_query_count": 1
+    },
+    {
+      "seed": 121043,
+      "condition": "clean",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5ae8672fd6521a9ea239a6113a628a34eefa78628d65908e528ebcf26fd211b4",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      },
+      "source_first_key_matches_key_A_value": true,
+      "source_first_key_differs_from_chronological_first_rows": 122
+    },
+    {
+      "seed": 121043,
+      "condition": "shift_plus_one",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d72c65b721600c06c29f950e7261e2ce0aa2e9819010b21872ead131158009e8",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 0.4147737920284271,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "reversed_writes",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "05b81ffa1f8b09c82d4c70d7bd0c6cbf53fec65027df79f0d86c9a5aad236ea6",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "query_tick_variation",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "c45afca9d62b09965fb3577189556e4a098903c73e5597b198d1e000af79e456",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        11
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "independent_query_tick_linear_transform",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 1.1920928955078125e-07,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "d183900efd9e614bfa446254ed5a6b7c764405da4537aa38418df9d47749d451",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 4,
+        "different_nonquery_noise_pairs": 252,
+        "max_nonquery_difference": 1.5000000596046448,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "noise_change",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "28aa2ec0235e6b0282e6bce7edb9364eb4859461898cbc65c0fda4129fbd71be",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": true,
+      "oracle_background_method": "registered_seeded_gaussian_subtraction",
+      "raw_noisy_threshold_oracle_ambiguous": "row10: ambiguous write or query preceding writes",
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 0,
+        "different_nonquery_noise_pairs": 256,
+        "max_nonquery_difference": 1.1309082806110382,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "paired_same_sample_distractors",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5bb1e07abb3081961202ad9f797179d887138d390b6b70f20735c5a546a95cb0",
+      "target_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "oracle_sha256": "4ca816a56a71119e72973af6266371af01ff0fe434afdf358408ce7bbe341379",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e0e024d2cf5d4ed7793b2ac64b371503043e43633dadc0e88b4c323fc11087df",
+      "target_sha256": "1cd402eba941ac443e3d12cd38f40fcee5398bf857b9dd1291791128161ec14e",
+      "oracle_sha256": "1cd402eba941ac443e3d12cd38f40fcee5398bf857b9dd1291791128161ec14e",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "a4c6c9be02c47eef5e9b2aa08a4003e247fc6dae6002cc49ec8c4ba000490a2c",
+      "target_sha256": "c05512deed4caba72d886947282ee827e083637a42949b094317d20c8a36fe9b",
+      "oracle_sha256": "c05512deed4caba72d886947282ee827e083637a42949b094317d20c8a36fe9b",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_structured_third_write_windowed",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "5439e4b212bf7dc41bd4fc46245f4bf5f7f6d658826273217d9cd0fcd10a0b8d",
+      "target_sha256": "3e04e317d439852024d2a72df83de4701dd21623d29f025fb6152b79d8892e35",
+      "oracle_sha256": "3e04e317d439852024d2a72df83de4701dd21623d29f025fb6152b79d8892e35",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 2,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_key_overwrite",
+      "split": "train",
+      "samples": 1024,
+      "input_sha256": "e6a0f6e86610db9a50d64f77256b06404d25db43b78c59a85810335eb76db55f",
+      "target_sha256": "873c0db08ecf776a293b6d89bad0d4ba00d08cb5211167299518fb642c81d6e8",
+      "oracle_sha256": "873c0db08ecf776a293b6d89bad0d4ba00d08cb5211167299518fb642c81d6e8",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_key_overwrite",
+      "split": "held",
+      "samples": 512,
+      "input_sha256": "cb14a8a1a54e4b0953b59ca6e4d5c7f91685d31bf4b8069cabc842e1e73dada4",
+      "target_sha256": "84b1b569c33baa8c7943264aeca853628ecf4ba8b201f7561a1dee9dd37babf7",
+      "oracle_sha256": "84b1b569c33baa8c7943264aeca853628ecf4ba8b201f7561a1dee9dd37babf7",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0
+    },
+    {
+      "seed": 121043,
+      "condition": "aux_key_overwrite",
+      "split": "paired",
+      "samples": 512,
+      "input_sha256": "9d22d9d5ae0d38d3456a5db6601c1e0b0d82c882961b57b6b8e9e2c287e8db04",
+      "target_sha256": "fe83395d8504829632c76919eba94ef33ffea0aa6524fd8b20add2a65dcfbdd2",
+      "oracle_sha256": "fe83395d8504829632c76919eba94ef33ffea0aa6524fd8b20add2a65dcfbdd2",
+      "wrong_label_rows": [],
+      "query_ticks": [
+        10
+      ],
+      "write_count": 3,
+      "evaluation_only_latent_event_reconstruction": false,
+      "oracle_background_method": "ordinary_marker_parse",
+      "raw_noisy_threshold_oracle_ambiguous": null,
+      "source_cue_disagrees_with_latent_query_rows": [],
+      "source_cue_disagrees_with_latent_query_count": 0,
+      "pair_contract": {
+        "pair_count": 256,
+        "facts_and_query_pairing_valid": true,
+        "same_nonquery_noise_pairs": 256,
+        "different_nonquery_noise_pairs": 0,
+        "max_nonquery_difference": 5.960464477539063e-08,
+        "float32_pulse_subtraction_tolerance": 2e-07
+      }
+    }
+  ],
+  "rows_checked": 135168,
+  "wrong_labels": 0,
+  "neural_forward_calls": 0,
+  "learning_updates": 0,
+  "fresh_seeds_used": false,
+  "resources": {
+    "peak_rss_bytes": 55242752,
+    "peak_commit_or_vms_bytes": 41320448,
+    "os_process_peak_working_set_bytes": 56684544,
+    "os_process_peak_pagefile_commit_bytes": 42905600,
+    "samples": 464,
+    "interval_seconds": 0.02,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 12.320807800002513,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "error": null,
+  "scope": "Latent generated-event/label consistency. Seeded noise removed only by evaluator, never fed to model; not a guarantee every noisy observation has an unambiguous threshold decoding.",
+  "delivered_24453bd_package_overwritten": false
+}

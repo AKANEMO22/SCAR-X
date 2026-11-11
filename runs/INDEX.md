@@ -140,3 +140,5 @@
 - [20261111T102243Z-forensic-gemini-engineering-v1-9559a0](20261111T102243Z-forensic-gemini-engineering-v1-9559a0/report.md) — forensic-gemini-engineering-v1
 - [20261111T102246Z-forensic-gemini-replay-v1-8ad15f](20261111T102246Z-forensic-gemini-replay-v1-8ad15f/report.md) — forensic-gemini-replay-v1
 - [20261111T102359Z-forensic-native-v1-3a0fab](20261111T102359Z-forensic-native-v1-3a0fab/report.md) — forensic-native-v1
+- [20261111T104720Z-forensic-gemini-events-v1-dd3666](20261111T104720Z-forensic-gemini-events-v1-dd3666/report.md) — forensic-gemini-events-v1
+- [20261111T105004Z-forensic-gemini-events-v1-a41c3e](20261111T105004Z-forensic-gemini-events-v1-a41c3e/report.md) — forensic-gemini-events-v1

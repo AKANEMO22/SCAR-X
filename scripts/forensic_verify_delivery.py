@@ -1,11 +1,17 @@
 """Audit artifact/coverage/protection verification; does not run a learner."""
 from pathlib import Path
-import hashlib,json,subprocess,sys,xml.etree.ElementTree as E
+import argparse,hashlib,json,subprocess,sys,xml.etree.ElementTree as E
 ROOT=Path(__file__).resolve().parents[1];DOC=ROOT/'docs/research/forensic-r6-20261111'
 
 
 def read(path):return json.loads(Path(path).read_text(encoding='utf-8'))
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--extra-junit',action='append',default=[])
+    parser.add_argument('--output',default='DELIVERY_VERIFICATION.json')
+    args=parser.parse_args()
+    output=(DOC/args.output).resolve()
+    if output.parent!=DOC.resolve():raise ValueError('Verification output must stay in audit docs directory')
     required=['BASELINE_INVENTORY.md','FORENSIC_AUDIT.md','PROTOCOL_LOCKED.md','CLAIM_LEDGER.json',
       'RESULTS.md','R6D_SOURCE_AUDIT.md','R6D_CLAIM_RECOMPUTE.json','R6D_GATE_INTEGRATION.json',
       'R5B_R6B_REPRODUCTION.md','DEVIATIONS.md','PROTOCOL_R6E_DRAFT.md','PROTOCOL_R7_DRAFT.md',
@@ -19,6 +25,10 @@ def main():
     for phase in ['baseline-tail','native']:
         r=read(ROOT/f'artifacts/forensic-r6/{phase}-receipt.json');xmls+=list((ROOT/r['run']).glob('*.xml'))
     xmls.append(ROOT/'artifacts/forensic-r6/independent-tests.xml')
+    for name in args.extra_junit:
+        p=(ROOT/name).resolve()
+        if not p.is_relative_to(ROOT/'artifacts/forensic-r6') or p.suffix!='.xml':raise ValueError('Owned audit JUnit required')
+        xmls.append(p)
     passed=set();failed=set();skipped=set()
     for p in xmls:
         for case in E.parse(p).findall('.//testcase'):
@@ -38,7 +48,7 @@ def main():
       'peer_source_commits':{'r6d':'4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893','r6b':'c39e9db7771582d9933af402a209917328b71119','gemini_r6c':'8f24a5abde0598201e558eee559564ccde889145'},
       'draft_protocols_executed':False,'production_ready':False}
     result['audit_delivery_checks_pass']=not missing and not missing_pass and not failed and not protected_diff and main_sha=='495dab2f4bac0180e4d1cd28674391f055ccf09d'
-    (DOC/'DELIVERY_VERIFICATION.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False))
     return int(not result['audit_delivery_checks_pass'])
 
