@@ -40,6 +40,10 @@ def rollout(core, sequences, state=None):
         spikes = np.zeros_like(voltage)
     else:
         voltage, adaptation, spikes = (np.array(part, copy=True) for part in state)
+        if voltage.ndim == 1:
+            voltage = voltage[None, :]
+            adaptation = adaptation[None, :]
+            spikes = spikes[None, :]
         if voltage.shape != (batch, config.hidden):
             raise ValueError("State batch")
     features = np.zeros_like(voltage)
