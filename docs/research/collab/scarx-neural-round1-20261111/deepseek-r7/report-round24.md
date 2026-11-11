@@ -133,3 +133,26 @@ single-task collapse.
 
 `scripts/r7_r24_prereg.py` · `artifacts/deepseek-r7/prereg-order-fresh15.json` ·
 `report-round23.md` (the in-sample finding this tested) · `report-round22.md`
+
+---
+
+> ## WITHDRAWN as a gate claim by round 26 — the aggregation is signed
+>
+> The gate figures here (meanF 3.96pp, **8/15 seeds at 3pp**) are computed on
+> `mean of signed deltas`. Recomputed as `mean of max(delta, 0)`, the same 15 runs give:
+>
+> | aggregation | mean | seeds at ≤3pp |
+> |---|---:|---:|
+> | signed (this report) | 3.96pp | **8/15** |
+> | **loss-based** | **6.84pp** | **0/15** |
+>
+> The gap (+2.88pp) is a real GAIN on one task paying for a real LOSS on another.
+>
+> So "8/15 at the gate" is **not a valid gate claim**. What survives:
+>
+> - the **PAIRED effect, −17.85pp CI [−22.20, −13.51]**, is unaffected — both arms used the
+>   same signed metric, so a difference of differences is still valid;
+> - pre-registered predictions **A** and **C** were about paired quantities and **stand**;
+> - prediction **B** (≥5/15 at 3pp) used the signed metric and is **withdrawn**.
+>
+> See `report-round26.md` and `report-round25.md`.
