@@ -155,3 +155,20 @@ something other than solo accuracy.
 `scripts/r7_r28_floor_check.py` · `artifacts/deepseek-r7/floor-stability.json` (12 joint
 configurations × 15 seeds, per-seed breakdown) · `report-round27.md` (the claim this confirms)
 · `report-round5b` within `report-round5.md` (the nonlinear-head measurement)
+
+---
+
+> ## SCOPE CORRECTED by round 29
+>
+> The stability result here stands **for the linear head only**: 6.23–6.43pp across 4 budgets
+> × 3 samplers. That was a real confound check and it passed.
+>
+> But the conclusion drawn from it — that the gate is therefore unreachable — is **withdrawn.**
+> Round 29 shows a tanh readout has a floor of **0.36pp** with **15/15** seeds inside the 3pp
+> gate on the same frozen features. The linear floor is stable *and* self-imposed.
+>
+> The confound check was necessary and insufficient: I verified that the floor was not an
+> optimisation artefact, but never verified that it was not a *head-form* artefact, even though
+> round 5b had already measured 4.30pp for a nonlinear head.
+>
+> See `report-round29.md`.

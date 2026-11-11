@@ -165,3 +165,29 @@ measures co-representation cost rather than forgetting, and the comparison shoul
 `scripts/r7_r27_floor.py` · `artifacts/deepseek-r7/irreducible-floor.json` (full per-seed,
 per-task solo/joint/final with the verified identity) · `report-round26.md` ·
 `report-round19.md` (the noise floor that brackets the excess)
+
+---
+
+> ## WITHDRAWN by round 29 — the floor is a property of the READOUT, not of SCAR-X
+>
+> This report concludes the 3pp gate is unreachable because `solo − joint = 6.41pp` is
+> "irreducible". **That word did the work of a claim I had not tested.**
+>
+> Round 29 measured the same decomposition for three head forms on identical frozen features,
+> identical seeds, identical budgets:
+>
+> | head | floor | seeds at ≤3pp | params |
+> |---|---:|---:|---:|
+> | 2-logit linear | **6.52pp** | **0/15** | 98 |
+> | wider linear (16 blocks) | 8.79pp | 2/15 | 1 568 |
+> | **tanh 32 units** | **0.36pp** | **15/15** | 1 634 |
+>
+> **The gate is reachable.** The floor is expressiveness of the 2-logit linear map, not the
+> frozen representation. The wider *linear* head has 16× the parameters and a *higher* floor,
+> so this is nonlinearity, not capacity.
+>
+> What survives here: the arithmetic (a 2-logit linear head genuinely cannot co-represent the
+> three tasks under 6.4pp), and round 28's finding that the **linear** floor is stable across
+> 8× optimisation effort. What does not survive: "unreachable", and "irreducible".
+>
+> See `report-round29.md`.

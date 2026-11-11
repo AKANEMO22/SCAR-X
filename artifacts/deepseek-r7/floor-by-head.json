@@ -1,0 +1,941 @@
+{
+  "seeds": [
+    240001,
+    240008,
+    240015,
+    240022,
+    240029,
+    240036,
+    240043,
+    240050,
+    240057,
+    240064,
+    240071,
+    240078,
+    240085,
+    240092,
+    240099
+  ],
+  "order": [
+    "order_short",
+    "parity3",
+    "sim_xor"
+  ],
+  "solo_epochs": 1600,
+  "joint_epochs": 4800,
+  "summary": {
+    "linear": {
+      "floor": 6.519097222222223,
+      "sd": 2.034792266455144,
+      "min": 3.2552083333333335,
+      "max": 9.505208333333334,
+      "n_at_3": 0,
+      "params": 98
+    },
+    "wide16": {
+      "floor": 8.793402777777779,
+      "sd": 6.902421994330261,
+      "min": 1.6927083333333333,
+      "max": 27.34375,
+      "n_at_3": 2,
+      "params": 1568
+    },
+    "mlp32": {
+      "floor": 0.35590277777777773,
+      "sd": 0.4359456634089916,
+      "min": 0.0,
+      "max": 1.6927083333333333,
+      "n_at_3": 15,
+      "params": 1634
+    }
+  },
+  "verdict": "head_limited_gate_reachable",
+  "per_seed": [
+    {
+      "seed": 240001,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.8984375,
+            "parity3": 0.80859375,
+            "sim_xor": 0.90234375
+          },
+          "joint": {
+            "order_short": 0.76171875,
+            "parity3": 0.80078125,
+            "sim_xor": 0.828125
+          },
+          "floor_per_task": {
+            "order_short": 13.671875,
+            "parity3": 0.78125,
+            "sim_xor": 7.421875
+          },
+          "floor": 7.291666666666667
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.86328125,
+            "parity3": 0.55859375,
+            "sim_xor": 0.6171875
+          },
+          "joint": {
+            "order_short": 0.8515625,
+            "parity3": 0.51953125,
+            "sim_xor": 0.62109375
+          },
+          "floor_per_task": {
+            "order_short": 1.171875,
+            "parity3": 3.90625,
+            "sim_xor": 0.0
+          },
+          "floor": 1.6927083333333333
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.99609375,
+            "sim_xor": 0.96484375
+          },
+          "joint": {
+            "order_short": 0.9140625,
+            "parity3": 0.9921875,
+            "sim_xor": 0.99609375
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.390625,
+            "sim_xor": 0.0
+          },
+          "floor": 0.13020833333333334
+        }
+      }
+    },
+    {
+      "seed": 240008,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.8125,
+            "parity3": 0.84765625,
+            "sim_xor": 1.0
+          },
+          "joint": {
+            "order_short": 0.71484375,
+            "parity3": 0.75390625,
+            "sim_xor": 0.94140625
+          },
+          "floor_per_task": {
+            "order_short": 9.765625,
+            "parity3": 9.375,
+            "sim_xor": 5.859375
+          },
+          "floor": 8.333333333333334
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.79296875,
+            "parity3": 0.65625,
+            "sim_xor": 0.8359375
+          },
+          "joint": {
+            "order_short": 0.625,
+            "parity3": 0.6484375,
+            "sim_xor": 0.9765625
+          },
+          "floor_per_task": {
+            "order_short": 16.796875,
+            "parity3": 0.78125,
+            "sim_xor": 0.0
+          },
+          "floor": 5.859375
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.828125,
+            "parity3": 0.98828125,
+            "sim_xor": 1.0
+          },
+          "joint": {
+            "order_short": 0.8203125,
+            "parity3": 0.9921875,
+            "sim_xor": 0.9921875
+          },
+          "floor_per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.0,
+            "sim_xor": 0.78125
+          },
+          "floor": 0.5208333333333334
+        }
+      }
+    },
+    {
+      "seed": 240015,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.9375,
+            "parity3": 0.875,
+            "sim_xor": 0.99609375
+          },
+          "joint": {
+            "order_short": 0.85546875,
+            "parity3": 0.8203125,
+            "sim_xor": 0.92578125
+          },
+          "floor_per_task": {
+            "order_short": 8.203125,
+            "parity3": 5.46875,
+            "sim_xor": 7.03125
+          },
+          "floor": 6.901041666666667
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.9296875,
+            "parity3": 0.76171875,
+            "sim_xor": 0.96875
+          },
+          "joint": {
+            "order_short": 0.57421875,
+            "parity3": 0.5,
+            "sim_xor": 0.765625
+          },
+          "floor_per_task": {
+            "order_short": 35.546875,
+            "parity3": 26.171875,
+            "sim_xor": 20.3125
+          },
+          "floor": 27.34375
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.95703125,
+            "parity3": 1.0,
+            "sim_xor": 0.99609375
+          },
+          "joint": {
+            "order_short": 0.95703125,
+            "parity3": 0.99609375,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.390625,
+            "sim_xor": 0.0
+          },
+          "floor": 0.13020833333333334
+        }
+      }
+    },
+    {
+      "seed": 240022,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.8828125,
+            "parity3": 0.87890625,
+            "sim_xor": 0.98046875
+          },
+          "joint": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9296875
+          },
+          "floor_per_task": {
+            "order_short": 10.15625,
+            "parity3": 5.078125,
+            "sim_xor": 5.078125
+          },
+          "floor": 6.770833333333333
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.9140625,
+            "parity3": 0.73046875,
+            "sim_xor": 0.91796875
+          },
+          "joint": {
+            "order_short": 0.5859375,
+            "parity3": 0.640625,
+            "sim_xor": 0.81640625
+          },
+          "floor_per_task": {
+            "order_short": 32.8125,
+            "parity3": 8.984375,
+            "sim_xor": 10.15625
+          },
+          "floor": 17.317708333333332
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.90234375,
+            "parity3": 0.9921875,
+            "sim_xor": 0.98046875
+          },
+          "joint": {
+            "order_short": 0.91796875,
+            "parity3": 0.9921875,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 0.0
+        }
+      }
+    },
+    {
+      "seed": 240029,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.9921875,
+            "parity3": 0.8828125,
+            "sim_xor": 0.99609375
+          },
+          "joint": {
+            "order_short": 0.96875,
+            "parity3": 0.84765625,
+            "sim_xor": 0.94921875
+          },
+          "floor_per_task": {
+            "order_short": 2.34375,
+            "parity3": 3.515625,
+            "sim_xor": 4.6875
+          },
+          "floor": 3.515625
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.94140625,
+            "parity3": 0.62109375,
+            "sim_xor": 0.93359375
+          },
+          "joint": {
+            "order_short": 0.96875,
+            "parity3": 0.58984375,
+            "sim_xor": 0.859375
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 3.125,
+            "sim_xor": 7.421875
+          },
+          "floor": 3.515625
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.98828125,
+            "parity3": 1.0,
+            "sim_xor": 0.99609375
+          },
+          "joint": {
+            "order_short": 0.9765625,
+            "parity3": 1.0,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 1.171875,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 0.390625
+        }
+      }
+    },
+    {
+      "seed": 240036,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.89453125,
+            "parity3": 0.80859375,
+            "sim_xor": 0.92578125
+          },
+          "joint": {
+            "order_short": 0.859375,
+            "parity3": 0.73046875,
+            "sim_xor": 0.8359375
+          },
+          "floor_per_task": {
+            "order_short": 3.515625,
+            "parity3": 7.8125,
+            "sim_xor": 8.984375
+          },
+          "floor": 6.770833333333333
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.56640625,
+            "sim_xor": 0.83984375
+          },
+          "joint": {
+            "order_short": 0.83984375,
+            "parity3": 0.69140625,
+            "sim_xor": 0.74609375
+          },
+          "floor_per_task": {
+            "order_short": 7.03125,
+            "parity3": 0.0,
+            "sim_xor": 9.375
+          },
+          "floor": 5.46875
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.90234375,
+            "parity3": 0.9921875,
+            "sim_xor": 0.98046875
+          },
+          "joint": {
+            "order_short": 0.90234375,
+            "parity3": 0.98046875,
+            "sim_xor": 0.9921875
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 1.171875,
+            "sim_xor": 0.0
+          },
+          "floor": 0.390625
+        }
+      }
+    },
+    {
+      "seed": 240043,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.921875,
+            "parity3": 0.76953125,
+            "sim_xor": 0.98828125
+          },
+          "joint": {
+            "order_short": 0.85546875,
+            "parity3": 0.63671875,
+            "sim_xor": 0.90625
+          },
+          "floor_per_task": {
+            "order_short": 6.640625,
+            "parity3": 13.28125,
+            "sim_xor": 8.203125
+          },
+          "floor": 9.375
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.9140625,
+            "parity3": 0.6171875,
+            "sim_xor": 0.88671875
+          },
+          "joint": {
+            "order_short": 0.86328125,
+            "parity3": 0.58984375,
+            "sim_xor": 0.8828125
+          },
+          "floor_per_task": {
+            "order_short": 5.078125,
+            "parity3": 2.734375,
+            "sim_xor": 0.390625
+          },
+          "floor": 2.734375
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.89453125,
+            "parity3": 1.0,
+            "sim_xor": 0.98828125
+          },
+          "joint": {
+            "order_short": 0.92578125,
+            "parity3": 0.98828125,
+            "sim_xor": 0.99609375
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 1.171875,
+            "sim_xor": 0.0
+          },
+          "floor": 0.390625
+        }
+      }
+    },
+    {
+      "seed": 240050,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.98046875,
+            "parity3": 0.90234375,
+            "sim_xor": 0.97265625
+          },
+          "joint": {
+            "order_short": 0.94921875,
+            "parity3": 0.81640625,
+            "sim_xor": 0.94140625
+          },
+          "floor_per_task": {
+            "order_short": 3.125,
+            "parity3": 8.59375,
+            "sim_xor": 3.125
+          },
+          "floor": 4.947916666666667
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.953125,
+            "parity3": 0.734375,
+            "sim_xor": 0.9375
+          },
+          "joint": {
+            "order_short": 0.93359375,
+            "parity3": 0.58984375,
+            "sim_xor": 0.87109375
+          },
+          "floor_per_task": {
+            "order_short": 1.953125,
+            "parity3": 14.453125,
+            "sim_xor": 6.640625
+          },
+          "floor": 7.682291666666667
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.98046875,
+            "parity3": 1.0,
+            "sim_xor": 0.97265625
+          },
+          "joint": {
+            "order_short": 0.97265625,
+            "parity3": 0.99609375,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.390625,
+            "sim_xor": 0.0
+          },
+          "floor": 0.390625
+        }
+      }
+    },
+    {
+      "seed": 240057,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.8828125,
+            "parity3": 0.84375,
+            "sim_xor": 0.98828125
+          },
+          "joint": {
+            "order_short": 0.78515625,
+            "parity3": 0.7734375,
+            "sim_xor": 0.87109375
+          },
+          "floor_per_task": {
+            "order_short": 9.765625,
+            "parity3": 7.03125,
+            "sim_xor": 11.71875
+          },
+          "floor": 9.505208333333334
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.859375,
+            "parity3": 0.76171875,
+            "sim_xor": 0.96484375
+          },
+          "joint": {
+            "order_short": 0.7890625,
+            "parity3": 0.63671875,
+            "sim_xor": 0.8671875
+          },
+          "floor_per_task": {
+            "order_short": 7.03125,
+            "parity3": 12.5,
+            "sim_xor": 9.765625
+          },
+          "floor": 9.765625
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.8828125,
+            "parity3": 0.99609375,
+            "sim_xor": 0.98828125
+          },
+          "joint": {
+            "order_short": 0.83203125,
+            "parity3": 0.99609375,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 5.078125,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 1.6927083333333333
+        }
+      }
+    },
+    {
+      "seed": 240064,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.90234375,
+            "parity3": 0.82421875,
+            "sim_xor": 0.984375
+          },
+          "joint": {
+            "order_short": 0.89453125,
+            "parity3": 0.78515625,
+            "sim_xor": 0.92578125
+          },
+          "floor_per_task": {
+            "order_short": 0.78125,
+            "parity3": 3.90625,
+            "sim_xor": 5.859375
+          },
+          "floor": 3.515625
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.9296875,
+            "parity3": 0.72265625,
+            "sim_xor": 0.87890625
+          },
+          "joint": {
+            "order_short": 0.92578125,
+            "parity3": 0.671875,
+            "sim_xor": 0.76171875
+          },
+          "floor_per_task": {
+            "order_short": 0.390625,
+            "parity3": 5.078125,
+            "sim_xor": 11.71875
+          },
+          "floor": 5.729166666666667
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.99609375,
+            "sim_xor": 0.98046875
+          },
+          "joint": {
+            "order_short": 0.93359375,
+            "parity3": 0.984375,
+            "sim_xor": 0.99609375
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 1.171875,
+            "sim_xor": 0.0
+          },
+          "floor": 0.390625
+        }
+      }
+    },
+    {
+      "seed": 240071,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.921875,
+            "parity3": 0.87890625,
+            "sim_xor": 0.96875
+          },
+          "joint": {
+            "order_short": 0.81640625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87890625
+          },
+          "floor_per_task": {
+            "order_short": 10.546875,
+            "parity3": 3.90625,
+            "sim_xor": 8.984375
+          },
+          "floor": 7.8125
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.78125,
+            "sim_xor": 0.86328125
+          },
+          "joint": {
+            "order_short": 0.69140625,
+            "parity3": 0.7109375,
+            "sim_xor": 0.6328125
+          },
+          "floor_per_task": {
+            "order_short": 21.875,
+            "parity3": 7.03125,
+            "sim_xor": 23.046875
+          },
+          "floor": 17.317708333333332
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.98828125,
+            "sim_xor": 0.96875
+          },
+          "joint": {
+            "order_short": 0.93359375,
+            "parity3": 0.98828125,
+            "sim_xor": 0.984375
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 0.0
+        }
+      }
+    },
+    {
+      "seed": 240078,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.921875,
+            "parity3": 0.796875,
+            "sim_xor": 0.97265625
+          },
+          "joint": {
+            "order_short": 0.875,
+            "parity3": 0.734375,
+            "sim_xor": 0.9296875
+          },
+          "floor_per_task": {
+            "order_short": 4.6875,
+            "parity3": 6.25,
+            "sim_xor": 4.296875
+          },
+          "floor": 5.078125
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.953125,
+            "parity3": 0.64453125,
+            "sim_xor": 0.9296875
+          },
+          "joint": {
+            "order_short": 0.8515625,
+            "parity3": 0.5625,
+            "sim_xor": 0.90234375
+          },
+          "floor_per_task": {
+            "order_short": 10.15625,
+            "parity3": 8.203125,
+            "sim_xor": 2.734375
+          },
+          "floor": 7.03125
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 1.0,
+            "sim_xor": 0.96875
+          },
+          "joint": {
+            "order_short": 0.91796875,
+            "parity3": 0.99609375,
+            "sim_xor": 0.98828125
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.390625,
+            "sim_xor": 0.0
+          },
+          "floor": 0.13020833333333334
+        }
+      }
+    },
+    {
+      "seed": 240085,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.78515625,
+            "parity3": 0.796875,
+            "sim_xor": 0.9296875
+          },
+          "joint": {
+            "order_short": 0.6953125,
+            "parity3": 0.7578125,
+            "sim_xor": 0.8515625
+          },
+          "floor_per_task": {
+            "order_short": 8.984375,
+            "parity3": 3.90625,
+            "sim_xor": 7.8125
+          },
+          "floor": 6.901041666666667
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.7890625,
+            "parity3": 0.7265625,
+            "sim_xor": 0.90234375
+          },
+          "joint": {
+            "order_short": 0.625,
+            "parity3": 0.703125,
+            "sim_xor": 0.8125
+          },
+          "floor_per_task": {
+            "order_short": 16.40625,
+            "parity3": 2.34375,
+            "sim_xor": 8.984375
+          },
+          "floor": 9.244791666666666
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.75390625,
+            "parity3": 0.9921875,
+            "sim_xor": 0.94140625
+          },
+          "joint": {
+            "order_short": 0.7578125,
+            "parity3": 0.9921875,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 0.0
+        }
+      }
+    },
+    {
+      "seed": 240092,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.890625,
+            "parity3": 0.84375,
+            "sim_xor": 0.97265625
+          },
+          "joint": {
+            "order_short": 0.8515625,
+            "parity3": 0.7109375,
+            "sim_xor": 0.91015625
+          },
+          "floor_per_task": {
+            "order_short": 3.90625,
+            "parity3": 13.28125,
+            "sim_xor": 6.25
+          },
+          "floor": 7.8125
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.90234375,
+            "parity3": 0.73046875,
+            "sim_xor": 0.828125
+          },
+          "joint": {
+            "order_short": 0.85546875,
+            "parity3": 0.58203125,
+            "sim_xor": 0.796875
+          },
+          "floor_per_task": {
+            "order_short": 4.6875,
+            "parity3": 14.84375,
+            "sim_xor": 3.125
+          },
+          "floor": 7.552083333333333
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.91796875,
+            "parity3": 0.98828125,
+            "sim_xor": 0.984375
+          },
+          "joint": {
+            "order_short": 0.91796875,
+            "parity3": 0.9921875,
+            "sim_xor": 1.0
+          },
+          "floor_per_task": {
+            "order_short": 0.0,
+            "parity3": 0.0,
+            "sim_xor": 0.0
+          },
+          "floor": 0.0
+        }
+      }
+    },
+    {
+      "seed": 240099,
+      "heads": {
+        "linear": {
+          "solo": {
+            "order_short": 0.9453125,
+            "parity3": 0.91796875,
+            "sim_xor": 0.9765625
+          },
+          "joint": {
+            "order_short": 0.9375,
+            "parity3": 0.8671875,
+            "sim_xor": 0.9375
+          },
+          "floor_per_task": {
+            "order_short": 0.78125,
+            "parity3": 5.078125,
+            "sim_xor": 3.90625
+          },
+          "floor": 3.2552083333333335
+        },
+        "wide16": {
+          "solo": {
+            "order_short": 0.91015625,
+            "parity3": 0.5859375,
+            "sim_xor": 0.88671875
+          },
+          "joint": {
+            "order_short": 0.84375,
+            "parity3": 0.68359375,
+            "sim_xor": 0.84375
+          },
+          "floor_per_task": {
+            "order_short": 6.640625,
+            "parity3": 0.0,
+            "sim_xor": 4.296875
+          },
+          "floor": 3.6458333333333335
+        },
+        "mlp32": {
+          "solo": {
+            "order_short": 0.96484375,
+            "parity3": 0.99609375,
+            "sim_xor": 0.97265625
+          },
+          "joint": {
+            "order_short": 0.94921875,
+            "parity3": 0.98828125,
+            "sim_xor": 0.98828125
+          },
+          "floor_per_task": {
+            "order_short": 1.5625,
+            "parity3": 0.78125,
+            "sim_xor": 0.0
+          },
+          "floor": 0.78125
+        }
+      }
+    }
+  ],
+  "role": "DIAGNOSTIC ONLY - no head is a candidate"
+}
