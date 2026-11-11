@@ -1,0 +1,175 @@
+{
+  "trials": [
+    {
+      "seed": 140011,
+      "arms": {
+        "frozen_pertask": {
+          "sim_xor": 0.96484375,
+          "parity3": 0.80078125,
+          "order_short": 0.98046875
+        },
+        "frozen_shared": {
+          "sim_xor": 0.5078125,
+          "parity3": 0.51953125,
+          "order_short": 0.48046875
+        },
+        "learned_shared": {
+          "sim_xor": 0.5078125,
+          "parity3": 0.51171875,
+          "order_short": 0.51953125
+        },
+        "frozen_replay": {
+          "sim_xor": 0.60546875,
+          "parity3": 0.61328125,
+          "order_short": 0.51953125
+        },
+        "learned_replay": {
+          "sim_xor": 0.58984375,
+          "parity3": 0.6171875,
+          "order_short": 0.51953125
+        }
+      },
+      "hidden_digest": "a799f06688f5442a"
+    },
+    {
+      "seed": 140017,
+      "arms": {
+        "frozen_pertask": {
+          "sim_xor": 0.94140625,
+          "parity3": 0.88671875,
+          "order_short": 0.90625
+        },
+        "frozen_shared": {
+          "sim_xor": 0.59375,
+          "parity3": 0.5546875,
+          "order_short": 0.4921875
+        },
+        "learned_shared": {
+          "sim_xor": 0.58203125,
+          "parity3": 0.54296875,
+          "order_short": 0.5078125
+        },
+        "frozen_replay": {
+          "sim_xor": 0.7109375,
+          "parity3": 0.625,
+          "order_short": 0.4921875
+        },
+        "learned_replay": {
+          "sim_xor": 0.69921875,
+          "parity3": 0.625,
+          "order_short": 0.4921875
+        }
+      },
+      "hidden_digest": "28a9762e750acb33"
+    },
+    {
+      "seed": 140023,
+      "arms": {
+        "frozen_pertask": {
+          "sim_xor": 0.9921875,
+          "parity3": 0.82421875,
+          "order_short": 0.9375
+        },
+        "frozen_shared": {
+          "sim_xor": 0.46875,
+          "parity3": 0.421875,
+          "order_short": 0.8359375
+        },
+        "learned_shared": {
+          "sim_xor": 0.49609375,
+          "parity3": 0.42578125,
+          "order_short": 0.828125
+        },
+        "frozen_replay": {
+          "sim_xor": 0.6640625,
+          "parity3": 0.515625,
+          "order_short": 0.84375
+        },
+        "learned_replay": {
+          "sim_xor": 0.625,
+          "parity3": 0.55859375,
+          "order_short": 0.83203125
+        }
+      },
+      "hidden_digest": "a60cbb4f5d8cbdaa"
+    }
+  ],
+  "summary": {
+    "frozen_pertask": {
+      "per_task": {
+        "sim_xor": 0.9661458333333334,
+        "parity3": 0.8372395833333334,
+        "order_short": 0.94140625
+      },
+      "acquisition": 0.9661458333333334,
+      "final": 0.9149305555555557,
+      "mean_forgetting_pp": 7.682291666666669,
+      "worst_forgetting_pp": 12.890625,
+      "passes": false
+    },
+    "frozen_shared": {
+      "per_task": {
+        "sim_xor": 0.5234375,
+        "parity3": 0.4986979166666667,
+        "order_short": 0.6028645833333334
+      },
+      "acquisition": 0.5234375,
+      "final": 0.5416666666666666,
+      "mean_forgetting_pp": -2.7343750000000027,
+      "worst_forgetting_pp": 2.4739583333333313,
+      "passes": false
+    },
+    "learned_shared": {
+      "per_task": {
+        "sim_xor": 0.5286458333333334,
+        "parity3": 0.4934895833333333,
+        "order_short": 0.6184895833333334
+      },
+      "acquisition": 0.5286458333333334,
+      "final": 0.546875,
+      "mean_forgetting_pp": -2.7343749999999973,
+      "worst_forgetting_pp": 3.5156250000000053,
+      "passes": false
+    },
+    "frozen_replay": {
+      "per_task": {
+        "sim_xor": 0.66015625,
+        "parity3": 0.5846354166666666,
+        "order_short": 0.6184895833333334
+      },
+      "acquisition": 0.66015625,
+      "final": 0.62109375,
+      "mean_forgetting_pp": 5.859375,
+      "worst_forgetting_pp": 7.5520833333333375,
+      "passes": false
+    },
+    "learned_replay": {
+      "per_task": {
+        "sim_xor": 0.6380208333333334,
+        "parity3": 0.6002604166666666,
+        "order_short": 0.6145833333333334
+      },
+      "acquisition": 0.6380208333333334,
+      "final": 0.6176215277777778,
+      "mean_forgetting_pp": 3.059895833333337,
+      "worst_forgetting_pp": 3.776041666666674,
+      "passes": false
+    }
+  },
+  "resources": {
+    "peak_rss_bytes": 44244992,
+    "peak_commit_or_vms_bytes": 62984192,
+    "os_process_peak_working_set_bytes": 45338624,
+    "os_process_peak_pagefile_commit_bytes": 63873024,
+    "samples": 232,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 26.66421590000391,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "wall_seconds": 26.664536952972412
+}

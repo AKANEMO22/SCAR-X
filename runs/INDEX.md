@@ -137,3 +137,5 @@
 - [20261111T114428Z-r7-secs-dev-v1-3a8240](20261111T114428Z-r7-secs-dev-v1-3a8240/report.md) — r7-secs-dev-v1
 - [20261111T114943Z-r7-r2-delayed-xor-v1-b86a42](20261111T114943Z-r7-r2-delayed-xor-v1-b86a42/report.md) — r7-r2-delayed-xor-v1
 - [20261111T115657Z-r7-r3-parity3-v1-780965](20261111T115657Z-r7-r3-parity3-v1-780965/report.md) — r7-r3-parity3-v1
+- [20261111T115956Z-r7-r4-continual-v1-53a2e6](20261111T115956Z-r7-r4-continual-v1-53a2e6/report.md) — r7-r4-continual-v1
+- [20261111T120113Z-r7-r4b-continual-rmatrix-v1-a5a0b0](20261111T120113Z-r7-r4b-continual-rmatrix-v1-a5a0b0/report.md) — r7-r4b-continual-rmatrix-v1

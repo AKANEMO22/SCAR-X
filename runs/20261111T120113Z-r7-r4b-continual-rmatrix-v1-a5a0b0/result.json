@@ -1,0 +1,353 @@
+{
+  "trials": [
+    {
+      "seed": 140011,
+      "arms": {
+        "isolated_pertask": {
+          "R": [],
+          "acc": {
+            "sim_xor": 0.96484375,
+            "parity3": 0.80078125,
+            "order_short": 0.98046875
+          },
+          "note": "no shared state at all"
+        },
+        "frozen_shared": {
+          "R": [
+            [
+              0.96484375,
+              0.625,
+              0.51953125
+            ],
+            [
+              0.67578125,
+              0.64453125,
+              0.48046875
+            ],
+            [
+              0.5078125,
+              0.51953125,
+              0.48046875
+            ]
+          ]
+        },
+        "learned_shared": {
+          "R": [
+            [
+              0.9609375,
+              0.63671875,
+              0.51953125
+            ],
+            [
+              0.63671875,
+              0.62109375,
+              0.48046875
+            ],
+            [
+              0.5078125,
+              0.51171875,
+              0.51953125
+            ]
+          ]
+        },
+        "frozen_replay": {
+          "R": [
+            [
+              0.47265625,
+              0.47265625,
+              0.51953125
+            ],
+            [
+              0.56640625,
+              0.58203125,
+              0.48046875
+            ],
+            [
+              0.54296875,
+              0.57421875,
+              0.51953125
+            ]
+          ]
+        },
+        "learned_replay": {
+          "R": [
+            [
+              0.4296875,
+              0.48046875,
+              0.51953125
+            ],
+            [
+              0.55859375,
+              0.58203125,
+              0.48046875
+            ],
+            [
+              0.53515625,
+              0.59375,
+              0.51953125
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "seed": 140017,
+      "arms": {
+        "isolated_pertask": {
+          "R": [],
+          "acc": {
+            "sim_xor": 0.94140625,
+            "parity3": 0.88671875,
+            "order_short": 0.90625
+          },
+          "note": "no shared state at all"
+        },
+        "frozen_shared": {
+          "R": [
+            [
+              0.94140625,
+              0.6796875,
+              0.5546875
+            ],
+            [
+              0.71875,
+              0.7734375,
+              0.4921875
+            ],
+            [
+              0.59375,
+              0.5546875,
+              0.4921875
+            ]
+          ]
+        },
+        "learned_shared": {
+          "R": [
+            [
+              0.9453125,
+              0.640625,
+              0.5546875
+            ],
+            [
+              0.71484375,
+              0.68359375,
+              0.4921875
+            ],
+            [
+              0.58203125,
+              0.54296875,
+              0.5078125
+            ]
+          ]
+        },
+        "frozen_replay": {
+          "R": [
+            [
+              0.38671875,
+              0.4296875,
+              0.5546875
+            ],
+            [
+              0.4921875,
+              0.60546875,
+              0.5546875
+            ],
+            [
+              0.6328125,
+              0.58984375,
+              0.4921875
+            ]
+          ]
+        },
+        "learned_replay": {
+          "R": [
+            [
+              0.453125,
+              0.4765625,
+              0.5546875
+            ],
+            [
+              0.54296875,
+              0.60546875,
+              0.5546875
+            ],
+            [
+              0.625,
+              0.56640625,
+              0.4921875
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "seed": 140023,
+      "arms": {
+        "isolated_pertask": {
+          "R": [],
+          "acc": {
+            "sim_xor": 0.9921875,
+            "parity3": 0.82421875,
+            "order_short": 0.9375
+          },
+          "note": "no shared state at all"
+        },
+        "frozen_shared": {
+          "R": [
+            [
+              0.9921875,
+              0.74609375,
+              0.42578125
+            ],
+            [
+              0.68359375,
+              0.63671875,
+              0.4765625
+            ],
+            [
+              0.46875,
+              0.421875,
+              0.8359375
+            ]
+          ]
+        },
+        "learned_shared": {
+          "R": [
+            [
+              0.9921875,
+              0.7421875,
+              0.42578125
+            ],
+            [
+              0.65625,
+              0.64453125,
+              0.4765625
+            ],
+            [
+              0.49609375,
+              0.42578125,
+              0.828125
+            ]
+          ]
+        },
+        "frozen_replay": {
+          "R": [
+            [
+              0.4375,
+              0.45703125,
+              0.42578125
+            ],
+            [
+              0.55859375,
+              0.51171875,
+              0.4765625
+            ],
+            [
+              0.30859375,
+              0.3515625,
+              0.328125
+            ]
+          ]
+        },
+        "learned_replay": {
+          "R": [
+            [
+              0.4375,
+              0.4453125,
+              0.42578125
+            ],
+            [
+              0.53125,
+              0.53125,
+              0.4765625
+            ],
+            [
+              0.33984375,
+              0.35546875,
+              0.16796875
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "isolated_pertask": {
+      "per_task": {
+        "sim_xor": 0.9661458333333334,
+        "parity3": 0.8372395833333334,
+        "order_short": 0.94140625
+      },
+      "acquisition": 0.9661458333333334,
+      "final": 0.9149305555555557,
+      "mean_forgetting_pp": 0.0,
+      "worst_forgetting_pp": 0.0,
+      "passes": false,
+      "note": "instrument check: cannot forget by construction"
+    },
+    "frozen_shared": {
+      "per_task": {
+        "sim_xor": 0.5234375,
+        "parity3": 0.4986979166666667,
+        "order_short": 0.6028645833333334
+      },
+      "acquisition": 0.7513020833333334,
+      "final": 0.5416666666666666,
+      "mean_forgetting_pp": 20.963541666666664,
+      "worst_forgetting_pp": 52.34375,
+      "passes": false
+    },
+    "learned_shared": {
+      "per_task": {
+        "sim_xor": 0.5286458333333334,
+        "parity3": 0.4934895833333333,
+        "order_short": 0.6184895833333334
+      },
+      "acquisition": 0.7447916666666666,
+      "final": 0.546875,
+      "mean_forgetting_pp": 19.791666666666664,
+      "worst_forgetting_pp": 49.609375,
+      "passes": false
+    },
+    "frozen_replay": {
+      "per_task": {
+        "sim_xor": 0.4947916666666667,
+        "parity3": 0.5052083333333334,
+        "order_short": 0.4466145833333333
+      },
+      "acquisition": 0.4817708333333333,
+      "final": 0.4822048611111111,
+      "mean_forgetting_pp": -0.043402777777777624,
+      "worst_forgetting_pp": 16.015625,
+      "passes": false
+    },
+    "learned_replay": {
+      "per_task": {
+        "sim_xor": 0.5,
+        "parity3": 0.5052083333333334,
+        "order_short": 0.3932291666666667
+      },
+      "acquisition": 0.46875,
+      "final": 0.4661458333333334,
+      "mean_forgetting_pp": 0.26041666666666624,
+      "worst_forgetting_pp": 17.578125,
+      "passes": false
+    }
+  },
+  "resources": {
+    "peak_rss_bytes": 44371968,
+    "peak_commit_or_vms_bytes": 63746048,
+    "os_process_peak_working_set_bytes": 45465600,
+    "os_process_peak_pagefile_commit_bytes": 64630784,
+    "samples": 232,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 26.73331750000216,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "wall_seconds": 26.733342170715332
+}
