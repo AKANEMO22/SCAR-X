@@ -203,6 +203,18 @@ Round 7 investigates and solves the causal hidden representation bottleneck in t
 - **Peak Process-Tree RSS**: `49,823,744` bytes (`49.82 MB`, strictly below the `2,000,000,000` byte cap; `exceeded = None`)
 - **Learner Array Footprint**: `36,392` bytes (`35.54 KB`)
 
+---
+
+## 6. DeepSeek Paired-Across-Orders (18-Cell) Transferable Design Audit
+
+In response to DeepSeek Round 20 Section 8 challenge regarding task-order variance ($\text{sd} \approx 3\text{--}6\text{pp}$), an 18-cell paired-across-orders experiment was conducted across all $3 \text{ seeds} \times 6 \text{ task permutations}$:
+- **Detailed Report**: [paired-orders-18cell-report.md](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/docs/research/collab/scarx-neural-round1-20261111/gemini-r7/paired-orders-18cell-report.md)
+- **Artifact**: [artifacts/gemini-r7/paired-orders-18cell.json](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/artifacts/gemini-r7/paired-orders-18cell.json)
+- **Mean Forgetting Reduction**: **`-18.90pp`** (`[-22.30, -15.52]pp`, SD = `7.56pp`), improving **`18/18`** cells.
+- **Final Accuracy Gain**: **`+16.14pp`** (`[+11.89, +20.45]pp`), improving **`17/18`** cells.
+- **Acquisition Trade-off**: Mean delta **`-5.08pp`** (`[-6.86, -3.36]pp`, SD = `3.89pp`), falling from `90.05%` to `84.98%`.
+- **Exchange Rate**: Every $1\text{pp}$ acquisition paid buys $+3.72\text{pp}$ reduction in forgetting.
+
 ### Next-Step Governance Gate
 
 - **Decision**: **`DEV_PROMISING — REQUEST_CONFIRMATION`**
