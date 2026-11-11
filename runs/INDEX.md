@@ -132,3 +132,5 @@
 - [20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc](20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc/report.md) — deepseek-pair-binding-screen-v1
 - [20261111T031631Z-r2-substrate-screen-v1-6e9376](20261111T031631Z-r2-substrate-screen-v1-6e9376/report.md) — r2-substrate-screen-v1
 - [20261111T031658Z-r2-substrate-confirmation-v1-37d670](20261111T031658Z-r2-substrate-confirmation-v1-37d670/report.md) — r2-substrate-confirmation-v1
+- [20261111T035039Z-r3-temporal-screen-v1-c4ff37](20261111T035039Z-r3-temporal-screen-v1-c4ff37/report.md) — r3-temporal-screen-v1
+- [20261111T035124Z-r3-temporal-confirmation-v1-7fe1b9](20261111T035124Z-r3-temporal-confirmation-v1-7fe1b9/report.md) — r3-temporal-confirmation-v1
