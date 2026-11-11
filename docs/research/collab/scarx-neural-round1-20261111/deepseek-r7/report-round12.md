@@ -158,3 +158,26 @@ from a better representation**, and the shuffled-signal control should match it.
 `scripts/r7_r12_geometry.py` · `scripts/r7_r12b_geometry_causal.py` ·
 `artifacts/deepseek-r7/feature-geometry.json` ·
 `artifacts/deepseek-r7/geometry-vs-accuracy.json` · `report-round11.md`
+
+---
+
+> ## RETRACTED by round 14 — two figures do not survive
+>
+> **1. "25.7 of 48 dead units" is WRONG.** It counted neurons silent at the **last tick**
+> only (`fire.append(core.spikes.copy())` inside a per-episode loop captures one tick, not
+> the train). The corrected count is **1.7 of 48** at the production threshold.
+>
+> **2. "corr(effective rank, accuracy) = +0.795" does not replicate.** The leak sweep moved
+> rank and sparsity together and could not separate them. Over a **threshold** sweep, which
+> can separate them:
+>
+> | quantity | correlation with accuracy |
+> |---|---:|
+> | effective rank | **+0.169** |
+> | firing rate | **−0.755** |
+>
+> So "feature geometry is the bottleneck, confirmed" is **withdrawn**. What survives is
+> that effective rank really is ~4.7 of 48 — that used the summed features, which were
+> always correct.
+>
+> See `report-round14.md`.
