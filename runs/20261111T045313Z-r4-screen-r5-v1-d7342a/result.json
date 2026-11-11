@@ -1,0 +1,103 @@
+{
+  "trials": [
+    {
+      "seed": 95001,
+      "r5_head": 0.9296875,
+      "r5_train": 0.9638671875,
+      "best_baseline": "bank5",
+      "best_baseline_head": 0.583984375,
+      "baeselines": {
+        "decay025": 0.580078125,
+        "spikesum": 0.515625,
+        "bank5": 0.583984375
+      },
+      "paired_consistency": 0.9296875,
+      "paired_null": 0.5234375,
+      "controls": {
+        "query_only": 0.53125,
+        "key_only": 0.5,
+        "position_only": 0.5
+      }
+    },
+    {
+      "seed": 95007,
+      "r5_head": 0.939453125,
+      "r5_train": 0.94921875,
+      "best_baseline": "bank5",
+      "best_baseline_head": 0.5390625,
+      "baeselines": {
+        "decay025": 0.517578125,
+        "spikesum": 0.5234375,
+        "bank5": 0.5390625
+      },
+      "paired_consistency": 0.90234375,
+      "paired_null": 0.51171875,
+      "controls": {
+        "query_only": 0.46875,
+        "key_only": 0.5,
+        "position_only": 0.5
+      }
+    },
+    {
+      "seed": 95013,
+      "r5_head": 0.94921875,
+      "r5_train": 0.9609375,
+      "best_baseline": "decay025",
+      "best_baseline_head": 0.595703125,
+      "baeselines": {
+        "decay025": 0.595703125,
+        "spikesum": 0.59375,
+        "bank5": 0.59375
+      },
+      "paired_consistency": 0.9140625,
+      "paired_null": 0.4921875,
+      "controls": {
+        "query_only": 0.5,
+        "key_only": 0.5,
+        "position_only": 0.5
+      }
+    }
+  ],
+  "summary": {
+    "r5_head_mean": 0.939453125,
+    "r5_train_mean": 0.9580078125,
+    "best_baseline_mean": 0.5729166666666666,
+    "paired_consistency_mean": 0.9153645833333334,
+    "paired_null_mean": 0.5091145833333334,
+    "paired_bootstrap": {
+      "mean": 0.3665364583333333,
+      "lower95": 0.3404947916666667,
+      "upper95": 0.392578125,
+      "n_units": 768
+    },
+    "controls": {
+      "query_only": 0.5,
+      "key_only": 0.5,
+      "position_only": 0.5
+    },
+    "gates": {
+      "G1": true,
+      "G2": true,
+      "G3": true,
+      "G4": true,
+      "G5": true,
+      "G6": true
+    },
+    "screen_pass": true
+  },
+  "resources": {
+    "peak_rss_bytes": 56602624,
+    "peak_commit_or_vms_bytes": 77209600,
+    "os_process_peak_working_set_bytes": 64421888,
+    "os_process_peak_pagefile_commit_bytes": 84176896,
+    "samples": 9,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 0.6566526999995403,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  }
+}

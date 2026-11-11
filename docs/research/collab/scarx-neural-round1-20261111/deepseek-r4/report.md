@@ -320,3 +320,92 @@ it at 0.7812, so the code is not order-locked.
   unanswered for `decay025`/`spikesum`/`bank5`, which still sit at 0.5306–0.5599.
   Storage being readable by a ridge does not make it learnable by the delta rule —
   that is the R2A lesson and it still applies here.
+---
+
+## 12. Stage 3 and Stage 4, EXECUTED — screen GO, confirmation FAIL
+
+The earlier sections stopped at Stage 1 because I did not register a candidate. On
+review that was an error of framing: Stage 1 **did** support an information path, and
+R5's readout does train real weights under the registered delta rule with a **fixed**
+projection. R5 is therefore the single permitted candidate. I evaluated it against
+the gates locked in protocol v1 §7 (post-hoc in *naming only* — the thresholds
+predate every number below and none were changed).
+
+### Stage 3 screen — 3 dev seeds, **PASS**
+
+| gate | result |
+|---|---|
+| G1 direct accuracy ≥ 0.70 | **0.9395** ✓ |
+| G2 paired consistency ≥ 0.60 | **0.9154** (null 0.5091) ✓ |
+| G3 ≥ +10pp over best baseline | **+36.7pp** (0.9395 vs 0.5729) ✓ |
+| G4 paired CI95% lower > 0 | **+36.65pp [+34.05, +39.26]**, 768 units ✓ |
+| G5 controls within 3pp of chance | query-only 0.5000, key-only 0.5000, position 0.5000 ✓ |
+| G6 leakage/oracle/parity | Stage 0 12/12, parity 0.00e+00 ✓ |
+
+### Stage 4 confirmation — 8 fresh seeds × 5 stress conditions, **FAIL**
+
+| variant | R5 | baseline | consistency | worst seed |
+|---|---:|---:|---:|---:|
+| clean | **0.9146** | 0.5911 | **0.8916** | 0.8027 |
+| reversed write order | **0.8943** | 0.5977 | 0.8696 | 0.8047 |
+| **temporal shift (+1 tick)** | **0.6394** | 0.6453 | **0.6343** | 0.5664 |
+| distractors | 0.7402 | 0.5464 | 0.7344 | 0.6367 |
+| 2× background noise | 0.8342 | 0.5557 | 0.8003 | 0.6914 |
+
+| confirmation gate | result |
+|---|---|
+| C1 clean ≥ 0.70 | 0.9146 ✓ |
+| C2 consistency ≥ 0.60 | 0.8916 ✓ |
+| C3 ≥ +10pp | +32.35pp ✓ |
+| C4 CI lower > 0 | +32.35pp [+27.71, +36.60] over 8 seeds ✓ |
+| **C5 no variant below 0.65** | **shift 0.6394 ✗** |
+| C6 worst clean seed ≥ 0.60 | 0.8027 ✓ |
+
+**`confirmation_pass: False`.**
+
+### The one honest thing to say about the shift failure
+
+**A first run of Stage 4 also failed C5, and that run was my harness bug, not a
+result.** `capture()` pinned the query tick at 10; the shift generator moves the
+query to tick 11, so the harness captured the state *before* the query. The symptom
+was unmistakable — consistency exactly 0.0000 — and I fixed it by parameterising
+`query_tick` and re-running. Both runs are committed; the buggy one is not cited as
+evidence.
+
+After the fix the shift result is real: **0.6394, below the 0.65 gate**, with paired
+consistency 0.6343 and a per-seed spread of 0.566–0.705 that includes seeds at
+chance. Clean accuracy is 0.9146 and reversed-order is 0.8943, so the degradation is
+specific to *moving the events in time*, not to changing their order.
+
+### What the shift failure means mechanistically
+
+R5's projection `P` is applied to the post-query state, which is a function of
+absolute tick position through `f` and `a` decaying with fixed rates. Moving the
+writes by one tick changes **which ticks the decay integrates over**, so the same
+`P` no longer lands on the same subspace. The readout has 258 fixed-basis weights and
+one epoch; it cannot re-align.
+
+This is a **temporal-alignment limitation of a fixed projection**, and it is exactly
+the kind of fragility that separates a diagnostic from a deployable mechanism. It
+does **not** contradict the storage or query-conditioning findings, which stand on
+their own controls.
+
+### Corrected verdict
+
+**STOP**, and now it is a *gated* STOP rather than a self-imposed one:
+
+- Screen passed on all six gates.
+- Confirmation failed C5 on temporal shift.
+- Per the protocol's stage-4 rule — "if any hard confirmation gate fails, STOP" —
+  the candidate does **not** carry a confirmation claim.
+- The diagnostic findings (storage 0.9987, query conditioning 0.7910, feature maps
+  0.53–0.58, interaction 0.99/0.93) are unaffected and remain the round's result.
+
+### What a future round should test
+
+1. **Shift-invariant conditioning.** Replace the fixed `P` with a projection over
+   *relative* time (from the query tick backward) so the basis does not depend on
+   absolute position.
+2. **Matched-capacity at 258 with interaction but shuffled cue** — already in C2
+   (0.7708), showing the cue's own contribution is +22.2pp.
+3. **Two generators.** Everything here is one `query_set`.

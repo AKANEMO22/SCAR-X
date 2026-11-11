@@ -133,3 +133,6 @@
 - [20261111T043311Z-r4-information-path-v1-051593](20261111T043311Z-r4-information-path-v1-051593/report.md) — r4-information-path-v1
 - [20261111T044429Z-r4-qa-and-controls-v1-aeb154](20261111T044429Z-r4-qa-and-controls-v1-aeb154/report.md) — r4-qa-and-controls-v1
 - [20261111T044526Z-r4-qa-and-controls-v1-71ed87](20261111T044526Z-r4-qa-and-controls-v1-71ed87/report.md) — r4-qa-and-controls-v1
+- [20261111T045313Z-r4-screen-r5-v1-d7342a](20261111T045313Z-r4-screen-r5-v1-d7342a/report.md) — r4-screen-r5-v1
+- [20261111T045405Z-r4-confirmation-r5-v1-712f51](20261111T045405Z-r4-confirmation-r5-v1-712f51/report.md) — r4-confirmation-r5-v1
+- [20261111T045505Z-r4-confirmation-r5-v1-34791d](20261111T045505Z-r4-confirmation-r5-v1-34791d/report.md) — r4-confirmation-r5-v1

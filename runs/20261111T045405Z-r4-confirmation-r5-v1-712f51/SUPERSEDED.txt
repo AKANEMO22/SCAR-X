@@ -1,0 +1,1 @@
+SUPERSEDED: harness defect. capture() pinned query_tick=10 while the shift variant moves the query to tick 11, so that variant captured the state BEFORE the query (consistency exactly 0.0000). Fixed by parameterising query_tick; superseded by 20261111T045505Z-r4-confirmation-r5-v1-34791d. Do not cite this run's shift row.

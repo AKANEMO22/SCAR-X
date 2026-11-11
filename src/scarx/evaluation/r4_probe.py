@@ -36,8 +36,12 @@ def weights(seed):
     return c, idx, w_in, w_rec
 
 
-def capture(seed, seqs):
-    """Run the frozen population and return every R1-R4 representation."""
+def capture(seed, seqs, query_tick=QUERY_TICK):
+    """Run the frozen population and return every R1-R4 representation.
+
+    query_tick must match the generator actually used: under a temporal shift the
+    query moves, and a hardcoded tick would capture the state BEFORE the query.
+    """
     c, idx, w_in, w_rec = weights(seed)
     x = np.asarray(seqs, np.float32)
     b, t, _ = x.shape
@@ -60,10 +64,10 @@ def capture(seed, seqs):
         for i, d in enumerate(BANK):
             banks[i] = d * banks[i] + (1 - d) * z
         spk[:, s] = z
-        if s == QUERY_TICK - 1:
+        if s == query_tick - 1:
             pre = {"spikes": z.copy(), "voltage": v.copy(),
                    "adaptation": a.copy(), "features": f.copy()}
-        if s == QUERY_TICK:
+        if s == query_tick:
             post = {"spikes": z.copy(), "voltage": v.copy(),
                     "adaptation": a.copy(), "features": f.copy()}
 
