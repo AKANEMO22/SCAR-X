@@ -1,0 +1,166 @@
+{
+  "stage": 0,
+  "checks": [
+    {
+      "check": "shapes are (N,12,8) with binary labels",
+      "pass": true,
+      "detail": "(4096, 12, 8)"
+    },
+    {
+      "check": "vA and vB are independent (|corr| < 0.05)",
+      "pass": true,
+      "detail": "corr = +0.0207"
+    },
+    {
+      "check": "the R4A complementary pattern is NOT forced",
+      "pass": true,
+      "detail": "P(vA=0,vB=1) = 0.2373, expected ~0.25 if independent"
+    },
+    {
+      "check": "all four memory states are uniform (each ~0.25)",
+      "pass": true,
+      "detail": "[0.2529, 0.2373, 0.2524, 0.2573]"
+    },
+    {
+      "check": "query is uniform",
+      "pass": true,
+      "detail": "[0.4927, 0.5073]"
+    },
+    {
+      "check": "oracle reproduces every label",
+      "pass": true,
+      "detail": "4096/4096"
+    },
+    {
+      "check": "always-answer-key-A scores ~0.75",
+      "pass": true,
+      "detail": "0.7522  <-- this is why 0.50 is the wrong null"
+    },
+    {
+      "check": "majority class scores ~0.50",
+      "pass": true,
+      "detail": "0.4900"
+    },
+    {
+      "check": "query-only scores ~0.50",
+      "pass": true,
+      "detail": "0.4988"
+    },
+    {
+      "check": "knows both values but not the query scores ~0.75",
+      "pass": true,
+      "detail": "0.7473"
+    },
+    {
+      "check": "case A (vA != vB) labels flip on query swap",
+      "pass": true,
+      "detail": "538 pairs, all flip"
+    },
+    {
+      "check": "case B (vA == vB) labels do NOT flip",
+      "pass": true,
+      "detail": "486 pairs, none flip"
+    },
+    {
+      "check": "both cases are present and roughly balanced",
+      "pass": true,
+      "detail": "case A fraction 0.525"
+    },
+    {
+      "check": "siblings differ only at the query tick",
+      "pass": true,
+      "detail": "max off-query diff 0.000000"
+    },
+    {
+      "check": "background noise is identical within a pair",
+      "pass": true,
+      "detail": "ch6,7 equal"
+    },
+    {
+      "check": "frozen features are label-independent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "head training leaves hidden weights untouched",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "spike trajectory equals SpikingCore.step",
+      "pass": true,
+      "detail": "max diff 0.00e+00"
+    },
+    {
+      "check": "shift=0: cue found at tick 10",
+      "pass": true,
+      "detail": "query channel index 0"
+    },
+    {
+      "check": "shift=1: cue found at tick 11",
+      "pass": true,
+      "detail": "query channel index 0"
+    },
+    {
+      "check": "shift=2 pushes the query out of the window (documented limit)",
+      "pass": true,
+      "detail": "query would land at tick 12; generator drops it"
+    },
+    {
+      "check": "train and test checksums differ",
+      "pass": true,
+      "detail": "2aa2af65fa27\u2026 vs ea34bf80855b\u2026"
+    },
+    {
+      "check": "no byte-identical episode shared across splits",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "train labels ~50/50",
+      "pass": true,
+      "detail": "[0.541, 0.459]"
+    },
+    {
+      "check": "test labels ~50/50",
+      "pass": true,
+      "detail": "[0.5098, 0.4902]"
+    },
+    {
+      "check": "shift preserves the oracle answer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "reversed write order preserves the oracle answer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "distractors preserve the oracle answer",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "passed": 28,
+  "total": 28,
+  "verdict": "P0_PASS",
+  "shortcut_ceilings": {
+    "first_key": 0.752197265625,
+    "majority": 0.489990234375,
+    "query_only": 0.498779296875,
+    "knows_both_no_query": 0.747314453125
+  },
+  "memory_states": [
+    0.2529296875,
+    0.2373046875,
+    0.25244140625,
+    0.25732421875
+  ],
+  "caseA_fraction": 0.525390625,
+  "seeds": [
+    97001,
+    97007,
+    97013
+  ]
+}
