@@ -165,9 +165,18 @@ class DCALIFEligibility:
             beta_g_eff = 0.0
             gamma_q_eff = 0.0
 
+        # Diagnostic lesions change inference only. Empty string is the executed forward.
+        lesion = getattr(self, "diagnostic_lesion", "")
+        if lesion == "drop_quadratic":
+            q_t = np.zeros(c.hidden, dtype=np.float32)
+        if lesion == "zero_plateau":
+            old_d = np.zeros(c.hidden, dtype=np.float32)
+
         # Dendritic plateau update
         s_d = np.tanh(alpha_d_eff * I_total + gamma_q_eff * q_t).astype(np.float32)
         d_new = (self.d_decay * old_d + (1.0 - self.d_decay) * s_d).astype(np.float32)
+        if lesion == "zero_plateau":
+            d_new = np.zeros(c.hidden, dtype=np.float32)
 
         # Bilinear dendritic-somatic coincidence gate C_j(t) = g_gate_j(t) * d_j(t-1)
         if no_gate:
@@ -178,6 +187,22 @@ class DCALIFEligibility:
             dg_dI = (beta_g_eff * (1.0 - g_gate * g_gate)).astype(np.float32)
 
         C_t = (g_gate * old_d).astype(np.float32)
+        if lesion in ("drop_coincidence", "closed_gate"):
+            g_gate = np.zeros(c.hidden, dtype=np.float32)
+            dg_dI = np.zeros(c.hidden, dtype=np.float32)
+            C_t = np.zeros(c.hidden, dtype=np.float32)
+        elif lesion == "open_gate":
+            g_gate = np.ones(c.hidden, dtype=np.float32)
+            dg_dI = np.zeros(c.hidden, dtype=np.float32)
+            C_t = old_d.astype(np.float32)
+        elif lesion == "shuffle_gate":
+            perm = getattr(self, "diagnostic_permutation", None)
+            if perm is None:
+                perm = np.random.default_rng(93001).permutation(c.hidden)
+                self.diagnostic_permutation = perm
+            g_gate = g_gate[perm]
+            dg_dI = dg_dI[perm]
+            C_t = (g_gate * old_d).astype(np.float32)
 
         # Somatic ALIF update
         theta = (c.threshold + c.adaptation_strength * old_a).astype(np.float32)
@@ -192,6 +217,8 @@ class DCALIFEligibility:
         self.core.adaptation[:] = a_new
         self.core.spikes[:] = z_new
         self.core.features[:] = f_new
+        if getattr(self, "diagnostic_record", False):
+            self.diagnostic_trace.append((self.d.copy(), g_gate.copy(), C_t.copy()))
 
         if self.track:
             psi = spike_slope(u - theta)
