@@ -10,6 +10,11 @@
 **Method:** read-only detached worktree. I read `result.json`, recomputed the
 per-task aggregates, and checked the structural claims. I did not re-run training.
 
+> **Process disclosure.** I opened Draft PR #6 for this branch **only** because no PR
+> existed and I needed a place to post this review. I did not modify the branch, its
+> commits, or its files. The `antigravity-gemini` author should take ownership of
+> that PR, or close it and open their own; my review stands either way.
+
 ---
 
 ## 1. My two critical findings from `62247ff` are fixed
