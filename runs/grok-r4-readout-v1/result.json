@@ -1,0 +1,400 @@
+{
+  "reproduction": {
+    "rows": [
+      {
+        "seed": 94011,
+        "substrate": "decay025",
+        "paired_flip": 0.171875,
+        "ridge": 1.0,
+        "accuracy": 0.57421875,
+        "loss": 1.7925563200876011,
+        "train_accuracy": 0.578125,
+        "clip_fraction": 0.099609375
+      },
+      {
+        "seed": 94011,
+        "substrate": "bank5",
+        "paired_flip": 0.9921875,
+        "ridge": 0.99609375,
+        "accuracy": 0.99609375,
+        "loss": 0.010463283918910913,
+        "train_accuracy": 1.0,
+        "clip_fraction": 0.008919270833333333
+      },
+      {
+        "seed": 94017,
+        "substrate": "decay025",
+        "paired_flip": 0.1796875,
+        "ridge": 0.984375,
+        "accuracy": 0.55859375,
+        "loss": 1.618090288323493,
+        "train_accuracy": 0.578125,
+        "clip_fraction": 0.055338541666666664
+      },
+      {
+        "seed": 94017,
+        "substrate": "bank5",
+        "paired_flip": 1.0,
+        "ridge": 1.0,
+        "accuracy": 1.0,
+        "loss": 0.011920010105004748,
+        "train_accuracy": 1.0,
+        "clip_fraction": 0.009749348958333333
+      },
+      {
+        "seed": 94023,
+        "substrate": "decay025",
+        "paired_flip": 0.1015625,
+        "ridge": 0.94921875,
+        "accuracy": 0.5234375,
+        "loss": 1.7640593203518486,
+        "train_accuracy": 0.5234375,
+        "clip_fraction": 0.034586588541666664
+      },
+      {
+        "seed": 94023,
+        "substrate": "bank5",
+        "paired_flip": 1.0,
+        "ridge": 0.984375,
+        "accuracy": 1.0,
+        "loss": 0.012906565117255877,
+        "train_accuracy": 1.0,
+        "clip_fraction": 0.0032877604166666667
+      }
+    ],
+    "passed": true
+  },
+  "confirmation_opened": false,
+  "diagnosis": {
+    "geometry": {
+      "mean_abs": 0.2030396496411413,
+      "median_std": 0.004244461293982121,
+      "dead_fraction": 0.14583333333333334,
+      "sparsity": 0.6724446614583334,
+      "effective_rank": 9.2568660298434,
+      "correlation_condition": 14793523.773234628
+    },
+    "orders": {
+      "norm": {
+        "original": {
+          "paired_flip": 0.171875,
+          "train_accuracy": 0.578125,
+          "heldout_accuracy": 0.57421875,
+          "clip_fraction": 0.099609375
+        },
+        "perm": {
+          "paired_flip": 0.34375,
+          "train_accuracy": 0.671875,
+          "heldout_accuracy": 0.671875,
+          "clip_fraction": 0.12174479166666667
+        },
+        "balanced": {
+          "paired_flip": 0.34375,
+          "train_accuracy": 0.70703125,
+          "heldout_accuracy": 0.671875,
+          "clip_fraction": 0.12654622395833334
+        }
+      },
+      "causal": {
+        "original": {
+          "paired_flip": 0.1484375,
+          "train_accuracy": 0.57421875,
+          "heldout_accuracy": 0.55859375,
+          "clip_fraction": 0.09716796875
+        },
+        "perm": {
+          "paired_flip": 0.34375,
+          "train_accuracy": 0.6796875,
+          "heldout_accuracy": 0.671875,
+          "clip_fraction": 0.12141927083333333
+        },
+        "balanced": {
+          "paired_flip": 0.3046875,
+          "train_accuracy": 0.703125,
+          "heldout_accuracy": 0.65234375,
+          "clip_fraction": 0.12605794270833334
+        }
+      },
+      "nonorm": {
+        "original": {
+          "paired_flip": 0.0,
+          "train_accuracy": 0.5,
+          "heldout_accuracy": 0.5,
+          "clip_fraction": 0.015055338541666666
+        },
+        "perm": {
+          "paired_flip": 0.2421875,
+          "train_accuracy": 0.66796875,
+          "heldout_accuracy": 0.62109375,
+          "clip_fraction": 0.14095052083333334
+        },
+        "balanced": {
+          "paired_flip": 0.25,
+          "train_accuracy": 0.64453125,
+          "heldout_accuracy": 0.625,
+          "clip_fraction": 0.18570963541666666
+        }
+      }
+    }
+  },
+  "ablation": {
+    "order": [
+      {
+        "seed": 94011,
+        "arms": {
+          "norm": {
+            "paired_flip": 0.171875,
+            "train_accuracy": 0.578125,
+            "heldout_accuracy": 0.57421875,
+            "clip_fraction": 0.099609375
+          },
+          "raw": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "noclip": {
+            "paired_flip": 0.0234375,
+            "train_accuracy": 0.52734375,
+            "heldout_accuracy": 0.51171875,
+            "clip_fraction": 0.0
+          },
+          "nofloor": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "nonorm": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.015055338541666666
+          },
+          "causal": {
+            "paired_flip": 0.1484375,
+            "train_accuracy": 0.57421875,
+            "heldout_accuracy": 0.55859375,
+            "clip_fraction": 0.09716796875
+          }
+        }
+      },
+      {
+        "seed": 94017,
+        "arms": {
+          "norm": {
+            "paired_flip": 0.1796875,
+            "train_accuracy": 0.578125,
+            "heldout_accuracy": 0.55859375,
+            "clip_fraction": 0.055338541666666664
+          },
+          "raw": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "noclip": {
+            "paired_flip": 0.0078125,
+            "train_accuracy": 0.5078125,
+            "heldout_accuracy": 0.50390625,
+            "clip_fraction": 0.0
+          },
+          "nofloor": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "nonorm": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.01416015625
+          },
+          "causal": {
+            "paired_flip": 0.1875,
+            "train_accuracy": 0.578125,
+            "heldout_accuracy": 0.57421875,
+            "clip_fraction": 0.060465494791666664
+          }
+        }
+      },
+      {
+        "seed": 94023,
+        "arms": {
+          "norm": {
+            "paired_flip": 0.1015625,
+            "train_accuracy": 0.5234375,
+            "heldout_accuracy": 0.5234375,
+            "clip_fraction": 0.034586588541666664
+          },
+          "raw": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "noclip": {
+            "paired_flip": 0.0078125,
+            "train_accuracy": 0.515625,
+            "heldout_accuracy": 0.50390625,
+            "clip_fraction": 0.0
+          },
+          "nofloor": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.0
+          },
+          "nonorm": {
+            "paired_flip": 0.0,
+            "train_accuracy": 0.5,
+            "heldout_accuracy": 0.5,
+            "clip_fraction": 0.013509114583333334
+          },
+          "causal": {
+            "paired_flip": 0.109375,
+            "train_accuracy": 0.51171875,
+            "heldout_accuracy": 0.51953125,
+            "clip_fraction": 0.033040364583333336
+          }
+        }
+      }
+    ],
+    "sim_xor": [
+      {
+        "seed": 81001,
+        "arms": {
+          "norm": {
+            "accuracy": 0.5546875,
+            "train_accuracy": 0.578125,
+            "ridge": 0.6640625
+          },
+          "raw": {
+            "accuracy": 0.55078125,
+            "train_accuracy": 0.49609375,
+            "ridge": 0.6640625
+          },
+          "noclip": {
+            "accuracy": 0.51171875,
+            "train_accuracy": 0.6015625,
+            "ridge": 0.6640625
+          },
+          "nofloor": {
+            "accuracy": 0.44921875,
+            "train_accuracy": 0.5078125,
+            "ridge": 0.6640625
+          },
+          "nonorm": {
+            "accuracy": 0.55078125,
+            "train_accuracy": 0.4921875,
+            "ridge": 0.6640625
+          },
+          "causal": {
+            "accuracy": 0.5546875,
+            "train_accuracy": 0.58203125,
+            "ridge": 0.6640625
+          }
+        }
+      },
+      {
+        "seed": 81007,
+        "arms": {
+          "norm": {
+            "accuracy": 0.5078125,
+            "train_accuracy": 0.578125,
+            "ridge": 0.75
+          },
+          "raw": {
+            "accuracy": 0.46875,
+            "train_accuracy": 0.54296875,
+            "ridge": 0.75
+          },
+          "noclip": {
+            "accuracy": 0.4765625,
+            "train_accuracy": 0.58984375,
+            "ridge": 0.75
+          },
+          "nofloor": {
+            "accuracy": 0.50390625,
+            "train_accuracy": 0.48828125,
+            "ridge": 0.75
+          },
+          "nonorm": {
+            "accuracy": 0.4609375,
+            "train_accuracy": 0.515625,
+            "ridge": 0.75
+          },
+          "causal": {
+            "accuracy": 0.51171875,
+            "train_accuracy": 0.578125,
+            "ridge": 0.75
+          }
+        }
+      },
+      {
+        "seed": 81013,
+        "arms": {
+          "norm": {
+            "accuracy": 0.53125,
+            "train_accuracy": 0.58203125,
+            "ridge": 0.7265625
+          },
+          "raw": {
+            "accuracy": 0.5078125,
+            "train_accuracy": 0.546875,
+            "ridge": 0.7265625
+          },
+          "noclip": {
+            "accuracy": 0.5,
+            "train_accuracy": 0.54296875,
+            "ridge": 0.7265625
+          },
+          "nofloor": {
+            "accuracy": 0.5078125,
+            "train_accuracy": 0.546875,
+            "ridge": 0.7265625
+          },
+          "nonorm": {
+            "accuracy": 0.51171875,
+            "train_accuracy": 0.55078125,
+            "ridge": 0.7265625
+          },
+          "causal": {
+            "accuracy": 0.53125,
+            "train_accuracy": 0.57421875,
+            "ridge": 0.7265625
+          }
+        }
+      }
+    ]
+  },
+  "candidate": null,
+  "selection": {
+    "reason": "no single factor gained 0.10 without a sim_xor regression",
+    "gains": {
+      "noclip": {
+        "order_gain": -0.13802083333333334,
+        "xor_drop": 0.03515625
+      },
+      "nofloor": {
+        "order_gain": -0.15104166666666666,
+        "xor_drop": 0.044270833333333336
+      },
+      "nonorm": {
+        "order_gain": -0.15104166666666666,
+        "xor_drop": 0.0234375
+      },
+      "causal": {
+        "order_gain": -0.0026041666666666665,
+        "xor_drop": -0.0013020833333333333
+      }
+    }
+  },
+  "status": "STOP",
+  "seconds": 1.3656663999990997,
+  "peak_rss_bytes_sampled": 43229184,
+  "peak_wset_bytes": 45432832
+}
