@@ -1,0 +1,68 @@
+# Verified basicdata sourcehandoff
+
+{
+  "decision": "NEEDS_RESEARCH_APPROVAL",
+  "product_status": "NOT_PRODUCTION_READY",
+  "data_status": "SOURCE_AND_ORIGIN_VERIFIED_CODEC_BLOCKED",
+  "verified_rows": 320,
+  "source_pool": "data/candidates/20261110T191533Z-basic-knowledge-repair-v1-231806/verified-pool.json",
+  "source_pool_sha256": "13bb051467b27caa10bf8d16039d52fa830baf77a5e87bd63e3520d8b96ed062",
+  "source_origin_review": "runs/20261111T161733Z-basic-knowledge-provenance-review-v1-ac50ac",
+  "public_recheck": "runs/20261111T162703Z-basic-knowledge-public-provenance-review-v1-15d6cd",
+  "codec_compatibility": "DATASET_NOT_LEARNABLE_UNDER_CURRENT_CODEC",
+  "legacy_current_vocabulary_tokens": 24,
+  "complete_training_and_declared_unknown_vocabulary_union": 55,
+  "supported_vocabulary_cap": 256,
+  "current_surface_roundtrip_failure_rows": 128,
+  "registered_generation_budget_guards_blocked": {
+    "basic-knowledge-factory-v1": true,
+    "basic-knowledge-repair-v1": true
+  },
+  "new_generation_calls": 0,
+  "neural_training": false,
+  "final_quality_scores_opened": false,
+  "codec_or_encoder_implemented": false,
+  "live_state_accessed": false,
+  "protected_source_diff_empty": true,
+  "acceptance_thresholds_preserved": true,
+  "tests": {
+    "command": [
+      "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_knowledge_factory.py",
+      "tests/test_basic_knowledge_eval.py",
+      "tests/test_adaptive_curriculum_data.py",
+      "tests/test_public_research_mirror.py",
+      "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T163557Z-basic-knowledge-handoff-v1-0b6dc8\\data-tests.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 2.2090496999953757,
+    "resources": {
+      "peak_rss_bytes": 167567360,
+      "peak_commit_or_vms_bytes": 140816384,
+      "os_process_peak_working_set_bytes": 41578496,
+      "os_process_peak_pagefile_commit_bytes": 28536832,
+      "samples": 73,
+      "interval_seconds": 0.02,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 2.2090389000004507,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    }
+  },
+  "required_next_approval": "Research-only output codec/migration P0 proposal; separate learning/P1/P2 and unknown curriculum approvals, no production migration.",
+  "factory_document": "docs/research/BASIC_KNOWLEDGE_FACTORY_DELIVERY_V1.md",
+  "codec_proposal": "docs/research/BASIC_KNOWLEDGE_CODEC_PROPOSAL_V1.md"
+}
