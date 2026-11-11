@@ -175,12 +175,16 @@ def summarise(rows, locked):
                                 else bool(lo(pb, "score_minus_shuffle") > 0)),
         "frozen_hidden_untouched": out["frozen_hidden_untouched"],
     }
-    known = [v for v in out["gates"].values() if v is not None]
-    out["gates_unknown"] = [k for k, v in out["gates"].items() if v is None]
-    # C1 is proven in P0; treat it as satisfied only if the P0 receipt says so.
+    # grok-003: the old code set C1_task_valid AFTER building gates_unknown, so the
+    # gate read True while the unknown list still contained it, and it conflated two
+    # different questions. They are now separate and the unknown list is rebuilt last.
     p0 = Path(__file__).resolve().parents[1] / "artifacts" / "deepseek-r1" / "p0-validation.json"
     p0_ok = p0.exists() and json.loads(p0.read_text(encoding="utf-8")).get("verdict") == "P0_PASS"
-    out["gates"]["C1_task_valid"] = bool(p0_ok)
+    out["gates"]["C1a_product_basis_solves_tape"] = bool(p0_ok)
+    # The additive neuron cannot FORM a product basis; that is the actual falsification.
+    out["gates"]["C1b_neuron_can_form_basis"] = False
+    out["gates"].pop("C1_task_valid", None)
+    out["gates_unknown"] = [k for k, v in out["gates"].items() if v is None]
     out["screen_pass"] = bool(all(v is True for v in out["gates"].values()))
     out["significance"] = {t: signflip([r["direct"] for r in sel
                                         if r["task"] == t and r["arm"] == "score"])

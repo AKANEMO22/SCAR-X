@@ -24,11 +24,31 @@
 | Claim | Registered as | Outcome |
 |---|---|---|
 | **C1** `pair_binding` is solvable by an additive point neuron + linear readout | order-1 probe ≤ 0.60 **and** order-2 probe ≥ 0.90 | **FALSIFIED** — see §3 |
+| C1a: a *product basis* solves the raw tape | order-2 products = 1.0000 | P0 receipt | **TRUE** (P0 check 3) | says nothing about the neuron |
+| C1b: *this neuron can form* that basis | ALIF features 0.5217 | section 3 | **FALSE** | the actual falsification, and what the JSON gate now records |
 | **C2** frozen hidden does not already clear the 65% gate | frozen < 0.65 | **HELD** (frozen 51.43%) |
 | **C3** hidden learning is measurable on `pair_binding` | `score − frozen` CI95% lower > 0 | **FAILED** (−2.47pp [−2.73, −1.95]) |
 
 `screen_pass = False`. Per the locked stop rule: no retune, no extra seeds, no
 confirmation. The 8 fresh confirmation seeds were **never opened**.
+
+## 1a. Learner label correction (grok-002)
+
+**The learner in this branch is the repository SCALAR SCORE rule, NOT proposal 30.**
+`scripts/run_deepseek_pair_binding.py:61` builds `PlasticCore(seed, 'score', ...)`, and
+`PlasticCore.learn` (`plasticity.py:90-97`) computes one scalar
+`advantage = clip(reward - reward_mean, -2, 2)` applied to every eligible row.
+
+Proposal 30 is the per-neuron factor `W_out.T @ error`, where each neuron gets its own
+`delta_j`. That is a different signal and it is **not tested here**. My protocol
+section 6 wrote the scalar equation correctly and then mislabelled the path.
+
+So the negative result stands, but its correct name is: **the scalar score rule does
+not learn `pair_binding`** - not "the proposal-30 signal does not". The distinction
+matters because proposal 30 is the signal the user explicitly approved, and my
+mislabelling would have read as evidence against it.
+
+---
 
 ## 2. The screen result — 108 trials, 36 scored
 
@@ -110,20 +130,36 @@ Controls on the co-occurrence number: shuffled-label **0.489**, three network se
 (bag expanded to the same 2304 dims) **0.752** — so products genuinely add
 +23.6pp over order-1 at equal width.
 
-### The corrected diagnosis
+### The corrected diagnosis -- AND ITS RETRACTION (grok-001)
 
-**The information is not missing and does not require products. It is destroyed by a
-readout that forgets early ticks.** `feature_decay = 0.25` retains 1.6% of a spike
-after three ticks; the binding evidence is written at ticks 1–2 and 4–6, so the
-production substrate has forgotten the first write before the decision is read.
-The `d=0.90` and `d=0.95` rows show the same task is solvable by a **first-order**
-integrator that simply remembers longer — and a uniform sum over all ticks, which is
-the most memory-preserving order-1 readout possible, clears the gate comfortably.
+I wrote that `feature_decay = 0.25` makes the production readout forget the bit.
+**That is retracted as a general claim.** It holds only for the stochastic Bernoulli
+path (`PlasticCore.features_many`) my screen used. On the deterministic
+**hard-threshold** neuron that `unified.py` actually ships, the same decay leaves the
+bit linearly readable at **0.91** (held-out seeds 31021/31022: 0.9100 / 0.8550;
+label-shuffled 0.5700 / 0.6000).
 
-This is a *sharper and more actionable* statement than the co-occurrence claim I
-first made, and it agrees with what `grok` and `antigravity` independently found
-from different directions: **the readout's temporal memory, not its nonlinearity,
-is the binding bottleneck.**
+The forgetting I measured is a property of the **sampler**, not of the decay. A
+Bernoulli neuron resamples every tick and cannot accumulate a subthreshold trace; a
+hard-threshold neuron integrates deterministically and keeps it. I generalised from
+the one path I had run, and grok caught it.
+
+This costs the table above its generality: the co-occurrence, uniform-sum and
+per-decay rows are all Bernoulli, and the "production" row is `features_many`, also
+Bernoulli. The table therefore characterises **one sampler**, not the neuron.
+
+**What survives:** within the Bernoulli path, more temporal memory helps and pairwise
+products help more.
+**What does not survive:** "the production readout structurally forgets the bit", and
+any claim that this explains the campaign's binding failures across the architecture.
+
+
+> **grok-003 applied:** the machine-readable gate previously reported
+> `C1_task_valid: true` while the prose said C1 was falsified, and
+> `gates_unknown` still listed C1 because the unknown list was built before the flag
+> was filled. `run_deepseek_pair_binding.py` now emits two separate gates,
+> `C1a_product_basis_solves_tape` (true) and `C1b_neuron_can_form_basis` (false), and
+> rebuilds `gates_unknown` last.
 
 ## 5. Claim matrix
 
