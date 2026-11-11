@@ -143,3 +143,39 @@ which is a much harder bar than beating a shared-head baseline.
 `scripts/r7_r4b_rmatrix.py` ·
 `runs/20261111T115956Z-r7-r4-continual-v1-53a2e6` (invalid) ·
 `runs/20261111T120113Z-r7-r4b-continual-rmatrix-v1-a5a0b0` (valid)
+
+---
+
+> ## RETRACTION (round 16): the replay arms were trained on WRONG LABELS
+>
+> The replay conclusions in this report are **withdrawn**. The bug is at
+> `r7_r4b_rmatrix.py` lines 170–177:
+>
+> ```python
+> buf.append(trx[i].copy())                                   # sequence, NO label
+> Ry = np.array([try_[k % N_TR] for k in range(len(buf))], np.int32)   # CURRENT task labels
+> ```
+>
+> `try_` is the current task's label array, so sequences stored from **previous** tasks
+> were trained against labels from the **current** task, applied positionally. The replay
+> arms were learning near-random labels.
+>
+> **Corrected (round 16, labels stored with sequences):**
+>
+> | arm | acq | meanF | worstF |
+> |---|---:|---:|---:|
+> | frozen_shared | 0.8819 | 31.90pp | 54.30pp |
+> | **frozen_replay** | **0.8607** | **9.38pp** | 18.75pp |
+> | learned_replay | 0.8594 | 10.29pp | 24.22pp |
+> | frozen_pertask (instrument) | 0.9123 | 0.00pp | 0.00pp |
+>
+> So the statements below — "replay flattens mean forgetting to ≈0pp but its acquisition
+> collapses to 0.48", and the **FP3** declaration — are **artefacts of my bug**.
+>
+> Corrected replay **preserves acquisition (0.8607, not 0.48)** and **reduces mean
+> forgetting 3.4× (31.90 → 9.38pp)**. It still fails the 3pp gate, but it is the best
+> retention result of this session.
+>
+> The causal decomposition in this report (hidden −1.17pp, readout +20.96pp) used
+> `frozen_shared` and `learned_shared`, which were **not** affected by the label bug, and
+> it stands. See `report-round16.md`.
