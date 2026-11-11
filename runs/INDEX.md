@@ -141,3 +141,4 @@
 - [20261111T120113Z-r7-r4b-continual-rmatrix-v1-a5a0b0](20261111T120113Z-r7-r4b-continual-rmatrix-v1-a5a0b0/report.md) — r7-r4b-continual-rmatrix-v1
 - [20261111T120304Z-r7-r5-ogh-v1-8467a0](20261111T120304Z-r7-r5-ogh-v1-8467a0/report.md) — r7-r5-ogh-v1
 - [20261111T120610Z-r7-r5b-capacity-diagnostic-v1-c374b5](20261111T120610Z-r7-r5b-capacity-diagnostic-v1-c374b5/report.md) — r7-r5b-capacity-diagnostic-v1
+- [20261111T121149Z-r7-r7-cps-v1-721bde](20261111T121149Z-r7-r7-cps-v1-721bde/report.md) — r7-r7-cps-v1
