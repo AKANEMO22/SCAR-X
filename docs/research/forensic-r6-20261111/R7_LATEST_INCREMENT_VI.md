@@ -20,7 +20,7 @@ Commit **`bad058238083ec875aaef3a271e3f3c68680e3c1`**:
   so với no-replay **84,29%**; worst forgetting replay-only **6,77đ**, chưa đạt5đ.
 
 Đây là tiến bộ hữu ích về đo lường và lựa chọn hướng. Không cần yêu cầu họ làm
-lại các phần đã sửa này. Core EW-HE643/644không đổi nên positive hidden result
+lại các phần đã sửa này. Core EW-HE của64441fb không đổi nên positive hidden result
 trên strict_binding mà Codex đã tái lập vẫn là điều đáng giữ nhất.
 
 ## Những điểm mới chưa được chốt
