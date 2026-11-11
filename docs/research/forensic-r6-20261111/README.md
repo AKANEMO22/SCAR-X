@@ -1,5 +1,6 @@
 # SCAR-X forensic handoff
 
+- [Review cập nhật R7 DeepSeek/Gemini](REVIEW_R7_PROGRESS_VI.md): hidden positive task, retention trade-off và phần nên giữ nghiên cứu.
 - [Bổ sung oracle event/nhãn sau bàn giao24453bd](RAW_EVENT_LABEL_ADDENDUM.md):135.168lượt row,0nhãn sai, không forward/training.
 - [Bản gửi ChatGPT web / vấn đề còn mở / 10nhóm task production](CHATGPT_WEB_REVIEW_BRIEF_VI.md)
 - [Kết quả và lệnh tái lập](RESULTS.md)
