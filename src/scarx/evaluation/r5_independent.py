@@ -187,14 +187,22 @@ def baseline_first_key(x):
 
     Expected 0.75 with independent values: correct when q=A, and also when q=B and
     vB == vA. This is the shortcut a 75% score cannot rule out.
+
+    Write ticks are LOCATED, not assumed, so the baseline stays valid on shifted
+    data. A baseline that breaks under the very transform being tested would make
+    the comparison meaningless.
     """
+    x = np.asarray(x, np.float32)
     out = np.zeros(len(x), np.int32)
-    for i, row in enumerate(np.asarray(x, np.float32)):
+    for i, row in enumerate(x):
+        write_ticks = [t for t in range(row.shape[0]) if np.any(row[t, :2] > .5)]
         vals = {}
-        for place in WRITE_TICKS:
-            k = int(np.argmax(row[place, :2]))
-            v = int(np.argmax(row[place, 2:4]))
+        for t in write_ticks:
+            k = int(np.argmax(row[t, :2]))
+            v = int(np.argmax(row[t, 2:4]))
             vals[k] = v
+        if 0 not in vals:
+            raise ValueError("key A was never written")
         out[i] = vals[0]
     return out
 
@@ -210,11 +218,41 @@ def baseline_query_only(x):
 
 
 # ------------------------------------------------------------- transforms
-def shifted(x, shift=1):
+def shifted(x, shift=1, seed=None):
     """Move every event `shift` ticks later. Labels are unchanged.
 
-    Used for BOTH train-shift and out-of-distribution test-shift. The query tick moves
-    with the events, so a reader must locate the query rather than assume tick 10.
+    IMPORTANT NEGATIVE RESULT SURFACED IN STAGE 4
+    ---------------------------------------------
+    The obvious implementation pads the vacated leading ticks with ZEROS. For a
+    zero-initialised recurrent network that is a NO-OP: `v = 0.65*0 + 0 = 0`,
+    `z = 0`, so the whole state stays at its initial value and every subsequent tick
+    is bit-identical to the unshifted run. Verified: the post-query state under the
+    zero-pad shift has `max |diff| = 0.0` against clean.
+
+    A transpose that leaves the network's computation unchanged cannot test temporal
+    robustness, so this function pads with FRESH NOISE instead. The background at the
+    vacated ticks is redrawn from the same distribution; the event pulses and all
+    other background samples are preserved exactly. That keeps the shift a genuine
+    change of timing with a minimal, disclosed noise change confined to the vacated
+    ticks. Callers that need a pure-noise condition should use `noisier()` instead.
+    """
+    x = np.asarray(x, np.float32)
+    if shift <= 0:
+        return x.copy()
+    out = np.zeros_like(x)
+    for t in range(N_TICKS):
+        if t + shift < N_TICKS:
+            out[:, t + shift, :] = x[:, t, :]
+    rng = np.random.default_rng(0 if seed is None else seed + 31_337)
+    pad = rng.normal(0, .08, (len(x), shift, N_CHANNELS)).astype(np.float32)
+    out[:, :shift, :] = pad
+    return out
+
+
+def shifted_zero_pad(x, shift=1):
+    """The naive zero-pad shift, kept ONLY to demonstrate that it is a no-op.
+
+    Exposed so the audit can assert the no-op property rather than take it on trust.
     """
     x = np.asarray(x, np.float32)
     out = np.zeros_like(x)
