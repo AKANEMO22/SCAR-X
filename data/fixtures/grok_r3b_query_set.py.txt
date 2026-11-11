@@ -1,0 +1,19 @@
+def query_set(seed, count):
+    rng = np.random.default_rng(seed)
+    values = rng.normal(0, 0.08, (count, 12, 8)).astype(np.float32)
+    labels = np.zeros(count, np.int32)
+    first_key = np.zeros(count, np.int32)
+    for index in range(count):
+        query = index % 2
+        stored = int(rng.integers(2))
+        pair = (stored, 1 - stored)
+        first_key[index] = pair[0]
+        labels[index] = pair[query]
+        order = rng.permutation(2)
+        for place, key in zip((2, 6), order):
+            key = int(key)
+            values[index, place, key] += PULSE
+            values[index, place, 2 + pair[key]] += PULSE
+        values[index, 10, 4 + query] += PULSE
+    order = rng.permutation(count)
+    return values[order], labels[order].astype(np.int32), first_key[order].astype(np.int32)

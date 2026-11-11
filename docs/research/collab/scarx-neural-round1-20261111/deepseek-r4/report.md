@@ -243,3 +243,80 @@ cue is combined with it.
 - C6 supplies the cue **from the input**, which the brief permits for R5 but which
   is not the network's own query path. The network's own path gives 0.7910.
 - All of this remains one generator, three dev seeds, no confirmation.
+---
+
+## 11. CORRECTION — my Question A was mis-specified in the first pass
+
+The brief's Question A asks whether **the individual stored values are
+recoverable**. In the first pass I measured decoding of the **query label**
+(`stored XOR query`) from the pre-query state and reported 0.4720, then concluded
+"pre-query state does not carry the value".
+
+**That was the wrong quantity.** The label includes the query, which has not
+arrived yet, so its chance-level score says nothing about storage. Measured
+correctly — decode `value_of_key(A)`, the pure stored bit, from the same pre-query
+state:
+
+| representation | key A | shuffled | key B | shuffled |
+|---|---:|---:|---:|---:|
+| **R1 pre-state (t=9)** | **0.9987** | 0.5163 | **0.9987** | 0.5163 |
+| R2 spike trajectory | **1.0000** | 0.5059 | **1.0000** | 0.5059 |
+| R3 post-state (t=10) | 0.9987 | 0.5234 | 0.9987 | 0.5234 |
+
+Reconfirmed on seed 95001 directly: decode key A from R1 = **1.0000**; decode the
+query label from the same R1 = **0.4746**.
+
+**The stored association is fully readable before the query.** My earlier table's
+R1 = 0.4720 was measuring the wrong thing.
+
+Brief §6 also asks whether key A and key B differ, and whether channel asymmetry
+explains it. They do not differ: `|A − B| = 0.0000` on R1, because the generator
+makes the two values complementary, so both keys carry the same single bit up to
+relabelling. I state this rather than reporting two numbers as if independent.
+
+### What this changes
+
+| claim | first pass | corrected |
+|---|---|---|
+| H1 storage failure | "confirmed for R1" | **REFUTED outright** |
+| pre-query storage | 0.4720 | **0.9987** |
+| what the network lacks | the stored value | **only the query-conditioned readout** |
+
+The corrected causal story is simpler and stronger:
+
+1. **Storage is fine** — 1.0000 pre-query, both keys.
+2. **The query is not integrated into a readable form** by the established feature
+   maps: post-state ridge 0.7910, and `decay025`/`spikesum`/`bank5` ridge
+   0.5358–0.5801. The query's effect exists (R3 > chance) but the marginal feature
+   maps discard it.
+3. **A bounded interaction recovers it** (R5 ridge 0.9928, head 0.9316), and with
+   the query removed entirely an explicit cue recovers it at **0.9961** (C6).
+
+So the correct answer to the brief's final question becomes sharper: **the state
+stores the association perfectly; the failure is entirely in representing the
+query-conditioned read, and a bounded fixed interaction fixes it.**
+
+### Brief §4 controls 3–5, now measured as decodability contrasts
+
+These were unit-tested in the first pass but never measured. Now, on frozen weights
+with shuffled-label controls:
+
+| control | ridge | shuffled |
+|---|---:|---:|
+| **3.** reversed write order, original labels preserved | 0.7812 | 0.5117 |
+| **4.** query flipped, labels inverted accordingly | 0.8073 | 0.5339 |
+| **5.** shuffled association, labels rewritten to match | 0.7910 | 0.4622 |
+
+All three stay near the post-state ceiling (0.7910), all shuffled controls near
+chance, and none leaks the rewritten labels. Control 3 is the strongest: reversing
+which write slot came first leaves the answer unchanged and the probe still reads
+it at 0.7812, so the code is not order-locked.
+
+### Limitations this correction introduces
+
+- The Q A numbers are single-seed confirmed and three-seed averaged; the 1.0000 on
+  seed 95001 is higher than the 0.9987 mean, which is within rounding of a ceiling.
+- The corrected Q A does **not** rescue the un-conditioned head. Question C remains
+  unanswered for `decay025`/`spikesum`/`bank5`, which still sit at 0.5306–0.5599.
+  Storage being readable by a ridge does not make it learnable by the delta rule —
+  that is the R2A lesson and it still applies here.

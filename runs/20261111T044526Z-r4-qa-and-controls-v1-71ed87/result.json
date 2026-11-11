@@ -1,0 +1,193 @@
+{
+  "trials": [
+    {
+      "seed": 95001,
+      "QA_R1_pre_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.56640625
+      },
+      "QA_R1_pre_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.56640625
+      },
+      "QA_R3_post_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.583984375
+      },
+      "QA_R3_post_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.583984375
+      },
+      "QA_R2_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.560546875
+      },
+      "QA_R2_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.560546875
+      },
+      "QA_asymmetry_R1": 0.0,
+      "C3_reversed_order": {
+        "ridge": 0.81640625,
+        "shuffled": 0.509765625
+      },
+      "C4_query_flipped": {
+        "ridge": 0.8203125,
+        "shuffled": 0.53515625
+      },
+      "C5_shuffled_assoc": {
+        "ridge": 0.826171875,
+        "shuffled": 0.458984375
+      }
+    },
+    {
+      "seed": 95007,
+      "QA_R1_pre_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.46875
+      },
+      "QA_R1_pre_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.46875
+      },
+      "QA_R3_post_key0": {
+        "ridge": 0.998046875,
+        "shuffled": 0.478515625
+      },
+      "QA_R3_post_key1": {
+        "ridge": 0.998046875,
+        "shuffled": 0.478515625
+      },
+      "QA_R2_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.48046875
+      },
+      "QA_R2_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.48046875
+      },
+      "QA_asymmetry_R1": 0.0,
+      "C3_reversed_order": {
+        "ridge": 0.76171875,
+        "shuffled": 0.505859375
+      },
+      "C4_query_flipped": {
+        "ridge": 0.826171875,
+        "shuffled": 0.560546875
+      },
+      "C5_shuffled_assoc": {
+        "ridge": 0.802734375,
+        "shuffled": 0.484375
+      }
+    },
+    {
+      "seed": 95013,
+      "QA_R1_pre_key0": {
+        "ridge": 0.99609375,
+        "shuffled": 0.513671875
+      },
+      "QA_R1_pre_key1": {
+        "ridge": 0.99609375,
+        "shuffled": 0.513671875
+      },
+      "QA_R3_post_key0": {
+        "ridge": 0.998046875,
+        "shuffled": 0.5078125
+      },
+      "QA_R3_post_key1": {
+        "ridge": 0.998046875,
+        "shuffled": 0.5078125
+      },
+      "QA_R2_key0": {
+        "ridge": 1.0,
+        "shuffled": 0.4765625
+      },
+      "QA_R2_key1": {
+        "ridge": 1.0,
+        "shuffled": 0.4765625
+      },
+      "QA_asymmetry_R1": 0.0,
+      "C3_reversed_order": {
+        "ridge": 0.765625,
+        "shuffled": 0.51953125
+      },
+      "C4_query_flipped": {
+        "ridge": 0.775390625,
+        "shuffled": 0.505859375
+      },
+      "C5_shuffled_assoc": {
+        "ridge": 0.744140625,
+        "shuffled": 0.443359375
+      }
+    }
+  ],
+  "summary": {
+    "seeds": [
+      95001,
+      95007,
+      95013
+    ],
+    "QA": {
+      "R1_pre": {
+        "key0": {
+          "ridge": 0.9986979166666666,
+          "shuffled": 0.5162760416666666
+        },
+        "key1": {
+          "ridge": 0.9986979166666666,
+          "shuffled": 0.5162760416666666
+        }
+      },
+      "R2": {
+        "key0": {
+          "ridge": 1.0,
+          "shuffled": 0.505859375
+        },
+        "key1": {
+          "ridge": 1.0,
+          "shuffled": 0.505859375
+        }
+      },
+      "R3_post": {
+        "key0": {
+          "ridge": 0.9986979166666666,
+          "shuffled": 0.5234375
+        },
+        "key1": {
+          "ridge": 0.9986979166666666,
+          "shuffled": 0.5234375
+        }
+      }
+    },
+    "controls": {
+      "C3_reversed_order": {
+        "ridge": 0.78125,
+        "shuffled": 0.51171875
+      },
+      "C4_query_flipped": {
+        "ridge": 0.8072916666666666,
+        "shuffled": 0.5338541666666666
+      },
+      "C5_shuffled_assoc": {
+        "ridge": 0.791015625,
+        "shuffled": 0.4622395833333333
+      }
+    },
+    "asymmetry_R1": 0.0
+  },
+  "resources": {
+    "peak_rss_bytes": 78798848,
+    "peak_commit_or_vms_bytes": 97087488,
+    "os_process_peak_working_set_bytes": 88768512,
+    "os_process_peak_pagefile_commit_bytes": 107139072,
+    "samples": 11,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 0.7300357999993139,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  }
+}

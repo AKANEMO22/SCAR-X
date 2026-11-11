@@ -30,7 +30,16 @@ import hashlib
 import numpy as np
 
 PULSE = 1.5
-QUERY_SET_BODY_SHA256 = "01b50b4d3af1b763be368c6b93b10ca4ac67d7e5748934a557ba0094a69b8406"
+# The verbatim source is stored as a fixture and hashed there, not by
+# introspecting the live function: inspect.getsource is formatting-sensitive and
+# a docstring or line-wrap change would break a byte hash without changing
+# semantics. Equivalence is therefore asserted BEHAVIOURALLY (same arrays for the
+# same seeds) plus by the fixture digest.
+QUERY_SET_FIXTURE = "data/fixtures/grok_r3b_query_set.py.txt"
+QUERY_SET_FIXTURE_SHA256 = "0cac40729010b49619362ecb2302781963193d7f75d89d310aab20f98d691471"
+QUERY_SET_SOURCE_BLOB_SHA = "874fb83507af445ea8ec5db73942fabef03563fa"
+QUERY_SET_SOURCE_COMMIT = "211380fecdcd05966ec78bb7686f54fa8179c11a"
+QUERY_SET_SOURCE_MODULE_SHA256 = "260ea4135c85721d5d12461de679948685a87568c18c9976d459b7912dcaabbd"
 
 
 def query_set(seed, count):

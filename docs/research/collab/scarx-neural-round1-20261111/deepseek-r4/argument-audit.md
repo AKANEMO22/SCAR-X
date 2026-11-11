@@ -24,6 +24,13 @@ Artifacts:
 
 ### C1 — Pre-query state does not carry the value linearly
 
+> **RETRACTED - see report section 11.** C1 as written measured the *query label*
+> from the pre-query state, which is chance by construction because the query has
+> not arrived yet. Measured correctly - decoding the *stored value of key A* from
+> the same R1 state - the result is **0.9987** (shuffled 0.5163), and **1.0000** on
+> seed 95001. The stored association is fully present before the query.
+> **H1 is refuted outright, not "supported for R1".**
+
 - **Predicted:** R1 ridge ≈ chance.
 - **Observed:** R1 ridge **0.4720**, shuffled 0.4837 (3 seeds).
 - **Alternative:** the value *is* present but distributed in time, so an
@@ -194,3 +201,28 @@ because they are marginal summaries that cannot represent a query×value
 interaction. A bounded fixed interaction makes it learnable by the registered local
 delta rule at **0.9316**. **The bottleneck is the feature map's function class, not
 storage, not query integration, and not credit assignment.**
+
+
+---
+
+## H. Correction to section G (added after the Q A fix)
+
+Section G said the information is recoverable "only after the query, and only in a
+form that requires an explicit interaction". The Q A correction shows it is
+**recoverable BEFORE the query too**, at 0.9987 ridge on the pre-query state, when
+the stored value is the decoding target rather than the query label.
+
+Corrected final argument:
+
+1. **Storage: fully intact** - 0.9987 pre-query for key A and key B alike
+   (|A-B| = 0.0000; the values are complementary so they share one bit).
+2. **Query integration: partial in the state, absent in the features** -
+   post-state 0.7910, while `decay025`/`spikesum`/`bank5` read 0.5358-0.5801.
+3. **Readout: the binding constraint** - a bounded fixed interaction reaches
+   0.9928 ridge and 0.9316 online head; with the query removed an explicit cue
+   recovers 0.9961 (C6).
+
+The verdict does not change. **STOP** remains correct: no Stage 2 candidate was
+registered, so Stage 3 and Stage 4 were not run and no confirmation claim exists.
+What changes is the *reason*: the failure is a query-conditioning representation
+problem in the feature maps, not a storage problem.

@@ -131,3 +131,5 @@
 - [20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646](20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646/report.md) — adaptive-curriculum-grounding-v1
 - [20261111T043225Z-r4-information-path-v1-4407dd](20261111T043225Z-r4-information-path-v1-4407dd/report.md) — r4-information-path-v1
 - [20261111T043311Z-r4-information-path-v1-051593](20261111T043311Z-r4-information-path-v1-051593/report.md) — r4-information-path-v1
+- [20261111T044429Z-r4-qa-and-controls-v1-aeb154](20261111T044429Z-r4-qa-and-controls-v1-aeb154/report.md) — r4-qa-and-controls-v1
+- [20261111T044526Z-r4-qa-and-controls-v1-71ed87](20261111T044526Z-r4-qa-and-controls-v1-71ed87/report.md) — r4-qa-and-controls-v1
