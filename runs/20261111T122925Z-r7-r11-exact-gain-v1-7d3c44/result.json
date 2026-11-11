@@ -1,0 +1,214 @@
+{
+  "trials": [
+    {
+      "seed": 140011,
+      "arm": "frozen",
+      "wd": 0.0,
+      "voltage": 0.5234375,
+      "both": 0.84375
+    },
+    {
+      "seed": 140011,
+      "arm": "production",
+      "wd": 0.001132496981881559,
+      "voltage": 0.515625,
+      "both": 0.8125
+    },
+    {
+      "seed": 140011,
+      "arm": "exact",
+      "wd": 3.652720988611691e-05,
+      "voltage": 0.515625,
+      "both": 0.83984375
+    },
+    {
+      "seed": 140011,
+      "arm": "exact_shuffled",
+      "wd": 3.766249938053079e-05,
+      "voltage": 0.52734375,
+      "both": 0.84765625
+    },
+    {
+      "seed": 140011,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "voltage": 0.5234375,
+      "both": 0.84375
+    },
+    {
+      "seed": 140017,
+      "arm": "frozen",
+      "wd": 0.0,
+      "voltage": 0.5,
+      "both": 0.875
+    },
+    {
+      "seed": 140017,
+      "arm": "production",
+      "wd": 0.0006313571939244866,
+      "voltage": 0.48046875,
+      "both": 0.87890625
+    },
+    {
+      "seed": 140017,
+      "arm": "exact",
+      "wd": 5.192894604988396e-05,
+      "voltage": 0.50390625,
+      "both": 0.875
+    },
+    {
+      "seed": 140017,
+      "arm": "exact_shuffled",
+      "wd": 3.530376488924958e-05,
+      "voltage": 0.49609375,
+      "both": 0.875
+    },
+    {
+      "seed": 140017,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "voltage": 0.5,
+      "both": 0.875
+    },
+    {
+      "seed": 140023,
+      "arm": "frozen",
+      "wd": 0.0,
+      "voltage": 0.64453125,
+      "both": 0.84375
+    },
+    {
+      "seed": 140023,
+      "arm": "production",
+      "wd": 0.0010682386346161366,
+      "voltage": 0.60546875,
+      "both": 0.8203125
+    },
+    {
+      "seed": 140023,
+      "arm": "exact",
+      "wd": 1.6211841284530237e-05,
+      "voltage": 0.64453125,
+      "both": 0.84375
+    },
+    {
+      "seed": 140023,
+      "arm": "exact_shuffled",
+      "wd": 3.828154513030313e-05,
+      "voltage": 0.640625,
+      "both": 0.84375
+    },
+    {
+      "seed": 140023,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "voltage": 0.64453125,
+      "both": 0.84375
+    }
+  ],
+  "summary": {
+    "acc": {
+      "frozen|voltage": 0.5559895833333334,
+      "frozen|both": 0.8541666666666666,
+      "production|voltage": 0.5338541666666666,
+      "production|both": 0.8372395833333334,
+      "exact|voltage": 0.5546875,
+      "exact|both": 0.8528645833333334,
+      "exact_shuffled|voltage": 0.5546875,
+      "exact_shuffled|both": 0.85546875,
+      "exact_zero|voltage": 0.5559895833333334,
+      "exact_zero|both": 0.8541666666666666
+    },
+    "gains": {
+      "production|voltage": {
+        "mean": -0.022135416666666668,
+        "per_seed": [
+          -0.0078125,
+          -0.01953125,
+          -0.0390625
+        ],
+        "worst": -0.0390625
+      },
+      "exact|voltage": {
+        "mean": -0.0013020833333333333,
+        "per_seed": [
+          -0.0078125,
+          0.00390625,
+          0.0
+        ],
+        "worst": -0.0078125
+      },
+      "exact_shuffled|voltage": {
+        "mean": -0.0013020833333333333,
+        "per_seed": [
+          0.00390625,
+          -0.00390625,
+          -0.00390625
+        ],
+        "worst": -0.00390625
+      },
+      "exact_zero|voltage": {
+        "mean": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "worst": 0.0
+      },
+      "production|both": {
+        "mean": -0.016927083333333332,
+        "per_seed": [
+          -0.03125,
+          0.00390625,
+          -0.0234375
+        ],
+        "worst": -0.03125
+      },
+      "exact|both": {
+        "mean": -0.0013020833333333333,
+        "per_seed": [
+          -0.00390625,
+          0.0,
+          0.0
+        ],
+        "worst": -0.00390625
+      },
+      "exact_shuffled|both": {
+        "mean": 0.0013020833333333333,
+        "per_seed": [
+          0.00390625,
+          0.0,
+          0.0
+        ],
+        "worst": 0.0
+      },
+      "exact_zero|both": {
+        "mean": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "worst": 0.0
+      }
+    },
+    "intervention_max_diff": 0.0
+  },
+  "resources": {
+    "peak_rss_bytes": 43679744,
+    "peak_commit_or_vms_bytes": 62214144,
+    "os_process_peak_working_set_bytes": 44773376,
+    "os_process_peak_pagefile_commit_bytes": 63070208,
+    "samples": 118,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 12.598745899995265,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "wall_seconds": 12.599423885345459
+}

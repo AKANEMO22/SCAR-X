@@ -151,3 +151,27 @@ feature, not voltage, so a voltage-trained head installed there gives credit 0;
 `local/sign_check.py` (independent sign verification, cosine +0.9979 on one episode) ·
 `report-round9.md` (the INCONCLUSIVE round this replaces) ·
 `report-round8.md` (the finding this extends)
+
+---
+
+> ## REJECTED by round 11
+>
+> The +0.9452 alignment reported above is **real and replicated**, and it **does not
+> convert into a representational gain**. Round 11 trained hidden weights with this rule
+> and swept the learning rate 25×:
+>
+> | eta | exact gain (both channels) | shuffled-credit gain |
+> |---:|---:|---:|
+> | 0.002 | **−4.17pp** | +0.00pp |
+> | 0.0004 | **−2.60pp** | **+0.78pp** |
+> | 0.00008 | **−0.78pp** | −0.13pp |
+>
+> The registered falsifier was: *"if `exact` does not beat `frozen` by ≥5pp while
+> `exact_shuffled` does not, the mechanism is REJECTED despite the +0.945."*
+>
+> `exact` is the **worst** arm at every eta, and its shuffled control is **never worse**.
+>
+> Round 10 called this DEV_PROMISING on the mechanism with the caveat that no accuracy
+> gain was demonstrated. That caveat was the entire result: alignment with `dL/dw` is
+> necessary for a credit rule to be *correct* and demonstrably not sufficient for it to be
+> *useful*. See `report-round11.md`.

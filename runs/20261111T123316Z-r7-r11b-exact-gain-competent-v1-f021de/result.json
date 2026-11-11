@@ -1,0 +1,243 @@
+{
+  "trials": [
+    {
+      "seed": 140011,
+      "arm": "frozen",
+      "wd": 0.0,
+      "credit_abs": null,
+      "router_pre_acc": 0.5234375,
+      "voltage": 0.5234375,
+      "both": 0.84375
+    },
+    {
+      "seed": 140011,
+      "arm": "production",
+      "wd": 0.001132496981881559,
+      "credit_abs": null,
+      "router_pre_acc": 0.5234375,
+      "voltage": 0.515625,
+      "both": 0.8125
+    },
+    {
+      "seed": 140011,
+      "arm": "exact",
+      "wd": 0.04499094560742378,
+      "credit_abs": 2.939321053087944,
+      "router_pre_acc": 0.5234375,
+      "voltage": 0.53125,
+      "both": 0.77734375
+    },
+    {
+      "seed": 140011,
+      "arm": "exact_shuffled",
+      "wd": 0.007722524460405111,
+      "credit_abs": 2.545767482923264,
+      "router_pre_acc": 0.5234375,
+      "voltage": 0.5390625,
+      "both": 0.78515625
+    },
+    {
+      "seed": 140011,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "credit_abs": 2.2534686185113415,
+      "router_pre_acc": 0.5234375,
+      "voltage": 0.5234375,
+      "both": 0.84375
+    },
+    {
+      "seed": 140017,
+      "arm": "frozen",
+      "wd": 0.0,
+      "credit_abs": null,
+      "router_pre_acc": 0.5,
+      "voltage": 0.5,
+      "both": 0.875
+    },
+    {
+      "seed": 140017,
+      "arm": "production",
+      "wd": 0.0006313571939244866,
+      "credit_abs": null,
+      "router_pre_acc": 0.5,
+      "voltage": 0.48046875,
+      "both": 0.87890625
+    },
+    {
+      "seed": 140017,
+      "arm": "exact",
+      "wd": 0.05860017612576485,
+      "credit_abs": 2.807533166926261,
+      "router_pre_acc": 0.5,
+      "voltage": 0.515625,
+      "both": 0.84375
+    },
+    {
+      "seed": 140017,
+      "arm": "exact_shuffled",
+      "wd": 0.007889173924922943,
+      "credit_abs": 2.6352118156906275,
+      "router_pre_acc": 0.5,
+      "voltage": 0.51953125,
+      "both": 0.89453125
+    },
+    {
+      "seed": 140017,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "credit_abs": 2.3810394532173187,
+      "router_pre_acc": 0.5,
+      "voltage": 0.5,
+      "both": 0.875
+    },
+    {
+      "seed": 140023,
+      "arm": "frozen",
+      "wd": 0.0,
+      "credit_abs": null,
+      "router_pre_acc": 0.64453125,
+      "voltage": 0.64453125,
+      "both": 0.84375
+    },
+    {
+      "seed": 140023,
+      "arm": "production",
+      "wd": 0.0010682386346161366,
+      "credit_abs": null,
+      "router_pre_acc": 0.64453125,
+      "voltage": 0.60546875,
+      "both": 0.8203125
+    },
+    {
+      "seed": 140023,
+      "arm": "exact",
+      "wd": 0.0638246163725853,
+      "credit_abs": 3.5738103996667845,
+      "router_pre_acc": 0.64453125,
+      "voltage": 0.52734375,
+      "both": 0.81640625
+    },
+    {
+      "seed": 140023,
+      "arm": "exact_shuffled",
+      "wd": 0.010038734413683414,
+      "credit_abs": 3.4313685775510385,
+      "router_pre_acc": 0.64453125,
+      "voltage": 0.6328125,
+      "both": 0.8828125
+    },
+    {
+      "seed": 140023,
+      "arm": "exact_zero",
+      "wd": 0.0,
+      "credit_abs": 2.9050871764700577,
+      "router_pre_acc": 0.64453125,
+      "voltage": 0.64453125,
+      "both": 0.84375
+    }
+  ],
+  "summary": {
+    "acc": {
+      "frozen|voltage": 0.5559895833333334,
+      "frozen|both": 0.8541666666666666,
+      "production|voltage": 0.5338541666666666,
+      "production|both": 0.8372395833333334,
+      "exact|voltage": 0.5247395833333334,
+      "exact|both": 0.8125,
+      "exact_shuffled|voltage": 0.5638020833333334,
+      "exact_shuffled|both": 0.8541666666666666,
+      "exact_zero|voltage": 0.5559895833333334,
+      "exact_zero|both": 0.8541666666666666
+    },
+    "gains": {
+      "production|voltage": {
+        "mean": -0.022135416666666668,
+        "per_seed": [
+          -0.0078,
+          -0.0195,
+          -0.0391
+        ],
+        "worst": -0.0390625
+      },
+      "exact|voltage": {
+        "mean": -0.03125,
+        "per_seed": [
+          0.0078,
+          0.0156,
+          -0.1172
+        ],
+        "worst": -0.1171875
+      },
+      "exact_shuffled|voltage": {
+        "mean": 0.0078125,
+        "per_seed": [
+          0.0156,
+          0.0195,
+          -0.0117
+        ],
+        "worst": -0.01171875
+      },
+      "exact_zero|voltage": {
+        "mean": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "worst": 0.0
+      },
+      "production|both": {
+        "mean": -0.016927083333333332,
+        "per_seed": [
+          -0.0312,
+          0.0039,
+          -0.0234
+        ],
+        "worst": -0.03125
+      },
+      "exact|both": {
+        "mean": -0.041666666666666664,
+        "per_seed": [
+          -0.0664,
+          -0.0312,
+          -0.0273
+        ],
+        "worst": -0.06640625
+      },
+      "exact_shuffled|both": {
+        "mean": 0.0,
+        "per_seed": [
+          -0.0586,
+          0.0195,
+          0.0391
+        ],
+        "worst": -0.05859375
+      },
+      "exact_zero|both": {
+        "mean": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "worst": 0.0
+      }
+    },
+    "credit": {
+      "frozen": null,
+      "production": null,
+      "exact": 3.10688820656033,
+      "exact_shuffled": 2.87078262538831,
+      "exact_zero": 2.5131984160662397
+    },
+    "dw": {
+      "frozen": 0.0,
+      "production": 0.000944030936807394,
+      "exact": 0.05580524603525797,
+      "exact_shuffled": 0.008550144266337156,
+      "exact_zero": 0.0
+    },
+    "router_pre_acc": 0.5559895833333334
+  },
+  "wall_seconds": 14.251358032226562
+}
