@@ -1,0 +1,1653 @@
+{
+  "seeds": [
+    240001,
+    240008,
+    240015,
+    240022,
+    240029,
+    240036,
+    240043,
+    240050,
+    240057,
+    240064,
+    240071,
+    240078,
+    240085,
+    240092,
+    240099
+  ],
+  "order": [
+    "order_short",
+    "parity3",
+    "sim_xor"
+  ],
+  "joint_budgets": [
+    4800,
+    9600,
+    19200,
+    38400
+  ],
+  "samplers": [
+    "half",
+    "full",
+    "balanced"
+  ],
+  "table": {
+    "4800": {
+      "half": 6.432291666666667,
+      "full": 6.276041666666667,
+      "balanced": 6.284722222222222
+    },
+    "9600": {
+      "half": 6.397569444444445,
+      "full": 6.276041666666667,
+      "balanced": 6.371527777777777
+    },
+    "19200": {
+      "half": 6.423611111111112,
+      "full": 6.276041666666667,
+      "balanced": 6.354166666666667
+    },
+    "38400": {
+      "half": 6.276041666666667,
+      "full": 6.276041666666667,
+      "balanced": 6.232638888888888
+    }
+  },
+  "round27_floor": 6.432291666666667,
+  "best_floor": 6.232638888888888,
+  "reduction_pp": 0.19965277777777857,
+  "per_seed": [
+    {
+      "seed": 240001,
+      "solo": {
+        "order_short": 0.8984375,
+        "parity3": 0.80859375,
+        "sim_xor": 0.90234375
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.7890625,
+            "sim_xor": 0.828125
+          },
+          "irr_loss": 7.8125
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.80078125,
+            "sim_xor": 0.828125
+          },
+          "irr_loss": 7.421875
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.765625,
+            "parity3": 0.80859375,
+            "sim_xor": 0.8515625
+          },
+          "irr_loss": 6.119791666666667
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.76953125,
+            "parity3": 0.80078125,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 6.119791666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.80078125,
+            "sim_xor": 0.828125
+          },
+          "irr_loss": 7.421875
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.76171875,
+            "parity3": 0.8046875,
+            "sim_xor": 0.8203125
+          },
+          "irr_loss": 7.421875
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.8046875,
+            "sim_xor": 0.82421875
+          },
+          "irr_loss": 7.421875
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.80078125,
+            "sim_xor": 0.828125
+          },
+          "irr_loss": 7.421875
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.76171875,
+            "parity3": 0.80078125,
+            "sim_xor": 0.83203125
+          },
+          "irr_loss": 7.161458333333333
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.7734375,
+            "parity3": 0.796875,
+            "sim_xor": 0.8515625
+          },
+          "irr_loss": 6.25
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.7578125,
+            "parity3": 0.80078125,
+            "sim_xor": 0.828125
+          },
+          "irr_loss": 7.421875
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.76953125,
+            "parity3": 0.80859375,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.25
+        }
+      }
+    },
+    {
+      "seed": 240008,
+      "solo": {
+        "order_short": 0.8125,
+        "parity3": 0.84765625,
+        "sim_xor": 1.0
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.70703125,
+            "parity3": 0.76953125,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.942708333333333
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.71875,
+            "parity3": 0.76171875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.8125
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.7109375,
+            "parity3": 0.7734375,
+            "sim_xor": 0.94921875
+          },
+          "irr_loss": 7.552083333333333
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.7109375,
+            "parity3": 0.7578125,
+            "sim_xor": 0.94921875
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.71875,
+            "parity3": 0.76171875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.8125
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.70703125,
+            "parity3": 0.76171875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 8.203125
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.703125,
+            "parity3": 0.7734375,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.942708333333333
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.71875,
+            "parity3": 0.76171875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.8125
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.7109375,
+            "parity3": 0.77734375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.7109375,
+            "parity3": 0.765625,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.942708333333333
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.71875,
+            "parity3": 0.76171875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 7.8125
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.71875,
+            "parity3": 0.765625,
+            "sim_xor": 0.94921875
+          },
+          "irr_loss": 7.552083333333333
+        }
+      }
+    },
+    {
+      "seed": 240015,
+      "solo": {
+        "order_short": 0.9375,
+        "parity3": 0.875,
+        "sim_xor": 0.99609375
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.80859375,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.828125,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 6.640625
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.8203125,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.828125,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.81640625,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.83203125,
+            "sim_xor": 0.9140625
+          },
+          "irr_loss": 7.03125
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.828125,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.85546875,
+            "parity3": 0.8046875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.421875
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.82421875,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.828125,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.80859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 7.291666666666667
+        }
+      }
+    },
+    {
+      "seed": 240022,
+      "solo": {
+        "order_short": 0.8828125,
+        "parity3": 0.87890625,
+        "sim_xor": 0.98046875
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.7890625,
+            "parity3": 0.82421875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 6.640625
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.82421875,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.83203125,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.77734375,
+            "parity3": 0.82421875,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 7.03125
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.8203125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 7.03125
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.7734375,
+            "parity3": 0.8203125,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 7.03125
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.78125,
+            "parity3": 0.828125,
+            "sim_xor": 0.9140625
+          },
+          "irr_loss": 7.291666666666667
+        }
+      }
+    },
+    {
+      "seed": 240029,
+      "solo": {
+        "order_short": 0.9921875,
+        "parity3": 0.8828125,
+        "sim_xor": 0.99609375
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.96484375,
+            "parity3": 0.84765625,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.8515625,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.2552083333333335
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.96484375,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84765625,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.3854166666666665
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.96484375,
+            "parity3": 0.84765625,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.83984375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84375,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.515625
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.96875,
+            "parity3": 0.84765625,
+            "sim_xor": 0.953125
+          },
+          "irr_loss": 3.3854166666666665
+        }
+      }
+    },
+    {
+      "seed": 240036,
+      "solo": {
+        "order_short": 0.89453125,
+        "parity3": 0.80859375,
+        "sim_xor": 0.92578125
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.640625
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.83984375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.75390625,
+            "sim_xor": 0.84765625
+          },
+          "irr_loss": 7.03125
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.82421875,
+            "parity3": 0.75,
+            "sim_xor": 0.83984375
+          },
+          "irr_loss": 7.161458333333333
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.83984375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.8515625,
+            "parity3": 0.73828125,
+            "sim_xor": 0.8515625
+          },
+          "irr_loss": 6.25
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.8359375,
+            "parity3": 0.73828125,
+            "sim_xor": 0.8515625
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.83984375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.8359375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84765625
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.73046875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.83984375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.84375
+          },
+          "irr_loss": 6.770833333333333
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.83203125,
+            "parity3": 0.74609375,
+            "sim_xor": 0.8515625
+          },
+          "irr_loss": 6.640625
+        }
+      }
+    },
+    {
+      "seed": 240043,
+      "solo": {
+        "order_short": 0.921875,
+        "parity3": 0.76953125,
+        "sim_xor": 0.98828125
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.65625,
+            "sim_xor": 0.90234375
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.65234375,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.875,
+            "parity3": 0.671875,
+            "sim_xor": 0.890625
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.86328125,
+            "parity3": 0.6484375,
+            "sim_xor": 0.89453125
+          },
+          "irr_loss": 9.114583333333334
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.65234375,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.65234375,
+            "sim_xor": 0.90234375
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.65625,
+            "sim_xor": 0.90234375
+          },
+          "irr_loss": 8.333333333333334
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.65234375,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.86328125,
+            "parity3": 0.66796875,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.875,
+            "parity3": 0.65625,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.65234375,
+            "sim_xor": 0.90625
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.65234375,
+            "sim_xor": 0.91015625
+          },
+          "irr_loss": 8.203125
+        }
+      }
+    },
+    {
+      "seed": 240050,
+      "solo": {
+        "order_short": 0.98046875,
+        "parity3": 0.90234375,
+        "sim_xor": 0.97265625
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8203125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 4.817708333333333
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.078125
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.9453125,
+            "parity3": 0.80859375,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 5.46875
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8046875,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.078125
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.953125,
+            "parity3": 0.8203125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 4.6875
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.9453125,
+            "parity3": 0.81640625,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.078125
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.078125
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8125,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 5.208333333333333
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.80859375,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.208333333333333
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.94921875,
+            "parity3": 0.8125,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.078125
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.9453125,
+            "parity3": 0.80859375,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 5.338541666666667
+        }
+      }
+    },
+    {
+      "seed": 240057,
+      "solo": {
+        "order_short": 0.8828125,
+        "parity3": 0.84375,
+        "sim_xor": 0.98828125
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.828125,
+            "parity3": 0.78515625,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 8.203125
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.78125,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.203125
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.78125,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 8.463541666666666
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.8125,
+            "parity3": 0.77734375,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 8.984375
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.78125,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.203125
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.83203125,
+            "parity3": 0.75390625,
+            "sim_xor": 0.859375
+          },
+          "irr_loss": 8.984375
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.79296875,
+            "parity3": 0.77734375,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 9.375
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.78125,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.203125
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.796875,
+            "parity3": 0.77734375,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 9.244791666666666
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.76171875,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 8.203125
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.78125,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.203125
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.77734375,
+            "sim_xor": 0.859375
+          },
+          "irr_loss": 8.59375
+        }
+      }
+    },
+    {
+      "seed": 240064,
+      "solo": {
+        "order_short": 0.90234375,
+        "parity3": 0.82421875,
+        "sim_xor": 0.984375
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.8828125,
+            "parity3": 0.76953125,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 4.557291666666667
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.890625,
+            "parity3": 0.78125,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 4.036458333333333
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.8984375,
+            "parity3": 0.765625,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 4.296875
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.8984375,
+            "parity3": 0.7734375,
+            "sim_xor": 0.91015625
+          },
+          "irr_loss": 4.296875
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.890625,
+            "parity3": 0.78125,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 4.036458333333333
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.89453125,
+            "parity3": 0.77734375,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.89453125,
+            "parity3": 0.78515625,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.890625,
+            "parity3": 0.78125,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 4.036458333333333
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.890625,
+            "parity3": 0.7734375,
+            "sim_xor": 0.9140625
+          },
+          "irr_loss": 4.427083333333333
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.89453125,
+            "parity3": 0.78515625,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.890625,
+            "parity3": 0.78125,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 4.036458333333333
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.90234375,
+            "parity3": 0.77734375,
+            "sim_xor": 0.921875
+          },
+          "irr_loss": 3.6458333333333335
+        }
+      }
+    },
+    {
+      "seed": 240071,
+      "solo": {
+        "order_short": 0.921875,
+        "parity3": 0.87890625,
+        "sim_xor": 0.96875
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.8359375,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.333333333333334
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.8359375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.828125,
+            "parity3": 0.84375,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 7.8125
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.8125,
+            "parity3": 0.84375,
+            "sim_xor": 0.875
+          },
+          "irr_loss": 7.942708333333333
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.8359375,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.203125
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.8203125,
+            "parity3": 0.83984375,
+            "sim_xor": 0.875
+          },
+          "irr_loss": 7.8125
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.828125,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 7.682291666666667
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.83984375,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 8.072916666666666
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.81640625,
+            "parity3": 0.8359375,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 8.333333333333334
+        }
+      }
+    },
+    {
+      "seed": 240078,
+      "solo": {
+        "order_short": 0.921875,
+        "parity3": 0.796875,
+        "sim_xor": 0.97265625
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.7265625,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 4.817708333333333
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.75,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 4.6875
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.7421875,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 5.078125
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 4.817708333333333
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.859375,
+            "parity3": 0.73046875,
+            "sim_xor": 0.9453125
+          },
+          "irr_loss": 5.208333333333333
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.859375,
+            "parity3": 0.7265625,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 5.729166666666667
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 4.817708333333333
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.86328125,
+            "parity3": 0.7421875,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 4.947916666666667
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.8671875,
+            "parity3": 0.734375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 5.208333333333333
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.87109375,
+            "parity3": 0.7421875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 4.817708333333333
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.87890625,
+            "parity3": 0.73828125,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 4.557291666666667
+        }
+      }
+    },
+    {
+      "seed": 240085,
+      "solo": {
+        "order_short": 0.78515625,
+        "parity3": 0.796875,
+        "sim_xor": 0.9296875
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.7265625,
+            "parity3": 0.74609375,
+            "sim_xor": 0.875
+          },
+          "irr_loss": 5.46875
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.734375,
+            "parity3": 0.75,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.72265625,
+            "parity3": 0.74609375,
+            "sim_xor": 0.8359375
+          },
+          "irr_loss": 6.901041666666667
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.73046875,
+            "parity3": 0.75,
+            "sim_xor": 0.87109375
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.734375,
+            "parity3": 0.75,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.734375,
+            "parity3": 0.76171875,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.73046875,
+            "parity3": 0.765625,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 5.078125
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.734375,
+            "parity3": 0.75,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.74609375,
+            "parity3": 0.75390625,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 5.208333333333333
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.7265625,
+            "parity3": 0.75,
+            "sim_xor": 0.86328125
+          },
+          "irr_loss": 5.729166666666667
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.734375,
+            "parity3": 0.75,
+            "sim_xor": 0.8671875
+          },
+          "irr_loss": 5.338541666666667
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.7265625,
+            "parity3": 0.75390625,
+            "sim_xor": 0.85546875
+          },
+          "irr_loss": 5.859375
+        }
+      }
+    },
+    {
+      "seed": 240092,
+      "solo": {
+        "order_short": 0.890625,
+        "parity3": 0.84375,
+        "sim_xor": 0.97265625
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.70703125,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 7.421875
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.71875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.72265625,
+            "sim_xor": 0.9140625
+          },
+          "irr_loss": 7.552083333333333
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.84765625,
+            "parity3": 0.71484375,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.71875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.83203125,
+            "parity3": 0.703125,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 8.203125
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.8359375,
+            "parity3": 0.71875,
+            "sim_xor": 0.9140625
+          },
+          "irr_loss": 7.942708333333333
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.71875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.83984375,
+            "parity3": 0.73046875,
+            "sim_xor": 0.91796875
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.83203125,
+            "parity3": 0.71484375,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.8125
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.71875,
+            "sim_xor": 0.92578125
+          },
+          "irr_loss": 7.291666666666667
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.84375,
+            "parity3": 0.71875,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 7.161458333333333
+        }
+      }
+    },
+    {
+      "seed": 240099,
+      "solo": {
+        "order_short": 0.9453125,
+        "parity3": 0.91796875,
+        "sim_xor": 0.9765625
+      },
+      "joint": {
+        "4800|half": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.85546875,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 3.90625
+        },
+        "4800|full": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "4800|balanced": {
+          "per_task": {
+            "order_short": 0.93359375,
+            "parity3": 0.859375,
+            "sim_xor": 0.94140625
+          },
+          "irr_loss": 3.515625
+        },
+        "9600|half": {
+          "per_task": {
+            "order_short": 0.93359375,
+            "parity3": 0.859375,
+            "sim_xor": 0.9296875
+          },
+          "irr_loss": 3.90625
+        },
+        "9600|full": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "9600|balanced": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "19200|half": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.8671875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.3854166666666665
+        },
+        "19200|full": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "19200|balanced": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.8515625,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.90625
+        },
+        "38400|half": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.9375
+          },
+          "irr_loss": 3.515625
+        },
+        "38400|full": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.859375,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.6458333333333335
+        },
+        "38400|balanced": {
+          "per_task": {
+            "order_short": 0.9375,
+            "parity3": 0.8671875,
+            "sim_xor": 0.93359375
+          },
+          "irr_loss": 3.3854166666666665
+        }
+      }
+    }
+  ],
+  "verdict": "floor_stable_above_gate"
+}
