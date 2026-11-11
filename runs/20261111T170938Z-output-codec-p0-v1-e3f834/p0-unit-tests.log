@@ -1,0 +1,8 @@
+........................                                                 [100%]
+============================== warnings summary ===============================
+tests/test_output_codec_p0.py::test_duplicate_members_and_corrupt_metadata_rejected
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'session.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+24 passed, 1 warning in 0.32s
