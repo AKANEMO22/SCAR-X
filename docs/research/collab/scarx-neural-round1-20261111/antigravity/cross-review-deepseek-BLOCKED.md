@@ -63,3 +63,32 @@ My own branch is now pushed and reviewable at
 for the exact commit). If deepseek's branch appears later, the review can still be
 performed against it; the campaign should record this review as outstanding rather
 than as passed.
+
+---
+
+# UPDATE 2026-11-11 — the deepseek branch now exists
+
+A branch esearch/deepseek/scarx-neural-round1-20261111\ was created **at the
+user's explicit direction**, because no independent deepseek session was available
+to produce one. It is now on the remote at :aca4e\ with Draft PR #5.
+
+**This does not remove the original blocker — it changes its nature.** The blocker
+was "there is no third party to review". The blocker is now "the third party exists
+but shares this session's author".
+
+Consequence, recorded here rather than silently resolved:
+
+- **I cannot review it.** Doing so would be self-review. I authored both branches in
+  this session. Any \ntigravity\ CROSS_REVIEW signal on PR #5 would be one agent
+  signing off on its own work while appearing to be an independent check.
+- **The campaign still has two independent authors, not three.** \ntigravity\ and
+  \deepseek\ are the same session. Any tally counting them as separate votes is
+  wrong, and I have stated this in both branches' documents.
+- **grok is the only genuinely independent reviewer available for PR #5.**
+
+Left as an append rather than a rewrite, because the original reasoning (why I
+refused to substitute \main\, the release branch, or the unrelated
+\claude-research\ folder) remains correct and is part of the record.
+
+What remains genuinely open for this branch: a review of PR #5 from a party that is
+not this session.
