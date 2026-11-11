@@ -136,3 +136,35 @@ is compatible with the mission's no-trade-off rule where the sequential version 
 `scripts/r7_r21_schedule.py` · `artifacts/deepseek-r7/replay-schedule.json` ·
 `report-round20.md` (the paired 18-cell design this builds on) · `report-round19.md`
 (the variance measurement that made the paired design necessary)
+
+---
+
+> ## PARTIALLY RETRACTED by round 22 (60 cells)
+>
+> The headline of this report — that interleaving **removes** the acquisition cost, and that
+> this is "the first mechanism that satisfies the mission's no-trade-off rule" — **is
+> withdrawn.**
+>
+> Round 22 repeated the comparison with **10 seeds × 6 orders = 60 cells** instead of 18:
+>
+> | N | acquisition Δ | 95% CI |
+> |---:|---:|---|
+> | 18 cells (this report) | +0.14pp | [−1.58, +1.85] — includes zero |
+> | **60 cells** | **−1.43pp** | **[−2.35, −0.50] — excludes zero** |
+>
+> The 18-cell CI was too wide to distinguish "no cost" from a 1.5pp cost, and I read it as
+> the former. **The cost is real, just smaller than the sequential schedule's (−1.43 vs
+> −2.14pp).**
+>
+> What survives from this report:
+>
+> - the scheduling mechanism: training replayed data **last** costs more acquisition than
+>   interleaving it, at matched budget (−2.14 → −1.43pp);
+> - the forgetting effect: round 22 measures **−17.40pp over 60 cells, 59/60 improved**,
+>   stronger than the −15.23pp reported here;
+> - the mechanistic explanation (a linear head contracts toward the last batch seen).
+>
+> What does not survive: "removes the acquisition cost" and "satisfies the no-trade-off
+> rule".
+>
+> See `report-round22.md`.
