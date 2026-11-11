@@ -126,3 +126,25 @@ Two checks that changed my result, both cheap:
 `scripts/r7_r17_replay_sweep.py` · `artifacts/deepseek-r7/replay-sweep.json` ·
 `report-round16.md` (the label bug and the first corrected replay) · `report-round4.md`
 (annotated with the retraction)
+
+---
+
+> ## CORRECTED by round 19: the "stationary seed" framing was wrong
+>
+> This report calls seed 140023 "STATIONARY at 11.52pp across every buffer size and every
+> replay weight". That was measured under **one task order**. Round 19 ran all six orders:
+>
+> | seed | mean | range across 6 orders | sd |
+> |---|---:|---|---:|
+> | 140011 | 3.16pp | [−0.59, 7.62] | 3.10 |
+> | 140017 | 9.05pp | [1.95, 18.75] | 5.74 |
+> | 140023 | 10.94pp | **[5.08, 16.80]** | 3.95 |
+>
+> **Seed 140023 reaches 5.08pp under `parity3 > sim_xor > order_short`.** It was never
+> stationary; the 11.52pp was largely a task-order effect.
+>
+> The replay result itself stands: the −24.22pp improvement (31.90 → 7.68pp) is a paired
+> comparison against a no-replay baseline on the same seeds and the same order. What changes
+> is that 7.68pp is **one draw from a distribution with pooled sd 5.36pp**, not a point
+> estimate. And with a 3pp gate, that noise floor makes the forgetting gate unmeasurable at
+> three seeds — see `report-round19.md`.
