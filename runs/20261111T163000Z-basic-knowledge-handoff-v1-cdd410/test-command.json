@@ -1,0 +1,37 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_knowledge_factory.py",
+    "tests/test_basic_knowledge_eval.py",
+    "tests/test_adaptive_curriculum_data.py",
+    "tests/test_public_research_mirror.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T163000Z-basic-knowledge-handoff-v1-cdd410\\data-tests.xml"
+  ],
+  "exit_code": 0,
+  "seconds": 2.08815890000551,
+  "resources": {
+    "peak_rss_bytes": 167796736,
+    "peak_commit_or_vms_bytes": 140984320,
+    "os_process_peak_working_set_bytes": 41660416,
+    "os_process_peak_pagefile_commit_bytes": 28745728,
+    "samples": 69,
+    "interval_seconds": 0.02,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.0881455999988248,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  }
+}

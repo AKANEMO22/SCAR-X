@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Verified dataset factory — source ready, codec/training chưa duyệt
+
+[Factory handoff](research/BASIC_KNOWLEDGE_FACTORY_DELIVERY_V1.md) records320actual
+AGYFlashHigh/high candidates verified against32publicknownfacts+8outside-domain
+policies. All5historical streams/source/candidate hashes were locally rechecked;
+public-only revalidation does not require private CLI logs. No more calls or
+studenttraining. [Codec proposal](research/BASIC_KNOWLEDGE_CODEC_PROPOSAL_V1.md)
+is pending: public24token checkpoint lacks targets, completecoverage55fits256,
+but128decimalrows fail currentrendering. No live vocab/tokenizer/weights changed.
+Generation budget guards and34targeted data/legacy/mirror tests protect against
+automatic/concurrent retries and writing new mirrors into a main checkout.
+[Six-source map](research/NEURAL_METHOD_MAP_V2.md) is mathematical/source audit,
+not a learned representation/retention success. Main/runtime remain unchanged.
+
 ## Orchestrator — review các nhánh round 1, 11/11/2026
 
 [Bảng chốt review](research/collab/scarx-neural-round1-20261111/orchestrator/ROUND1_REVIEW_STATUS_20261111.md)

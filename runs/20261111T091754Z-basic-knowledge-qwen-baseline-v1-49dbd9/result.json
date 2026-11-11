@@ -1,0 +1,1428 @@
+{
+  "decision": "INDEPENDENT_REFERENCE_ONLY",
+  "rows": [
+    {
+      "id": "api_host_p05",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Trong tệp cấu hình mạng của API, giá trị host được khai báo như thế nào?",
+      "generated": "Trong tệp cấu hình mạng của một API (ví dụ như trong các hệ thống như **Nginx**, **Apache**, hoặc các API gateway như **Kong**, **API Gateway**, hoặc trong **tệp cấu hình của ứng dụng backend**), giá trị **host** thường được khai báo để định nghĩa **địa chỉ miền (domain name)** mà API có thể được truy cập.\n\nTuy nhiên, cách khai báo giá trị `host` **phụ thuộc vào loại tệp cấu hình và công cụ được sử dụng**. Dưới đây là một số ví dụ phổ biến:\n\n---\n\n###",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 29,
+        "total_tokens": 157,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "seconds": 12.589750200000708,
+      "expected_reference": "Tôi chưa biết.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_host_p05",
+        "fact_id": "api_host",
+        "split": "unknown_development",
+        "language": "vi",
+        "prompt": "Trong tệp cấu hình mạng của API, giá trị host được khai báo như thế nào?",
+        "generated": "Tôi",
+        "expected_reference": "Tôi chưa biết.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.00431669999670703,
+        "neural_metadata": {
+          "text": "Tôi",
+          "tokens": [
+            "tôi"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.6716752052307129,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_host_p06",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "According to the API reference manual, what host address is specified?",
+      "generated": "The API reference manual you're referring to does not exist in a universally recognized or standard form, and without a specific API or context (such as a particular service, framework, or software), it's not possible to determine which host address is specified.\n\nIf you can provide the name of the API, service, or software (e.g., AWS API, REST API, Docker API, etc.), I can help you find the correct host address based on its official documentation.\n\nFor example:\n- The AWS API might specify a host like `api.amazonaws.com`.\n- The Docker API might use `localhost:2375` or `docker",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 21,
+        "total_tokens": 149,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.355588300000818,
+      "expected_reference": "I do not know.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_host_p06",
+        "fact_id": "api_host",
+        "split": "unknown_development",
+        "language": "en",
+        "prompt": "According to the API reference manual, what host address is specified?",
+        "generated": "Bạn. bạn",
+        "expected_reference": "I do not know.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.011612700000114273,
+        "neural_metadata": {
+          "text": "Bạn. bạn",
+          "tokens": [
+            "bạn",
+            ".",
+            "bạn"
+          ],
+          "stopped": true,
+          "stop_reason": "repetition_guard",
+          "mean_probability": 0.7997886389493942,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_model_id_p05",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Khi tra cứu cấu hình API hiện hành, tham số định danh model được ghi nhận là gì?",
+      "generated": "Trong việc tra cứu cấu hình API hiện hành, **tham số định danh model** (tức là tham số dùng để chỉ định mô hình được sử dụng trong API) thường được ghi nhận là:\n\n👉 **`model`**\n\n---\n\n### Giải thích:\n- Trong các API như **OpenAI**, **Google Gemini**, **Anthropic**, hoặc các API ngôn ngữ tự nhiên (NLP), tham số `model` được dùng để chỉ định mô hình AI cụ thể mà người dùng muốn sử dụng.\n- Ví dụ:\n  - `model=\"gpt-3.5-turbo\"`\n",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 31,
+        "total_tokens": 159,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.483033499996964,
+      "expected_reference": "Tôi chưa biết.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_model_id_p05",
+        "fact_id": "api_model_id",
+        "split": "unknown_development",
+        "language": "vi",
+        "prompt": "Khi tra cứu cấu hình API hiện hành, tham số định danh model được ghi nhận là gì?",
+        "generated": "Tôi dạy tôi",
+        "expected_reference": "Tôi chưa biết.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+        "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+        "seconds": 0.004205900000670226,
+        "neural_metadata": {
+          "text": "Tôi dạy tôi",
+          "tokens": [
+            "tôi",
+            "dạy",
+            "tôi"
+          ],
+          "stopped": true,
+          "stop_reason": "repetition_guard",
+          "mean_probability": 0.7745804339647293,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_model_id_p06",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "Looking over the API settings file, which model ID parameter is specified?",
+      "generated": "I'm sorry, but I don't have access to or the ability to view any API settings files, including their contents or specific model ID parameters. If you can provide the relevant text or details from the file, I’d be happy to help analyze it!",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 22,
+        "total_tokens": 75,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 5.5025166000014,
+      "expected_reference": "I do not know.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_model_id_p06",
+        "fact_id": "api_model_id",
+        "split": "unknown_development",
+        "language": "en",
+        "prompt": "Looking over the API settings file, which model ID parameter is specified?",
+        "generated": "Tôi giúp",
+        "expected_reference": "I do not know.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+        "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+        "seconds": 0.003929099999368191,
+        "neural_metadata": {
+          "text": "Tôi giúp",
+          "tokens": [
+            "tôi",
+            "giúp"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.6429341038068136,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_models_route_p05",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Nhìn vào tài liệu cấu hình API, tuyến đường dẫn nào được phân bổ cho các mô hình?",
+      "generated": "Bạn chưa cung cấp tài liệu cấu hình API cụ thể để tham khảo. Do đó, tôi không thể xác định chính xác tuyến đường dẫn (endpoint) nào được phân bổ cho các mô hình.\n\nTuy nhiên, nếu bạn đang hỏi về **tuyến đường dẫn (endpoint) thường được dùng để gọi các mô hình AI hoặc API mô hình** (ví dụ như mô hình ngôn ngữ, mô hình nhận diện hình ảnh, v.v.), thì dưới đây là một số ví dụ phổ biến:\n\n### Ví dụ các endpoint thường thấy:\n1. **`/v1/models`** – Liệt kê các mô",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 29,
+        "total_tokens": 157,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.529706299999816,
+      "expected_reference": "Tôi chưa biết.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_models_route_p05",
+        "fact_id": "api_models_route",
+        "split": "unknown_development",
+        "language": "vi",
+        "prompt": "Nhìn vào tài liệu cấu hình API, tuyến đường dẫn nào được phân bổ cho các mô hình?",
+        "generated": "Tôi đang hoạt tôi đang",
+        "expected_reference": "Tôi chưa biết.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.01140310000118916,
+        "neural_metadata": {
+          "text": "Tôi đang hoạt tôi đang",
+          "tokens": [
+            "tôi",
+            "đang",
+            "hoạt",
+            "tôi",
+            "đang"
+          ],
+          "stopped": true,
+          "stop_reason": "repetition_guard",
+          "mean_probability": 0.7827381243308386,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_models_route_p06",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When inspecting the API documentation, what route is defined for models?",
+      "generated": "In API documentation, particularly in the context of modern API frameworks like **OpenAPI (formerly Swagger)** or **FastAPI**, the route for models is typically **not defined directly** as a standalone endpoint. Instead, models are used to define the **data structures** (such as request/response schemas) that are used across various endpoints.\n\nHowever, if you're asking about **where models are documented** in the API specification (e.g., in OpenAPI/Swagger), the models are defined under the **`components/schemas`** section.\n\n### Example in OpenAPI 3.0:\n```yaml\ncomponents:\n  schemas:\n",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 22,
+        "total_tokens": 150,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.145388400000229,
+      "expected_reference": "I do not know.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_models_route_p06",
+        "fact_id": "api_models_route",
+        "split": "unknown_development",
+        "language": "en",
+        "prompt": "When inspecting the API documentation, what route is defined for models?",
+        "generated": "Hello.",
+        "expected_reference": "I do not know.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.012513300000136951,
+        "neural_metadata": {
+          "text": "Hello.",
+          "tokens": [
+            "hello",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8129105071226755,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_port_p05",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Theo tài liệu cấu hình của API, cổng mạng được chỉ định là bao nhiêu?",
+      "generated": "Câu hỏi của bạn: *\"Theo tài liệu cấu hình của API, cổng mạng được chỉ định là bao nhiêu?\"*  \n\nTuy nhiên, **không có tài liệu cấu hình cụ thể nào được cung cấp** trong câu hỏi này để tham chiếu. Do đó, tôi không thể xác định chính xác cổng mạng được chỉ định là bao nhiêu nếu không biết:\n\n- API cụ thể là API của hệ thống nào (ví dụ: API của AWS, Google Cloud, Azure, hoặc một API nội bộ)?\n- Tài liệu cấu hình nào bạn đang nói đến (ví dụ: tài liệu của",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 28,
+        "total_tokens": 156,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.562670200000866,
+      "expected_reference": "Tôi chưa biết.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_port_p05",
+        "fact_id": "api_port",
+        "split": "unknown_development",
+        "language": "vi",
+        "prompt": "Theo tài liệu cấu hình của API, cổng mạng được chỉ định là bao nhiêu?",
+        "generated": "Đang",
+        "expected_reference": "Tôi chưa biết.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.011334399998304434,
+        "neural_metadata": {
+          "text": "Đang",
+          "tokens": [
+            "đang"
+          ],
+          "stopped": true,
+          "stop_reason": "repetition_guard",
+          "mean_probability": 0.7907283306121826,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "api_port_p06",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When reviewing the API documentation, which network port is listed?",
+      "generated": "The API documentation does not specify a network port in the provided content. To determine the correct port, you would need to refer to the specific API documentation for the service in question. If you provide the name of the API or the service, I can help guide you to the correct port or assist in identifying it.",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 20,
+        "total_tokens": 84,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 6.295907399999123,
+      "expected_reference": "I do not know.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "api_port_p06",
+        "fact_id": "api_port",
+        "split": "unknown_development",
+        "language": "en",
+        "prompt": "When reviewing the API documentation, which network port is listed?",
+        "generated": "Tôi.",
+        "expected_reference": "I do not know.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+        "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+        "seconds": 0.003989200002251891,
+        "neural_metadata": {
+          "text": "Tôi.",
+          "tokens": [
+            "tôi",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8173455993334452,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": null,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_hidden_p05",
+      "fact_id": "config_hidden",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Người đọc đặc tả Config sẽ thấy thông số mặc định của trường `hidden` mang giá trị nào?",
+      "generated": "Trong ngữ cảnh của một hệ thống hoặc framework (như React, Vue, hoặc một framework quản lý cấu hình), trường `hidden` thường được dùng để kiểm soát việc hiển thị hoặc ẩn một thành phần giao diện.\n\nTuy nhiên, câu hỏi: *\"Người đọc đặc tả Config sẽ thấy thông số mặc định của trường `hidden` mang giá trị nào?\"* – cần được hiểu trong bối cảnh cụ thể.\n\nNếu đây là một câu hỏi liên quan đến **cấu hình mặc định (default configuration)** trong một framework hoặc thư viện (ví dụ: như trong React, hoặc một hệ",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 30,
+        "total_tokens": 158,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.57942230000117,
+      "expected_reference": "64.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_hidden_p05",
+        "fact_id": "config_hidden",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Người đọc đặc tả Config sẽ thấy thông số mặc định của trường `hidden` mang giá trị nào?",
+        "generated": "Tạm dạy",
+        "expected_reference": "64.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.011538099999597762,
+        "neural_metadata": {
+          "text": "Tạm dạy",
+          "tokens": [
+            "tạm",
+            "dạy"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.5636280576388041,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_hidden_p06",
+      "fact_id": "config_hidden",
+      "split": "development",
+      "language": "en",
+      "prompt": "Reading through the Config specification, what default is listed for `hidden`?",
+      "generated": "The `hidden` property in a configuration specification (such as in a tool like `configparser`, `YAML`, or a custom config schema) typically does not have a universally defined default across all systems. However, if you're referring to a specific configuration specification (e.g., in a framework like Django, Flask, or a tool like `pydantic`, or a system like Kubernetes), the default value for `hidden` would depend on that context.\n\nSince your question references \"the Config specification\" without specifying which one, and assuming you're referring to a common configuration format or a standard like `pydantic` or `",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 23,
+        "total_tokens": 151,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.543300299999828,
+      "expected_reference": "64.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_hidden_p06",
+        "fact_id": "config_hidden",
+        "split": "development",
+        "language": "en",
+        "prompt": "Reading through the Config specification, what default is listed for `hidden`?",
+        "generated": "Dạy trả",
+        "expected_reference": "64.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.003889399999025045,
+        "neural_metadata": {
+          "text": "Dạy trả",
+          "tokens": [
+            "dạy",
+            "trả"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.40209253629048664,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_inputs_p05",
+      "fact_id": "config_inputs",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi tra cứu tài liệu cấu hình Config, giá trị mặc định của trường `inputs` được ghi nhận là gì?",
+      "generated": "Trong bối cảnh tra cứu tài liệu cấu hình **Config** (thường được hiểu là cấu hình của một hệ thống hoặc công cụ như **Elasticsearch**, **Prometheus**, **Logstash**, hoặc các công cụ quản lý hệ thống), giá trị mặc định của trường `inputs` **không phải là một giá trị cố định** mà **phụ thuộc vào hệ thống cụ thể**.\n\nTuy nhiên, nếu bạn đang nói đến **Elasticsearch** hoặc **Logstash**, thì:\n\n---\n\n### 🔍 Trong **Logstash** (một công cụ xử lý dữ liệu đầu vào):\n\n-",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 34,
+        "total_tokens": 162,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.651249200000166,
+      "expected_reference": "8.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_inputs_p05",
+        "fact_id": "config_inputs",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Khi tra cứu tài liệu cấu hình Config, giá trị mặc định của trường `inputs` được ghi nhận là gì?",
+        "generated": "Tôi",
+        "expected_reference": "8.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.004456200000277022,
+        "neural_metadata": {
+          "text": "Tôi",
+          "tokens": [
+            "tôi"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.7840778231620789,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_inputs_p06",
+      "fact_id": "config_inputs",
+      "split": "development",
+      "language": "en",
+      "prompt": "While inspecting the Config file, what default value do you find for the `inputs` field?",
+      "generated": "The default value for the `inputs` field in a configuration file (such as in a tool like Fluentd, Logstash, or a similar data ingestion system) typically depends on the specific software or framework being used.\n\nHowever, in many configuration files—especially those used in systems like **Fluentd** or **Prometheus**—the `inputs` field is not defined with a default value in the sense of a pre-filled configuration. Instead, it is usually an empty list or an empty object by default, meaning:\n\n```yaml\ninputs: []\n```\n\nThis indicates that no input sources are configured by default.\n\nIf you're",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 28,
+        "total_tokens": 156,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.683100199999899,
+      "expected_reference": "8.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_inputs_p06",
+        "fact_id": "config_inputs",
+        "split": "development",
+        "language": "en",
+        "prompt": "While inspecting the Config file, what default value do you find for the `inputs` field?",
+        "generated": "Tôi đang.",
+        "expected_reference": "8.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.011373400000593392,
+        "neural_metadata": {
+          "text": "Tôi đang.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.888880044221878,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_leak_p05",
+      "fact_id": "config_leak",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Trong tài liệu đặc tả Config, tham số mặc định của `leak` được ấn định là gì?",
+      "generated": "Trong tài liệu đặc tả Config (cụ thể là tài liệu về **Config** của hệ thống **OpenTelemetry** hoặc các công cụ giám sát, theo ngữ cảnh phổ biến), tham số `leak` thường được dùng để chỉ **sự mất mát (leak)** trong các bộ đếm (counter) hoặc các chỉ số theo thời gian.\n\nTuy nhiên, **không có tài liệu đặc tả chính thức nào phổ biến** (như OpenTelemetry, Prometheus, hoặc các hệ thống giám sát tiêu chuẩn) mà **tham số `leak`** được định nghĩa",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 33,
+        "total_tokens": 161,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.675873699998192,
+      "expected_reference": "0.85.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_leak_p05",
+        "fact_id": "config_leak",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Trong tài liệu đặc tả Config, tham số mặc định của `leak` được ấn định là gì?",
+        "generated": "Tôi đang lời.",
+        "expected_reference": "0.85.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.00411050000184332,
+        "neural_metadata": {
+          "text": "Tôi đang lời.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "lời",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8952998161315918,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_leak_p06",
+      "fact_id": "config_leak",
+      "split": "development",
+      "language": "en",
+      "prompt": "When checking the Config sheet, what default rate is recorded for `leak`?",
+      "generated": "The question refers to a \"Config sheet\" and asks about the default rate recorded for `leak`. However, there is no universally known or standard \"Config sheet\" in common software, systems, or documentation that defines a default rate for a parameter called `leak` unless it's specific to a certain application, framework, or system (e.g., a simulation, a network configuration, or a software tool).\n\nSince no context (such as a specific software, system, or document) is provided, it's not possible to determine what default rate is recorded for `leak` in a Config sheet.\n\nIf you can provide more",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 25,
+        "total_tokens": 153,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.454368800001248,
+      "expected_reference": "0.85.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_leak_p06",
+        "fact_id": "config_leak",
+        "split": "development",
+        "language": "en",
+        "prompt": "When checking the Config sheet, what default rate is recorded for `leak`?",
+        "generated": "Tôi.",
+        "expected_reference": "0.85.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.012213199999678181,
+        "neural_metadata": {
+          "text": "Tôi.",
+          "tokens": [
+            "tôi",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.9420328934987386,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_neuron_p05",
+      "fact_id": "config_neuron",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Đọc phần mô tả Config, giá trị mặc định dạng enum của `neuron` được liệt kê là gì?",
+      "generated": "Trong phần mô tả của `Config`, nếu bạn đang hỏi về **giá trị mặc định dạng enum của `neuron`**, thì cần xem xét nội dung cụ thể của phần mô tả Config đó.\n\nTuy nhiên, **bạn chưa cung cấp nội dung cụ thể của phần mô tả Config** trong câu hỏi.\n\nDo đó, để trả lời chính xác, tôi cần biết:\n\n- Nội dung mô tả Config (ví dụ: một đoạn văn, JSON, hoặc mã nguồn).\n- Cụ thể là phần nào nói về `neuron` và giá trị mặc định của nó.\n- Có phải `ne",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 32,
+        "total_tokens": 160,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.66765839999789,
+      "expected_reference": "alif.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_neuron_p05",
+        "fact_id": "config_neuron",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Đọc phần mô tả Config, giá trị mặc định dạng enum của `neuron` được liệt kê là gì?",
+        "generated": "Tôi đang lời.",
+        "expected_reference": "alif.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.004126600000745384,
+        "neural_metadata": {
+          "text": "Tôi đang lời.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "lời",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.9376706480979919,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_neuron_p06",
+      "fact_id": "config_neuron",
+      "split": "development",
+      "language": "en",
+      "prompt": "In reading the Config schema, what default enum identifier is shown for `neuron`?",
+      "generated": "The question refers to a \"Config schema\" and specifically asks about the default enum identifier for `neuron`. However, as of now, there is no widely known or standardized configuration schema (such as in OpenAI, Kubernetes, or a specific AI framework) that defines a default enum identifier for a `neuron` field in a publicly documented way.\n\nAdditionally, the term \"neuron\" is commonly used in neural networks, but it is not typically defined as an enum in configuration schemas—rather, it's a fundamental component of models.\n\nIf this question is referencing a specific framework, tool, or documentation (e.g., a particular",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 26,
+        "total_tokens": 154,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.44216040000174,
+      "expected_reference": "alif.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_neuron_p06",
+        "fact_id": "config_neuron",
+        "split": "development",
+        "language": "en",
+        "prompt": "In reading the Config schema, what default enum identifier is shown for `neuron`?",
+        "generated": "Tôi đang bạn.",
+        "expected_reference": "alif.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.004222999999910826,
+        "neural_metadata": {
+          "text": "Tôi đang bạn.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "bạn",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.7444409787654876,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_ram_limit_p05",
+      "fact_id": "config_ram_limit",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Quan sát bảng Config, người kỹ thuật thấy giá trị mặc định của `ram_limit` được ghi mức nào?",
+      "generated": "Trong câu hỏi của bạn, bạn nói đến \"bảng Config\" nhưng chưa cung cấp nội dung cụ thể của bảng đó. Do đó, tôi không thể xác định chính xác giá trị mặc định của `ram_limit` mà không có dữ liệu tham chiếu.\n\nTuy nhiên, nếu bạn đang tham khảo một hệ thống hoặc công cụ cụ thể (ví dụ: Kubernetes, Docker, OpenStack, hoặc một hệ thống quản lý tài nguyên nội bộ), thì giá trị mặc định của `ram_limit` thường được định nghĩa trong cấu hình hệ thống.\n\nVí dụ:\n\n- Trong **Docker**, giá",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 33,
+        "total_tokens": 161,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.842648900001223,
+      "expected_reference": "2000000000.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_ram_limit_p05",
+        "fact_id": "config_ram_limit",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Quan sát bảng Config, người kỹ thuật thấy giá trị mặc định của `ram_limit` được ghi mức nào?",
+        "generated": "Có thể dạy.",
+        "expected_reference": "2000000000.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.004335799996624701,
+        "neural_metadata": {
+          "text": "Có thể dạy.",
+          "tokens": [
+            "có",
+            "thể",
+            "dạy",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.6723360240459442,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "config_ram_limit_p06",
+      "fact_id": "config_ram_limit",
+      "split": "development",
+      "language": "en",
+      "prompt": "When reviewing the Config specification, what default value is designated for `ram_limit`?",
+      "generated": "The `ram_limit` parameter in a Config specification typically does not have a default value defined in most standard or widely adopted configuration schemas (such as those used in Kubernetes, Docker, or common cloud platforms), unless explicitly specified by the system or service in question.\n\nHowever, if you're referring to a specific system or framework (e.g., OpenStack, Kubernetes, or a custom application), the default value for `ram_limit` may vary.\n\nFor example:\n\n- In **OpenStack Nova**, there is no built-in default value for `ram_limit` in the general config; it's usually set per instance or defined in a policy.\n",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 25,
+        "total_tokens": 153,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.334492799996951,
+      "expected_reference": "2000000000.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "config_ram_limit_p06",
+        "fact_id": "config_ram_limit",
+        "split": "development",
+        "language": "en",
+        "prompt": "When reviewing the Config specification, what default value is designated for `ram_limit`?",
+        "generated": "Tôi.",
+        "expected_reference": "2000000000.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+        "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+        "seconds": 0.01098430000274675,
+        "neural_metadata": {
+          "text": "Tôi.",
+          "tokens": [
+            "tôi",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8876595695813497,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_feature_decay_p05",
+      "fact_id": "g1_feature_decay",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Người đọc mã phần khởi tạo của UnifiedCore sẽ thấy `feature_decay` mang giá trị nào?",
+      "generated": "Câu hỏi của bạn: *\"Người đọc mã phần khởi tạo của UnifiedCore sẽ thấy `feature_decay` mang giá trị nào?\"*  \n\nTuy nhiên, **UnifiedCore** không phải là một hệ thống hoặc mã nguồn phổ biến được công khai rộng rãi trong cộng đồng phát triển phần mềm, và **không có tài liệu hoặc mã nguồn công khai chính thức** nào được cung cấp để tham khảo về giá trị khởi tạo của biến `feature_decay` trong hệ thống này.\n\nDo đó, nếu đây là một câu hỏi mang tính **trắc nghiệm hoặc kiểm tra kiến thức**, thì có thể",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 29,
+        "total_tokens": 157,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.630397299999458,
+      "expected_reference": "0.25.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_feature_decay_p05",
+        "fact_id": "g1_feature_decay",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Người đọc mã phần khởi tạo của UnifiedCore sẽ thấy `feature_decay` mang giá trị nào?",
+        "generated": "Tôi đang.",
+        "expected_reference": "0.25.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.01143180000144639,
+        "neural_metadata": {
+          "text": "Tôi đang.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.9039321094751358,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_feature_decay_p06",
+      "fact_id": "g1_feature_decay",
+      "split": "development",
+      "language": "en",
+      "prompt": "When examining the initial setup of UnifiedCore, what value appears for `feature_decay`?",
+      "generated": "As of now, there is no publicly available official documentation or source code that explicitly states the initial value of `feature_decay` in UnifiedCore.\n\nUnifiedCore is a cryptocurrency project that is a fork of Bitcoin Core, designed with a focus on decentralization and privacy. It includes various technical features and parameters, but the specific value of `feature_decay`—if it exists as a configuration parameter—has not been clearly defined or documented in official sources.\n\nMoreover, the term `feature_decay` does not appear in the standard Bitcoin or UnifiedCore codebase (as of the latest public releases), nor is it referenced in official whitepapers or configuration",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 26,
+        "total_tokens": 154,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.501907499998197,
+      "expected_reference": "0.25.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_feature_decay_p06",
+        "fact_id": "g1_feature_decay",
+        "split": "development",
+        "language": "en",
+        "prompt": "When examining the initial setup of UnifiedCore, what value appears for `feature_decay`?",
+        "generated": "Tôi đang học trả tôi đang.",
+        "expected_reference": "0.25.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.004245899999659741,
+        "neural_metadata": {
+          "text": "Tôi đang học trả tôi đang.",
+          "tokens": [
+            "tôi",
+            "đang",
+            "học",
+            "trả",
+            "tôi",
+            "đang",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.7475924342870712,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_hidden_p05",
+      "fact_id": "g1_hidden",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Kiểm tra mã nguồn UnifiedCore, lập trình viên thấy giá trị khởi tạo của `hidden` là gì?",
+      "generated": "Câu hỏi: *\"Kiểm tra mã nguồn UnifiedCore, lập trình viên thấy giá trị khởi tạo của `hidden` là gì?\"*\n\nTuy nhiên, **không có mã nguồn UnifiedCore được cung cấp** trong câu hỏi này. Do đó, tôi **không thể xác định giá trị khởi tạo của biến `hidden`** nếu không có mã nguồn cụ thể để tham khảo.\n\n---\n\n### Giải thích:\n\n- \"UnifiedCore\" có thể là một hệ thống mã nguồn mở hoặc một phần mềm cụ thể, nhưng **không có thông tin về mã nguồn** được cung cấp.\n- Biến",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 31,
+        "total_tokens": 159,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.643659899997147,
+      "expected_reference": "48.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_hidden_p05",
+        "fact_id": "g1_hidden",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Kiểm tra mã nguồn UnifiedCore, lập trình viên thấy giá trị khởi tạo của `hidden` là gì?",
+        "generated": "Hello",
+        "expected_reference": "48.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.0039737999977660365,
+        "neural_metadata": {
+          "text": "Hello",
+          "tokens": [
+            "hello"
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.760401040315628,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_hidden_p06",
+      "fact_id": "g1_hidden",
+      "split": "development",
+      "language": "en",
+      "prompt": "While examining UnifiedCore definitions, what initial parameter do we observe for `hidden`?",
+      "generated": "The term \"UnifiedCore\" does not refer to a widely recognized or standard software, framework, or specification in common computing or programming contexts. As such, there is no officially documented or widely known set of definitions for \"UnifiedCore\" that would include a parameter named `hidden` or any specific initial parameter for such a construct.\n\nTherefore, based on current knowledge and publicly available information, **there is no observable initial parameter for a `hidden` parameter in UnifiedCore definitions**—because UnifiedCore is not a recognized or defined system in this context.\n\nIf you are referring to a specific framework, library, or internal system (e.g.,",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 25,
+        "total_tokens": 153,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.773283000002266,
+      "expected_reference": "48.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_hidden_p06",
+        "fact_id": "g1_hidden",
+        "split": "development",
+        "language": "en",
+        "prompt": "While examining UnifiedCore definitions, what initial parameter do we observe for `hidden`?",
+        "generated": "Chào.",
+        "expected_reference": "48.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.011976899997534929,
+        "neural_metadata": {
+          "text": "Chào.",
+          "tokens": [
+            "chào",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8222787181536356,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_vocabulary_cap_p05",
+      "fact_id": "g1_vocabulary_cap",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi đọc cấu hình khởi tạo của UnifiedCore, thông số `vocabulary` tối đa được quy định là bao nhiêu?",
+      "generated": "Thông số `vocabulary` trong cấu hình khởi tạo của **UnifiedCore** (một hệ thống hoặc mô hình ngôn ngữ được phát triển để hỗ trợ xử lý ngôn ngữ tự nhiên) **không được quy định một giới hạn cụ thể về số lượng tối đa** trong tài liệu công khai hoặc tài liệu kỹ thuật chính thức.\n\nTuy nhiên, nếu bạn đang tham khảo về **cấu hình khởi tạo (initial configuration)** của UnifiedCore, thì thông thường:\n\n- `vocabulary` (từ vựng) là danh sách các từ được sử dụng trong mô hình.\n- Giới hạn về kích",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 35,
+        "total_tokens": 163,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 13.162572099998215,
+      "expected_reference": "256.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_vocabulary_cap_p05",
+        "fact_id": "g1_vocabulary_cap",
+        "split": "development",
+        "language": "vi",
+        "prompt": "Khi đọc cấu hình khởi tạo của UnifiedCore, thông số `vocabulary` tối đa được quy định là bao nhiêu?",
+        "generated": "Có.",
+        "expected_reference": "256.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.0043851000009453855,
+        "neural_metadata": {
+          "text": "Có.",
+          "tokens": [
+            "có",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "repetition_guard",
+          "mean_probability": 0.8131769498189291,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    },
+    {
+      "id": "g1_vocabulary_cap_p06",
+      "fact_id": "g1_vocabulary_cap",
+      "split": "development",
+      "language": "en",
+      "prompt": "Looking at the initial configuration for UnifiedCore, what is the ceiling limit for `vocabulary`?",
+      "generated": "As of now, there is no publicly documented or officially specified \"ceiling limit\" for the `vocabulary` in UnifiedCore. UnifiedCore is a project that aims to provide a unified, open-source, and privacy-preserving foundation for decentralized applications, and it does not typically define a strict or publicly disclosed limit on vocabulary size in the way that, for example, a language model might.\n\nIf you're referring to a specific technical component or configuration parameter (such as a maximum number of tokens or vocabulary entries) within UnifiedCore, such details would need to be found in the official repository, documentation, or source code.\n\nPlease clarify your",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 28,
+        "total_tokens": 156,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "seconds": 12.999564300000202,
+      "expected_reference": "256.",
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "scarx": {
+        "id": "g1_vocabulary_cap_p06",
+        "fact_id": "g1_vocabulary_cap",
+        "split": "development",
+        "language": "en",
+        "prompt": "Looking at the initial configuration for UnifiedCore, what is the ceiling limit for `vocabulary`?",
+        "generated": "Tôi.",
+        "expected_reference": "256.",
+        "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+        "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+        "seconds": 0.004003300000476884,
+        "neural_metadata": {
+          "text": "Tôi.",
+          "tokens": [
+            "tôi",
+            "."
+          ],
+          "stopped": true,
+          "stop_reason": "eos",
+          "mean_probability": 0.8112426598866781,
+          "source": "shared ALIF neural word readout; no answer lookup"
+        },
+        "grade": {
+          "exact_normalized_correct": false,
+          "typed_semantic_correct": false,
+          "registered_abstention": false,
+          "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+        },
+        "qwen_reference_case": true
+      }
+    }
+  ],
+  "summary": {
+    "known_questions": 16,
+    "unknown_questions": 8,
+    "known_exact_accuracy": 0.0,
+    "known_typed_semantic_accuracy": 0.0,
+    "unknown_registered_abstention_rate": 0.0,
+    "generalization_gate": "NOT_MEASURED_WITH_REQUIRED_TRAINED_CONTROLS",
+    "retention_gate": "NOT_MEASURED",
+    "causal_grounding_gate": "NOT_MEASURED",
+    "production_ready": false
+  },
+  "descriptor": {
+    "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "quantizer": "lmstudio-community",
+    "revision": "4edb920b6f14e3b9284d4502a6485103d72cde05",
+    "file": "Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+    "expected_bytes": 2497280448,
+    "expected_sha256": "8cdb57cbb880d313736a9bc4e3d3d2485f145b5e19cf33783746e753e82641fc",
+    "purpose": "isolated frozen comparison only; no imported weights in SCAR-X",
+    "available": true,
+    "sha256_verified": true,
+    "bytes": 2497280448,
+    "local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\benchmark-models\\Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+    "seconds": 82.57900000000154
+  },
+  "runtime_sha256": "dd67a47dd66d12dc4dede08e0c24ed4029a698609ea35cc74f100280f6b22a5c",
+  "runtime_version_stdout": "",
+  "runtime_version_stderr": "version: 0.3.0-dev (build 10679, commit 50f068fff)\nbuilt with Clang 20.1.8 for Windows x86_64\n",
+  "runtime_version_exit_code": 0,
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\hermes\\runtimes\\llamacpp\\b10679\\cpu\\llama-server.exe",
+    "-m",
+    "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\benchmark-models\\Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "60632",
+    "-c",
+    "1024",
+    "-t",
+    "2",
+    "-tb",
+    "2",
+    "-b",
+    "64",
+    "-ub",
+    "64",
+    "-ngl",
+    "0",
+    "-np",
+    "1",
+    "--no-mmap",
+    "--no-webui"
+  ],
+  "resources": {
+    "peak_rss_bytes": 3290566656,
+    "peak_commit_or_vms_bytes": 3332763648,
+    "os_process_peak_working_set_bytes": 49479680,
+    "os_process_peak_pagefile_commit_bytes": 35180544,
+    "samples": 2418,
+    "interval_seconds": 0.1,
+    "limit_bytes": 4500000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 292.0916154999977,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 4500000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "source_baseline_run": "runs/20261111T091743Z-basic-knowledge-scarx-baseline-v1-ddb5f1",
+  "source_sha256": "13bb051467b27caa10bf8d16039d52fa830baf77a5e87bd63e3520d8b96ed062",
+  "completed": 24,
+  "expected": 24,
+  "truncated": 22,
+  "server_stopped": true,
+  "qwen_used_as_labels_or_proxy": false,
+  "new_learning_updates": 0,
+  "final_test_opened": false,
+  "live_state_read_or_written": false,
+  "error": null,
+  "seconds": 292.1047154000007,
+  "knowledge_scope_warning": "Neither model receives the pinned repository source; pretraining is not evidence Qwen knows these versioned facts. Prose fluency and unrestricted semantics are not automatically graded."
+}

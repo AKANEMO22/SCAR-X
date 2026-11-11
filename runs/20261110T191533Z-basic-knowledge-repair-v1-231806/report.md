@@ -1,0 +1,64 @@
+# Bounded sourcevalidationrepair
+
+Old candidates/results preserved, no qualityscore selection.
+
+{
+  "run": "runs/20261110T191533Z-basic-knowledge-repair-v1-231806",
+  "decision": "SOURCE_POOL_REPAIRED_COMPATIBILITY_PENDING",
+  "data": "data/candidates/20261110T191533Z-basic-knowledge-repair-v1-231806/verified-pool.json",
+  "sha256": "13bb051467b27caa10bf8d16039d52fa830baf77a5e87bd63e3520d8b96ed062",
+  "parent_run": "runs/20261110T185515Z-basic-knowledge-factory-v1-9885fd",
+  "source_ledger": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/facts.json",
+  "source_ledger_sha256": "036035daf4106853e607dba742dabafb87c0d5f34b391baab33adefb13d70ef1",
+  "facts": 40,
+  "known_facts": 32,
+  "verified": 320,
+  "remaining_slots": 0,
+  "original_quarantines_preserved": 11,
+  "repair_candidates": 72,
+  "repair_slots_used": 11,
+  "repair_batch": {
+    "batch": 5,
+    "items": 72,
+    "model_requested": "gemini-3.8-flash-high",
+    "model_reported": "gemini-3.8-flash-high",
+    "effort_requested": "high",
+    "prompt_sha256": "1f58ed89602fb6061619988fd2f6c7615558cefac4264c1e6ba2710e38b15d71",
+    "schema_sha256": "3b424e59bd8716fbc13da554c070aeaa70ab48ed4b97f1a95a85a996b0cf70b9",
+    "stream_sha256": "cc235d5c858efa77d4312576e2c7152040f5e0c876f2e3f01355904c652c2564",
+    "candidate_sha256": "86665ee21d0420059bb2c01b597fc984902f89ccde70b6f63b08f178923737d8",
+    "usage": {
+      "input_tokens": 17131,
+      "output_tokens": 33865,
+      "thinking_tokens": 30103,
+      "cache_read_tokens": 0,
+      "total_tokens": 50996
+    },
+    "cost_usd_reported": null,
+    "seconds": 230.95566169999074,
+    "resources": {
+      "peak_rss_bytes": 763650048,
+      "peak_commit_or_vms_bytes": 754700288,
+      "os_process_peak_working_set_bytes": 44789760,
+      "os_process_peak_pagefile_commit_bytes": 31948800,
+      "samples": 2174,
+      "interval_seconds": 0.1,
+      "limit_bytes": 1000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 230.9556472999975,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+    },
+    "error": null,
+    "invocation_private": "local/basic-knowledge-factory/20261110T191533Z-basic-knowledge-repair-v1-231806/batch-5/invocation.json"
+  },
+  "total_generation_calls": 5,
+  "criteria_changed": false,
+  "automatic_learning_allowed": false,
+  "student_training": false,
+  "pilot_run": false,
+  "sealed_final_score_used": false,
+  "seconds": 231.03471859998535
+}

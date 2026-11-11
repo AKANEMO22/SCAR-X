@@ -1,0 +1,3046 @@
+{
+  "decision": "NOT_PRODUCTION_READY_BASELINE_ONLY",
+  "rows": [
+    {
+      "id": "api_host_p01",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Địa chỉ máy chủ lưu trữ của API là gì?",
+      "generated": "Tôi là scar-x.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.005519999998796266,
+      "neural_metadata": {
+        "text": "Tôi là scar-x.",
+        "tokens": [
+          "tôi",
+          "là",
+          "scar-x",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7651833057403564,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_host_p02",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "What host address is the API bound to?",
+      "generated": "Bạn.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004231499999150401,
+      "neural_metadata": {
+        "text": "Bạn.",
+        "tokens": [
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.815533439318339,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_host_p03",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Hãy cung cấp địa chỉ host ràng buộc của dịch vụ API.",
+      "generated": "Tôi đang tôi.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011456999996880768,
+      "neural_metadata": {
+        "text": "Tôi đang tôi.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9099818110466004,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_host_p04",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "State the host IP designated for the API server.",
+      "generated": "Tôi. tôi",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004228899997542612,
+      "neural_metadata": {
+        "text": "Tôi. tôi",
+        "tokens": [
+          "tôi",
+          ".",
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7805680334568024,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_host_p05",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Trong tệp cấu hình mạng của API, giá trị host được khai báo như thế nào?",
+      "generated": "Tôi",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.00431669999670703,
+      "neural_metadata": {
+        "text": "Tôi",
+        "tokens": [
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6716752052307129,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_host_p06",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "According to the API reference manual, what host address is specified?",
+      "generated": "Bạn. bạn",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011612700000114273,
+      "neural_metadata": {
+        "text": "Bạn. bạn",
+        "tokens": [
+          "bạn",
+          ".",
+          "bạn"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7997886389493942,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_host_p07",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Trước khi khởi chạy hệ thống API, địa chỉ máy chủ nào cần được gán cho dịch vụ?",
+      "generated": "Tôi là scar-x đang.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004198400001769187,
+      "neural_metadata": {
+        "text": "Tôi là scar-x đang.",
+        "tokens": [
+          "tôi",
+          "là",
+          "scar-x",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7055724561214447,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_host_p08",
+      "fact_id": "api_host",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When setting up the environment for the API, which binding host should be used?",
+      "generated": "Tôi được tôi",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004486500001803506,
+      "neural_metadata": {
+        "text": "Tôi được tôi",
+        "tokens": [
+          "tôi",
+          "được",
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.6855684593319893,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p01",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Mã định danh mô hình phục vụ cho dịch vụ API là gì?",
+      "generated": "Rất vui được giúp bạn.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.011498599997139536,
+      "neural_metadata": {
+        "text": "Rất vui được giúp bạn.",
+        "tokens": [
+          "rất",
+          "vui",
+          "được",
+          "giúp",
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9332996095929827,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p02",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "What is the model identifier used by the API service?",
+      "generated": "Chào.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.003884599998855265,
+      "neural_metadata": {
+        "text": "Chào.",
+        "tokens": [
+          "chào",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7124670247236887,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p03",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Hãy cung cấp tên định danh model của hệ thống API.",
+      "generated": "Tôi đang.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.004356299999926705,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.9312956929206848,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p04",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "State the model identifier used by the API.",
+      "generated": "Tôi.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.011784800000896212,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7858231465021769,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p05",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Khi tra cứu cấu hình API hiện hành, tham số định danh model được ghi nhận là gì?",
+      "generated": "Tôi dạy tôi",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.004205900000670226,
+      "neural_metadata": {
+        "text": "Tôi dạy tôi",
+        "tokens": [
+          "tôi",
+          "dạy",
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7745804339647293,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_model_id_p06",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "Looking over the API settings file, which model ID parameter is specified?",
+      "generated": "Tôi giúp",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.003929099999368191,
+      "neural_metadata": {
+        "text": "Tôi giúp",
+        "tokens": [
+          "tôi",
+          "giúp"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6429341038068136,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_model_id_p07",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Người triển khai cần thiết lập chuỗi mã mô hình nào cho dịch vụ API khi bắt đầu?",
+      "generated": "Tôi",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.011462399997981265,
+      "neural_metadata": {
+        "text": "Tôi",
+        "tokens": [
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8573107719421387,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_model_id_p08",
+      "fact_id": "api_model_id",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When preparing client requests for the API, which model identifier should be provided?",
+      "generated": "Tôi giúp",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "seconds": 0.0043130000012752134,
+      "neural_metadata": {
+        "text": "Tôi giúp",
+        "tokens": [
+          "tôi",
+          "giúp"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.684638500213623,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p01",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Đường dẫn định tuyến để lấy danh sách mô hình qua API là gì?",
+      "generated": "Bạn.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.003975600000558188,
+      "neural_metadata": {
+        "text": "Bạn.",
+        "tokens": [
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7818050980567932,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p02",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "What is the endpoint path for retrieving available models in the API?",
+      "generated": "Bạn",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011752200000046287,
+      "neural_metadata": {
+        "text": "Bạn",
+        "tokens": [
+          "bạn"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8173948228359222,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p03",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Hãy chỉ rõ tuyến đường API dùng để truy vấn các mô hình.",
+      "generated": "Chào biệt. chào.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004459799998585368,
+      "neural_metadata": {
+        "text": "Chào biệt. chào.",
+        "tokens": [
+          "chào",
+          "biệt",
+          ".",
+          "chào",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6910813053448995,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p04",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "Provide the API route used for model listing.",
+      "generated": "Tôi.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.003965299998526461,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7680937051773071,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p05",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Nhìn vào tài liệu cấu hình API, tuyến đường dẫn nào được phân bổ cho các mô hình?",
+      "generated": "Tôi đang hoạt tôi đang",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.01140310000118916,
+      "neural_metadata": {
+        "text": "Tôi đang hoạt tôi đang",
+        "tokens": [
+          "tôi",
+          "đang",
+          "hoạt",
+          "tôi",
+          "đang"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7827381243308386,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_models_route_p06",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When inspecting the API documentation, what route is defined for models?",
+      "generated": "Hello.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.012513300000136951,
+      "neural_metadata": {
+        "text": "Hello.",
+        "tokens": [
+          "hello",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8129105071226755,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_models_route_p07",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Khi thiết lập cổng giao tiếp API, đường dẫn nào được gán cho tài nguyên mô hình?",
+      "generated": "Rất đang.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004315900001529371,
+      "neural_metadata": {
+        "text": "Rất đang.",
+        "tokens": [
+          "rất",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8030732721090317,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_models_route_p08",
+      "fact_id": "api_models_route",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "During initial gateway setup for the API, which path should route model queries?",
+      "generated": "Tôi",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011415200002375059,
+      "neural_metadata": {
+        "text": "Tôi",
+        "tokens": [
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.632130041718483,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p01",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Dịch vụ API đang lắng nghe trên cổng mạng nào?",
+      "generated": "Tôi đang.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.00435980000111158,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.919846385717392,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p02",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "Which network port does the API server listen on?",
+      "generated": "Tôi đang tôi",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011173999999300577,
+      "neural_metadata": {
+        "text": "Tôi đang tôi",
+        "tokens": [
+          "tôi",
+          "đang",
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7578970268368721,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p03",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Hãy nêu cổng kết nối dành cho máy chủ API.",
+      "generated": "Tôi đang.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.003989299999375362,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9529319554567337,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p04",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "Specify the port assigned to the API service.",
+      "generated": "Chào vui được biệt.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004338499998993939,
+      "neural_metadata": {
+        "text": "Chào vui được biệt.",
+        "tokens": [
+          "chào",
+          "vui",
+          "được",
+          "biệt",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7871013383070627,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p05",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Theo tài liệu cấu hình của API, cổng mạng được chỉ định là bao nhiêu?",
+      "generated": "Đang",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.011334399998304434,
+      "neural_metadata": {
+        "text": "Đang",
+        "tokens": [
+          "đang"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7907283306121826,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_port_p06",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "When reviewing the API documentation, which network port is listed?",
+      "generated": "Tôi.",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.003989200002251891,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8173455993334452,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "api_port_p07",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "vi",
+      "prompt": "Để chuẩn bị thiết lập hạ tầng cho API, quản trị viên cần mở cổng mạng nào?",
+      "generated": "Đang scar-x.",
+      "expected_reference": "Tôi chưa biết.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.004279900000256021,
+      "neural_metadata": {
+        "text": "Đang scar-x.",
+        "tokens": [
+          "đang",
+          "scar-x",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7508773803710938,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "api_port_p08",
+      "fact_id": "api_port",
+      "split": "unknown_development",
+      "language": "en",
+      "prompt": "During the initial deployment of the API service, which port should be opened?",
+      "generated": "Được giúp được",
+      "expected_reference": "I do not know.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "seconds": 0.012059799999406096,
+      "neural_metadata": {
+        "text": "Được giúp được",
+        "tokens": [
+          "được",
+          "giúp",
+          "được"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7064398229122162,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": null,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_adaptation_decay_p05",
+      "fact_id": "config_adaptation_decay",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Duyệt qua bảng tham số Config, giá trị mặc định của `adaptation_decay` hiển thị là gì?",
+      "generated": "Biệt.",
+      "expected_reference": "0.95.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.0040593999983684625,
+      "neural_metadata": {
+        "text": "Biệt.",
+        "tokens": [
+          "biệt",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8491900563240051,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_adaptation_decay_p06",
+      "fact_id": "config_adaptation_decay",
+      "split": "development",
+      "language": "en",
+      "prompt": "Browsing the Config settings, what default is indicated for `adaptation_decay`?",
+      "generated": "Tôi đang",
+      "expected_reference": "0.95.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.003922100000636419,
+      "neural_metadata": {
+        "text": "Tôi đang",
+        "tokens": [
+          "tôi",
+          "đang"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.8973047335942587,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_adaptation_strength_p05",
+      "fact_id": "config_adaptation_strength",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi đọc phần khai báo Config, giá trị mặc định dành cho `adaptation_strength` là gì?",
+      "generated": "Bạn.",
+      "expected_reference": "0.08.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011676099999021972,
+      "neural_metadata": {
+        "text": "Bạn.",
+        "tokens": [
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6838299781084061,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_adaptation_strength_p06",
+      "fact_id": "config_adaptation_strength",
+      "split": "development",
+      "language": "en",
+      "prompt": "When inspecting the Config reference table, what default is set for `adaptation_strength`?",
+      "generated": "Tạm biệt bạn.",
+      "expected_reference": "0.08.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011433100000431295,
+      "neural_metadata": {
+        "text": "Tạm biệt bạn.",
+        "tokens": [
+          "tạm",
+          "biệt",
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8909251689910889,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_anchor_strength_p05",
+      "fact_id": "config_anchor_strength",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Theo dõi tập tin Config, chuyên viên thấy giá trị mặc định của `anchor_strength` là gì?",
+      "generated": "Tôi đang học trả biệt",
+      "expected_reference": "0.0001.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004110800000489689,
+      "neural_metadata": {
+        "text": "Tôi đang học trả biệt",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "biệt"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.5403550167878469,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_anchor_strength_p06",
+      "fact_id": "config_anchor_strength",
+      "split": "development",
+      "language": "en",
+      "prompt": "Upon inspecting the Config layout, what default value is registered for `anchor_strength`?",
+      "generated": "Tôi đang bạn có thể bạn có",
+      "expected_reference": "0.0001.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011658999999781372,
+      "neural_metadata": {
+        "text": "Tôi đang bạn có thể bạn có",
+        "tokens": [
+          "tôi",
+          "đang",
+          "bạn",
+          "có",
+          "thể",
+          "bạn",
+          "có"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7738808244466782,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_fan_in_p05",
+      "fact_id": "config_fan_in",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Nhìn vào mục thiết lập Config, trường `fan_in` có giá trị mặc định là gì?",
+      "generated": "Tôi đang trả động",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004256000000168569,
+      "neural_metadata": {
+        "text": "Tôi đang trả động",
+        "tokens": [
+          "tôi",
+          "đang",
+          "trả",
+          "động"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7061344742774963,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_fan_in_p06",
+      "fact_id": "config_fan_in",
+      "split": "development",
+      "language": "en",
+      "prompt": "Looking at the Config parameters, what default value is registered for `fan_in`?",
+      "generated": "Tôi.",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.01153120000162744,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.70755002895991,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_feature_decay_p05",
+      "fact_id": "config_feature_decay",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Đọc tài liệu lược đồ Config, lập trình viên thấy giá trị mặc định của `feature_decay` là gì?",
+      "generated": "Tôi.",
+      "expected_reference": "0.92.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004211200001009274,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8373462955156962,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_feature_decay_p06",
+      "fact_id": "config_feature_decay",
+      "split": "development",
+      "language": "en",
+      "prompt": "Inspecting the Config code, what default value appears for the `feature_decay` entry?",
+      "generated": "Hello",
+      "expected_reference": "0.92.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.003962800001318101,
+      "neural_metadata": {
+        "text": "Hello",
+        "tokens": [
+          "hello"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.5873389095067978,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_hidden_lr_p05",
+      "fact_id": "config_hidden_lr",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Người đọc cấu hình Config nhận thấy giá trị mặc định của `hidden_lr` là gì?",
+      "generated": "Tôi là",
+      "expected_reference": "0.002.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011040600002161227,
+      "neural_metadata": {
+        "text": "Tôi là",
+        "tokens": [
+          "tôi",
+          "là"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6824827392896017,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_hidden_lr_p06",
+      "fact_id": "config_hidden_lr",
+      "split": "development",
+      "language": "en",
+      "prompt": "Checking the Config source declarations, what default value is shown for `hidden_lr`?",
+      "generated": "Tạm.",
+      "expected_reference": "0.002.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004197100002784282,
+      "neural_metadata": {
+        "text": "Tạm.",
+        "tokens": [
+          "tạm",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.777031938234965,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_hidden_p05",
+      "fact_id": "config_hidden",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Người đọc đặc tả Config sẽ thấy thông số mặc định của trường `hidden` mang giá trị nào?",
+      "generated": "Tạm dạy",
+      "expected_reference": "64.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011538099999597762,
+      "neural_metadata": {
+        "text": "Tạm dạy",
+        "tokens": [
+          "tạm",
+          "dạy"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.5636280576388041,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_hidden_p06",
+      "fact_id": "config_hidden",
+      "split": "development",
+      "language": "en",
+      "prompt": "Reading through the Config specification, what default is listed for `hidden`?",
+      "generated": "Dạy trả",
+      "expected_reference": "64.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.003889399999025045,
+      "neural_metadata": {
+        "text": "Dạy trả",
+        "tokens": [
+          "dạy",
+          "trả"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.40209253629048664,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_inputs_p05",
+      "fact_id": "config_inputs",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi tra cứu tài liệu cấu hình Config, giá trị mặc định của trường `inputs` được ghi nhận là gì?",
+      "generated": "Tôi",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004456200000277022,
+      "neural_metadata": {
+        "text": "Tôi",
+        "tokens": [
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7840778231620789,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_inputs_p06",
+      "fact_id": "config_inputs",
+      "split": "development",
+      "language": "en",
+      "prompt": "While inspecting the Config file, what default value do you find for the `inputs` field?",
+      "generated": "Tôi đang.",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011373400000593392,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.888880044221878,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_leak_p05",
+      "fact_id": "config_leak",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Trong tài liệu đặc tả Config, tham số mặc định của `leak` được ấn định là gì?",
+      "generated": "Tôi đang lời.",
+      "expected_reference": "0.85.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.00411050000184332,
+      "neural_metadata": {
+        "text": "Tôi đang lời.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "lời",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8952998161315918,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_leak_p06",
+      "fact_id": "config_leak",
+      "split": "development",
+      "language": "en",
+      "prompt": "When checking the Config sheet, what default rate is recorded for `leak`?",
+      "generated": "Tôi.",
+      "expected_reference": "0.85.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.012213199999678181,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9420328934987386,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_neuron_p05",
+      "fact_id": "config_neuron",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Đọc phần mô tả Config, giá trị mặc định dạng enum của `neuron` được liệt kê là gì?",
+      "generated": "Tôi đang lời.",
+      "expected_reference": "alif.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004126600000745384,
+      "neural_metadata": {
+        "text": "Tôi đang lời.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "lời",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9376706480979919,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_neuron_p06",
+      "fact_id": "config_neuron",
+      "split": "development",
+      "language": "en",
+      "prompt": "In reading the Config schema, what default enum identifier is shown for `neuron`?",
+      "generated": "Tôi đang bạn.",
+      "expected_reference": "alif.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004222999999910826,
+      "neural_metadata": {
+        "text": "Tôi đang bạn.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7444409787654876,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_outputs_p05",
+      "fact_id": "config_outputs",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Theo bảng thiết lập Config, giá trị mặc định quy định cho `outputs` là gì?",
+      "generated": "Có",
+      "expected_reference": "4.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011221999997360399,
+      "neural_metadata": {
+        "text": "Có",
+        "tokens": [
+          "có"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.5743142664432526,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_outputs_p06",
+      "fact_id": "config_outputs",
+      "split": "development",
+      "language": "en",
+      "prompt": "When reviewing the Config document, what default setting appears for `outputs`?",
+      "generated": "Tôi đang học trả.",
+      "expected_reference": "4.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004273300000932068,
+      "neural_metadata": {
+        "text": "Tôi đang học trả.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6662874321142832,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_plastic_rows_p05",
+      "fact_id": "config_plastic_rows",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi kiểm tra hồ sơ Config, giá trị mặc định được gán cho `plastic_rows` là gì?",
+      "generated": "Bạn có động dạy tôi.",
+      "expected_reference": "16.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.0043867000022146385,
+      "neural_metadata": {
+        "text": "Bạn có động dạy tôi.",
+        "tokens": [
+          "bạn",
+          "có",
+          "động",
+          "dạy",
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7011084982327053,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_plastic_rows_p06",
+      "fact_id": "config_plastic_rows",
+      "split": "development",
+      "language": "en",
+      "prompt": "Upon examining the Config definition, what default is designated for `plastic_rows`?",
+      "generated": "Tôi đang học trả tôi.",
+      "expected_reference": "16.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.012233000001288019,
+      "neural_metadata": {
+        "text": "Tôi đang học trả tôi.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7745754761355264,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_ram_limit_p05",
+      "fact_id": "config_ram_limit",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Quan sát bảng Config, người kỹ thuật thấy giá trị mặc định của `ram_limit` được ghi mức nào?",
+      "generated": "Có thể dạy.",
+      "expected_reference": "2000000000.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004335799996624701,
+      "neural_metadata": {
+        "text": "Có thể dạy.",
+        "tokens": [
+          "có",
+          "thể",
+          "dạy",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6723360240459442,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_ram_limit_p06",
+      "fact_id": "config_ram_limit",
+      "split": "development",
+      "language": "en",
+      "prompt": "When reviewing the Config specification, what default value is designated for `ram_limit`?",
+      "generated": "Tôi.",
+      "expected_reference": "2000000000.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.01098430000274675,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8876595695813497,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "config_readout_lr_p05",
+      "fact_id": "config_readout_lr",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Nhìn vào bảng khai báo Config, giá trị mặc định ứng với `readout_lr` được ghi nhận là gì?",
+      "generated": "Tôi",
+      "expected_reference": "0.08.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004139599997870391,
+      "neural_metadata": {
+        "text": "Tôi",
+        "tokens": [
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.825902670621872,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_readout_lr_p06",
+      "fact_id": "config_readout_lr",
+      "split": "development",
+      "language": "en",
+      "prompt": "When reading through the Config file, what default value is listed for `readout_lr`?",
+      "generated": "Tôi đang tôi",
+      "expected_reference": "0.08.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.0039194999990286306,
+      "neural_metadata": {
+        "text": "Tôi đang tôi",
+        "tokens": [
+          "tôi",
+          "đang",
+          "tôi"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.8271776884794235,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_threshold_p05",
+      "fact_id": "config_threshold",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi xem qua các mục của Config, mức mặc định của trường `threshold` được ghi là gì?",
+      "generated": "Tôi đang học trả lời.",
+      "expected_reference": "0.65.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011386800000764197,
+      "neural_metadata": {
+        "text": "Tôi đang học trả lời.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "lời",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9424002170562744,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_threshold_p06",
+      "fact_id": "config_threshold",
+      "split": "development",
+      "language": "en",
+      "prompt": "Going over the Config reference, what default value is documented for `threshold`?",
+      "generated": "Tôi đang học trả lời.",
+      "expected_reference": "0.65.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004741400000057183,
+      "neural_metadata": {
+        "text": "Tôi đang học trả lời.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "lời",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9291411638259888,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_trace_decay_p05",
+      "fact_id": "config_trace_decay",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi xem tệp Config, tôi thấy tham số `trace_decay` mang giá trị mặc định là gì?",
+      "generated": "Dạy tôi đang lời.",
+      "expected_reference": "0.9.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.004288899999664864,
+      "neural_metadata": {
+        "text": "Dạy tôi đang lời.",
+        "tokens": [
+          "dạy",
+          "tôi",
+          "đang",
+          "lời",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8569192091623942,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "config_trace_decay_p06",
+      "fact_id": "config_trace_decay",
+      "split": "development",
+      "language": "en",
+      "prompt": "While reviewing the Config definitions, what default setting do we find for `trace_decay`?",
+      "generated": "Tôi đang trả tôi trả",
+      "expected_reference": "0.9.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "seconds": 0.011493000001792097,
+      "neural_metadata": {
+        "text": "Tôi đang trả tôi trả",
+        "tokens": [
+          "tôi",
+          "đang",
+          "trả",
+          "tôi",
+          "trả"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.652245948712031,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_adaptation_strength_p05",
+      "fact_id": "g1_adaptation_strength",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi tra cứu các giá trị khởi tạo trong UnifiedCore, tham số `adaptation_strength` được định nghĩa là gì?",
+      "generated": "Tôi đang hoạt.",
+      "expected_reference": "0.02.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004460400003154064,
+      "neural_metadata": {
+        "text": "Tôi đang hoạt.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "hoạt",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7625206172466278,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_adaptation_strength_p06",
+      "fact_id": "g1_adaptation_strength",
+      "split": "development",
+      "language": "en",
+      "prompt": "While reading the setup definition of UnifiedCore, what initial value is set for `adaptation_strength`?",
+      "generated": "Tôi đang thể.",
+      "expected_reference": "0.02.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011730700000043726,
+      "neural_metadata": {
+        "text": "Tôi đang thể.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "thể",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6938005149364471,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_anchor_strength_p05",
+      "fact_id": "g1_anchor_strength",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi xem qua mã khởi tạo của UnifiedCore, thông số `anchor_strength` mang giá trị nào?",
+      "generated": "Scar-x.",
+      "expected_reference": "0.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004080099999555387,
+      "neural_metadata": {
+        "text": "Scar-x.",
+        "tokens": [
+          "scar-x",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.5692780415217081,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_anchor_strength_p06",
+      "fact_id": "g1_anchor_strength",
+      "split": "development",
+      "language": "en",
+      "prompt": "While examining the setup parameters of UnifiedCore, what initial value is listed for `anchor_strength`?",
+      "generated": "Tôi đang.",
+      "expected_reference": "0.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.0042762000011862256,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.6799776628613472,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_answer_token_cap_p05",
+      "fact_id": "g1_answer_token_cap",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Theo thông số khởi tạo của UnifiedCore đang xem xét, giới hạn `tokens` được ghi nhận là bao nhiêu?",
+      "generated": "Có. hoạt.",
+      "expected_reference": "24.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011217600000236416,
+      "neural_metadata": {
+        "text": "Có. hoạt.",
+        "tokens": [
+          "có",
+          ".",
+          "hoạt",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7628604590892791,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_answer_token_cap_p06",
+      "fact_id": "g1_answer_token_cap",
+      "split": "development",
+      "language": "en",
+      "prompt": "While inspecting the initial configuration file of UnifiedCore, what maximum value is assigned to `tokens`?",
+      "generated": "Tôi.",
+      "expected_reference": "24.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.00405759999921429,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7905066708723704,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_context_size_p05",
+      "fact_id": "g1_context_size",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi rà soát mã nguồn khởi tạo của UnifiedCore, tham số `context_size` mang giá trị gì?",
+      "generated": "Đang hoạt học.",
+      "expected_reference": "128.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004347900001448579,
+      "neural_metadata": {
+        "text": "Đang hoạt học.",
+        "tokens": [
+          "đang",
+          "hoạt",
+          "học",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.726403558254242,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_context_size_p06",
+      "fact_id": "g1_context_size",
+      "split": "development",
+      "language": "en",
+      "prompt": "When reviewing the initial setup logic of UnifiedCore, what value is set for `context_size`?",
+      "generated": "Rất vui",
+      "expected_reference": "128.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.010995999997248873,
+      "neural_metadata": {
+        "text": "Rất vui",
+        "tokens": [
+          "rất",
+          "vui"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8748014569282532,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_fan_in_p05",
+      "fact_id": "g1_fan_in",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Đọc cấu trúc UnifiedCore, người phát triển thấy giá trị constructor của `fan_in` là gì?",
+      "generated": "Tôi đang học động.",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004352399999334011,
+      "neural_metadata": {
+        "text": "Tôi đang học động.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "động",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7241662989060084,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_fan_in_p06",
+      "fact_id": "g1_fan_in",
+      "split": "development",
+      "language": "en",
+      "prompt": "Looking at the UnifiedCore structure, what initial setting is defined for `fan_in`?",
+      "generated": "Tôi đang.",
+      "expected_reference": "8.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004172099997958867,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.781211219727993,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_feature_decay_p05",
+      "fact_id": "g1_feature_decay",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Người đọc mã phần khởi tạo của UnifiedCore sẽ thấy `feature_decay` mang giá trị nào?",
+      "generated": "Tôi đang.",
+      "expected_reference": "0.25.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.01143180000144639,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9039321094751358,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_feature_decay_p06",
+      "fact_id": "g1_feature_decay",
+      "split": "development",
+      "language": "en",
+      "prompt": "When examining the initial setup of UnifiedCore, what value appears for `feature_decay`?",
+      "generated": "Tôi đang học trả tôi đang.",
+      "expected_reference": "0.25.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004245899999659741,
+      "neural_metadata": {
+        "text": "Tôi đang học trả tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "học",
+          "trả",
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7475924342870712,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_hidden_lr_p05",
+      "fact_id": "g1_hidden_lr",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi đọc đoạn mã khởi tạo đối tượng UnifiedCore, tham số `hidden_lr` có giá trị là gì?",
+      "generated": "Đang",
+      "expected_reference": "0.0001.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004096700002264697,
+      "neural_metadata": {
+        "text": "Đang",
+        "tokens": [
+          "đang"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7180104553699493,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_hidden_lr_p06",
+      "fact_id": "g1_hidden_lr",
+      "split": "development",
+      "language": "en",
+      "prompt": "Reviewing the initial constructor code of UnifiedCore, what value does `hidden_lr` hold?",
+      "generated": "Tôi đang.",
+      "expected_reference": "0.0001.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011874599997099722,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8483919054269791,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_hidden_p05",
+      "fact_id": "g1_hidden",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Kiểm tra mã nguồn UnifiedCore, lập trình viên thấy giá trị khởi tạo của `hidden` là gì?",
+      "generated": "Hello",
+      "expected_reference": "48.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.0039737999977660365,
+      "neural_metadata": {
+        "text": "Hello",
+        "tokens": [
+          "hello"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.760401040315628,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_hidden_p06",
+      "fact_id": "g1_hidden",
+      "split": "development",
+      "language": "en",
+      "prompt": "While examining UnifiedCore definitions, what initial parameter do we observe for `hidden`?",
+      "generated": "Chào.",
+      "expected_reference": "48.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011976899997534929,
+      "neural_metadata": {
+        "text": "Chào.",
+        "tokens": [
+          "chào",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8222787181536356,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_leak_p05",
+      "fact_id": "g1_leak",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Xem xét tài liệu UnifiedCore, kỹ sư phát hiện giá trị khởi tạo của `leak` là gì?",
+      "generated": "Bạn. tôi đang học tôi đang hoạt động lời",
+      "expected_reference": "0.65.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004843400001846021,
+      "neural_metadata": {
+        "text": "Bạn. tôi đang học tôi đang hoạt động lời",
+        "tokens": [
+          "bạn",
+          ".",
+          "tôi",
+          "đang",
+          "học",
+          "tôi",
+          "đang",
+          "hoạt",
+          "động",
+          "lời"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.6721604764461517,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_leak_p06",
+      "fact_id": "g1_leak",
+      "split": "development",
+      "language": "en",
+      "prompt": "Inspecting the UnifiedCore specifications, what initial rate is set for `leak`?",
+      "generated": "Tôi.",
+      "expected_reference": "0.65.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004199700000754092,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7683356404304504,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_max_neurons_p05",
+      "fact_id": "g1_max_neurons",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi đọc mã nguồn khởi tạo của UnifiedCore, giới hạn tối đa `max_neurons` được đặt là bao nhiêu?",
+      "generated": "Có đang có.",
+      "expected_reference": "128.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.012354399998002918,
+      "neural_metadata": {
+        "text": "Có đang có.",
+        "tokens": [
+          "có",
+          "đang",
+          "có",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.5893752932548523,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_max_neurons_p06",
+      "fact_id": "g1_max_neurons",
+      "split": "development",
+      "language": "en",
+      "prompt": "While inspecting the initial setup code of UnifiedCore, what maximum limit is shown for `max_neurons`?",
+      "generated": "Bạn.",
+      "expected_reference": "128.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004471500000363449,
+      "neural_metadata": {
+        "text": "Bạn.",
+        "tokens": [
+          "bạn",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8144209980964661,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_plastic_rows_p05",
+      "fact_id": "g1_plastic_rows",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Duyệt qua khai báo UnifiedCore, người phân tích thấy tham số `plastic_rows` được khởi tạo là gì?",
+      "generated": "Đang.",
+      "expected_reference": "12.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004022900000563823,
+      "neural_metadata": {
+        "text": "Đang.",
+        "tokens": [
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7384780248006185,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_plastic_rows_p06",
+      "fact_id": "g1_plastic_rows",
+      "split": "development",
+      "language": "en",
+      "prompt": "Reading the UnifiedCore constructor code, what initial value is specified for `plastic_rows`?",
+      "generated": "Tôi.",
+      "expected_reference": "12.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011416800000006333,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.9918314615885416,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_readout_lr_p05",
+      "fact_id": "g1_readout_lr",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Nhìn vào phần mã khởi tạo của UnifiedCore, trường `readout_lr` được gán giá trị bao nhiêu?",
+      "generated": "Tôi đang",
+      "expected_reference": "0.025.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004013599998870632,
+      "neural_metadata": {
+        "text": "Tôi đang",
+        "tokens": [
+          "tôi",
+          "đang"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.7610696256160736,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_readout_lr_p06",
+      "fact_id": "g1_readout_lr",
+      "split": "development",
+      "language": "en",
+      "prompt": "Upon checking the initial setup declarations in UnifiedCore, what value is found for `readout_lr`?",
+      "generated": "Tôi.",
+      "expected_reference": "0.025.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.00409649999710382,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7865549127260844,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_settle_ticks_p05",
+      "fact_id": "g1_settle_ticks",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Đọc phần định nghĩa khởi tạo của UnifiedCore, thông số `settle_ticks` nhận giá trị nào?",
+      "generated": "Tôi đang.",
+      "expected_reference": "12.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.012276800000108778,
+      "neural_metadata": {
+        "text": "Tôi đang.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8647656738758087,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_settle_ticks_p06",
+      "fact_id": "g1_settle_ticks",
+      "split": "development",
+      "language": "en",
+      "prompt": "Upon inspecting the constructor definitions of UnifiedCore, what value is given to `settle_ticks`?",
+      "generated": "Tôi.",
+      "expected_reference": "12.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.0042968000016117,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8696996370951334,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_threshold_p05",
+      "fact_id": "g1_threshold",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi xem xét mã nguồn phần khởi tạo của UnifiedCore, tham số `threshold` được gán giá trị nào?",
+      "generated": "Tôi đang hoạt động.",
+      "expected_reference": "0.5.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011340799999743467,
+      "neural_metadata": {
+        "text": "Tôi đang hoạt động.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "hoạt",
+          "động",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8414792915185293,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_threshold_p06",
+      "fact_id": "g1_threshold",
+      "split": "development",
+      "language": "en",
+      "prompt": "While inspecting the initial setup code of UnifiedCore, what value is designated for `threshold`?",
+      "generated": "Tôi đang hoạt",
+      "expected_reference": "0.5.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004566700001305435,
+      "neural_metadata": {
+        "text": "Tôi đang hoạt",
+        "tokens": [
+          "tôi",
+          "đang",
+          "hoạt"
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.7538161277770996,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_vocabulary_cap_p05",
+      "fact_id": "g1_vocabulary_cap",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi đọc cấu hình khởi tạo của UnifiedCore, thông số `vocabulary` tối đa được quy định là bao nhiêu?",
+      "generated": "Có.",
+      "expected_reference": "256.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.0043851000009453855,
+      "neural_metadata": {
+        "text": "Có.",
+        "tokens": [
+          "có",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.8131769498189291,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_vocabulary_cap_p06",
+      "fact_id": "g1_vocabulary_cap",
+      "split": "development",
+      "language": "en",
+      "prompt": "Looking at the initial configuration for UnifiedCore, what is the ceiling limit for `vocabulary`?",
+      "generated": "Tôi.",
+      "expected_reference": "256.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004003300000476884,
+      "neural_metadata": {
+        "text": "Tôi.",
+        "tokens": [
+          "tôi",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8112426598866781,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": true
+    },
+    {
+      "id": "g1_weight_clip_p05",
+      "fact_id": "g1_weight_clip",
+      "split": "development",
+      "language": "vi",
+      "prompt": "Khi kiểm tra phần khởi tạo UnifiedCore, trường `weight_clip` hiển thị giá trị nào?",
+      "generated": "Trả bạn đang hoạt tôi đang hoạt",
+      "expected_reference": "20.0.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.011978000002272893,
+      "neural_metadata": {
+        "text": "Trả bạn đang hoạt tôi đang hoạt",
+        "tokens": [
+          "trả",
+          "bạn",
+          "đang",
+          "hoạt",
+          "tôi",
+          "đang",
+          "hoạt"
+        ],
+        "stopped": true,
+        "stop_reason": "repetition_guard",
+        "mean_probability": 0.6856819428503513,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    },
+    {
+      "id": "g1_weight_clip_p06",
+      "fact_id": "g1_weight_clip",
+      "split": "development",
+      "language": "en",
+      "prompt": "Reading the setup source code of UnifiedCore, what initial value is assigned to `weight_clip`?",
+      "generated": "Tôi đang hoạt.",
+      "expected_reference": "20.0.",
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "seconds": 0.004338499998993939,
+      "neural_metadata": {
+        "text": "Tôi đang hoạt.",
+        "tokens": [
+          "tôi",
+          "đang",
+          "hoạt",
+          "."
+        ],
+        "stopped": true,
+        "stop_reason": "eos",
+        "mean_probability": 0.8975571393966675,
+        "source": "shared ALIF neural word readout; no answer lookup"
+      },
+      "grade": {
+        "exact_normalized_correct": false,
+        "typed_semantic_correct": false,
+        "registered_abstention": false,
+        "rubric_scope": "Strict literal-only source value; broader prose semantics and fluency are not automatically graded"
+      },
+      "qwen_reference_case": false
+    }
+  ],
+  "summary": {
+    "known_questions": 64,
+    "unknown_questions": 32,
+    "known_exact_accuracy": 0.0,
+    "known_typed_semantic_accuracy": 0.0,
+    "unknown_registered_abstention_rate": 0.0,
+    "generalization_gate": "NOT_MEASURED_WITH_REQUIRED_TRAINED_CONTROLS",
+    "retention_gate": "NOT_MEASURED",
+    "causal_grounding_gate": "NOT_MEASURED",
+    "production_ready": false
+  },
+  "checkpoint": {
+    "format": "scarx-generation1-release",
+    "model_id": "scarx-generation1",
+    "checkpoint": "artifacts/generation1/20261109T000625Z-generation1-joint-bd6c92/seed-17.checkpoint.zip",
+    "sha256": "0c1e8bab2c4ca2ec10578bd4ee0e745366ce1f0b483b4b72b418e09fc5fe10a1",
+    "run": "runs/20261109T000625Z-generation1-joint-bd6c92",
+    "seed": 17,
+    "hidden": 48,
+    "shared_recurrent_core": true,
+    "general_chat": false,
+    "general_vision": false,
+    "lifelong_gates_passed": false
+  },
+  "resources": {
+    "peak_rss_bytes": 48549888,
+    "peak_commit_or_vms_bytes": 33271808,
+    "os_process_peak_working_set_bytes": 49598464,
+    "os_process_peak_pagefile_commit_bytes": 34103296,
+    "samples": 159,
+    "interval_seconds": 0.02,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.0626718000021356,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "model_unchanged": true,
+  "source_sha256": "13bb051467b27caa10bf8d16039d52fa830baf77a5e87bd63e3520d8b96ed062",
+  "new_learning_updates": 0,
+  "final_test_opened": false,
+  "live_state_read_or_written": false,
+  "qwen_used_as_labels_or_proxy": false,
+  "error": null,
+  "seconds": 2.0755500000013853
+}

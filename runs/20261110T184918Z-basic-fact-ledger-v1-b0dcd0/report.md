@@ -1,0 +1,51 @@
+# Fixed public factledger
+
+AST oracle values, not Codex/teacher traininganswers. Generator must propose candidates, then independent verification.
+
+{
+  "run": "runs/20261110T184918Z-basic-fact-ledger-v1-b0dcd0",
+  "decision": "PUBLIC_FACT_LEDGER_VERIFIED_NOT_TRAINING_DATA",
+  "data": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/facts.json",
+  "sha256": "036035daf4106853e607dba742dabafb87c0d5f34b391baab33adefb13d70ef1",
+  "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "facts": 40,
+  "known_facts": 32,
+  "outside_domain_facts": 8,
+  "public_sources": [
+    {
+      "file": "src/scarx/neural/core.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/neural/core.py",
+      "sha256": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "bytes": 9403,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/neural/core.py"
+    },
+    {
+      "file": "src/scarx/neural/unified.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/neural/unified.py",
+      "sha256": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "bytes": 20481,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/neural/unified.py"
+    },
+    {
+      "file": "src/scarx/app/generation_server.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/app/generation_server.py",
+      "sha256": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "bytes": 15648,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/app/generation_server.py"
+    },
+    {
+      "file": "src/scarx/app/generation.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/app/generation.py",
+      "sha256": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "bytes": 43176,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/app/generation.py"
+    }
+  ],
+  "main_training": false,
+  "pilot_run": false,
+  "seconds": 3.5805332000018097
+}

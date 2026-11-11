@@ -1,0 +1,882 @@
+{
+  "format": "scarx-basic-fact-ledger-v1",
+  "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "sources": [
+    {
+      "file": "src/scarx/neural/core.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/neural/core.py",
+      "sha256": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "bytes": 9403,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/neural/core.py"
+    },
+    {
+      "file": "src/scarx/neural/unified.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/neural/unified.py",
+      "sha256": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "bytes": 20481,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/neural/unified.py"
+    },
+    {
+      "file": "src/scarx/app/generation_server.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/app/generation_server.py",
+      "sha256": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "bytes": 15648,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/app/generation_server.py"
+    },
+    {
+      "file": "src/scarx/app/generation.py",
+      "url": "https://raw.githubusercontent.com/AKANEMO22/SCAR-X/495dab2f4bac0180e4d1cd28674391f055ccf09d/src/scarx/app/generation.py",
+      "sha256": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "bytes": 43176,
+      "local_git_object_exact": true,
+      "cached_file": "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/sources/src/scarx/app/generation.py"
+    }
+  ],
+  "facts": [
+    {
+      "id": "config_inputs",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "inputs",
+      "scope": "Config",
+      "value": 8,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 17,
+        "end": 17,
+        "text": "    inputs: int = 8"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_hidden",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "hidden",
+      "scope": "Config",
+      "value": 64,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 18,
+        "end": 18,
+        "text": "    hidden: int = 64"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_outputs",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "outputs",
+      "scope": "Config",
+      "value": 4,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 19,
+        "end": 19,
+        "text": "    outputs: int = 4"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_fan_in",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "fan_in",
+      "scope": "Config",
+      "value": 8,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 20,
+        "end": 20,
+        "text": "    fan_in: int = 8"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_plastic_rows",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "plastic_rows",
+      "scope": "Config",
+      "value": 16,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 21,
+        "end": 21,
+        "text": "    plastic_rows: int = 16"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_neuron",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "neuron",
+      "scope": "Config",
+      "value": "alif",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 36,
+        "end": 36,
+        "text": "    neuron: str = \"alif\""
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_leak",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "leak",
+      "scope": "Config",
+      "value": 0.85,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 23,
+        "end": 23,
+        "text": "    leak: float = .85"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_threshold",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "threshold",
+      "scope": "Config",
+      "value": 0.65,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 24,
+        "end": 24,
+        "text": "    threshold: float = .65"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_adaptation_decay",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "adaptation_decay",
+      "scope": "Config",
+      "value": 0.95,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 25,
+        "end": 25,
+        "text": "    adaptation_decay: float = .95"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_adaptation_strength",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "adaptation_strength",
+      "scope": "Config",
+      "value": 0.08,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 26,
+        "end": 26,
+        "text": "    adaptation_strength: float = .08"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_trace_decay",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "trace_decay",
+      "scope": "Config",
+      "value": 0.9,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 27,
+        "end": 27,
+        "text": "    trace_decay: float = .9"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_feature_decay",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "feature_decay",
+      "scope": "Config",
+      "value": 0.92,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 28,
+        "end": 28,
+        "text": "    feature_decay: float = .92"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_readout_lr",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "readout_lr",
+      "scope": "Config",
+      "value": 0.08,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 29,
+        "end": 29,
+        "text": "    readout_lr: float = .08"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_hidden_lr",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "hidden_lr",
+      "scope": "Config",
+      "value": 0.002,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 30,
+        "end": 30,
+        "text": "    hidden_lr: float = .002"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_anchor_strength",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "anchor_strength",
+      "scope": "Config",
+      "value": 0.0001,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 31,
+        "end": 31,
+        "text": "    anchor_strength: float = .0001"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "config_ram_limit",
+      "domain": "model_configuration",
+      "task_family": "Config",
+      "field": "ram_limit",
+      "scope": "Config",
+      "value": 2000000000,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/core.py",
+      "source_file": "src/scarx/neural/core.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "c6aea5f9189931e53cc9f32d83cf5a09ac814f997fc5932890501bd91fa8365c",
+      "source_span": {
+        "start": 35,
+        "end": 35,
+        "text": "    ram_limit: int = 2_000_000_000"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_hidden",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "hidden",
+      "scope": "UnifiedCore",
+      "value": 48,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 34,
+        "end": 34,
+        "text": "        self.core = SpikingCore(Config(inputs=self.image_start+64+6, hidden=48,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_fan_in",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "fan_in",
+      "scope": "UnifiedCore",
+      "value": 8,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 35,
+        "end": 35,
+        "text": "            outputs=len(vocabulary)+10, fan_in=8, plastic_rows=12, seed=seed,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_plastic_rows",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "plastic_rows",
+      "scope": "UnifiedCore",
+      "value": 12,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 35,
+        "end": 35,
+        "text": "            outputs=len(vocabulary)+10, fan_in=8, plastic_rows=12, seed=seed,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_leak",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "leak",
+      "scope": "UnifiedCore",
+      "value": 0.65,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 36,
+        "end": 36,
+        "text": "            leak=.65, threshold=.5, feature_decay=.25, adaptation_strength=.02,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_threshold",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "threshold",
+      "scope": "UnifiedCore",
+      "value": 0.5,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 36,
+        "end": 36,
+        "text": "            leak=.65, threshold=.5, feature_decay=.25, adaptation_strength=.02,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_feature_decay",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "feature_decay",
+      "scope": "UnifiedCore",
+      "value": 0.25,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 36,
+        "end": 36,
+        "text": "            leak=.65, threshold=.5, feature_decay=.25, adaptation_strength=.02,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_adaptation_strength",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "adaptation_strength",
+      "scope": "UnifiedCore",
+      "value": 0.02,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 36,
+        "end": 36,
+        "text": "            leak=.65, threshold=.5, feature_decay=.25, adaptation_strength=.02,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_readout_lr",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "readout_lr",
+      "scope": "UnifiedCore",
+      "value": 0.025,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 37,
+        "end": 37,
+        "text": "            readout_lr=.025, hidden_lr=.0001, anchor_strength=0, weight_clip=20.))"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_hidden_lr",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "hidden_lr",
+      "scope": "UnifiedCore",
+      "value": 0.0001,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 37,
+        "end": 37,
+        "text": "            readout_lr=.025, hidden_lr=.0001, anchor_strength=0, weight_clip=20.))"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_anchor_strength",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "anchor_strength",
+      "scope": "UnifiedCore",
+      "value": 0,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 37,
+        "end": 37,
+        "text": "            readout_lr=.025, hidden_lr=.0001, anchor_strength=0, weight_clip=20.))"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_weight_clip",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "weight_clip",
+      "scope": "UnifiedCore",
+      "value": 20.0,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 37,
+        "end": 37,
+        "text": "            readout_lr=.025, hidden_lr=.0001, anchor_strength=0, weight_clip=20.))"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_context_size",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "context_size",
+      "scope": "UnifiedCore",
+      "value": 128,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 18,
+        "end": 18,
+        "text": "    context_size = 128"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_settle_ticks",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "settle_ticks",
+      "scope": "UnifiedCore",
+      "value": 12,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 19,
+        "end": 19,
+        "text": "    settle_ticks = 12"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_max_neurons",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "max_neurons",
+      "scope": "UnifiedCore",
+      "value": 128,
+      "value_type": "number",
+      "maximum": true,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 43,
+        "end": 43,
+        "text": "        self.max_neurons = 128"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_vocabulary_cap",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "vocabulary",
+      "scope": "UnifiedCore",
+      "value": 256,
+      "value_type": "number",
+      "maximum": true,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 24,
+        "end": 24,
+        "text": "        if self.vocabulary[:2] != ['<eos>', '<bos>'] or not 3 <= len(vocabulary) <= 256 or len(set(vocabulary)) != len(vocabulary):"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "g1_answer_token_cap",
+      "domain": "model_configuration",
+      "task_family": "UnifiedCore",
+      "field": "tokens",
+      "scope": "UnifiedCore",
+      "value": 24,
+      "value_type": "number",
+      "maximum": true,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/neural/unified.py",
+      "source_file": "src/scarx/neural/unified.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0db6606e3b9f6972c758becf7c0d96c4fc5aa01214b61f64b47f981edada9616",
+      "source_span": {
+        "start": 148,
+        "end": 148,
+        "text": "        if not 1 <= len(tokens) <= 24 or any(t not in self.ids for t in tokens):"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": true
+    },
+    {
+      "id": "api_model_id",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "model_id",
+      "scope": "API",
+      "value": "scarx-generation1",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation.py",
+      "source_file": "src/scarx/app/generation.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "0328c401db2aaa42bf7cf342b87e0b1b4f5c06b1fb40a4030291e9c22257dfd9",
+      "source_span": {
+        "start": 23,
+        "end": 23,
+        "text": "MODEL = 'scarx-generation1'"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_port",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "port",
+      "scope": "API",
+      "value": 8765,
+      "value_type": "number",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 57,
+        "end": 57,
+        "text": "def make_server(app, port=8765):"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_host",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "host",
+      "scope": "API",
+      "value": "127.0.0.1",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 160,
+        "end": 160,
+        "text": "    server=ThreadingHTTPServer(('127.0.0.1',port),Handler);server.daemon_threads=False;server.workbench=app;server.capacity_lab=capacity_lab"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_models_route",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "models_route",
+      "scope": "API",
+      "value": "/v1/models",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 103,
+        "end": 103,
+        "text": "                if url.path=='/v1/models':return self.send(models())"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_chat_route",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "chat_route",
+      "scope": "API",
+      "value": "/v1/chat/completions",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 117,
+        "end": 117,
+        "text": "            backend=self.path in ('/v1/chat/completions','/v1/feedback')"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_status_route",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "status_route",
+      "scope": "API",
+      "value": "/api/status",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 81,
+        "end": 81,
+        "text": "                if url.path=='/api/status':return self.send({**app.status(int(parse_qs(url.query).get('after',['0'])[0])),'token':token})"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_checkpoint_route",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "checkpoint_route",
+      "scope": "API",
+      "value": "/api/checkpoint",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 140,
+        "end": 140,
+        "text": "                         '/api/idle':lambda:app.configure(data),'/api/checkpoint':app.checkpoint,"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    },
+    {
+      "id": "api_export_route",
+      "domain": "api_outside_training_scope",
+      "task_family": "API",
+      "field": "export_route",
+      "scope": "API",
+      "value": "/api/export",
+      "value_type": "enum",
+      "maximum": false,
+      "source_id": "scarx:495dab2f4bac0180e4d1cd28674391f055ccf09d:src/scarx/app/generation_server.py",
+      "source_file": "src/scarx/app/generation_server.py",
+      "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "source_hash": "19f7ec96b867325ef27a053a96b4e4a2821ae166062164e76a28800f4fafcb57",
+      "source_span": {
+        "start": 99,
+        "end": 99,
+        "text": "                if url.path=='/api/export':return self.send(app.export(),kind='application/zip',download=True)"
+      },
+      "verification_method": "AST_LITERAL_OR_BOUNDED_COMPARISON",
+      "known_domain": false
+    }
+  ],
+  "oracle": "Publicsource AST literals; no code execution or modelanswer agreement",
+  "not_training_examples": true
+}

@@ -1,0 +1,54 @@
+{
+  "run": "runs/20261111T092024Z-neural-method-map-v2-fc6a05",
+  "decision": "SOURCE_MATH_MAP_READY_FOR_RESEARCH_REVIEW",
+  "source_files_verified": 37,
+  "revisions": {
+    "BindsNET": {
+      "repository": "https://github.com/BindsNET/bindsnet",
+      "revision": "314c33419ab120babe4e9d83407bfaa9d5adabfd",
+      "license_spdx_from_api": "AGPL-3.0"
+    },
+    "ContinualAI": {
+      "repository": "https://github.com/ContinualAI/continual-learning-baselines",
+      "revision": "4900462fa58d7e0ab03cec7c6c0d9918b553095a",
+      "license_spdx_from_api": "MIT"
+    },
+    "DECOLLE": {
+      "repository": "https://github.com/nmi-lab/decolle-public",
+      "revision": "7d72cb105891fe71a4d6a8b7f9c8e95303219078",
+      "license_spdx_from_api": "NOASSERTION"
+    },
+    "SpikingJelly": {
+      "repository": "https://github.com/fangwei123456/spikingjelly",
+      "revision": "9618271784b4d2d3e430bb256423261f11de3a1b",
+      "license_spdx_from_api": "Apache-2.0"
+    },
+    "SuperSpike": {
+      "repository": "https://github.com/fzenke/pub2018superspike",
+      "revision": "9bd0c41434200418f3de35e1f482886cebce441c",
+      "license_spdx_from_api": "GPL-3.0"
+    },
+    "e-prop": {
+      "repository": "https://github.com/IGITUGraz/eligibility_propagation",
+      "revision": "efd02e6879c01cda3fa9a7838e8e2fd08163c16e",
+      "license_spdx_from_api": "NOASSERTION"
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1_RESET_JACOBIAN_CREDIT",
+      "claim": "The own-reset derivative terms in SCAR-X35 may attenuate or misalign delayed local eligibility relative to a stopped-reset approximation. Same forward spikes and matched applied update norm can distinguish a credit-path effect from a larger-step effect.",
+      "status": "PROPOSAL_NOT_CODED_NOT_TRAINED",
+      "novelty": "Known approximation choice, not a new e-prop invention; task utility is unproven.",
+      "approval_required": true
+    },
+    {
+      "id": "H2_FACT_QUERY_SEPARABILITY",
+      "claim": "With the unchanged public lexical/hash encoder, some fact/scoping paraphrases may remain poorly separated despite no exact collisions. A source-blind fixed-feature diagnostic can separate encoding/readout limits from hidden training failure before any new codec or learner.",
+      "status": "PROPOSAL_NOT_EXECUTED",
+      "novelty": "Causal diagnostic, not a new architecture. No learned embedding, fact-ID input or answer lookup.",
+      "approval_required_for_training_or_encoder_change": true
+    }
+  ],
+  "training_executed": false
+}

@@ -1,0 +1,83 @@
+{
+  "format": "scarx-neural-method-audit-v2",
+  "scope": "Source/mathematical mapping; no external code reuse, execution, learner or training approval",
+  "methods": [
+    {
+      "method": "e-prop",
+      "existing_scarx_support": "Research ReadoutEligibility has own-neuron forward traces and one-step learned readout error; serving G1 uses reward-modulated STDP, not e-prop.",
+      "mathematical_difference": "Author ALIF epsilon_v follows alpha*epsilon_v+presynaptic input with spike-gradient paths stopped; adaptive epsilon_a follows (rho-beta*psi)*epsilon_a+psi*epsilon_v with explicit temporal indexing. SCAR-X35 differentiates its own post-reset voltage including threshold/reset terms and uses sigmoid slope, not the author's triangular/refractory surrogate. Both omit other-neuron future error effects in their local approximation.",
+      "evidence": ["docs/research/35_DIRECT_READOUT_ELIGIBILITY.md", "docs/research/36_DIRECT_WORD_BRIDGE.md", "docs/research/37_DIRECT_VISUAL_BRIDGE.md", "docs/research/39_LOCAL_CREDIT_ALIGNMENT.md"],
+      "cost": "Streaming local eligibility O(P+H), forward/trace O(P) per tick plus O(H*O) feedback per endpoint. The author's verification tf.scan stores time-major traces O(T*B*P); that is not a necessary online serving cost.",
+      "risks": "Reset convention, surrogate damping, readout normalization and temporal indexing differ; matching finite differences of one anchored local graph does not certify full-network gradient or useful representation.",
+      "experiment_needed": "H1: reset-Jacobian credit audit/ablation with fixed forward and matched actual update norm; retain frozen/zero/shuffled/readout controls. Do not rerun STOP35-38 with only different seeds or learning rates.",
+      "authorization": "Read-only mapping/engineering authorized; exact proposal30 prototype already exists. New reset-rule training requires explicit approval and fresh registration.",
+      "license_review": "Cached LICENSE contains three-clause BSD-style terms; repository API returned NOASSERTION. Preserve notices if any future code is reused. No code was reused in this audit.",
+      "anchors": ["Figure_3_and_S7_e_prop_tutorials/models.py:291-380", "numerical_verification_eprop_hardcoded_vs_autodiff.py:73-96"]
+    },
+    {
+      "method": "DECOLLE",
+      "existing_scarx_support": "Output-local supervised delta and recurrent spiking state exist; no implemented multi-layer local-classifier DECOLLE reproduction in serving.",
+      "mathematical_difference": "Each local classifier forms its own error; a surrogate derivative multiplies local error and filtered presynaptic activity. Layers/state detach restrict the differentiation graph. This differs from one shared recurrent head broadcasting error to all neurons.",
+      "evidence": ["src/scarx/evaluation/readout_eligibility.py", "src/scarx/neural/core.py"],
+      "cost": "State/filter memory per layer plus weights, local classifier, optimizer and local autograd buffers. No necessary time-unrolled full-network tape, but exact implementation cost depends on detach and update schedule.",
+      "risks": "Local classifiers can impose the wrong representation; feedforward detach design cannot be called an already validated recurrent credit rule. License texts conflict.",
+      "experiment_needed": "A local auxiliary objective would change learning signals and requires a separately approved architecture/objective study after current evidence review.",
+      "authorization": "Concept/source audit only. Do not copy/import this framework into candidate or serving.",
+      "license_review": "README labels GPLv3, LICENSE.txt begins with non-commercial/commercial-reservation restrictions and later BSD text. Treat as unresolved; no code reuse authorization is inferred.",
+      "anchors": ["decolle/base_model.py:80-210", "decolle/allconv_decolle.py:111", "README.md", "LICENSE.txt"]
+    },
+    {
+      "method": "BindsNET",
+      "existing_scarx_support": "G1 reward-modulated STDP, research PlasticCore score eligibility and activity/update-importance heuristics. These are related mechanisms, not an MSTDPET reproduction.",
+      "mathematical_difference": "MSTDPET low-pass filters a point STDP eligibility then applies reward*eligibility_trace. Default timing uses the previous point eligibility; zero_lag folds current spikes first. G1 uses its own causal/anti-causal traces and endpoint reward advantage without this separate delayed eligibility state.",
+      "evidence": ["src/scarx/neural/core.py", "src/scarx/neural/unified.py", "src/scarx/neural/plasticity.py", "docs/research/08_PHASE21_RESULTS.md"],
+      "cost": "About two per-synapse eligibility arrays plus neuron traces; O(P) dense update per reward tick. Batch/connection implementation can multiply that cost.",
+      "risks": "Reward timing can reverse the credited event. Scalar reward has high variance and weak neuronal credit; traces changing does not prove representation learning.",
+      "experiment_needed": "A timing/lag audit is a possible control, not a rename of failed scalar-STDP/score trials. New learner training needs a causal timing hypothesis and approval.",
+      "authorization": "Read source and compare equations only; no Torch import or code reuse in serving.",
+      "license_review": "AGPL-3.0 in pinned repository; do not assume serving compatibility or permission to relicense copied code.",
+      "anchors": ["bindsnet/learning/learning.py:2156-2304"]
+    },
+    {
+      "method": "ContinualAI",
+      "existing_scarx_support": "Bounded replay, EMA/metaplasticity and output-local SI adaptation exist. Not whole-network Fisher EWC/SI/GEM implementations.",
+      "mathematical_difference": "SI accumulates loss-linked path contribution divided by squared displacement; EWC penalizes movement with estimated Fisher. GEM constrains gradients against remembered tasks; A-GEM uses a reference gradient. Cached repo scripts delegate to Avalanche, so this audit does not certify Avalanche internals.",
+      "evidence": ["src/scarx/learning/lifelong.py", "src/scarx/learning/replay.py", "docs/research/07_LIFELONG_LIMITS.md", "docs/research/08_PHASE21_RESULTS.md"],
+      "cost": "Readout SI adds work/importance/anchor O(P_out); online diagonal EWC about two O(P) arrays; GEM may keep O(tasks*P) gradient constraints and replay; A-GEM two gradients plus replay. Exact framework costs are not measured here.",
+      "risks": "A local activity surrogate is not a Fisher or loss gradient. Strong importance can preserve low accuracy and exhaust plasticity. Task boundaries and replay labels can leak privileged information.",
+      "experiment_needed": "Prepare boundary-free verified replay/consolidation comparisons with equal memory, examples and compute after useful P1 representation is established. P2 gate remains final/acquisition>=65%, mean forgetting<=3pp, worst<=5pp for all registered seeds.",
+      "authorization": "Fixtures, memory estimates and protocol only. New P2 usefulness/retention training remains unapproved; global-gradient controls must remain separate.",
+      "license_review": "Wrapper repository MIT; delegated Avalanche and dependencies require their own review before any reuse.",
+      "anchors": ["experiments/permuted_mnist/ewc.py:38", "experiments/permuted_mnist/gem.py:35", "experiments/split_mnist/synaptic_intelligence.py:34"]
+    },
+    {
+      "method": "SuperSpike",
+      "existing_scarx_support": "Own-neuron surrogate eligibility and supervised readout feedback have related ingredients; no exact SuperSpike/Auryn reproduction.",
+      "mathematical_difference": "A filtered presynaptic PSP times surrogate postsynaptic slope forms a synaptic trace; another temporal filter combines it with a filtered error. Hidden error routing and delay filters differ from SCAR-X35's endpoint readout feedback and own reset/adaptation sensitivity.",
+      "evidence": ["src/scarx/evaluation/readout_eligibility.py", "docs/research/35_DIRECT_READOUT_ELIGIBILITY.md"],
+      "cost": "Per-synapse filtered traces O(P), neuron error/filter states O(H), sparse connection traversal; simulator/delay buffers and feedback need additional accounting.",
+      "risks": "Error source and random/symmetric feedback choices matter. The released simulator and task setup are not evidence a local SCAR-X learner will solve language or forgetting.",
+      "experiment_needed": "Source-informed error-timing/surrogate controls only after separate protocol; no wholesale simulator import or rebranded STOP35 trial.",
+      "authorization": "Read-only mathematical comparison; new mechanism/copying needs review and approval.",
+      "license_review": "GPL-3.0 pinned source. No source reused or executed.",
+      "anchors": ["src/SuperSpikeConnection.cpp:253-324", "src/RFSuperSpikeConnection.cpp:70-79"]
+    },
+    {
+      "method": "SpikingJelly",
+      "existing_scarx_support": "NumPy/native ALIF math and local learning tests exist. No serving dependency or claimed framework-equivalent training result.",
+      "mathematical_difference": "A simulation/tooling framework, not one learning rule. LIF detach_reset is an explicit graph choice; STDP and online learning modules have separate semantics. Importing an online wrapper does not prove locality or remove time/space gradients.",
+      "evidence": ["src/scarx/neural/core.py", "tests/test_readout_eligibility.py"],
+      "cost": "Single-step state is O(H); multi-step/autograd modes can retain O(T*H) or more intermediates. Kernel/backend and optimizer costs must be measured separately from SCAR-X.",
+      "risks": "Confusing a simulator feature with a new credit assignment rule; hidden autograd use, detach mismatch and unnecessary dependencies.",
+      "experiment_needed": "Optional independent math/control backend after matching equations, reset timing and source license; no need to install it for current NumPy audit.",
+      "authorization": "Read-only reference. Any backward control belongs in evaluation/controls.py, never serving or candidate learner.",
+      "license_review": "Apache-2.0 pinned source, with attribution/NOTICE review before copying; no code copied or executed.",
+      "anchors": ["spikingjelly/activation_based/neuron/lif.py:20-74", "spikingjelly/activation_based/learning/plasticity.py:111", "spikingjelly/activation_based/learning/online_learning.py"]
+    }
+  ],
+  "cost_example": {"hidden":48,"inputs":8,"fan_in":8,"outputs":2,"float_bytes":4,"replay_examples":64,"sequence_ticks":12},
+  "hypotheses": [
+    {"id":"H1_RESET_JACOBIAN_CREDIT","claim":"The own-reset derivative terms in SCAR-X35 may attenuate or misalign delayed local eligibility relative to a stopped-reset approximation. Same forward spikes and matched applied update norm can distinguish a credit-path effect from a larger-step effect.","status":"PROPOSAL_NOT_CODED_NOT_TRAINED","novelty":"Known approximation choice, not a new e-prop invention; task utility is unproven.","approval_required":true},
+    {"id":"H2_FACT_QUERY_SEPARABILITY","claim":"With the unchanged public lexical/hash encoder, some fact/scoping paraphrases may remain poorly separated despite no exact collisions. A source-blind fixed-feature diagnostic can separate encoding/readout limits from hidden training failure before any new codec or learner.","status":"PROPOSAL_NOT_EXECUTED","novelty":"Causal diagnostic, not a new architecture. No learned embedding, fact-ID input or answer lookup.","approval_required_for_training_or_encoder_change":true}
+  ]
+}
