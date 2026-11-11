@@ -1,0 +1,165 @@
+{
+  "protocol_sha256": "PROTOCOL_PENDING",
+  "phase": "stage4_controls",
+  "trials": [
+    {
+      "seed": 120011,
+      "digests": {
+        "train": "c8ce94cdf19de96791ccba15522d7f91e3edb47b0b053414fd01107471a678ee",
+        "held": "9d7b2985ccd2a44a7b7884acf95eb8b506c8512933a3ba532ea24c49a477bcc2"
+      },
+      "reference": {
+        "direct": 0.982421875,
+        "train": 0.98040771484375,
+        "both_A": 0.9126984126984127,
+        "both_B": 0.9846153846153847,
+        "both_all": 0.94921875,
+        "acc_qA": 0.9906716417910447,
+        "acc_qB": 0.9733606557377049,
+        "acc_needB": 0.9598393574297188,
+        "loss": 0.23523521529888006,
+        "margin": 124.48268127441406,
+        "update_norm": 186.8510789980699,
+        "clip_fraction": 0.07720947265625,
+        "ridge": 0.9990234375,
+        "ridge_gap": 0.0166015625,
+        "updates": 16384,
+        "head_digest": "574d2c7648fd501b6276a1c6ce8ab5bc65ae63c0cd79f25687106245c51c6771",
+        "weight_norm": 15.697100639343262
+      },
+      "random_labels": {
+        "direct": 0.6318359375,
+        "train": 0.50732421875
+      },
+      "first_key": 0.7568359375,
+      "query_only": 0.4912109375,
+      "temporal": {
+        "direct": 0.8896484375,
+        "drop": 0.0927734375
+      },
+      "distractor": {
+        "direct": 0.837890625,
+        "drop": 0.14453125
+      }
+    },
+    {
+      "seed": 120017,
+      "digests": {
+        "train": "8f00419aef75eaa97487803242a734c029a106fb1ef89c9a4a0f7ffcdc226f44",
+        "held": "47ddd0bf6df48eba704802f7a9f98c28d2526b17b8234544991ec837e5004c02"
+      },
+      "reference": {
+        "direct": 0.98046875,
+        "train": 0.97833251953125,
+        "both_A": 0.8938053097345132,
+        "both_B": 1.0,
+        "both_all": 0.953125,
+        "acc_qA": 0.9778672032193159,
+        "acc_qB": 0.9829222011385199,
+        "acc_needB": 0.9657794676806084,
+        "loss": 0.15631816089035258,
+        "margin": 64.30584716796875,
+        "update_norm": 138.46222346424233,
+        "clip_fraction": 0.06353759765625,
+        "ridge": 0.998046875,
+        "ridge_gap": 0.017578125,
+        "updates": 16384,
+        "head_digest": "0bf69f6a06bc35fed077354fe6f023361b25cda5fa616cffc81a38bb5bc8de52",
+        "weight_norm": 12.89497184753418
+      },
+      "random_labels": {
+        "direct": 0.4716796875,
+        "train": 0.506591796875
+      },
+      "first_key": 0.7431640625,
+      "query_only": 0.486328125,
+      "temporal": {
+        "direct": 0.744140625,
+        "drop": 0.236328125
+      },
+      "distractor": {
+        "direct": 0.765625,
+        "drop": 0.21484375
+      }
+    },
+    {
+      "seed": 120023,
+      "digests": {
+        "train": "70c89bd068a26f712dc7224ddc57f12b0cf925fc45392bd44bdb65bb8ddf093e",
+        "held": "a3fcf45dabd710f1a6f39dab190d022b73d6e72efbaa85941cb9383dfcc828e2"
+      },
+      "reference": {
+        "direct": 0.9638671875,
+        "train": 0.967041015625,
+        "both_A": 0.8308823529411765,
+        "both_B": 0.9916666666666667,
+        "both_all": 0.90625,
+        "acc_qA": 0.9613899613899614,
+        "acc_qB": 0.9664031620553359,
+        "acc_needB": 0.9395017793594306,
+        "loss": 0.2865856337883981,
+        "margin": 50.219913482666016,
+        "update_norm": 155.3810915245246,
+        "clip_fraction": 0.08050537109375,
+        "ridge": 0.998046875,
+        "ridge_gap": 0.0341796875,
+        "updates": 16384,
+        "head_digest": "8bd53151234b9c81fbd522217fc2f933939cb0ad27d6b05878ed455b45ad0d15",
+        "weight_norm": 17.65297508239746
+      },
+      "random_labels": {
+        "direct": 0.4716796875,
+        "train": 0.5130615234375
+      },
+      "first_key": 0.7255859375,
+      "query_only": 0.5185546875,
+      "temporal": {
+        "direct": 0.525390625,
+        "drop": 0.4384765625
+      },
+      "distractor": {
+        "direct": 0.5126953125,
+        "drop": 0.451171875
+      }
+    }
+  ],
+  "summary": {
+    "reference": {
+      "direct": 0.9755859375,
+      "train": 0.9752604166666666,
+      "both_A": 0.8791286917913674,
+      "both_B": 0.9920940170940171,
+      "acc_needB": 0.9550402014899193,
+      "ridge": 0.9983723958333334,
+      "ridge_gap": 0.022786458333333332
+    },
+    "random_labels_direct": 0.5250651041666666,
+    "first_key": 0.7418619791666666,
+    "query_only": 0.4986979166666667,
+    "temporal": {
+      "direct": 0.7197265625,
+      "drop": 0.255859375
+    },
+    "distractor": {
+      "direct": 0.7054036458333334,
+      "drop": 0.2701822916666667
+    },
+    "hidden_plasticity": "BLOCKED - see report; the existing local hidden rule could not be reproduced faithfully inside this research harness without modifying src/scarx/neural, which the brief forbids"
+  },
+  "resources": {
+    "peak_rss_bytes": 187486208,
+    "peak_commit_or_vms_bytes": 206090240,
+    "os_process_peak_working_set_bytes": 228405248,
+    "os_process_peak_pagefile_commit_bytes": 247144448,
+    "samples": 79,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 9.015941999998176,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "wall_seconds": 9.01654577255249
+}
