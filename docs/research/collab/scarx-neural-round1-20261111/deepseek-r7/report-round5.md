@@ -157,3 +157,70 @@ improved forgetting by 3.43pp over its own shuffled control, and still ended at
 `scripts/r7_r5_ogh.py` · `runs/20261111T120304Z-r7-r5-ogh-v1-8467a0/result.json` ·
 `report-round4.md` (contains the invalid-metric disclosure and the corrected
 decomposition this round builds on)
+---
+
+## 11. ADDENDUM — the capacity claim is now measured, not inferred
+
+Section 5 asserted that readout capacity is the binding constraint. That was an
+interpretation. Round 5b tests it directly.
+
+**These heads are DIAGNOSTIC ONLY.** The brief forbids expanding capacity to mask a
+learning-rule failure; a wider or nonlinear head used as a *candidate* would be exactly
+that. Used as a *learnability diagnostic* — the role BPTT plays — it answers one
+question: is capacity what bounds retention?
+
+3 dev seeds, frozen hidden, identical features and data, identical R-matrix protocol:
+
+| head | params | acq | final | meanF | worstF | gate |
+|---|---:|---:|---:|---:|---:|---|
+| `linear_2logit` | 98 | 0.7513 | 0.5417 | **20.96pp** | 52.34pp | fail |
+| `linear_wide_32` | 3 136 | 0.7227 | 0.6306 | **9.20pp** | 33.20pp | fail |
+| `mlp32_tanh` | 1 602 | **0.8381** | **0.8095** | **2.86pp** | **9.38pp** | fail |
+
+**The trend is monotone in capacity and large:**
+- a wider *linear* head halves mean forgetting (20.96 → 9.20pp);
+- a *nonlinear* head cuts it **7.3×** (20.96 → 2.86pp) while **raising** acquisition to
+  0.8381.
+
+**So the round-5 interpretation was correct, and incomplete.** Capacity is the dominant
+constraint for **mean** forgetting. It is not sufficient for the **worst-case** gate:
+9.38pp against 5pp.
+
+### Why I still do not call this a pass
+
+1. **worstF fails** at 9.38pp. The gate is 5pp.
+2. **meanF 2.86pp is 0.14pp under the 3pp gate** on 3 seeds. The per-seed spread I
+   observed across rounds is larger than 0.14pp, so this margin is not resolvable at
+   this sample size. Calling it a pass would be exactly the "statistical significance
+   confused with effect size" error the brief warns about.
+3. **It is a diagnostic, not a candidate.** No production weight is derived from it and
+   nothing is proposed for Hermes.
+
+### What this settles
+
+The mission's second gate is **not** blocked by the local learning rule or by hidden
+plasticity — round 4b showed hidden plasticity contributes −1.17pp to forgetting. It is
+blocked by **linear readout capacity over three overlapping task distributions**. That is
+now a measured statement with a monotone dose-response, not a hypothesis.
+
+### The scope question this raises
+
+Reaching meanF ≤ 3pp **and** worstF ≤ 5pp simultaneously appears to require a nonlinear
+or substantially larger head. Whether that is permitted is a decision I will not make
+unilaterally, because it directly conflicts with "no increasing capacity to mask a
+learning-rule failure". The distinction I would defend is:
+
+- a nonlinear head used to **claim** hidden learning works → forbidden, and I have not
+  done it;
+- a nonlinear head used to **demonstrate that the bottleneck is readout capacity, not
+  credit** → a legitimate diagnostic, and that is exactly how it is used here.
+
+That reading needs the mission owner's confirmation before it becomes a design change.
+
+### Declared exposures for this addendum
+
+| risk | exposure |
+|---|---|
+| **FP10** (tests pass, therefore product ready) | nothing here is proposed as product |
+| **capacity diagnostic read as a candidate** | labelled DIAGNOSTIC in the script name, the run metadata, and the table header |
+| **thin margin reported as a pass** | §11.2 explicitly declines, 0.14pp under gate on 3 seeds |
