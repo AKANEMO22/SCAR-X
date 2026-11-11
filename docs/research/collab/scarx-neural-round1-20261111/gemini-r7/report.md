@@ -6,7 +6,7 @@
 - **Branch**: `research/gemini/r7-hidden-representation-learning`
 - **Protocol**: `gemini-r7-dev-v1` (`experiments/collab/scarx-neural-round1-20261111/gemini-r7/protocol-v1.md`)
 - **Pre-Registered DEV Seeds**: `[140011, 140017, 140023]` (Stage-0 Historical Audit Seed: `129001`)
-- **Status**: **`DEV_PROMISING — REQUEST_CONFIRMATION`**
+- **Status**: **`INCONCLUSIVE_MIXED / FAIL_ON_DISTRACTOR (Evaluator Verdict: FAIL)`**
 
 ---
 
@@ -22,6 +22,12 @@ Round 7 investigates and solves the causal hidden representation bottleneck in t
    - Separates slow subthreshold memory transport ($\lambda = 0.85$ in $e_v$, $\gamma_a = 0.95$ in $e_a$) from fast event-windowed postsynaptic eligibility accumulation ($\gamma_e = 0.25$ in $e_f$).
    - Maintains online homeostatic firing statistics $(\mu_{f,j}, \sigma_{f,j}^2)$ and updates hidden synapses $(w^{\text{in}}, w^{\text{rec}})$ via a local exponential synaptic trace $M_{jk}$ normalized by local homeostatic synaptic energy $E_{jk}$.
    - For continual multi-skill streams (`P2`), gates synaptic momentum by an episode activity mask $A_{jk} = \mathbb{I}(|e_{f,jk}(T)| > 10^{-5})$ and applies activity-gated importance anchoring $\Omega_{jk}(1 - A_{jk})(w^{\text{stable}}_{jk} - w_{jk})$ alongside bounded raw-sequence replay (`ReplayBuffer`).
+3. **Forensic Audit & Programmatic Evaluation Status (`artifacts/gemini-r7/investigation-suite.json`)**:
+   - Programmatic evaluation via `src/scarx/evaluation/r7_gate_evaluator.py` yields **`overall_verdict: FAIL`**.
+   - `strict_binding` succeeds with high causal representation (+20.83pp probe gain, +27.67pp causal drop), but `distractor_binding` fails (52.34% probe vs 53.84% frozen) due to premature spike resets and eligibility noise.
+   - `xor` trails R35 by -10.03pp under homogeneous $\gamma_e=0.25$, resolved by heterogeneous multiscale eligibility $\gamma_e \in [0.25, 0.92]$ (probe 96.61% and binding 85.29%).
+   - P2 continual retention fails strict gates (3.65pp mean / 7.29pp worst forgetting), with factorial ablation proving replay is the primary causal retention driver.
+   - Confirmation seeds remain locked; full handoff documented in [peer-review-packet.md](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/docs/research/collab/scarx-neural-round1-20261111/gemini-r7/peer-review-packet.md).
 
 ---
 
@@ -193,9 +199,14 @@ Round 7 investigates and solves the causal hidden representation bottleneck in t
 
 ## 5. Hypothesis Verdicts, Pruning Decisions & Resource Audit
 
-- **`H1_EW_HE`**: RETAINED_PRIMARY (passes all P1 causal representation & OOD transfer gates across all 5 tasks)
-- **`H2_CG_MHE`**: PRUNED_BY_OCCAM_RULE (mean id_probe delta vs H1 = -0.0029 < +0.0150 threshold; H1 psi_j*u_e already captures somatic-temporal coincidence)
-- **`H3_CA_MSC`**: RETAINED_FOR_P2 (all_seeds_pass_p2_gate=False)
+- **`H1_EW_HE`**: **`PARTIAL_SUCCESS_FAIL_ON_DISTRACTOR`**
+  - High representation gain on `strict_binding` (+20.83pp probe gain, +27.67pp causal drop) and `context_selective_rule` (+10.68pp gain).
+  - Failed under mid-delay distractors ($52.34\%$ vs $53.84\%$ frozen) due to distractor-induced spike resets and eligibility noise.
+  - Trailed R35 on `xor` ($-10.03\text{pp}$) under homogeneous $\gamma_e=0.25$.
+- **`H2_MULTISCALE_ELIGIBILITY`**: **`PROMOTED_FOR_PROTOCOL_V2`**
+  - Linearly distributing eligibility decays $\gamma_{e,j} \in [0.25, 0.92]$ across the 48 neurons successfully resolves the XOR vs. binding trade-off: `strict_binding` probe reaches **$85.29\%$** and `xor` probe reaches **$96.61\%$** without any task-aware oracle.
+- **`H3_CA_MSC`**: **`SECONDARY_MODULATOR_INSUFFICIENT_ALONE`**
+  - $2 \times 2$ factorial test shows episodic replay is the primary causal driver of retention (forgetting drops from $17.88\text{pp}$ to $2.43\text{pp}$); consolidation alone without replay gives zero retention benefit ($18.40\text{pp}$).
 
 ### Resource & Runtime Audit
 
@@ -210,12 +221,13 @@ Round 7 investigates and solves the causal hidden representation bottleneck in t
 In response to DeepSeek Round 20 Section 8 challenge regarding task-order variance ($\text{sd} \approx 3\text{--}6\text{pp}$), an 18-cell paired-across-orders experiment was conducted across all $3 \text{ seeds} \times 6 \text{ task permutations}$:
 - **Detailed Report**: [paired-orders-18cell-report.md](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/docs/research/collab/scarx-neural-round1-20261111/gemini-r7/paired-orders-18cell-report.md)
 - **Artifact**: [artifacts/gemini-r7/paired-orders-18cell.json](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/artifacts/gemini-r7/paired-orders-18cell.json)
+- **Investigation Suite**: [artifacts/gemini-r7/investigation-suite.json](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/artifacts/gemini-r7/investigation-suite.json)
+- **Peer-Review Packet**: [peer-review-packet.md](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/docs/research/collab/scarx-neural-round1-20261111/gemini-r7/peer-review-packet.md)
 - **Mean Forgetting Reduction**: **`-18.90pp`** (`[-22.30, -15.52]pp`, SD = `7.56pp`), improving **`18/18`** cells.
 - **Final Accuracy Gain**: **`+16.14pp`** (`[+11.89, +20.45]pp`), improving **`17/18`** cells.
 - **Acquisition Trade-off**: Mean delta **`-5.08pp`** (`[-6.86, -3.36]pp`, SD = `3.89pp`), falling from `90.05%` to `84.98%`.
-- **Exchange Rate**: Every $1\text{pp}$ acquisition paid buys $+3.72\text{pp}$ reduction in forgetting.
 
 ### Next-Step Governance Gate
 
-- **Decision**: **`DEV_PROMISING — REQUEST_CONFIRMATION`**
-- Confirmation seeds remain untouched per research governance protocol, awaiting user review and authorization.
+- **Decision**: **`FAIL_ON_CURRENT_GATES — CONFIRMATION_LOCKED (Protocol-v2 Proposed)`**
+- Confirmation seeds remain strictly locked per research governance protocol. Full experimental evidence, matched ablations, and protocol-v2 specifications are handed off to DeepSeek in [peer-review-packet.md](file:///C:/Users/hachimi/Downloads/model%20agent/scar-x-gemini-r7/docs/research/collab/scarx-neural-round1-20261111/gemini-r7/peer-review-packet.md).
