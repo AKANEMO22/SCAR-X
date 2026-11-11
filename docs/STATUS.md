@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## Orchestrator — review các nhánh round 1, 11/11/2026
+
+[Bảng chốt review](research/collab/scarx-neural-round1-20261111/orchestrator/ROUND1_REVIEW_STATUS_20261111.md)
+ghi các commit Grok4b93593, Gemini81641f7, DeepSeek02be6e9 và MTB5e39c8f.
+Các lượt chạy đã xong; Grok được duyệt lưu nghiên cứu kèm patch đã review,
+ba handoff còn lại REQUEST_CHANGES. Chưa nhánh nào được duyệt thay learner G1.
+Gemini có tín hiệu representation trên strict_binding nhưng sai khác protocol,
+order suy giảm và retention chưa đạt. Codex tái tính raw metrics, tái hiện lỗi
+checkpoint MTB và chạy27/27test kỹ thuật Gemini; không train lại campaign,
+không chỉnh ngưỡng hoặc chạm state live. Run cb9d2d giữ log/JUnit/chứng cứ.
+
 ## P0 usefulness đã kiểm — pilot P2 chưa duyệt
 
 Người dùng chỉ duyệt P0. [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md),

@@ -1,0 +1,311 @@
+{
+  "decision": "RESEARCH_ARCHIVE_ONLY_GROK__OTHER_HANDOFFS_REQUEST_CHANGES",
+  "reviewed_commits": {
+    "grok": "4b93593df4368011f7ec2066ce4e3a6478a6dcb6",
+    "mtb_deepseek_session": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+    "deepseek": "02be6e9a916df9faf61c6fd746280ba9ea225fc7",
+    "antigravity_gemini": "81641f773145f5c441b5ad3b0f5771f645a5cbd6"
+  },
+  "verdicts": {
+    "grok": "APPROVE_RESEARCH_ARCHIVE_WITH_REVIEW_PATCH",
+    "antigravity_gemini": "REQUEST_CHANGES",
+    "deepseek": "REQUEST_CHANGES",
+    "mtb_deepseek_session": "REQUEST_CHANGES"
+  },
+  "evidence_run": "runs/20261111T013650Z-round1-handoff-review-v2-cb9d2d",
+  "checks": {
+    "mtb_mode_and_capacity_argument": {
+      "returncode": 0,
+      "seconds": 0.2339999999999236,
+      "sampled_peak_tree_rss_bytes": 27488256,
+      "sampled_peak_tree_commit_or_vms_bytes": 18141184,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\mtb-mode.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import json, numpy as np\nfrom scarx.neural.core import Config, SpikingCore\nfrom scarx.evaluation.multi_timescale import MTCore\nc=Config(inputs=8,hidden=48,outputs=2,fan_in=8,plastic_rows=12,seed=17)\na=MTCore(c,deterministic=True); b=MTCore.loads(a.dumps())\nbefore={\"original_deterministic\":a.deterministic,\"restored_deterministic\":b.deterministic}\nfor _ in range(4): a.step(np.zeros(8,np.float32)); b.step(np.zeros(8,np.float32))\nbefore[\"continuation_spikes_equal\"]=bool(np.array_equal(a.spikes,b.spikes))\nbefore[\"continuation_rng_equal\"]=a.rng.bit_generator.state==b.rng.bit_generator.state\nc=Config(inputs=8,hidden=48,outputs=2,fan_in=8,plastic_rows=12,threshold=.5,feature_decay=0.)\nm=SpikingCore(c);m.w_in.fill(0);m.w_rec.fill(0);m.w_out.fill(0);m.bias.fill(0)\nm.w_in[0,:2]=1.;m.w_in[1,:2]=1./3.;m.w_out[1,0]=2.;m.w_out[1,1]=-4.;m.bias[1]=-1.\nrows=[]\nfor x,y in [(0,0),(0,1),(1,0),(1,1)]:\n v=np.zeros(8,np.float32);v[:2]=[x,y];p=m.forward([v]);rows.append({\"input\":[x,y],\"prediction\":int(p.argmax()),\"target\":x^y})\nprint(json.dumps({\"mtb_checkpoint_mode\":before,\"threshold_xor_counterexample\":rows,\"xor_scope\":\"Hand-set one-tick threshold circuit only: refutes additive-current-implies-linear argument, not evidence of learning or strict-binding capacity.\"}))\n"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\antigravity-scarx-neural-round1-20261111",
+      "output": {
+        "mtb_checkpoint_mode": {
+          "original_deterministic": true,
+          "restored_deterministic": false,
+          "continuation_spikes_equal": false,
+          "continuation_rng_equal": false
+        },
+        "threshold_xor_counterexample": [
+          {
+            "input": [
+              0,
+              0
+            ],
+            "prediction": 0,
+            "target": 0
+          },
+          {
+            "input": [
+              0,
+              1
+            ],
+            "prediction": 1,
+            "target": 1
+          },
+          {
+            "input": [
+              1,
+              0
+            ],
+            "prediction": 1,
+            "target": 1
+          },
+          {
+            "input": [
+              1,
+              1
+            ],
+            "prediction": 0,
+            "target": 0
+          }
+        ],
+        "xor_scope": "Hand-set one-tick threshold circuit only: refutes additive-current-implies-linear argument, not evidence of learning or strict-binding capacity."
+      }
+    },
+    "deepseek_summary_only": {
+      "returncode": 0,
+      "seconds": 0.23500000000012733,
+      "sampled_peak_tree_rss_bytes": 37691392,
+      "sampled_peak_tree_commit_or_vms_bytes": 25354240,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\deepseek-summary.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import json, pathlib, runpy, sys\np=pathlib.Path.cwd();sys.path.insert(0,str(p/'scripts'))\nd=json.loads((p/'runs/20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc/result.json').read_text())\nns=runpy.run_path(str(p/'scripts/run_deepseek_pair_binding.py'))\ns=ns['summarise'](d['trials'],d['summary']['locked_readout_lr'])\nprint(json.dumps({\"stored_gates\":d['summary']['gates'],\"stored_unknown\":d['summary']['gates_unknown'],\"recomputed_gates\":s['gates'],\"recomputed_unknown\":s['gates_unknown'],\"stored_screen_pass\":d['summary']['screen_pass'],\"recomputed_screen_pass\":s['screen_pass'],\"means\":{k:v['direct']['mean'] for k,v in s['per_task']['pair_binding'].items()},\"diagnostic_script_tracked\":False}))\n"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-round1",
+      "output": {
+        "stored_gates": {
+          "C1_task_valid": true,
+          "C2_frozen_below_gate": true,
+          "C3_learning_measurable": false,
+          "score_beats_readout": false,
+          "score_beats_shuffle": false,
+          "frozen_hidden_untouched": true
+        },
+        "stored_unknown": [
+          "C1_task_valid"
+        ],
+        "recomputed_gates": {
+          "C2_frozen_below_gate": true,
+          "C3_learning_measurable": false,
+          "score_beats_readout": false,
+          "score_beats_shuffle": false,
+          "frozen_hidden_untouched": true,
+          "C1a_product_basis_solves_tape": true,
+          "C1b_neuron_can_form_basis": false
+        },
+        "recomputed_unknown": [],
+        "stored_screen_pass": false,
+        "recomputed_screen_pass": false,
+        "means": {
+          "score": 0.4895833333333333,
+          "frozen": 0.5143229166666666,
+          "readout": 0.4856770833333333,
+          "shuffle": 0.4947916666666667
+        },
+        "diagnostic_script_tracked": false
+      }
+    },
+    "gemini_engineering_tests": {
+      "returncode": 0,
+      "seconds": 6.311999999999898,
+      "sampled_peak_tree_rss_bytes": 633741312,
+      "sampled_peak_tree_commit_or_vms_bytes": 1087004672,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\gemini-p0-tests.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_dc_alif_p0.py",
+        "tests/test_readout_eligibility.py",
+        "tests/test_readout_usefulness_p0.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\gemini-p0-junit.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-81641f7"
+    }
+  },
+  "diagnostic_metrics": {
+    "scope": "Published-row arithmetic only; not a replacement statistical gate",
+    "diagnostic_bootstrap": {
+      "seed": 2101,
+      "resamples": 10000
+    },
+    "grok": {
+      "grok-slow-trace-v1": {
+        "mean": 0.060546875,
+        "lower95": 0.01953125,
+        "upper95": 0.111328125,
+        "n": 8,
+        "result_sha256": "645f76d68804ee132fd90a9f80c51eaa898cf199668fbed130b6de8cd2904583",
+        "gains": [
+          0.0,
+          0.21875,
+          0.046875,
+          0.03125,
+          0.03125,
+          0.109375,
+          0.046875,
+          0.0
+        ],
+        "lower_bound_reaches_registered_0_05": false
+      },
+      "grok-slow-trace-v1a-confirmation-71005": {
+        "mean": 0.02734375,
+        "lower95": 0.0078125,
+        "upper95": 0.052734375,
+        "n": 8,
+        "result_sha256": "e4459ac1e54abf05482265e5a7533fce571be0a6cbfeafb51675bdadcdd261b7",
+        "gains": [
+          0.0,
+          0.109375,
+          0.0,
+          0.015625,
+          0.0,
+          0.03125,
+          0.03125,
+          0.03125
+        ],
+        "lower_bound_reaches_registered_0_05": false
+      }
+    },
+    "gemini": {
+      "order": {
+        "direct_means": {
+          "correct": 0.640380859375,
+          "frozen": 0.8251953125,
+          "zero": 0.8251953125,
+          "shuffled": 0.828369140625,
+          "no_gate": 0.695556640625,
+          "bptt_control": 0.8935546875
+        },
+        "direct_mean_matches_stored": {
+          "correct": true,
+          "frozen": true,
+          "shuffled": true,
+          "no_gate": true,
+          "bptt_control": true
+        },
+        "correct_minus_frozen_direct": {
+          "mean": -0.184814453125,
+          "lower95": -0.32275390625,
+          "upper95": -0.01611328125,
+          "n": 8
+        },
+        "correct_minus_frozen_probe": {
+          "mean": -0.082763671875,
+          "lower95": -0.18092651367187498,
+          "upper95": 0.037353515625,
+          "n": 8
+        },
+        "zero_frozen_direct_equal_all_seeds": true,
+        "initial_to_trained_probe_gain": {
+          "mean": -0.082763671875,
+          "lower95": -0.18092651367187498,
+          "upper95": 0.037353515625,
+          "n": 8
+        }
+      },
+      "xor": {
+        "direct_means": {
+          "correct": 0.9814453125,
+          "frozen": 0.8583984375,
+          "zero": 0.8583984375,
+          "shuffled": 0.918212890625,
+          "no_gate": 0.911865234375,
+          "bptt_control": 0.978271484375
+        },
+        "direct_mean_matches_stored": {
+          "correct": true,
+          "frozen": true,
+          "shuffled": true,
+          "no_gate": true,
+          "bptt_control": true
+        },
+        "correct_minus_frozen_direct": {
+          "mean": 0.123046875,
+          "lower95": 0.07568359375,
+          "upper95": 0.1787109375,
+          "n": 8
+        },
+        "correct_minus_frozen_probe": {
+          "mean": 0.123291015625,
+          "lower95": 0.078125,
+          "upper95": 0.176513671875,
+          "n": 8
+        },
+        "zero_frozen_direct_equal_all_seeds": true,
+        "initial_to_trained_probe_gain": {
+          "mean": 0.123291015625,
+          "lower95": 0.078125,
+          "upper95": 0.176513671875,
+          "n": 8
+        }
+      },
+      "strict_binding": {
+        "direct_means": {
+          "correct": 0.98779296875,
+          "frozen": 0.752197265625,
+          "zero": 0.752197265625,
+          "shuffled": 0.855712890625,
+          "no_gate": 0.624267578125,
+          "bptt_control": 0.988525390625
+        },
+        "direct_mean_matches_stored": {
+          "correct": true,
+          "frozen": true,
+          "shuffled": true,
+          "no_gate": true,
+          "bptt_control": true
+        },
+        "correct_minus_frozen_direct": {
+          "mean": 0.235595703125,
+          "lower95": 0.188720703125,
+          "upper95": 0.292724609375,
+          "n": 8
+        },
+        "correct_minus_frozen_probe": {
+          "mean": 0.241943359375,
+          "lower95": 0.191162109375,
+          "upper95": 0.300537109375,
+          "n": 8
+        },
+        "zero_frozen_direct_equal_all_seeds": true,
+        "initial_to_trained_probe_gain": {
+          "mean": 0.241943359375,
+          "lower95": 0.191162109375,
+          "upper95": 0.300537109375,
+          "n": 8
+        }
+      }
+    }
+  },
+  "review_notes": {
+    "docs/research/collab/scarx-neural-round1-20261111/orchestrator/ROUND1_REVIEW_STATUS_20261111.md": "7db1a76a687971092f4654f232f370a54846d15b73ffd1777f8df1cdb060d592",
+    "docs/research/collab/scarx-neural-round1-20261111/orchestrator/rereview-grok-4b93593.md": "5678110d942c664e86376d7228e0ed11e240e1ff37870147a63ebce07bc833fc",
+    "docs/research/collab/scarx-neural-round1-20261111/orchestrator/review-mtb-5e39c8f.md": "25464b02389fcf7da398aa52a72ce2068394009efb6b34e4a62cb836e4a76a38",
+    "docs/research/collab/scarx-neural-round1-20261111/orchestrator/rereview-deepseek-02be6e9.md": "e4345d499a2198b9de06ec192aea72da717b1b5f598b4e5771b05ec877cfeb65",
+    "docs/research/collab/scarx-neural-round1-20261111/orchestrator/review-antigravity-gemini-81641f7.md": "847c0bf3b8c2864d55e8b8833136b1c6cb3c9e92238a89f9c89f90b964154796"
+  },
+  "new_campaign_training_trials": 0,
+  "small_engineering_fixture_updates_only": true,
+  "main_merged": false,
+  "production_learner_integrated": false,
+  "live_state_written": false,
+  "ponytail_available": false,
+  "error": null
+}
