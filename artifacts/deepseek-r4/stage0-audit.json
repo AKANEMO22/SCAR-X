@@ -1,0 +1,103 @@
+{
+  "stage": 0,
+  "checks": [
+    {
+      "check": "query_set produces 12x8 episodes with 2 classes",
+      "pass": true,
+      "detail": "shape (128, 12, 8), labels [0, 1]"
+    },
+    {
+      "check": "independent re-implementation reproduces the same task statistics",
+      "pass": true,
+      "detail": "label counts [65 63] vs [65 63]"
+    },
+    {
+      "check": "input oracle reproduces every label",
+      "pass": true,
+      "detail": "128/128 match"
+    },
+    {
+      "check": "counterfactual siblings differ only at the query tick",
+      "pass": true,
+      "detail": "max off-query diff 1.500000"
+    },
+    {
+      "check": "counterfactual labels flip whenever the values differ",
+      "pass": true,
+      "detail": "64/64 pairs flip"
+    },
+    {
+      "check": "equal-value siblings have identical answers",
+      "pass": true,
+      "detail": "no legitimate flip to score"
+    },
+    {
+      "check": "spike trajectory equals SpikingCore.step",
+      "pass": true,
+      "detail": "max diff 0.00e+00"
+    },
+    {
+      "check": "head training does not touch hidden weights",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "train and test checksums differ",
+      "pass": true,
+      "detail": "train fcccc2a2bb5c\u2026 test 9dc726a2b36c\u2026"
+    },
+    {
+      "check": "no identical episodes shared across splits",
+      "pass": true,
+      "detail": "zero byte-identical episodes"
+    },
+    {
+      "check": "query task is near chance for the spike-sum head (Grok: ~0.55-0.59)",
+      "pass": true,
+      "detail": "mean 0.5306"
+    },
+    {
+      "check": "reproduction within Grok's reported band",
+      "pass": true,
+      "detail": "mean 0.5306"
+    }
+  ],
+  "passed": 12,
+  "total": 12,
+  "verdict": "P0_PASS",
+  "query_set_body_sha256": "01b50b4d3af1b763be368c6b93b10ca4ac67d7e5748934a557ba0094a69b8406",
+  "grok_source": {
+    "branch": "research/grok/r3-temporal-stress",
+    "commit": "211380fecdcd05966ec78bb7686f54fa8179c11a",
+    "blob_sha": "874fb83507af445ea8ec5db73942fabef03563fa"
+  },
+  "reproduction": [
+    {
+      "seed": 95001,
+      "decay_head": 0.54296875,
+      "ssum_head": 0.498046875,
+      "ssum_ridge": 0.546875,
+      "bank5_head": 0.556640625
+    },
+    {
+      "seed": 95007,
+      "decay_head": 0.560546875,
+      "ssum_head": 0.515625,
+      "ssum_ridge": 0.494140625,
+      "bank5_head": 0.5625
+    },
+    {
+      "seed": 95013,
+      "decay_head": 0.576171875,
+      "ssum_head": 0.578125,
+      "ssum_ridge": 0.56640625,
+      "bank5_head": 0.55078125
+    }
+  ],
+  "means": {
+    "decay_head": 0.5598958333333334,
+    "ssum_head": 0.5305989583333334,
+    "ssum_ridge": 0.5358072916666666,
+    "bank5_head": 0.556640625
+  }
+}
