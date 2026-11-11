@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+**Gemini Cross-SNN review:** [report](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md),
+protocol `experiments/cross-snn-transfer-review-v1.md`, runner
+`scripts/review_cross_snn_transfer.py`, helpers `evaluation/cross_snn_review.py`.
+Pinned Git inputs/raw arithmetic, primary-source corrections; không train mới.
+
 **Data grounding43:** [báo cáo43](research/43_ADAPTIVE_DATA_GROUNDING.md),
 `adaptive-curriculum-grounding-v1.md`, `evaluation/adaptive_grounding.py`,
 `data/fixtures/adaptive_chat_references_v1.json`. Data-only, không pilot/modelchange.

@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## Review Cross-SNN Gemini — 12/11/2026, không train mới
+
+[Review độc lập](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md)
+chốt Gemini631c890: commit chỉ thêm survey. Paired distractor trong cùng raw
+diagnostic là71,55%→74,67% (+3,125đ), CI95%thăm dò qua0; không phải+22,33đ.
+Timing gate chồng cả valid write events, khác sensory gate được đề xuất.
+Multiscale85,29/96,61 chưa có code/raw traceable; fast/slow và homeostasis là
+giả thuyết cần control, chưa solveP1/P2. REQUEST_CHANGES cho survey; giữ ý tưởng
+trong research, không promote learner/main/live. Receipt
+`artifacts/cross-snn-transfer-review-v1.json` lưu phép tính và8test audit qua.
+
 ## Codex forensic audit R6 — 11/11/2026, research only
 
 [Audit handoff](research/forensic-r6-20261111/README.md) records pinned R6D/R6B

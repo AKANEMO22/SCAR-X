@@ -143,3 +143,5 @@
 - [20261111T104720Z-forensic-gemini-events-v1-dd3666](20261111T104720Z-forensic-gemini-events-v1-dd3666/report.md) — forensic-gemini-events-v1
 - [20261111T105004Z-forensic-gemini-events-v1-a41c3e](20261111T105004Z-forensic-gemini-events-v1-a41c3e/report.md) — forensic-gemini-events-v1
 - [20261111T155855Z-r7-progress-review-v1-a52c77](20261111T155855Z-r7-progress-review-v1-a52c77/report.md) — r7-progress-review-v1
+- [20261111T174705Z-cross-snn-transfer-review-v1-d0f029](20261111T174705Z-cross-snn-transfer-review-v1-d0f029/report.md) — cross-snn-transfer-review-v1
+- [20261111T175003Z-cross-snn-transfer-review-v1-f82f5d](20261111T175003Z-cross-snn-transfer-review-v1-f82f5d/report.md) — cross-snn-transfer-review-v1
