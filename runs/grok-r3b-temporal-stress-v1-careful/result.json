@@ -1,0 +1,137 @@
+{
+  "does_not_change_screen_gates": true,
+  "previous_result": "runs/grok-r3b-temporal-stress-v1/result.json",
+  "order_by_seed": {
+    "94011": {
+      "decay025": {
+        "head_accuracy": 0.57421875,
+        "head_paired_flip": 0.171875,
+        "ridge": 1.0,
+        "ridge_paired_flip": 1.0,
+        "ridge_label_shuffle": 0.4921875,
+        "feature_l1": 0.02284272573888302
+      },
+      "spikesum": {
+        "head_accuracy": 0.6953125,
+        "head_paired_flip": 0.4375,
+        "ridge": 0.734375,
+        "ridge_paired_flip": 0.546875,
+        "ridge_label_shuffle": 0.45703125,
+        "feature_l1": 0.1839192658662796
+      },
+      "bank5": {
+        "head_accuracy": 0.99609375,
+        "head_paired_flip": 0.9921875,
+        "ridge": 0.99609375,
+        "ridge_paired_flip": 0.9921875,
+        "ridge_label_shuffle": 0.51171875,
+        "feature_l1": 0.025866961106657982
+      }
+    },
+    "94017": {
+      "decay025": {
+        "head_accuracy": 0.55859375,
+        "head_paired_flip": 0.1796875,
+        "ridge": 0.984375,
+        "ridge_paired_flip": 0.96875,
+        "ridge_label_shuffle": 0.390625,
+        "feature_l1": 0.024254998192191124
+      },
+      "spikesum": {
+        "head_accuracy": 0.6640625,
+        "head_paired_flip": 0.3984375,
+        "ridge": 0.82421875,
+        "ridge_paired_flip": 0.6875,
+        "ridge_label_shuffle": 0.484375,
+        "feature_l1": 0.2591145932674408
+      },
+      "bank5": {
+        "head_accuracy": 1.0,
+        "head_paired_flip": 1.0,
+        "ridge": 1.0,
+        "ridge_paired_flip": 1.0,
+        "ridge_label_shuffle": 0.421875,
+        "feature_l1": 0.02744021825492382
+      }
+    },
+    "94023": {
+      "decay025": {
+        "head_accuracy": 0.5234375,
+        "head_paired_flip": 0.1015625,
+        "ridge": 0.94921875,
+        "ridge_paired_flip": 0.8984375,
+        "ridge_label_shuffle": 0.57421875,
+        "feature_l1": 0.012644834816455841
+      },
+      "spikesum": {
+        "head_accuracy": 0.55859375,
+        "head_paired_flip": 0.2265625,
+        "ridge": 0.80078125,
+        "ridge_paired_flip": 0.625,
+        "ridge_label_shuffle": 0.5234375,
+        "feature_l1": 0.2001953125
+      },
+      "bank5": {
+        "head_accuracy": 1.0,
+        "head_paired_flip": 1.0,
+        "ridge": 0.984375,
+        "ridge_paired_flip": 0.96875,
+        "ridge_label_shuffle": 0.48046875,
+        "feature_l1": 0.01891188696026802
+      }
+    }
+  },
+  "query": {
+    "first_key_policy": 0.5,
+    "label_balance": 0.49609375,
+    "decay025": {
+      "head": 0.5,
+      "ridge": 0.57421875,
+      "ridge_label_shuffle": 0.51953125
+    },
+    "spikesum": {
+      "head": 0.58203125,
+      "ridge": 0.50390625,
+      "ridge_label_shuffle": 0.49609375
+    },
+    "bank5": {
+      "head": 0.5703125,
+      "ridge": 0.57421875,
+      "ridge_label_shuffle": 0.4453125
+    }
+  },
+  "delay_time_shift": {
+    "decay025": {
+      "head_original": 0.51171875,
+      "head_pulse_moved_to_tick8": 0.47265625,
+      "ridge_original": 0.9921875
+    },
+    "spikesum": {
+      "head_original": 1.0,
+      "head_pulse_moved_to_tick8": 1.0,
+      "ridge_original": 1.0
+    }
+  },
+  "paired_distractor": {
+    "spikesum": {
+      "0": 0.5859375,
+      "1": 0.5703125,
+      "2": 0.640625
+    },
+    "decay025": {
+      "0": 0.890625,
+      "1": 0.921875,
+      "2": 0.8984375
+    }
+  },
+  "random_label_null": {
+    "test_label_fraction_one": 0.5,
+    "majority_class_accuracy": 0.5,
+    "shuffle_mean": 0.4854736328125,
+    "shuffle_min": 0.33984375,
+    "shuffle_max": 0.58984375,
+    "fraction_of_shuffles_at_or_above_0_60": 0.0,
+    "mean_prediction_majority_fraction": 0.5472412109375,
+    "original_gate_draw_is_one_cell": true
+  }
+}
