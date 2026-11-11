@@ -1,0 +1,115 @@
+{
+  "tasks": [
+    "sim_xor",
+    "parity3",
+    "order_short",
+    "and3",
+    "maj3",
+    "xnor_delay"
+  ],
+  "seeds": [
+    320001,
+    320007,
+    320013,
+    320019,
+    320025,
+    320031,
+    320037,
+    320043
+  ],
+  "pairs": [
+    {
+      "pair": "sim_xor|order_short",
+      "dist": 6.923030316829681,
+      "sep": 13.419511795043945,
+      "agree": 0.4859375
+    },
+    {
+      "pair": "order_short|xnor_delay",
+      "dist": 6.906467795372009,
+      "sep": 12.952402114868164,
+      "agree": 0.49296874999999996
+    },
+    {
+      "pair": "parity3|order_short",
+      "dist": 6.793317079544067,
+      "sep": 12.096920013427734,
+      "agree": 0.494921875
+    },
+    {
+      "pair": "order_short|and3",
+      "dist": 6.793317079544067,
+      "sep": 12.096920013427734,
+      "agree": 0.495703125
+    },
+    {
+      "pair": "order_short|maj3",
+      "dist": 6.793317079544067,
+      "sep": 12.096920013427734,
+      "agree": 0.49140625
+    },
+    {
+      "pair": "sim_xor|parity3",
+      "dist": 2.2504228949546814,
+      "sep": 3.5397872924804688,
+      "agree": 0.99921875
+    },
+    {
+      "pair": "sim_xor|and3",
+      "dist": 2.2504228949546814,
+      "sep": 3.5397872924804688,
+      "agree": 0.522265625
+    },
+    {
+      "pair": "sim_xor|maj3",
+      "dist": 2.2504228949546814,
+      "sep": 3.5397872924804688,
+      "agree": 0.26328125
+    },
+    {
+      "pair": "parity3|xnor_delay",
+      "dist": 2.2417499870061874,
+      "sep": 3.45147967338562,
+      "agree": 0.46953125
+    },
+    {
+      "pair": "and3|xnor_delay",
+      "dist": 2.2417499870061874,
+      "sep": 3.45147967338562,
+      "agree": 0.63203125
+    },
+    {
+      "pair": "maj3|xnor_delay",
+      "dist": 2.2417499870061874,
+      "sep": 3.45147967338562,
+      "agree": 0.507421875
+    },
+    {
+      "pair": "sim_xor|xnor_delay",
+      "dist": 0.6865907162427902,
+      "sep": 1.1343010663986206,
+      "agree": 0.005859375
+    },
+    {
+      "pair": "parity3|and3",
+      "dist": 0.0,
+      "sep": 0.0,
+      "agree": 0.6359375
+    },
+    {
+      "pair": "parity3|maj3",
+      "dist": 0.0,
+      "sep": 0.0,
+      "agree": 0.262890625
+    },
+    {
+      "pair": "and3|maj3",
+      "dist": 0.0,
+      "sep": 0.0,
+      "agree": 0.626953125
+    }
+  ],
+  "separation_mean": 5.651385060946146,
+  "label_agreement_mean": 0.492421875,
+  "verdict": "scatter"
+}

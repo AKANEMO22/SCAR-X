@@ -136,3 +136,25 @@ like.
 `scripts/r7_r33_t6_diagnosis.py` · `artifacts/deepseek-r7/t6-diagnosis.json` ·
 `report-round32.md` (the failure this confirms) · `report-round31.md` (annotated: generality
 refuted)
+
+---
+
+> ## RETRACTED by round 36 — the T=6 benchmark was mathematically impossible
+>
+> `parity3`, `and3` and `maj3` have **identical input tensors** (`max|diff| = 0.000e+00`) and
+> **different label functions** (P(1) = 0.54 / 0.15 / 0.47; pairwise label agreement 0.61,
+> **0.29**, 0.68). All three write three bits to `x[i,t,0:3]` for `t ∈ {1,2,3}` plus the same
+> gate marker, so the same feature vector is asked for contradictory labels.
+>
+> **No head can be correct on all three.** The measured joint ceiling of 0.66 is the best a head
+> can do when three of its six targets conflict on the same evidence — not a capacity, budget,
+> replay-ratio, or representation limit.
+>
+> Everything here about T=6 is withdrawn. **Tier 3 is not tested** — neither failed nor passed.
+>
+> What still stands from this programme at T=3: credit assignment is non-binding (round 11);
+> hidden plasticity does not cause forgetting (round 4); readout overwriting does (rounds 4, 16);
+> interleaved replay removes sequential interference (rounds 20–24, 31); a nonlinear readout is
+> decisive (round 29, floor 6.52 → 0.36pp).
+>
+> See `report-round36.md`.
