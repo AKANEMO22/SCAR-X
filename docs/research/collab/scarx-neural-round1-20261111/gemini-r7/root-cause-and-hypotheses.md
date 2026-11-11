@@ -119,13 +119,14 @@ All three hypotheses operate strictly on the unchanged `SpikingCore` 1-compartme
      $$
      \tilde{f}_j = \frac{f_j(T) - \mu_{f,j}(m)}{\max(\sqrt{\sigma_{f,j}^2(m)}, 0.05)}, \qquad \hat{f}_j = \text{clip}(\tilde{f}_j, -5, 5), \qquad \beta_f = 0.01
      $$
-   - **Local Readout & Own-Neuron Credit Signal**:
+   - **Local Readout & Pre-Update Own-Neuron Credit Signal**:
      $$
      p_c = \frac{\exp(\sum_j w^{\text{out}}_{cj}\hat{f}_j + b_c)}{\sum_{c'} \exp(\sum_j w^{\text{out}}_{c'j}\hat{f}_j + b_{c'})}, \qquad \delta_c = \mathbb{I}(y = c) - p_c
      $$
      $$
-     s_j(m) = \frac{\sum_{c} w^{\text{out}}_{cj} \delta_c}{\max(\sqrt{\sigma_{f,j}^2(m)}, 0.05)} \cdot \mathbb{I}(|\tilde{f}_j| < 5), \qquad g_{jk}(m) = s_j(m)\, e_{f,jk}(T)
+     s_j(m) = \frac{\sum_{c} w^{\text{out}}_{cj}(m-1)\, \delta_c}{\max(\sqrt{\sigma_{f,j}^2(m)}, 0.05)} \cdot \mathbb{I}(|\tilde{f}_j| < 5), \qquad g_{jk}(m) = s_j(m)\, e_{f,jk}(T)
      $$
+     *(Note: $s_j(m)$ is evaluated using the pre-update readout weights $w^{\text{out}}(m-1)$ prior to applying $\Delta w^{\text{out}}(m) = \eta_{\text{out}} \delta \hat{f}^\top$, avoiding the label-independent self-alignment bias $+\eta_{\text{out}}\|\delta\|^2 \hat{f}_j$.)*
    - **Pure Local Homeostatic Synaptic Trace Update**:
      $$
      M_{jk}(m) = \beta_M M_{jk}(m-1) + (1 - \beta_M) g_{jk}(m), \qquad E_{jk}(m) = \beta_E E_{jk}(m-1) + (1 - \beta_E) g_{jk}^2(m)
@@ -133,7 +134,7 @@ All three hypotheses operate strictly on the unchanged `SpikingCore` 1-compartme
      $$
      \Delta w_{jk}(m) = \text{clip}\!\left(\eta_{\text{hid}} \frac{M_{jk}(m)}{\sqrt{E_{jk}(m)} + \epsilon_E},\; -\Delta_{\max},\; \Delta_{\max}\right)
      $$
-     with $\beta_M = 0.85$, $\beta_E = 0.99$, $\epsilon_E = 10^{-4}$ ($E_{jk}(0) = 10^{-4}$), $\eta_{\text{hid}} = 0.008$, $\Delta_{\max} = 0.01$, and $\eta_{\text{out}} = 0.04$.
+     with $\beta_M = 0.90$, $\beta_E = 0.99$, $\epsilon_E = 10^{-4}$ ($E_{jk}(0) = 10^{-4}$), $\eta_{\text{hid}} = 0.008$, $\Delta_{\max} = 0.01$, and $\eta_{\text{out}} = 0.04$.
 3. **Why it differs from STOPPED methods**:
    Unlike DC-ALIF (which altered core neuron compartments) and MTB (which duplicated multi-timescale eligibility banks), `EW-HE` uses a single $(H, D+K)$ eligibility state, preserves `SpikingCore` forward dynamics 100%, resolves the pre-query cancellation paradox via $\gamma_e = 0.25$, and replaces frozen calibration with online homeostatic feature and synaptic energy regulation.
 4. **Why frozen hidden fails where H1 succeeds**:

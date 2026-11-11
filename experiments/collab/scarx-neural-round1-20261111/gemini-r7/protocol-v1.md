@@ -40,8 +40,8 @@ Before any DEV seed is executed, the candidate implementation (`src/scarx/evalua
 All P1 tasks use 12-tick sequences ($T=12$, $D=8$, binary classification $C=2$, `calibration = 128`, `train = 1024`, `probe_fit = 256`, `id_test = 512`, `ood_test = 512`):
 1. **`strict_binding`** (Relational Key-Value-Query Counterfactual Binding):
    - Write events at $p_1 \in \{1,2\}$, $p_2 \in \{4,5,6\}$ (OOD shift: $p_1 = 0, p_2 = 7$, lengthening the retention delay). Opposite binary values $(a, 1-a)$ bound to keys $(0, 1)$ in randomized order; query $q \in \{0,1\}$ at tick $10$; target $y = a \oplus q$.
-2. **`context_xor_xnor_switch`** (3-Way Relational Rule Switching):
-   - Write events at $(p_1, p_2)$ (OOD shift: $p_1 = 0, p_2 = 7$), context cue $c \in \{0,1\}$ on channels $4..5$ at tick $10$, and rule-inversion cue $m \in \{0,1\}$ on channel $6$ at tick $10$; target $y = a \oplus c \oplus m$. All 1st- and 2nd-order marginals have zero correlation with $y$.
+2. **`context_selective_rule`** (3-Tick 3-Way Parity Rule Switching):
+   - Feature $a \in \{0,1\}$ on channels $0..1$ at $p_1 \in \{1,2\}$ (OOD: $0$), feature $b \in \{0,1\}$ on channels $2..3$ at $p_2 \in \{4,5,6\}$ (OOD: $7$), and context rule cue $c \in \{0,1\}$ on channels $4..5$ at tick $10$ ($c=0$: XOR rule $y = a \oplus b$; $c=1$: XNOR rule $y = 1 - (a \oplus b)$). All 1st- and 2nd-order marginals have zero correlation with $y$.
 3. **`distractor_binding`** (Relational Binding Under Mid-Delay Distractor Pulses & Elevated Noise):
    - Same relational structure as `strict_binding`, but random high-amplitude distractor pulses ($\pm 1.2$) hit channels $6$ and $7$ during delay ticks $\{3, 7, 8\}$ and background Gaussian noise increases from $\sigma = 0.10$ (ID) to $\sigma = 0.14$ (OOD).
 4. **`xor`** (Delayed Temporal XOR):
