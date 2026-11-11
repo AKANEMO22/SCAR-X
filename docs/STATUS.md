@@ -1403,3 +1403,55 @@ Học được liên kết nhỏ, nhưng readout-only cũng đạt100%. Hidden p
 Lý do: gate nghiên cứu bắt buộc đã không đạt; không được diễn giải những mục này là hoàn thành.
 
 Tra cứu: [Phase 2.1](research/08_PHASE21_RESULTS.md), [Phase 2 lịch sử](research/06_FEASIBILITY_VERDICT.md), [run index](../runs/INDEX.md), [bản đồ](PROJECT_MAP.md).
+
+---
+
+## DeepSeek R7 — hidden representation và continual learning (vòng 1–37)
+
+Nhánh: `research/deepseek/r7-causal-hidden`. Production `src/scarx/neural/` **không đổi**.
+Báo cáo đầy đủ: `docs/research/collab/scarx-neural-round1-20261111/deepseek-r7/`.
+
+### Đã thiết lập (replicate được, có paired CI)
+
+- **Credit assignment không phải nút thắt.** Eligibility trace chính xác đạt cosine **+0.9452**
+  so với null −0.0005, kiểm bằng sai phân hữu hạn (+0.9979) — và tạo **zero representation gain**
+  ở mọi eta thử (0.002 → −4.17pp; 0.00008 → −0.78pp). Shuffled credit còn tốt hơn aligned.
+- **Hidden plasticity không gây quên:** đóng góp **−1.17pp**. **Readout overwriting gây quên:**
+  **+31.90pp**. Đây là can thiệp nhân quả, không phải tương quan.
+- **Replay interleaved loại ~80% sequential interference** ở T=3: paired **−17.85pp**
+  CI [−22.20, −13.51] trên 15 seed mới, đăng ký trước.
+- **Readout phi tuyến là yếu tố quyết định ở T=3.** Sàn co-representation: linear **6.52pp**,
+  mlp32 **0.36pp**. Head tuyến tính *rộng hơn* lại **tệ hơn** (8.79pp) với 16× tham số →
+  ràng buộc là **expressiveness**, không phải capacity.
+- **T=3 đạt mọi gate** (15 seed × 6 order = 90 cell): acquisition 90/90, final 90/90,
+  meanF ≤3pp 90/90, worstF ≤5pp 90/90, **15/15 seed dưới 3 order**.
+- **Task order là biến protocol thật** ở T=3: meanF 0.42–1.63pp tuỳ order; seed fail ở một
+  order pass ở 5/6 order còn lại.
+- **Chi phí acquisition của replay phụ thuộc head:** linear **−1.43pp**, phi tuyến **+0.008pp**.
+
+### Chưa đạt / chưa đo
+
+- **Mục tiêu 1 — hidden synapses học representation tổng quát hữu dụng: CHƯA CHỨNG MINH.**
+  37 vòng không tạo được bằng chứng.
+- **Mục tiêu 2 — T=3 ĐẠT, T=6 KHÔNG.** Benchmark sửa đúng (input khác nhau từng cặp, có
+  assertion): meanF **3.84pp** (gate 3), worstF **9.12pp** (gate 5), **0/12 seed**, acquisition
+  0.9359. Khoảng cách còn lại tập trung ở **một task**, không rải đều.
+- **Readout phi tuyến mới là DIAGNOSTIC, chưa phải candidate.** Brief cấm tăng capacity để che
+  lỗi learning rule. Nâng nó thành candidate cần quyết định phạm vi của chủ mission.
+
+### Lỗi harness tự phát hiện (không lỗi nào bị che)
+
+Rút lại: round 2 (`shifted()` no-op), 4 (forgetting = hiệu giữa task), 5b (chia số hạng cấu
+trúc-0), 12 (đếm dead unit một tick), 4/16 (nhãn replay sai — **loại replay oan 12 vòng**),
+17/18 (order effect gọi là seed), 20/21 (−1.43pp bị đọc là "không chi phí"), 25 (meanF trung
+bình **delta có dấu** — gate 8/15 → 0/15), 26 (test nhầm CI bound), 27 (gọi sàn là "bất khả
+kháng"), **32–35 (benchmark T=6 bất khả thi: ba task dùng chung input, chỉ khác nhãn —
+phóng đại hiệu ứng 7×)**.
+
+Thêm vào đó: `tests/test_openai_backend.py::test_explicit_json_teaching_updates_persistent_model`
+fail sẵn từ baseline (HTTP 507), không liên quan nhánh này. Suite: **287 passed, 4 skipped**.
+
+### Không tuyên bố
+
+Không mục tiêu nào ở trên là bằng chứng sẵn sàng sản phẩm. Không có candidate nào được đưa vào
+Hermes. Không mở formal confirmation. Không tăng neuron, topology hay RAM.
