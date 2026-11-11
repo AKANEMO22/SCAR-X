@@ -219,8 +219,9 @@ def run_arm(seed, arm, task, calibration, train, train_y, dev, dev_y):
     }
 
 
-def stage2(clock):
-    projected_unit = time.perf_counter()
+def stage2():
+    clock = time.perf_counter()
+    projected_unit = clock
     probe = DCALIFEligibility(executed_config(93001), "frozen")
     sample, sample_y = generate("order", 93008, 16)
     probe.calibrate(list(generate("order", 93007, 128)[0]))
@@ -309,7 +310,7 @@ def main():
     if audit["surrogate_check_passes"]:
         diagnosis = stage1()
         peak = max(peak, process.memory_info().rss)
-        screen, _projected = stage2(clock)
+        screen, _projected = stage2()
         peak = max(peak, process.memory_info().rss)
     else:
         screen = {"status": "STOP", "reason": "surrogate finite-difference check failed"}
