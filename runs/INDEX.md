@@ -129,3 +129,7 @@
 - [20261110T135250Z-readout-usefulness-p0-v1-ca2357](20261110T135250Z-readout-usefulness-p0-v1-ca2357/report.md) — readout-usefulness-p0-v1
 - [20261110T142636Z-adaptive-curriculum-grounding-v1-472187](20261110T142636Z-adaptive-curriculum-grounding-v1-472187/report.md) — adaptive-curriculum-grounding-v1
 - [20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646](20261110T142721Z-adaptive-curriculum-grounding-v1-a7c646/report.md) — adaptive-curriculum-grounding-v1
+- [20261111T080206Z-r6d-replay-v1-b31bdf](20261111T080206Z-r6d-replay-v1-b31bdf/report.md) — r6d-replay-v1
+- [20261111T080328Z-r6d-controls-replay-v1-4c7f15](20261111T080328Z-r6d-controls-replay-v1-4c7f15/report.md) — r6d-controls-replay-v1
+- [20261111T080352Z-r6d-confirm-v1-ff539c](20261111T080352Z-r6d-confirm-v1-ff539c/report.md) — r6d-confirm-v1
+- [20261111T080601Z-r6d-controls-confirm-v1-b53925](20261111T080601Z-r6d-controls-confirm-v1-b53925/report.md) — r6d-controls-confirm-v1

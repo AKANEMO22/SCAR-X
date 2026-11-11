@@ -1,0 +1,54 @@
+{
+  "protocol_sha256": "61d0612b67da4c6ec5f0dc39094c9b94113ba5466e1ccd8f7a4a624ff56d9fe1",
+  "trials": [
+    {
+      "seed": 120011,
+      "ref_both_A": 0.8809523809523809,
+      "ref_direct": 0.9580078125,
+      "random_labels_direct": 0.494140625,
+      "first_key": 0.7568359375,
+      "query_only": 0.4912109375
+    },
+    {
+      "seed": 120017,
+      "ref_both_A": 0.9469026548672567,
+      "ref_direct": 0.9892578125,
+      "random_labels_direct": 0.5517578125,
+      "first_key": 0.7431640625,
+      "query_only": 0.486328125
+    },
+    {
+      "seed": 120023,
+      "ref_both_A": 0.9338235294117647,
+      "ref_direct": 0.9794921875,
+      "random_labels_direct": 0.439453125,
+      "first_key": 0.7255859375,
+      "query_only": 0.5185546875
+    }
+  ],
+  "summary": {
+    "reference_both_A": 0.9205595217438006,
+    "reference_direct": 0.9755859375,
+    "random_labels_direct": 0.4951171875,
+    "first_key": 0.7418619791666666,
+    "query_only": 0.4986979166666667,
+    "G4_random_labels_chance": true,
+    "G5_shortcuts_ok": true
+  },
+  "resources": {
+    "peak_rss_bytes": 197873664,
+    "peak_commit_or_vms_bytes": 216997888,
+    "os_process_peak_working_set_bytes": 226222080,
+    "os_process_peak_pagefile_commit_bytes": 245448704,
+    "samples": 79,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 9.102235099999234,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "wall_seconds": 9.102776288986206
+}
