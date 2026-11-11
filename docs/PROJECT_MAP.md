@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+**Codec P0 cô lập:** [bàn giao](research/OUTPUT_CODEC_P0_HANDOFF_V1.md),
+[review notes](research/OUTPUT_CODEC_P0_REVIEW_NOTES_V1.md), protocol
+`experiments/output-codec-p0-v1.md`; prototype `evaluation/output_codec_p0.py`.
+Runners `run_output_codec_p0.py` / `output_codec_p0_cold.py` /
+`regress_output_codec_p0.py`; receipts `artifacts/output-codec-p0-*.json`.
+Chỉ kiểm codec/state trên public H48, chưa train dataset hoặc migrate app/live.
+
 **Data grounding43:** [báo cáo43](research/43_ADAPTIVE_DATA_GROUNDING.md),
 `adaptive-curriculum-grounding-v1.md`, `evaluation/adaptive_grounding.py`,
 `data/fixtures/adaptive_chat_references_v1.json`. Data-only, không pilot/modelchange.

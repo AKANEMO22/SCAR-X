@@ -1,5 +1,11 @@
 # Basic-knowledge codec / migration proposal V1
 
+**Approval update:** user approved **isolated P0 only**. See
+[P0 handoff](OUTPUT_CODEC_P0_HANDOFF_V1.md) and
+`experiments/output-codec-p0-v1.md`. No dataset training, P1/P2 or serving/live
+migration is authorized. The pending notice below records the proposal's original
+pre-approval state; the original design and acceptance thresholds are retained.
+
 **PENDING USER APPROVAL. No tokenizer, encoder, renderer, vocabulary, checkpoint
 or serving model was changed.** This proposal addresses observed I/O blockers,
 not credit assignment, semantic understanding or retention by itself.

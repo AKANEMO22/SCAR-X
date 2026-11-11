@@ -1,13 +1,26 @@
 # Trạng thái SCAR-X
 
-## Verified dataset factory — source ready, codec/training chưa duyệt
+## Codec P0 cô lập — đã duyệt và kiểm kỹ thuật, chưa train dataset
+
+[Bàn giao P0](research/OUTPUT_CODEC_P0_HANDOFF_V1.md) ghi codec đầu ra V2,
+55 token, 320/320 target roundtrip, old-word/digit/context parity exact,
+cold continuation và rollback trên bản sao public 48 ALIF. 31 test P0 qua;
+receipt `artifacts/output-codec-p0-v1.json` trỏ run `ecc876`. Đây không phải
+320 câu neural trả lời đúng hoặc kết quả representation/retention.
+Không đổi core/learner G1, model live, Hermes hay main. P1/P2 và dataset training
+chưa được duyệt. Hồi quy qua 354/354 test, gồm bốn chế độ CPU/native parity,
+không skip; peak committed process tree 1.450 GB, dưới 2 GB ở lượt đo này.
+Xem receipt hồi quy riêng trong báo cáo bàn giao.
+
+## Verified dataset factory — nguồn dữ liệu đã kiểm; lịch sử đề xuất codec
 
 [Factory handoff](research/BASIC_KNOWLEDGE_FACTORY_DELIVERY_V1.md) records320actual
 AGYFlashHigh/high candidates verified against32publicknownfacts+8outside-domain
 policies. All5historical streams/source/candidate hashes were locally rechecked;
 public-only revalidation does not require private CLI logs. No more calls or
 studenttraining. [Codec proposal](research/BASIC_KNOWLEDGE_CODEC_PROPOSAL_V1.md)
-is pending: public24token checkpoint lacks targets, completecoverage55fits256,
+was pending at factory handoff; only isolated codec P0 is now approved above.
+Public24token checkpoint lacks targets, completecoverage55fits256,
 but128decimalrows fail currentrendering. No live vocab/tokenizer/weights changed.
 Generation budget guards and34targeted data/legacy/mirror tests protect against
 automatic/concurrent retries and writing new mirrors into a main checkout.

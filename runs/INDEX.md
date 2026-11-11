@@ -152,3 +152,5 @@
 - [20261111T163557Z-basic-knowledge-handoff-v1-0b6dc8](20261111T163557Z-basic-knowledge-handoff-v1-0b6dc8/report.md) — basic-knowledge-handoff-v1
 - [20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48](20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48/report.md) — basic-knowledge-cold-checkout-v1
 - [20261111T170938Z-output-codec-p0-v1-e3f834](20261111T170938Z-output-codec-p0-v1-e3f834/report.md) — output-codec-p0-v1
+- [20261111T171706Z-output-codec-p0-v1-ecc876](20261111T171706Z-output-codec-p0-v1-ecc876/report.md) — output-codec-p0-v1
+- [20261111T171709Z-output-codec-p0-regression-v1-baa310](20261111T171709Z-output-codec-p0-regression-v1-baa310/report.md) — output-codec-p0-regression-v1
