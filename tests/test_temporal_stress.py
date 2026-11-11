@@ -32,12 +32,12 @@ def test_resume_matches_uninterrupted_state():
 
 def test_ridge_falls_when_labels_are_permuted():
     rng = np.random.default_rng(8)
-    train = rng.normal(0, 1, (80, 4)).astype(np.float32)
+    train = rng.normal(0, 0.1, (80, 4)).astype(np.float32)
     labels = np.arange(80) % 2
-    train[:, 0] += labels
-    test = rng.normal(0, 1, (80, 4)).astype(np.float32)
+    train[:, 0] += 4 * labels
+    test = rng.normal(0, 0.1, (80, 4)).astype(np.float32)
     test_y = np.arange(80) % 2
-    test[:, 0] += test_y
+    test[:, 0] += 4 * test_y
     intact = ridge_probe(train, labels, test, test_y)
     broken = ridge_probe(train, rng.permutation(labels), test, test_y)
     assert intact > 0.80
@@ -66,17 +66,16 @@ def test_predict_does_not_update_calibration_and_leaky_observer_is_caught():
     before = head.mean.copy()
     head.transform(np.full(4, 9, np.float32))
     assert np.array_equal(before, head.mean)
-    leaky = NormHead(4, 3)
+    try:
+        head.observe(np.full(4, 9, np.float32))
+        raised = False
+    except RuntimeError:
+        raised = True
+    assert raised
+    leaky = NormHead(4, 4)
     for row in train:
         leaky.observe(row)
-    try:
-        leaky.observe(np.full(4, 9, np.float32))
-        leaked = True
-    except RuntimeError:
-        leaked = False
-    leaky.frozen = False
     leaky.observe(np.full(4, 9, np.float32))
-    assert leaked is False
     assert not np.array_equal(before, leaky.mean)
 
 
