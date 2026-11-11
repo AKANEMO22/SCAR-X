@@ -32,25 +32,33 @@ broken instrument.
 The screen came back at chance, which forced the question I should have asked
 first: **is the binding information reachable by this neuron at all?**
 
-| substrate (untrained ALIF, frozen weights) | accuracy |
-|---|---:|
-| production readout substrate (single leaky integral) | 0.5160 |
-| full spike train | 0.6740 |
-| **spike co-occurrence across neuron pairs** | **0.9940** |
-| co-occurrence including time | 0.9580 |
+**My first answer was wrong, and I caught it with a control.** I initially reported
+that the signal lives in pairwise spike co-occurrence (0.990) while every order-1
+readout sits near chance, and concluded the campaign needs a product term. A plain
+**uniform sum of spikes over all ticks** — order-1, no products — reaches **0.752**
+and clears the gate. So products are not required, and my nonlinearity conclusion
+was refuted by the cheapest possible baseline.
 
-The binding signal is almost perfectly present in pairwise spike co-occurrence and
-essentially absent from what the readout sees.
+Corrected picture (frozen untrained ALIF, 4 generator seeds):
 
-**This unifies all three branches.** grok found a slow single-neuron trace beats a
-fast one. antigravity found a 5-timescale bank beats one decay. I find pairwise
-co-occurrence carries binding while the per-neuron readout does not. Those are
-consistent: **every readout tried in this campaign is a first-order function of
-spikes.** They differ in how much temporal detail they keep, and none of them can
-represent a conjunction at all, because a conjunction needs a product.
+| substrate | accuracy | class |
+|---|---:|---|
+| production eature_decay=0.25 | 0.492 | order-1 |
+| single leaky integral d=0.10 | 0.558 | order-1 |
+| single leaky integral d=0.90 | 0.688 | order-1 |
+| single leaky integral d=0.95 | 0.712 | order-1 |
+| **uniform sum over all ticks** | **0.752** | order-1 |
+| pairwise co-occurrence | 0.990 | order-2 |
 
-So the three branches were not three independent attacks on learning. They were
-three variations of the same readout family, and so was the wall they all hit.
+**The corrected diagnosis: the information is present and first-order-readable; it
+is destroyed by a readout that forgets early ticks.** eature_decay=0.25 retains
+1.6% of a spike after three ticks, and the binding evidence is written at ticks 1-2,
+so the first write is gone before the decision is read.
+
+This agrees with what grok and antigravity found from different directions: the
+bottleneck is the readout's **temporal memory**, not its nonlinearity. All three
+branches were variations on the same readout family, and the wall they hit was the
+same wall.
 
 ## 3. What did the other branches get right, and where would I disagree?
 
@@ -101,9 +109,13 @@ again be attributable to neither branch's learning component.
 - **Diagnostics discovered after a failure are weaker evidence.** §4 came from a
   post-hoc probe. It should be treated as a promising hypothesis for round 2, not
   as a proven result of round 1.
-- **An oracle probe is not a skill.** 0.994 is a statement about *information*, not
+- **An oracle probe is not a skill.** 0.990 is a statement about *information*, not
   about learning. Any summary saying "SCAR-X can bind" based on this table would be
   false.
+- **The most obvious baseline is the one you skip.** I ran pairwise co-occurrence,
+  time-inclusive co-occurrence, several decays, and a dimension-matched control --
+  but not the plain uniform sum, which is the first thing a sceptic would try. It
+  refuted my conclusion. Run the dumbest control first.
 - **Three branches, two authors.** Because this branch shares an author session with
   `antigravity`, the campaign effectively has **two** independent parties, not
   three. Any tally treating `deepseek` and `antigravity` as separate votes is wrong.

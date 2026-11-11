@@ -78,49 +78,65 @@ running anything. I did not catch this one until the screen came back at chance,
 because I never probed the *product basis* against the *architecture's* basis
 before registering the claim.
 
-## 4. The finding that replaces it — and it is better
+## 4. The finding that replaces it — corrected after adversarial checking
 
 The screen result raised a sharper question than the one I started with: **is the
 binding information reachable by this neuron at all, or is it destroyed upstream?**
 
-Fixed-feature ridge probes on the same untrained ALIF, same 12 ticks, same data:
+My first answer was wrong, and a reviewer should know I caught it myself rather
+than shipping it. I initially reported that the signal lives in **pairwise spike
+co-occurrence (0.994) while the order-1 readout sits at chance (0.516)**, and
+concluded that every readout in the campaign fails because it lacks a product term.
 
-| substrate | `pair_binding` accuracy |
-|---|---:|
-| readout substrate (single leaky integral, `feature_decay=0.25`) | 0.5160 |
-| full spike train, all ticks | 0.6740 |
-| **spike co-occurrence across neuron pairs (Σₜ zᵢzⱼ)** | **0.9940** |
-| spike co-occurrence including the time dimension | 0.9580 |
+**That conclusion is refuted by an order-1 control I had not run.** A plain uniform
+sum of the spike train over all ticks — order-1, no products at all — reaches
+**0.752**, well above the 0.65 gate. The task does **not** require products.
 
-**The binding information is present in the spike train, almost perfectly
-linearly decodable from pairwise neural co-occurrence (0.994), and the production
-readout throws essentially all of it away (0.516).**
+Corrected measurements (frozen untrained ALIF, same 12 ticks, 500 examples,
+4 generator seeds):
 
-This is a strictly stronger and more useful statement than either of the two prior
-branches reached:
+| substrate | `pair_binding` accuracy | class |
+|---|---:|---|
+| production readout substrate (`feature_decay=0.25`) | 0.492 (mean; 0.484–0.500) | order-1 |
+| single leaky integral `d=0.10` | 0.558 | order-1 |
+| single leaky integral `d=0.50` | 0.540 | order-1 |
+| single leaky integral `d=0.90` | 0.688 | order-1 |
+| single leaky integral `d=0.95` | 0.712 | order-1 |
+| **uniform sum over all ticks** | **0.752** | order-1 |
+| **pairwise co-occurrence Σₜ zᵢzⱼ** | **0.990** | order-2 |
 
-- `grok` showed a slow *single-neuron* trace beats a fast one (0.484 → 0.9375) on `order`.
-- `antigravity` showed a multi-timescale *readout bank* beats a single decay on `order`.
-- **This branch shows the binding signal survives in the neuron's own spike
-  co-occurrence and is destroyed by a readout that only integrates each neuron
-  independently.**
+Controls on the co-occurrence number: shuffled-label **0.489**, three network seeds
+0.960/0.988/0.992 (not a lucky initialisation), and a **dimension-matched** control
+(bag expanded to the same 2304 dims) **0.752** — so products genuinely add
++23.6pp over order-1 at equal width.
 
-The readout is the bottleneck, and specifically it is the **absence of any
-quadratic/pairwise term** — not the number of timescales. That reframes all three
-branches' results consistently: every readout tried so far (single decay, slow
-trace, 5-decay bank) is a **first-order** function of spikes, and every one of them
-therefore discards the pairwise structure that carries the conjunction.
+### The corrected diagnosis
+
+**The information is not missing and does not require products. It is destroyed by a
+readout that forgets early ticks.** `feature_decay = 0.25` retains 1.6% of a spike
+after three ticks; the binding evidence is written at ticks 1–2 and 4–6, so the
+production substrate has forgotten the first write before the decision is read.
+The `d=0.90` and `d=0.95` rows show the same task is solvable by a **first-order**
+integrator that simply remembers longer — and a uniform sum over all ticks, which is
+the most memory-preserving order-1 readout possible, clears the gate comfortably.
+
+This is a *sharper and more actionable* statement than the co-occurrence claim I
+first made, and it agrees with what `grok` and `antigravity` independently found
+from different directions: **the readout's temporal memory, not its nonlinearity,
+is the binding bottleneck.**
 
 ## 5. Claim matrix
 
 | Claim | Metric | Source | Scope | Limitation |
 |---|---|---|---|---|
 | `strict_binding` needs order-3; an additive neuron cannot express it | order-1 .47–.52, order-2 .48–.52, order-3 **1.00**, shuffled .45–.49 | P0 receipt | 12-tick, 8-channel, H=48 | proves the gate is invalid; does not prove *no* architecture could |
-| `pair_binding` has no order-1 bag shortcut | order-1 ≤ 0.56 across 5 seeds | P0 receipt | same | — |
+| `pair_binding` has no order-1 bag shortcut **on the raw tape** | order-1 ≤ 0.56 across 5 seeds | P0 receipt | same | — |
 | `pair_binding` is **not** expressible by the architecture | raw-linear .528, ALIF .522 vs oracle .1.000 | §3 | same | **falsifies my own C1** |
 | Frozen hidden does not clear 65% | frozen 51.43% | screen result | same | C2 held |
 | Hidden learning produces no measurable gain | `score − frozen` −2.47pp [−2.73, −1.95] | screen result | same | C3 failed |
-| **Binding information lives in spike co-occurrence** | co-occurrence probe **0.9940**, readout substrate 0.5160 | §4 probe | untrained ALIF, H=48 | **diagnostic only** — proves information exists, not that learning can use it |
+| The task needs **no** product term | uniform spike sum **0.752** (order-1) | §4 adversarial | 4 gen seeds, frozen ALIF | **refutes my own first §4 claim** |
+| Slow integrators solve it; `d=0.25` does not | d=.90 → .688, d=.95 → .712, d=.25 → .554 | §4 | same | order-1 only |
+| Products add over order-1 at equal width | cooc .990 vs dim-matched bag .752 | §4 | same | +23.6pp |
 | Memory / technical integrity | 14/14 P0, peak tree commit 700,858,368 B | P0 receipt | this prototype | — |
 
 ## 6. What is NOT claimed
@@ -137,15 +153,19 @@ says the signal is present and linearly decodable by an external probe. It does
    drawn independently. Caught by P0 before any learning run; version discarded and
    documented in the protocol.
 2. **Claim C1 was wrong** — order-2 *function* ≠ order-2 *expressive capacity* for
-   an additive neuron. Caught only by the screen returning chance. This is the
-   more serious mistake and it is the reason I registered C1 as falsifiable.
-3. **No confirmation run**, because the screen failed. Not an omission; the
+   an additive neuron. Caught only by the screen returning chance. This is the more
+   serious mistake and it is the reason I registered C1 as falsifiable.
+3. **My first §4 conclusion was wrong too.** I reported that the campaign's readouts
+   fail because they lack a product term. An order-1 control (uniform spike sum)
+   reaching **0.752** refutes that. I had jumped from "co-occurrence decodes at
+   0.990" to "products are required" without running the obvious order-1 baseline.
+   The corrected diagnosis — temporal **memory**, not nonlinearity — is in §4.
+4. **No confirmation run**, because the screen failed. Not an omission; the
    registered stop rule.
 
-Both errors are recorded because a reviewer needs to know that this branch's
-positive finding (§4) came from a probe run *after* a failed hypothesis, not from
-the hypothesis itself. That is a weaker provenance than a pre-registered
-prediction and should be weighted accordingly.
+Three errors in one branch, each caught by a control I ran rather than by review.
+A reviewer should treat this branch as a record of **method** (how the checks
+worked) more than as a source of positive findings.
 
 ## 8. Cross-review status
 
