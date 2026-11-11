@@ -159,6 +159,35 @@ improved forgetting by 3.43pp over its own shuffled control, and still ended at
 decomposition this round builds on)
 ---
 
+
+---
+
+> ## retraction: the "2.86pp, below the gate" claim is wrong
+>
+> The `mlp32_tanh` figure of **2.86pp mean forgetting** is **incorrect**.
+>
+> It averaged over all three tasks, but the LAST task's forgetting is
+> `R[T-1][T-1] − R[T-1][T-1] = 0` **by construction** — that task is never evaluated
+> again. Averaging over T tasks therefore dilutes the mean by (T−1)/T = 2/3.
+>
+> Recomputed from the raw R matrices:
+>
+> | head | diluted (as published) | **honest** | worstF |
+> |---|---:|---:|---:|
+> | linear_2logit | 20.96pp | **31.45pp** | 52.34pp |
+> | linear_wide_32 | 9.20pp | **13.80pp** | 33.20pp |
+> | mlp32_tanh | 2.86pp | **4.30pp** | 9.38pp |
+>
+> **All arms fail the 3pp gate on the honest mean.**
+>
+> The second conclusion below — "capacity is the binding constraint" — is **also
+> refuted**. A linear head trained **jointly** on all three tasks reaches **0.8620** with
+> worst task **0.7734**, so capacity is sufficient. The real problem is **sequential
+> interference**, not representational capacity.
+>
+> See `report-round6.md` for the recomputation and the joint control.
+
+
 ## 11. ADDENDUM — the capacity claim is now measured, not inferred
 
 Section 5 asserted that readout capacity is the binding constraint. That was an
