@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "groups": [
+    {
+      "name": "api-memory-isolated",
+      "returncode": 0,
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_openai_backend.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\consolidate-research-20261113\\local\\consolidation-validation\\api-memory-isolated.xml"
+      ]
+    },
+    {
+      "name": "remaining-suite",
+      "returncode": 0,
+      "tests": 608,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--ignore=tests/test_openai_backend.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\consolidate-research-20261113\\local\\consolidation-validation\\remaining-suite.xml"
+      ]
+    }
+  ],
+  "tests_total": 614,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "wall_seconds": 123.92181110000092,
+  "production_source_unchanged": true,
+  "new_quality_experiments": 0,
+  "active_R13_family": "No mutations or process/cache operations",
+  "scope": "All tests run; process-sensitive API module isolated, no RAM guard changes or test skips. Earlier monolithic failure preserved separately."
+}

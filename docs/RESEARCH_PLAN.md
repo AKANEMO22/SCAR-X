@@ -1,5 +1,19 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hợp nhất tài liệu và kết quả13/11/2026:** người dùng cho phép dọn GitHub/local,
+đưa completedresearch vềmain và archivebranch sau khi bảo toàn evidence. Đây
+không phải phê duyệt learner mới vào serving, đổi ALIF hoặc mở training/P2/
+confirmation. [Ledger](research/EXPERIMENT_LEDGER.md) và [sơ đồ](research/EXPERIMENT_MAP.md)
+là chỉ mục kết quả; file này vẫn là masterplan duy nhất. Các protocol lịch sử
+không đổi, aborted/retracted/unverifiedrecords vẫn truy cập bằngSHA/tag.
+
+**Ngoại lệ bắt buộc:** người dùng yêu cầu giữ activeR13.1 trong
+`C:\Users\hachimi\Downloads\model agent\scar-x-gemini-r7`, branch
+`research/gemini/r13-1-spike-composition-vs-small-llm`. Không dọn source/files/
+cache/downloads/process/branch của lượt đang chạy hoặc sourceworktrees có thể
+phụ thuộc. Không nhập uncommittedR13.1 vào catalogcompleted hoặc tuyên bố kết
+quả mới. [Archive/restore/protection](maintenance/20261113/README.md).
+
 **Kết quả capacity đã duyệt12/11:** H64/H128DEV đã hoàn tất204newjobs+
 48reusedH48records, integrityPASS, `CAPACITY_ONLY_SIGNAL`. [Báo cáo](research/CAPACITY_H64_H128_RESULTS_20261112.md)
 và [review độc lập](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md).

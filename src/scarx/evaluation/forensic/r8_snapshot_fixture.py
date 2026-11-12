@@ -4,9 +4,10 @@ import hashlib,importlib.util,subprocess,sys
 import numpy as np
 from . import r8_snapshot as S
 from ...neural.core import Config
+from ..research_workspace import peer_checkout
 
 ROOT=Path(__file__).resolve().parents[4]
-PEER=ROOT.parent/'review-gemini-r8-fe472b3'
+PEER=peer_checkout(ROOT,'review-gemini-r8-fe472b3')
 
 
 def fixture_model(kind):

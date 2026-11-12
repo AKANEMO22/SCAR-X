@@ -1,5 +1,20 @@
 # Bản đồ dự án SCAR-X
 
+## Điều hướng chính sau hợp nhất13/11
+
+- [Master plan](RESEARCH_PLAN.md): định hướng/constraints, không coi lịch sử là approvalmới.
+- [Research center](research/README.md), [experiment map](research/EXPERIMENT_MAP.md),
+  [ledger](research/EXPERIMENT_LEDGER.md), [catalogJSON](research/experiment-catalog.json).
+- `scripts/research/query_catalog.py`:list/search/show/verify, không load/trainmodel.
+- `docs/research/archive/`:originalreports với SHA256 và sourceversions;
+  `docs/maintenance/20261113/`:branch/worktreearchive + restore/protection.
+- `runs/` giữ immutableevent/model/checkpoint evidence; không rename historicalrunID.
+- `src/scarx/evaluation/`:isolatedresearch/controls; servingcode giữnguyên.
+- `local/`:private/live/ignoredstate, dependencies vàmodelcaches; không publicmirror.
+- ActiveR13-family ở `scar-x-gemini-r7`:EXCLUDED khỏi cleanup, source/cache/process giữ.
+
+Các mục dưới là chỉ mục lịch sử, vẫn giữ đường dẫn để truy vấn từ báo cáo cũ.
+
 **Capacity completed12/11:** [results](research/CAPACITY_H64_H128_RESULTS_20261112.md),
 [audit](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md). Finalrun160b6e
 has252records/perseedCSV/data+reusehashes/modelcheckpoints/source-byte-bundle.

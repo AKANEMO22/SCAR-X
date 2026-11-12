@@ -1,0 +1,3 @@
+# Engineering validation
+
+Monolithic614testprocess:613PASS,1APIteachingHTTP507fail. The endpoint maps507toMemoryErrororTimeoutError; originalerrorbodywasnotcaptured, so exactcauseisnotproven. Theguardwasnotrelaxed. SameAPItestpassedonoriginalmaininfreshprocess. FullverificationreranALL614testsintwoprocesses:6APImodule+608remaining,0fail/0skip;logs/XMLkept. Thisisengineeringverification,notqualitytraining/P1/P2evidence. Production-sourcechecksandcatalogchecksareincluded.

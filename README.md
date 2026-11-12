@@ -1,5 +1,24 @@
 # SCAR-X · Thế hệ đầu
 
+## Tra cứu nghiên cứu
+
+Toàn bộ kết quả hoàn tất được tập trung ở [trung tâm nghiên cứu](docs/research/README.md):
+[sơ đồ thí nghiệm](docs/research/EXPERIMENT_MAP.md),
+[sổ kết quả chi tiết](docs/research/EXPERIMENT_LEDGER.md),
+[catalog có thể truy vấn](docs/research/experiment-catalog.json) và
+[lịch sử/tag phục hồi](docs/maintenance/20261113/README.md).
+Các module nghiên cứu trong main không tự thay model/weights đang phục vụ.
+ACR=`SPECIALIZED_GAIN`; capacityH128 có directgain nhưng chưa lifelongPASS.
+R13-family đang chạy (ảnh ban đầu R13.1) được giữ nguyên ở worktree riêng, không thuộc cleanup.
+
+```powershell
+python scripts/research/query_catalog.py list
+python scripts/research/query_catalog.py search replay
+python scripts/research/query_catalog.py show CAPACITY-H64-H128
+```
+
+## Bản thử nghiệm local hiện có
+
 Một model, **một quần thểALIF hồi quy có ngân sách neuron linh động**, chung trọng số và trạng thái
 cho văn bản và ảnh chữ số. Lúc rảnh cùng lõi tiếp tục xử lý neural; tin nhắn được
 ưu tiên. Website hiển thị topology, spike raster và sự kiện thật.

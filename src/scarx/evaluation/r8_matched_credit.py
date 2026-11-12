@@ -7,10 +7,11 @@ from pathlib import Path
 import importlib.util,subprocess,sys
 import numpy as np
 from .readout_eligibility import spike_slope
+from .research_workspace import peer_checkout
 
 PEER_SHA='607ffca7c9222c5e3fd9741c3ebdf5939e10bedf'
 ROOT=Path(__file__).resolve().parents[3]
-PEER=ROOT.parent/'review-gemini-r8-607ffca'
+PEER=peer_checkout(ROOT,'review-gemini-r8-607ffca')
 
 
 def peer_module(filename):

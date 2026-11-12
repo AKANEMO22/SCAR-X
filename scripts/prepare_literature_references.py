@@ -5,12 +5,15 @@ checkouts are read-only: refuse wrong/dirty paths rather than resetting them.
 """
 from pathlib import Path
 import json,subprocess
+import sys
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from scarx.evaluation.research_workspace import references_directory
 def git(path,*args):return subprocess.check_output(['git','-C',str(path),*args],text=True).strip()
 def main():
     manifest=json.loads((ROOT/'docs/research/literature/sources/upstream-pins-20261112.json').read_text(encoding='utf-8'))
-    refs=ROOT.parent.parent/'references';refs.mkdir(parents=True,exist_ok=True)
+    refs=references_directory(ROOT);refs.mkdir(parents=True,exist_ok=True)
     for entry in manifest['entries']:
         if not entry.get('commit'):continue
         path=refs/entry['name']

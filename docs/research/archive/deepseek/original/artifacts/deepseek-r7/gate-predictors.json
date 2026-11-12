@@ -1,0 +1,54 @@
+{
+  "n_cells": 60,
+  "n_reached": 8,
+  "reached_values": [
+    -3.91,
+    -2.54,
+    -0.98,
+    -0.78,
+    1.95,
+    2.15,
+    2.73,
+    2.93
+  ],
+  "order_stats": {
+    "orde > pari > sim_": {
+      "mean": 4.84375,
+      "n_reached": 5,
+      "n": 10
+    },
+    "pari > orde > sim_": {
+      "mean": 7.91015625,
+      "n_reached": 1,
+      "n": 10
+    },
+    "sim_ > orde > pari": {
+      "mean": 8.88671875,
+      "n_reached": 2,
+      "n": 10
+    },
+    "orde > sim_ > pari": {
+      "mean": 12.8125,
+      "n_reached": 0,
+      "n": 10
+    },
+    "pari > sim_ > orde": {
+      "mean": 16.40625,
+      "n_reached": 0,
+      "n": 10
+    },
+    "sim_ > pari > orde": {
+      "mean": 16.66015625,
+      "n_reached": 0,
+      "n": 10
+    }
+  },
+  "seeds_with_3plus": [],
+  "corr_base_inter": 0.6518088167609826,
+  "corr_base_delta": -0.6504306385942664,
+  "baseline_reached_mean": 22.412109375,
+  "baseline_missed_mean": 29.608623798076923,
+  "verdict": "order_lever",
+  "analysis_of": "gate-reachability-60.json",
+  "new_runs": 0
+}

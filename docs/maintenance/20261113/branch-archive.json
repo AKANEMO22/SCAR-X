@@ -1,0 +1,833 @@
+{
+  "date": "2026-11-13",
+  "refs": [
+    {
+      "ref": "refs/heads/codex/consolidate-research-20261113",
+      "sha": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+      "tag": "archive/2026-11-13/branches/codex/consolidate-research-20261113",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/consolidate-research-20261113"
+    },
+    {
+      "ref": "refs/heads/codex/integrate-grok-round1",
+      "sha": "2a93730dd2fee44979afa32da73022a8b35252a1",
+      "tag": "archive/2026-11-13/branches/codex/integrate-grok-round1",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/integrate-grok-round1"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-adaptive-credit-routing-20261112",
+      "sha": "22bb9781f4ed8f60f7180bdb56b6570e64e1f503",
+      "tag": "archive/2026-11-13/branches/codex/scarx-adaptive-credit-routing-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-adaptive-credit-routing-20261112"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-capacity-h64-h128-20261112",
+      "sha": "cec35fd9a0a5489042f23003e1b9c3f49893eeec",
+      "tag": "archive/2026-11-13/branches/codex/scarx-capacity-h64-h128-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-capacity-h64-h128-20261112"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-forensic-r6-20261111",
+      "sha": "2e64075e144caf19ff20f0fa589f5c20e6759354",
+      "tag": "archive/2026-11-13/branches/codex/scarx-forensic-r6-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-forensic-r6-20261111"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-literature-first-20261112",
+      "sha": "09f561754edd0f8c66a338b4114567a903fc4d9d",
+      "tag": "archive/2026-11-13/branches/codex/scarx-literature-first-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-literature-first-20261112"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-neural-learning-v2",
+      "sha": "2d0f08e8d8fae4479d3bf83b8be9656c974e658d",
+      "tag": "archive/2026-11-13/branches/codex/scarx-neural-learning-v2",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-neural-learning-v2"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-output-codec-p0-20261111",
+      "sha": "01c316797d256dbb97687e6312fa19e8161a460e",
+      "tag": "archive/2026-11-13/branches/codex/scarx-output-codec-p0-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-output-codec-p0-20261111"
+    },
+    {
+      "ref": "refs/heads/codex/scarx-r8-matched-controls-20261112",
+      "sha": "93b5b96bebaf22dbc39a3f96b2cac7c917d5e377",
+      "tag": "archive/2026-11-13/branches/codex/scarx-r8-matched-controls-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-r8-matched-controls-20261112"
+    },
+    {
+      "ref": "refs/heads/cursor/scarx-release-candidate",
+      "sha": "854250b43787d2abcecf4fa3ec4fc05118f22b4b",
+      "tag": "archive/2026-11-13/branches/cursor/scarx-release-candidate",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/cursor/scarx-release-candidate"
+    },
+    {
+      "ref": "refs/heads/main",
+      "sha": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+      "tag": "archive/2026-11-13/branches/main",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/main"
+    },
+    {
+      "ref": "refs/heads/research/antigravity-gemini/scarx-neural-round1-20261111",
+      "sha": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "tag": "archive/2026-11-13/branches/research/antigravity-gemini/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/antigravity-gemini/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/heads/research/antigravity/scarx-neural-round1-20261111",
+      "sha": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+      "tag": "archive/2026-11-13/branches/research/antigravity/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/antigravity/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r2-readout-learnability",
+      "sha": "7d590f768b36eb9d60e5c9433f1966e4e620cff3",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r2-readout-learnability",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r2-readout-learnability"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r3-temporal-substrate",
+      "sha": "42ed574264816e3a246a984a274f903f7eecdbfa",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r3-temporal-substrate",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r3-temporal-substrate"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r4-relational-representation",
+      "sha": "10e1c7df9a585566db04e754af9ba7b419d8bab1",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r4-relational-representation",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r4-relational-representation"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r5-independent-relational-binding",
+      "sha": "d6c609df6f90fc8df96fb3de424dd54388f8dc59",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r5-independent-relational-binding",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r5-independent-relational-binding"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r6-learning-scaling",
+      "sha": "ceb98e33b40e8b47c6788b7d483e8b52a97d3351",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r6-learning-scaling",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r6-learning-scaling"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r6d-audit",
+      "sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r6d-audit",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r6d-audit"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/r7-causal-hidden",
+      "sha": "c2742540009da3839979d74bde3b73f232c8ebd5",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r7-causal-hidden",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r7-causal-hidden"
+    },
+    {
+      "ref": "refs/heads/research/deepseek/scarx-neural-round1-20261111",
+      "sha": "61eeb77cff2b371ec314d3e5bcc9e6fd29d00eef",
+      "tag": "archive/2026-11-13/branches/research/deepseek/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r10-replication-learning-bottleneck-20261112",
+      "sha": "4c3129b852e1117ff06ce151438130ec260b80df",
+      "tag": "archive/2026-11-13/branches/research/gemini/r10-replication-learning-bottleneck-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r10-replication-learning-bottleneck-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r11-shared-learning-readout-20261112",
+      "sha": "0116fa28beaa292914f061a203ae592f319fc66c",
+      "tag": "archive/2026-11-13/branches/research/gemini/r11-shared-learning-readout-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r11-shared-learning-readout-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r12-replay-lite-continual-memory-20261112",
+      "sha": "b40d774854059f24212e0832725c81bf85c1523c",
+      "tag": "archive/2026-11-13/branches/research/gemini/r12-replay-lite-continual-memory-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r12-replay-lite-continual-memory-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r6-local-associative-learning",
+      "sha": "df683923722409ab00ee40213e7cda29b2003900",
+      "tag": "archive/2026-11-13/branches/research/gemini/r6-local-associative-learning",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r6-local-associative-learning"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r7-hidden-representation-learning",
+      "sha": "631c89041ec7ed3ce5d6b08373b68e9dc2e4a122",
+      "tag": "archive/2026-11-13/branches/research/gemini/r7-hidden-representation-learning",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r7-hidden-representation-learning"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r8-causal-learning-retention-20261112",
+      "sha": "607ffca7c9222c5e3fd9741c3ebdf5939e10bedf",
+      "tag": "archive/2026-11-13/branches/research/gemini/r8-causal-learning-retention-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r8-causal-learning-retention-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r9-massive-neural-search-20261112",
+      "sha": "2c41fdaf6fc491845879d638ac80449caf597471",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9-massive-neural-search-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9-massive-neural-search-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r9b-p1-matched-control-20261112",
+      "sha": "43147639fb611b05156566191ff9a4bbaece1b6a",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9b-p1-matched-control-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9b-p1-matched-control-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r9c-distractor-causal-localization-20261112",
+      "sha": "e65dbbdb735cc37834f0c2de365d317ee7c1563a",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9c-distractor-causal-localization-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9c-distractor-causal-localization-20261112"
+    },
+    {
+      "ref": "refs/heads/research/gemini/r9c-repair-literature-acceleration-20261112",
+      "sha": "f7d9b70bbd36cca6fe86472978bb17ee0e75afb8",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9c-repair-literature-acceleration-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9c-repair-literature-acceleration-20261112"
+    },
+    {
+      "ref": "refs/heads/research/grok/r2-dendritic-transfer",
+      "sha": "3bcf609a60ad66271c0429287eb902b899904d95",
+      "tag": "archive/2026-11-13/branches/research/grok/r2-dendritic-transfer",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r2-dendritic-transfer"
+    },
+    {
+      "ref": "refs/heads/research/grok/r3-temporal-stress",
+      "sha": "211380fecdcd05966ec78bb7686f54fa8179c11a",
+      "tag": "archive/2026-11-13/branches/research/grok/r3-temporal-stress",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r3-temporal-stress"
+    },
+    {
+      "ref": "refs/heads/research/grok/r4-online-readout-mechanism",
+      "sha": "8f200b988788dfb735a763fcbe085bf4546f731f",
+      "tag": "archive/2026-11-13/branches/research/grok/r4-online-readout-mechanism",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r4-online-readout-mechanism"
+    },
+    {
+      "ref": "refs/heads/research/grok/r5-independent-audit",
+      "sha": "b0480c9cc02a3f35ba994480df2a7d984b6f89f1",
+      "tag": "archive/2026-11-13/branches/research/grok/r5-independent-audit",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r5-independent-audit"
+    },
+    {
+      "ref": "refs/heads/research/grok/r6-causal-readout-repair",
+      "sha": "c39e9db7771582d9933af402a209917328b71119",
+      "tag": "archive/2026-11-13/branches/research/grok/r6-causal-readout-repair",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r6-causal-readout-repair"
+    },
+    {
+      "ref": "refs/heads/research/grok/r6d-adversarial-audit",
+      "sha": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "tag": "archive/2026-11-13/branches/research/grok/r6d-adversarial-audit",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r6d-adversarial-audit"
+    },
+    {
+      "ref": "refs/heads/research/grok/scarx-neural-round1-20261111",
+      "sha": "4cad9eb17f3660b241cefa21938ddee2359dd09b",
+      "tag": "archive/2026-11-13/branches/research/grok/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/remotes/origin/codex/scarx-adaptive-credit-routing-20261112",
+      "sha": "22bb9781f4ed8f60f7180bdb56b6570e64e1f503",
+      "tag": "archive/2026-11-13/branches/codex/scarx-adaptive-credit-routing-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-adaptive-credit-routing-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/codex/scarx-capacity-h64-h128-20261112",
+      "sha": "cec35fd9a0a5489042f23003e1b9c3f49893eeec",
+      "tag": "archive/2026-11-13/branches/codex/scarx-capacity-h64-h128-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-capacity-h64-h128-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/codex/scarx-literature-first-20261112",
+      "sha": "09f561754edd0f8c66a338b4114567a903fc4d9d",
+      "tag": "archive/2026-11-13/branches/codex/scarx-literature-first-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/codex/scarx-literature-first-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/cursor/scarx-release-candidate",
+      "sha": "854250b43787d2abcecf4fa3ec4fc05118f22b4b",
+      "tag": "archive/2026-11-13/branches/cursor/scarx-release-candidate",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/cursor/scarx-release-candidate"
+    },
+    {
+      "ref": "refs/remotes/origin/main",
+      "sha": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+      "tag": "archive/2026-11-13/branches/main",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/main"
+    },
+    {
+      "ref": "refs/remotes/origin/research/antigravity-gemini/scarx-neural-round1-20261111",
+      "sha": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "tag": "archive/2026-11-13/branches/research/antigravity-gemini/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/antigravity-gemini/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/remotes/origin/research/antigravity/scarx-neural-round1-20261111",
+      "sha": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+      "tag": "archive/2026-11-13/branches/research/antigravity/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/antigravity/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r2-readout-learnability",
+      "sha": "7d590f768b36eb9d60e5c9433f1966e4e620cff3",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r2-readout-learnability",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r2-readout-learnability"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r3-temporal-substrate",
+      "sha": "42ed574264816e3a246a984a274f903f7eecdbfa",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r3-temporal-substrate",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r3-temporal-substrate"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r4-relational-representation",
+      "sha": "10e1c7df9a585566db04e754af9ba7b419d8bab1",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r4-relational-representation",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r4-relational-representation"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r5-independent-relational-binding",
+      "sha": "d6c609df6f90fc8df96fb3de424dd54388f8dc59",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r5-independent-relational-binding",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r5-independent-relational-binding"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r6-learning-scaling",
+      "sha": "ceb98e33b40e8b47c6788b7d483e8b52a97d3351",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r6-learning-scaling",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r6-learning-scaling"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r6d-audit",
+      "sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r6d-audit",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r6d-audit"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/r7-causal-hidden",
+      "sha": "c2742540009da3839979d74bde3b73f232c8ebd5",
+      "tag": "archive/2026-11-13/branches/research/deepseek/r7-causal-hidden",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/r7-causal-hidden"
+    },
+    {
+      "ref": "refs/remotes/origin/research/deepseek/scarx-neural-round1-20261111",
+      "sha": "61eeb77cff2b371ec314d3e5bcc9e6fd29d00eef",
+      "tag": "archive/2026-11-13/branches/research/deepseek/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/deepseek/scarx-neural-round1-20261111"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r10-replication-learning-bottleneck-20261112",
+      "sha": "4c3129b852e1117ff06ce151438130ec260b80df",
+      "tag": "archive/2026-11-13/branches/research/gemini/r10-replication-learning-bottleneck-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r10-replication-learning-bottleneck-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r11-shared-learning-readout-20261112",
+      "sha": "0116fa28beaa292914f061a203ae592f319fc66c",
+      "tag": "archive/2026-11-13/branches/research/gemini/r11-shared-learning-readout-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r11-shared-learning-readout-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r12-replay-lite-continual-memory-20261112",
+      "sha": "b40d774854059f24212e0832725c81bf85c1523c",
+      "tag": "archive/2026-11-13/branches/research/gemini/r12-replay-lite-continual-memory-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r12-replay-lite-continual-memory-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r6-local-associative-learning",
+      "sha": "df683923722409ab00ee40213e7cda29b2003900",
+      "tag": "archive/2026-11-13/branches/research/gemini/r6-local-associative-learning",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r6-local-associative-learning"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r7-hidden-representation-learning",
+      "sha": "631c89041ec7ed3ce5d6b08373b68e9dc2e4a122",
+      "tag": "archive/2026-11-13/branches/research/gemini/r7-hidden-representation-learning",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r7-hidden-representation-learning"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r8-causal-learning-retention-20261112",
+      "sha": "607ffca7c9222c5e3fd9741c3ebdf5939e10bedf",
+      "tag": "archive/2026-11-13/branches/research/gemini/r8-causal-learning-retention-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r8-causal-learning-retention-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r9-massive-neural-search-20261112",
+      "sha": "2c41fdaf6fc491845879d638ac80449caf597471",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9-massive-neural-search-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9-massive-neural-search-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r9b-p1-matched-control-20261112",
+      "sha": "43147639fb611b05156566191ff9a4bbaece1b6a",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9b-p1-matched-control-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9b-p1-matched-control-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r9c-distractor-causal-localization-20261112",
+      "sha": "e65dbbdb735cc37834f0c2de365d317ee7c1563a",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9c-distractor-causal-localization-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9c-distractor-causal-localization-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/gemini/r9c-repair-literature-acceleration-20261112",
+      "sha": "f7d9b70bbd36cca6fe86472978bb17ee0e75afb8",
+      "tag": "archive/2026-11-13/branches/research/gemini/r9c-repair-literature-acceleration-20261112",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/gemini/r9c-repair-literature-acceleration-20261112"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/r2-dendritic-transfer",
+      "sha": "3bcf609a60ad66271c0429287eb902b899904d95",
+      "tag": "archive/2026-11-13/branches/research/grok/r2-dendritic-transfer",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r2-dendritic-transfer"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/r3-temporal-stress",
+      "sha": "211380fecdcd05966ec78bb7686f54fa8179c11a",
+      "tag": "archive/2026-11-13/branches/research/grok/r3-temporal-stress",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r3-temporal-stress"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/r4-online-readout-mechanism",
+      "sha": "8f200b988788dfb735a763fcbe085bf4546f731f",
+      "tag": "archive/2026-11-13/branches/research/grok/r4-online-readout-mechanism",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r4-online-readout-mechanism"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/r5-independent-audit",
+      "sha": "b0480c9cc02a3f35ba994480df2a7d984b6f89f1",
+      "tag": "archive/2026-11-13/branches/research/grok/r5-independent-audit",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r5-independent-audit"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/r6-causal-readout-repair",
+      "sha": "c39e9db7771582d9933af402a209917328b71119",
+      "tag": "archive/2026-11-13/branches/research/grok/r6-causal-readout-repair",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/r6-causal-readout-repair"
+    },
+    {
+      "ref": "refs/remotes/origin/research/grok/scarx-neural-round1-20261111",
+      "sha": "4cad9eb17f3660b241cefa21938ddee2359dd09b",
+      "tag": "archive/2026-11-13/branches/research/grok/scarx-neural-round1-20261111",
+      "tag_ref": "refs/tags/archive/2026-11-13/branches/research/grok/scarx-neural-round1-20261111"
+    }
+  ],
+  "worktrees": [
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\antigravity-scarx-neural-round1-20261111",
+      "original_head": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+      "snapshot_sha": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+      "tag": "archive/2026-11-13/worktrees/antigravity-scarx-neural-round1-20261111-16a6d8d6",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "9b4ee407fa1761e4cdf5b5a7680c5bb742221d4dd92b4460d318e9335b11638d",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\antigravity-scarx-neural-round1-20261111-16a6d8d6.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-gemini-8f24a5a",
+      "original_head": "8f24a5abde0598201e558eee559564ccde889145",
+      "snapshot_sha": "8f24a5abde0598201e558eee559564ccde889145",
+      "tag": "archive/2026-11-13/worktrees/forensic-source-gemini-8f24a5a-1cfa9e6f",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "32dc9ee4caf43b7d249ce2f119d7db1fa930165b742546ae6a9f899e20250330",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\forensic-source-gemini-8f24a5a-1cfa9e6f.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-r6b-c39e9db",
+      "original_head": "c39e9db7771582d9933af402a209917328b71119",
+      "snapshot_sha": "c39e9db7771582d9933af402a209917328b71119",
+      "tag": "archive/2026-11-13/worktrees/forensic-source-r6b-c39e9db-af52056b",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2939f41ab2ceb2b8112cffdade841f44695a92c058046064a828b504e7a41d68",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\forensic-source-r6b-c39e9db-af52056b.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\forensic-source-r6d-4bacd7b",
+      "original_head": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "snapshot_sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "tag": "archive/2026-11-13/worktrees/forensic-source-r6d-4bacd7b-5b8fe6bc",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2939f41ab2ceb2b8112cffdade841f44695a92c058046064a828b504e7a41d68",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\forensic-source-r6d-4bacd7b-5b8fe6bc.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\integrate-grok-round1",
+      "original_head": "2a93730dd2fee44979afa32da73022a8b35252a1",
+      "snapshot_sha": "2a93730dd2fee44979afa32da73022a8b35252a1",
+      "tag": "archive/2026-11-13/worktrees/integrate-grok-round1-57f888a7",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2939f41ab2ceb2b8112cffdade841f44695a92c058046064a828b504e7a41d68",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\integrate-grok-round1-57f888a7.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-antigravity-gemini",
+      "original_head": "62247ff89a3f0adb4f426789208bdd71cd704b59",
+      "snapshot_sha": "31df9d2e6a450324eaa94d6af37b9114d3c1417b",
+      "tag": "archive/2026-11-13/worktrees/review-antigravity-gemini-3dafe9ae",
+      "dirty_count": 1,
+      "dirty_paths": [
+        "cross-review-dc-alif-62247ff.md"
+      ],
+      "local_recovery_sha256": "c6b01d06692718e55b20422dc5f1e4f1a9de7ba8816bee2ad32ec7be681d7352",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-antigravity-gemini-3dafe9ae.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-basicfactory-037d77e",
+      "original_head": "037d77e24e2a3a545b72bc0d1dbcbfbd4b3369c7",
+      "snapshot_sha": "b456b87d43521c62e23f83d9b78e5d203e9c6232",
+      "tag": "archive/2026-11-13/worktrees/review-basicfactory-037d77e-945429e2",
+      "dirty_count": 6,
+      "dirty_paths": [
+        "artifacts/basic-knowledge-public-provenance-review-v1.json",
+        "runs/20261111T164122Z-basic-knowledge-public-provenance-review-v1-ac6c87/manifest.json",
+        "runs/20261111T164122Z-basic-knowledge-public-provenance-review-v1-ac6c87/report.md",
+        "runs/20261111T164122Z-basic-knowledge-public-provenance-review-v1-ac6c87/result.json",
+        "runs/20261111T164122Z-basic-knowledge-public-provenance-review-v1-ac6c87/source.zip",
+        "runs/INDEX.md"
+      ],
+      "local_recovery_sha256": "a3536e4c7c0b849cedb8d1aa7846ea7b39c199861f99e68dbcc9e78a8d1367ea",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-basicfactory-037d77e-945429e2.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-deepseek-r7-853d408",
+      "original_head": "853d40832b41286046772cfc006ecc0fa548863c",
+      "snapshot_sha": "853d40832b41286046772cfc006ecc0fa548863c",
+      "tag": "archive/2026-11-13/worktrees/review-deepseek-r7-853d408-17cc63a5",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "5c31100ddad786a5ff7990b3ce3800717e7cb06c8559c35f34732c33ac5d86a0",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-deepseek-r7-853d408-17cc63a5.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-deepseek-r7-aacde3f",
+      "original_head": "aacde3fa0983b9cebc585e19980022a52a45ccad",
+      "snapshot_sha": "aacde3fa0983b9cebc585e19980022a52a45ccad",
+      "tag": "archive/2026-11-13/worktrees/review-deepseek-r7-aacde3f-c586eca6",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "ed65065d1e36f8aaba073d4783b0af8c654b6a078dd1811e97a797931fbcf470",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-deepseek-r7-aacde3f-c586eca6.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-81641f7",
+      "original_head": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "snapshot_sha": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "tag": "archive/2026-11-13/worktrees/review-gemini-81641f7-5ce804c0",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "c23ba285921dcfbb5f6e0c1b6b8cf068278388bdb903001e4fd66b3b0ad05455",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-gemini-81641f7-5ce804c0.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r7-64441fb",
+      "original_head": "64441fb9be162864cf2e1252638d101a2031f2e4",
+      "snapshot_sha": "64441fb9be162864cf2e1252638d101a2031f2e4",
+      "tag": "archive/2026-11-13/worktrees/review-gemini-r7-64441fb-1a84fca3",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "cc0ba13a4b04af4cccc2e9a469139f58ab1f0235395878fdf45d8e9d4f27e24e",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-gemini-r7-64441fb-1a84fca3.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r7-bad0582",
+      "original_head": "bad058238083ec875aaef3a271e3f3c68680e3c1",
+      "snapshot_sha": "bad058238083ec875aaef3a271e3f3c68680e3c1",
+      "tag": "archive/2026-11-13/worktrees/review-gemini-r7-bad0582-13f9a13f",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2488a62f5a75de3942daaa1e64f847cddaf9c79705f1e4f8da2473740efa4878",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-gemini-r7-bad0582-13f9a13f.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r9-2c41fda",
+      "original_head": "2c41fdaf6fc491845879d638ac80449caf597471",
+      "snapshot_sha": "2c41fdaf6fc491845879d638ac80449caf597471",
+      "tag": "archive/2026-11-13/worktrees/review-gemini-r9-2c41fda-77864757",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "dadcb86d653540d10d3624c10f658b12c31ce80d257a58836de49806ac9578d6",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-gemini-r9-2c41fda-77864757.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-grok-14bf4b2",
+      "original_head": "14bf4b2574d77052e3c8d4d682238b2dbd5320c5",
+      "snapshot_sha": "14bf4b2574d77052e3c8d4d682238b2dbd5320c5",
+      "tag": "archive/2026-11-13/worktrees/review-grok-14bf4b2-6c1afa21",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "b7fbf8d5ba259da7393c02408469bdfc4125a8ace437386c27b46a050e676673",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-grok-14bf4b2-6c1afa21.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-grok-d509878",
+      "original_head": "d50987862ff80d2bd8556eecfb6af1b259cc591e",
+      "snapshot_sha": "d50987862ff80d2bd8556eecfb6af1b259cc591e",
+      "tag": "archive/2026-11-13/worktrees/review-grok-d509878-d8179569",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "b7fbf8d5ba259da7393c02408469bdfc4125a8ace437386c27b46a050e676673",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\review-grok-d509878-d8179569.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "original_head": "2e64075e144caf19ff20f0fa589f5c20e6759354",
+      "snapshot_sha": "6121c6d449db46f21557eaa6a7fd669fba91b311",
+      "tag": "archive/2026-11-13/worktrees/scarx-forensic-r6-20261111-a6b0c54e",
+      "dirty_count": 2,
+      "dirty_paths": [
+        "artifacts/forensic-r6/SCARX_CODEX_FORENSIC_REVIEW_2026-11-11.zip",
+        "artifacts/forensic-r6/SCARX_RAW_EVENT_ADDENDUM_2026-11-11.zip"
+      ],
+      "local_recovery_sha256": "5d1675cc1e0899f4277d087733633354ab830df50527016657cfe49091b407a2",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scarx-forensic-r6-20261111-a6b0c54e.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2",
+      "original_head": "2d0f08e8d8fae4479d3bf83b8be9656c974e658d",
+      "snapshot_sha": "2d0f08e8d8fae4479d3bf83b8be9656c974e658d",
+      "tag": "archive/2026-11-13/worktrees/scarx-neural-learning-v2-e4a71dfa",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2d34d341dcbbdfcbf7ea6e26461e6ee8a2be2238f149a64159b1ec9b9a9e7acd",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scarx-neural-learning-v2-e4a71dfa.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-output-codec-p0-20261111",
+      "original_head": "01c316797d256dbb97687e6312fa19e8161a460e",
+      "snapshot_sha": "01c316797d256dbb97687e6312fa19e8161a460e",
+      "tag": "archive/2026-11-13/worktrees/scarx-output-codec-p0-20261111-c0405aeb",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "77ceeb2e6f2880cd7d2b11b6795eaa72460827f609e5c28825c1abce11604671",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scarx-output-codec-p0-20261111-c0405aeb.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-antigravity-round1",
+      "original_head": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "snapshot_sha": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "tag": "archive/2026-11-13/worktrees/scar-x-antigravity-round1-bd2d4b50",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "53d433f06ea7304b2fe10b563c9f2cbe1d07b86b4166f1e837f3f1af45805193",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-antigravity-round1-bd2d4b50.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r2",
+      "original_head": "7d590f768b36eb9d60e5c9433f1966e4e620cff3",
+      "snapshot_sha": "7d590f768b36eb9d60e5c9433f1966e4e620cff3",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r2-19a961dd",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "d788b481a3160d12dd975b21f918b3a54b29a942cad96363a1f1c8d7387014d4",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r2-19a961dd.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r3",
+      "original_head": "42ed574264816e3a246a984a274f903f7eecdbfa",
+      "snapshot_sha": "42ed574264816e3a246a984a274f903f7eecdbfa",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r3-1f3b1b8d",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "f50bb53446e08dceb6ca88e12538f3febea057d654427594dfea1737739df91b",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r3-1f3b1b8d.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r4",
+      "original_head": "10e1c7df9a585566db04e754af9ba7b419d8bab1",
+      "snapshot_sha": "10e1c7df9a585566db04e754af9ba7b419d8bab1",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r4-2f373d0f",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "2adb168ab2ac90160ff5d4e70a20e646004226c1f20d4a2b7dfe2bd147154eaa",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r4-2f373d0f.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r5",
+      "original_head": "d6c609df6f90fc8df96fb3de424dd54388f8dc59",
+      "snapshot_sha": "d6c609df6f90fc8df96fb3de424dd54388f8dc59",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r5-e76d28c3",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "bf67f43caee2bad3cca4af2def27c496fdd73cec325eed5be0b52af9273021e2",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r5-e76d28c3.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r6",
+      "original_head": "ceb98e33b40e8b47c6788b7d483e8b52a97d3351",
+      "snapshot_sha": "ceb98e33b40e8b47c6788b7d483e8b52a97d3351",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r6-a7b2d342",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "a5f65762c602720104dc465c359aabccd17cb6a9b91f3c7f8c1f64eab46e9c75",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r6-a7b2d342.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r6d",
+      "original_head": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "snapshot_sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r6d-f959b9e0",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "94b07bc7dd150dad91ad2448016c36ad69e28e52610fd821c04bfe90a214eb74",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r6d-f959b9e0.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-r7",
+      "original_head": "c2742540009da3839979d74bde3b73f232c8ebd5",
+      "snapshot_sha": "c2742540009da3839979d74bde3b73f232c8ebd5",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-r7-49f36bb7",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "f3462d9d29bd99e4fbbbbab46f2977a370b610e4f62b06ac53ccfa55de7f15bd",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-r7-49f36bb7.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-review",
+      "original_head": "72aca4e79d2df3c10085140d8f988623360254af",
+      "snapshot_sha": "72aca4e79d2df3c10085140d8f988623360254af",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-review-674aef8d",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "4511d124fd2f22a64ef2183676d048fd15950c95feb0a5e836ec7c773c2448de",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-review-674aef8d.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-round1",
+      "original_head": "61eeb77cff2b371ec314d3e5bcc9e6fd29d00eef",
+      "snapshot_sha": "61eeb77cff2b371ec314d3e5bcc9e6fd29d00eef",
+      "tag": "archive/2026-11-13/worktrees/scar-x-deepseek-round1-435567e8",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "b2fb2ffa0676183df8b2642265aa050a05c239c06ad825c499d045acfde2d3e2",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-deepseek-round1-435567e8.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-gemini-r6",
+      "original_head": "df683923722409ab00ee40213e7cda29b2003900",
+      "snapshot_sha": "df683923722409ab00ee40213e7cda29b2003900",
+      "tag": "archive/2026-11-13/worktrees/scar-x-gemini-r6-93778c07",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "7e16ebf6c37d91f78d413ea7f44d0621a50876c826dac8b41c403aed21db7e0f",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-gemini-r6-93778c07.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r2",
+      "original_head": "3bcf609a60ad66271c0429287eb902b899904d95",
+      "snapshot_sha": "3bcf609a60ad66271c0429287eb902b899904d95",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r2-39c2396a",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "eeb501a2c0fba99d9ef4b2548190620a6528924715ffe065bc91c325aa9af594",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r2-39c2396a.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r3",
+      "original_head": "211380fecdcd05966ec78bb7686f54fa8179c11a",
+      "snapshot_sha": "211380fecdcd05966ec78bb7686f54fa8179c11a",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r3-a8985f38",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "eeb501a2c0fba99d9ef4b2548190620a6528924715ffe065bc91c325aa9af594",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r3-a8985f38.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r4",
+      "original_head": "8f200b988788dfb735a763fcbe085bf4546f731f",
+      "snapshot_sha": "8f200b988788dfb735a763fcbe085bf4546f731f",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r4-7018c936",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "eeb501a2c0fba99d9ef4b2548190620a6528924715ffe065bc91c325aa9af594",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r4-7018c936.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r5",
+      "original_head": "b0480c9cc02a3f35ba994480df2a7d984b6f89f1",
+      "snapshot_sha": "b0480c9cc02a3f35ba994480df2a7d984b6f89f1",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r5-5d257538",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "eeb501a2c0fba99d9ef4b2548190620a6528924715ffe065bc91c325aa9af594",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r5-5d257538.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r6",
+      "original_head": "c39e9db7771582d9933af402a209917328b71119",
+      "snapshot_sha": "c39e9db7771582d9933af402a209917328b71119",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r6-1bfe4f4b",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "53fd67eb27cfdc074dbd55288e2d6f6c39ecf940e61f7ae2cb0faaff4d812fe9",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r6-1bfe4f4b.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-r6d",
+      "original_head": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+      "snapshot_sha": "fb2018016c37c75151ed7ea28af5dcc55cf43f38",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-r6d-67094c7b",
+      "dirty_count": 6,
+      "dirty_paths": [
+        "runs/grok-r6d-audit-v1/result.json",
+        "scripts/grok_r6d_audit.py",
+        "src/scarx/evaluation/r5b_independent.py",
+        "src/scarx/evaluation/r5b_probe.py",
+        "src/scarx/evaluation/r6d_reference.py",
+        "tests/test_r6d_reference.py"
+      ],
+      "local_recovery_sha256": "399b836673400dc31ae1ca7661accf9f7aaeaafeec13bbb218d5a6a05e0f0d98",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-r6d-67094c7b.zip"
+    },
+    {
+      "original_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-round1",
+      "original_head": "4cad9eb17f3660b241cefa21938ddee2359dd09b",
+      "snapshot_sha": "4cad9eb17f3660b241cefa21938ddee2359dd09b",
+      "tag": "archive/2026-11-13/worktrees/scar-x-grok-round1-77488e9b",
+      "dirty_count": 0,
+      "dirty_paths": [],
+      "local_recovery_sha256": "53fd67eb27cfdc074dbd55288e2d6f6c39ecf940e61f7ae2cb0faaff4d812fe9",
+      "local_recovery_zip": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\maintenance\\20261113-cleanup\\worktree-backups\\scar-x-grok-round1-77488e9b.zip"
+    }
+  ],
+  "protected": {
+    "reason": "User explicitly protects active R13.1 benchmark",
+    "worktrees": [
+      "C:/Users/hachimi/Downloads/model agent/scar-x-gemini-r7"
+    ],
+    "local_refs": [
+      "research/gemini/r13-1-spike-composition-vs-small-llm",
+      "research/gemini/r13-neural-engram-composition-20261112"
+    ],
+    "remote_refs": [
+      "refs/heads/research/gemini/r13-neural-engram-composition-20261112"
+    ],
+    "keep_dependency_worktrees": [
+      "review-gemini-r8-607ffca",
+      "review-gemini-r8-fe472b3",
+      "scarx-acr-20261112",
+      "scarx-capacity-h64-h128-20261112",
+      "scarx-literature-first-20261112",
+      "scarx-r8-matched-controls-20261112"
+    ],
+    "never_touch": [
+      "production local/generation1",
+      "model caches/downloads",
+      "all active benchmark files/processes",
+      "scar-x-claude-research"
+    ],
+    "protected_ref_prefixes": [
+      "research/gemini/r13"
+    ],
+    "current_active_branch_observed": "research/gemini/r13-2-independent-composition-fair-llm",
+    "rule": "Protect entire live worktree and ALL R13-family refs, including branches created after initial inventory; do not archive/delete or checkout live branches."
+  },
+  "restore_note": "Archive tags preserve Git source/raw; ignored local-state recoveryZIPs remain local. Never touch activeR13.1 or model caches."
+}

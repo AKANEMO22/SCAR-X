@@ -1,0 +1,115 @@
+{
+  "stage": "stage0_audit",
+  "verdict": "STAGE0_PASS",
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "check": "1. Frozen ALIF holds independently decodable vA and vB (~0.997)",
+      "pass": true,
+      "detail": "vA=0.9967, vB=0.9974, mixed_only=0.9947, neural_query=1.0000"
+    },
+    {
+      "check": "2. R5 query-conditioned feature map is strictly label-independent",
+      "pass": true,
+      "detail": "max abs diff = 0.00e+00"
+    },
+    {
+      "check": "3. Query cue is obtained from actual input marker (ch4/ch5 at located query tick)",
+      "pass": true,
+      "detail": "matches q on 4096/4096 rows"
+    },
+    {
+      "check": "4. First-key shortcut is ~0.75 direct accuracy",
+      "pass": true,
+      "detail": "first_key_acc=0.7522 (expected 0.7522 on seed 97001)"
+    },
+    {
+      "check": "5. Case-A first-key both-correct is 0.0000 (and flip rate is 0.0000)",
+      "pass": true,
+      "detail": "caseA_both_correct=0.0000, caseA_flip=0.0000"
+    },
+    {
+      "check": "6. Counterfactual siblings differ ONLY at query tick and ONLY on query channels 4:6",
+      "pass": true,
+      "detail": "off_tick_max=0.00e+00, nonquery_ch_max=0.00e+00, query_ch_diff=1.5000"
+    },
+    {
+      "check": "7. Original R5 readout updates real weights",
+      "pass": true,
+      "detail": "||dW||_F=2.0395, ||db||_2=0.3418"
+    },
+    {
+      "check": "8. Hidden weights untouched & SpikingCore.step parity is exact (0.00e+00)",
+      "pass": true,
+      "detail": "sha_match=True, max_spike_diff=0.00e+00"
+    },
+    {
+      "check": "9. No test feature statistics enter training/calibration during evaluation",
+      "pass": true,
+      "detail": "n=32, mean_diff=0.00e+00"
+    },
+    {
+      "check": "10. Query tick is dynamically located (not hardcoded to 10) and preserves cue under shift",
+      "pass": true,
+      "detail": "qt_clean=10, qt_shifted=11, cue_equal=True"
+    },
+    {
+      "check": "11. Temporal transformations measurably change neural state (and zero-pad no-op is caught)",
+      "pass": true,
+      "detail": "zero_pad_diff=0.0000, noise_pad_shift_diff=1.0000, reversed_writes_diff=2.0085"
+    },
+    {
+      "check": "12. Exact reproduction of R5B confirmation results (direct=0.8989, both_A=0.6676, both_B=0.9809)",
+      "pass": true,
+      "detail": "direct=0.8989, both_A=0.6676, both_B=0.9809, dist_bothA=0.4536, noise_bothA=0.4512"
+    }
+  ],
+  "historical_reproduction": {
+    "dev_seeds": [
+      97001,
+      97007,
+      97013
+    ],
+    "conf_seeds": [
+      98001,
+      98007,
+      98013,
+      98019,
+      98023,
+      98029,
+      98031,
+      98037
+    ],
+    "pre_query_vA_ridge": 0.9967447916666666,
+    "pre_query_vB_ridge": 0.9973958333333334,
+    "pre_query_mixed_only_ridge": 0.9946859903381643,
+    "neural_query_delta_ridge": 1.0,
+    "r5_dev_direct": 0.9635416666666666,
+    "r5_dev_both_A": 0.8418563396721387,
+    "r5_dev_both_B": 1.0,
+    "r5_conf_clean_direct": 0.89892578125,
+    "r5_conf_clean_both_A": 0.6676171928664432,
+    "r5_conf_clean_both_B": 0.9808925435845981,
+    "r5_conf_distractors_both_A": 0.45356827909861697,
+    "r5_conf_noise_both_A": 0.45122026573985796,
+    "r5_gated_off_crosstalk_l2_norm": 4.3856282234191895,
+    "first_key_shortcut_direct": 0.752197265625,
+    "first_key_caseA_both_correct": 0.0
+  },
+  "resources": {
+    "peak_rss_bytes": 71200768,
+    "peak_commit_or_vms_bytes": 90812416,
+    "os_process_peak_working_set_bytes": 74153984,
+    "os_process_peak_pagefile_commit_bytes": 94437376,
+    "samples": 24,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.3527046000017435,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  }
+}

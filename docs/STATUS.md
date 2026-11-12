@@ -1,5 +1,23 @@
 # Trạng thái SCAR-X
 
+## Hợp nhất workspace13/11/2026
+
+[Research center](research/README.md), [sơ đồ](research/EXPERIMENT_MAP.md),
+[sổ kết quả](research/EXPERIMENT_LEDGER.md), [catalog120entries](research/experiment-catalog.json).
+Hợp nhất các nhánh research Codex đã kiểm vào main, gồm P0/forensic/R8/ACR/
+literature/capacity, không promotelearner vào serving. Source sản phẩm neural/
+app/learning/integrations vàweightsproduction không bị thay bởi cleanup.
+227originalreports/protocol/metricreceipts của27peerbranches lưu nguyênbytes,
+có immutableSHA/tag. Claim chưakiểm/retracted/invalid được gắn scope rõ ràng.
+Các ghi chú “không sửa main” trong báo cáo cũ mô tả lần đo trước, không phải
+approvalproduction do việc hợp nhất tài liệu sau này.
+
+**BẢO VỆ R13.1:** `scar-x-gemini-r7` và nhánh
+`research/gemini/r13-1-spike-composition-vs-small-llm` đang chạy; không xóa,
+di chuyển, checkout/reset, sửa uncommittedfiles, dừng process hoặc dọncache.
+Các sourceworktrees có thể là dependency giữ lại. Các báo cáo R13f4272ba là
+snapshot cũ, không kết quả của activeR13.1. [Cleanup/restore](maintenance/20261113/README.md).
+
 ## Capacity H64/H128 — hoàn tất, integrityPASS / CAPACITY_ONLY_SIGNAL
 
 [Results](research/CAPACITY_H64_H128_RESULTS_20261112.md),

@@ -1,0 +1,64 @@
+{
+  "stage": 0,
+  "checks": [
+    {
+      "check": "ridge reference is independent and agrees",
+      "pass": true,
+      "detail": "tasks21.ridge_probe=0.9975 vs SVD reference=0.9975"
+    },
+    {
+      "check": "forward parity vs SpikingCore.step (voltage)",
+      "pass": true,
+      "detail": "max diff 0.00e+00"
+    },
+    {
+      "check": "forward parity vs SpikingCore.step (spikes)",
+      "pass": true,
+      "detail": "max diff 0.00e+00"
+    },
+    {
+      "check": "forward parity vs SpikingCore.step (features)",
+      "pass": true,
+      "detail": "max diff 0.00e+00"
+    },
+    {
+      "check": "decay formula matches hand computation",
+      "pass": true,
+      "detail": "got [np.float32(0.75), np.float32(0.1875), np.float32(0.046875), np.float32(0.011719)]"
+    },
+    {
+      "check": "spike count is the arithmetic count",
+      "pass": true,
+      "detail": "count accumulator is a plain running sum"
+    },
+    {
+      "check": "training-only statistics differ from train+test statistics",
+      "pass": true,
+      "detail": "so leakage would be detectable, not invisible"
+    },
+    {
+      "check": "calibration is independent of dev data",
+      "pass": true,
+      "detail": "same value with and without dev in scope"
+    },
+    {
+      "check": "feature state is bounded and small",
+      "pass": true,
+      "detail": "D=384B E=576B (hidden stays 48)"
+    },
+    {
+      "check": "hidden weights unchanged by feature extraction",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "verdict": "P0_PASS",
+  "fixed_from_r2a": [
+    "D1 ridge self-comparison",
+    "D2 hardcoded S5_no_leakage",
+    "D3 missing forward parity",
+    "D4 no manual reference"
+  ]
+}

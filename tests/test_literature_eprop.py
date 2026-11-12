@@ -12,6 +12,7 @@ from scarx.evaluation.literature_eprop import (
 from scarx.evaluation.r8_matched_credit import MatchedLocalCredit
 from scarx.evaluation.r8_stopped_reset import StoppedResetCredit
 from scarx.evaluation.readout_eligibility import spike_slope
+from scarx.evaluation.research_workspace import references_directory
 
 
 def config(beta=.08):
@@ -29,7 +30,7 @@ def test_execute_pinned_upstream_trace_function_without_tensorflow():
     This verifies its hardcoded recurrence, not TF/autodiff/BPTT parity.
     """
     root = Path(__file__).resolve().parents[1]
-    path = root.parent.parent / 'references/eligibility_propagation/Figure_3_and_S7_e_prop_tutorials/models.py'
+    path = references_directory(root) / 'eligibility_propagation/Figure_3_and_S7_e_prop_tutorials/models.py'
     raw = path.read_bytes()
     assert hashlib.sha256(raw).hexdigest() == '53360882ef676442fac80311d0a48769cfa1e979ff68bb87e2f095dcb90a3c3b'
     tree = ast.parse(raw)

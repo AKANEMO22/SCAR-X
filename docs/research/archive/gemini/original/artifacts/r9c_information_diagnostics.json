@@ -1,0 +1,421 @@
+{
+  "study": "r9c_information_localization_and_causal_diagnostics",
+  "timestamp": "2026-11-12T07:36:59Z",
+  "dev_seeds": [
+    140011,
+    140017,
+    140023
+  ],
+  "summary_conditions": {
+    "clean": {
+      "mean": 61.588541666666664,
+      "std": 13.895126637452186,
+      "raw": [
+        71.484375,
+        67.578125,
+        45.703125
+      ]
+    },
+    "weak_distractor": {
+      "mean": 56.380208333333336,
+      "std": 8.605578980134535,
+      "raw": [
+        62.109375,
+        60.546875,
+        46.484375
+      ]
+    },
+    "medium_distractor": {
+      "mean": 52.473958333333336,
+      "std": 6.825699178167269,
+      "raw": [
+        58.203125,
+        54.296875,
+        44.921875
+      ]
+    },
+    "strong_distractor": {
+      "mean": 50.390625,
+      "std": 2.9491540762776367,
+      "raw": [
+        53.125,
+        50.78125,
+        47.265625
+      ]
+    },
+    "swapped_channel": {
+      "mean": 50.260416666666664,
+      "std": 4.302789490067267,
+      "raw": [
+        53.125,
+        52.34375,
+        45.3125
+      ]
+    },
+    "shifted_time": {
+      "mean": 54.557291666666664,
+      "std": 2.354575692711605,
+      "raw": [
+        57.03125,
+        54.296875,
+        52.34375
+      ]
+    }
+  },
+  "summary_causal": {
+    "clean_direct_acc": {
+      "mean": 0.6158854166666666,
+      "std": 0.13895126637452188,
+      "raw": [
+        0.71484375,
+        0.67578125,
+        0.45703125
+      ]
+    },
+    "noisy_direct_acc": {
+      "mean": 0.5247395833333334,
+      "std": 0.0682569917816727,
+      "raw": [
+        0.58203125,
+        0.54296875,
+        0.44921875
+      ]
+    },
+    "vsr_direct_acc": {
+      "mean": 0.55859375,
+      "std": 0.06810779599282303,
+      "raw": [
+        0.58984375,
+        0.60546875,
+        0.48046875
+      ]
+    },
+    "ssr_direct_acc": {
+      "mean": 0.5455729166666666,
+      "std": 0.07638025716699201,
+      "raw": [
+        0.625,
+        0.5390625,
+        0.47265625
+      ]
+    },
+    "asr_direct_acc": {
+      "mean": 0.5221354166666666,
+      "std": 0.04627436365603349,
+      "raw": [
+        0.55078125,
+        0.546875,
+        0.46875
+      ]
+    },
+    "fsr_direct_acc": {
+      "mean": 0.5703125,
+      "std": 0.09858929268846846,
+      "raw": [
+        0.63671875,
+        0.6171875,
+        0.45703125
+      ]
+    },
+    "recovery_vsr": {
+      "mean": 1.5098039215686274,
+      "std": 2.1663782968421823,
+      "raw": [
+        0.058823529411764705,
+        0.47058823529411764,
+        4.0
+      ]
+    },
+    "recovery_fsr": {
+      "mean": 0.6568627450980392,
+      "std": 0.30612735286266657,
+      "raw": [
+        0.4117647058823529,
+        0.5588235294117647,
+        1.0
+      ]
+    }
+  },
+  "per_seed_results": [
+    {
+      "seed": 140011,
+      "cond_direct_acc": {
+        "clean": 0.71484375,
+        "weak_distractor": 0.62109375,
+        "medium_distractor": 0.58203125,
+        "strong_distractor": 0.53125,
+        "swapped_channel": 0.53125,
+        "shifted_time": 0.5703125
+      },
+      "clean_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.5390625,
+          "nonlinear_probe": 0.52734375,
+          "probe_nonlin_gain": -0.01171875
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.62109375,
+          "nonlinear_probe": 0.765625,
+          "probe_nonlin_gain": 0.14453125
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.51953125,
+          "nonlinear_probe": 0.5703125,
+          "probe_nonlin_gain": 0.05078125
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.59765625,
+          "nonlinear_probe": 0.5859375,
+          "probe_nonlin_gain": -0.01171875
+        },
+        "S5_Traces": {
+          "linear_probe": 0.6171875,
+          "nonlinear_probe": 0.8125,
+          "probe_nonlin_gain": 0.1953125
+        },
+        "S6_Features": {
+          "linear_probe": 0.61328125,
+          "nonlinear_probe": 0.703125,
+          "probe_nonlin_gain": 0.08984375
+        },
+        "Direct_Readout": 0.71484375,
+        "attribution_category": "INFORMATION_PRESERVED_AND_DECODED"
+      },
+      "noisy_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.49609375,
+          "nonlinear_probe": 0.4921875,
+          "probe_nonlin_gain": -0.00390625
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.5390625,
+          "nonlinear_probe": 0.55078125,
+          "probe_nonlin_gain": 0.01171875
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.52734375,
+          "nonlinear_probe": 0.47265625,
+          "probe_nonlin_gain": -0.0546875
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.5234375,
+          "nonlinear_probe": 0.55078125,
+          "probe_nonlin_gain": 0.02734375
+        },
+        "S5_Traces": {
+          "linear_probe": 0.484375,
+          "nonlinear_probe": 0.5859375,
+          "probe_nonlin_gain": 0.1015625
+        },
+        "S6_Features": {
+          "linear_probe": 0.59375,
+          "nonlinear_probe": 0.61328125,
+          "probe_nonlin_gain": 0.01953125
+        },
+        "Direct_Readout": 0.58203125,
+        "attribution_category": "TRAINING_FAILURE"
+      },
+      "causal_restoration": {
+        "n_samples": 256,
+        "clean_direct_acc": 0.71484375,
+        "noisy_direct_acc": 0.58203125,
+        "vsr_direct_acc": 0.58984375,
+        "ssr_direct_acc": 0.625,
+        "asr_direct_acc": 0.55078125,
+        "fsr_direct_acc": 0.63671875,
+        "recovery_vsr": 0.058823529411764705,
+        "recovery_fsr": 0.4117647058823529,
+        "mean_voltage_perturbation": 4.188038349151611,
+        "mean_extra_spikes": 7.098958492279053,
+        "mean_adaptation_perturbation": 4.235091686248779
+      }
+    },
+    {
+      "seed": 140017,
+      "cond_direct_acc": {
+        "clean": 0.67578125,
+        "weak_distractor": 0.60546875,
+        "medium_distractor": 0.54296875,
+        "strong_distractor": 0.5078125,
+        "swapped_channel": 0.5234375,
+        "shifted_time": 0.54296875
+      },
+      "clean_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.48828125,
+          "nonlinear_probe": 0.47265625,
+          "probe_nonlin_gain": -0.015625
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.53515625,
+          "nonlinear_probe": 0.71875,
+          "probe_nonlin_gain": 0.18359375
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.609375,
+          "nonlinear_probe": 0.578125,
+          "probe_nonlin_gain": -0.03125
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.59375,
+          "nonlinear_probe": 0.78125,
+          "probe_nonlin_gain": 0.1875
+        },
+        "S5_Traces": {
+          "linear_probe": 0.56640625,
+          "nonlinear_probe": 0.79296875,
+          "probe_nonlin_gain": 0.2265625
+        },
+        "S6_Features": {
+          "linear_probe": 0.71484375,
+          "nonlinear_probe": 0.65234375,
+          "probe_nonlin_gain": -0.0625
+        },
+        "Direct_Readout": 0.67578125,
+        "attribution_category": "INFORMATION_PRESERVED_AND_DECODED"
+      },
+      "noisy_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.50390625,
+          "nonlinear_probe": 0.51953125,
+          "probe_nonlin_gain": 0.015625
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.47265625,
+          "nonlinear_probe": 0.51171875,
+          "probe_nonlin_gain": 0.0390625
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.5546875,
+          "nonlinear_probe": 0.5390625,
+          "probe_nonlin_gain": -0.015625
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.4921875,
+          "nonlinear_probe": 0.515625,
+          "probe_nonlin_gain": 0.0234375
+        },
+        "S5_Traces": {
+          "linear_probe": 0.46875,
+          "nonlinear_probe": 0.61328125,
+          "probe_nonlin_gain": 0.14453125
+        },
+        "S6_Features": {
+          "linear_probe": 0.56640625,
+          "nonlinear_probe": 0.55078125,
+          "probe_nonlin_gain": -0.015625
+        },
+        "Direct_Readout": 0.54296875,
+        "attribution_category": "TRAINING_FAILURE"
+      },
+      "causal_restoration": {
+        "n_samples": 256,
+        "clean_direct_acc": 0.67578125,
+        "noisy_direct_acc": 0.54296875,
+        "vsr_direct_acc": 0.60546875,
+        "ssr_direct_acc": 0.5390625,
+        "asr_direct_acc": 0.546875,
+        "fsr_direct_acc": 0.6171875,
+        "recovery_vsr": 0.47058823529411764,
+        "recovery_fsr": 0.5588235294117647,
+        "mean_voltage_perturbation": 3.5701520442962646,
+        "mean_extra_spikes": 5.0234375,
+        "mean_adaptation_perturbation": 3.402872085571289
+      }
+    },
+    {
+      "seed": 140023,
+      "cond_direct_acc": {
+        "clean": 0.45703125,
+        "weak_distractor": 0.46484375,
+        "medium_distractor": 0.44921875,
+        "strong_distractor": 0.47265625,
+        "swapped_channel": 0.453125,
+        "shifted_time": 0.5234375
+      },
+      "clean_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.44921875,
+          "nonlinear_probe": 0.4765625,
+          "probe_nonlin_gain": 0.02734375
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.4453125,
+          "nonlinear_probe": 0.56640625,
+          "probe_nonlin_gain": 0.12109375
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.48828125,
+          "nonlinear_probe": 0.5078125,
+          "probe_nonlin_gain": 0.01953125
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.4921875,
+          "nonlinear_probe": 0.7265625,
+          "probe_nonlin_gain": 0.234375
+        },
+        "S5_Traces": {
+          "linear_probe": 0.484375,
+          "nonlinear_probe": 0.67578125,
+          "probe_nonlin_gain": 0.19140625
+        },
+        "S6_Features": {
+          "linear_probe": 0.55859375,
+          "nonlinear_probe": 0.5859375,
+          "probe_nonlin_gain": 0.02734375
+        },
+        "Direct_Readout": 0.45703125,
+        "attribution_category": "TRAINING_FAILURE"
+      },
+      "noisy_decodability": {
+        "S1_Input": {
+          "linear_probe": 0.5234375,
+          "nonlinear_probe": 0.515625,
+          "probe_nonlin_gain": -0.0078125
+        },
+        "S2_Voltage": {
+          "linear_probe": 0.51953125,
+          "nonlinear_probe": 0.54296875,
+          "probe_nonlin_gain": 0.0234375
+        },
+        "S3_Spikes": {
+          "linear_probe": 0.5234375,
+          "nonlinear_probe": 0.5234375,
+          "probe_nonlin_gain": 0.0
+        },
+        "S4_Adaptation": {
+          "linear_probe": 0.51953125,
+          "nonlinear_probe": 0.6171875,
+          "probe_nonlin_gain": 0.09765625
+        },
+        "S5_Traces": {
+          "linear_probe": 0.5546875,
+          "nonlinear_probe": 0.54296875,
+          "probe_nonlin_gain": -0.01171875
+        },
+        "S6_Features": {
+          "linear_probe": 0.44140625,
+          "nonlinear_probe": 0.5703125,
+          "probe_nonlin_gain": 0.12890625
+        },
+        "Direct_Readout": 0.44921875,
+        "attribution_category": "TRAINING_FAILURE"
+      },
+      "causal_restoration": {
+        "n_samples": 256,
+        "clean_direct_acc": 0.45703125,
+        "noisy_direct_acc": 0.44921875,
+        "vsr_direct_acc": 0.48046875,
+        "ssr_direct_acc": 0.47265625,
+        "asr_direct_acc": 0.46875,
+        "fsr_direct_acc": 0.45703125,
+        "recovery_vsr": 4.0,
+        "recovery_fsr": 1.0,
+        "mean_voltage_perturbation": 3.451002836227417,
+        "mean_extra_spikes": 5.115885257720947,
+        "mean_adaptation_perturbation": 3.5439205169677734
+      }
+    }
+  ],
+  "elapsed_seconds": 38.067354679107666
+}

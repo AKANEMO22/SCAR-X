@@ -1,0 +1,232 @@
+{
+  "by_group_top": {
+    "H1_temporal_credit_reset": [
+      {
+        "candidate_id": "H1-022",
+        "composite_score": 0.8388671875,
+        "direct_acc": 0.68359375,
+        "probe_gain": 0.1552734375,
+        "causal_revert_drop": 0.1552734375,
+        "hypothesis": "Eligibility under subtractive_exact (lambda=0.0) with boxcar surrogate and uniform_mid timescale"
+      },
+      {
+        "candidate_id": "H1-086",
+        "composite_score": 0.833984375,
+        "direct_acc": 0.6884765625,
+        "probe_gain": 0.1455078125,
+        "causal_revert_drop": 0.1455078125,
+        "hypothesis": "Eligibility under damped_subtractive (lambda=0.2) with boxcar surrogate and uniform_mid timescale"
+      },
+      {
+        "candidate_id": "H1-085",
+        "composite_score": 0.802734375,
+        "direct_acc": 0.671875,
+        "probe_gain": 0.130859375,
+        "causal_revert_drop": 0.130859375,
+        "hypothesis": "Eligibility under damped_subtractive (lambda=0.2) with boxcar surrogate and hetero_linear timescale"
+      },
+      {
+        "candidate_id": "H1-090",
+        "composite_score": 0.80078125,
+        "direct_acc": 0.66015625,
+        "probe_gain": 0.140625,
+        "causal_revert_drop": 0.140625,
+        "hypothesis": "Eligibility under damped_subtractive (lambda=0.2) with gaussian surrogate and uniform_mid timescale"
+      },
+      {
+        "candidate_id": "H1-121",
+        "composite_score": 0.7861328125,
+        "direct_acc": 0.6669921875,
+        "probe_gain": 0.119140625,
+        "causal_revert_drop": 0.119140625,
+        "hypothesis": "Eligibility under damped_subtractive (lambda=0.5) with gaussian surrogate and hetero_linear timescale"
+      }
+    ],
+    "H2_hidden_representation_timescales": [
+      {
+        "candidate_id": "H2-087",
+        "composite_score": 0.669921875,
+        "direct_acc": 0.634765625,
+        "probe_gain": 0.03515625,
+        "causal_revert_drop": 0.03515625,
+        "hypothesis": "Factorial interaction of hetero_bimodal timescale decay with hard_sensory sensory gating (thresh=0.8)"
+      },
+      {
+        "candidate_id": "H2-027",
+        "composite_score": 0.6611328125,
+        "direct_acc": 0.6025390625,
+        "probe_gain": 0.05859375,
+        "causal_revert_drop": 0.05859375,
+        "hypothesis": "Factorial interaction of uniform_mid timescale decay with soft_sigmoid sensory gating (thresh=0.8)"
+      },
+      {
+        "candidate_id": "H2-012",
+        "composite_score": 0.6591796875,
+        "direct_acc": 0.5927734375,
+        "probe_gain": 0.06640625,
+        "causal_revert_drop": 0.06640625,
+        "hypothesis": "Factorial interaction of uniform_fast timescale decay with soft_sigmoid sensory gating (thresh=1.0)"
+      },
+      {
+        "candidate_id": "H2-092",
+        "composite_score": 0.650390625,
+        "direct_acc": 0.5869140625,
+        "probe_gain": 0.0634765625,
+        "causal_revert_drop": 0.0634765625,
+        "hypothesis": "Factorial interaction of hetero_bimodal timescale decay with soft_sigmoid sensory gating (thresh=1.0)"
+      },
+      {
+        "candidate_id": "H2-076",
+        "composite_score": 0.6474609375,
+        "direct_acc": 0.58984375,
+        "probe_gain": 0.0576171875,
+        "causal_revert_drop": 0.0576171875,
+        "hypothesis": "Factorial interaction of hetero_log timescale decay with soft_sigmoid sensory gating (thresh=1.0)"
+      }
+    ],
+    "H3_distractor_state_preservation": [
+      {
+        "candidate_id": "H3-050",
+        "composite_score": 0.599609375,
+        "direct_acc": 0.583984375,
+        "probe_gain": 0.015625,
+        "causal_revert_drop": 0.015625,
+        "hypothesis": "Sensory attenuation=0.6 (noise_credit=False, floor=0.15) under subtractive_exact"
+      },
+      {
+        "candidate_id": "H3-030",
+        "composite_score": 0.583984375,
+        "direct_acc": 0.599609375,
+        "probe_gain": -0.015625,
+        "causal_revert_drop": -0.015625,
+        "hypothesis": "Sensory attenuation=0.2 (noise_credit=True, floor=0.15) under hard_reset"
+      },
+      {
+        "candidate_id": "H3-058",
+        "composite_score": 0.583984375,
+        "direct_acc": 0.6015625,
+        "probe_gain": -0.017578125,
+        "causal_revert_drop": -0.017578125,
+        "hypothesis": "Sensory attenuation=0.6 (noise_credit=True, floor=0.15) under subtractive_exact"
+      },
+      {
+        "candidate_id": "H3-031",
+        "composite_score": 0.58203125,
+        "direct_acc": 0.564453125,
+        "probe_gain": 0.017578125,
+        "causal_revert_drop": 0.017578125,
+        "hypothesis": "Sensory attenuation=0.2 (noise_credit=True, floor=0.25) under hard_reset"
+      },
+      {
+        "candidate_id": "H3-034",
+        "composite_score": 0.58203125,
+        "direct_acc": 0.5546875,
+        "probe_gain": 0.02734375,
+        "causal_revert_drop": 0.02734375,
+        "hypothesis": "Sensory attenuation=0.4 (noise_credit=False, floor=0.15) under subtractive_exact"
+      }
+    ],
+    "H4_readout_associative_memory": [
+      {
+        "candidate_id": "H4-049",
+        "composite_score": 0.990234375,
+        "direct_acc": 0.923828125,
+        "probe_gain": 0.06640625,
+        "causal_revert_drop": 0.06640625,
+        "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)"
+      },
+      {
+        "candidate_id": "H4-050",
+        "composite_score": 0.990234375,
+        "direct_acc": 0.923828125,
+        "probe_gain": 0.06640625,
+        "causal_revert_drop": 0.06640625,
+        "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)"
+      },
+      {
+        "candidate_id": "H4-051",
+        "composite_score": 0.990234375,
+        "direct_acc": 0.923828125,
+        "probe_gain": 0.06640625,
+        "causal_revert_drop": 0.06640625,
+        "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)"
+      },
+      {
+        "candidate_id": "H4-007",
+        "composite_score": 0.966796875,
+        "direct_acc": 0.927734375,
+        "probe_gain": 0.0390625,
+        "causal_revert_drop": 0.0390625,
+        "hypothesis": "Associative retrieval for 2 keys with standard_linear readout (uniform_slow, recurrent_only)"
+      },
+      {
+        "candidate_id": "H4-008",
+        "composite_score": 0.966796875,
+        "direct_acc": 0.927734375,
+        "probe_gain": 0.0390625,
+        "causal_revert_drop": 0.0390625,
+        "hypothesis": "Associative retrieval for 2 keys with standard_linear readout (uniform_slow, recurrent_only)"
+      }
+    ],
+    "H5_continual_learning_cascade": [
+      {
+        "candidate_id": "H5-078",
+        "composite_score": 0.3489583333333334,
+        "direct_acc": 0.5651041666666667,
+        "probe_gain": 0.17317708333333331,
+        "causal_revert_drop": 0.10807291666666663,
+        "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.001) across hetero_linear"
+      },
+      {
+        "candidate_id": "H5-070",
+        "composite_score": 0.29166666666666663,
+        "direct_acc": 0.5364583333333333,
+        "probe_gain": 0.15625,
+        "causal_revert_drop": 0.11979166666666669,
+        "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.0002) across hetero_linear"
+      },
+      {
+        "candidate_id": "H5-077",
+        "composite_score": 0.28385416666666674,
+        "direct_acc": 0.5677083333333334,
+        "probe_gain": 0.20963541666666669,
+        "causal_revert_drop": 0.14192708333333331,
+        "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.001) across hetero_linear"
+      },
+      {
+        "candidate_id": "H5-073",
+        "composite_score": 0.28385416666666663,
+        "direct_acc": 0.5416666666666666,
+        "probe_gain": 0.17057291666666663,
+        "causal_revert_drop": 0.12890624999999997,
+        "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.0005) across hetero_linear"
+      },
+      {
+        "candidate_id": "H5-074",
+        "composite_score": 0.2708333333333333,
+        "direct_acc": 0.5390625,
+        "probe_gain": 0.17317708333333331,
+        "causal_revert_drop": 0.13411458333333331,
+        "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.0005) across hetero_linear"
+      }
+    ]
+  },
+  "overall_top16": [
+    "H4-049",
+    "H4-050",
+    "H4-051",
+    "H1-022",
+    "H1-086",
+    "H1-085",
+    "H1-090",
+    "H2-087",
+    "H2-027",
+    "H2-012",
+    "H3-050",
+    "H3-030",
+    "H3-058",
+    "H5-078",
+    "H5-070",
+    "H5-077"
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "source_run": "20261111T120610Z-r7-r5b-capacity-diagnostic-v1-c374b5",
+  "tasks": [
+    "sim_xor",
+    "parity3",
+    "order_short"
+  ],
+  "note": "meanF_honest excludes the last task, whose forgetting is zero by construction, not by measurement",
+  "per_seed": {
+    "linear_2logit": [
+      {
+        "seed": 140011,
+        "forget_per_task": {
+          "sim_xor": 45.703125,
+          "parity3": 12.5,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 19.401041666666664,
+        "meanF_honest": 29.1015625,
+        "worstF": 45.703125,
+        "worst_task": "sim_xor",
+        "acq": 0.6966145833333334,
+        "final": 0.5026041666666666
+      },
+      {
+        "seed": 140017,
+        "forget_per_task": {
+          "sim_xor": 34.765625,
+          "parity3": 21.875,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 18.880208333333336,
+        "meanF_honest": 28.3203125,
+        "worstF": 34.765625,
+        "worst_task": "sim_xor",
+        "acq": 0.7356770833333334,
+        "final": 0.546875
+      },
+      {
+        "seed": 140023,
+        "forget_per_task": {
+          "sim_xor": 52.34375,
+          "parity3": 21.484375,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 24.609375,
+        "meanF_honest": 36.9140625,
+        "worstF": 52.34375,
+        "worst_task": "sim_xor",
+        "acq": 0.8216145833333334,
+        "final": 0.5755208333333334
+      }
+    ],
+    "linear_wide_32": [
+      {
+        "seed": 140011,
+        "forget_per_task": {
+          "sim_xor": 33.203125,
+          "parity3": 5.46875,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 12.890625,
+        "meanF_honest": 19.3359375,
+        "worstF": 33.203125,
+        "worst_task": "sim_xor",
+        "acq": 0.7252604166666666,
+        "final": 0.5963541666666666
+      },
+      {
+        "seed": 140017,
+        "forget_per_task": {
+          "sim_xor": 17.578125,
+          "parity3": 14.453125,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 10.677083333333332,
+        "meanF_honest": 16.015625,
+        "worstF": 17.578125,
+        "worst_task": "sim_xor",
+        "acq": 0.71875,
+        "final": 0.6119791666666666
+      },
+      {
+        "seed": 140023,
+        "forget_per_task": {
+          "sim_xor": 12.5,
+          "parity3": -0.390625,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 4.036458333333334,
+        "meanF_honest": 6.0546875,
+        "worstF": 12.5,
+        "worst_task": "sim_xor",
+        "acq": 0.7239583333333334,
+        "final": 0.68359375
+      }
+    ],
+    "mlp32_tanh": [
+      {
+        "seed": 140011,
+        "forget_per_task": {
+          "sim_xor": 1.953125,
+          "parity3": 0.0,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 0.6510416666666667,
+        "meanF_honest": 0.9765625,
+        "worstF": 1.953125,
+        "worst_task": "sim_xor",
+        "acq": 0.78515625,
+        "final": 0.7786458333333334
+      },
+      {
+        "seed": 140017,
+        "forget_per_task": {
+          "sim_xor": 2.734375,
+          "parity3": 9.375,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 4.036458333333334,
+        "meanF_honest": 6.0546875,
+        "worstF": 9.375,
+        "worst_task": "parity3",
+        "acq": 0.8307291666666666,
+        "final": 0.7903645833333334
+      },
+      {
+        "seed": 140023,
+        "forget_per_task": {
+          "sim_xor": 3.125,
+          "parity3": 8.59375,
+          "order_short": 0.0
+        },
+        "meanF_diluted": 3.90625,
+        "meanF_honest": 5.859375,
+        "worstF": 8.59375,
+        "worst_task": "parity3",
+        "acq": 0.8984375,
+        "final": 0.859375
+      }
+    ]
+  },
+  "summary": {
+    "linear_2logit": {
+      "acq": 0.7513020833333334,
+      "final": 0.5416666666666666,
+      "meanF_diluted": 20.963541666666668,
+      "meanF_honest": 31.4453125,
+      "worstF_mean": 44.270833333333336,
+      "worstF_max": 52.34375,
+      "passes_honest": false,
+      "passes_5b": false
+    },
+    "linear_wide_32": {
+      "acq": 0.72265625,
+      "final": 0.630642361111111,
+      "meanF_diluted": 9.201388888888888,
+      "meanF_honest": 13.802083333333334,
+      "worstF_mean": 21.09375,
+      "worstF_max": 33.203125,
+      "passes_honest": false,
+      "passes_5b": false
+    },
+    "mlp32_tanh": {
+      "acq": 0.8381076388888888,
+      "final": 0.8094618055555557,
+      "meanF_diluted": 2.8645833333333335,
+      "meanF_honest": 4.296875,
+      "worstF_mean": 6.640625,
+      "worstF_max": 9.375,
+      "passes_honest": false,
+      "passes_5b": false
+    }
+  }
+}

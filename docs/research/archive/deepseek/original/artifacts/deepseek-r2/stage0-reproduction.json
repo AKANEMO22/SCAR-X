@@ -1,0 +1,57 @@
+{
+  "stage": 0,
+  "task": "sim_xor",
+  "sampler": "hard-threshold",
+  "feature_decay": 0.25,
+  "seeds": [
+    92011,
+    92017,
+    92023
+  ],
+  "per_seed": [
+    {
+      "seed": 92011,
+      "ridge_decay025": 0.599609375,
+      "ridge_spikesum": 0.9375,
+      "online_published_clip": 0.486328125,
+      "online_clip_raised": 0.515625,
+      "sat_frac_published": 0.7802734375,
+      "loss_published": 0.6017786500815419,
+      "loss_raised": 0.37389409619675007
+    },
+    {
+      "seed": 92017,
+      "ridge_decay025": 0.701171875,
+      "ridge_spikesum": 0.998046875,
+      "online_published_clip": 0.48046875,
+      "online_clip_raised": 0.51171875,
+      "sat_frac_published": 0.759765625,
+      "loss_published": 0.510444758709184,
+      "loss_raised": 0.2520219676483064
+    },
+    {
+      "seed": 92023,
+      "ridge_decay025": 0.603515625,
+      "ridge_spikesum": 0.984375,
+      "online_published_clip": 0.484375,
+      "online_clip_raised": 0.4921875,
+      "sat_frac_published": 0.8115234375,
+      "loss_published": 0.5858619186202532,
+      "loss_raised": 0.22984805269585862
+    }
+  ],
+  "means": {
+    "ridge_decay025": 0.634765625,
+    "ridge_spikesum": 0.9733072916666666,
+    "online_published_clip": 0.4837239583333333,
+    "online_clip_raised": 0.5065104166666666,
+    "sat_frac_published": 0.7838541666666666,
+    "loss_published": 0.5660284424703264,
+    "loss_raised": 0.28525470551363835
+  },
+  "brief_targets": {
+    "ridge_decay025": 0.6953,
+    "ridge_spikesum": 0.9701,
+    "online_frozen": 0.5039
+  }
+}

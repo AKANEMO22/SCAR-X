@@ -6,9 +6,10 @@ import pytest
 from scarx.evaluation.forensic import r8_snapshot as S
 from scarx.neural.core import Config
 from scarx.neural.unified import UnifiedCore
+from scarx.evaluation.research_workspace import peer_checkout
 
 ROOT=Path(__file__).resolve().parents[1]
-PEER=ROOT.parent/'review-gemini-r8-fe472b3'
+PEER=peer_checkout(ROOT,'review-gemini-r8-fe472b3')
 
 
 @pytest.fixture(scope='module')

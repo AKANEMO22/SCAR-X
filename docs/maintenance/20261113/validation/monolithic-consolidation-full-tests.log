@@ -1,0 +1,71 @@
+........................................................................ [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 35%]
+........................................................................ [ 46%]
+........................................................................ [ 58%]
+.............................F.......................................... [ 70%]
+........................................................................ [ 82%]
+........................................................................ [ 93%]
+......................................                                   [100%]
+================================== FAILURES ===================================
+____________ test_explicit_json_teaching_updates_persistent_model _____________
+
+endpoint = (<scarx.app.state.Workbench object at 0x000002527BD0F950>, 'http://127.0.0.1:53698')
+
+    def test_explicit_json_teaching_updates_persistent_model(endpoint):
+        app,base=endpoint
+        body={'model':MODEL,'messages':[{'role':'user','content':json.dumps({'operation':'teach','task':'A','signal':2,'label':1,'confirmation':True,'repeats':8})}]}
+>       reply=json.load(post(base+'/v1/chat/completions',body))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_openai_backend.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_openai_backend.py:21: in post
+    return urllib.request.urlopen(request,timeout=10)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:216: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:525: in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:634: in http_response
+    response = self.parent.error(
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:563: in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:496: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <urllib.request.HTTPDefaultErrorHandler object at 0x0000025266367F10>
+req = <urllib.request.Request object at 0x000002527BDC5F90>
+fp = <http.client.HTTPResponse object at 0x000002527BF01420>, code = 507
+msg = 'Insufficient Storage'
+hdrs = <http.client.HTTPMessage object at 0x000002527BB18CD0>
+
+    def http_error_default(self, req, fp, code, msg, hdrs):
+>       raise HTTPError(req.full_url, code, msg, hdrs, fp)
+E       urllib.error.HTTPError: HTTP Error 507: Insufficient Storage
+
+C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\urllib\request.py:643: HTTPError
+---------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [13/Nov/2026 00:39:54] "POST /v1/chat/completions HTTP/1.1" 507 -
+============================== warnings summary ===============================
+tests/test_output_codec_p0.py::test_duplicate_members_and_corrupt_metadata_rejected
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'session.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+tests/test_r8_snapshot_adapter.py::test_duplicate_members_and_truncated_payload_rejected
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'metadata.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+tests/test_slow_trace.py::test_loader_rejects_duplicate_members_and_non_float32_without_mutation
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'extra.npz'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_openai_backend.py::test_explicit_json_teaching_updates_persistent_model
+1 failed, 613 passed, 3 warnings in 106.50s (0:01:46)

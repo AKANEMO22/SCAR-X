@@ -1,0 +1,101 @@
+{
+  "scope": "P0 only; no capability claim",
+  "checks": [
+    {
+      "check": "generator deterministic across repeated calls",
+      "pass": true,
+      "detail": "5 seeds bit-identical"
+    },
+    {
+      "check": "NO bag shortcut: order-1 probe <= 0.60 on all seeds",
+      "pass": true,
+      "detail": "worst order-1 = 0.5600"
+    },
+    {
+      "check": "order-1 shuffled control is near chance",
+      "pass": true,
+      "detail": "worst shuffled = 0.5200"
+    },
+    {
+      "check": "order-2 basis solves pair_binding (>= 0.90)",
+      "pass": true,
+      "detail": "worst order-2 = 1.0000"
+    },
+    {
+      "check": "strict_binding still requires order-3 (order-2 insufficient)",
+      "pass": true,
+      "detail": "order-2=0.4775 order-3=1.0000"
+    },
+    {
+      "check": "pair_binding returns strict_binding shapes",
+      "pass": true,
+      "detail": "(32, 12, 8) vs (32, 12, 8)"
+    },
+    {
+      "check": "inputs are finite and labels in range",
+      "pass": true,
+      "detail": "label set [0, 1]"
+    },
+    {
+      "check": "label permutation leaves the input hash unchanged",
+      "pass": true,
+      "detail": "input untouched by label handling"
+    },
+    {
+      "check": "hidden update independent of the label at equal reward",
+      "pass": true,
+      "detail": "w_in/w_rec bit-equal under permuted labels"
+    },
+    {
+      "check": "frozen arm does not change hidden weights",
+      "pass": true,
+      "detail": "w_in/w_rec unchanged after 16 updates"
+    },
+    {
+      "check": "checkpoint round-trip restores all arrays bit-exactly",
+      "pass": true,
+      "detail": "23 arrays"
+    },
+    {
+      "check": "cold-process resume reproduces the next step bit-exactly",
+      "pass": true,
+      "detail": "array hashes match"
+    },
+    {
+      "check": "peak commit under 2,000,000,000 B",
+      "pass": true,
+      "detail": "peak_commit=700,858,368 B"
+    },
+    {
+      "check": "monitor sampled (not a vacuous zero)",
+      "pass": true,
+      "detail": "3 samples"
+    }
+  ],
+  "passed": 14,
+  "total": 14,
+  "verdict": "P0_PASS",
+  "resources": {
+    "peak_rss_bytes": 43831296,
+    "peak_commit_or_vms_bytes": 700858368,
+    "os_process_peak_working_set_bytes": 45289472,
+    "os_process_peak_pagefile_commit_bytes": 702681088,
+    "samples": 3,
+    "interval_seconds": 0.05,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 0.07111770001938567,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  }
+}

@@ -1,0 +1,24 @@
+........................................................................ [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 35%]
+........................................................................ [ 47%]
+........................................................................ [ 59%]
+........................................................................ [ 71%]
+........................................................................ [ 82%]
+........................................................................ [ 94%]
+................................                                         [100%]
+============================== warnings summary ===============================
+tests/test_output_codec_p0.py::test_duplicate_members_and_corrupt_metadata_rejected
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'session.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+tests/test_r8_snapshot_adapter.py::test_duplicate_members_and_truncated_payload_rejected
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'metadata.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+tests/test_slow_trace.py::test_loader_rejects_duplicate_members_and_non_float32_without_mutation
+  C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1566: UserWarning: Duplicate name: 'extra.npz'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+608 passed, 3 warnings in 111.02s (0:01:51)
