@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Literature reference DEV — hoàn tất, REFERENCE_MIXED
+
+[Kết quả](research/LITERATURE_REFERENCE_RESULTS_20261112.md),
+[review độc lập](research/literature/reference-final-independent-audit.md).
+132jobs đủ,675.840prediction entries chấm lại; direct/probe/causal/OOD và
+equalCPU negatives giữ nguyên. eprop_matched cải thiện Distractor56,97→60,03%
+so own nhưng chưa65%, Binding85,42→78,58%; không broad learner/P1PASS.
+BrainTrace adapter bám surrogate oracle tốt trên fixture nhưng Binding68,62%
+cho thấy oraclealignment chưa chuyển thành qualitygain.97P0tests qua, thêm
+2reportingregressions; coldresume/native kiểm riêng. PeakRSS133,71MB/commit
+175,26MB. Không freshconfirmation/P2, không main/Hermes. Observer8772 giữ raw.
+ACR đang tiếp tục grid cũ từ55cell, không đổi equations/gates hoặc resetbudget;
+nguồn nằm ở nhánh riêng codex/scarx-adaptive-credit-routing-20261112/observer8771.
+
 ## Literature-first P0 — reference sẵn sàng kiểm DEV
 
 97targettests qua, gồm native parity, actual upstream e-prop trace AST,

@@ -1,5 +1,21 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Cập nhật nghiên cứu12/11/2026 — literature-first, research-only:** chỉ thị
+người dùng mới cho phép adapter/reference DEV cô lập: ưu tiên tái lập phương
+trình và tests e-prop/BrainTrace trước phát minh hoặc mở rộng ACR. ALIF H48,
+D8/fan8/hardspikes và source readout/optimizer giữ nguyên trong protocol này;
+không phải giới hạn capacity vĩnh viễn của sản phẩm. Full-surrogate sensitivity
+chỉ được dùng như oracle control frozenweights ngoài candidate; không đưa
+global RTRL/autograd/BPTT hoặc pretrained vào đường dự đoán chính.
+[Protocol](../experiments/literature-reference-dev-v1.md),
+[reuse matrix](research/literature/continual-and-local-signals.md),
+[reference e-prop](research/literature/eprop.md),
+[BrainTrace](research/literature/braintrace.md). SI mới có helper toán; chưa
+P2/retention. Scientific gates cũ giữ nguyên. Không fresh confirmation,
+main/Hermes/live/SQLite hoặc deploy từ phê duyệt research này. Những ghi chú
+“chỉ P0” bên dưới mô tả phạm vi lịch sử tương ứng, không thu hồi quyền DEV
+reference mới và cũng không cấp thêm quyền P2.
+
 **Phiên bản tài liệu:** 1.32 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
 
 **Phê duyệt mới:** người dùng chọn **“Chỉ duyệt kiểm tra P0”** cho đề xuất

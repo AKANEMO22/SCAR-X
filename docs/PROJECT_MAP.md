@@ -1,5 +1,15 @@
 # Bản đồ dự án SCAR-X
 
+**Literature-first12/11:** [reuse matrix](research/literature/continual-and-local-signals.md),
+[e-prop](research/literature/eprop.md), [BrainTrace](research/literature/braintrace.md),
+[protocol](../experiments/literature-reference-dev-v1.md). `evaluation/literature_*`
+chỉ research adapters/helper; upstream clone pin ở `local/references` ngoài
+source production, pin/license/hash trong `research/literature/sources`.
+Runner `run_literature_reference_dev.py`, audit `audit_literature_reference_dev.py`,
+oracle không học `verify_literature_oracle.py`, observer readonly8772. ACR55cell
+trước gián đoạn được [kiểm nguyên vẹn](research/literature/acr-interruption-audit.md),
+chưa đủ controls để advance. Không mở confirmation/P2/main/Hermes.
+
 **P1 confirmation12seed đã duyệt:** [report](research/R8_P1_CONFIRMATION_20261112.md),
 registration `experiments/r8-reset-credit-confirmation-v1.md`, runner
 `scripts/run_r8_confirmation.py` / `r8_confirmation_worker.py`, statistics
