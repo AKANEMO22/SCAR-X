@@ -1,0 +1,49 @@
+{
+  "verdict": "INCONCLUSIVE",
+  "r6b_seed_98001": {
+    "seed": 98001,
+    "both_A_from_predictions": 0.5901639344262295,
+    "prediction_sha256": "bf9979ad0140ed3611e0fcffb547e0bf80d30e2bedf5dec894d0b5bdb9e4109d",
+    "oracle_matches": true,
+    "query_tick": 10
+  },
+  "r6b_stored_both_A": 0.5901639344262295,
+  "r6b_prediction_recompute_matches_stored": true,
+  "r6a_gates_recomputed_from_trials": {
+    "G1_recomputed": true,
+    "G1_mean_both_A": 0.9244436698484302,
+    "G2_recomputed": true,
+    "G2_interval": {
+      "mean": 0.059814453125,
+      "lower95": 0.0330810546875,
+      "upper95": 0.09521789550781246,
+      "n_seeds": 8
+    },
+    "G4_in_json_not_recomputed": true,
+    "G5_in_json_not_recomputed": true,
+    "G6_recomputed": false,
+    "G6_json": false,
+    "confirmation_pass_json": false,
+    "stress_worst": {
+      "seed": 121017,
+      "arm": "stress-temporal",
+      "direct": 0.5556640625
+    },
+    "heldout_digest_unique_per_seed": {
+      "121011": 1,
+      "121017": 1,
+      "121023": 1,
+      "121029": 1,
+      "121031": 1,
+      "121037": 1,
+      "121041": 1,
+      "121043": 1
+    },
+    "published_boolean_agreement": {
+      "G1": true,
+      "G2": true,
+      "G6": true
+    }
+  },
+  "r6a_confirmation": "STOP_RECOMPUTED"
+}
