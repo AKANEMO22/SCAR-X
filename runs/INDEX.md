@@ -153,3 +153,4 @@
 - [20261112T034406Z-r8-report-repair-audit-v2-ec493b](20261112T034406Z-r8-report-repair-audit-v2-ec493b/report.md) — r8-report-repair-audit-v2
 - [20261112T034407Z-r8-repairs-regression-v1-3dabcd](20261112T034407Z-r8-repairs-regression-v1-3dabcd/report.md) — r8-repairs-regression-v1
 - [20261112T035052Z-r8-current-state-cold-v1-9689b2](20261112T035052Z-r8-current-state-cold-v1-9689b2/report.md) — r8-current-state-cold-v1
+- [20261112T060357Z-r8-reset-credit-confirmation-v1-84547e](20261112T060357Z-r8-reset-credit-confirmation-v1-84547e/report.md) — r8-reset-credit-confirmation-v1

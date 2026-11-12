@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+**P1 confirmation12seed đã duyệt:** [report](research/R8_P1_CONFIRMATION_20261112.md),
+registration `experiments/r8-reset-credit-confirmation-v1.md`, runner
+`scripts/run_r8_confirmation.py` / `r8_confirmation_worker.py`, statistics
+`evaluation/r8_confirmation.py`, independent reference
+`evaluation/forensic/confirmation_reference.py`. Receipt
+`artifacts/r8-reset-credit-confirmation-v1.json`: numericalP1FAIL, integrityPASS,
+giữ XOR gain và bằng chứng hidden learning; không deploy hoặc mở P2.
+
 **R8 matched/reset DEV:** [kết quả](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md),
 protocols `experiments/r8-{matched-credit,reset-credit}-dev-v1.md`, prototypes
 `evaluation/r8_matched_credit.py` / `r8_stopped_reset.py`, study oracle/probe

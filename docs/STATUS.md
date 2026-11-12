@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## P1 confirmation12seed — xong, P1_FAIL_RESEARCH_ONLY
+
+[Kết quả](research/R8_P1_CONFIRMATION_20261112.md), sourcebc686500, run84547e.
+Đủ204jobs/408conditions,417.792predictionrows chấm lại,50statisticalcontrasts
+scalarcrosscheckkhớp; integrityPASS nhưng chỉ XOR qua toàn bộP1gates. Hidden
+learning hữu ích được xác minh12seed trên3eventtasks; candidate bị tradeoff:
+bindingOOD regression, distractordirect63,64%<65%. XORdirect99,28%, probegain
+vsown+1,81đCI[+.80;+3.30]đ.28phút30giây, peakRSS258,04MB/commit244,36MB.
+Không tune/reuse bank, không P2/main/Hermes. Observerreadonly8767giữactual logs.
+
 ## R8 sửa và DEV thật — 12/11/2026, chưa formal P1/P2
 
 [Báo cáo](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md):96matchedjobs và48reset
