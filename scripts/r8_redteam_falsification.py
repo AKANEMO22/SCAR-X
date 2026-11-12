@@ -116,12 +116,24 @@ def run_redteam_suite():
     # -----------------------------------------------------------------------
     all_falsified = falsified_1 or falsified_2
     final_audit_label = "REJECTED" if all_falsified else "CONFIRMED"
+    summary_parts = []
+    if falsified_1:
+        summary_parts.append(
+            f"FALSIFIED: 1-compartment soma ALIF fails under heavy distractor stress (direct acc = {mean_d_heavy*100:.2f}% < 65%)."
+        )
+    else:
+        summary_parts.append("CONFIRMED: MTSG e-prop survives distractor stress.")
+    if falsified_2:
+        summary_parts.append(
+            f"FALSIFIED: BF-Cascade suffers excessive forgetting under stream reversal (mean forgetting = {mean_rev_forg*100:.2f}% > 25%)."
+        )
+    else:
+        summary_parts.append(
+            f"CONFIRMED: BF-Cascade maintains retention under reversed order (forgetting = {mean_rev_forg*100:.2f}%)."
+        )
     verdicts["final_reviewer_verdict"] = {
         "label": final_audit_label,
-        "summary": (
-            "All candidate claims independently audited. MTSG e-prop survives heavy distractor stress. "
-            "BF-Cascade maintains retention under stream order reversal without task boundaries or replay."
-        ),
+        "summary": " ".join(summary_parts),
     }
 
     out_path = Path("artifacts/gemini-r8/redteam-falsification.json")

@@ -148,10 +148,10 @@ class MultiTimescaleSensoryGatedEProp:
             self.e_v[:] = u_e - theta[:, None] * z_e - self.core.spikes[:, None] * c.adaptation_strength * a_old
             self.e_a[:] = c.adaptation_decay * a_old + z_e
 
-            # Sensory event gating: dampen recurrent noise while allowing input synapses to learn distractor suppression
+            # Sensory event gating: detect sensory activity across all channels without task-specific channel indexing
             if self.condition == "learned_mtsg":
-                s_task = float(np.sum(np.abs(row[:6])))
-                g_rec = 1.0 if s_task > self.sensory_threshold else 0.15
+                s_activity = float(np.max(np.abs(row)))
+                g_rec = 1.0 if s_activity > 0.6 else 0.15
                 z_e_gated = z_e.copy()
                 z_e_gated[:, c.inputs:] *= g_rec
                 self.e_f[:] = self.gamma_e_vec * self.e_f + (1.0 - self.gamma_e_vec) * z_e_gated

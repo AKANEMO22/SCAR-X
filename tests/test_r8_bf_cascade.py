@@ -15,7 +15,7 @@ def test_bf_cascade_initialization():
     assert model.u2_in.shape == (48, 8)
     assert model.u1_rec.shape == (48, 8)
     assert model.u2_rec.shape == (48, 8)
-    assert model.w_ctx.shape == (2, 2, 48)
+    assert model.w_ctx.shape == (8, 2, 48)
 
     # Memory must be well below 100 KB
     mem = model.memory_bytes()

@@ -1,17 +1,17 @@
 {
   "stress_heavy_distractor": {
-    "mean_direct": 0.5859375,
-    "mean_probe": 0.5891927083333334,
+    "mean_direct": 0.572265625,
+    "mean_probe": 0.5872395833333334,
     "falsified": true,
     "verdict": "REJECTED_HYPOTHESIS"
   },
   "stress_reversed_stream": {
-    "mean_forgetting": 0.171875,
+    "mean_forgetting": 0.08072916666666666,
     "falsified": false,
     "verdict": "CONFIRMED_ROBUST"
   },
   "final_reviewer_verdict": {
     "label": "REJECTED",
-    "summary": "All candidate claims independently audited. MTSG e-prop survives heavy distractor stress. BF-Cascade maintains retention under stream order reversal without task boundaries or replay."
+    "summary": "FALSIFIED: 1-compartment soma ALIF fails under heavy distractor stress (direct acc = 57.23% < 65%). CONFIRMED: BF-Cascade maintains retention under reversed order (forgetting = 8.07%)."
   }
 }

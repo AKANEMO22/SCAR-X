@@ -166,21 +166,19 @@ def generate_multikey_associative(
         # Write phase: 2 ticks per key
         for k in range(n_keys):
             tick = 2 * k
-            # Encode key index: key 0 -> ch 0, key 1 -> ch 1, key 2 -> ch 0+1, etc.
-            if k == 0:
-                x[i, tick, 0] += 1.5
-            elif k == 1:
-                x[i, tick, 1] += 1.5
-            elif k == 2:
-                x[i, tick, 0] += 1.0
-                x[i, tick, 1] += 1.0
+            if n_keys == 2:
+                x[i, tick, k] += 1.5
             else:
-                x[i, tick, 0] += 1.5 if (k % 2 == 1) else 0.0
-                x[i, tick, 1] += 1.5 if (k // 2 == 1) else 0.0
+                x[i, tick, 0] += 1.5 if (k & 1) else -1.5
+                x[i, tick, 1] += 1.5 if (k & 2) else -1.5
+                x[i, tick, 2] += 1.5 if (k & 4) else -1.5
 
             # Value pulse
-            val_ch = 2 if vals[k] == 0 else 3
-            x[i, tick + 1, val_ch] += 1.5
+            val_ch = 2 if n_keys == 2 else 3
+            if n_keys == 2:
+                x[i, tick + 1, val_ch + vals[k]] += 1.5
+            else:
+                x[i, tick + 1, val_ch] += 1.5 if vals[k] == 1 else -1.5
 
         # Delay phase: optional distractor
         delay_start = 2 * n_keys
@@ -191,16 +189,12 @@ def generate_multikey_associative(
 
         # Query phase: tick at delay_start + delay
         q_tick = delay_start + delay
-        if query_k == 0:
-            x[i, q_tick, 4] += 1.5
-        elif query_k == 1:
-            x[i, q_tick, 5] += 1.5
-        elif query_k == 2:
-            x[i, q_tick, 4] += 1.0
-            x[i, q_tick, 5] += 1.0
+        if n_keys == 2:
+            x[i, q_tick, 4 + query_k] += 1.5
         else:
-            x[i, q_tick, 4] += 1.5 if (query_k % 2 == 1) else 0.0
-            x[i, q_tick, 5] += 1.5 if (query_k // 2 == 1) else 0.0
+            x[i, q_tick, 4] += 1.5 if (query_k & 1) else -1.5
+            x[i, q_tick, 5] += 1.5 if (query_k & 2) else -1.5
+            x[i, q_tick, 6] += 1.5 if (query_k & 4) else -1.5
 
         # Response end marker
         x[i, seq_len - 1, 7] += 1.0

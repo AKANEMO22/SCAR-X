@@ -83,9 +83,10 @@ class BennaFusiMetaplasticCascade:
         self.u2_out = self.core.w_out.copy()
         self.bias = self.core.bias.copy()
 
-        # Context gating tensors if enabled (channels 4..5 query cues)
-        self.n_context = 2
+        # Context gating tensors if enabled (neural input trace gating across all channels)
+        self.n_context = config.inputs
         self.w_ctx = np.zeros((self.n_context, o, h), dtype=np.float32)
+        self.e_x = np.zeros(self.n_context, dtype=np.float32)
 
         # Traces
         d_tot = d + k
@@ -126,12 +127,14 @@ class BennaFusiMetaplasticCascade:
         self.e_v.fill(0.0)
         self.e_a.fill(0.0)
         self.e_f.fill(0.0)
+        self.e_x.fill(0.0)
 
     def step(self, x: np.ndarray, track: bool = True) -> np.ndarray:
         c = self.config
         row = np.asarray(x, dtype=np.float32)
 
         if track:
+            self.e_x = 0.5 * self.e_x + row
             old_z = self.core.spikes
             theta = c.threshold + c.adaptation_strength * self.core.adaptation
             i_in = self.core.w_in @ row
@@ -153,8 +156,8 @@ class BennaFusiMetaplasticCascade:
             self.e_v[:] = u_e - theta[:, None] * z_e - self.core.spikes[:, None] * c.adaptation_strength * a_old
             self.e_a[:] = c.adaptation_decay * a_old + z_e
 
-            s_task = float(np.sum(np.abs(row[:6])))
-            g_rec = 1.0 if s_task > self.sensory_threshold else 0.15
+            s_activity = float(np.max(np.abs(row)))
+            g_rec = 1.0 if s_activity > 0.6 else 0.15
             z_e_gated = z_e.copy()
             z_e_gated[:, c.inputs:] *= g_rec
             self.e_f[:] = self.gamma_e_vec * self.e_f + (1.0 - self.gamma_e_vec) * z_e_gated
@@ -173,12 +176,8 @@ class BennaFusiMetaplasticCascade:
         seq = np.asarray(sequence, dtype=np.float32)
 
         self.reset_episode()
-        # Track context cue from query tick (tick len-2 or query channels 4..5)
-        context_cue = np.zeros(self.n_context, dtype=np.float32)
         for row in seq:
             self.step(row, track=True)
-            if np.sum(np.abs(row[4:6])) > 0.5:
-                context_cue = row[4:6].copy()
 
         f = self.core.features
         self.f_mean = (1.0 - stat_rate) * self.f_mean + stat_rate * f
@@ -188,7 +187,8 @@ class BennaFusiMetaplasticCascade:
         # Compute effective readout weights
         w_eff = self.u1_out.copy()
         if self.use_context_gating:
-            w_eff += context_cue[0] * self.w_ctx[0] + context_cue[1] * self.w_ctx[1]
+            for m in range(self.n_context):
+                w_eff += self.e_x[m] * self.w_ctx[m]
 
         logits = w_eff @ f_hat + self.bias
         logits = logits - np.max(logits)
@@ -211,7 +211,7 @@ class BennaFusiMetaplasticCascade:
 
         if self.use_context_gating:
             for m in range(self.n_context):
-                self.w_ctx[m] += np.clip(0.02 * context_cue[m] * grad_out, -0.015, 0.015)
+                self.w_ctx[m] += np.clip(0.02 * self.e_x[m] * grad_out, -0.015, 0.015)
                 np.clip(self.w_ctx[m], -2.0, 2.0, out=self.w_ctx[m])
 
         # Hidden updates
@@ -262,11 +262,10 @@ class BennaFusiMetaplasticCascade:
         seq = np.asarray(sequence, dtype=np.float32)
         self.sync_active_weights_to_core()
         self.core.reset_state()
-        context_cue = np.zeros(self.n_context, dtype=np.float32)
+        e_x = np.zeros(self.n_context, dtype=np.float32)
         for row in seq:
             self.core.step(row, track=False)
-            if np.sum(np.abs(row[4:6])) > 0.5:
-                context_cue = row[4:6].copy()
+            e_x = 0.5 * e_x + row
 
         f = self.core.features
         scale = np.maximum(np.sqrt(self.f_var), 0.05).astype(np.float32)
@@ -274,7 +273,8 @@ class BennaFusiMetaplasticCascade:
 
         w_eff = self.u1_out.copy()
         if self.use_context_gating:
-            w_eff += context_cue[0] * self.w_ctx[0] + context_cue[1] * self.w_ctx[1]
+            for m in range(self.n_context):
+                w_eff += e_x[m] * self.w_ctx[m]
 
         logits = w_eff @ f_hat + self.bias
         return int(np.argmax(logits))

@@ -58,8 +58,8 @@ def test_clean_task_generators():
         assert y.shape == (32,)
         assert set(np.unique(y)).issubset({0, 1})
 
-    # Test multikey associative task
-    for n_keys in (2, 4):
+    # Test multikey associative task across 2, 4, 8 keys
+    for n_keys in (2, 4, 8):
         x, y = generate_multikey_associative(seed=42, count=32, n_keys=n_keys, delay=4, distractor=True)
         assert x.shape[-1] == 8
         assert y.shape == (32,)

@@ -40,28 +40,28 @@ Due to environment restrictions (`SUBAGENT_UNAVAILABLE`), the five research role
 
 ## 3. Experimental Evidence
 
-### 3.1 Candidate 1: Multi-Timescale Sensory-Gated e-prop (`MTSG e-prop`) â€” Confirmation Seeds ($N=5$)
+### 3.1 Candidate 1: Multi-Timescale Sensory-Gated e-prop (`MTSG e-prop`) — Confirmation Seeds ($N=5$)
 
 | Task & Metric | Baseline (Frozen / R35) | Candidate (MTSG) | Paired Delta | 95% Confidence Interval | Pre-Registered Gate | Gate Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **strict_binding Direct Acc** | $50.00\%$ | $79.96\%$ | $+29.96\text{pp}$ | $[+20.12, +39.80]\text{pp}$ | $\ge 65.0\%$ | **PASS** |
-| **strict_binding Probe Acc** | $64.22\%$ | $84.18\%$ | $+19.96\text{pp}$ | $[+12.84, +27.08]\text{pp}$ | $\ge +5.0\text{pp}$, lower $>0$ | **PASS** |
-| **strict_binding Causal Drop** | $0.00\%$ | $+19.96\text{pp}$ | $+19.96\text{pp}$ | $[+12.84, +27.08]\text{pp}$ | $\ge +5.0\text{pp}$ | **PASS** |
-| **xor Direct Acc** | $50.00\%$ | $96.64\%$ | $+46.64\text{pp}$ | $[+43.10, +50.18]\text{pp}$ | $\ge 65.0\%$ | **PASS** |
-| **xor Probe Acc** | $90.70\%$ (Fr) / $96.42\%$ (R35) | $98.63\%$ | $+7.93\text{pp}$ (Fr) / $+2.21\text{pp}$ (R35) | $[+97.74, +99.52]\%$ | Non-inferior vs R35 ($\ge -3\text{pp}$) | **PASS** |
-| **order Direct Acc** | $50.00\%$ | $100.00\%$ | $+50.00\text{pp}$ | $[+100.0, +100.0]\%$ | $\ge 65.0\%$ | **PASS** |
-| **order Probe Acc** | $96.37\%$ | $99.92\%$ | $+3.55\text{pp}$ | $[+99.74, +100.0]\%$ | Ceil-limited ($99.92\%$) | **PASS (Accuracy)** |
-| **distractor_binding Direct Acc** | $50.00\%$ | $62.73\%$ | $+12.73\text{pp}$ | $[+60.89, +64.57]\%$ | $\ge 65.0\%$ | **FAIL** |
-| **distractor_binding Probe Acc** | $53.55\%$ | $66.33\%$ | $+12.78\text{pp}$ | $[+62.33, +70.33]\%$ | $\ge +5.0\text{pp}$ | **PASS** |
+| **strict_binding Direct Acc** | $50.00\%$ | $77.15\%$ | $+27.15\text{pp}$ | $[+17.80, +36.50]\text{pp}$ | $\ge 65.0\%$ | **PASS** |
+| **strict_binding Probe Acc** | $64.22\%$ | $83.01\%$ | $+18.79\text{pp}$ | $[+11.36, +26.21]\text{pp}$ | $\ge +5.0\text{pp}$, lower $>0$ | **PASS** |
+| **strict_binding Causal Drop** | $0.00\%$ | $+18.79\text{pp}$ | $+18.79\text{pp}$ | $[+11.36, +26.21]\text{pp}$ | $\ge +5.0\text{pp}$ | **PASS** |
+| **xor Direct Acc** | $50.00\%$ | $96.05\%$ | $+46.05\text{pp}$ | $[+41.80, +50.30]\text{pp}$ | $\ge 65.0\%$ | **PASS** |
+| **xor Probe Acc** | $90.70\%$ (Fr) / $96.42\%$ (R35) | $97.58\%$ | $+6.88\text{pp}$ (Fr) / $+1.16\text{pp}$ (R35) | $[+95.80, +99.36]\%$ | Non-inferior vs R35 ($\ge -3\text{pp}$) | **PASS** |
+| **order Direct Acc** | $50.00\%$ | $99.88\%$ | $+49.88\text{pp}$ | $[+99.40, +100.0]\%$ | $\ge 65.0\%$ | **PASS** |
+| **order Probe Acc** | $96.37\%$ | $100.00\%$ | $+3.63\text{pp}$ | $[+99.60, +100.0]\%$ | Ceil-limited ($100.0\%$) | **PASS (Accuracy)** |
+| **distractor_binding Direct Acc** | $50.00\%$ | $62.03\%$ | $+12.03\text{pp}$ | $[+59.80, +64.26]\%$ | $\ge 65.0\%$ | **FAIL** |
+| **distractor_binding Probe Acc** | $53.55\%$ | $67.62\%$ | $+14.06\text{pp}$ | $[+61.70, +73.54]\%$ | $\ge +5.0\text{pp}$ | **PASS** |
 
-### 3.2 Candidate 2: Continuous Metaplastic Cascade (`BF-Cascade`) â€” Confirmation Seeds ($N=5$)
+### 3.2 Candidate 2: Continuous Metaplastic Cascade (`BF-Cascade`) — Confirmation Seeds ($N=5$)
 
 | Continual Stream Metric | Baseline (Unconsolidated) | Candidate (BF-Cascade) | Paired Delta | 95% Confidence Interval | Pre-Registered Gate | Gate Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Stream Acquisition Acc** | $84.95\%$ | $84.95\%$ | $0.00\text{pp}$ | $[+83.45, +86.45]\%$ | $\ge 65.0\%$ | **PASS** |
-| **Final Accuracy across Skills** | $54.56\%$ | $60.02\%$ | $+5.46\text{pp}$ | $[+56.12, +63.92]\%$ | $\ge 65.0\%$ | **FAIL** (Worst: 57.55%) |
-| **Mean Catastrophic Forgetting** | $30.39\%$ | $24.92\%$ | $-5.47\text{pp}$ | $[+21.80, +28.04]\%$ | $\le 5.0\text{pp}$ | **FAIL** |
-| **Worst-Case Skill Forgetting** | $54.69\%$ | $44.53\%$ | $-10.16\text{pp}$ | $[+38.10, +50.96]\%$ | $\le 10.0\text{pp}$ | **FAIL** |
+| **Stream Acquisition Acc** | $84.22\%$ | $84.22\%$ | $0.00\text{pp}$ | $[+81.50, +86.94]\%$ | $\ge 65.0\%$ | **PASS** |
+| **Final Accuracy across Skills** | $55.10\%$ | $60.36\%$ | $+5.26\text{pp}$ | $[+55.80, +64.92]\%$ | $\ge 65.0\%$ | **FAIL** |
+| **Mean Catastrophic Forgetting** | $27.08\%$ | $23.85\%$ | $-3.23\text{pp}$ | $[+18.40, +29.30]\%$ | $\le 3.0\text{pp}$ | **FAIL** |
+| **Worst-Case Skill Forgetting** | $52.08\%$ | $43.75\%$ | $-8.33\text{pp}$ | $[+35.60, +51.90]\%$ | $\le 5.0\text{pp}$ | **FAIL** |
 
 ### 3.3 Resource & Runtime Verification (Sub-Agent D)
 
@@ -77,14 +77,23 @@ Due to environment restrictions (`SUBAGENT_UNAVAILABLE`), the five research role
 
 ---
 
-## 4. Independent Red-Team Audit & Falsification Analysis (Sub-Agent E)
+## 4. Independent Red-Team Audit & Forensic Remediation (Sub-Agent E)
 
-1. **Audit of Causal Claims**:
-   - Claim: "MTSG resolves XOR temporal parity." -> **CONFIRMED**. Direct accuracy jumps from $86.46\%$ (EW-HE) to $96.64\%$, probe reaches $98.63\%$, beating R35 ($96.42\%$) across all seeds.
-   - Claim: "MTSG provides distractor immunity." -> **FALSIFIED**. Under standard distractor ($\pm 1.2$), direct accuracy is $62.73\%$ ($< 65\%$ gate). Under heavy distractor ($\pm 2.0$), accuracy collapses to $58.59\%$.
-   - Claim: "BF-Cascade eliminates catastrophic forgetting without replay." -> **FALSIFIED**. It reduces forgetting by $5.47\text{pp}$ ($30.39\% \rightarrow 24.92\%$), but remains far above the $\le 5.0\text{pp}$ gate.
-   - Claim: "Context-gated readout enables multi-key associative retrieval." -> **QUALIFIED**. Confirmed for 2 keys ($+10.16\text{pp}$ under long delay), but rejected for 4 and 8 keys (0pp gain due to hidden capacity bottleneck).
-2. **Reviewer Audit Verdict**: `REJECTED` for production release; `CONFIRMED` as a valuable causal step for temporal credit assignment.
+### 4.1 Forensic Vulnerabilities Identified and Fixed
+During the adversarial integrity review of Round 8 prototypes, six severe architectural and benchmark flaws were caught and corrected:
+1. **Sensory Channel Leakage in MTSG and BF-Cascade**: `r8_mtsg_eprop.py` and `r8_bf_cascade.py` hardcoded `s_task = float(np.sum(np.abs(row[:6])))`, granting privileged knowledge of distractor channel index 6. Remediated to task-agnostic sensory activity detection: `np.max(np.abs(row)) > 0.6` across all channels without index assumptions.
+2. **Symbolic Query Snooping in Readout**: `r8_bf_cascade.py` had an external Python `if np.sum(np.abs(row[4:6])) > 0.5:` block extracting context cues into Python variables and modifying `w_eff`. Remediated to a fully continuous neural leaky input trace ($e_x = 0.5 e_x + x$) gating across all $D=8$ channels symmetrically.
+3. **Fatal Benchmark Collision on 8-Key Retrieval**: `generate_multikey_associative` used 2-channel binary combinations for up to 8 keys (`k // 2 == 1`), resulting in zero-pulse channels for keys 4 and 6, and identical collisions for keys 5 and 7 with key 0. Remediated to orthogonal 3-bit bipolar addresses ($\pm 1.5$) across channels 0..2 (write) and 4..6 (query), enabling distinct representations for all 8 keys.
+4. **Gate Tampering in R8GateEvaluator**: The evaluator had weakened P2 forgetting from $\le 3\text{pp}$ to $\le 20\text{pp}$ or relative reduction. Remediated to strictly enforce the repository invariant: mean forgetting $\le 3\text{pp}$ and worst-case $\le 5\text{pp}$.
+5. **Ceiling Saturation Handling**: Resolved false failure in `order` task when direct accuracy is $99.88\%$ and probe is $100.0\%$.
+6. **Red-Team Narrative Contradiction**: Fixed contradictory summary in `r8_redteam_falsification.py` where text claimed MTSG survived heavy distractor while verdict was `REJECTED`.
+
+### 4.2 Audit of Causal Claims
+1. Claim: "MTSG resolves XOR temporal parity." -> **CONFIRMED**. Direct accuracy jumps from $86.46\%$ (EW-HE) to $96.05\%$, probe reaches $97.58\%$, beating R35 across seeds.
+2. Claim: "MTSG provides distractor immunity." -> **FALSIFIED**. Under standard distractor ($\pm 1.2$), direct accuracy is $62.03\%$ ($< 65\%$ gate). Under heavy distractor ($\pm 2.0$), accuracy collapses to $57.23\%$.
+3. Claim: "BF-Cascade eliminates catastrophic forgetting without replay." -> **FALSIFIED**. It reduces forgetting by $3.23\text{pp}$ ($27.08\% \rightarrow 23.85\%$), but remains far above the $\le 3.0\text{pp}$ gate.
+4. Claim: "Context-gated readout enables multi-key associative retrieval." -> **QUALIFIED**. Confirmed for 2-8 keys with clean orthogonal encoding ($+3.7\text{pp}$ to $+5.7\text{pp}$ gain under long delay), but overall retention in 48-neuron recurrent core remains bounded by hidden capacity.
+5. Reviewer Audit Verdict: **`REJECTED`** for production release; **`CONFIRMED`** as a valuable causal step for temporal credit assignment.
 
 ---
 
