@@ -21,6 +21,11 @@ NEW_KINDS=('Peer607MTSG','Peer607BF','MatchedLocalCredit','StoppedResetCredit')
 ACR_ARRAYS=M_ARRAYS|{'e_f_own','e_v_stop','e_a_stop','e_f_stop','alpha','router_q','router_bias','last_u','last_theta','last_a','last_signal','last_delta'}
 ACR_SETTINGS=M_SETTINGS|{'trace_kind','gate_mode','profile'}
 CAPACITY_KINDS=('CapacityOwn','CapacityACR')
+L_KINDS=('LiteratureEPropALIF','BrainTraceDRTRL')
+
+
+def reference_settings(kind):
+    return M_SETTINGS|{'trace_kind','gate_mode'}|({'eprop_variant'} if kind=='LiteratureEPropALIF' else {'reference_kind'})
 
 
 def mechanism_hash(model):
@@ -68,6 +73,7 @@ def layout(model):
     elif name=='StoppedResetCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode','reset_mode'},{'signal_rng'}
     elif name in ('AdaptiveCreditRouting','CapacityACR'):arrays,settings,rng=ACR_ARRAYS,ACR_SETTINGS,{'signal_rng','router_rng'}
     elif name=='CapacityOwn':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode'},{'signal_rng'}
+    elif name in L_KINDS:arrays,settings,rng=M_ARRAYS,reference_settings(name),{'signal_rng'}
     elif name=='BennaFusiMetaplasticCascade':arrays,settings,rng=B_ARRAYS,B_SETTINGS,set()
     elif name=='Peer607BF':arrays,settings,rng=B_ARRAYS|{'e_x'},B_SETTINGS,set()
     else:raise ValueError('Only explicit R8 research models supported')
@@ -85,7 +91,7 @@ def layout(model):
 
 
 def validate_settings(kind,settings,core_settings):
-    expected=ACR_SETTINGS if kind in ('AdaptiveCreditRouting','CapacityACR') else M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind in ('MatchedLocalCredit','CapacityOwn') else M_SETTINGS if kind in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG') else B_SETTINGS
+    expected=reference_settings(kind) if kind in L_KINDS else ACR_SETTINGS if kind in ('AdaptiveCreditRouting','CapacityACR') else M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind in ('MatchedLocalCredit','CapacityOwn') else M_SETTINGS if kind in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG') else B_SETTINGS
     if set(settings)!=expected:raise ValueError('Settings schema')
     for key,value in settings.items():
         if key in ('calibrated','use_cascade','use_context_gating'):
@@ -98,6 +104,10 @@ def validate_settings(kind,settings,core_settings):
         elif key=='profile':
             from ..acr import PROFILES
             if value not in PROFILES:raise ValueError('Unknown ACR profile')
+        elif key=='eprop_variant':
+            if value not in ('eprop_matched','eprop_aligned'):raise ValueError('Unknown e-prop variant')
+        elif key=='reference_kind':
+            if value!='braintrace-drtrl-scarx-v1':raise ValueError('Unknown BrainTrace adapter')
         elif key=='trace_kind':
             if value not in ('fast','slow','multi'):raise ValueError('Unknown trace policy')
         elif key=='gate_mode':
@@ -127,9 +137,9 @@ def dumps(model,controller=None):
         if not isinstance(array,np.ndarray) or array.dtype not in (np.dtype('float32'),np.dtype('int32')) or not np.isfinite(array).all():
             raise ValueError('Invalid snapshot array')
         stream=io.BytesIO();np.save(stream,array,allow_pickle=False);members[name+'.npy']=stream.getvalue()
-    acr=kind in ('AdaptiveCreditRouting','CapacityACR');capacity=kind in CAPACITY_KINDS
-    rng=model.signal_rng.bit_generator.state if kind in M_KINDS or acr or capacity else None
-    source=MATCHED_SOURCE if kind in NEW_KINDS or acr or capacity else SOURCE
+    acr=kind in ('AdaptiveCreditRouting','CapacityACR');capacity=kind in CAPACITY_KINDS;reference=kind in L_KINDS
+    rng=model.signal_rng.bit_generator.state if kind in M_KINDS or acr or capacity or reference else None
+    source=MATCHED_SOURCE if kind in NEW_KINDS or acr or capacity or reference else SOURCE
     meta={'format':FORMAT,'source_sha':source,'kind':kind,'config':asdict(model.config),'settings':settings,
           'core_settings':core_settings,'rng':rng,'controller':controller,'sha256':{key:digest(raw) for key,raw in members.items()}}
     if acr:
@@ -137,6 +147,8 @@ def dumps(model,controller=None):
         meta['mechanism_sha256']=mechanism_hash(model)
     if capacity:
         meta['format']='scarx-capacity-research-snapshot-v1';meta['mechanism_sha256']=mechanism_hash(model)
+    elif reference:
+        meta['format']='scarx-literature-reference-snapshot-v1';meta['mechanism_sha256']=mechanism_hash(model)
     meta['metadata_sha256']=digest(encoded(meta));members['metadata.json']=encoded(meta)
     out=io.BytesIO()
     with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED) as archive:
@@ -157,20 +169,24 @@ def loads(template,payload):
                 raise ValueError('Snapshot member/bounds mismatch')
             if archive.getinfo('metadata.json').file_size>65536:raise ValueError('Metadata byte bound')
             meta=metadata(archive.read('metadata.json'));check=meta.pop('metadata_sha256')
-            acr=kind in ('AdaptiveCreditRouting','CapacityACR');capacity=kind in CAPACITY_KINDS
+            acr=kind in ('AdaptiveCreditRouting','CapacityACR');capacity=kind in CAPACITY_KINDS;reference=kind in L_KINDS
             fields={'format','source_sha','kind','config','settings','core_settings','rng','controller','sha256'}
             if acr:fields|={'router_rng','mechanism_sha256'}
-            elif capacity:fields|={'mechanism_sha256'}
+            elif capacity or reference:fields|={'mechanism_sha256'}
             if set(meta)!=fields or digest(encoded(meta))!=check:
                 raise ValueError('Metadata schema/checksum')
-            source=MATCHED_SOURCE if kind in NEW_KINDS or acr or capacity else SOURCE
-            fmt='scarx-capacity-research-snapshot-v1' if capacity else 'scarx-acr-snapshot-v1' if acr else FORMAT
+            source=MATCHED_SOURCE if kind in NEW_KINDS or acr or capacity or reference else SOURCE
+            fmt='scarx-capacity-research-snapshot-v1' if capacity else 'scarx-acr-snapshot-v1' if acr else 'scarx-literature-reference-snapshot-v1' if reference else FORMAT
             if meta['format']!=fmt or meta['source_sha']!=source or meta['kind']!=kind or meta['config']!=asdict(template.config):
                 raise ValueError('Explicit template/source/config mismatch')
             if acr and (meta['mechanism_sha256']!=mechanism_hash(template) or meta['settings']['profile']!=template.profile or meta['settings']['condition']!=template.condition):
                 raise ValueError('ACR mechanism/profile mismatch')
             if capacity and (meta['mechanism_sha256']!=mechanism_hash(template) or any(meta['settings'][k]!=getattr(template,k) for k in ('condition','trace_kind','gate_mode','sensory_threshold'))):
                 raise ValueError('Capacity mechanism/policy mismatch')
+            if reference:
+                fixed=reference_settings(kind)-{'calibrated','episodes_learned','hidden_updates','total_ticks'}
+                if meta['mechanism_sha256']!=mechanism_hash(template) or any(meta['settings'][key]!=getattr(template,key) for key in fixed):
+                    raise ValueError('Reference mechanism/policy mismatch')
             validate_settings(kind,meta['settings'],meta['core_settings'])
             validate_controller(meta['controller'])
             if meta['controller'] is not None and (not isinstance(meta['controller'],dict) or len(encoded(meta['controller']))>16384):
@@ -206,8 +222,8 @@ def loads(template,payload):
             if np.any((arrays['model__alpha']<0)|(arrays['model__alpha']>1)) or np.any(np.abs(arrays['model__router_q'])>1):
                 raise ValueError('ACR router state range')
             if not isinstance(meta['router_rng'],dict) or meta['router_rng'].get('bit_generator')!='PCG64':raise ValueError('Router PCG64 state required')
-        if capacity and not np.array_equal(arrays['model__gamma_e_vec'],template.gamma_e_vec):raise ValueError('Capacity fixed timescale policy changed')
-        if kind in M_KINDS or acr or capacity:
+        if (capacity or reference) and not np.array_equal(arrays['model__gamma_e_vec'],template.gamma_e_vec):raise ValueError('Fixed reference/capacity timescale policy changed')
+        if kind in M_KINDS or acr or capacity or reference:
             if not isinstance(meta['rng'],dict) or meta['rng'].get('bit_generator')!='PCG64':raise ValueError('PCG64 RNG state required')
             result.signal_rng.bit_generator.state=meta['rng']
             if acr:result.router_rng.bit_generator.state=meta['router_rng']

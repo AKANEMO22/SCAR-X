@@ -1,0 +1,117 @@
+{
+  "scope": "Read-only arithmetic and source gap check, NOT complete independent raw/prediction audit and NOT new training",
+  "source_commit": "e65dbbdb735cc37834f0c2de365d317ee7c1563a",
+  "source_files_sha256": {
+    "artifacts\\r9b_retention_study_results.json": "7d761789ae6995876bb6ea9cda2ec658c0a706dcb455a2d590afb04b66a1797b",
+    "artifacts\\r9b_factorial_dev_results.json": "f57de5ce296c3186e6c13365e0e5ac00c35ee71dbab3272f0a866442d0ee410a",
+    "scripts\\run_r9b_retention_study.py": "80ae1345ad9621b5c4ad0d6813940d4ced74eee1df699ecc208dc82e64208aa8",
+    "scripts\\analyze_r9b_factorial.py": "383e9d2c69236366a32bb2ea2eb58ea8e00cf65ff0152ba70da9bc5366950912",
+    "src\\scarx\\neural\\r9b_factorial_eprop.py": "2a0f1a6fe8dd5c584689627ac4665391ffa22f35cce550494ed8991e76b9879a"
+  },
+  "retention": {
+    "none": {
+      "seeds": [
+        140011,
+        140017,
+        140023
+      ],
+      "mean_acquisition": 0.6783854166666666,
+      "mean_final": 0.6106770833333334,
+      "mean_forgetting": 0.10026041666666667,
+      "mean_of_seed_worst_forgetting": 0.21484375,
+      "maximum_seed_worst_forgetting": 0.34765625
+    },
+    "full": {
+      "seeds": [
+        140011,
+        140017,
+        140023
+      ],
+      "mean_acquisition": 0.6490885416666666,
+      "mean_final": 0.5813802083333334,
+      "mean_forgetting": 0.1076388888888889,
+      "mean_of_seed_worst_forgetting": 0.23307291666666666,
+      "maximum_seed_worst_forgetting": 0.35546875
+    },
+    "readout_only": {
+      "seeds": [
+        140011,
+        140017,
+        140023
+      ],
+      "mean_acquisition": 0.6780598958333334,
+      "mean_final": 0.611328125,
+      "mean_forgetting": 0.0954861111111111,
+      "mean_of_seed_worst_forgetting": 0.22916666666666666,
+      "maximum_seed_worst_forgetting": 0.36328125
+    },
+    "hidden_only": {
+      "seeds": [
+        140011,
+        140017,
+        140023
+      ],
+      "mean_acquisition": 0.66796875,
+      "mean_final": 0.5979817708333334,
+      "mean_forgetting": 0.0993923611111111,
+      "mean_of_seed_worst_forgetting": 0.21744791666666666,
+      "maximum_seed_worst_forgetting": 0.33984375
+    },
+    "selective": {
+      "seeds": [
+        140011,
+        140017,
+        140023
+      ],
+      "mean_acquisition": 0.6663411458333334,
+      "mean_final": 0.607421875,
+      "mean_forgetting": 0.08463541666666667,
+      "mean_of_seed_worst_forgetting": 0.19401041666666666,
+      "maximum_seed_worst_forgetting": 0.4375
+    }
+  },
+  "factorial": {
+    "strict_binding": {
+      "configuration_seed_rows": 72,
+      "independent_seed_ids": [
+        140011,
+        140017,
+        140023
+      ],
+      "positive_rows": 72,
+      "mean_candidate_minus_shuffle": 0.1474066840277778
+    },
+    "xor": {
+      "configuration_seed_rows": 72,
+      "independent_seed_ids": [
+        140011,
+        140017,
+        140023
+      ],
+      "positive_rows": 53,
+      "mean_candidate_minus_shuffle": 0.0788302951388889
+    },
+    "distractor_binding": {
+      "configuration_seed_rows": 72,
+      "independent_seed_ids": [
+        140011,
+        140017,
+        140023
+      ],
+      "positive_rows": 60,
+      "mean_candidate_minus_shuffle": 0.043294270833333336
+    },
+    "order": {
+      "configuration_seed_rows": 72,
+      "independent_seed_ids": [
+        140011,
+        140017,
+        140023
+      ],
+      "positive_rows": 59,
+      "mean_candidate_minus_shuffle": 0.050618489583333336
+    }
+  },
+  "warning": "72configuration-seed rows are only3independent seedclusters; clipping is not appliednormmatching; mean_of_seed_worst cannot substitute per-seed5pp gate",
+  "training_updates_run_in_this_check": 0
+}
