@@ -16,12 +16,12 @@ def classes():
     assert subprocess.check_output(['git','-C',str(PEER),'rev-parse','HEAD'],text=True).strip()==S.SOURCE
     # Load two named research modules only. No app/main import, candidate change or campaign.
     for filename in ('r8_mtsg_eprop','r8_bf_cascade'):
-        name='scarx.neural.'+filename
+        name='scarx.neural._peer_fe472b3_'+filename
         if name not in sys.modules:
             spec=importlib.util.spec_from_file_location(name,PEER/'src/scarx/neural'/(filename+'.py'))
             module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module)
-    return (sys.modules['scarx.neural.r8_mtsg_eprop'].MultiTimescaleSensoryGatedEProp,
-            sys.modules['scarx.neural.r8_bf_cascade'].BennaFusiMetaplasticCascade)
+    return (sys.modules['scarx.neural._peer_fe472b3_r8_mtsg_eprop'].MultiTimescaleSensoryGatedEProp,
+            sys.modules['scarx.neural._peer_fe472b3_r8_bf_cascade'].BennaFusiMetaplasticCascade)
 
 
 def fixture_model(classes,index=0):

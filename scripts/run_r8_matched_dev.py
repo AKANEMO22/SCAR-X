@@ -50,7 +50,7 @@ def evaluate(model,data):
         predictions[split]={'direct':direct.tolist(),'probe':probe.tolist(),'target':y.tolist()}
     blob=model.dumps()
     for name,rin,rrec in [('revert_in',True,False),('revert_rec',False,True),('revert_both',True,True)]:
-        clone=MatchedLocalCredit.loads(blob);clone.revert_hidden_weights(rin,rrec)
+        clone=type(model).loads(blob);clone.revert_hidden_weights(rin,rrec)
         pred=refit_predict(clone.features_many(fitx),fity,clone.features_many(data['id'][0]))
         metrics[name+'_probe']=float(np.mean(pred==data['id'][1]))
     return metrics,predictions

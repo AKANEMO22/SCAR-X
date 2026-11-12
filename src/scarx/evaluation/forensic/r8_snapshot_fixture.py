@@ -13,7 +13,7 @@ def fixture_model(kind):
     if kind not in ('mtsg','bf'):raise ValueError('Explicit fixture kind required')
     if subprocess.check_output(['git','-C',str(PEER),'rev-parse','HEAD'],text=True).strip()!=S.SOURCE:
         raise ValueError('Pinned fixture source moved')
-    filename='r8_mtsg_eprop' if kind=='mtsg' else 'r8_bf_cascade';module_name='scarx.neural.'+filename
+    filename='r8_mtsg_eprop' if kind=='mtsg' else 'r8_bf_cascade';module_name='scarx.neural._peer_fe472b3_'+filename
     if module_name not in sys.modules:
         spec=importlib.util.spec_from_file_location(module_name,PEER/'src/scarx/neural'/(filename+'.py'))
         module=importlib.util.module_from_spec(spec);sys.modules[module_name]=module;spec.loader.exec_module(module)

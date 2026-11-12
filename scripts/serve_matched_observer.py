@@ -13,7 +13,7 @@ PAGE='''<!doctype html><meta charset="utf-8"><title>SCAR-X · nghiên cứu th�
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--port',type=int,default=8767);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--port',type=int,default=8767);parser.add_argument('--active-file');args=parser.parse_args()
     root=Path(__file__).resolve().parents[1];run=Path(args.run).resolve()
     if run.parent!=root/'runs' or not (run/'manifest.json').is_file():raise ValueError('Registered owned run required')
     class Handler(BaseHTTPRequestHandler):
@@ -21,7 +21,12 @@ def main():
             path=self.path.split('?',1)[0]
             if path=='/':body=PAGE.encode('utf-8');mime='text/html; charset=utf-8'
             elif path in ('/progress.json','/events.json'):
-                source=run/path[1:]
+                active=run
+                if args.active_file and Path(args.active_file).exists():
+                    selected=Path(json.loads(Path(args.active_file).read_text(encoding='utf-8'))['run']).resolve()
+                    if selected.parent!=root/'runs' or not (selected/'manifest.json').exists():self.send_error(403);return
+                    active=selected
+                source=active/path[1:]
                 if not source.exists():self.send_error(404);return
                 if source.stat().st_size>1_000_000:self.send_error(413);return
                 body=source.read_bytes();mime='application/json; charset=utf-8'
