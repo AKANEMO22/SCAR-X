@@ -1,0 +1,32 @@
+{
+  "invocation_kind": "pytest.main in isolated integration worktree",
+  "pytest_args": [
+    "-q",
+    "-rs",
+    "--junitxml",
+    "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\integrate-grok-round1\\runs\\20261110T194459Z-grok-d509-reproduction-review-v1-1892d9\\integration-junit.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\integrate-grok-round1",
+  "started_utc": "2026-11-10T19:58:03.771798+00:00",
+  "python": "3.11.9",
+  "numpy": "2.4.6",
+  "head_before_merge_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "reviewed_commit": "d50987862ff80d2bd8556eecfb6af1b259cc591e",
+  "source_sha256": {
+    "src/scarx/evaluation/slow_trace.py": "62fc5ee7074b11fbaeedc3e151c076ac96add92e04d3ef084d3677543aaf5b00",
+    "scripts/grok_slow_trace_screen.py": "a2acfb99db1366c3c11494e6d3b2e999b8b9eb33d1149f11afc3a818207dd629",
+    "tests/test_slow_trace.py": "30cb0515085b0e281323e00fccc65ec1138174849d9bb9b59829975b08a0b71c"
+  },
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "exit_code": 0,
+  "counts": {
+    "passed": 300
+  },
+  "seconds": 86.80688970000483,
+  "completed_utc": "2026-11-10T19:59:30.617378+00:00",
+  "serving_learner_changed": false
+}
