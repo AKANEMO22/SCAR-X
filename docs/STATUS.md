@@ -2,6 +2,12 @@
 
 ## Hợp nhất workspace13/11/2026
 
+Đã lênmain. Dọn30remoteheads/33localbranches,36oldworktrees+1temporaryclone;
+còn8worktrees do giữ activeR13 và6source dependencies.75archive tags+local
+bundle/ZIP cóhash,11PR lịch sử đãclosed. [Biên bản](maintenance/20261113/cleanup-result.json).
+614testsqua trong2processes khôngskip, thêm31mainpathportabilitychecksqua;
+originalmonolithicHTTP507guardfailure vẫnđượcghi, không nới guard/đổi sản phẩm.
+
 [Research center](research/README.md), [sơ đồ](research/EXPERIMENT_MAP.md),
 [sổ kết quả](research/EXPERIMENT_LEDGER.md), [catalog120entries](research/experiment-catalog.json).
 Hợp nhất các nhánh research Codex đã kiểm vào main, gồm P0/forensic/R8/ACR/

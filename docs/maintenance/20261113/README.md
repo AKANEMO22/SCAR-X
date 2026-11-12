@@ -1,5 +1,14 @@
 # Dọn và hợp nhất workspace —13/11/2026
 
+**Đã hoàn tất.** 30remoteheads và33localbranches cũ đã dọn;36oldworktrees
+được gỡ sau archive, cộng một worktree tạm hợp nhất. Còn8registeredworktrees:
+main, activeR13 và6source dependencies bảo vệ. GitHub cònmain và2R13heads;
+75archive tags đã verify,11historicalPRs đềuclosed, discussion giữ nguyên.
+[Biên bản máy đọc được](cleanup-result.json), [PR readback](pr-final-state.json),
+[nhật ký worktrees](worktree-removal.jsonl), [nhật ký refs](ref-cleanup.jsonl).
+LocalbranchR13.2 mới và các R13aliases không bị xóa; branch mới ngoài inventory
+không bị sweep theo danh sách cũ.
+
 Người dùng cho phép kiểm các branch, đưa kết quả hoàn tất vềmain, merge khi
 phù hợp và dọn GitHub/local. Sau đó người dùng yêu cầu **không đụng thí nghiệm
 đang chạy trong scar-x-gemini-r7**. Quy tắc bảo vệ áp dụng toàn bộ R13-family,
@@ -81,6 +90,12 @@ PR lịch sử có thể đóng với trạng thái archived/superseded, không 
 “merged learner/quality approved”; discussion và evidence vẫn trênGitHub.
 Không gửi comment hoặc tin nhắn thay người dùng.
 
+Kết nốiGitHub cho phép đọc nhưng PATCHPR trả403`Resource not accessible by
+integration`. Không tăng permission hoặc lấy credential khác. Xóaheadbranches
+đã archive bằng Git lease khiến GitHub tựđóng cácPR cũ; đã readback cả11PR
+đềuclosed/merged=false. Không đánh dấu chúng là merge/prodapproval hoặc sửa
+body/title/comments.
+
 ## Kiểm tra hợp nhất
 
 614tests đã chạy đủ:6APImodule trong một process riêng và608tests còn lại ở
@@ -95,6 +110,7 @@ chạy riêng trênoriginalmain và toànAPImodule qua trên cây hợp nhất. 
 tránh phụ thuộc tài nguyên tích lũy của numerical/researchtests; không nới
 guard, không sửa serving source hoặc bỏ testcase để đạt xanh.
 
-Kết quả thực thi cuối, branch/worktreecounts, testresults và remotemainSHA được
-ghi trong `cleanup-result.json` khi hoàn tất. Không coi xóa branch là xóa
+Kết quả thực thi cuối, branch/worktreecounts, testresults và consolidationSHA được
+ghi trong `cleanup-result.json`. Finalmainref có thể thêm commit chỉ ghi metadata
+cleanup sau consolidationSHA đã kiểm. Không coi xóa branch là xóa
 evidence: report/tag/SHA/localrecovery mới là đường truy vấn lâu dài.
