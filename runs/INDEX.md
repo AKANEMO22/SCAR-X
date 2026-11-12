@@ -145,3 +145,6 @@
 - [20261111T155855Z-r7-progress-review-v1-a52c77](20261111T155855Z-r7-progress-review-v1-a52c77/report.md) — r7-progress-review-v1
 - [20261111T174705Z-cross-snn-transfer-review-v1-d0f029](20261111T174705Z-cross-snn-transfer-review-v1-d0f029/report.md) — cross-snn-transfer-review-v1
 - [20261111T175003Z-cross-snn-transfer-review-v1-f82f5d](20261111T175003Z-cross-snn-transfer-review-v1-f82f5d/report.md) — cross-snn-transfer-review-v1
+- [20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3](20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3/report.md) — gemini-r8-independent-audit-v1
+- [20261112T021445Z-r8-snapshot-repair-p0-v1-86efaa](20261112T021445Z-r8-snapshot-repair-p0-v1-86efaa/report.md) — r8-snapshot-repair-p0-v1
+- [20261112T021800Z-r8-snapshot-repair-p0-v1-5da0b6](20261112T021800Z-r8-snapshot-repair-p0-v1-5da0b6/report.md) — r8-snapshot-repair-p0-v1

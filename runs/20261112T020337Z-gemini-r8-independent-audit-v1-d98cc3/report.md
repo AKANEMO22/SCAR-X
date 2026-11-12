@@ -1,0 +1,580 @@
+# Gemini R8 independent audit
+
+Historical unit fixtures and raw arithmetic; no new quality training or confirmation.
+
+{
+  "peer_sha": "fe472b3b1257cdb264805bf79fd53e5647e3568d",
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "new_quality_training": false,
+  "main_or_live_modified": false,
+  "input_sha256": {
+    "artifacts/gemini-r8/confirmation.json": "b1912d74c21537d36477f41f07ae78d4daffc56944a1977439511fe92bb44503",
+    "artifacts/gemini-r8/continual-stream.json": "dde86246cf7fa3203aad92a866738ae16981f251e49b834ad55b90d721c505a3",
+    "artifacts/gemini-r8/dev-screen.json": "ffc31f8bef498e0195a7e251dd6e5c5e4e10e94c9d436f592f0fd822bd69e79d",
+    "artifacts/gemini-r8/multikey-associative.json": "d7282363e199b98f301dcc55a7b1555e98aa80d1676f998b9969b13b4a3b9972",
+    "artifacts/gemini-r8/redteam-falsification.json": "f3cd61e8278d8fa8f3b58db39858d18759268366a6f8b2a4e40c7b76bed3ff80",
+    "artifacts/gemini-r8/runtime-bench.json": "56f09622a9052ffc7e696ffcb0003a88edbd6eac1d196115403bfe409197caf1"
+  },
+  "p1_summary_compliance": {
+    "tasks": {
+      "strict_binding": {
+        "status": "INSUFFICIENT_EVIDENCE",
+        "failures": [],
+        "missing": [
+          "readout_only",
+          "zero_signal",
+          "per_seed_raw_records"
+        ],
+        "pass": false,
+        "scope": "Master-gate compliance audit; does not rewrite historical branch criteria or certify from means"
+      },
+      "distractor_binding": {
+        "status": "FAIL",
+        "failures": [
+          "direct_below_65"
+        ],
+        "missing": [
+          "readout_only",
+          "zero_signal",
+          "per_seed_raw_records"
+        ],
+        "pass": false,
+        "scope": "Master-gate compliance audit; does not rewrite historical branch criteria or certify from means"
+      },
+      "xor": {
+        "status": "FAIL",
+        "failures": [
+          "master_probe_gain_lower95_below_5pp"
+        ],
+        "missing": [
+          "readout_only",
+          "zero_signal",
+          "per_seed_raw_records"
+        ],
+        "pass": false,
+        "scope": "Master-gate compliance audit; does not rewrite historical branch criteria or certify from means"
+      },
+      "order": {
+        "status": "FAIL",
+        "failures": [
+          "master_probe_gain_lower95_below_5pp"
+        ],
+        "missing": [
+          "readout_only",
+          "zero_signal",
+          "per_seed_raw_records"
+        ],
+        "pass": false,
+        "scope": "Master-gate compliance audit; does not rewrite historical branch criteria or certify from means"
+      }
+    },
+    "overall_pass": false,
+    "policy": "Master7.2, no ceiling exceptions or missing-data PASS"
+  },
+  "p1_reported_not_reproduced": {
+    "strict_binding": {
+      "direct": 0.799609375,
+      "probe": 0.841796875,
+      "gain_lower95": 0.1208073132779827
+    },
+    "distractor_binding": {
+      "direct": 0.62734375,
+      "probe": 0.66328125,
+      "gain_lower95": 0.10978477487823546
+    },
+    "xor": {
+      "direct": 0.96640625,
+      "probe": 0.986328125,
+      "gain_lower95": 0.029057417296402516
+    },
+    "order": {
+      "direct": 1.0,
+      "probe": 0.99921875,
+      "gain_lower95": 0.011396697076224784
+    }
+  },
+  "recomputed_dev_retention": {
+    "unconsolidated": {
+      "per_seed": [
+        {
+          "seed": 140011,
+          "acquisition": 0.9309895833333334,
+          "final": 0.71484375,
+          "mean_forgetting": 0.21614583333333334,
+          "worst_forgetting": 0.4140625,
+          "forgetting": [
+            0.4140625,
+            0.234375,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": true,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140017,
+          "acquisition": 0.9192708333333334,
+          "final": 0.6497395833333334,
+          "mean_forgetting": 0.26953125,
+          "worst_forgetting": 0.4921875,
+          "forgetting": [
+            0.4921875,
+            0.31640625,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": false,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140023,
+          "acquisition": 0.9661458333333334,
+          "final": 0.8567708333333334,
+          "mean_forgetting": 0.109375,
+          "worst_forgetting": 0.17578125,
+          "forgetting": [
+            0.17578125,
+            0.15234375,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": true,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        }
+      ],
+      "seeds_passing": 0,
+      "seed_count": 3,
+      "all_seed_numeric_gate_pass": false,
+      "release_approved": false,
+      "scope": "Numerical retention gate only; provenance/causal/runtime/approval remain separate",
+      "seed_mapping": "Source iteration order only; IDs absent from author per_seed rows",
+      "means": {
+        "acquisition": 0.9388020833333334,
+        "final": 0.740451388888889,
+        "mean_forgetting": 0.19835069444444445,
+        "worst_forgetting": 0.3606770833333333
+      }
+    },
+    "bf_cascade": {
+      "per_seed": [
+        {
+          "seed": 140011,
+          "acquisition": 0.8671875,
+          "final": 0.70703125,
+          "mean_forgetting": 0.16015625,
+          "worst_forgetting": 0.34375,
+          "forgetting": [
+            0.13671875,
+            0.34375,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": true,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140017,
+          "acquisition": 0.7825520833333334,
+          "final": 0.65234375,
+          "mean_forgetting": 0.13020833333333334,
+          "worst_forgetting": 0.35546875,
+          "forgetting": [
+            0.03515625,
+            0.35546875,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": true,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140023,
+          "acquisition": 0.8424479166666666,
+          "final": 0.63671875,
+          "mean_forgetting": 0.20572916666666666,
+          "worst_forgetting": 0.31640625,
+          "forgetting": [
+            0.30078125,
+            0.31640625,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": false,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        }
+      ],
+      "seeds_passing": 0,
+      "seed_count": 3,
+      "all_seed_numeric_gate_pass": false,
+      "release_approved": false,
+      "scope": "Numerical retention gate only; provenance/causal/runtime/approval remain separate",
+      "seed_mapping": "Source iteration order only; IDs absent from author per_seed rows",
+      "means": {
+        "acquisition": 0.8307291666666666,
+        "final": 0.6653645833333334,
+        "mean_forgetting": 0.16536458333333334,
+        "worst_forgetting": 0.3385416666666667
+      }
+    },
+    "bf_cascade_slow": {
+      "per_seed": [
+        {
+          "seed": 140011,
+          "acquisition": 0.8580729166666666,
+          "final": 0.5768229166666666,
+          "mean_forgetting": 0.28125,
+          "worst_forgetting": 0.43359375,
+          "forgetting": [
+            0.41015625,
+            0.43359375,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": false,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140017,
+          "acquisition": 0.8880208333333334,
+          "final": 0.5924479166666666,
+          "mean_forgetting": 0.2955729166666667,
+          "worst_forgetting": 0.46875,
+          "forgetting": [
+            0.46875,
+            0.41796875,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": false,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        },
+        {
+          "seed": 140023,
+          "acquisition": 0.87890625,
+          "final": 0.5833333333333334,
+          "mean_forgetting": 0.2955729166666667,
+          "worst_forgetting": 0.44921875,
+          "forgetting": [
+            0.44921875,
+            0.4375,
+            0.0
+          ],
+          "denominator": "All learned tasks, including last structural zero; Phase2.1 convention",
+          "checks": {
+            "acquisition": true,
+            "final": false,
+            "mean_forgetting": false,
+            "worst_forgetting": false
+          },
+          "numeric_gate_pass": false
+        }
+      ],
+      "seeds_passing": 0,
+      "seed_count": 3,
+      "all_seed_numeric_gate_pass": false,
+      "release_approved": false,
+      "scope": "Numerical retention gate only; provenance/causal/runtime/approval remain separate",
+      "seed_mapping": "Source iteration order only; IDs absent from author per_seed rows",
+      "means": {
+        "acquisition": 0.875,
+        "final": 0.5842013888888888,
+        "mean_forgetting": 0.29079861111111116,
+        "worst_forgetting": 0.4505208333333333
+      }
+    }
+  },
+  "bf_minus_unconsolidated_pp": {
+    "acquisition": -10.807291666666675,
+    "final": -7.508680555555558,
+    "mean_forgetting": -3.2986111111111107,
+    "worst_forgetting": -2.213541666666663
+  },
+  "query_codebook": {
+    "0": [
+      1.5,
+      0
+    ],
+    "1": [
+      0,
+      1.5
+    ],
+    "2": [
+      1,
+      1
+    ],
+    "3": [
+      1.5,
+      1.5
+    ],
+    "4": [
+      0,
+      0
+    ],
+    "5": [
+      1.5,
+      0
+    ],
+    "6": [
+      0,
+      0
+    ],
+    "7": [
+      1.5,
+      0
+    ]
+  },
+  "query_ambiguity": {
+    "noiseless_uniform_key_binary_value_ceiling": 0.84375,
+    "query_collision_groups": [
+      [
+        0,
+        5,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "scope": "Model-free conditional-label ambiguity; does not estimate learned hidden capacity"
+  },
+  "query_preflight_rejected": true,
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r8_mtsg_eprop.py",
+        "tests/test_r8_bf_cascade.py",
+        "tests/test_r8_benchmark_integrity.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3\\peer-p0.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r8-fe472b3",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 2.054688699999133,
+      "resources": {
+        "peak_rss_bytes": 175218688,
+        "peak_commit_or_vms_bytes": 137601024,
+        "os_process_peak_working_set_bytes": 42549248,
+        "os_process_peak_pagefile_commit_bytes": 28749824,
+        "samples": 24,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.054346099999748,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "peer-p0-tests.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\scripts\\r8_engineering_worker.py",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r8-fe472b3",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3\\engineering-counterexamples.json"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r8-fe472b3",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 0.5230784999994285,
+      "resources": {
+        "peak_rss_bytes": 98320384,
+        "peak_commit_or_vms_bytes": 54620160,
+        "os_process_peak_working_set_bytes": 42561536,
+        "os_process_peak_pagefile_commit_bytes": 28749824,
+        "samples": 7,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 0.5229483000002801,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "engineering-counterexamples.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_research_gate_repairs.py",
+        "tests/test_cross_snn_review.py",
+        "tests/test_forensic_evaluator.py",
+        "tests/test_forensic_mutations.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3\\strict-audit-tests.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 2.0546174999999494,
+      "resources": {
+        "peak_rss_bytes": 174239744,
+        "peak_commit_or_vms_bytes": 136740864,
+        "os_process_peak_working_set_bytes": 42569728,
+        "os_process_peak_pagefile_commit_bytes": 28749824,
+        "samples": 24,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.0544557000002897,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "strict-audit-tests.log"
+    }
+  ],
+  "engineering_counterexamples": {
+    "source_sha": "fe472b3b1257cdb264805bf79fd53e5647e3568d",
+    "new_quality_training": false,
+    "fixture_learn_calls": 0,
+    "empty_evaluator_overall_pass": true,
+    "high_accuracy_bypasses_ci_causal_and_shuffle": {
+      "task": "xor",
+      "status": "PASS",
+      "pass": true,
+      "checks": {
+        "direct_accuracy_gte_65": {
+          "value": 0.99,
+          "threshold": 0.65,
+          "pass": true
+        },
+        "probe_gain_gte_5pp": {
+          "value": 0.30000000000000004,
+          "lower95": -0.5,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "causal_drop_gte_5pp": {
+          "value": 0.0,
+          "threshold": 0.05,
+          "pass": true
+        },
+        "non_inferior_vs_r35": {
+          "value": 0.30000000000000004,
+          "threshold": -0.03,
+          "pass": true
+        },
+        "shuffled_control_distinct": {
+          "value": 0.0,
+          "threshold": 0.02,
+          "pass": true
+        }
+      },
+      "notes": "All P1 criteria passed."
+    },
+    "p2_20pp_forgetting_is_accepted": true,
+    "checkpoint": {
+      "threshold_before": 0.123,
+      "threshold_after": 0.8,
+      "rng_state_preserved": false,
+      "next_trace_max_error": 0.3224364221096039,
+      "float64_nan_state_accepted": true
+    },
+    "shuffle_changes_trace_rule_before_any_error_signal": {
+      "forward_voltage_equal": true,
+      "eligibility_max_difference": 0.3453747034072876,
+      "hidden_weight_updates": 0
+    },
+    "bf_state": {
+      "has_dumps": false,
+      "has_loads": false,
+      "reported_array_bytes": 33320,
+      "actual_unique_allocated_array_bytes": 34088,
+      "unreported_w_ctx_bytes": 768
+    },
+    "actual_generator_ambiguity_fixture": {
+      "2": {
+        "zero_noise_rows": 256,
+        "conflicting_identical_input_rows": 0,
+        "first_conflict": []
+      },
+      "4": {
+        "zero_noise_rows": 256,
+        "conflicting_identical_input_rows": 0,
+        "first_conflict": []
+      },
+      "8": {
+        "zero_noise_rows": 256,
+        "conflicting_identical_input_rows": 7,
+        "first_conflict": [
+          {
+            "row_a": 19,
+            "row_b": 39,
+            "label_a": 0,
+            "label_b": 1
+          }
+        ]
+      }
+    }
+  },
+  "main_sha_before": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "main_sha_after": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "peer_source_tracked_unchanged": true,
+  "decision": "REQUEST_CHANGES_RESEARCH_ONLY_NOT_PRODUCTION_READY",
+  "engineering_checks_passed": true
+}

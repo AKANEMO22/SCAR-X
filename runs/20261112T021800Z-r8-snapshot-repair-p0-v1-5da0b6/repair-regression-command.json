@@ -1,0 +1,42 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "-q",
+    "-rs",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r8_snapshot_adapter.py",
+    "tests/test_research_gate_repairs.py",
+    "tests/test_cross_snn_review.py",
+    "tests/test_forensic_evaluator.py",
+    "tests/test_forensic_mutations.py",
+    "tests/test_neural.py",
+    "tests/test_native.py",
+    "tests/test_generation1.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T021800Z-r8-snapshot-repair-p0-v1-5da0b6\\repair-regression.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 7.668237599999884,
+  "resources": {
+    "peak_rss_bytes": 231079936,
+    "peak_commit_or_vms_bytes": 187027456,
+    "os_process_peak_working_set_bytes": 44687360,
+    "os_process_peak_pagefile_commit_bytes": 29020160,
+    "samples": 86,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 7.668088100000205,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "repair-regression.log"
+}

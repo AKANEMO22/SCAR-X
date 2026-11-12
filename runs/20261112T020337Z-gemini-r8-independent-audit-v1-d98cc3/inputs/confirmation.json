@@ -1,0 +1,310 @@
+{
+  "p1_results": {
+    "strict_binding": {
+      "learned_mtsg": {
+        "direct_acc_mean": 0.799609375,
+        "direct_acc_sd": 0.0846246487541178,
+        "direct_acc_worst": 0.658203125,
+        "probe_acc_mean": 0.841796875,
+        "probe_acc_sd": 0.05687585851000405,
+        "probe_acc_worst": 0.759765625,
+        "probe_gain_mean": 0.199609375,
+        "probe_gain_lower95": 0.1208073132779827,
+        "probe_gain_upper95": 0.2784114367220173,
+        "ood_probe_mean": 0.842578125
+      },
+      "frozen_hidden": {
+        "probe_acc_mean": 0.6421875,
+        "probe_acc_sd": 0.07190047103027211
+      },
+      "r35_baseline": {
+        "probe_acc_mean": 0.680078125,
+        "probe_acc_sd": 0.0666270456196867
+      },
+      "shuffled_signal": {
+        "probe_acc_mean": 0.563671875,
+        "probe_acc_sd": 0.03476343040826092
+      },
+      "causal_revert": {
+        "drop_mean": 0.199609375,
+        "drop_sd": 0.0634750600783735
+      }
+    },
+    "distractor_binding": {
+      "learned_mtsg": {
+        "direct_acc_mean": 0.62734375,
+        "direct_acc_sd": 0.015090971696938951,
+        "direct_acc_worst": 0.61328125,
+        "probe_acc_mean": 0.66328125,
+        "probe_acc_sd": 0.03412663293082563,
+        "probe_acc_worst": 0.619140625,
+        "probe_gain_mean": 0.127734375,
+        "probe_gain_lower95": 0.10978477487823546,
+        "probe_gain_upper95": 0.14568397512176456,
+        "ood_probe_mean": 0.6453125
+      },
+      "frozen_hidden": {
+        "probe_acc_mean": 0.535546875,
+        "probe_acc_sd": 0.02266803303508462
+      },
+      "r35_baseline": {
+        "probe_acc_mean": 0.537890625,
+        "probe_acc_sd": 0.03330636523014407
+      },
+      "shuffled_signal": {
+        "probe_acc_mean": 0.5078125,
+        "probe_acc_sd": 0.022818987198335788
+      },
+      "causal_revert": {
+        "drop_mean": 0.127734375,
+        "drop_sd": 0.014458402752595115
+      }
+    },
+    "xor": {
+      "learned_mtsg": {
+        "direct_acc_mean": 0.96640625,
+        "direct_acc_sd": 0.026471869743093564,
+        "direct_acc_worst": 0.921875,
+        "probe_acc_mean": 0.986328125,
+        "probe_acc_sd": 0.007042092334890604,
+        "probe_acc_worst": 0.9765625,
+        "probe_gain_mean": 0.079296875,
+        "probe_gain_lower95": 0.029057417296402516,
+        "probe_gain_upper95": 0.1295363327035975,
+        "ood_probe_mean": 0.916015625
+      },
+      "frozen_hidden": {
+        "probe_acc_mean": 0.90703125,
+        "probe_acc_sd": 0.041835189798407155
+      },
+      "r35_baseline": {
+        "probe_acc_mean": 0.94921875,
+        "probe_acc_sd": 0.02887059667791891
+      },
+      "shuffled_signal": {
+        "probe_acc_mean": 0.8453125,
+        "probe_acc_sd": 0.0359979535686796
+      },
+      "causal_revert": {
+        "drop_mean": 0.079296875,
+        "drop_sd": 0.040467882773043765
+      }
+    },
+    "order": {
+      "learned_mtsg": {
+        "direct_acc_mean": 1.0,
+        "direct_acc_sd": 0.0,
+        "direct_acc_worst": 1.0,
+        "probe_acc_mean": 0.99921875,
+        "probe_acc_sd": 0.0010697706201272777,
+        "probe_acc_worst": 0.998046875,
+        "probe_gain_mean": 0.035546875,
+        "probe_gain_lower95": 0.011396697076224784,
+        "probe_gain_upper95": 0.05969705292377521,
+        "ood_probe_mean": 0.992578125
+      },
+      "frozen_hidden": {
+        "probe_acc_mean": 0.963671875,
+        "probe_acc_sd": 0.020372507516258277
+      },
+      "r35_baseline": {
+        "probe_acc_mean": 0.9953125,
+        "probe_acc_sd": 0.00405008620182182
+      },
+      "shuffled_signal": {
+        "probe_acc_mean": 0.991015625,
+        "probe_acc_sd": 0.010572162970878405
+      },
+      "causal_revert": {
+        "drop_mean": 0.035546875,
+        "drop_sd": 0.019452968121857393
+      }
+    }
+  },
+  "p2_results": {
+    "bf_cascade": {
+      "acquisition_mean": 0.8494791666666666,
+      "acquisition_sd": 0.012509490754661927,
+      "acquisition_worst": 0.8385416666666666,
+      "final_mean": 0.6002604166666666,
+      "final_sd": 0.03285019742589286,
+      "final_worst": 0.5755208333333334,
+      "mean_forgetting": 0.24921874999999996,
+      "mean_forgetting_sd": 0.024090301174478555
+    },
+    "unconsolidated": {
+      "mean_forgetting": 0.30390625,
+      "mean_forgetting_sd": 0.042866038857426375
+    }
+  },
+  "per_seed_records": [],
+  "gate_evaluation": {
+    "overall_status": "FAIL",
+    "overall_pass": false,
+    "p1_tasks": {
+      "strict_binding": {
+        "task": "strict_binding",
+        "status": "PASS",
+        "pass": true,
+        "checks": {
+          "direct_accuracy_gte_65": {
+            "value": 0.799609375,
+            "threshold": 0.65,
+            "pass": true
+          },
+          "probe_gain_gte_5pp": {
+            "value": 0.19960937499999998,
+            "lower95": 0.1208073132779827,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "causal_drop_gte_5pp": {
+            "value": 0.199609375,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "non_inferior_vs_r35": {
+            "value": 0.16171875000000002,
+            "threshold": -0.03,
+            "pass": true
+          },
+          "shuffled_control_distinct": {
+            "value": 0.27812499999999996,
+            "threshold": 0.02,
+            "pass": true
+          }
+        },
+        "notes": "All P1 criteria passed."
+      },
+      "distractor_binding": {
+        "task": "distractor_binding",
+        "status": "FAIL",
+        "pass": false,
+        "checks": {
+          "direct_accuracy_gte_65": {
+            "value": 0.62734375,
+            "threshold": 0.65,
+            "pass": false
+          },
+          "probe_gain_gte_5pp": {
+            "value": 0.12773437500000007,
+            "lower95": 0.10978477487823546,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "causal_drop_gte_5pp": {
+            "value": 0.127734375,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "non_inferior_vs_r35": {
+            "value": 0.1253906250000001,
+            "threshold": -0.03,
+            "pass": true
+          },
+          "shuffled_control_distinct": {
+            "value": 0.15546875000000004,
+            "threshold": 0.02,
+            "pass": true
+          }
+        },
+        "notes": "Failed criteria: ['direct_accuracy_gte_65']"
+      },
+      "xor": {
+        "task": "xor",
+        "status": "PASS",
+        "pass": true,
+        "checks": {
+          "direct_accuracy_gte_65": {
+            "value": 0.96640625,
+            "threshold": 0.65,
+            "pass": true
+          },
+          "probe_gain_gte_5pp": {
+            "value": 0.07929687500000004,
+            "lower95": 0.029057417296402516,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "causal_drop_gte_5pp": {
+            "value": 0.079296875,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "non_inferior_vs_r35": {
+            "value": 0.037109375,
+            "threshold": -0.03,
+            "pass": true
+          },
+          "shuffled_control_distinct": {
+            "value": 0.14101562499999998,
+            "threshold": 0.02,
+            "pass": true
+          }
+        },
+        "notes": "All P1 criteria passed."
+      },
+      "order": {
+        "task": "order",
+        "status": "FAIL",
+        "pass": false,
+        "checks": {
+          "direct_accuracy_gte_65": {
+            "value": 1.0,
+            "threshold": 0.65,
+            "pass": true
+          },
+          "probe_gain_gte_5pp": {
+            "value": 0.03554687500000009,
+            "lower95": 0.011396697076224784,
+            "threshold": 0.05,
+            "pass": false
+          },
+          "causal_drop_gte_5pp": {
+            "value": 0.035546875,
+            "threshold": 0.05,
+            "pass": true
+          },
+          "non_inferior_vs_r35": {
+            "value": 0.00390625,
+            "threshold": -0.03,
+            "pass": true
+          },
+          "shuffled_control_distinct": {
+            "value": 0.008203125000000089,
+            "threshold": 0.02,
+            "pass": true
+          }
+        },
+        "notes": "Failed criteria: ['probe_gain_gte_5pp']"
+      }
+    },
+    "p2_stream": {
+      "status": "FAIL",
+      "pass": false,
+      "checks": {
+        "acquisition_gte_65": {
+          "value": 0.8494791666666666,
+          "threshold": 0.65,
+          "pass": true
+        },
+        "final_gte_65": {
+          "value": 0.6002604166666666,
+          "threshold": 0.65,
+          "pass": false
+        },
+        "forgetting_reduced_vs_base": {
+          "bf_forg": 0.24921874999999996,
+          "base_forg": 0.30390625,
+          "reduction": 0.05468750000000003,
+          "pass": true
+        }
+      },
+      "notes": "Failed criteria: ['final_gte_65']"
+    },
+    "resources": {
+      "pass": true,
+      "status": "SKIPPED"
+    }
+  }
+}

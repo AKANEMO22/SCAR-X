@@ -1,5 +1,16 @@
 # Bản đồ dự án SCAR-X
 
+**R8 state repair P0:** [handoff](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md),
+`evaluation/forensic/r8_snapshot.py`, `r8_snapshot_fixture.py`,
+`scripts/verify_r8_snapshot_repair.py` / `r8_snapshot_cold.py` và15adaptertests.
+Data-only research wrapper; candidate/main/app không đổi.
+
+**Gemini R8 audit/repairs:** [review](research/forensic-r6-20261111/GEMINI_R8_REVIEW_AND_REPAIRS_VI.md),
+[next proposal](research/forensic-r6-20261111/R8_REPAIR_AND_P1_PROPOSAL_V1.md).
+`scripts/audit_gemini_r8.py` / `r8_engineering_worker.py`, independent gates
+`evaluation/forensic/research_gates.py`, receipt `artifacts/gemini-r8-independent-audit-v1.json`.
+Audit/fixtures only, no new quality training or live change.
+
 **Gemini Cross-SNN review:** [report](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md),
 protocol `experiments/cross-snn-transfer-review-v1.md`, runner
 `scripts/review_cross_snn_transfer.py`, helpers `evaluation/cross_snn_review.py`.

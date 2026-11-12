@@ -1,5 +1,25 @@
 # Trạng thái SCAR-X
 
+## R8 snapshot repair P0 — adapter nghiên cứu đã kiểm
+
+[Bàn giao](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md):
+wrapper data-only lưu/khôi phục đầy đủ MTSG/BF arrays, RNG/threshold/controller
+JSON, strict load, atomic save và rollback. Cold next-forward/update exact cả
+hai model;76/76tests qua gồm CPU/native, peakRSS231,08MB/commit187,03MB.
+Không sửa learning rule hoặc source tác giả/main/live; chưa đạt chất lượng P1/P2.
+
+## Gemini R8 — đã kiểm code/raw, sửa gate trong nhánh audit riêng
+
+[Review R8](research/forensic-r6-20261111/GEMINI_R8_REVIEW_AND_REPAIRS_VI.md)
+pin fe472b3, có implementation thực.13peerP0tests và39audit/regressiontests qua;
+không train campaign. Reproduce empty-evaluatorPASS, checkpoint mấtRNG/threshold,
+shuffle đổi trace và8keyqueryaliases. Independent evaluator nay fail-closed,
+retention kiểm mọi seed và codebook preflight chặn duplicate queries.
+BF DEV meanF giảm3,30đ nhưng final giảm7,51đ;0/3seed qua jointgate.
+MTSG binding/XOR reported promising, thiếu per-seed raw và matched contrasts.
+[P0 repair/P1 proposal](research/forensic-r6-20261111/R8_REPAIR_AND_P1_PROPOSAL_V1.md)
+chờ duyệt; main/G1/Hermes giữ nguyên, chưa production.
+
 ## Review Cross-SNN Gemini — 12/11/2026, không train mới
 
 [Review độc lập](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md)
