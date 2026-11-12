@@ -134,22 +134,25 @@ Do đó, đây không phải lỗi của Readout (Readout probe ở S5 cũng s�
 ### G. Code & Reproducibility (Mã nguồn và tính tái lập)
 
 - **Các module triển khai:**
-  - `src/scarx/neural/r9b_factorial_eprop.py`: Triển khai 24 cấu hình factorial và 5 chế độ matched control.
-  - `src/scarx/neural/r9b_bf_cascade.py`: Triển khai 5 chế độ củng cố BF-Cascade.
-  - `tests/test_r9b_factorial_eprop.py`: 6 unit tests kiểm tra tính toàn vẹn matched control, trace identity.
-  - `tests/test_r9b_bf_cascade.py`: 2 unit tests kiểm tra các arm củng cố.
+  - `src/scarx/neural/r9b_factorial_eprop.py`: Triển khai 24 cấu hình factorial và 5 chế độ matched control (`learned`, `shuffled_signal`, `zero_signal`, `frozen_hidden`, `readout_only`), với guard kiểm tra tính hữu hạn, phân định rạch ròi giữa đóng băng hoàn toàn (`frozen_hidden`) và chỉ huấn luyện readout (`readout_only`).
+  - `src/scarx/neural/r9b_bf_cascade.py`: Triển khai 5 chế độ củng cố BF-Cascade, bổ sung đồng bộ hoàn toàn `w_out` và `bias` vào `core`, hàm `clone()` và `revert_hidden()`.
+  - `src/scarx/evaluation/forensic/r9b_snapshot.py`: Triển khai snapshot adapter data-only cho các mô hình nghiên cứu R9b (`scarx-research-r9b-snapshot-v1`), tuân thủ thiết kế P0 của Codex (không pickle, checksum SHA-256 từng array, atomic replace write, kiểm tra giới hạn 2MB).
+  - `tests/test_r9b_factorial_eprop.py`: 8 unit tests kiểm tra tính toàn vẹn matched control, trace identity, stopped reset, phân định frozen vs readout-only, và input finiteness guards.
+  - `tests/test_r9b_bf_cascade.py`: 4 unit tests kiểm tra các arm củng cố, đồng bộ readout/bias, clone, causal revert, và input guards.
+  - `tests/test_r9b_snapshot.py`: 4 unit tests kiểm tra roundtrip exact, prediction/feature parity, next-episode update parity, và rejection of tampered payloads.
   - `scripts/run_r9b_factorial_dev.py`: Runner 288 jobs Factorial DEV.
   - `scripts/run_r9b_mechanistic_credit.py`: Audit micro-timelines qua 7 scenarios.
   - `scripts/run_r9b_retention_study.py`: Continual learning benchmark trên 5 arms.
   - `scripts/run_r9b_distractor_study.py`: Information flow attribution qua 6 computational stages.
   - `scripts/run_r9b_confirmation.py`: Runner xác nhận trên 10 seed tươi độc lập.
 - **Số lượng tests:**
-  - 8/8 unit tests mới PASS hoàn toàn.
+  - 16/16 unit tests mới cho R9b PASS hoàn toàn (0.35s).
   - 14/14 regression tests R8 PASS hoàn toàn (0.26s).
+  - Tổng cộng: 30/30 tests PASS 100%.
 - **Lệnh tái lập độc lập:**
   ```powershell
   $env:PYTHONPATH="src"
-  pytest tests/test_r9b*.py tests/test_r8*.py
+  pytest -k "r9b or r8"
   python scripts/analyze_r9b_factorial.py
   python scripts/run_r9b_confirmation.py
   ```

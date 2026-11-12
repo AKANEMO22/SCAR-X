@@ -9,6 +9,7 @@ Consolidation modes evaluated in R9b:
 """
 from __future__ import annotations
 
+import copy
 import io
 import json
 import numpy as np
@@ -61,6 +62,10 @@ class R9bBFCascade:
         self.u2_out = self.core.w_out.copy()
         self.bias = self.core.bias.copy()
 
+        # Initial hidden weights for causal revert analysis
+        self.w_in_0 = self.core.w_in.copy()
+        self.w_rec_0 = self.core.w_rec.copy()
+
         # Traces
         d_tot = d + k
         self.e_v = np.zeros((h, d_tot), dtype=np.float32)
@@ -81,9 +86,15 @@ class R9bBFCascade:
     def sync_active_weights_to_core(self) -> None:
         self.core.w_in[:] = self.u1_in
         self.core.w_rec[:] = self.u1_rec
+        self.core.w_out[:] = self.u1_out
+        self.core.bias[:] = self.bias
 
     def calibrate(self, sequences: np.ndarray) -> None:
         seqs = np.asarray(sequences, dtype=np.float32)
+        if seqs.ndim != 3 or seqs.shape[2] != self.config.inputs or len(seqs) < 1:
+            raise ValueError("Invalid calibration sequences")
+        if not np.all(np.isfinite(seqs)):
+            raise ValueError("Non-finite values in calibration sequences")
         self.sync_active_weights_to_core()
         for seq in seqs:
             self.core.reset_state()
@@ -92,6 +103,7 @@ class R9bBFCascade:
             f = self.core.features
             self.f_mean = 0.95 * self.f_mean + 0.05 * f
             self.f_var = 0.95 * self.f_var + 0.05 * (f - self.f_mean) ** 2
+        self.f_var = np.maximum(1e-6, self.f_var)
         self.calibrated = True
 
     def reset_episode(self) -> None:
@@ -104,6 +116,8 @@ class R9bBFCascade:
     def step(self, x: np.ndarray, track: bool = True) -> np.ndarray:
         c = self.config
         row = np.asarray(x, dtype=np.float32)
+        if row.shape != (c.inputs,) or not np.all(np.isfinite(row)):
+            raise ValueError("Invalid input vector")
 
         if track:
             old_z = self.core.spikes
@@ -137,7 +151,8 @@ class R9bBFCascade:
         return self.core.features
 
     def standardized_features(self, f: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        scale = np.maximum(np.sqrt(self.f_var), 0.05).astype(np.float32)
+        safe_var = np.maximum(self.f_var, 0.0)
+        scale = np.maximum(np.sqrt(safe_var), 0.05).astype(np.float32)
         raw = (f - self.f_mean) / scale
         f_hat = np.clip(raw, -5.0, 5.0).astype(np.float32)
         return f_hat, raw, scale
@@ -146,6 +161,12 @@ class R9bBFCascade:
         if not self.calibrated:
             raise ValueError("Model must be calibrated before supervised learning")
         seq = np.asarray(sequence, dtype=np.float32)
+        if seq.ndim != 2 or not 1 <= len(seq) <= 256 or seq.shape[1] != self.config.inputs:
+            raise ValueError("Invalid episode sequence shape")
+        if not np.all(np.isfinite(seq)):
+            raise ValueError("Non-finite values in episode sequence")
+        if not 0 <= int(target) < self.config.outputs:
+            raise ValueError("Invalid target index")
 
         self.reset_episode()
         for row in seq:
@@ -153,7 +174,7 @@ class R9bBFCascade:
 
         f = self.core.features
         self.f_mean = (1.0 - stat_rate) * self.f_mean + stat_rate * f
-        self.f_var = (1.0 - stat_rate) * self.f_var + stat_rate * (f - self.f_mean) ** 2
+        self.f_var = np.maximum(1e-6, (1.0 - stat_rate) * self.f_var + stat_rate * (f - self.f_mean) ** 2)
         f_hat, raw, scale = self.standardized_features(f)
 
         w_eff = self.u1_out
@@ -228,8 +249,18 @@ class R9bBFCascade:
         self.episodes_learned += 1
         return loss
 
+    def revert_hidden(self) -> None:
+        """Causal intervention: strictly reverts active and reservoir hidden synaptic weights."""
+        self.u1_in[:] = self.w_in_0
+        self.u2_in[:] = self.w_in_0
+        self.u1_rec[:] = self.w_rec_0
+        self.u2_rec[:] = self.w_rec_0
+        self.sync_active_weights_to_core()
+
     def features(self, sequence: np.ndarray) -> np.ndarray:
         seq = np.asarray(sequence, dtype=np.float32)
+        if seq.ndim != 2 or seq.shape[1] != self.config.inputs or not np.all(np.isfinite(seq)):
+            raise ValueError("Invalid sequence for features extraction")
         self.sync_active_weights_to_core()
         self.core.reset_state()
         for row in seq:
@@ -240,14 +271,13 @@ class R9bBFCascade:
         return np.stack([self.features(seq) for seq in sequences])
 
     def predict(self, sequence: np.ndarray) -> int:
-        seq = np.asarray(sequence, dtype=np.float32)
-        self.sync_active_weights_to_core()
-        self.core.reset_state()
-        for row in seq:
-            self.core.step(row, track=False)
-        f_hat, _, _ = self.standardized_features(self.core.features)
+        f = self.features(sequence)
+        f_hat, _, _ = self.standardized_features(f)
         logits = self.u1_out @ f_hat + self.bias
         return int(np.argmax(logits))
 
     def predict_many(self, sequences: np.ndarray) -> np.ndarray:
         return np.array([self.predict(seq) for seq in sequences], dtype=np.int32)
+
+    def clone(self) -> R9bBFCascade:
+        return copy.deepcopy(self)

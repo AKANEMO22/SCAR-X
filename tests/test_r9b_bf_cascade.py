@@ -47,3 +47,52 @@ def test_bf_cascade_readout_only_vs_hidden_only():
     # Check that in ho, hidden u2 moved while readout u2 stayed unchanged
     assert not np.array_equal(ho.u2_in, none.u2_in)
     np.testing.assert_array_equal(ho.u2_out, none.u2_out)
+
+
+def test_bf_cascade_sync_core_and_causal_revert():
+    cfg = make_config(seed=102)
+    m = R9bBFCascade(config=cfg, consolidation_mode="full")
+    calib = np.random.default_rng(2).normal(0, 0.5, (4, 12, 8)).astype(np.float32)
+    seq = np.random.default_rng(1).normal(0, 0.5, (12, 8)).astype(np.float32)
+
+    m.calibrate(calib)
+    w_in_0 = m.w_in_0.copy()
+    w_rec_0 = m.w_rec_0.copy()
+
+    m.learn_episode(seq, target=1)
+
+    # Core must be synced with active weights
+    np.testing.assert_array_equal(m.core.w_in, m.u1_in)
+    np.testing.assert_array_equal(m.core.w_rec, m.u1_rec)
+    np.testing.assert_array_equal(m.core.w_out, m.u1_out)
+    np.testing.assert_array_equal(m.core.bias, m.bias)
+
+    # Revert hidden
+    m.revert_hidden()
+    np.testing.assert_array_equal(m.u1_in, w_in_0)
+    np.testing.assert_array_equal(m.u2_in, w_in_0)
+    np.testing.assert_array_equal(m.u1_rec, w_rec_0)
+    np.testing.assert_array_equal(m.u2_rec, w_rec_0)
+    np.testing.assert_array_equal(m.core.w_in, w_in_0)
+
+
+def test_bf_cascade_validation_and_clone():
+    cfg = make_config(seed=103)
+    m = R9bBFCascade(config=cfg)
+
+    with pytest.raises(ValueError):
+        m.calibrate(np.full((2, 12, 8), np.nan, dtype=np.float32))
+
+    with pytest.raises(ValueError):
+        m.step(np.zeros(5, dtype=np.float32))
+
+    calib = np.random.default_rng(2).normal(0, 0.5, (4, 12, 8)).astype(np.float32)
+    m.calibrate(calib)
+
+    with pytest.raises(ValueError):
+        m.learn_episode(np.zeros((12, 8), dtype=np.float32), target=-1)
+
+    cloned = m.clone()
+    assert cloned.consolidation_mode == m.consolidation_mode
+    np.testing.assert_array_equal(cloned.u1_in, m.u1_in)
+

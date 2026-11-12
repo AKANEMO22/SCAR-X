@@ -189,3 +189,59 @@ def test_soft_sensory_gating_behavior():
     assert 0.14 <= g_low <= 0.16
     assert 0.98 <= g_high <= 1.00
     assert g_low < g_mid < g_high
+
+
+def test_frozen_hidden_vs_readout_only_control_difference():
+    """Confirms frozen_hidden updates neither readout nor hidden, while readout_only updates readout."""
+    cfg = make_config(seed=555)
+    seq = np.random.default_rng(1).normal(0, 0.5, (12, 8)).astype(np.float32)
+    calib = np.random.default_rng(2).normal(0, 0.5, (4, 12, 8)).astype(np.float32)
+
+    frozen = FactorialMTSGEProp(config=cfg, control_mode="frozen_hidden")
+    readout = FactorialMTSGEProp(config=cfg, control_mode="readout_only")
+
+    frozen.calibrate(calib)
+    readout.calibrate(calib)
+
+    w_out_orig = frozen.core.w_out.copy()
+    w_in_orig = frozen.core.w_in.copy()
+
+    frozen.learn_episode(seq, target=1)
+    readout.learn_episode(seq, target=1)
+
+    # In frozen_hidden: NOTHING changes
+    np.testing.assert_array_equal(frozen.core.w_in, w_in_orig)
+    np.testing.assert_array_equal(frozen.core.w_out, w_out_orig)
+
+    # In readout_only: readout changes, hidden remains frozen
+    np.testing.assert_array_equal(readout.core.w_in, w_in_orig)
+    assert not np.array_equal(readout.core.w_out, w_out_orig)
+
+
+def test_input_validation_and_finiteness_guards():
+    cfg = make_config(seed=666)
+    m = FactorialMTSGEProp(config=cfg)
+
+    # Calibrate without finite inputs should raise ValueError
+    with pytest.raises(ValueError):
+        m.calibrate(np.full((2, 12, 8), np.nan, dtype=np.float32))
+
+    calib = np.random.default_rng(3).normal(0, 0.5, (4, 12, 8)).astype(np.float32)
+    m.calibrate(calib)
+
+    # Step with wrong shape
+    with pytest.raises(ValueError):
+        m.step(np.zeros(7, dtype=np.float32))
+
+    # Step with NaN
+    with pytest.raises(ValueError):
+        m.step(np.full(8, np.nan, dtype=np.float32))
+
+    # Learn episode with invalid target
+    with pytest.raises(ValueError):
+        m.learn_episode(np.zeros((12, 8), dtype=np.float32), target=5)
+
+    # Learn episode with non-finite seq
+    with pytest.raises(ValueError):
+        m.learn_episode(np.full((12, 8), np.inf, dtype=np.float32), target=0)
+

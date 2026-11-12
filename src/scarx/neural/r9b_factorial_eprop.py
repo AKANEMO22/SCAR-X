@@ -124,6 +124,8 @@ class FactorialMTSGEProp:
         seqs = np.asarray(sequences, dtype=np.float32)
         if seqs.ndim != 3 or seqs.shape[2] != self.config.inputs or len(seqs) < 1:
             raise ValueError("Invalid calibration sequences")
+        if not np.all(np.isfinite(seqs)):
+            raise ValueError("Non-finite values in calibration sequences")
         for seq in seqs:
             self.core.reset_state()
             for row in seq:
@@ -131,6 +133,7 @@ class FactorialMTSGEProp:
             f = self.core.features
             self.f_mean = 0.95 * self.f_mean + 0.05 * f
             self.f_var = 0.95 * self.f_var + 0.05 * (f - self.f_mean) ** 2
+        self.f_var = np.maximum(1e-6, self.f_var)
         self.calibrated = True
 
     def reset_episode(self) -> None:
@@ -202,7 +205,8 @@ class FactorialMTSGEProp:
         return self.core.features
 
     def standardized_features(self, f: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        scale = np.maximum(np.sqrt(self.f_var), 0.05).astype(np.float32)
+        safe_var = np.maximum(self.f_var, 0.0)
+        scale = np.maximum(np.sqrt(safe_var), 0.05).astype(np.float32)
         raw = (f - self.f_mean) / scale
         f_hat = np.clip(raw, -5.0, 5.0).astype(np.float32)
         return f_hat, raw, scale
@@ -220,6 +224,8 @@ class FactorialMTSGEProp:
         seq = np.asarray(sequence, dtype=np.float32)
         if seq.ndim != 2 or not 1 <= len(seq) <= 256 or seq.shape[1] != self.config.inputs:
             raise ValueError("Invalid episode sequence shape")
+        if not np.all(np.isfinite(seq)):
+            raise ValueError("Non-finite values in episode sequence")
         if not 0 <= int(target) < self.config.outputs:
             raise ValueError("Invalid target index")
 
@@ -229,7 +235,7 @@ class FactorialMTSGEProp:
 
         f = self.core.features
         self.f_mean = (1.0 - stat_rate) * self.f_mean + stat_rate * f
-        self.f_var = (1.0 - stat_rate) * self.f_var + stat_rate * (f - self.f_mean) ** 2
+        self.f_var = np.maximum(1e-6, (1.0 - stat_rate) * self.f_var + stat_rate * (f - self.f_mean) ** 2)
         f_hat, raw, scale = self.standardized_features(f)
 
         logits = self.core.w_out @ f_hat + self.core.bias
@@ -244,12 +250,13 @@ class FactorialMTSGEProp:
         # Pre-update credit signal before modifying readout weights
         pre_update_signal = (self.core.w_out.T @ err) * (np.abs(raw) < 5.0) / scale
 
-        # Readout update
-        grad_out = err[:, None] * f_hat[None, :]
-        self.core.w_out += np.clip(self.lr_out * grad_out, -self.clip_out, self.clip_out)
-        self.core.bias += np.clip(self.lr_out * err, -self.clip_out, self.clip_out)
-        np.clip(self.core.w_out, -3.5, 3.5, out=self.core.w_out)
-        np.clip(self.core.bias, -3.5, 3.5, out=self.core.bias)
+        # Readout update (only when not frozen_hidden)
+        if self.control_mode != "frozen_hidden":
+            grad_out = err[:, None] * f_hat[None, :]
+            self.core.w_out += np.clip(self.lr_out * grad_out, -self.clip_out, self.clip_out)
+            self.core.bias += np.clip(self.lr_out * err, -self.clip_out, self.clip_out)
+            np.clip(self.core.w_out, -3.5, 3.5, out=self.core.w_out)
+            np.clip(self.core.bias, -3.5, 3.5, out=self.core.bias)
 
         # Log norms
         self.last_step_eligibility_norm = float(np.linalg.norm(self.e_f))
@@ -296,6 +303,8 @@ class FactorialMTSGEProp:
 
     def features(self, sequence: np.ndarray) -> np.ndarray:
         seq = np.asarray(sequence, dtype=np.float32)
+        if seq.ndim != 2 or seq.shape[1] != self.config.inputs or not np.all(np.isfinite(seq)):
+            raise ValueError("Invalid sequence for features extraction")
         self.core.reset_state()
         for row in seq:
             self.core.step(row, track=False)
