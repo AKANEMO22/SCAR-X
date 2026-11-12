@@ -1,7 +1,7 @@
 {
-  "H4-049": {
-    "candidate_id": "H4-049",
-    "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)",
+  "H5-070": {
+    "candidate_id": "H5-070",
+    "hypothesis": "Continual learning with cascade=True (k1=0.012, k2=0.0002) across hetero_linear",
     "params": {
       "reset_mode": "subtractive_exact",
       "damped_lambda": 0.0,
@@ -9,124 +9,123 @@
       "surrogate_gamma": 0.5,
       "surrogate_param": 0.5,
       "timescale_dist": "hetero_linear",
-      "gating_mode": "recurrent_only",
-      "sensory_threshold": 0.4,
+      "gating_mode": "none",
+      "sensory_threshold": 0.6,
       "sensory_floor": 0.15,
       "learned_attenuation": false,
       "attenuation_factor": 0.0,
       "noise_sensitive_credit": false,
-      "readout_mode": "context_gated",
-      "n_keys": 2,
-      "use_bf_cascade": false,
-      "kappa1": 0.004,
-      "kappa2": 0.001
+      "readout_mode": "standard_linear",
+      "use_bf_cascade": true,
+      "kappa1": 0.012,
+      "kappa2": 0.0002
     },
     "tasks": {
       "strict_binding": {
         "learned_candidate": {
-          "direct_acc_mean": 0.7400390625,
-          "direct_acc_sd": 0.07998782807047222,
-          "probe_acc_mean": 0.7505859375,
-          "probe_acc_sd": 0.10174200383039682,
-          "probe_gain_mean": 0.1203125,
-          "probe_gain_lower95": 0.055783264024883844,
-          "probe_gain_upper95": 0.18484173597511616
+          "direct_acc_mean": 0.562890625,
+          "direct_acc_sd": 0.05970304117044625,
+          "probe_acc_mean": 0.6474609375,
+          "probe_acc_sd": 0.05352219837467915,
+          "probe_gain_mean": 0.0171875,
+          "probe_gain_lower95": -0.010713798356011526,
+          "probe_gain_upper95": 0.045088798356011525
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.6302734375
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.530078125
+          "probe_acc_mean": 0.612109375
         },
         "causal_revert": {
-          "drop_mean": 0.1203125,
-          "drop_sd": 0.09021191925368857
+          "drop_mean": 0.02109375,
+          "drop_sd": 0.03552564422455199
         }
       },
       "distractor_binding": {
         "learned_candidate": {
-          "direct_acc_mean": 0.6021484375,
-          "direct_acc_sd": 0.07522870267860353,
-          "probe_acc_mean": 0.6240234375,
-          "probe_acc_sd": 0.08294204400244155,
-          "probe_gain_mean": 0.0771484375,
-          "probe_gain_lower95": 0.016607218453438023,
-          "probe_gain_upper95": 0.13768965654656198
+          "direct_acc_mean": 0.5140625,
+          "direct_acc_sd": 0.0209510023315811,
+          "probe_acc_mean": 0.5388671875,
+          "probe_acc_sd": 0.04696037147699975,
+          "probe_gain_mean": -0.0080078125,
+          "probe_gain_lower95": -0.032601171875,
+          "probe_gain_upper95": 0.016585546875
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.546875
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.5130859375
+          "probe_acc_mean": 0.5287109375
         },
         "causal_revert": {
-          "drop_mean": 0.0771484375,
-          "drop_sd": 0.08463666866061155
+          "drop_mean": 0.005859375,
+          "drop_sd": 0.01652158533912698
         }
       },
       "xor": {
         "learned_candidate": {
-          "direct_acc_mean": 0.9392578125,
-          "direct_acc_sd": 0.025087500140567043,
-          "probe_acc_mean": 0.9634765625,
-          "probe_acc_sd": 0.01989781874092488,
-          "probe_gain_mean": 0.0955078125,
-          "probe_gain_lower95": 0.056905955389946715,
-          "probe_gain_upper95": 0.13410966961005327
+          "direct_acc_mean": 0.69140625,
+          "direct_acc_sd": 0.08302759670275968,
+          "probe_acc_mean": 0.8796875,
+          "probe_acc_sd": 0.06919565351748479,
+          "probe_gain_mean": 0.01171875,
+          "probe_gain_lower95": -0.04883590086157129,
+          "probe_gain_upper95": 0.07227340086157129
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.86796875
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.8560546875
+          "probe_acc_mean": 0.8716796875
         },
         "causal_revert": {
-          "drop_mean": 0.0955078125,
-          "drop_sd": 0.053965424571234925
+          "drop_mean": 0.054296875,
+          "drop_sd": 0.0663411138881997
         }
       },
       "order": {
         "learned_candidate": {
-          "direct_acc_mean": 0.998046875,
-          "direct_acc_sd": 0.004318521862441927,
-          "probe_acc_mean": 0.9994140625,
-          "probe_acc_sd": 0.0013182589017784235,
-          "probe_gain_mean": 0.048828125,
-          "probe_gain_lower95": 0.026109090898655665,
-          "probe_gain_upper95": 0.07154715910134433
+          "direct_acc_mean": 0.8703125,
+          "direct_acc_sd": 0.08431530006006473,
+          "probe_acc_mean": 0.9701171875,
+          "probe_acc_sd": 0.024063014345603116,
+          "probe_gain_mean": 0.01953125,
+          "probe_gain_lower95": 0.005177572390652425,
+          "probe_gain_upper95": 0.033884927609347575
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.9505859375
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.991796875
+          "probe_acc_mean": 0.941015625
         },
         "causal_revert": {
-          "drop_mean": 0.048828125,
-          "drop_sd": 0.031761226348048094
+          "drop_mean": 0.2400390625,
+          "drop_sd": 0.15617524796083834
         }
       }
     },
     "continual_stream": {
-      "acquisition_mean": 0.8330729166666666,
-      "final_mean": 0.5898437500000001,
-      "mean_forgetting": 0.2432291666666667,
+      "acquisition_mean": 0.7106770833333333,
+      "final_mean": 0.5291666666666666,
+      "mean_forgetting": 0.18151041666666665,
       "mean_forgetting_ci95": [
-        0.21190221468495596,
-        0.2745561186483774
+        0.1621060942790632,
+        0.2009147390542701
       ],
-      "worst_forgetting": 0.5234375,
+      "worst_forgetting": 0.48046875,
       "per_seed_worst_forgettings": [
-        0.46875,
-        0.5234375,
-        0.24609375,
-        0.46875,
-        0.3671875,
-        0.41796875,
-        0.40234375,
         0.4375,
-        0.50390625,
-        0.46875
+        0.359375,
+        0.3359375,
+        0.33203125,
+        0.3828125,
+        0.44921875,
+        0.41015625,
+        0.48046875,
+        0.3203125,
+        0.30859375
       ]
     },
     "gate_verdict": "GATE_FAIL",
@@ -134,22 +133,22 @@
       "status": "FAIL",
       "checks": {
         "acquisition_gte_65": {
-          "value": 0.8330729166666666,
+          "value": 0.7106770833333333,
           "threshold": 0.65,
           "pass": true
         },
         "final_gte_65": {
-          "value": 0.5898437500000001,
+          "value": 0.5291666666666666,
           "threshold": 0.65,
           "pass": false
         },
         "mean_forgetting_lte_3pp": {
-          "value": 0.2432291666666667,
+          "value": 0.18151041666666665,
           "threshold": 0.03,
           "pass": false
         },
         "worst_forgetting_lte_5pp": {
-          "value": 0.5234375,
+          "value": 0.48046875,
           "threshold": 0.05,
           "pass": false
         }
@@ -161,24 +160,23 @@
       ]
     }
   },
-  "H4-050": {
-    "candidate_id": "H4-050",
-    "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)",
+  "H2-012": {
+    "candidate_id": "H2-012",
+    "hypothesis": "Factorial interaction of uniform_fast timescale decay with soft_sigmoid sensory gating (thresh=1.0)",
     "params": {
       "reset_mode": "subtractive_exact",
       "damped_lambda": 0.0,
       "surrogate_fn": "fast_sigmoid",
       "surrogate_gamma": 0.5,
       "surrogate_param": 0.5,
-      "timescale_dist": "hetero_linear",
-      "gating_mode": "recurrent_only",
-      "sensory_threshold": 0.6,
+      "timescale_dist": "uniform_fast",
+      "gating_mode": "soft_sigmoid",
+      "sensory_threshold": 1.0,
       "sensory_floor": 0.15,
       "learned_attenuation": false,
       "attenuation_factor": 0.0,
       "noise_sensitive_credit": false,
-      "readout_mode": "context_gated",
-      "n_keys": 2,
+      "readout_mode": "standard_linear",
       "use_bf_cascade": false,
       "kappa1": 0.004,
       "kappa2": 0.001
@@ -186,109 +184,109 @@
     "tasks": {
       "strict_binding": {
         "learned_candidate": {
-          "direct_acc_mean": 0.7412109375,
-          "direct_acc_sd": 0.08180488152937812,
-          "probe_acc_mean": 0.747265625,
-          "probe_acc_sd": 0.09709997817568627,
-          "probe_gain_mean": 0.1169921875,
-          "probe_gain_lower95": 0.055490670123947525,
-          "probe_gain_upper95": 0.17849370487605248
+          "direct_acc_mean": 0.7474609375,
+          "direct_acc_sd": 0.10848413388708063,
+          "probe_acc_mean": 0.7947265625,
+          "probe_acc_sd": 0.08122876533747678,
+          "probe_gain_mean": 0.164453125,
+          "probe_gain_lower95": 0.11415463755399952,
+          "probe_gain_upper95": 0.2147516124460005
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.6302734375
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.534375
+          "probe_acc_mean": 0.5294921875
         },
         "causal_revert": {
-          "drop_mean": 0.1169921875,
-          "drop_sd": 0.08597916643003897
+          "drop_mean": 0.1880859375,
+          "drop_sd": 0.08343017037939926
         }
       },
       "distractor_binding": {
         "learned_candidate": {
-          "direct_acc_mean": 0.5796875,
-          "direct_acc_sd": 0.06556348389924793,
-          "probe_acc_mean": 0.597265625,
-          "probe_acc_sd": 0.0890133727810275,
-          "probe_gain_mean": 0.050390625,
-          "probe_gain_lower95": -0.016497156005223466,
-          "probe_gain_upper95": 0.11727840600522346
+          "direct_acc_mean": 0.5896484375,
+          "direct_acc_sd": 0.061677050017055965,
+          "probe_acc_mean": 0.621875,
+          "probe_acc_sd": 0.056981582729854964,
+          "probe_gain_mean": 0.075,
+          "probe_gain_lower95": 0.029915548273539073,
+          "probe_gain_upper95": 0.12008445172646093
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.546875
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.5220703125
+          "probe_acc_mean": 0.5154296875
         },
         "causal_revert": {
-          "drop_mean": 0.050390625,
-          "drop_sd": 0.09350916693680505
+          "drop_mean": 0.0759765625,
+          "drop_sd": 0.08214200732184464
         }
       },
       "xor": {
         "learned_candidate": {
-          "direct_acc_mean": 0.9400390625,
-          "direct_acc_sd": 0.025349693235956882,
-          "probe_acc_mean": 0.9634765625,
-          "probe_acc_sd": 0.01989781874092488,
-          "probe_gain_mean": 0.0955078125,
-          "probe_gain_lower95": 0.056905955389946715,
-          "probe_gain_upper95": 0.13410966961005327
+          "direct_acc_mean": 0.6673828125,
+          "direct_acc_sd": 0.09321520823404007,
+          "probe_acc_mean": 0.8111328125,
+          "probe_acc_sd": 0.0597473958900863,
+          "probe_gain_mean": -0.0568359375,
+          "probe_gain_lower95": -0.0959845034301332,
+          "probe_gain_upper95": -0.0176873715698668
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.86796875
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.860546875
+          "probe_acc_mean": 0.8822265625
         },
         "causal_revert": {
-          "drop_mean": 0.0955078125,
-          "drop_sd": 0.053965424571234925
+          "drop_mean": 0.1162109375,
+          "drop_sd": 0.10061595678664069
         }
       },
       "order": {
         "learned_candidate": {
-          "direct_acc_mean": 0.998046875,
-          "direct_acc_sd": 0.004318521862441927,
-          "probe_acc_mean": 0.9994140625,
-          "probe_acc_sd": 0.0013182589017784235,
-          "probe_gain_mean": 0.048828125,
-          "probe_gain_lower95": 0.026109090898655665,
-          "probe_gain_upper95": 0.07154715910134433
+          "direct_acc_mean": 0.9458984375,
+          "direct_acc_sd": 0.06673764582878414,
+          "probe_acc_mean": 0.9900390625,
+          "probe_acc_sd": 0.011735014754531094,
+          "probe_gain_mean": 0.039453125,
+          "probe_gain_lower95": 0.011872353161276435,
+          "probe_gain_upper95": 0.06703389683872356
         },
         "frozen_hidden": {
           "probe_acc_mean": 0.9505859375
         },
         "shuffled_signal": {
-          "probe_acc_mean": 0.98828125
+          "probe_acc_mean": 0.9888671875
         },
         "causal_revert": {
-          "drop_mean": 0.048828125,
-          "drop_sd": 0.031761226348048094
+          "drop_mean": 0.4349609375,
+          "drop_sd": 0.09433613968663633
         }
       }
     },
     "continual_stream": {
-      "acquisition_mean": 0.8330729166666666,
-      "final_mean": 0.5898437500000001,
-      "mean_forgetting": 0.2432291666666667,
+      "acquisition_mean": 0.7089843750000001,
+      "final_mean": 0.565234375,
+      "mean_forgetting": 0.14609375,
       "mean_forgetting_ci95": [
-        0.21190221468495596,
-        0.2745561186483774
+        0.12072755779721778,
+        0.1714599422027822
       ],
-      "worst_forgetting": 0.5234375,
+      "worst_forgetting": 0.42578125,
       "per_seed_worst_forgettings": [
-        0.46875,
-        0.5234375,
-        0.24609375,
-        0.46875,
-        0.3671875,
-        0.41796875,
-        0.40234375,
-        0.4375,
-        0.50390625,
-        0.46875
+        0.36328125,
+        0.42578125,
+        0.32421875,
+        0.27734375,
+        0.36328125,
+        0.20703125,
+        0.37890625,
+        0.25,
+        0.40625,
+        0.375
       ]
     },
     "gate_verdict": "GATE_FAIL",
@@ -296,22 +294,22 @@
       "status": "FAIL",
       "checks": {
         "acquisition_gte_65": {
-          "value": 0.8330729166666666,
+          "value": 0.7089843750000001,
           "threshold": 0.65,
           "pass": true
         },
         "final_gte_65": {
-          "value": 0.5898437500000001,
+          "value": 0.565234375,
           "threshold": 0.65,
           "pass": false
         },
         "mean_forgetting_lte_3pp": {
-          "value": 0.2432291666666667,
+          "value": 0.14609375,
           "threshold": 0.03,
           "pass": false
         },
         "worst_forgetting_lte_5pp": {
-          "value": 0.5234375,
+          "value": 0.42578125,
           "threshold": 0.05,
           "pass": false
         }

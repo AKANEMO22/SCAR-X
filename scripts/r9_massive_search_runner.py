@@ -79,8 +79,36 @@ def check_ram_usage() -> float:
 
 
 # ---------------------------------------------------------------------------
-# Stage B: Screening Task Evaluators
+# Candidate Model Factory & Evaluators
 # ---------------------------------------------------------------------------
+
+def build_model_for_candidate(
+    cfg: Config, cand_params: dict[str, Any], condition: str = "learned_candidate"
+) -> R9UnifiedNeuralModel:
+    p = cand_params
+    return R9UnifiedNeuralModel(
+        cfg,
+        reset_mode=p.get("reset_mode", "subtractive_exact"),
+        damped_lambda=p.get("damped_lambda", 0.0),
+        surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
+        surrogate_gamma=p.get("surrogate_gamma", 0.5),
+        surrogate_param=p.get("surrogate_param", 0.5),
+        timescale_dist=p.get("timescale_dist", "hetero_linear"),
+        gamma_min=p.get("gamma_min", 0.25),
+        gamma_max=p.get("gamma_max", 0.92),
+        gating_mode=p.get("gating_mode", "recurrent_only"),
+        sensory_threshold=p.get("sensory_threshold", 0.6),
+        sensory_floor=p.get("sensory_floor", 0.15),
+        learned_attenuation=p.get("learned_attenuation", False),
+        attenuation_factor=p.get("attenuation_factor", 0.0),
+        noise_sensitive_credit=p.get("noise_sensitive_credit", False),
+        readout_mode=p.get("readout_mode", "standard_linear"),
+        use_bf_cascade=p.get("use_bf_cascade", False),
+        kappa1=p.get("kappa1", 0.004),
+        kappa2=p.get("kappa2", 0.001),
+        condition=condition,
+    )
+
 
 def screen_binding_candidate(
     cand: dict[str, Any], seed: int, distractor: bool = False
@@ -102,26 +130,7 @@ def screen_binding_candidate(
     assert_input_dimension(tr_x, 8)
 
     # 1. Learned candidate
-    model = R9UnifiedNeuralModel(
-        cfg,
-        reset_mode=p["reset_mode"],
-        damped_lambda=p.get("damped_lambda", 0.0),
-        surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-        surrogate_gamma=p.get("surrogate_gamma", 0.5),
-        surrogate_param=p.get("surrogate_param", 0.5),
-        timescale_dist=p.get("timescale_dist", "hetero_linear"),
-        gating_mode=p.get("gating_mode", "recurrent_only"),
-        sensory_threshold=p.get("sensory_threshold", 0.6),
-        sensory_floor=p.get("sensory_floor", 0.15),
-        learned_attenuation=p.get("learned_attenuation", False),
-        attenuation_factor=p.get("attenuation_factor", 0.0),
-        noise_sensitive_credit=p.get("noise_sensitive_credit", False),
-        readout_mode=p.get("readout_mode", "standard_linear"),
-        use_bf_cascade=p.get("use_bf_cascade", False),
-        kappa1=p.get("kappa1", 0.004),
-        kappa2=p.get("kappa2", 0.001),
-        condition="learned_candidate",
-    )
+    model = build_model_for_candidate(cfg, p, condition="learned_candidate")
     model.calibrate(fit_x[:32])
     for seq, y in zip(tr_x, tr_y):
         model.learn_episode(seq, int(y))
@@ -140,7 +149,7 @@ def screen_binding_candidate(
     causal_drop = p_acc - rev_p_acc
 
     # Frozen baseline probe
-    frz_model = R9UnifiedNeuralModel(cfg, condition="frozen_hidden")
+    frz_model = build_model_for_candidate(cfg, p, condition="frozen_hidden")
     frz_model.calibrate(fit_x[:32])
     frz_ff = frz_model.features_many(fit_x)
     frz_tf = frz_model.features_many(te_x)
@@ -168,14 +177,7 @@ def screen_multikey_candidate(cand: dict[str, Any], seed: int) -> dict[str, floa
     te_x, te_y = generate_multikey_associative_r9(seed + 400, 256, n_keys=n_k, delay=4)
     assert_input_dimension(tr_x, 8)
 
-    model = R9UnifiedNeuralModel(
-        cfg,
-        timescale_dist=p.get("timescale_dist", "hetero_linear"),
-        gating_mode=p.get("gating_mode", "recurrent_only"),
-        sensory_threshold=p.get("sensory_threshold", 0.6),
-        readout_mode=p.get("readout_mode", "standard_linear"),
-        condition="learned_candidate",
-    )
+    model = build_model_for_candidate(cfg, p, condition="learned_candidate")
     model.calibrate(fit_x[:32])
     for seq, y in zip(tr_x, tr_y):
         model.learn_episode(seq, int(y))
@@ -190,7 +192,7 @@ def screen_multikey_candidate(cand: dict[str, Any], seed: int) -> dict[str, floa
     rev_model.revert_hidden_weights(revert_in=True, revert_rec=True)
     rev_p_acc = float(ridge_probe(rev_model.features_many(fit_x), fit_y, rev_model.features_many(te_x), te_y))
 
-    frz_model = R9UnifiedNeuralModel(cfg, condition="frozen_hidden")
+    frz_model = build_model_for_candidate(cfg, p, condition="frozen_hidden")
     frz_model.calibrate(fit_x[:32])
     frz_p_acc = float(ridge_probe(frz_model.features_many(fit_x), fit_y, frz_model.features_many(te_x), te_y))
 
@@ -217,15 +219,7 @@ def screen_continual_candidate(cand: dict[str, Any], seed: int) -> dict[str, flo
 
     skills = [("order", order_tr, order_te), ("xor", xor_tr, xor_te), ("strict_binding", bind_tr, bind_te)]
 
-    model = R9UnifiedNeuralModel(
-        cfg,
-        timescale_dist=p.get("timescale_dist", "hetero_linear"),
-        gating_mode=p.get("gating_mode", "recurrent_only"),
-        use_bf_cascade=p.get("use_bf_cascade", False),
-        kappa1=p.get("kappa1", 0.004),
-        kappa2=p.get("kappa2", 0.001),
-        condition="learned_candidate",
-    )
+    model = build_model_for_candidate(cfg, p, condition="learned_candidate")
     cal_seqs = np.concatenate([order_tr[0][:16], xor_tr[0][:16], bind_tr[0][:16]], axis=0)
     model.calibrate(cal_seqs)
 
@@ -446,26 +440,7 @@ def run_stage_d_ablations(top16_ids: list[str], screened_results: dict[str, dict
                 if cond == "causal_revert":
                     continue
 
-                model = R9UnifiedNeuralModel(
-                    cfg,
-                    reset_mode=p.get("reset_mode", "subtractive_exact"),
-                    damped_lambda=p.get("damped_lambda", 0.0),
-                    surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-                    surrogate_gamma=p.get("surrogate_gamma", 0.5),
-                    surrogate_param=p.get("surrogate_param", 0.5),
-                    timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                    gating_mode=p.get("gating_mode", "recurrent_only"),
-                    sensory_threshold=p.get("sensory_threshold", 0.6),
-                    sensory_floor=p.get("sensory_floor", 0.15),
-                    learned_attenuation=p.get("learned_attenuation", False),
-                    attenuation_factor=p.get("attenuation_factor", 0.0),
-                    noise_sensitive_credit=p.get("noise_sensitive_credit", False),
-                    readout_mode=p.get("readout_mode", "standard_linear"),
-                    use_bf_cascade=p.get("use_bf_cascade", False),
-                    kappa1=p.get("kappa1", 0.004),
-                    kappa2=p.get("kappa2", 0.001),
-                    condition=cond,
-                )
+                model = build_model_for_candidate(cfg, p, condition=cond)
                 model.calibrate(fit_x[:32])
                 for seq, y in zip(tr_x, tr_y):
                     model.learn_episode(seq, int(y))
@@ -532,16 +507,7 @@ def run_stage_e_robustness(
             # Stress 1: Heavy Distractor Amplitude (+/- 2.0)
             tr_hd, tr_hdy = generate_ceiling_stress_binding(seed + 100, 384, delay_ticks=8, distractor_amp=2.0)
             te_hd, te_hdy = generate_ceiling_stress_binding(seed + 200, 128, delay_ticks=8, distractor_amp=2.0)
-            m_hd = R9UnifiedNeuralModel(
-                cfg,
-                reset_mode=p.get("reset_mode", "subtractive_exact"),
-                surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-                timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                gating_mode=p.get("gating_mode", "recurrent_only"),
-                sensory_threshold=p.get("sensory_threshold", 0.6),
-                learned_attenuation=p.get("learned_attenuation", False),
-                use_bf_cascade=p.get("use_bf_cascade", False),
-            )
+            m_hd = build_model_for_candidate(cfg, p, condition="learned_candidate")
             m_hd.calibrate(tr_hd[:32])
             for seq, y in zip(tr_hd, tr_hdy):
                 m_hd.learn_episode(seq, int(y))
@@ -550,27 +516,14 @@ def run_stage_e_robustness(
             # Stress 2: Extended Delay (16 delay ticks)
             tr_ed, tr_edy = generate_ceiling_stress_binding(seed + 300, 384, delay_ticks=16, distractor_amp=1.2)
             te_ed, te_edy = generate_ceiling_stress_binding(seed + 400, 128, delay_ticks=16, distractor_amp=1.2)
-            m_ed = R9UnifiedNeuralModel(
-                cfg,
-                reset_mode=p.get("reset_mode", "subtractive_exact"),
-                surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-                timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                gating_mode=p.get("gating_mode", "recurrent_only"),
-                sensory_threshold=p.get("sensory_threshold", 0.6),
-                use_bf_cascade=p.get("use_bf_cascade", False),
-            )
+            m_ed = build_model_for_candidate(cfg, p, condition="learned_candidate")
             m_ed.calibrate(tr_ed[:32])
             for seq, y in zip(tr_ed, tr_edy):
                 m_ed.learn_episode(seq, int(y))
             cid_res["extended_delay"].append(float(np.mean(m_ed.predict_many(te_ed) == te_edy)))
 
             # Stress 3: Reversed Continual Learning Stream
-            m_rev = R9UnifiedNeuralModel(
-                cfg,
-                use_bf_cascade=p.get("use_bf_cascade", True),
-                kappa1=p.get("kappa1", 0.004),
-                kappa2=p.get("kappa2", 0.001),
-            )
+            m_rev = build_model_for_candidate(cfg, p, condition="learned_candidate")
             # Order: strict_binding -> xor -> order
             b_tr = generate_strict_binding(seed + 10, 384); b_te = generate_strict_binding(seed + 110, 128)
             x_tr = generate_xor_representation(seed + 20, 384); x_te = generate_xor_representation(seed + 120, 128)
@@ -589,12 +542,7 @@ def run_stage_e_robustness(
             cid_res["reversed_stream"].append(float(np.mean(forg)))
 
             # Stress 4: Scaled 16-Key Associative Retrieval
-            m_16k = R9UnifiedNeuralModel(
-                cfg,
-                readout_mode=p.get("readout_mode", "standard_linear"),
-                timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                gating_mode=p.get("gating_mode", "recurrent_only"),
-            )
+            m_16k = build_model_for_candidate(cfg, p, condition="learned_candidate")
             k16_tr, k16_try = generate_multikey_associative_r9(seed + 50, 384, n_keys=16, delay=4)
             k16_te, k16_tey = generate_multikey_associative_r9(seed + 60, 128, n_keys=16, delay=4)
             m_16k.calibrate(k16_tr[:32])
@@ -674,26 +622,7 @@ def run_stage_f_confirmation(
                     te_x, te_y = generate_order_representation(seed + 400, 512)
 
                 # Learned candidate
-                model = R9UnifiedNeuralModel(
-                    cfg,
-                    reset_mode=p.get("reset_mode", "subtractive_exact"),
-                    damped_lambda=p.get("damped_lambda", 0.0),
-                    surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-                    surrogate_gamma=p.get("surrogate_gamma", 0.5),
-                    surrogate_param=p.get("surrogate_param", 0.5),
-                    timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                    gating_mode=p.get("gating_mode", "recurrent_only"),
-                    sensory_threshold=p.get("sensory_threshold", 0.6),
-                    sensory_floor=p.get("sensory_floor", 0.15),
-                    learned_attenuation=p.get("learned_attenuation", False),
-                    attenuation_factor=p.get("attenuation_factor", 0.0),
-                    noise_sensitive_credit=p.get("noise_sensitive_credit", False),
-                    readout_mode=p.get("readout_mode", "standard_linear"),
-                    use_bf_cascade=p.get("use_bf_cascade", False),
-                    kappa1=p.get("kappa1", 0.004),
-                    kappa2=p.get("kappa2", 0.001),
-                    condition="learned_candidate",
-                )
+                model = build_model_for_candidate(cfg, p, condition="learned_candidate")
                 model.calibrate(fit_x[:32])
                 for seq, y in zip(tr_x, tr_y):
                     model.learn_episode(seq, int(y))
@@ -702,30 +631,22 @@ def run_stage_f_confirmation(
                 p_acc = float(ridge_probe(model.features_many(fit_x), fit_y, model.features_many(te_x), te_y))
 
                 # Shuffled signal control
-                shuff_model = R9UnifiedNeuralModel(
-                    cfg,
-                    reset_mode=p.get("reset_mode", "subtractive_exact"),
-                    surrogate_fn=p.get("surrogate_fn", "fast_sigmoid"),
-                    timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                    gating_mode=p.get("gating_mode", "recurrent_only"),
-                    sensory_threshold=p.get("sensory_threshold", 0.6),
-                    condition="shuffled_signal",
-                )
+                shuff_model = build_model_for_candidate(cfg, p, condition="shuffled_signal")
                 shuff_model.calibrate(fit_x[:32])
                 for seq, y in zip(tr_x, tr_y):
                     shuff_model.learn_episode(seq, int(y))
                 shuff_p_acc = float(ridge_probe(shuff_model.features_many(fit_x), fit_y, shuff_model.features_many(te_x), te_y))
 
                 # Frozen hidden probe
-                frz_model = R9UnifiedNeuralModel(cfg, condition="frozen_hidden")
+                frz_model = build_model_for_candidate(cfg, p, condition="frozen_hidden")
                 frz_model.calibrate(fit_x[:32])
                 frz_p_acc = float(ridge_probe(frz_model.features_many(fit_x), fit_y, frz_model.features_many(te_x), te_y))
 
-                # Exact causal revert
+                # Exact causal revert: direct accuracy drop
                 rev_model = R9UnifiedNeuralModel.loads(model.dumps())
                 rev_model.revert_hidden_weights(revert_in=True, revert_rec=True)
-                rev_p_acc = float(ridge_probe(rev_model.features_many(fit_x), fit_y, rev_model.features_many(te_x), te_y))
-                drop = p_acc - rev_p_acc
+                rev_d_acc = float(np.mean(rev_model.predict_many(te_x) == te_y))
+                drop = d_acc - rev_d_acc
 
                 direct_accs.append(d_acc)
                 probe_accs.append(p_acc)
@@ -777,15 +698,7 @@ def run_stage_f_confirmation(
             bind_tr = generate_strict_binding(seed + 300, 512); bind_te = generate_strict_binding(seed + 1300, 256)
             skills = [("order", order_tr, order_te), ("xor", xor_tr, xor_te), ("strict_binding", bind_tr, bind_te)]
 
-            m_cont = R9UnifiedNeuralModel(
-                cfg,
-                reset_mode=p.get("reset_mode", "subtractive_exact"),
-                timescale_dist=p.get("timescale_dist", "hetero_linear"),
-                gating_mode=p.get("gating_mode", "recurrent_only"),
-                use_bf_cascade=True,
-                kappa1=p.get("kappa1", 0.004),
-                kappa2=p.get("kappa2", 0.001),
-            )
+            m_cont = build_model_for_candidate(cfg, {**p, "use_bf_cascade": True}, condition="learned_candidate")
             m_cont.calibrate(np.concatenate([order_tr[0][:16], xor_tr[0][:16], bind_tr[0][:16]], axis=0))
 
             mat = np.zeros((3, 3))
@@ -865,16 +778,24 @@ def execute_r9_campaign():
         cid for cid in top16_ids
         if ablations_summary[cid]["causal_verdict"] == "CONFIRMED_CAUSAL"
     ]
-    if len(causal_passed) < 5:
-        # Fallback to top scorers if causal margin was close
-        causal_passed = top16_ids[:5]
-    top5_ids = causal_passed[:5]
+    # Prioritize candidates that confirmed causal mechanism advance
+    non_causal_fillers = [cid for cid in top16_ids if cid not in causal_passed]
+    top5_ids = (causal_passed + non_causal_fillers)[:5]
 
     # 5. Stage E: Adversarial Robustness Testing (Top 5 Candidates)
     robustness_summary = run_stage_e_robustness(top5_ids, screened_results)
 
-    # Select Top 2 for Locked Confirmation
-    top2_ids = top5_ids[:2]
+    # Select Top 2 for Locked Confirmation:
+    # Prioritize causal winners, ranked by robustness score under distractor/delay stress
+    def candidate_confirmation_priority(cid: str) -> tuple[int, float]:
+        is_causal = 1 if cid in causal_passed else 0
+        r_info = robustness_summary.get(cid, {})
+        h_dist = r_info.get("heavy_distractor", {}).get("mean", 0.5)
+        rev_forg = r_info.get("reversed_stream", {}).get("mean", 0.5)
+        rob_score = h_dist - rev_forg
+        return (is_causal, rob_score)
+
+    top2_ids = sorted(top5_ids, key=candidate_confirmation_priority, reverse=True)[:2]
 
     # 6. Stage F: Locked Confirmation (Top 2 Candidates across 10 Fresh Seeds)
     confirmation_results = run_stage_f_confirmation(top2_ids, screened_results)

@@ -99,38 +99,40 @@ Chiến dịch khảo sát quy mô lớn đã bác bỏ dứt khoát 4 giả thu
 
 ## D. INDEPENDENT CONFIRMATION (KẾT QUẢ KHÓA XÁC NHẬN TRÊN 10 FRESH SEEDS)
 
-Hai candidate tốt nhất (`H4-049` và `H4-050`) được đưa vào kiểm tra khóa (Locked Confirmation) trên **10 seed hoàn toàn mới và chưa từng qua tinh chỉnh**:
+Sau khi hoàn tất kiểm tra nhân quả ở Giai đoạn D (chỉ có 3/16 candidate đạt `CONFIRMED_CAUSAL` là `H1-090`, `H2-012`, `H5-070`) và kiểm tra áp lực đối kháng ở Giai đoạn E, hai candidate tốt nhất trong nhóm vượt qua bài kiểm tra nhân quả (`H2-012` và `H5-070`) được đưa vào kiểm tra khóa (Locked Confirmation) trên **10 seed hoàn toàn mới và chưa từng qua tinh chỉnh**:
 `[191001, 191007, 191013, 191019, 191025, 191031, 191037, 191043, 191049, 191055]`.
 
-### D.1. Candidate H4-049 (CKCER + Hetero Linear Timescales)
+### D.1. Candidate H2-012 (Uniform Fast Decay + Soft Sigmoid Sensory Gating)
 
-| Nhiệm vụ | Direct Acc Mean (SD) | Probe Gain Mean [95% CI] | Causal Revert Drop | Shuffled Probe | Cổng Nhiệm vụ |
-|---|:---:|:---:|:---:|:---:|:---:|
-| `strict_binding` | 74.00% (8.00%) | **+12.03 pp** [+5.58, +18.48] | **12.03%** | 53.01% | **PASS** |
-| `distractor_binding` | 60.21% (7.52%) | +7.71 pp [+1.66, +13.77] | 7.71% | 51.31% | **FAIL** (Direct < 65%) |
-| `xor` | 93.93% (2.51%) | **+9.55 pp** [+5.69, +13.41] | **9.55%** | 85.61% | **PASS** |
-| `order` | 99.80% (0.43%) | +4.88 pp [+2.61, +7.15] | 4.88% | 99.18% | **FAIL** (Drop < 5pp) |
+| Nhiệm vụ | Direct Acc Mean | Probe Gain Mean [95% CI] | Causal Revert Drop | Cổng Nhiệm vụ |
+|---|:---:|:---:|:---:|:---:|
+| `strict_binding` | **74.75%** | **+16.45 pp** [+11.42, +21.48] | **18.81%** | **PASS** |
+| `distractor_binding` | 58.96% | +7.50 pp [+2.99, +12.01] | 7.60% | **FAIL** (Direct < 65%) |
+| `xor` | 66.74% | -5.68 pp [-9.60, -1.77] | 11.62% | **FAIL** (Gain < 5pp) |
+| `order` | 94.59% | +3.95 pp [+1.19, +6.70] | 43.50% | **FAIL** (Gain < 5pp) |
 
 **Luồng học liên tục (Continual Stream 3 kỹ năng: order -> xor -> strict_binding):**
-- Độ chính xác tiếp thu (Acquisition Mean): $83.31\%$ ($\ge 65.0\%$, ĐẠT)
-- Độ chính xác cuối cùng (Final Mean): $58.98\%$ ($< 65.0\%$, KHÔNG ĐẠT)
-- Quên trung bình (Mean Forgetting): $24.32$ pp (95% CI: $[21.19, 27.46]$ pp) ($> 3.0$ pp, KHÔNG ĐẠT)
-- Quên tệ nhất (Worst Forgetting): $52.34$ pp ($> 5.0$ pp, KHÔNG ĐẠT)
-- **Kết luận cổng H4-049:** **GATE_FAIL**.
+- Độ chính xác tiếp thu (Acquisition Mean): $70.90\%$ ($\ge 65.0\%$, ĐẠT)
+- Độ chính xác cuối cùng (Final Mean): $56.52\%$ ($< 65.0\%$, KHÔNG ĐẠT)
+- Quên trung bình (Mean Forgetting): $14.61$ pp ($> 3.0$ pp, KHÔNG ĐẠT)
+- Quên tệ nhất (Worst Forgetting): $42.58$ pp ($> 5.0$ pp, KHÔNG ĐẠT)
+- **Kết luận cổng H2-012:** **GATE_FAIL**.
 
-### D.2. Candidate H4-050 (CKCER + Hetero Linear + Recurrent Gating $\theta=0.6$)
+### D.2. Candidate H5-070 (BF-Cascade $\kappa_1=0.012, \kappa_2=0.0002$ + Hetero Linear Timescales)
 
-| Nhiệm vụ | Direct Acc Mean (SD) | Probe Gain Mean [95% CI] | Causal Revert Drop | Shuffled Probe | Cổng Nhiệm vụ |
-|---|:---:|:---:|:---:|:---:|:---:|
-| `strict_binding` | 74.12% (8.18%) | **+11.70 pp** [+5.55, +17.85] | **11.70%** | 53.01% | **PASS** |
-| `distractor_binding` | 58.01% (7.65%) | +5.01 pp [-1.62, +11.65] | 5.01% | 51.31% | **FAIL** (Direct < 65%) |
-| `xor` | 94.02% (2.48%) | **+9.55 pp** [+5.69, +13.41] | **9.55%** | 85.61% | **PASS** |
-| `order` | 99.80% (0.43%) | +4.88 pp [+2.61, +7.15] | 4.88% | 99.18% | **FAIL** (Drop < 5pp) |
+| Nhiệm vụ | Direct Acc Mean | Probe Gain Mean [95% CI] | Causal Revert Drop | Cổng Nhiệm vụ |
+|---|:---:|:---:|:---:|:---:|
+| `strict_binding` | 56.29% | +1.72 pp [-1.07, +4.51] | 2.11% | **FAIL** (Direct < 65%) |
+| `distractor_binding` | 51.41% | -0.80 pp [-3.26, +1.66] | 0.59% | **FAIL** (Direct < 65%) |
+| `xor` | 69.14% | +1.17 pp [-4.88, +7.23] | 5.43% | **FAIL** (Gain < 5pp) |
+| `order` | 87.03% | +1.95 pp [+0.52, +3.39] | 24.00% | **FAIL** (Gain < 5pp) |
 
 **Luồng học liên tục:**
-- Quên trung bình: $24.32$ pp ($> 3.0$ pp)
-- Quên tệ nhất: $52.34$ pp ($> 5.0$ pp)
-- **Kết luận cổng H4-050:** **GATE_FAIL**.
+- Độ chính xác tiếp thu: $71.07\%$
+- Độ chính xác cuối cùng: $52.92\%$
+- Quên trung bình: $18.15$ pp ($> 3.0$ pp)
+- Quên tệ nhất: $48.05$ pp ($> 5.0$ pp)
+- **Kết luận cổng H5-070:** **GATE_FAIL**.
 
 ---
 

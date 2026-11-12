@@ -453,21 +453,40 @@ class R9UnifiedNeuralModel:
         self.episodes_learned += 1
         return loss
 
-    def features(self, sequence: np.ndarray) -> np.ndarray:
+    def run_sequence(self, sequence: np.ndarray) -> tuple[np.ndarray, np.ndarray | None]:
+        """Runs a sequence in inference mode, returning final features and context trace (if context_gated)."""
         seq = np.asarray(sequence, dtype=np.float32)
         self.core.reset_state()
+        e_ctx = np.zeros(self.config.inputs, dtype=np.float32) if self.readout_mode == "context_gated" else None
         for row in seq:
+            if self.learned_attenuation and self.attenuation_factor > 0.0:
+                if abs(row[6]) > 0.5:
+                    row = row.copy()
+                    row[6] *= max(0.1, 1.0 - self.attenuation_factor)
             self.core.step(row, track=False)
-        return self.core.features.copy()
+            if e_ctx is not None:
+                e_ctx = 0.85 * e_ctx + 0.15 * np.abs(row)
+        return self.core.features.copy(), e_ctx
+
+    def features(self, sequence: np.ndarray) -> np.ndarray:
+        f, _ = self.run_sequence(sequence)
+        return f
 
     def features_many(self, sequences: np.ndarray) -> np.ndarray:
         return np.stack([self.features(seq) for seq in sequences])
 
     def predict(self, sequence: np.ndarray) -> int:
-        f = self.features(sequence)
-        return int(np.argmax(self.probabilities_from_features(f)))
+        f, e_ctx = self.run_sequence(sequence)
+        f_hat, _, _ = self.standardized_features(f)
+        logits = self.core.w_out @ f_hat + self.core.bias
+        if self.readout_mode == "context_gated" and self.w_ctx is not None and e_ctx is not None:
+            ctx_contrib = np.tensordot(e_ctx, self.w_ctx, axes=(0, 0)) @ f_hat
+            logits = logits + ctx_contrib
+        return int(np.argmax(logits))
 
     def predict_many(self, sequences: np.ndarray) -> np.ndarray:
+        if self.readout_mode == "context_gated":
+            return np.array([self.predict(s) for s in sequences], dtype=np.int32)
         f_mat = self.features_many(sequences)
         scale = np.maximum(np.sqrt(self.f_var), 0.05).astype(np.float32)
         f_hat = np.clip((f_mat - self.f_mean) / scale, -5.0, 5.0)
