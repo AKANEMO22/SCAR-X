@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Capacity H64/H128 — đã duyệt, mở DEV trong nhánh riêng
+
+Người dùng phê duyệt thửH64/H128 giữALIF/locallearning vàactualtrace. [Protocol](../experiments/capacity-h64-h128-approved-v1.md)
+khóa3DEVseeds/4tasks/4primaryarms,1024updates,48H48reuse+96newprimary+
+108contemporaneousCPUcells,252records/204newjobs tốiđa60minworker. Không main/
+Hermes/confirmation/P2. H48parity exact,92P0tests qua gồmnative/coldresume,
+[review độc lập](research/CAPACITY_INDEPENDENT_REVIEW_20261112.md) TechnicalGO.
+Throughputtechnicalfixture dự toán~711s, dưới3600s; chưa dùng qualityscores.
+Trace http://127.0.0.1:8773 tự hiệnH/loss/updates/predictions/resources, khôngmock.
+
 ## ACR DEV hoàn tất — ACR_SPECIALIZED_GAIN, chưa ADVANCE
 
 [Báo cáo](research/ACR_DEV_RESULTS_20261112.md),

@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+**Approvedcapacity12/11:** [protocol](../experiments/capacity-h64-h128-approved-v1.md),
+[technical review](research/CAPACITY_INDEPENDENT_REVIEW_20261112.md),
+`evaluation/capacity.py` dimension-onlyconstructoradapters, strictcapacitysnapshot
+format trong `forensic/r8_snapshot.py`; oldH48formats không mởrộng. Runner
+`run_capacity_dev.py`, passiveobserver `serve_capacity_observer.py`:8773.
+H48oldqualityrecords reusehash; H64/H128 chạyfixed1024updates+equalCPU riêng.
+Không thay scientificgates hoặc main/Hermes, không growbeyond128/P2/confirmation.
+
 **ACR12/11:** [results](research/ACR_DEV_RESULTS_20261112.md),
 [independent audit](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md),
 [router traces](research/ACR_ROUTER_ANALYSIS_20261112.md),

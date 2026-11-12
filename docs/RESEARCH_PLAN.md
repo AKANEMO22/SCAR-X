@@ -1,5 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Phê duyệt capacity12/11/2026:** người dùng cho phép thửH64/H128 vớiALIF/local
+synaptic learning, actuallearning/results lênlocalhost. [Executionprotocol](../experiments/capacity-h64-h128-approved-v1.md)
+giữ primarydata/gates và tách secondarycapacitydiagnostic khỏiH48historicalACR.
+H48không phải trầnvĩnhviễn; đây là phép phân biệt dung lượng/learning/compute,
+không lệnh tăngquymô vôhạn. ChỉH64/128 đã duyệt; không pretrained/globalBPTT,
+main/Hermes/liveSQLite hoặc confirmation/P2. Cácghi chú “chưa duyệt H64/128”
+bên dưới vàproposal cũ là lịch sử trướcphêduyệt mới, không yêu cầu hỏi lại.
+
 **Research update12/11/2026:** ACR theo chỉ thị riêng đã hoàn tất DEV H48,
 kết luận `ACR_SPECIALIZED_GAIN`, chưa broadADVANCE/P1/P2. [Báo cáo](research/ACR_DEV_RESULTS_20261112.md)
 và [review](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md) giữ toàn bộ
