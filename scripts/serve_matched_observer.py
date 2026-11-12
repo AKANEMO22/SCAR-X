@@ -13,7 +13,7 @@ PAGE='''<!doctype html><meta charset="utf-8"><title>SCAR-X · nghiên cứu th�
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--port',type=int,default=8767);parser.add_argument('--active-file');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--port',type=int,default=8767);parser.add_argument('--active-file');parser.add_argument('--owner-file');args=parser.parse_args()
     root=Path(__file__).resolve().parents[1];run=Path(args.run).resolve()
     if run.parent!=root/'runs' or not (run/'manifest.json').is_file():raise ValueError('Registered owned run required')
     class Handler(BaseHTTPRequestHandler):
@@ -34,7 +34,10 @@ def main():
             self.send_response(200);self.send_header('Content-Type',mime);self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
         def log_message(self,*args):pass
     server=ThreadingHTTPServer(('127.0.0.1',args.port),Handler)
-    (run/'observer.json').write_text(json.dumps({'pid':os.getpid(),'port':args.port,'url':f'http://127.0.0.1:{args.port}',
+    owner=Path(args.owner_file).resolve() if args.owner_file else run/'observer.json'
+    if args.owner_file and not owner.is_relative_to(root/'local'):raise ValueError('Owner receipt must stay in local workspace')
+    owner.parent.mkdir(parents=True,exist_ok=True)
+    owner.write_text(json.dumps({'pid':os.getpid(),'port':args.port,'url':f'http://127.0.0.1:{args.port}',
         'run':run.name,'scope':'Read-only public research logs, no model or live SQLite loaded'},indent=2),encoding='utf-8')
     print(f'Observer http://127.0.0.1:{args.port}',flush=True);server.serve_forever()
 
