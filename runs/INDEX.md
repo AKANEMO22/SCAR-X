@@ -148,3 +148,5 @@
 - [20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3](20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3/report.md) — gemini-r8-independent-audit-v1
 - [20261112T021445Z-r8-snapshot-repair-p0-v1-86efaa](20261112T021445Z-r8-snapshot-repair-p0-v1-86efaa/report.md) — r8-snapshot-repair-p0-v1
 - [20261112T021800Z-r8-snapshot-repair-p0-v1-5da0b6](20261112T021800Z-r8-snapshot-repair-p0-v1-5da0b6/report.md) — r8-snapshot-repair-p0-v1
+- [20261112T062349Z-gemini-r9-independent-review-v1-40df26](20261112T062349Z-gemini-r9-independent-review-v1-40df26/report.md) — gemini-r9-independent-review-v1
+- [20261112T062822Z-gemini-r9-independent-review-v1-9453bf](20261112T062822Z-gemini-r9-independent-review-v1-9453bf/report.md) — gemini-r9-independent-review-v1

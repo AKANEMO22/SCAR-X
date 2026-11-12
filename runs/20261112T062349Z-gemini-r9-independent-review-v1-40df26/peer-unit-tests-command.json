@@ -1,0 +1,35 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r9_unified_mechanisms.py",
+    "tests/test_r9_suite.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T062349Z-gemini-r9-independent-review-v1-40df26\\peer-unit-tests.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r9-2c41fda",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 2.5886276999990514,
+  "resources": {
+    "peak_rss_bytes": 179650560,
+    "peak_commit_or_vms_bytes": 176676864,
+    "os_process_peak_working_set_bytes": 49516544,
+    "os_process_peak_pagefile_commit_bytes": 37027840,
+    "samples": 29,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.5881988000001,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "peer-unit-tests.log"
+}

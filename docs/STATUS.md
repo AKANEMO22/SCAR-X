@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Gemini R9 — source/raw reviewed, chưa approve learner
+
+[Review độc lập](research/forensic-r6-20261111/GEMINI_R9_INDEPENDENT_REVIEW_VI.md)
+pin2c41fda.512hash config đúng;412effective model signatures,464model+evaluation
+signatures; cached screening không đổi sau patch, BH0call, đổi candidate nhưng
+dùng lại bank191001…191055.10peer tests/3audit tests qua, no new sweep. Hai selected
+candidate vẫn GATE_FAIL. Giữ infrastructure/failure evidence, REQUEST_CHANGES
+cho claims/provenance; không main/architecture change. Bank R9 không trùng12seed
+Codex đang confirmation; lượt Codex và code đã khóa giữ nguyên trong worktree khác.
+
 ## R8 snapshot repair P0 — adapter nghiên cứu đã kiểm
 
 [Bàn giao](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md):
