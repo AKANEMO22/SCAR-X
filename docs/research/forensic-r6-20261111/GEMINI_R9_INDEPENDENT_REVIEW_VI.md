@@ -30,6 +30,12 @@ Các sửa mới đáng giữ:
 - Phân biệt probe/refit và direct fixed-head revert ở các stage sau là hữu ích,
   nếu ghi rõ metric khác nhau thay vì cộng/trộn như một endpoint.
 
+Appendix `selection-consistency.json` đã đọc thêm ranking/ablation/robustness raw:
+top16, causal verdicts, top5 và top2 đều khớp phép tính theo runner hiện tại.
+Không có causal-verdict arithmetic mismatch; causal winners ở StageD là
+H1-090/H2-012/H5-070. Đây là phần được xác nhận, không khép các lỗi source-cache,
+bank độc lập hoặc thiếu statistical correction bên dưới.
+
 Summary hiện có (chưa được Codex tái train10seed hoặc chấm row-level):
 
 | Candidate | Binding direct | Distractor direct | XOR direct | Final stream | MeanF | WorstF |
@@ -69,6 +75,11 @@ source manifests khiến Codex chưa thể tái tính CI/gates sâu hơn từ ra
 
 Bank R9 **không trùng** bank12seed20261112xxđang chạy của Codex. Candidate/code
 của Codex đã khóa trước review này và giữ nguyên, không đưa ranking R9 vào đó.
+
+Sau khi review diễn ra, bank12seed của Codex đã hoàn tất độc lập: đủ204jobs,
+integrity auditPASS nhưng overallP1FAIL, chỉ XOR qua toàn bộ cửa. Kết quả nằm ở
+nhánh `codex/scarx-r8-matched-controls-20261112`, report
+`docs/research/R8_P1_CONFIRMATION_20261112.md`. Không ghép điểm hoặc seed hai bank.
 
 ## 4. Finding P1 — BH/FDR chỉ được định nghĩa/import, không được áp dụng
 
