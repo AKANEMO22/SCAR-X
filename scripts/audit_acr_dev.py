@@ -146,8 +146,10 @@ def main():
                 if prediction!=r['predictions'][split]['probe'][:16]:raise ValueError('Independent ridge replay mismatch')
                 probe_replay+=16
     missing=expected-seen
-    # Missing entries covered by explicit invalid cells are preserved, not PASS.
-    if missing and not invalid:raise ValueError('Missing registered cells')
+    # Only the two trajectories of an explicitly failed norm-pair may be absent.
+    # An unrelated missing raw/equal-CPU cell cannot hide behind another failure.
+    explained={(path.parent.name,i) for path in invalid for i in (0,1)}
+    if missing!=explained:raise ValueError('Missing cells are not exactly explained by preserved invalid controls')
     for folder in sorted((run/'jobs').glob('*-norm_matched')):
         if (folder/'invalid-control.json').exists():continue
         with np.load(folder/'norm-pairs.npz',allow_pickle=False) as z:norms=z['radius_raw']
