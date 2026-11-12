@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## R8 sửa và DEV thật — 12/11/2026, chưa formal P1/P2
+
+[Báo cáo](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md):96matchedjobs và48reset
+jobs đã chạy đủ, tổng288conditions/294.912predictionrows chấm lại độc lập.
+Stopped-reset giữ ALIFforward, XORdirect91,86→99,35% ở equal-update; binding
+85,42→82,62%, distractor55,66% vẫn fail. Không bỏ kết quả equalCPU thấp.
+381tests checkout qua,4profile cold next-update exact; peakstudyRSS~222MB.
+12seed confirmation [proposal](../experiments/r8-reset-credit-confirmation-proposal-v1.md)
+chưa chạy, cần duyệt riêng. Main/Hermes/live giữ nguyên; observer readonly
+http://127.0.0.1:8767 tự hiện actual outputs/learninglogs. Chưa production.
+
 ## R8 snapshot repair P0 — adapter nghiên cứu đã kiểm
 
 [Bàn giao](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md):

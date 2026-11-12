@@ -10,6 +10,18 @@ PEER=ROOT.parent/'review-gemini-r8-fe472b3'
 
 
 def fixture_model(kind):
+    if kind in ('matched','stopped','peer607_mtsg','peer607_bf'):
+        from ..r8_matched_credit import MatchedLocalCredit,peer_module
+        from ..r8_stopped_reset import StoppedResetCredit
+        cfg=Config(inputs=8,outputs=2,hidden=48,fan_in=8,plastic_rows=12,seed=42)
+        if kind=='matched':model=MatchedLocalCredit(cfg,'multi_gated_shuffle')
+        elif kind=='stopped':model=StoppedResetCredit(cfg,'multi_gated_shuffle')
+        elif kind=='peer607_mtsg':model=peer_module('r8_mtsg_eprop').MultiTimescaleSensoryGatedEProp(cfg,'shuffled_signal',sensory_threshold=.123)
+        else:model=peer_module('r8_bf_cascade').BennaFusiMetaplasticCascade(cfg,use_context_gating=True,kappa1=.003)
+        model.calibrated=True
+        if hasattr(model,'signal_rng'):model.signal_rng.permutation(48)
+        model.core.spikes[:]=1;model.step(np.full(8,.03,np.float32),True)
+        return model
     if kind not in ('mtsg','bf'):raise ValueError('Explicit fixture kind required')
     if subprocess.check_output(['git','-C',str(PEER),'rev-parse','HEAD'],text=True).strip()!=S.SOURCE:
         raise ValueError('Pinned fixture source moved')

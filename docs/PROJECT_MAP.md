@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+**R8 matched/reset DEV:** [kết quả](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md),
+protocols `experiments/r8-{matched-credit,reset-credit}-dev-v1.md`, prototypes
+`evaluation/r8_matched_credit.py` / `r8_stopped_reset.py`, study oracle/probe
+`r8_matched_study.py`. Runners `run_r8_*_dev.py`, raw verifier
+`verify_r8_study_artifacts.py`, readonly observer `serve_matched_observer.py`.
+Receipts `artifacts/r8-*-dev-v1.json`; fresh confirmation remains a proposal.
+
 **R8 state repair P0:** [handoff](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md),
 `evaluation/forensic/r8_snapshot.py`, `r8_snapshot_fixture.py`,
 `scripts/verify_r8_snapshot_repair.py` / `r8_snapshot_cold.py` và15adaptertests.
