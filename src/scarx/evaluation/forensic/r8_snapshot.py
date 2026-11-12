@@ -10,6 +10,7 @@ import numpy as np
 
 FORMAT='scarx-research-r8-snapshot-v1'
 SOURCE='fe472b3b1257cdb264805bf79fd53e5647e3568d'
+MATCHED_SOURCE='607ffca7c9222c5e3fd9741c3ebdf5939e10bedf'
 MAX_BYTES=2_000_000
 M_ARRAYS={'e_v','e_a','e_f','syn_trace','syn_energy','f_mean','f_var','w_in_0','w_rec_0','gamma_e_vec'}
 B_ARRAYS={'u1_in','u2_in','u1_rec','u2_rec','u1_out','u2_out','bias','w_ctx','e_v','e_a','e_f','syn_trace','syn_energy','f_mean','f_var','gamma_e_vec'}
@@ -50,6 +51,7 @@ def metadata(raw):
 def layout(model):
     name=type(model).__name__
     if name=='MultiTimescaleSensoryGatedEProp':arrays,settings,rng=M_ARRAYS,M_SETTINGS,{'signal_rng'}
+    elif name=='MatchedLocalCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode'},{'signal_rng'}
     elif name=='BennaFusiMetaplasticCascade':arrays,settings,rng=B_ARRAYS,B_SETTINGS,set()
     else:raise ValueError('Only explicit R8 research models supported')
     if set(vars(model))!=arrays|settings|rng|{'config','core'}:raise ValueError('Unknown learner state cannot be dropped')
@@ -65,7 +67,7 @@ def layout(model):
 
 
 def validate_settings(kind,settings,core_settings):
-    expected=M_SETTINGS if kind=='MultiTimescaleSensoryGatedEProp' else B_SETTINGS
+    expected=M_SETTINGS|{'trace_kind','gate_mode'} if kind=='MatchedLocalCredit' else M_SETTINGS if kind=='MultiTimescaleSensoryGatedEProp' else B_SETTINGS
     if set(settings)!=expected:raise ValueError('Settings schema')
     for key,value in settings.items():
         if key in ('calibrated','use_cascade','use_context_gating'):
@@ -75,6 +77,10 @@ def validate_settings(kind,settings,core_settings):
         elif key=='condition':
             if value not in ('frozen_hidden','zero_signal','shuffled_signal','readout_only','r35_baseline','ew_he_legacy','learned_mtsg'):
                 raise ValueError('Unknown research condition')
+        elif key=='trace_kind':
+            if value not in ('fast','slow','multi'):raise ValueError('Unknown trace policy')
+        elif key=='gate_mode':
+            if value not in ('none','activity'):raise ValueError('Unknown gate policy')
         elif type(value) not in (int,float) or not math.isfinite(value) or not 0<=value<=100:
             raise ValueError('Finite bounded setting required')
     if kind=='BennaFusiMetaplasticCascade' and (settings['n_context']!=2 or settings['kappa1']>1 or settings['kappa2']>1):
@@ -97,8 +103,9 @@ def dumps(model,controller=None):
         if not isinstance(array,np.ndarray) or array.dtype not in (np.dtype('float32'),np.dtype('int32')) or not np.isfinite(array).all():
             raise ValueError('Invalid snapshot array')
         stream=io.BytesIO();np.save(stream,array,allow_pickle=False);members[name+'.npy']=stream.getvalue()
-    rng=model.signal_rng.bit_generator.state if kind=='MultiTimescaleSensoryGatedEProp' else None
-    meta={'format':FORMAT,'source_sha':SOURCE,'kind':kind,'config':asdict(model.config),'settings':settings,
+    rng=model.signal_rng.bit_generator.state if kind in ('MultiTimescaleSensoryGatedEProp','MatchedLocalCredit') else None
+    source=MATCHED_SOURCE if kind=='MatchedLocalCredit' else SOURCE
+    meta={'format':FORMAT,'source_sha':source,'kind':kind,'config':asdict(model.config),'settings':settings,
           'core_settings':core_settings,'rng':rng,'controller':controller,'sha256':{key:digest(raw) for key,raw in members.items()}}
     meta['metadata_sha256']=digest(encoded(meta));members['metadata.json']=encoded(meta)
     out=io.BytesIO()
@@ -122,7 +129,8 @@ def loads(template,payload):
             meta=metadata(archive.read('metadata.json'));check=meta.pop('metadata_sha256')
             if set(meta)!={'format','source_sha','kind','config','settings','core_settings','rng','controller','sha256'} or digest(encoded(meta))!=check:
                 raise ValueError('Metadata schema/checksum')
-            if meta['format']!=FORMAT or meta['source_sha']!=SOURCE or meta['kind']!=kind or meta['config']!=asdict(template.config):
+            source=MATCHED_SOURCE if kind=='MatchedLocalCredit' else SOURCE
+            if meta['format']!=FORMAT or meta['source_sha']!=source or meta['kind']!=kind or meta['config']!=asdict(template.config):
                 raise ValueError('Explicit template/source/config mismatch')
             validate_settings(kind,meta['settings'],meta['core_settings'])
             validate_controller(meta['controller'])
@@ -154,7 +162,7 @@ def loads(template,payload):
         if np.any(arrays['model__f_var']<0) or np.any(arrays['model__syn_energy']<0):raise ValueError('Variance/energy state')
         if not np.isin(arrays['core__spikes'],[0,1]).all():raise ValueError('ALIF binary spike state required')
         result=copy.deepcopy(template)
-        if kind=='MultiTimescaleSensoryGatedEProp':
+        if kind in ('MultiTimescaleSensoryGatedEProp','MatchedLocalCredit'):
             if not isinstance(meta['rng'],dict) or meta['rng'].get('bit_generator')!='PCG64':raise ValueError('PCG64 RNG state required')
             result.signal_rng.bit_generator.state=meta['rng']
         elif meta['rng'] is not None:raise ValueError('Unexpected RNG state')
