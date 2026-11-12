@@ -122,6 +122,8 @@ overshoot được lưu. Windows process_time có độ phân giải hữu hạn
   direct bằng inherited source predict_many; hash/checkpoint/counters khớp.
 - Vòng2:96condition, **98.304prediction rows**; replay512row direct; mọi metric,
   label, snapshot và step history khớp. Không train thêm trong artifact audit.
+- Các dòng prediction lặp cùng test episodes qua arm/budget; không coi294.912dòng
+  là294.912mẫu độc lập hoặc seed độc lập. Đơn vị suy luận thống kê vẫn là3seed.
 - Peak sampled RSS/commit: vòng1 **222,21 /193,57MB**, thời gian863,32giây;
   vòng2 **222,25 /196,06MB**,440,13giây. Một numericalthread, per-process2GB cap,
   sampled owned-process tree, không iGPU/điện năng giả định.

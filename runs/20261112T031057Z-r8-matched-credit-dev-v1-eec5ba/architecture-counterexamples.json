@@ -1,0 +1,24 @@
+{
+  "peer_sha": "607ffca7c9222c5e3fd9741c3ebdf5939e10bedf",
+  "new_quality_training": false,
+  "subtractive_reset": {
+    "both_emit_spike": true,
+    "voltage_a_after": 0.41999995708465576,
+    "voltage_b_after": 0.5900000333786011,
+    "prior_state_difference_after": 0.1700000762939453,
+    "scope": "Same ALIF equations, subtraction reset does not set all membrane information to zero"
+  },
+  "selective_synapse_counterexample": {
+    "distractor_channel": 6,
+    "added_pulse": 2.0,
+    "voltage_max_difference": 0.0,
+    "scope": "Manually clamped weight, diagnostic capacity control only; not a learned result or robustness to noise on relevant channels"
+  },
+  "repaired_8key_codebook_injective": true,
+  "context_readout_parameter_count": {
+    "base_readout_weights": 96,
+    "extra_context_weights": 768,
+    "effective_total": 864,
+    "scope": "Current source head has9x base readout weights; not a matched-parameter proof of hidden capacity"
+  }
+}
