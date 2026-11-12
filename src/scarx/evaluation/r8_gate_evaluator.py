@@ -73,11 +73,11 @@ class R8GateEvaluator:
             "pass": pass_probe_gain,
         }
 
-        # 3. Causal revert drop >= +5pp
+        # 3. Causal revert drop >= +5pp (NO exception for high direct accuracy)
         checks["causal_drop_gte_5pp"] = {
             "value": float(causal_drop),
             "threshold": self.P1_MIN_CAUSAL_DROP,
-            "pass": bool(causal_drop >= self.P1_MIN_CAUSAL_DROP or direct_mean >= 0.95),
+            "pass": bool(causal_drop >= self.P1_MIN_CAUSAL_DROP),
         }
 
         # 4. Non-inferiority vs R35 baseline (within -3pp)
@@ -87,8 +87,8 @@ class R8GateEvaluator:
             "pass": bool(vs_r35 >= self.P1_NON_INFERIORITY_VS_R35),
         }
 
-        # 5. Routing matters (shuffled control fails to match learned, or ceiling task)
-        pass_shuffled = bool((probe_mean - shuffled_probe) >= 0.02 or direct_mean >= 0.98)
+        # 5. Routing matters (shuffled control fails to match learned; NO exception for high direct accuracy)
+        pass_shuffled = bool((probe_mean - shuffled_probe) >= 0.02)
         checks["shuffled_control_distinct"] = {
             "value": float(probe_mean - shuffled_probe),
             "threshold": 0.02,

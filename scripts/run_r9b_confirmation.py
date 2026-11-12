@@ -174,8 +174,8 @@ def run_confirmation():
         mean_shuf_diff = float(np.mean(vs_shufs))
 
         pass_direct = mean_dir >= 65.0
-        pass_drop = mean_drop >= 5.0 or mean_dir >= 95.0
-        pass_shuf = mean_shuf_diff >= 2.0 or mean_dir >= 95.0
+        pass_drop = mean_drop >= 5.0
+        pass_shuf = mean_shuf_diff >= 2.0
 
         task_pass = pass_direct and pass_drop and pass_shuf
         if not task_pass and t in ("strict_binding", "xor", "distractor_binding"):

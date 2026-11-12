@@ -64,10 +64,20 @@ def test_r8_evaluator_strict_gates():
     assert db["status"] == "FAIL"
     assert db["checks"]["direct_accuracy_gte_65"]["pass"] is False
 
-    # order passes due to ceiling saturation recognition
+    # order fails when causal revert drop < 5pp or shuffled contrast < 2pp (no 95% bypass loophole)
     order = report["p1_tasks"]["order"]
-    assert order["pass"] is True
-    assert order["status"] == "PASS"
+    assert order["pass"] is False
+    assert order["status"] == "FAIL"
+    assert order["checks"]["causal_drop_gte_5pp"]["pass"] is False
+    assert order["checks"]["shuffled_control_distinct"]["pass"] is False
+
+    # Verify that with genuine causal drop >= 5pp and shuffled distinct >= 2pp, order passes
+    raw["p1_results"]["order"]["causal_revert"]["drop_mean"] = 0.08
+    raw["p1_results"]["order"]["shuffled_signal"]["probe_acc_mean"] = 0.95
+    evaluator_fixed = R8GateEvaluator(raw)
+    report_fixed = evaluator_fixed.evaluate_full()
+    assert report_fixed["p1_tasks"]["order"]["pass"] is True
+    assert report_fixed["p1_tasks"]["order"]["status"] == "PASS"
 
     # P2 fails on final accuracy and mean forgetting <= 3pp
     p2 = report["p2_stream"]
