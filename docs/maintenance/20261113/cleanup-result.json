@@ -10,12 +10,16 @@
   "remaining_registered_worktrees": 8,
   "remaining_remote_heads": [
     {
-      "sha": "d9bd5840c2740a51a0456beaba103e8463a3ed71",
+      "sha": "1269209cd10a03526d2ff4116c062508e25276a8",
       "ref": "refs/heads/main"
     },
     {
       "sha": "ffddbcaea23c1d7b22ffdd0b5715f3939541fec1",
       "ref": "refs/heads/research/gemini/r13-1-spike-composition-vs-small-llm"
+    },
+    {
+      "sha": "4e01834c65d8f34da90fe44f4d14d7211e07edd1",
+      "ref": "refs/heads/research/gemini/r13-2-independent-composition-fair-llm"
     },
     {
       "sha": "f4272ba73d80cd95a382c33e614cd59355216d9f",
@@ -69,5 +73,21 @@
     "scar-x",
     "scar-x-claude-research",
     "scar-x-gemini-r7"
-  ]
+  ],
+  "initial_post_cleanup_remote_heads": [
+    {
+      "sha": "d9bd5840c2740a51a0456beaba103e8463a3ed71",
+      "ref": "refs/heads/main"
+    },
+    {
+      "sha": "ffddbcaea23c1d7b22ffdd0b5715f3939541fec1",
+      "ref": "refs/heads/research/gemini/r13-1-spike-composition-vs-small-llm"
+    },
+    {
+      "sha": "f4272ba73d80cd95a382c33e614cd59355216d9f",
+      "ref": "refs/heads/research/gemini/r13-neural-engram-composition-20261112"
+    }
+  ],
+  "remote_snapshot_utc": "2026-11-12T17:58:29Z",
+  "remote_snapshot_note": "Protected active agent may create/push new R13-family refs after cleanup; these are retained, never swept. Remote-head metadata is a snapshot, not a future branch-count invariant."
 }

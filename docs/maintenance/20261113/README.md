@@ -2,7 +2,8 @@
 
 **Đã hoàn tất.** 30remoteheads và33localbranches cũ đã dọn;36oldworktrees
 được gỡ sau archive, cộng một worktree tạm hợp nhất. Còn8registeredworktrees:
-main, activeR13 và6source dependencies bảo vệ. GitHub cònmain và2R13heads;
+main, activeR13 và6source dependencies bảo vệ. GitHub chỉ cònmain và cácR13heads
+được bảo vệ; sốhead có thể tăng khi thí nghiệm đangchạy tạo/push thêm nhánh.
 75archive tags đã verify,11historicalPRs đềuclosed, discussion giữ nguyên.
 [Biên bản máy đọc được](cleanup-result.json), [PR readback](pr-final-state.json),
 [nhật ký worktrees](worktree-removal.jsonl), [nhật ký refs](ref-cleanup.jsonl).
