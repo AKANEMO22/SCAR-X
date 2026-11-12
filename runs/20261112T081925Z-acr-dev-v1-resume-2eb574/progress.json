@@ -1,0 +1,74 @@
+{
+  "run": "20261112T081925Z-acr-dev-v1-resume-2eb574",
+  "status": "DEV_STOPPED",
+  "completed_jobs": 55,
+  "total_jobs": 345,
+  "maximum_trained_models": 375,
+  "fresh_confirmation": false,
+  "model": "One H48 ALIF forward, dual eligibility; research only",
+  "observer": "http://127.0.0.1:8771",
+  "error": "NoSuchProcess: process PID not found (pid=24452)",
+  "result": {
+    "error": "NoSuchProcess: process PID not found (pid=24452)",
+    "nominee": null,
+    "checks": null,
+    "norm_controls_valid": true,
+    "rows": 55,
+    "completed_jobs": 55,
+    "resources": {
+      "peak_rss_bytes": 59289600,
+      "peak_commit_or_vms_bytes": 44920832,
+      "os_process_peak_working_set_bytes": 61018112,
+      "os_process_peak_pagefile_commit_bytes": 47095808,
+      "samples": 7,
+      "interval_seconds": 0.05,
+      "limit_bytes": 2000000000,
+      "observed_over_limit": false,
+      "elapsed_seconds": 0.36641140000210726,
+      "hard_cap_enforced": false,
+      "igpu_measured": false,
+      "energy_joules": null,
+      "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated.",
+      "observed_owned_pids": [
+        38072
+      ],
+      "adopted_readonly_observer_pid": null,
+      "measurement_errors": [],
+      "scope": "Supervisor + worker descendants + same-identity adopted readonly observer; process IDs deduplicated"
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "source_commit": "cd28e0b5a22a9f3b33c12d3f2d98a438e87b8f0d",
+    "main_unchanged": true,
+    "new_confirmation": false,
+    "production_ready": false,
+    "wall_seconds": 0.9446285999983957,
+    "reused_completed_cells": 55,
+    "prior_elapsed_lower_bound": 1132.9984880999982,
+    "decision": "INCOMPLETE_NO_ADVANCE"
+  },
+  "resources": {
+    "peak_rss_bytes": 59289600,
+    "peak_commit_or_vms_bytes": 44920832,
+    "os_process_peak_working_set_bytes": 61018112,
+    "os_process_peak_pagefile_commit_bytes": 47095808,
+    "samples": 7,
+    "interval_seconds": 0.05,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 0.4013347000000067,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated.",
+    "observed_owned_pids": [
+      38072
+    ],
+    "adopted_readonly_observer_pid": null,
+    "measurement_errors": [],
+    "scope": "Supervisor + worker descendants + same-identity adopted readonly observer; process IDs deduplicated"
+  }
+}
