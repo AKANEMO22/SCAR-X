@@ -14,9 +14,9 @@ PEER=ROOT.parent/'review-gemini-r8-607ffca'
 
 
 def peer_module(filename):
-    if filename not in ('r8_mtsg_eprop','r8_benchmark_integrity'):raise ValueError('Explicit pinned module required')
+    if filename not in ('r8_mtsg_eprop','r8_bf_cascade','r8_benchmark_integrity'):raise ValueError('Explicit pinned module required')
     if subprocess.check_output(['git','-C',str(PEER),'rev-parse','HEAD'],text=True).strip()!=PEER_SHA:raise ValueError('Peer source moved')
-    package='neural' if filename=='r8_mtsg_eprop' else 'evaluation'
+    package='evaluation' if filename=='r8_benchmark_integrity' else 'neural'
     name='scarx.'+package+'._peer_607ffca_'+filename
     if name not in sys.modules:
         spec=importlib.util.spec_from_file_location(name,PEER/'src/scarx'/package/(filename+'.py'))

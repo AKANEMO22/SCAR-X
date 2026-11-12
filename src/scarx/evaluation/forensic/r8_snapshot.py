@@ -3,7 +3,7 @@
 Explicit caller-supplied model template only, never import classes from payload.
 App/SQLite/session migration and arbitrary foreign optimizers remain unsupported.
 """
-import copy,hashlib,io,json,math,os,tempfile,zipfile
+import copy,hashlib,inspect,io,json,math,os,tempfile,zipfile
 from dataclasses import asdict
 from pathlib import Path
 import numpy as np
@@ -16,6 +16,8 @@ M_ARRAYS={'e_v','e_a','e_f','syn_trace','syn_energy','f_mean','f_var','w_in_0','
 B_ARRAYS={'u1_in','u2_in','u1_rec','u2_rec','u1_out','u2_out','bias','w_ctx','e_v','e_a','e_f','syn_trace','syn_energy','f_mean','f_var','gamma_e_vec'}
 M_SETTINGS={'condition','sensory_threshold','calibrated','episodes_learned','hidden_updates','total_ticks'}
 B_SETTINGS={'use_cascade','use_context_gating','kappa1','kappa2','sensory_threshold','n_context','calibrated','episodes_learned','hidden_updates'}
+M_KINDS=('MultiTimescaleSensoryGatedEProp','Peer607MTSG','MatchedLocalCredit','StoppedResetCredit')
+NEW_KINDS=('Peer607MTSG','Peer607BF','MatchedLocalCredit','StoppedResetCredit')
 
 
 def encoded(value):return json.dumps(value,sort_keys=True,ensure_ascii=False,allow_nan=False).encode('utf-8')
@@ -50,10 +52,15 @@ def metadata(raw):
 
 def layout(model):
     name=type(model).__name__
-    if name=='MultiTimescaleSensoryGatedEProp':arrays,settings,rng=M_ARRAYS,M_SETTINGS,{'signal_rng'}
+    if name in ('MultiTimescaleSensoryGatedEProp','BennaFusiMetaplasticCascade'):
+        parts=Path(inspect.getfile(type(model))).parts
+        if 'review-gemini-r8-607ffca' in parts:name='Peer607MTSG' if name=='MultiTimescaleSensoryGatedEProp' else 'Peer607BF'
+        elif 'review-gemini-r8-fe472b3' not in parts:raise ValueError('Explicit version-pinned peer template required')
+    if name in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG'):arrays,settings,rng=M_ARRAYS,M_SETTINGS,{'signal_rng'}
     elif name=='MatchedLocalCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode'},{'signal_rng'}
     elif name=='StoppedResetCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode','reset_mode'},{'signal_rng'}
     elif name=='BennaFusiMetaplasticCascade':arrays,settings,rng=B_ARRAYS,B_SETTINGS,set()
+    elif name=='Peer607BF':arrays,settings,rng=B_ARRAYS|{'e_x'},B_SETTINGS,set()
     else:raise ValueError('Only explicit R8 research models supported')
     if set(vars(model))!=arrays|settings|rng|{'config','core'}:raise ValueError('Unknown learner state cannot be dropped')
     c=model.config
@@ -68,7 +75,7 @@ def layout(model):
 
 
 def validate_settings(kind,settings,core_settings):
-    expected=M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind=='MatchedLocalCredit' else M_SETTINGS if kind=='MultiTimescaleSensoryGatedEProp' else B_SETTINGS
+    expected=M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind=='MatchedLocalCredit' else M_SETTINGS if kind in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG') else B_SETTINGS
     if set(settings)!=expected:raise ValueError('Settings schema')
     for key,value in settings.items():
         if key in ('calibrated','use_cascade','use_context_gating'):
@@ -86,7 +93,8 @@ def validate_settings(kind,settings,core_settings):
             if value!='stopped':raise ValueError('Unknown reset-derivative policy')
         elif type(value) not in (int,float) or not math.isfinite(value) or not 0<=value<=100:
             raise ValueError('Finite bounded setting required')
-    if kind=='BennaFusiMetaplasticCascade' and (settings['n_context']!=2 or settings['kappa1']>1 or settings['kappa2']>1):
+    expected_context=8 if kind=='Peer607BF' else 2
+    if kind in ('BennaFusiMetaplasticCascade','Peer607BF') and (settings['n_context']!=expected_context or settings['kappa1']>1 or settings['kappa2']>1):
         raise ValueError('Cascade setting bounds')
     if settings['hidden_updates']>settings['episodes_learned']:raise ValueError('Hidden/episode counters inconsistent')
     if set(core_settings)!={'updates','reward_mean'} or type(core_settings['updates']) is not int or not 0<=core_settings['updates']<2**63:
@@ -106,8 +114,8 @@ def dumps(model,controller=None):
         if not isinstance(array,np.ndarray) or array.dtype not in (np.dtype('float32'),np.dtype('int32')) or not np.isfinite(array).all():
             raise ValueError('Invalid snapshot array')
         stream=io.BytesIO();np.save(stream,array,allow_pickle=False);members[name+'.npy']=stream.getvalue()
-    rng=model.signal_rng.bit_generator.state if kind in ('MultiTimescaleSensoryGatedEProp','MatchedLocalCredit','StoppedResetCredit') else None
-    source=MATCHED_SOURCE if kind in ('MatchedLocalCredit','StoppedResetCredit') else SOURCE
+    rng=model.signal_rng.bit_generator.state if kind in M_KINDS else None
+    source=MATCHED_SOURCE if kind in NEW_KINDS else SOURCE
     meta={'format':FORMAT,'source_sha':source,'kind':kind,'config':asdict(model.config),'settings':settings,
           'core_settings':core_settings,'rng':rng,'controller':controller,'sha256':{key:digest(raw) for key,raw in members.items()}}
     meta['metadata_sha256']=digest(encoded(meta));members['metadata.json']=encoded(meta)
@@ -132,7 +140,7 @@ def loads(template,payload):
             meta=metadata(archive.read('metadata.json'));check=meta.pop('metadata_sha256')
             if set(meta)!={'format','source_sha','kind','config','settings','core_settings','rng','controller','sha256'} or digest(encoded(meta))!=check:
                 raise ValueError('Metadata schema/checksum')
-            source=MATCHED_SOURCE if kind in ('MatchedLocalCredit','StoppedResetCredit') else SOURCE
+            source=MATCHED_SOURCE if kind in NEW_KINDS else SOURCE
             if meta['format']!=FORMAT or meta['source_sha']!=source or meta['kind']!=kind or meta['config']!=asdict(template.config):
                 raise ValueError('Explicit template/source/config mismatch')
             validate_settings(kind,meta['settings'],meta['core_settings'])
@@ -165,7 +173,7 @@ def loads(template,payload):
         if np.any(arrays['model__f_var']<0) or np.any(arrays['model__syn_energy']<0):raise ValueError('Variance/energy state')
         if not np.isin(arrays['core__spikes'],[0,1]).all():raise ValueError('ALIF binary spike state required')
         result=copy.deepcopy(template)
-        if kind in ('MultiTimescaleSensoryGatedEProp','MatchedLocalCredit','StoppedResetCredit'):
+        if kind in M_KINDS:
             if not isinstance(meta['rng'],dict) or meta['rng'].get('bit_generator')!='PCG64':raise ValueError('PCG64 RNG state required')
             result.signal_rng.bit_generator.state=meta['rng']
         elif meta['rng'] is not None:raise ValueError('Unexpected RNG state')
