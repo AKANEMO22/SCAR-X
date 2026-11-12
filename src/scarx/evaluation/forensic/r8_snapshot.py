@@ -18,6 +18,12 @@ M_SETTINGS={'condition','sensory_threshold','calibrated','episodes_learned','hid
 B_SETTINGS={'use_cascade','use_context_gating','kappa1','kappa2','sensory_threshold','n_context','calibrated','episodes_learned','hidden_updates'}
 M_KINDS=('MultiTimescaleSensoryGatedEProp','Peer607MTSG','MatchedLocalCredit','StoppedResetCredit')
 NEW_KINDS=('Peer607MTSG','Peer607BF','MatchedLocalCredit','StoppedResetCredit')
+ACR_ARRAYS=M_ARRAYS|{'e_f_own','e_v_stop','e_a_stop','e_f_stop','alpha','router_q','router_bias','last_u','last_theta','last_a','last_signal','last_delta'}
+ACR_SETTINGS=M_SETTINGS|{'trace_kind','gate_mode','profile'}
+
+
+def mechanism_hash(model):
+    return digest(Path(inspect.getfile(type(model))).read_bytes().replace(b'\r\n',b'\n'))
 
 
 def encoded(value):return json.dumps(value,sort_keys=True,ensure_ascii=False,allow_nan=False).encode('utf-8')
@@ -59,6 +65,7 @@ def layout(model):
     if name in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG'):arrays,settings,rng=M_ARRAYS,M_SETTINGS,{'signal_rng'}
     elif name=='MatchedLocalCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode'},{'signal_rng'}
     elif name=='StoppedResetCredit':arrays,settings,rng=M_ARRAYS,M_SETTINGS|{'trace_kind','gate_mode','reset_mode'},{'signal_rng'}
+    elif name=='AdaptiveCreditRouting':arrays,settings,rng=ACR_ARRAYS,ACR_SETTINGS,{'signal_rng','router_rng'}
     elif name=='BennaFusiMetaplasticCascade':arrays,settings,rng=B_ARRAYS,B_SETTINGS,set()
     elif name=='Peer607BF':arrays,settings,rng=B_ARRAYS|{'e_x'},B_SETTINGS,set()
     else:raise ValueError('Only explicit R8 research models supported')
@@ -75,7 +82,7 @@ def layout(model):
 
 
 def validate_settings(kind,settings,core_settings):
-    expected=M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind=='MatchedLocalCredit' else M_SETTINGS if kind in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG') else B_SETTINGS
+    expected=ACR_SETTINGS if kind=='AdaptiveCreditRouting' else M_SETTINGS|{'trace_kind','gate_mode','reset_mode'} if kind=='StoppedResetCredit' else M_SETTINGS|{'trace_kind','gate_mode'} if kind=='MatchedLocalCredit' else M_SETTINGS if kind in ('MultiTimescaleSensoryGatedEProp','Peer607MTSG') else B_SETTINGS
     if set(settings)!=expected:raise ValueError('Settings schema')
     for key,value in settings.items():
         if key in ('calibrated','use_cascade','use_context_gating'):
@@ -85,6 +92,9 @@ def validate_settings(kind,settings,core_settings):
         elif key=='condition':
             if value not in ('frozen_hidden','zero_signal','shuffled_signal','readout_only','r35_baseline','ew_he_legacy','learned_mtsg'):
                 raise ValueError('Unknown research condition')
+        elif key=='profile':
+            from ..acr import PROFILES
+            if value not in PROFILES:raise ValueError('Unknown ACR profile')
         elif key=='trace_kind':
             if value not in ('fast','slow','multi'):raise ValueError('Unknown trace policy')
         elif key=='gate_mode':
@@ -114,10 +124,14 @@ def dumps(model,controller=None):
         if not isinstance(array,np.ndarray) or array.dtype not in (np.dtype('float32'),np.dtype('int32')) or not np.isfinite(array).all():
             raise ValueError('Invalid snapshot array')
         stream=io.BytesIO();np.save(stream,array,allow_pickle=False);members[name+'.npy']=stream.getvalue()
-    rng=model.signal_rng.bit_generator.state if kind in M_KINDS else None
-    source=MATCHED_SOURCE if kind in NEW_KINDS else SOURCE
+    acr=kind=='AdaptiveCreditRouting'
+    rng=model.signal_rng.bit_generator.state if kind in M_KINDS or acr else None
+    source=MATCHED_SOURCE if kind in NEW_KINDS or acr else SOURCE
     meta={'format':FORMAT,'source_sha':source,'kind':kind,'config':asdict(model.config),'settings':settings,
           'core_settings':core_settings,'rng':rng,'controller':controller,'sha256':{key:digest(raw) for key,raw in members.items()}}
+    if acr:
+        meta['format']='scarx-acr-snapshot-v1';meta['router_rng']=model.router_rng.bit_generator.state
+        meta['mechanism_sha256']=mechanism_hash(model)
     meta['metadata_sha256']=digest(encoded(meta));members['metadata.json']=encoded(meta)
     out=io.BytesIO()
     with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED) as archive:
@@ -138,11 +152,17 @@ def loads(template,payload):
                 raise ValueError('Snapshot member/bounds mismatch')
             if archive.getinfo('metadata.json').file_size>65536:raise ValueError('Metadata byte bound')
             meta=metadata(archive.read('metadata.json'));check=meta.pop('metadata_sha256')
-            if set(meta)!={'format','source_sha','kind','config','settings','core_settings','rng','controller','sha256'} or digest(encoded(meta))!=check:
+            acr=kind=='AdaptiveCreditRouting'
+            fields={'format','source_sha','kind','config','settings','core_settings','rng','controller','sha256'}
+            if acr:fields|={'router_rng','mechanism_sha256'}
+            if set(meta)!=fields or digest(encoded(meta))!=check:
                 raise ValueError('Metadata schema/checksum')
-            source=MATCHED_SOURCE if kind in NEW_KINDS else SOURCE
-            if meta['format']!=FORMAT or meta['source_sha']!=source or meta['kind']!=kind or meta['config']!=asdict(template.config):
+            source=MATCHED_SOURCE if kind in NEW_KINDS or acr else SOURCE
+            fmt='scarx-acr-snapshot-v1' if acr else FORMAT
+            if meta['format']!=fmt or meta['source_sha']!=source or meta['kind']!=kind or meta['config']!=asdict(template.config):
                 raise ValueError('Explicit template/source/config mismatch')
+            if acr and (meta['mechanism_sha256']!=mechanism_hash(template) or meta['settings']['profile']!=template.profile or meta['settings']['condition']!=template.condition):
+                raise ValueError('ACR mechanism/profile mismatch')
             validate_settings(kind,meta['settings'],meta['core_settings'])
             validate_controller(meta['controller'])
             if meta['controller'] is not None and (not isinstance(meta['controller'],dict) or len(encoded(meta['controller']))>16384):
@@ -173,9 +193,14 @@ def loads(template,payload):
         if np.any(arrays['model__f_var']<0) or np.any(arrays['model__syn_energy']<0):raise ValueError('Variance/energy state')
         if not np.isin(arrays['core__spikes'],[0,1]).all():raise ValueError('ALIF binary spike state required')
         result=copy.deepcopy(template)
-        if kind in M_KINDS:
+        if acr:
+            if np.any((arrays['model__alpha']<0)|(arrays['model__alpha']>1)) or np.any(np.abs(arrays['model__router_q'])>1):
+                raise ValueError('ACR router state range')
+            if not isinstance(meta['router_rng'],dict) or meta['router_rng'].get('bit_generator')!='PCG64':raise ValueError('Router PCG64 state required')
+        if kind in M_KINDS or acr:
             if not isinstance(meta['rng'],dict) or meta['rng'].get('bit_generator')!='PCG64':raise ValueError('PCG64 RNG state required')
             result.signal_rng.bit_generator.state=meta['rng']
+            if acr:result.router_rng.bit_generator.state=meta['router_rng']
         elif meta['rng'] is not None:raise ValueError('Unexpected RNG state')
         for name,array in arrays.items():
             scope,key=name.split('__',1);getattr(result.core if scope=='core' else result,key)[:]=array

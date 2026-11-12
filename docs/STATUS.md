@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## ACR P0 — mở DEV có giới hạn, chưa kết luận chất lượng
+
+[P0](research/ACR_P0_20261112.md), [protocol](../experiments/acr-dev-v1.md).
+Hai endpoint exact;62technicaltests qua gồm native parity, independent reviewer
+không thấy blocker để thử DEV. Một H48ALIF, hai eligibility streams, không đổi
+forward/readout/main/Hermes. Không reuse confirmation bank. Observer mới8771,
+giữ nguyên8767. Chưa có bằng chứng adaptive routing tốt hơn hai baseline.
+
 ## P1 confirmation12seed — xong, P1_FAIL_RESEARCH_ONLY
 
 [Kết quả](research/R8_P1_CONFIRMATION_20261112.md), sourcebc686500, run84547e.
