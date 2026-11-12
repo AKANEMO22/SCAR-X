@@ -1,0 +1,63 @@
+{
+  "source_commit": "691de7c02127b099a79a752fdd89a940a92b1331",
+  "base_sha": "22bb9781f4ed8f60f7180bdb56b6570e64e1f503",
+  "main_before": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "protocol": "experiments/capacity-h64-h128-approved-v1.md",
+  "source_lock": {
+    "files": {
+      "experiments/capacity-h64-h128-approved-v1.md": "5b4143ae76b67cda2321a2f088e7501fcf2744046a89f83936557b3358591bc1",
+      "src/scarx/evaluation/capacity.py": "40176aa25101b283cc99f611097e440a073bf946dfcfd05332927d3d8a759404",
+      "src/scarx/evaluation/forensic/r8_snapshot.py": "7bfc8a0bf7599669f1d0effee0bc833080d2c1fa4eb82e31ce3278fb4e3ba453",
+      "src/scarx/evaluation/acr.py": "60cfe5d3b907928418cb286caccb7aa631a8c157a0bd3ff418b48bbe0a9bf571",
+      "src/scarx/evaluation/r8_matched_credit.py": "9bfec2949cc4d3edf936082639ceac5ce47a2fd6e4b2ec3f5b36a2ab04d91e5d",
+      "src/scarx/evaluation/r8_matched_study.py": "fe78b93fd52855e9b4816af75ebff689447e52b825440ea25159fe7a68d8f366",
+      "src/scarx/evaluation/readout_eligibility.py": "535db494c1b390a0d781fbf0ca6a2891cfc3f3141df0855edb3e4c1f1c513137",
+      "src/scarx/evaluation/acr_study.py": "389b9c41f6d63841b51a9c3ab815a3e5a9bbb7ae10cd5a155ec0ce5fdccb8807",
+      "src/scarx/neural/core.py": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+      "src/scarx/evaluation/confirmation_resources.py": "6e1ce182647ce9220e144113a62386dad2986ca68b474b43c3a8991a7d42cc62",
+      "src/scarx/runtime/limits.py": "f6e134c6d5381cab54b287c53b65766789e35b945b723a318121a577e5bb2214",
+      "src/scarx/runtime/resources.py": "1a8a003ba27c2fccc1115d232788ab1e4f1b5e8d1694d3b859d28befe9512f22",
+      "scripts/run_capacity_dev.py": "7582034ba4d41cc9c40b2e40ed9e02cc428bb8bb97061410a58f7320aa6ddffb",
+      "scripts/run_r8_matched_dev.py": "0473aecd9ff612eb11a77794299823400661af44d1bc67dd189ee0f2fdc1e672",
+      "tests/test_capacity.py": "efc682a03c2aff4f3d3321e006ecc36c422081d06dab45d4b73e0d7ef7602256"
+    },
+    "peer": {
+      "src/scarx/neural/r8_mtsg_eprop.py": "10ae448a2a8d8e01f174fa86da6420f978c588dee388de3e124f818ae85ea851",
+      "src/scarx/evaluation/r8_benchmark_integrity.py": "dc36892f95305f38902653f173ca10e3f343beeb7a476839ddc9067a77a152a9"
+    }
+  },
+  "peer_sha": "607ffca7c9222c5e3fd9741c3ebdf5939e10bedf",
+  "height_grid": [
+    48,
+    64,
+    128
+  ],
+  "seeds": [
+    140011,
+    140017,
+    140023
+  ],
+  "arms": [
+    "own",
+    "groups_up",
+    "readout_only",
+    "groups_shuffle"
+  ],
+  "max_new_jobs": 204,
+  "expected_records": 252,
+  "parent_run": "20261112T121634Z-acr-dev-v1-resume-59ced4",
+  "parent_manifest_sha256": "a33b8cddeffdda808a727f9cc13c61272ae15ee0fbeb6d6d6ab44e969515208e",
+  "parent_audit_sha256": "cd3706121688992054e808ecfbb97e72ec4f4f15f39e3e688095844175736281",
+  "worker_limit_seconds": 3600,
+  "user_approval": "ok tôi duyệt thử H64 và H128, bắt đầu chạy đi, giữ nguyên ALIF và học synapse cục bộ, cho quá trình học với kết quả lên localhost để tôi xem luôn",
+  "fresh_confirmation": false,
+  "p2": false,
+  "pid": 6484,
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "threads": 1
+  }
+}

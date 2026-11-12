@@ -1,5 +1,15 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Kết quả capacity đã duyệt12/11:** H64/H128DEV đã hoàn tất204newjobs+
+48reusedH48records, integrityPASS, `CAPACITY_ONLY_SIGNAL`. [Báo cáo](research/CAPACITY_H64_H128_RESULTS_20261112.md)
+và [review độc lập](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md).
+H128Own tăng direct ở ba nhóm (đặc biệt Distractor56,97→69,40%), có hidden
+causaleffect; nhưng EXTRAadvantage overfrozen chỉ tăng đủ1/3family. GiữH128
+như researchcandidate, không gọi formalP1PASS/retention/AIđa năng. Mỗi skill
+đánhgiá checkpoint riêng; commoncheckpoint/strictcontinualP2 còn chưa đo.
+Không tựH256/freshconfirmation/main/Hermes hoặc thay core bằng modelkhác.
+Scientificgates và2GBCPU-first giữ nguyên; capacity không đồngnhất vớiknowledge.
+
 **Phê duyệt capacity12/11/2026:** người dùng cho phép thửH64/H128 vớiALIF/local
 synaptic learning, actuallearning/results lênlocalhost. [Executionprotocol](../experiments/capacity-h64-h128-approved-v1.md)
 giữ primarydata/gates và tách secondarycapacitydiagnostic khỏiH48historicalACR.

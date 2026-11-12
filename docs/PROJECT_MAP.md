@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+**Capacity completed12/11:** [results](research/CAPACITY_H64_H128_RESULTS_20261112.md),
+[audit](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md). Finalrun160b6e
+has252records/perseedCSV/data+reusehashes/modelcheckpoints/source-byte-bundle.
+`audit_capacity_dev.py` scalar/eigenproof, independent`verify_capacity_independent.py`
+manualALIF/SVD/thresholdoracle; `plot_capacity_results.py` actualscientificfigures.
+CAPACITY_ONLY_SIGNAL: usefulH128directgain, chưa thêmhiddenadvantage≥2families.
+Không main/Hermes/P2/confirmation. Passiveviewer8773 giữactualresults.
+
 **Approvedcapacity12/11:** [protocol](../experiments/capacity-h64-h128-approved-v1.md),
 [technical review](research/CAPACITY_INDEPENDENT_REVIEW_20261112.md),
 `evaluation/capacity.py` dimension-onlyconstructoradapters, strictcapacitysnapshot

@@ -1,5 +1,22 @@
 # Trạng thái SCAR-X
 
+## Capacity H64/H128 — hoàn tất, integrityPASS / CAPACITY_ONLY_SIGNAL
+
+[Results](research/CAPACITY_H64_H128_RESULTS_20261112.md),
+[independent audit](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md).
+Đủ204newjobs+48H48reuse=252records,1.290.240predictionentries/168contrasts
+chấm lại độc lập. Own H48→H128 direct: Binding85,42→87,30%,XOR91,86→99,41%,
+Distractor56,97→69,40%; hiddenweights có causaleffect. H64 tăngDistractor nhưng
+giảmBinding/OOD. Readout-only cũng tốt lên; EXTRAlearned-vsfrozen advantage
+chỉ tăng đủ ở1/3family, chưa≥2/3theogate. CAPACITY_ONLY_SIGNAL không có nghĩa
+khônghiddenlearning. EqualCPU khôngmonotonic; P2/commoncheckpointretention chưađo.
+Contrastgrowth còn có hiệuứngtrần ởXOR khifrozenprobe tăng; disclosure giữ
+nguyên scores/gates, không dùng gatefail để phủ nhận hiddenlearning.
+Worker996,40s,peakRSS148,82MB/commit191,15MB,Windowscap2GBtrue;92P0testsqua.
+GiữH128Own làm researchcandidate/đốichứng có ích; chưa main/Hermes/H256/P2/
+freshconfirmation. Actualtrace http://127.0.0.1:8773 gồmH/loss/updates/answers/
+fullprimarymeans/equalCPU/plots/audit, không Qwen hoặc mockthought.
+
 ## Capacity H64/H128 — đã duyệt, mở DEV trong nhánh riêng
 
 Người dùng phê duyệt thửH64/H128 giữALIF/locallearning vàactualtrace. [Protocol](../experiments/capacity-h64-h128-approved-v1.md)
