@@ -10,6 +10,10 @@ oracle không học `verify_literature_oracle.py`, observer readonly8772. ACR55c
 trước gián đoạn được [kiểm nguyên vẹn](research/literature/acr-interruption-audit.md),
 chưa đủ controls để advance. Không mở confirmation/P2/main/Hermes.
 
+Frozen-trained credit control: [báo cáo](research/literature/trained-credit-oracle.md),
+`experiments/trained-credit-oracle-v1.md`, `scripts/verify_trained_credit_oracle.py`.
+180TRAINfixture rows trên45finalcheckpoints, không cập nhật model hoặc chọn candidate.
+
 **P1 confirmation12seed đã duyệt:** [report](research/R8_P1_CONFIRMATION_20261112.md),
 registration `experiments/r8-reset-credit-confirmation-v1.md`, runner
 `scripts/run_r8_confirmation.py` / `r8_confirmation_worker.py`, statistics

@@ -20,6 +20,8 @@ def main():
         if git(path,'rev-parse','HEAD')!=entry['commit'] or git(path,'status','--porcelain','--untracked-files=no'):
             raise ValueError('Existing reference differs; no automatic overwrite: '+str(path))
         import hashlib
+        if entry.get('license_file') and hashlib.sha256((path/entry['license_file']).read_bytes()).hexdigest()!=entry['license_sha256']:
+            raise ValueError('Pinned license body mismatch: '+entry['name'])
         for filename,expected in entry.get('source_sha256',{}).items():
             if hashlib.sha256((path/filename).read_bytes()).hexdigest()!=expected:raise ValueError('Pinned body mismatch: '+filename)
         print(entry['name']+' '+entry['commit'])

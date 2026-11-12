@@ -109,7 +109,9 @@ EqualCPU có kết quả yếu cần giữ cùng báo cáo, không chỉ bảng1
 | eprop_matched |54,43%|86,13%|51,17%|98,18% |
 | readout_only |57,10%|73,05%|52,02%|87,30% |
 
-Đây là average3seed với số episode trung bình khoảng154–209 tùy arm/task.
+Đây là average3seed; số episode thực tế min–max: own159–212, stop136–171,
+eprop_matched156–215, readout-only161–214. Các số này là phạm vi từng cell,
+không phải số update được chọn bằng accuracy.
 Không có bằng chứng lợi thế CPU đồng đều cho nominee. Raw actual update norms
 đã ghi nhưng reference study **chưa có norm-matched causal control**, vì vậy
 không kết luận lợi ích độc lập với amplitude hoặc optimizer trajectory.
@@ -138,3 +140,14 @@ hợp lệ hoặc báo dừng rõ ràng; không đổi gate để cứu bất k�
 
 Số cập nhật học được tạo trong final audit: **0**. Không fresh confirmation,
 P2, main/Hermes/SQLite migration hoặc can thiệp process/port.
+
+## Closeout bảng v2 — không thay điểm hoặc quyết định
+
+Reviewer đã đối chiếu `audit-v1.json`/`audit-v2.json`: mọi nội dung giống nhau
+ngoại trừ thời gian chạy audit. Toàn bộ132CSVrows v1/v2 cũng khớp, số giá trị
+probe_gain thay đổi bằng0. Lookup readout trong CSV đã được làm rõ là **cùng
+budget** với candidate. V1 dùng readout primary cho hàng equalCPU nhưng không
+làm sai trị số ở run này:12cặp readout-only có hidden weights cố định và probe
+refit ID/OOD giống chính xác giữa hai budgets, dù direct readout có thể khác.
+Đây là sửa độ rõ và độ bền reporting, không phải sửa learner hoặc cứu kết quả.
+Không huấn luyện lại; `REFERENCE_MIXED` và mọi primary contrast giữ nguyên.

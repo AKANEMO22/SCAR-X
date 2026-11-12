@@ -73,6 +73,13 @@ Chưa có actual-update-norm matched control cho reference ở vòng này: loss,
 - `POTENTIAL_NEW_CONTRIBUTION`: chưa đủ bằng chứng gán nhãn này cho ACR; không tính việc chuyển phương trình có sẵn thành tính mới.
 
 Chi tiết: [e-prop](literature/eprop.md), [BrainTrace](literature/braintrace.md), [reuse matrix/SI/EWC/DECOLLE/DGN/R9b](literature/continual-and-local-signals.md).
+
+[Diagnostic đóng băng sau học](literature/trained-credit-oracle.md) có180row,
+45checkpoint,0learningupdates. Trong trạng thái đã học, BrainTrace có trường
+hợp XOR alignment thấp hơn nhiều so fullsurrogate oracle; fixture ban đầu gần1
+không bảo đảm tương tự ở mọi trạng thái. Hai phép đo dùng input/signal khác
+nhau nên không quy cosine giảm chỉ cho việc học. Các method có finalweights
+khác nhau nên không dùng bảng cosine như causalranking về chất lượng.
 SI helper qua10test toán nhưng chưa có retention/P2. Explicit consolidation dùng task boundaries là boundary-assisted; dùng local credit thay loss gradient là biến đổi cần kiểm riêng. EWC/Fisher và replay chưa được chứng minh ở protocol mới. DGN đổi neuron dynamics nên ngoài primary forward đang khóa; DECOLLE pin hiện có điều khoản phi thương mại, không copy code.
 
 ## ACR và bước tiếp theo
