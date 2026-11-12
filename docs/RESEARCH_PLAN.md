@@ -1,5 +1,27 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Research update12/11/2026:** ACR theo chỉ thị riêng đã hoàn tất DEV H48,
+kết luận `ACR_SPECIALIZED_GAIN`, chưa broadADVANCE/P1/P2. [Báo cáo](research/ACR_DEV_RESULTS_20261112.md)
+và [review](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md) giữ toàn bộ
+protocol/gates/negativecontrols. One ALIFforward/localeligibility, không đổi
+production architecture. Sourcepin/sourcebytebundles/parentreuse và lostattempt
+compute được ghi minh bạch. Không mở freshconfirmation hoặc deploy vào Hermes.
+
+Chỉ thị literature-first mới ưu tiên equations/tests e-prop/BrainTrace trước
+invent/search; nhánh nghiên cứu `codex/scarx-literature-first-20261112` có
+reference DEV132jobs, `REFERENCE_MIXED`, không paperperformance/originalcompiler
+reproduction. [Đối chiếu cùng data/init](research/ACR_VS_LITERATURE_20261112.md).
+Fullsurrogate forward-sensitivity chỉ là oracle frozenweights trong evaluation,
+không đưa RTRL/globalbackward/BPTT vào candidate hoặc serving. SI mới helpertoán;
+retention/localimportance/stricttaskagnosticP2 vẫn chưa được kiểm ở vòng này.
+
+H48 là controlledresearchbaseline, không chứng minh capacity đã đủ và không là
+trần vĩnh viễn của sản phẩm. Người dùng hỏi về capacity/RAM: [proposalH48/64/128](../experiments/capacity-diagnostic-proposal-20261112.md)
+phân biệt capacity vớilearning/CPU bằng matchedcontrols; CHƯA huấn luyện/tăngH.
+Giữ primary gates,2GBCPU-first và một neuralcore; không lấy tokenwindow hay
+parametercount làm mục tiêu thay thế. Những phê duyệt/P0pending lịch sử bên
+dưới giữ ý nghĩa thời điểm tương ứng, không cấp quyền production/P2 mới.
+
 **Phiên bản tài liệu:** 1.32 — 2026-11-10. **Trạng thái:** một core có capacity linh động và vòng học xuyên hội thoại: hỏi→feedback→local micro-update→idle review.48 là baseline lịch sử, không là trần sản phẩm. Neural quality/retention vẫn PIVOT; không mở huấn luyện lớn.
 
 **Phê duyệt mới:** người dùng chọn **“Chỉ duyệt kiểm tra P0”** cho đề xuất

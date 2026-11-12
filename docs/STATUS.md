@@ -1,5 +1,22 @@
 # Trạng thái SCAR-X
 
+## ACR DEV hoàn tất — ACR_SPECIALIZED_GAIN, chưa ADVANCE
+
+[Báo cáo](research/ACR_DEV_RESULTS_20261112.md),
+[review độc lập](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md),
+[so literature](research/ACR_VS_LITERATURE_20261112.md).
+Đủ345jobs/375records;3.072.000predictionentries,30.720normsteps và144diagnostic
+tapes/36stressfiles qua kiểm. Groups_up là globalnominee: Binding85,03%,
+XOR98,11%, Distractor59,24%; hidden causal/probe có tín hiệu nhưng joint guards
+fail và Distractor<65%. Normmargin2/3,shufflemargin3/3 không miễn broadgates.
+State-adaptive có alpha biến thiên thật nhưng không thắng globalstaticprofile.
+PeakV3RSS177,62MB/commit220,55MB, dưới2GB; ngắtphiên/reuse/lost128..1024updates
+được ghi đầy đủ, không giả exacttime của đoạn mất giám sát. BaDEVseed, chưa P1.
+Không main/Hermes/confirmation/P2. Giữtests/checkpoint/mathrefs, PIVOT nghiên cứu,
+chưa promotelearner. [Capacity H48/64/128](../experiments/capacity-diagnostic-proposal-20261112.md)
+mới là đề xuất phân biệt dung lượng với học, CHƯA chạy/tăngmodel.
+Observeractualresults8771; literature reference8772 chốtREFERENCE_MIXED riêng.
+
 ## ACR P0 — mở DEV có giới hạn, chưa kết luận chất lượng
 
 [P0](research/ACR_P0_20261112.md), [protocol](../experiments/acr-dev-v1.md).

@@ -1,5 +1,17 @@
 # Bản đồ dự án SCAR-X
 
+**ACR12/11:** [results](research/ACR_DEV_RESULTS_20261112.md),
+[independent audit](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md),
+[router traces](research/ACR_ROUTER_ANALYSIS_20261112.md),
+[literature comparison](research/ACR_VS_LITERATURE_20261112.md).
+Masterprotocol `experiments/acr-dev-v1.md`; source/equations pin giữ nguyên.
+`evaluation/acr.py` researchonly; runner `run_acr_dev.py`, explicitresumev1/v2/v3,
+auditors `audit_acr_dev.py`/`audit_acr_mechanism.py`/`audit_acr_router_state.py`.
+Raw final59ced4 có375models+CSVv2+source-byte-bundle, giữ parent55/203cells.
+Passive viewer `serve_acr_results.py`:8771, không model/SQLite/live.
+[Capacity diagnostic proposal](../experiments/capacity-diagnostic-proposal-20261112.md)
+chưa phê duyệt training; chưa đổiH48 của lượt đã đo.
+
 **P1 confirmation12seed đã duyệt:** [report](research/R8_P1_CONFIRMATION_20261112.md),
 registration `experiments/r8-reset-credit-confirmation-v1.md`, runner
 `scripts/run_r8_confirmation.py` / `r8_confirmation_worker.py`, statistics

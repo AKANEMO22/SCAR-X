@@ -58,8 +58,8 @@ def main():
                     if len(r[metric])!=128 or not np.isin(r[metric],[0,1]).all():raise ValueError('Stress predictions invalid')
                     if scalar_accuracy(r[metric],r['target'])!=r[metric+'_accuracy']:raise ValueError('Stress scalar metric mismatch')
                     prediction_count+=128
-                # Recompute every direct stress prediction and an independent
-                # ridge-head implementation from existing refit data only.
+                # Replay every direct stress prediction and the SAME pinned
+                # ridge-head function. This is replay, not independent ridge proof.
                 features=model.features_many(x)
                 if direct_predict(model,features).tolist()!=r['direct']:raise ValueError('Stress hard-forward replay mismatch')
                 if refit_predict(fit,data['refit'][1],features).tolist()!=r['probe']:raise ValueError('Stress probe replay mismatch')
@@ -77,6 +77,8 @@ def main():
                 expected={'u','theta','z','adaptation','own','stop','mixed','alpha','q','signal','hidden_delta','loss','target','direct_prediction','scope'}
                 if set(tape)!=expected or any(not np.isfinite(v).all() for k,v in tape.items() if k!='scope'):
                     raise ValueError('Diagnostic fields/nonfinite')
+                if str(tape['scope'])!='Final checkpoint diagnostic clone, not original training trajectory':
+                    raise ValueError('Diagnostic scope mislabeled')
                 x=data['train'][0][index];target=int(data['train'][1][index]);m=ACR.loads(blob);m.reset_episode()
                 before_weights=hidden_matrix(m);before_rng=m.signal_rng.bit_generator.state.copy()
                 for t,input_row in enumerate(x):

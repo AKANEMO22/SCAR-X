@@ -266,6 +266,25 @@ def main():
     mechanism=read(mechanism_file)
     if mechanism['status']!='PASS' or mechanism['diagnostic_files']!=144 or mechanism['stress_files']!=36 or mechanism['new_learning_updates']!=0:
         raise ValueError('Incomplete or invalid mechanism/stress artifacts')
+    if len(mechanism['artifact_sha256'])!=180:raise ValueError('Mechanism hash grid incomplete')
+    for relative,h in mechanism['artifact_sha256'].items():
+        path=Path(relative)
+        if path.is_absolute() or '..' in path.parts or len(path.parts)!=2 or path.parts[0]!='diagnostics':
+            raise ValueError('Unsafe mechanism artifact path')
+        if sha((run/path).read_bytes())!=h:raise ValueError('Mechanism/stress artifact changed after audit')
+    router=read(run/'router-analysis-v1.json')
+    if router['status']!='PASS' or router['error'] is not None or router['rollouts']!=192 or router['checkpoint_files']!=48 or router['new_learning_updates']!=0 or router['labels_read'] is not False:
+        raise ValueError('State-router analysis incomplete')
+    reg=router['registration']
+    if sha(reg['protocol_document_before_compute'].encode('utf-8'))!=reg['protocol_doc_sha256'] or reg['parent_manifest_sha256']!=sha((run/'manifest.json').read_bytes()):
+        raise ValueError('Router analysis registration/provenance mismatch')
+    if sha((ROOT/'scripts/audit_acr_router_state.py').read_bytes())!=reg['script_sha256'] or len(router['raw_receipts'])!=48:
+        raise ValueError('Router analysis source/raw grid mismatch')
+    for filename,receipt in router['raw_receipts'].items():
+        name=Path(filename)
+        if len(name.parts)!=1 or name.suffix!='.npz' or receipt['original_unchanged'] is not True:
+            raise ValueError('Router analysis file/original-state schema')
+        if sha((run/'router-analysis-v1-raw'/name).read_bytes())!=receipt['sha256']:raise ValueError('Router trace changed')
     if not valid:decision='BLOCKED_INVALID_CONTROLS'
     elif broad['broad_numeric'] and shuffle_pass>=2 and norm_pass>=2 and not regression:decision='ACR_DEV_ADVANCE'
     elif len(probe_only)>=2:decision='ACR_REPRESENTATION_ONLY'
@@ -281,6 +300,7 @@ def main():
         'new_training_updates_in_audit':0,'reused_cells_verified':reused_count,'fresh_confirmation':False,'production_ready':False,
         'reuse_chain':reuse_chain,
         'main_unchanged_verified':True,'resource_contract_verified':True,'mechanism_stress_verified':True,
+        'state_router_analysis_verified':True,
         'decision_scope':'Registered broad/control-qualified gain; non-advancing raw tradeoffs remain reported explicitly',
         'audit_wall_seconds':time.perf_counter()-start,'source_commit':manifest['source_commit']}
     with destination.open('x',encoding='utf-8') as stream:json.dump(summary,stream,ensure_ascii=False,allow_nan=False,indent=2)
