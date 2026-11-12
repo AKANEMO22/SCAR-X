@@ -46,21 +46,41 @@ def main():
     if destination.exists():raise ValueError('Never overwrite audit evidence')
     start=time.perf_counter();manifest=read(run/'manifest.json');result=read(run/'result.json')
     if result['error'] is not None:raise ValueError('Incomplete DEV cannot receive complete audit')
-    reused_count=0
-    if 'parent_run' in manifest:
-        parent=(ROOT/'runs'/manifest['parent_run']).resolve()
-        if parent.parent!=ROOT/'runs' or sha((parent/'manifest.json').read_bytes())!=manifest['parent_manifest_sha256']:
+    main_now=subprocess.check_output(['git','rev-parse','main'],cwd=ROOT,text=True).strip()
+    resource=result['resources']
+    if result.get('main_unchanged') is not True or main_now!=manifest['main_before']:
+        raise ValueError('Main ref changed during isolated research')
+    if resource.get('measurement_errors') or resource.get('observed_over_limit') or max(resource['peak_rss_bytes'],resource['peak_commit_or_vms_bytes'],resource['os_process_peak_working_set_bytes'],resource['os_process_peak_pagefile_commit_bytes'])>2_000_000_000:
+        raise ValueError('Resource contract failed or unmeasured')
+    if result.get('new_confirmation') is not False or result.get('production_ready') is not False:
+        raise ValueError('Research-only scope metadata mismatch')
+    reused_count=0;reuse_chain=[]
+    def verify_reuse(current,meta,depth=0):
+        if depth>8:raise ValueError('Resume provenance depth exceeded')
+        if 'parent_run' not in meta:return
+        parent=(ROOT/'runs'/meta['parent_run']).resolve()
+        if parent.parent!=ROOT/'runs' or parent==current or sha((parent/'manifest.json').read_bytes())!=meta['parent_manifest_sha256']:
             raise ValueError('Resume parent manifest mismatch')
-        reused=manifest['reused_files_sha256']
-        if manifest['reused_completed_cells']!=55 or len(reused)!=220:raise ValueError('Reused evidence grid mismatch')
-        folders=set()
+        reused=meta['reused_files_sha256'];count=meta['reused_completed_cells']
+        if type(count)is not int or count not in (55,203) or len(reused)!=4*count:raise ValueError('Reused evidence grid mismatch')
+        folders={}
         for relative,h in reused.items():
             name=Path(relative)
             if name.is_absolute() or '..' in name.parts or len(name.parts)!=3 or name.parts[0]!='jobs':raise ValueError('Unsafe reused evidence path')
-            if sha((parent/name).read_bytes())!=h or sha((run/name).read_bytes())!=h:raise ValueError('Reused evidence differs from audited parent bytes')
-            folders.add(name.parts[1])
-        if len(folders)!=55:raise ValueError('Reused cell count mismatch')
-        reused_count=55
+            if sha((parent/name).read_bytes())!=h or sha((current/name).read_bytes())!=h:raise ValueError('Reused evidence differs from audited parent bytes')
+            folders.setdefault(name.parts[1],set()).add(name.name)
+        if len(folders)!=count or any(names!={'initial-0.zip','learning-0.npz','model-0.zip','result-0.json'} for names in folders.values()):
+            raise ValueError('Reused cell files incomplete')
+        if 'replayed_incomplete_cell' in meta:
+            original=parent/'jobs'/meta['replayed_incomplete_cell']/'initial-0.zip'
+            repeated=current/'jobs'/meta['replayed_incomplete_cell']/'initial-0.zip'
+            if sha(original.read_bytes())!=meta['incomplete_initial_sha256'] or sha(repeated.read_bytes())!=meta['incomplete_initial_sha256']:
+                raise ValueError('Repeated interrupted-cell initial state changed')
+            if (meta['uncheckpointed_attempt_updates_known_min'],meta['uncheckpointed_attempt_updates_reserved_max'])!=(128,1024):raise ValueError('Lost-attempt accounting changed')
+        reuse_chain.append({'run':current.name,'parent':parent.name,'cells':count})
+        verify_reuse(parent,read(parent/'manifest.json'),depth+1)
+    verify_reuse(run,manifest)
+    reused_count=manifest.get('reused_completed_cells',0)
     for path,h in manifest['source_sha256'].items():
         if sha((ROOT/path).read_bytes())!=h:raise ValueError('Locked source changed: '+path)
     from scarx.evaluation.r8_matched_credit import PEER
@@ -150,6 +170,11 @@ def main():
     # An unrelated missing raw/equal-CPU cell cannot hide behind another failure.
     explained={(path.parent.name,i) for path in invalid for i in (0,1)}
     if missing!=explained:raise ValueError('Missing cells are not exactly explained by preserved invalid controls')
+    expected_jobs=len({folder for folder,i in expected})
+    if result['rows']!=len(rows) or result['completed_jobs']!=expected_jobs:
+        raise ValueError('Worker result/cell/job counters differ')
+    if result['wall_seconds']>manifest['limit_seconds']:
+        raise ValueError('Registered remaining wall budget exceeded')
     for folder in sorted((run/'jobs').glob('*-norm_matched')):
         if (folder/'invalid-control.json').exists():continue
         with np.load(folder/'norm-pairs.npz',allow_pickle=False) as z:norms=z['radius_raw']
@@ -234,10 +259,17 @@ def main():
     broad['families_improved_with_causality']=improved_with_cause
     broad['broad_numeric']=improved_with_cause>=2 and broad['order_preserved'] and all(broad['joint_preserved'].values()) and all(broad[t][k] for t in TASKS[:3] for k in ('direct65','endpoint_preserved','ood_preserved'))
     if broad!=result['checks']:raise ValueError('Independent broad numeric checks disagree')
+    # Required mechanism/OOD artifacts are distinct from quality metrics. They
+    # must exist and pass their own zero-update analysis before full delivery.
+    mechanism_file=run/'mechanism-audit-v1.json'
+    if not mechanism_file.exists():raise ValueError('Required independent mechanism/stress analysis missing')
+    mechanism=read(mechanism_file)
+    if mechanism['status']!='PASS' or mechanism['diagnostic_files']!=144 or mechanism['stress_files']!=36 or mechanism['new_learning_updates']!=0:
+        raise ValueError('Incomplete or invalid mechanism/stress artifacts')
     if not valid:decision='BLOCKED_INVALID_CONTROLS'
     elif broad['broad_numeric'] and shuffle_pass>=2 and norm_pass>=2 and not regression:decision='ACR_DEV_ADVANCE'
     elif len(probe_only)>=2:decision='ACR_REPRESENTATION_ONLY'
-    elif raw_improved:decision='ACR_SPECIALIZED_GAIN'
+    elif len(raw_improved)==1:decision='ACR_SPECIALIZED_GAIN'
     else:decision='ACR_NO_GAIN'
     summary={'integrity':'PASS' if valid else 'INVALID_CONTROLS_PRESERVED','decision':decision,'nominee':nominee,
         'profile_means':means,'contrasts':contrasts,'broad_checks':broad,'shuffle_families_pass':shuffle_pass,
@@ -247,6 +279,9 @@ def main():
         'direct_replay_predictions':direct_replay,'independent_eigen_ridge_predictions':probe_replay,
         'norm_steps_checked':norm_steps,'zero_norm_steps':zero_norm_steps,'max_norm_relative_error':max_norm_relative_error,
         'new_training_updates_in_audit':0,'reused_cells_verified':reused_count,'fresh_confirmation':False,'production_ready':False,
+        'reuse_chain':reuse_chain,
+        'main_unchanged_verified':True,'resource_contract_verified':True,'mechanism_stress_verified':True,
+        'decision_scope':'Registered broad/control-qualified gain; non-advancing raw tradeoffs remain reported explicitly',
         'audit_wall_seconds':time.perf_counter()-start,'source_commit':manifest['source_commit']}
     with destination.open('x',encoding='utf-8') as stream:json.dump(summary,stream,ensure_ascii=False,allow_nan=False,indent=2)
     print(json.dumps({k:summary[k] for k in ('integrity','decision','nominee','models','prediction_rows_rescored','norm_steps_checked','audit_wall_seconds')}),flush=True)
