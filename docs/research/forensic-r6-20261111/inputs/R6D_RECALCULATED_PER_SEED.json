@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "source": "https://github.com/AKANEMO22/SCAR-X/blob/research/deepseek/r6d-audit/runs/20261111T080352Z-r6d-confirm-v1-ff539c/result.json",
+  "source_branch_sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+  "evidence_class": "ASSISTANT_RAW_JSON_RECALCULATION_NOT_INDEPENDENT_MODEL_EXECUTION",
+  "extraction_note": "Eight rows copied from raw trial aggregation verified through GitHub connector and recomputed for paired mean. Bootstrap interval, if quoted, was sourced from run summary and NOT independently recomputed here.",
+  "n_seeds": 8,
+  "per_seed": [
+    {
+      "seed": 130001,
+      "grid_1024_r5b_both_A": 0.8512396694214877,
+      "grid_16384_r5b_both_A": 0.9669421487603306,
+      "matched_repeat_256x64_r5b_both_A": 0.8016528925619835,
+      "matched_unique_16384x1_r5b_both_A": 0.9421487603305785,
+      "stress_temporal_both_A": 0.8760330578512396,
+      "stress_distractor_both_A": 0.5950413223140496,
+      "grid_gain": 0.11570247933884292,
+      "matched_gain": 0.14049586776859502
+    },
+    {
+      "seed": 130007,
+      "grid_1024_r5b_both_A": 0.6610169491525424,
+      "grid_16384_r5b_both_A": 0.9661016949152542,
+      "matched_repeat_256x64_r5b_both_A": 0.8389830508474576,
+      "matched_unique_16384x1_r5b_both_A": 0.9491525423728814,
+      "stress_temporal_both_A": 0.9576271186440678,
+      "stress_distractor_both_A": 0.559322033898305,
+      "grid_gain": 0.30508474576271183,
+      "matched_gain": 0.11016949152542377
+    },
+    {
+      "seed": 130013,
+      "grid_1024_r5b_both_A": 0.7925925925925926,
+      "grid_16384_r5b_both_A": 0.9555555555555556,
+      "matched_repeat_256x64_r5b_both_A": 0.8740740740740741,
+      "matched_unique_16384x1_r5b_both_A": 0.9407407407407408,
+      "stress_temporal_both_A": 1.0,
+      "stress_distractor_both_A": 0.6222222222222222,
+      "grid_gain": 0.16296296296296298,
+      "matched_gain": 0.06666666666666665
+    },
+    {
+      "seed": 130019,
+      "grid_1024_r5b_both_A": 0.55,
+      "grid_16384_r5b_both_A": 0.8166666666666667,
+      "matched_repeat_256x64_r5b_both_A": 0.6166666666666667,
+      "matched_unique_16384x1_r5b_both_A": 0.7416666666666667,
+      "stress_temporal_both_A": 0.7166666666666667,
+      "stress_distractor_both_A": 0.5916666666666667,
+      "grid_gain": 0.2666666666666666,
+      "matched_gain": 0.125
+    },
+    {
+      "seed": 130023,
+      "grid_1024_r5b_both_A": 0.7704918032786885,
+      "grid_16384_r5b_both_A": 1.0,
+      "matched_repeat_256x64_r5b_both_A": 0.9426229508196722,
+      "matched_unique_16384x1_r5b_both_A": 1.0,
+      "stress_temporal_both_A": 0.9918032786885246,
+      "stress_distractor_both_A": 0.48360655737704916,
+      "grid_gain": 0.2295081967213115,
+      "matched_gain": 0.05737704918032782
+    },
+    {
+      "seed": 130029,
+      "grid_1024_r5b_both_A": 0.5634920634920635,
+      "grid_16384_r5b_both_A": 0.9523809523809523,
+      "matched_repeat_256x64_r5b_both_A": 0.7619047619047619,
+      "matched_unique_16384x1_r5b_both_A": 0.9523809523809523,
+      "stress_temporal_both_A": 0.9523809523809523,
+      "stress_distractor_both_A": 0.6507936507936508,
+      "grid_gain": 0.38888888888888884,
+      "matched_gain": 0.19047619047619047
+    },
+    {
+      "seed": 130031,
+      "grid_1024_r5b_both_A": 0.5850340136054422,
+      "grid_16384_r5b_both_A": 0.7006802721088435,
+      "matched_repeat_256x64_r5b_both_A": 0.5986394557823129,
+      "matched_unique_16384x1_r5b_both_A": 0.9727891156462585,
+      "stress_temporal_both_A": 0.8163265306122449,
+      "stress_distractor_both_A": 0.3401360544217687,
+      "grid_gain": 0.11564625850340138,
+      "matched_gain": 0.37414965986394555
+    },
+    {
+      "seed": 130037,
+      "grid_1024_r5b_both_A": 0.7244094488188977,
+      "grid_16384_r5b_both_A": 0.984251968503937,
+      "matched_repeat_256x64_r5b_both_A": 0.8110236220472441,
+      "matched_unique_16384x1_r5b_both_A": 0.952755905511811,
+      "stress_temporal_both_A": 0.968503937007874,
+      "stress_distractor_both_A": 0.5590551181102362,
+      "grid_gain": 0.25984251968503935,
+      "matched_gain": 0.1417322834645669
+    }
+  ],
+  "means": {
+    "grid_1024_r5b_both_A": 0.6872845675452143,
+    "grid_16384_r5b_both_A": 0.9178224073614425,
+    "matched_repeat_256x64_r5b_both_A": 0.7806959343380216,
+    "matched_unique_16384x1_r5b_both_A": 0.9314543354562361,
+    "stress_temporal_both_A": 0.9099176927314463,
+    "stress_distractor_both_A": 0.5502304532254936,
+    "grid_gain": 0.23053783981622816,
+    "matched_gain": 0.15075840111821454
+  },
+  "gates_from_matrix_run": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": null,
+    "G5": null,
+    "G6": false,
+    "G7": true,
+    "G8": null
+  },
+  "all_gates_integrated": false,
+  "original_matrix_confirmation_pass": null,
+  "separate_controls_mean": {
+    "random_labels_direct": 0.4775390625,
+    "first_key": 0.7501220703125,
+    "query_only": 0.493408203125,
+    "reference_both_A": 0.9503508243516985
+  },
+  "warning": "Controls used different training permutation and are not the same trained head as grid/stress. G6 FAIL; do not promote."
+}

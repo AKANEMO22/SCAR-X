@@ -1,5 +1,120 @@
 # Trạng thái SCAR-X
 
+## Capacity H64/H128 — hoàn tất, integrityPASS / CAPACITY_ONLY_SIGNAL
+
+[Results](research/CAPACITY_H64_H128_RESULTS_20261112.md),
+[independent audit](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md).
+Đủ204newjobs+48H48reuse=252records,1.290.240predictionentries/168contrasts
+chấm lại độc lập. Own H48→H128 direct: Binding85,42→87,30%,XOR91,86→99,41%,
+Distractor56,97→69,40%; hiddenweights có causaleffect. H64 tăngDistractor nhưng
+giảmBinding/OOD. Readout-only cũng tốt lên; EXTRAlearned-vsfrozen advantage
+chỉ tăng đủ ở1/3family, chưa≥2/3theogate. CAPACITY_ONLY_SIGNAL không có nghĩa
+khônghiddenlearning. EqualCPU khôngmonotonic; P2/commoncheckpointretention chưađo.
+Contrastgrowth còn có hiệuứngtrần ởXOR khifrozenprobe tăng; disclosure giữ
+nguyên scores/gates, không dùng gatefail để phủ nhận hiddenlearning.
+Worker996,40s,peakRSS148,82MB/commit191,15MB,Windowscap2GBtrue;92P0testsqua.
+GiữH128Own làm researchcandidate/đốichứng có ích; chưa main/Hermes/H256/P2/
+freshconfirmation. Actualtrace http://127.0.0.1:8773 gồmH/loss/updates/answers/
+fullprimarymeans/equalCPU/plots/audit, không Qwen hoặc mockthought.
+
+## Capacity H64/H128 — đã duyệt, mở DEV trong nhánh riêng
+
+Người dùng phê duyệt thửH64/H128 giữALIF/locallearning vàactualtrace. [Protocol](../experiments/capacity-h64-h128-approved-v1.md)
+khóa3DEVseeds/4tasks/4primaryarms,1024updates,48H48reuse+96newprimary+
+108contemporaneousCPUcells,252records/204newjobs tốiđa60minworker. Không main/
+Hermes/confirmation/P2. H48parity exact,92P0tests qua gồmnative/coldresume,
+[review độc lập](research/CAPACITY_INDEPENDENT_REVIEW_20261112.md) TechnicalGO.
+Throughputtechnicalfixture dự toán~711s, dưới3600s; chưa dùng qualityscores.
+Trace http://127.0.0.1:8773 tự hiệnH/loss/updates/predictions/resources, khôngmock.
+
+## ACR DEV hoàn tất — ACR_SPECIALIZED_GAIN, chưa ADVANCE
+
+[Báo cáo](research/ACR_DEV_RESULTS_20261112.md),
+[review độc lập](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md),
+[so literature](research/ACR_VS_LITERATURE_20261112.md).
+Đủ345jobs/375records;3.072.000predictionentries,30.720normsteps và144diagnostic
+tapes/36stressfiles qua kiểm. Groups_up là globalnominee: Binding85,03%,
+XOR98,11%, Distractor59,24%; hidden causal/probe có tín hiệu nhưng joint guards
+fail và Distractor<65%. Normmargin2/3,shufflemargin3/3 không miễn broadgates.
+State-adaptive có alpha biến thiên thật nhưng không thắng globalstaticprofile.
+PeakV3RSS177,62MB/commit220,55MB, dưới2GB; ngắtphiên/reuse/lost128..1024updates
+được ghi đầy đủ, không giả exacttime của đoạn mất giám sát. BaDEVseed, chưa P1.
+Không main/Hermes/confirmation/P2. Giữtests/checkpoint/mathrefs, PIVOT nghiên cứu,
+chưa promotelearner. [Capacity H48/64/128](../experiments/capacity-diagnostic-proposal-20261112.md)
+mới là đề xuất phân biệt dung lượng với học, CHƯA chạy/tăngmodel.
+Observeractualresults8771; literature reference8772 chốtREFERENCE_MIXED riêng.
+
+## ACR P0 — mở DEV có giới hạn, chưa kết luận chất lượng
+
+[P0](research/ACR_P0_20261112.md), [protocol](../experiments/acr-dev-v1.md).
+Hai endpoint exact;62technicaltests qua gồm native parity, independent reviewer
+không thấy blocker để thử DEV. Một H48ALIF, hai eligibility streams, không đổi
+forward/readout/main/Hermes. Không reuse confirmation bank. Observer mới8771,
+giữ nguyên8767. Chưa có bằng chứng adaptive routing tốt hơn hai baseline.
+
+## P1 confirmation12seed — xong, P1_FAIL_RESEARCH_ONLY
+
+[Kết quả](research/R8_P1_CONFIRMATION_20261112.md), sourcebc686500, run84547e.
+Đủ204jobs/408conditions,417.792predictionrows chấm lại,50statisticalcontrasts
+scalarcrosscheckkhớp; integrityPASS nhưng chỉ XOR qua toàn bộP1gates. Hidden
+learning hữu ích được xác minh12seed trên3eventtasks; candidate bị tradeoff:
+bindingOOD regression, distractordirect63,64%<65%. XORdirect99,28%, probegain
+vsown+1,81đCI[+.80;+3.30]đ.28phút30giây, peakRSS258,04MB/commit244,36MB.
+Không tune/reuse bank, không P2/main/Hermes. Observerreadonly8767giữactual logs.
+
+## R8 sửa và DEV thật — 12/11/2026, chưa formal P1/P2
+
+[Báo cáo](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md):96matchedjobs và48reset
+jobs đã chạy đủ, tổng288conditions/294.912predictionrows chấm lại độc lập.
+Stopped-reset giữ ALIFforward, XORdirect91,86→99,35% ở equal-update; binding
+85,42→82,62%, distractor55,66% vẫn fail. Không bỏ kết quả equalCPU thấp.
+381tests checkout qua,4profile cold next-update exact; peakstudyRSS~222MB.
+12seed confirmation [proposal](../experiments/r8-reset-credit-confirmation-proposal-v1.md)
+chưa chạy, cần duyệt riêng. Main/Hermes/live giữ nguyên; observer readonly
+http://127.0.0.1:8767 tự hiện actual outputs/learninglogs. Chưa production.
+
+## R8 snapshot repair P0 — adapter nghiên cứu đã kiểm
+
+[Bàn giao](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md):
+wrapper data-only lưu/khôi phục đầy đủ MTSG/BF arrays, RNG/threshold/controller
+JSON, strict load, atomic save và rollback. Cold next-forward/update exact cả
+hai model;76/76tests qua gồm CPU/native, peakRSS231,08MB/commit187,03MB.
+Không sửa learning rule hoặc source tác giả/main/live; chưa đạt chất lượng P1/P2.
+
+## Gemini R8 — đã kiểm code/raw, sửa gate trong nhánh audit riêng
+
+[Review R8](research/forensic-r6-20261111/GEMINI_R8_REVIEW_AND_REPAIRS_VI.md)
+pin fe472b3, có implementation thực.13peerP0tests và39audit/regressiontests qua;
+không train campaign. Reproduce empty-evaluatorPASS, checkpoint mấtRNG/threshold,
+shuffle đổi trace và8keyqueryaliases. Independent evaluator nay fail-closed,
+retention kiểm mọi seed và codebook preflight chặn duplicate queries.
+BF DEV meanF giảm3,30đ nhưng final giảm7,51đ;0/3seed qua jointgate.
+MTSG binding/XOR reported promising, thiếu per-seed raw và matched contrasts.
+[P0 repair/P1 proposal](research/forensic-r6-20261111/R8_REPAIR_AND_P1_PROPOSAL_V1.md)
+chờ duyệt; main/G1/Hermes giữ nguyên, chưa production.
+
+## Review Cross-SNN Gemini — 12/11/2026, không train mới
+
+[Review độc lập](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md)
+chốt Gemini631c890: commit chỉ thêm survey. Paired distractor trong cùng raw
+diagnostic là71,55%→74,67% (+3,125đ), CI95%thăm dò qua0; không phải+22,33đ.
+Timing gate chồng cả valid write events, khác sensory gate được đề xuất.
+Multiscale85,29/96,61 chưa có code/raw traceable; fast/slow và homeostasis là
+giả thuyết cần control, chưa solveP1/P2. REQUEST_CHANGES cho survey; giữ ý tưởng
+trong research, không promote learner/main/live. Receipt
+`artifacts/cross-snn-transfer-review-v1.json` lưu phép tính và8test audit qua.
+
+## Codex forensic audit R6 — 11/11/2026, research only
+
+[Audit handoff](research/forensic-r6-20261111/README.md) records pinned R6D/R6B
+historical reproduction and the newly pushed Gemini8f24a5a review. R6D matrix/
+controls and Grok scientific fields reproduce; CKCER accuracy agrees but its
+preregistered-GO claim has protocol/post-hoc/attribution defects. No learner
+promotion, main merge, architecture change, live weights or new P2pilot.
+Independent prediction scoring/mutation tests and all306collected test cases
+have PASS evidence across bounded partitions; one-process fullsuite memory
+failures remain explicitly recorded. R6E/R7 are drafts awaiting approval.
+
 ## P0 usefulness đã kiểm — pilot P2 chưa duyệt
 
 Người dùng chỉ duyệt P0. [Báo cáo42](research/42_READOUT_USEFULNESS_P0.md),

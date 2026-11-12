@@ -1,0 +1,110 @@
+{
+  "head_both_A": {
+    "mean": 0.6676171928664432,
+    "lower95": 0.603332650273224,
+    "upper95": 0.7339626328955597,
+    "worst": 0.5416666666666666,
+    "independent_seed_count": 8,
+    "seed_ids": [
+      98001,
+      98007,
+      98013,
+      98019,
+      98023,
+      98029,
+      98031,
+      98037
+    ],
+    "per_seed": [
+      0.5901639344262295,
+      0.7769230769230769,
+      0.6307692307692307,
+      0.7583333333333333,
+      0.5583333333333333,
+      0.7967479674796748,
+      0.5416666666666666,
+      0.688
+    ],
+    "resamples": 10000,
+    "bootstrap_seed": 2101
+  },
+  "ridge_both_A": {
+    "mean": 0.9858055982735111,
+    "lower95": 0.97557201478383,
+    "upper95": 0.9940320512820513,
+    "worst": 0.9590163934426229,
+    "independent_seed_count": 8,
+    "seed_ids": [
+      98001,
+      98007,
+      98013,
+      98019,
+      98023,
+      98029,
+      98031,
+      98037
+    ],
+    "per_seed": [
+      0.9590163934426229,
+      0.9923076923076923,
+      0.9923076923076923,
+      0.9916666666666667,
+      1.0,
+      0.967479674796748,
+      0.9916666666666667,
+      0.992
+    ],
+    "resamples": 10000,
+    "bootstrap_seed": 2101
+  },
+  "source_reproduction_fields_exact": {
+    "reproduction_class": true,
+    "reproduction": true,
+    "head_both_A_mean": true,
+    "ridge_both_A_mean": true,
+    "query_gap": true,
+    "projection_distribution_seed_98001": true,
+    "candidate": true,
+    "confirmation_opened": true,
+    "screen": true,
+    "screen_perm": true,
+    "protected": true,
+    "gain": true,
+    "perm_gain": true,
+    "xor_drop": true,
+    "order_drop": true,
+    "status": true
+  },
+  "raw_prediction_reproduction_matches": true,
+  "screen_gain": {
+    "mean": 0.00982010306580842,
+    "lower95": -0.07079646017699115,
+    "upper95": 0.06349206349206349,
+    "n_seeds": 3
+  },
+  "permuted_gain": {
+    "mean": 0.112572954452184,
+    "lower95": -0.015873015873015928,
+    "upper95": 0.22123893805309736,
+    "n_seeds": 3
+  },
+  "protected_order_drop": 0.1875,
+  "verdict": "FAIL_CANDIDATE_SCREEN",
+  "fresh_confirmation": false,
+  "source_shadowing": {
+    "duplicates": [
+      "shadowed top-level definitions: {'pair_stats': 2, 'fit_predict': 2, 'screen_seed': 2}"
+    ],
+    "screen_seed_line": 204,
+    "pair_stats_line": 223,
+    "fit_predict_line": 241,
+    "candidate_module": "scarx.evaluation.r6_candidate"
+  },
+  "registered_but_missing_runner_conditions": [
+    "reversed_writes",
+    "independent_shift_stress",
+    "distractor_stress",
+    "noise_stress"
+  ],
+  "hidden_learning_tested": false
+}

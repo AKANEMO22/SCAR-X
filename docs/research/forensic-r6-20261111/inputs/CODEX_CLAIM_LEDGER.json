@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "project": "SCAR-X",
+  "repo": "https://github.com/AKANEMO22/SCAR-X",
+  "checked_main_sha": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "checked_deepseek_r6d_sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+  "checked_grok_r6b_sha": "c39e9db7771582d9933af402a209917328b71119",
+  "source_handoff_file": "SCARX_CODEX_FULL_RESEARCH_HANDOFF_2026-11-11.md",
+  "basis": "Historical GitHub repository documents; selective static source inspection; selected GitHub raw JSON statistics recalculated. NOT independently executed original repo tests/benchmarks.",
+  "claims": [
+    {
+      "id": "C01",
+      "claim_vi": "Spike trace chứa thông tin thời gian mà fast decay mất",
+      "working_status": "SUPPORTED_SCOPED",
+      "evidence_and_limits_vi": "R1/R2 frozen feature probes, synthetic xor/order, không transferable chung",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C02",
+      "claim_vi": "Readout delta luôn là bottleneck chính",
+      "working_status": "REFUTED_AS_UNIVERSAL",
+      "evidence_and_limits_vi": "R2 spikesum0.9712, R4 order delta fail dù ridge high; tùy geometry",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C03",
+      "claim_vi": "Frozen ALIF lưu 2 independent key/value bits",
+      "working_status": "REPORTED_STRONG_PROBE",
+      "evidence_and_limits_vi": "R5 pre-query probes >.996; chỉ synthetic generator/label probe",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C04",
+      "claim_vi": "Query-conditioned bilinear map giải mã tốt",
+      "working_status": "SUPPORTED_DIAGNOSTIC",
+      "evidence_and_limits_vi": "R4/R5 ridge/head; fixed P + input-supplied cue, không neuron tự khám phá",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C05",
+      "claim_vi": "Online head R5B học cả differing-value siblings đủ ≥.70",
+      "working_status": "FAILED_CONFIRMATION",
+      "evidence_and_limits_vi": "both_A .6676, gate .70; Grok reproduced raw means",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C06",
+      "claim_vi": "Bỏ clip đơn lẻ sửa R5B",
+      "working_status": "FAILED_SCREEN",
+      "evidence_and_limits_vi": "Grok R6B mean gain .00982 CI lower âm; order regression.",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C07",
+      "claim_vi": "Tăng sampled episodes cải thiện readout trên R5 generator",
+      "working_status": "PROMISING/RAW_SUPPORT",
+      "evidence_and_limits_vi": "R6D correct scaler ~+.23054, per-seed all positive; requires independent replication",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C08",
+      "claim_vi": "Cứ thêm update/replay giúp bằng thêm unique episodes",
+      "working_status": "NOT_SUPPORTED",
+      "evidence_and_limits_vi": "matched updates unique > repeated, nhưng data distribution/normalization phải kiểm",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C09",
+      "claim_vi": "Delayed phase transition/emergent jump",
+      "working_status": "NOT_SUPPORTED",
+      "evidence_and_limits_vi": "R6A second-difference 18/36 chance, no phase transition established",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C10",
+      "claim_vi": "R6A temporal stress .8256 chứng minh seed fragile",
+      "working_status": "WITHDRAWN_INVALID_HARNESS",
+      "evidence_and_limits_vi": "raw stress passed unscaled features; R6D temporal remeasure .9099",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C11",
+      "claim_vi": "R6D chịu được distractors",
+      "working_status": "FAILED",
+      "evidence_and_limits_vi": "raw both_A .55023 worst .34014, verify perturbation semantics độc lập",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C12",
+      "claim_vi": "R6D all gates computed in one formal result",
+      "working_status": "REFUTED_BY_STATIC_SOURCE",
+      "evidence_and_limits_vi": "G4/G5/G8 null in matrix raw; no integration confirmation_pass",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C13",
+      "claim_vi": "DC-ALIF giải `strict_binding` synthetic",
+      "working_status": "REPORTED_SCOPED",
+      "evidence_and_limits_vi": "Gemini 98.78, protocol deviation; independent transfer still fails",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C14",
+      "claim_vi": "DC-ALIF cải thiện mọi relational tasks",
+      "working_status": "FAILED",
+      "evidence_and_limits_vi": "order regress18.48pp, pair_binding .505 chance vs no_gate .7839",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C15",
+      "claim_vi": "Hidden synapses học biểu diễn bền vững rộng",
+      "working_status": "NOT_PROVEN",
+      "evidence_and_limits_vi": "main P1 narrow order/XOR gains; many tasks fail, R6 hidden frozen",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C16",
+      "claim_vi": "SCAR-X P2 continual memory đạt gate",
+      "working_status": "FAILED",
+      "evidence_and_limits_vi": "main report21: final .3474, forgetting29.09pp; Gemini P2 final .5613/forget21.89pp",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C17",
+      "claim_vi": "Readout usefulness pilot P2 thành công",
+      "working_status": "NOT_TESTED/NOT_APPROVED",
+      "evidence_and_limits_vi": "Only P0 math/parity/rollback checks approved",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C18",
+      "claim_vi": "G1 normal chat tốt",
+      "working_status": "FAILED",
+      "evidence_and_limits_vi": "word free utterance .3594 vs train .9948, token shortcut teacher prefix",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C19",
+      "claim_vi": "G1 normal RGB photo QA đạt",
+      "working_status": "FAILED",
+      "evidence_and_limits_vi": "visual word macrodev .2510, RGB path/codec bottlenecks, digit8×8 only serving",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C20",
+      "claim_vi": "Thêm neurons 48→128 tự tăng thông minh",
+      "working_status": "NO_EVIDENCE",
+      "evidence_and_limits_vi": "capacity allocator is engineering; no learning/retention gain demonstrated",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C21",
+      "claim_vi": "Qwen/GPT can be used as serving answer instead of SNN",
+      "working_status": "PROHIBITED",
+      "evidence_and_limits_vi": "user constraint; only isolated control/reference",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C22",
+      "claim_vi": "More data alone solves structural input/encoder loss",
+      "working_status": "REFUTED_AS_GENERAL CLAIM",
+      "evidence_and_limits_vi": "grayscale color collapse, output-vocab cap, missing question path, H48 task confounds",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    },
+    {
+      "id": "C23",
+      "claim_vi": "Main product release is stable enough to benchmark",
+      "working_status": "ENGINEERING_BASELINE",
+      "evidence_and_limits_vi": "RC smoke/pytest historical, must rerun & check 14 skips on current environment",
+      "independent_runtime_verified": false,
+      "audit_action": "Recompute or reproduce against pinned source, protocol, raw data, and a standalone evaluator. Report contradictions instead of accepting this status.",
+      "verdict_by_codex": null
+    }
+  ],
+  "forensic_findings": [
+    {
+      "id": "F-01",
+      "summary": "Gate không được đóng trên cùng một kết quả formal (severity CRITICAL cho claim `confirmation_pass`).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-02",
+      "summary": "Gate-reference independence vs not the same trained head (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-03",
+      "summary": "Tests mang tính cú pháp/tautology, không đủ test end-to-end (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-04",
+      "summary": "R5B-style không có nghĩa là R5B pipeline nguyên gốc (MAJOR cho attribution).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-05",
+      "summary": "Per-seed acceptance còn mơ hồ (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-06",
+      "summary": "Stress validity checks có thể chưa kiểm đúng dữ liệu đang chấm (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-07",
+      "summary": "Reproduction/G7/G8 và limits chưa hoàn chỉnh (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-08",
+      "summary": "Báo cáo audit tự mâu thuẫn về defect count (MINOR/MAJOR cho tài liệu).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-09",
+      "summary": "Nested sample ladder và semantic diversity (P1 research confound).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    },
+    {
+      "id": "F-10",
+      "summary": "Phân loại source truth (MAJOR).",
+      "working_status": "STATIC_AUDIT_FINDING_NOT_REEXECUTED",
+      "must_reproduce_independently": true,
+      "codex_verdict": null
+    }
+  ],
+  "instructions": {
+    "no_merging": true,
+    "no_production_changes": true,
+    "no_overwriting_historical_runs": true,
+    "missing_gate_must_not_pass": true,
+    "new_formal_confirmation_requires_pre_registered_protocol_and_user_approval": true
+  }
+}

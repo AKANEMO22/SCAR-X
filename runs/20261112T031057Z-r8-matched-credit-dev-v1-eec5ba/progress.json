@@ -1,0 +1,49 @@
+{
+  "run": "20261112T031057Z-r8-matched-credit-dev-v1-eec5ba",
+  "status": "COMPLETE_DEV_ONLY",
+  "completed_jobs": 96,
+  "total_jobs": 96,
+  "model": "one H48 ALIF research core per isolated arm; no serving model",
+  "main_training": false,
+  "new_confirmation": false,
+  "task": "order",
+  "seed": 140023,
+  "arm": "multi_gated_readout_only",
+  "budget": "equal_cpu",
+  "latest_learning": {
+    "task": "order",
+    "seed": 140023,
+    "arm": "multi_gated_readout_only",
+    "budget": "equal_cpu",
+    "step": 461,
+    "loss": 0.026964654966079502,
+    "hidden_update_norm": 0.0,
+    "readout_update_norm": 0.006799923258094917,
+    "train_cpu_seconds": 0.5
+  },
+  "resources": {
+    "peak_rss_bytes": 222208000,
+    "peak_commit_or_vms_bytes": 193572864,
+    "os_process_peak_working_set_bytes": 80818176,
+    "os_process_peak_pagefile_commit_bytes": 97759232,
+    "samples": 15182,
+    "interval_seconds": 0.05,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 863.3200742000008,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "latest_metrics": {
+    "id_direct": 0.923828125,
+    "id_probe": 0.953125,
+    "ood_direct": 0.97265625,
+    "ood_probe": 0.94921875,
+    "revert_in_probe": 0.953125,
+    "revert_rec_probe": 0.953125,
+    "revert_both_probe": 0.953125
+  },
+  "decision": "DEV_COMPLETE_NOT_MASTER_P1_GO"
+}

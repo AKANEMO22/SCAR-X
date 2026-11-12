@@ -1,0 +1,52 @@
+{
+  "sources": {
+    "deepseek": "853d40832b41286046772cfc006ecc0fa548863c",
+    "gemini": "bad058238083ec875aaef3a271e3f3c68680e3c1"
+  },
+  "gate_tests_exit": 0,
+  "gate_tests_log": "artifacts/forensic-r6/r7-latest-gates.log",
+  "gate_tests_command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-c",
+    "from scarx.runtime.limits import apply_memory_limit; apply_memory_limit(); import pytest; raise SystemExit(pytest.main(['-q','-p','no:cacheprovider','tests/test_r7_gate_evaluator.py','--junitxml='+__import__('sys').argv[1]]))",
+    "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\artifacts\\forensic-r6\\r7-latest-gates.xml"
+  ],
+  "multiscale_claim_85_29_96_61_committed_raw_present": false,
+  "multiscale_test_file_committed": false,
+  "p2_factorial_stage_updates_source_count": {
+    "noreplay": [
+      512,
+      512,
+      512
+    ],
+    "replay": [
+      256,
+      512,
+      512
+    ]
+  },
+  "new_neural_training": false,
+  "new_confirmation": false,
+  "deepseek38_raw_means": {
+    "uniform": {
+      "meanF": 4.025000000000001,
+      "worstF": 9.916666666666666,
+      "acq": 0.9215972222222221
+    },
+    "aged": {
+      "meanF": 3.391666666666666,
+      "worstF": 8.541666666666666,
+      "acq": 0.9256250000000001
+    },
+    "adaptive": {
+      "meanF": 3.8083333333333336,
+      "worstF": 9.416666666666666,
+      "acq": 0.9172222222222222
+    }
+  },
+  "deepseek38_paired_aged_minus_uniform": {
+    "meanF": -0.6333333333333351,
+    "worstF": -1.375,
+    "acq": 0.004027777777778074
+  }
+}

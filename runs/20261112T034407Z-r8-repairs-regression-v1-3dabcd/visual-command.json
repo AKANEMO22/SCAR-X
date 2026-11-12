@@ -1,0 +1,38 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "-q",
+    "-rs",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_visual_word_control.py",
+    "tests/test_visual_word_metrics.py",
+    "tests/test_visual_words.py",
+    "tests/test_word_conditioning.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-r8-matched-controls-20261112\\runs\\20261112T034407Z-r8-repairs-regression-v1-3dabcd\\visual.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-r8-matched-controls-20261112",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 9.331130200000189,
+  "resources": {
+    "peak_rss_bytes": 686809088,
+    "peak_commit_or_vms_bytes": 1119043584,
+    "os_process_peak_working_set_bytes": 41582592,
+    "os_process_peak_pagefile_commit_bytes": 28487680,
+    "samples": 96,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 9.330961700001353,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "visual.log"
+}

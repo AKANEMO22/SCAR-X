@@ -1,0 +1,39 @@
+{
+  "profile": "groups_up",
+  "checks": {
+    "strict_binding": {
+      "direct65": true,
+      "endpoint_preserved": true,
+      "ood_preserved": true,
+      "hidden_probe_gain": 0.26236979166666663,
+      "causal_direct_drop": 0.3359375,
+      "improved": false
+    },
+    "xor": {
+      "direct65": true,
+      "endpoint_preserved": true,
+      "ood_preserved": true,
+      "hidden_probe_gain": 0.15169270833333337,
+      "causal_direct_drop": 0.41015625,
+      "improved": false
+    },
+    "distractor_binding": {
+      "direct65": false,
+      "endpoint_preserved": true,
+      "ood_preserved": true,
+      "hidden_probe_gain": 0.06640625,
+      "causal_direct_drop": 0.08203125,
+      "improved": true
+    },
+    "order_preserved": true,
+    "joint_preserved": {
+      "strict_binding": false,
+      "xor": true,
+      "distractor_binding": false,
+      "order": false
+    },
+    "families_improved_with_causality": 1,
+    "broad_numeric": false
+  },
+  "selection": "one global profile, never per-task"
+}

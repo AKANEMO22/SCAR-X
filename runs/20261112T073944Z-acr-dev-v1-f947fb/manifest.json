@@ -1,0 +1,44 @@
+{
+  "source_commit": "950718bd410371f8ef15dab2d78d722b04ab506d",
+  "base_sha": "93b5b96bebaf22dbc39a3f96b2cac7c917d5e377",
+  "main_before": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "source_sha256": {
+    "src/scarx/evaluation/acr.py": "efe1dd6d7a4780a8836f2b1ed7eea4d5188dcb92a1648ae25fff225f60368a55",
+    "src/scarx/evaluation/acr_study.py": "5d48a3fbbf48092b903743a40c40e138bb68450eb5800d92061e1983a5e04cc0",
+    "src/scarx/evaluation/forensic/r8_snapshot.py": "fe579010a9e9a093a9161f104ec560474379d86621309f76e5158175848d9788",
+    "src/scarx/evaluation/r8_matched_credit.py": "9bfec2949cc4d3edf936082639ceac5ce47a2fd6e4b2ec3f5b36a2ab04d91e5d",
+    "src/scarx/evaluation/r8_stopped_reset.py": "80cb5b6e8421c26cc4fe414870adfce408abf3f796a445d42a32905a273595bb",
+    "src/scarx/evaluation/r8_matched_study.py": "fe78b93fd52855e9b4816af75ebff689447e52b825440ea25159fe7a68d8f366",
+    "src/scarx/evaluation/readout_eligibility.py": "535db494c1b390a0d781fbf0ca6a2891cfc3f3141df0855edb3e4c1f1c513137",
+    "src/scarx/neural/core.py": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+    "src/scarx/evaluation/confirmation_resources.py": "6e1ce182647ce9220e144113a62386dad2986ca68b474b43c3a8991a7d42cc62",
+    "src/scarx/runtime/resources.py": "1a8a003ba27c2fccc1115d232788ab1e4f1b5e8d1694d3b859d28befe9512f22",
+    "src/scarx/runtime/limits.py": "f6e134c6d5381cab54b287c53b65766789e35b945b723a318121a577e5bb2214",
+    "scripts/run_acr_dev.py": "5becbf323124716e35a04281e853d12a6b79548e7a44bd440365f751955a5083",
+    "tests/test_acr.py": "ec26fecb241a4ba44ccb2532f5d69f91c4ceb54876b090e68efaddfc7303e84b",
+    "tests/test_acr_study.py": "4825d3f650ccc3a31e04013056b84dbd862bf10eeff998a3e798be5b2101dca3",
+    "experiments/acr-dev-v1.md": "01248a73df152cb1e11eeeb0e8e21586e23119d82811f4e743400e13a9c461e3"
+  },
+  "peer_sha": "607ffca7c9222c5e3fd9741c3ebdf5939e10bedf",
+  "peer_sha256": {
+    "src/scarx/neural/r8_mtsg_eprop.py": "10ae448a2a8d8e01f174fa86da6420f978c588dee388de3e124f818ae85ea851",
+    "src/scarx/evaluation/r8_benchmark_integrity.py": "dc36892f95305f38902653f173ca10e3f343beeb7a476839ddc9067a77a152a9"
+  },
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "numerical_threads": 1,
+    "cpu_endpoints": "Dual-stream ACR endpoints; not original single-stream efficiency comparison"
+  },
+  "protocol": "experiments/acr-dev-v1.md",
+  "seeds": [
+    140011,
+    140017,
+    140023
+  ],
+  "confirmation": false,
+  "limit_seconds": 9000,
+  "pid": 35452
+}

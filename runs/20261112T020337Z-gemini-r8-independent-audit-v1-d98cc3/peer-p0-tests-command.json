@@ -1,0 +1,36 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r8_mtsg_eprop.py",
+    "tests/test_r8_bf_cascade.py",
+    "tests/test_r8_benchmark_integrity.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T020337Z-gemini-r8-independent-audit-v1-d98cc3\\peer-p0.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r8-fe472b3",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 2.054688699999133,
+  "resources": {
+    "peak_rss_bytes": 175218688,
+    "peak_commit_or_vms_bytes": 137601024,
+    "os_process_peak_working_set_bytes": 42549248,
+    "os_process_peak_pagefile_commit_bytes": 28749824,
+    "samples": 24,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.054346099999748,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "peer-p0-tests.log"
+}

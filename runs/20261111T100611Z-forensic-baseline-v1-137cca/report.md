@@ -1,0 +1,54 @@
+# Forensic baseline
+
+{
+  "decision": "REPRODUCTION_FAILED",
+  "phase": "baseline",
+  "run_class": "ENGINEERING_CHECK",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-rs",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T100611Z-forensic-baseline-v1-137cca\\baseline-junit.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 1,
+      "error": "MemoryError: Observed process-tree memory exceeded budget",
+      "seconds": 72.63977120000345,
+      "resources": {
+        "peak_rss_bytes": 1247891456,
+        "peak_commit_or_vms_bytes": 2070958080,
+        "os_process_peak_working_set_bytes": 41566208,
+        "os_process_peak_pagefile_commit_bytes": 29392896,
+        "samples": 737,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": true,
+        "elapsed_seconds": 72.639462799998,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "audit-baseline.log"
+    }
+  ],
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "source_commits": {
+    "r6d": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+    "r6b": "c39e9db7771582d9933af402a209917328b71119"
+  },
+  "fresh_confirmation": false,
+  "candidate_equations_changed": false,
+  "production_or_live_state_modified": false,
+  "error": "MemoryError: Observed process-tree memory exceeded budget"
+}

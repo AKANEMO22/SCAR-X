@@ -1,0 +1,315 @@
+{
+  "classification": "HISTORICAL_DATA_LINEAGE_AUDIT",
+  "seeds": [
+    130001,
+    130007,
+    130013,
+    130019,
+    130023,
+    130029,
+    130031,
+    130037
+  ],
+  "per_seed": [
+    {
+      "seed": 130001,
+      "dataset_digests": {
+        "train_1024": "e082dfd55fc2a3b988977f0670f05ef7b0c0fa5477e89fc11c008051b810a6ab",
+        "train_16384": "41cea015fe84e4e395d54cdc2cabef1b94e21f8e66df42187b96243608ef58e6",
+        "calibration": "6e5dfb33e1ffcd0005bf2a52eb467786cfb5b32649cd6b5a526e95489d410f5f",
+        "held": "fba744311047c5a2e8a4406f345f642ccb6beca2b5d564dad86d3c73a0125044"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 70,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130007,
+      "dataset_digests": {
+        "train_1024": "9840097a7d5f02d7fc2267f834b79c8e7ea203a7806d7b542cd0570ecadbc068",
+        "train_16384": "a9f80596ffc3dbb50cc41a790631a7e0b98d08970b0df59f8ab13aca7e514011",
+        "calibration": "ecce57a887ff9ac9f3fed7a31ccfe6a49b644d6207342f5ac660f61403ebb33d",
+        "held": "64c7748cbd654f47fc73c41198be07465439b4de21d032e3a53038a6d2622292"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 68,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130013,
+      "dataset_digests": {
+        "train_1024": "ebf237141a98cfdf9ec44b35d426d9ef78b87677d786980421a3a31b2e15c380",
+        "train_16384": "9a39c128abdb3664695bba70bff34066a65f8f02f3e3c2fd8a4d608edb3121b3",
+        "calibration": "fbfd65552c632e850eac21409ac893e4e7a34f344adfc5414239c5f614b6fdd0",
+        "held": "57430739feb3d9ab9149a6a23bc598555af3479fc5b084ddd2df2d26a631e15b"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 54,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130019,
+      "dataset_digests": {
+        "train_1024": "36772e6028f1c8e53677d60c47940981dc2d3c69c8beeb649d93020a125aeace",
+        "train_16384": "c737fe59ffe9efee883697f17529c0f0d8e53a7e55569f62c684a198954afb93",
+        "calibration": "5450bc41b5c172c46c19cb0954d7b3f2cc83a9d2c835a59f36571da429e1ccc0",
+        "held": "f6357479926b4e98b9fc77f621e82c7e846fba9598c625be749610b5d52d2640"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 69,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130023,
+      "dataset_digests": {
+        "train_1024": "3b1eb91f3daf1ddd12f88c7aa8b718c24c9d7aeac97eaf4dc8b89e5cf5d88418",
+        "train_16384": "8bbaa208fde473e0b1982441550f08d143c4b19ac3edf6e3a7bf04684d0e2d82",
+        "calibration": "baef8ee84e777d1d338b5efe07b450235f5af86bccaa3ab5723d3892226ecbfc",
+        "held": "4f5892f2139688629c91d23d9263c5f6bf1b8e78cc3bd85bd4eb4f3e826d1c41"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 57,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130029,
+      "dataset_digests": {
+        "train_1024": "ac678aab5d52585ac1f95bc6943225eace9abd8a9838b6334031732f7940f857",
+        "train_16384": "cad60dee133a3b87a8d1c6e45122bc868a2b1cdcc4d20216d876f36e4b22bef5",
+        "calibration": "3195196afa898ad3849afba66ad9128d04662784a392da0a397c432004d4f382",
+        "held": "edd11a54408a54af1f7f5ffb4e358d8381c42172942a06fc1884d6b8f7260f78"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 72,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130031,
+      "dataset_digests": {
+        "train_1024": "e4f42dc786c29c3f6a11ea5a9be62b26c569c2001a7c2b8fc8bf210dd2643d91",
+        "train_16384": "fdbf5952809b3f7daf8d74be26946e6cd73c22b0a1473a43a74eb63b8daf7e3a",
+        "calibration": "ddf408698781999fa50e828e27f73c93669be9e6e895ffea5fcbc4b6d9bf7af8",
+        "held": "748cfd060915cd700bc9cadb1266cf7a0088095754ea8358e01f4b888639cc8c"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 61,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    },
+    {
+      "seed": 130037,
+      "dataset_digests": {
+        "train_1024": "2bbe406a17d25157170762d1cbac2eedd5407ef34e0028e131de84d9dbcb2287",
+        "train_16384": "68054ccfe6304d716db19d3e29091d31e25221bbb691d237406acd61f59ffadb",
+        "calibration": "c5ff5a119b0826a82eb6c03c83a3e712f1bc0836c016e9a0bae0de010ab77173",
+        "held": "6b782c98258cda6be2135a8b887fb1c211d4032b0076f3b6c3ce4f84f85b173e"
+      },
+      "exact_episode_cross_split_overlap": {
+        "train_16384__held": 0,
+        "train_16384__calibration": 0,
+        "train_16384__paired": 0,
+        "calibration__held": 0,
+        "held__paired": 0
+      },
+      "train_1024_vs_16384_common_episodes": 59,
+      "small_training_is_subset_of_large": false,
+      "logical_states_per_split": {
+        "train_1024": 8,
+        "train_16384": 8,
+        "calibration": 8,
+        "held": 8
+      },
+      "logical_state_definition": [
+        "vA",
+        "vB",
+        "query"
+      ],
+      "raw_training_rows_oracle_checked": 17408
+    }
+  ],
+  "seed_mentions_in_pinned_result_files": [
+    {
+      "branch": "research/deepseek/r6d-audit",
+      "sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "file": "runs/20261111T080352Z-r6d-confirm-v1-ff539c/result.json",
+      "seeds": [
+        130001,
+        130007,
+        130013,
+        130019,
+        130023,
+        130029,
+        130031,
+        130037
+      ],
+      "is_r6d_historical_run": true
+    },
+    {
+      "branch": "research/deepseek/r6d-audit",
+      "sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+      "file": "runs/20261111T080601Z-r6d-controls-confirm-v1-b53925/result.json",
+      "seeds": [
+        130001,
+        130007,
+        130013,
+        130019,
+        130023,
+        130029,
+        130031,
+        130037
+      ],
+      "is_r6d_historical_run": true
+    }
+  ],
+  "unique_result_blobs_scanned": 52,
+  "seed_freshness_scope": "No use of these seeds found in other pinned result blobs; not a proof about unpublished/private probes or all ancestor work before registration.",
+  "source_sha": "4bacd7b2c8a1df7ab47e55f266f2b6bf0e193893",
+  "resources": {
+    "peak_rss_bytes": 56385536,
+    "peak_commit_or_vms_bytes": 42225664,
+    "os_process_peak_working_set_bytes": 61595648,
+    "os_process_peak_pagefile_commit_bytes": 48783360,
+    "samples": 159,
+    "interval_seconds": 0.02,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 7.527299400004267,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "neural_forward_calls": 0,
+  "learning_updates": 0,
+  "logical_state_coverage_is_not_knowledge_count": true
+}

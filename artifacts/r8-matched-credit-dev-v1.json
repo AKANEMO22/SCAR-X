@@ -1,0 +1,1023 @@
+{
+  "run": "runs/20261112T031057Z-r8-matched-credit-dev-v1-eec5ba",
+  "summary": {
+    "equal_updates": {
+      "strict_binding": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.8600260416666666,
+            "id_probe": 0.884765625,
+            "ood_direct": 0.8776041666666666,
+            "ood_probe": 0.8587239583333334
+          },
+          "slow_ungated": {
+            "id_direct": 0.6861979166666666,
+            "id_probe": 0.7421875,
+            "ood_direct": 0.6796875,
+            "ood_probe": 0.7161458333333334
+          },
+          "multi_ungated": {
+            "id_direct": 0.8704427083333334,
+            "id_probe": 0.9088541666666666,
+            "ood_direct": 0.869140625,
+            "ood_probe": 0.9069010416666666
+          },
+          "multi_gated": {
+            "id_direct": 0.8541666666666666,
+            "id_probe": 0.8697916666666666,
+            "ood_direct": 0.8359375,
+            "ood_probe": 0.8502604166666666
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.6295572916666666,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.6725260416666666,
+            "ood_probe": 0.673828125
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.6295572916666666,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.6725260416666666,
+            "ood_probe": 0.673828125
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.5338541666666666,
+            "id_probe": 0.5377604166666666,
+            "ood_direct": 0.5462239583333334,
+            "ood_probe": 0.5572916666666666
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.6295572916666666,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.6725260416666666,
+            "ood_probe": 0.673828125
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.024088541666666668,
+            "lower95": -0.05078125,
+            "upper95": 0.115234375,
+            "exact_two_sided_p": 0.75,
+            "seed_clusters": 3,
+            "effects": [
+              -0.05078125,
+              0.115234375,
+              0.0078125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": -0.0390625,
+            "lower95": -0.09765625,
+            "upper95": 0.0078125,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.0078125,
+              -0.09765625,
+              -0.02734375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.24674479166666666,
+            "lower95": 0.19921875,
+            "upper95": 0.306640625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.234375,
+              0.19921875,
+              0.306640625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.24674479166666666,
+            "lower95": 0.19921875,
+            "upper95": 0.306640625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.234375,
+              0.19921875,
+              0.306640625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.33203125,
+            "lower95": 0.263671875,
+            "upper95": 0.369140625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.36328125,
+              0.263671875,
+              0.369140625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "xor": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.8821614583333334,
+            "id_probe": 0.931640625,
+            "ood_direct": 0.6829427083333334,
+            "ood_probe": 0.7272135416666666
+          },
+          "slow_ungated": {
+            "id_direct": 0.9947916666666666,
+            "id_probe": 0.98828125,
+            "ood_direct": 0.9134114583333334,
+            "ood_probe": 0.8932291666666666
+          },
+          "multi_ungated": {
+            "id_direct": 0.9251302083333334,
+            "id_probe": 0.9641927083333334,
+            "ood_direct": 0.8522135416666666,
+            "ood_probe": 0.9016927083333334
+          },
+          "multi_gated": {
+            "id_direct": 0.9186197916666666,
+            "id_probe": 0.966796875,
+            "ood_direct": 0.85546875,
+            "ood_probe": 0.8919270833333334
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.8274739583333334,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.7154947916666666,
+            "ood_probe": 0.6861979166666666
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.8274739583333334,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.7154947916666666,
+            "ood_probe": 0.6861979166666666
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.7903645833333334,
+            "id_probe": 0.908203125,
+            "ood_direct": 0.7180989583333334,
+            "ood_probe": 0.8665364583333334
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.8274739583333334,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.7154947916666666,
+            "ood_probe": 0.6861979166666666
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.032552083333333336,
+            "lower95": -0.009765625,
+            "upper95": 0.076171875,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.076171875,
+              0.03125,
+              -0.009765625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": 0.0026041666666666665,
+            "lower95": -0.01171875,
+            "upper95": 0.02734375,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.02734375,
+              -0.01171875,
+              -0.0078125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.13411458333333334,
+            "lower95": 0.103515625,
+            "upper95": 0.162109375,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.103515625,
+              0.162109375,
+              0.13671875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.13411458333333334,
+            "lower95": 0.103515625,
+            "upper95": 0.162109375,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.103515625,
+              0.162109375,
+              0.13671875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.05859375,
+            "lower95": 0.04296875,
+            "upper95": 0.083984375,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.083984375,
+              0.04296875,
+              0.048828125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "distractor_binding": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.5501302083333334,
+            "id_probe": 0.548828125,
+            "ood_direct": 0.5364583333333334,
+            "ood_probe": 0.54296875
+          },
+          "slow_ungated": {
+            "id_direct": 0.533203125,
+            "id_probe": 0.5579427083333334,
+            "ood_direct": 0.5299479166666666,
+            "ood_probe": 0.546875
+          },
+          "multi_ungated": {
+            "id_direct": 0.5807291666666666,
+            "id_probe": 0.595703125,
+            "ood_direct": 0.56640625,
+            "ood_probe": 0.6002604166666666
+          },
+          "multi_gated": {
+            "id_direct": 0.5696614583333334,
+            "id_probe": 0.5696614583333334,
+            "ood_direct": 0.541015625,
+            "ood_probe": 0.5618489583333334
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.5266927083333334,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.5162760416666666,
+            "ood_probe": 0.5559895833333334
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.5266927083333334,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.5162760416666666,
+            "ood_probe": 0.5559895833333334
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.482421875,
+            "id_probe": 0.5091145833333334,
+            "ood_direct": 0.4791666666666667,
+            "ood_probe": 0.5436197916666666
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.5266927083333334,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.5162760416666666,
+            "ood_probe": 0.5559895833333334
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.046875,
+            "lower95": -0.02734375,
+            "upper95": 0.140625,
+            "exact_two_sided_p": 0.75,
+            "seed_clusters": 3,
+            "effects": [
+              0.02734375,
+              0.140625,
+              -0.02734375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": -0.026041666666666668,
+            "lower95": -0.060546875,
+            "upper95": 0.03515625,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              -0.052734375,
+              -0.060546875,
+              0.03515625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.03125,
+            "lower95": -0.05859375,
+            "upper95": 0.0859375,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              -0.05859375,
+              0.0859375,
+              0.06640625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.03125,
+            "lower95": -0.05859375,
+            "upper95": 0.0859375,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              -0.05859375,
+              0.0859375,
+              0.06640625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.060546875,
+            "lower95": 0.025390625,
+            "upper95": 0.1015625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.025390625,
+              0.0546875,
+              0.1015625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "order": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.9615885416666666,
+            "id_probe": 0.9967447916666666,
+            "ood_direct": 0.958984375,
+            "ood_probe": 0.9772135416666666
+          },
+          "slow_ungated": {
+            "id_direct": 0.9993489583333334,
+            "id_probe": 0.9993489583333334,
+            "ood_direct": 0.9967447916666666,
+            "ood_probe": 0.994140625
+          },
+          "multi_ungated": {
+            "id_direct": 1.0,
+            "id_probe": 1.0,
+            "ood_direct": 0.9993489583333334,
+            "ood_probe": 1.0
+          },
+          "multi_gated": {
+            "id_direct": 1.0,
+            "id_probe": 1.0,
+            "ood_direct": 1.0,
+            "ood_probe": 1.0
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.9173177083333334,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9680989583333334,
+            "ood_probe": 0.9479166666666666
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.9173177083333334,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9680989583333334,
+            "ood_probe": 0.9479166666666666
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.9466145833333334,
+            "id_probe": 0.9778645833333334,
+            "ood_direct": 0.9772135416666666,
+            "ood_probe": 0.9921875
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.9173177083333334,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9680989583333334,
+            "ood_probe": 0.9479166666666666
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.0032552083333333335,
+            "lower95": 0.0,
+            "upper95": 0.005859375,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.0,
+              0.00390625,
+              0.005859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": 0.0,
+            "lower95": 0.0,
+            "upper95": 0.0,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.06315104166666667,
+            "lower95": 0.03125,
+            "upper95": 0.111328125,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.03125,
+              0.111328125,
+              0.046875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.06315104166666667,
+            "lower95": 0.03125,
+            "upper95": 0.111328125,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.03125,
+              0.111328125,
+              0.046875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.022135416666666668,
+            "lower95": 0.0,
+            "upper95": 0.0625,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.00390625,
+              0.0625,
+              0.0
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      }
+    },
+    "equal_cpu": {
+      "strict_binding": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.587890625,
+            "id_probe": 0.6080729166666666,
+            "ood_direct": 0.55078125,
+            "ood_probe": 0.6002604166666666
+          },
+          "slow_ungated": {
+            "id_direct": 0.5572916666666666,
+            "id_probe": 0.6490885416666666,
+            "ood_direct": 0.5611979166666666,
+            "ood_probe": 0.66015625
+          },
+          "multi_ungated": {
+            "id_direct": 0.5397135416666666,
+            "id_probe": 0.6555989583333334,
+            "ood_direct": 0.5319010416666666,
+            "ood_probe": 0.6529947916666666
+          },
+          "multi_gated": {
+            "id_direct": 0.5670572916666666,
+            "id_probe": 0.6731770833333334,
+            "ood_direct": 0.5703125,
+            "ood_probe": 0.6614583333333334
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.5859375,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.5911458333333334,
+            "ood_probe": 0.673828125
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.599609375,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.6106770833333334,
+            "ood_probe": 0.673828125
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.5052083333333334,
+            "id_probe": 0.5397135416666666,
+            "ood_direct": 0.4954427083333333,
+            "ood_probe": 0.5846354166666666
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.541015625,
+            "id_probe": 0.623046875,
+            "ood_direct": 0.587890625,
+            "ood_probe": 0.673828125
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.047526041666666664,
+            "lower95": -0.001953125,
+            "upper95": 0.0859375,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              -0.001953125,
+              0.05859375,
+              0.0859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": 0.017578125,
+            "lower95": -0.009765625,
+            "upper95": 0.05078125,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.05078125,
+              -0.009765625,
+              0.01171875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.050130208333333336,
+            "lower95": 0.025390625,
+            "upper95": 0.0859375,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.0390625,
+              0.025390625,
+              0.0859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.050130208333333336,
+            "lower95": 0.025390625,
+            "upper95": 0.0859375,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.0390625,
+              0.025390625,
+              0.0859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.13346354166666666,
+            "lower95": 0.09375,
+            "upper95": 0.15625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.15625,
+              0.09375,
+              0.150390625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "xor": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.4915364583333333,
+            "id_probe": 0.7747395833333334,
+            "ood_direct": 0.5,
+            "ood_probe": 0.6529947916666666
+          },
+          "slow_ungated": {
+            "id_direct": 0.9283854166666666,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.84765625,
+            "ood_probe": 0.8359375
+          },
+          "multi_ungated": {
+            "id_direct": 0.6614583333333334,
+            "id_probe": 0.857421875,
+            "ood_direct": 0.6354166666666666,
+            "ood_probe": 0.7298177083333334
+          },
+          "multi_gated": {
+            "id_direct": 0.6608072916666666,
+            "id_probe": 0.8489583333333334,
+            "ood_direct": 0.6126302083333334,
+            "ood_probe": 0.708984375
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.6822916666666666,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.6061197916666666,
+            "ood_probe": 0.6861979166666666
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.7154947916666666,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.611328125,
+            "ood_probe": 0.6861979166666666
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.578125,
+            "id_probe": 0.8528645833333334,
+            "ood_direct": 0.572265625,
+            "ood_probe": 0.7018229166666666
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.6875,
+            "id_probe": 0.8326822916666666,
+            "ood_direct": 0.607421875,
+            "ood_probe": 0.6861979166666666
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.08268229166666667,
+            "lower95": -0.017578125,
+            "upper95": 0.142578125,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.142578125,
+              -0.017578125,
+              0.123046875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": -0.008463541666666666,
+            "lower95": -0.107421875,
+            "upper95": 0.064453125,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.017578125,
+              0.064453125,
+              -0.107421875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.016276041666666668,
+            "lower95": -0.078125,
+            "upper95": 0.0703125,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.0703125,
+              0.056640625,
+              -0.078125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.016276041666666668,
+            "lower95": -0.078125,
+            "upper95": 0.0703125,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.0703125,
+              0.056640625,
+              -0.078125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": -0.00390625,
+            "lower95": -0.072265625,
+            "upper95": 0.09765625,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.09765625,
+              -0.037109375,
+              -0.072265625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "distractor_binding": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.4928385416666667,
+            "id_probe": 0.513671875,
+            "ood_direct": 0.4895833333333333,
+            "ood_probe": 0.546875
+          },
+          "slow_ungated": {
+            "id_direct": 0.4993489583333333,
+            "id_probe": 0.5221354166666666,
+            "ood_direct": 0.51953125,
+            "ood_probe": 0.5390625
+          },
+          "multi_ungated": {
+            "id_direct": 0.533203125,
+            "id_probe": 0.5188802083333334,
+            "ood_direct": 0.5279947916666666,
+            "ood_probe": 0.5390625
+          },
+          "multi_gated": {
+            "id_direct": 0.5071614583333334,
+            "id_probe": 0.5390625,
+            "ood_direct": 0.5045572916666666,
+            "ood_probe": 0.5475260416666666
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.5338541666666666,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.515625,
+            "ood_probe": 0.5559895833333334
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.5110677083333334,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.5123697916666666,
+            "ood_probe": 0.5559895833333334
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.498046875,
+            "id_probe": 0.5188802083333334,
+            "ood_direct": 0.4967447916666667,
+            "ood_probe": 0.5182291666666666
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.5247395833333334,
+            "id_probe": 0.5384114583333334,
+            "ood_direct": 0.5143229166666666,
+            "ood_probe": 0.5559895833333334
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.005208333333333333,
+            "lower95": -0.01953125,
+            "upper95": 0.04296875,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              -0.01953125,
+              0.04296875,
+              -0.0078125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": 0.020182291666666668,
+            "lower95": 0.00390625,
+            "upper95": 0.03515625,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.03515625,
+              0.00390625,
+              0.021484375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.0006510416666666666,
+            "lower95": -0.046875,
+            "upper95": 0.0546875,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              -0.046875,
+              0.0546875,
+              -0.005859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.0006510416666666666,
+            "lower95": -0.046875,
+            "upper95": 0.0546875,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              -0.046875,
+              0.0546875,
+              -0.005859375
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.020182291666666668,
+            "lower95": 0.0,
+            "upper95": 0.03125,
+            "exact_two_sided_p": 0.5,
+            "seed_clusters": 3,
+            "effects": [
+              0.029296875,
+              0.0,
+              0.03125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      },
+      "order": {
+        "arm_means": {
+          "fast_ungated": {
+            "id_direct": 0.771484375,
+            "id_probe": 0.9765625,
+            "ood_direct": 0.8704427083333334,
+            "ood_probe": 0.9641927083333334
+          },
+          "slow_ungated": {
+            "id_direct": 0.9798177083333334,
+            "id_probe": 0.9915364583333334,
+            "ood_direct": 0.9928385416666666,
+            "ood_probe": 0.9641927083333334
+          },
+          "multi_ungated": {
+            "id_direct": 0.9505208333333334,
+            "id_probe": 0.9954427083333334,
+            "ood_direct": 0.9791666666666666,
+            "ood_probe": 0.9921875
+          },
+          "multi_gated": {
+            "id_direct": 0.9811197916666666,
+            "id_probe": 0.998046875,
+            "ood_direct": 0.9928385416666666,
+            "ood_probe": 0.9446614583333334
+          },
+          "multi_gated_frozen": {
+            "id_direct": 0.8828125,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9674479166666666,
+            "ood_probe": 0.9479166666666666
+          },
+          "multi_gated_zero": {
+            "id_direct": 0.884765625,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9661458333333334,
+            "ood_probe": 0.9479166666666666
+          },
+          "multi_gated_shuffle": {
+            "id_direct": 0.8274739583333334,
+            "id_probe": 0.9661458333333334,
+            "ood_direct": 0.9609375,
+            "ood_probe": 0.94921875
+          },
+          "multi_gated_readout_only": {
+            "id_direct": 0.8815104166666666,
+            "id_probe": 0.9368489583333334,
+            "ood_direct": 0.9674479166666666,
+            "ood_probe": 0.9479166666666666
+          }
+        },
+        "contrasts": {
+          "multiscale": {
+            "mean": 0.018880208333333332,
+            "lower95": 0.001953125,
+            "upper95": 0.05078125,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.00390625,
+              0.05078125,
+              0.001953125
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "gate": {
+            "mean": 0.0026041666666666665,
+            "lower95": 0.0,
+            "upper95": 0.0078125,
+            "exact_two_sided_p": 1.0,
+            "seed_clusters": 3,
+            "effects": [
+              0.0,
+              0.0078125,
+              0.0
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "hidden": {
+            "mean": 0.061197916666666664,
+            "lower95": 0.029296875,
+            "upper95": 0.107421875,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.029296875,
+              0.107421875,
+              0.046875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "zero": {
+            "mean": 0.061197916666666664,
+            "lower95": 0.029296875,
+            "upper95": 0.107421875,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.029296875,
+              0.107421875,
+              0.046875
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          },
+          "routing": {
+            "mean": 0.031901041666666664,
+            "lower95": 0.00390625,
+            "upper95": 0.0546875,
+            "exact_two_sided_p": 0.25,
+            "seed_clusters": 3,
+            "effects": [
+              0.037109375,
+              0.0546875,
+              0.00390625
+            ],
+            "scope": "Reused exploratory DEV seeds, not confirmation"
+          }
+        }
+      }
+    },
+    "primary_holm_p": {
+      "strict_binding/hidden": 1.0,
+      "strict_binding/zero": 1.0,
+      "strict_binding/routing": 1.0,
+      "xor/hidden": 1.0,
+      "xor/zero": 1.0,
+      "xor/routing": 1.0,
+      "distractor_binding/routing": 1.0,
+      "strict_binding/gate": 1.0,
+      "xor/multiscale": 1.0,
+      "distractor_binding/gate": 1.0,
+      "distractor_binding/hidden": 1.0,
+      "distractor_binding/zero": 1.0,
+      "strict_binding/multiscale": 1.0,
+      "distractor_binding/multiscale": 1.0,
+      "xor/gate": 1.0
+    },
+    "master_p1_certified": false,
+    "reason": "3 reused DEV seeds only; no fresh confirmation, no ceiling exemptions"
+  },
+  "row_count": 192,
+  "completed_jobs": 96,
+  "error": null,
+  "resources": {
+    "peak_rss_bytes": 222208000,
+    "peak_commit_or_vms_bytes": 193572864,
+    "os_process_peak_working_set_bytes": 80818176,
+    "os_process_peak_pagefile_commit_bytes": 97759232,
+    "samples": 15182,
+    "interval_seconds": 0.05,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 863.3200742000008,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "p0_test_command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_r8_matched_credit.py",
+    "tests/test_r8_matched_study.py",
+    "tests/test_r8_snapshot_adapter.py",
+    "tests/test_research_gate_repairs.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-r8-matched-controls-20261112\\runs\\20261112T031057Z-r8-matched-credit-dev-v1-eec5ba\\p0-tests.xml"
+  ],
+  "new_confirmation": false,
+  "main_or_live_change": false,
+  "main_sha_before": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "main_sha_after": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "decision": "DEV_COMPLETE_NOT_MASTER_P1_GO"
+}

@@ -1,0 +1,184 @@
+{
+  "run_class": "HISTORICAL_SELECTED_POSITIVE_TASK_REPRODUCTION",
+  "seed": 140011,
+  "task": "strict_binding",
+  "all_primary_scores_exact": true,
+  "comparison": {
+    "initial_hidden": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "frozen_hidden": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "r35_baseline": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "zero_signal": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "shuffled_signal": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "learned_ew_he": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "learned_cg_mhe": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    },
+    "causal_revert": {
+      "id_direct_acc": true,
+      "ood_direct_acc": true,
+      "id_probe_acc": true,
+      "ood_probe_acc": true
+    }
+  },
+  "conditions": {
+    "initial_hidden": {
+      "id_direct_acc": 0.525390625,
+      "ood_direct_acc": 0.494140625,
+      "id_probe_acc": 0.640625,
+      "ood_probe_acc": 0.66015625,
+      "participation_ratio": 3.6071843937705466,
+      "fisher_discriminant_ratio": 0.5158325577863734,
+      "top5_singular_values": [
+        0.1961,
+        0.0673,
+        0.0588,
+        0.0534,
+        0.0463
+      ]
+    },
+    "frozen_hidden": {
+      "id_direct_acc": 0.634765625,
+      "ood_direct_acc": 0.658203125,
+      "id_probe_acc": 0.640625,
+      "ood_probe_acc": 0.66015625,
+      "array_bytes": 36392,
+      "participation_ratio": 3.6071843937705466,
+      "fisher_discriminant_ratio": 0.5158325577863734,
+      "top5_singular_values": [
+        0.1961,
+        0.0673,
+        0.0588,
+        0.0534,
+        0.0463
+      ]
+    },
+    "r35_baseline": {
+      "id_direct_acc": 0.732421875,
+      "ood_direct_acc": 0.728515625,
+      "id_probe_acc": 0.716796875,
+      "ood_probe_acc": 0.751953125,
+      "array_bytes": 36392,
+      "participation_ratio": 6.287837836045722,
+      "fisher_discriminant_ratio": 0.765626503161297,
+      "top5_singular_values": [
+        0.1446,
+        0.0707,
+        0.0566,
+        0.0513,
+        0.0447
+      ]
+    },
+    "zero_signal": {
+      "id_direct_acc": 0.634765625,
+      "ood_direct_acc": 0.658203125,
+      "id_probe_acc": 0.640625,
+      "ood_probe_acc": 0.66015625,
+      "array_bytes": 36392,
+      "participation_ratio": 3.6071843937705466,
+      "fisher_discriminant_ratio": 0.5158325577863734,
+      "top5_singular_values": [
+        0.1961,
+        0.0673,
+        0.0588,
+        0.0534,
+        0.0463
+      ]
+    },
+    "shuffled_signal": {
+      "id_direct_acc": 0.552734375,
+      "ood_direct_acc": 0.568359375,
+      "id_probe_acc": 0.560546875,
+      "ood_probe_acc": 0.587890625,
+      "array_bytes": 36392,
+      "participation_ratio": 3.4655080845884547,
+      "fisher_discriminant_ratio": 0.36215009281667465,
+      "top5_singular_values": [
+        0.2086,
+        0.0895,
+        0.0731,
+        0.0551,
+        0.0528
+      ]
+    },
+    "learned_ew_he": {
+      "id_direct_acc": 0.748046875,
+      "ood_direct_acc": 0.734375,
+      "id_probe_acc": 0.82421875,
+      "ood_probe_acc": 0.80859375,
+      "array_bytes": 36392,
+      "participation_ratio": 12.067143666565805,
+      "fisher_discriminant_ratio": 1.0724278134900451,
+      "top5_singular_values": [
+        0.1074,
+        0.0798,
+        0.075,
+        0.062,
+        0.0539
+      ]
+    },
+    "learned_cg_mhe": {
+      "id_direct_acc": 0.7578125,
+      "ood_direct_acc": 0.80859375,
+      "id_probe_acc": 0.75390625,
+      "ood_probe_acc": 0.80859375,
+      "array_bytes": 36392,
+      "participation_ratio": 13.168852447987312,
+      "fisher_discriminant_ratio": 1.4117152902493062,
+      "top5_singular_values": [
+        0.0987,
+        0.0699,
+        0.0647,
+        0.0547,
+        0.0497
+      ]
+    },
+    "causal_revert": {
+      "id_direct_acc": 0.521484375,
+      "ood_direct_acc": 0.513671875,
+      "id_probe_acc": 0.640625,
+      "ood_probe_acc": 0.66015625,
+      "id_causal_drop": 0.2265625,
+      "ood_causal_drop": 0.220703125
+    }
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "fresh_confirmation": false,
+  "whole_R7_campaign_reproduced": false
+}

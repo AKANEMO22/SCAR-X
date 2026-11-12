@@ -1,5 +1,64 @@
 # Bản đồ dự án SCAR-X
 
+**Capacity completed12/11:** [results](research/CAPACITY_H64_H128_RESULTS_20261112.md),
+[audit](research/CAPACITY_RESULTS_INDEPENDENT_AUDIT_20261112.md). Finalrun160b6e
+has252records/perseedCSV/data+reusehashes/modelcheckpoints/source-byte-bundle.
+`audit_capacity_dev.py` scalar/eigenproof, independent`verify_capacity_independent.py`
+manualALIF/SVD/thresholdoracle; `plot_capacity_results.py` actualscientificfigures.
+CAPACITY_ONLY_SIGNAL: usefulH128directgain, chưa thêmhiddenadvantage≥2families.
+Không main/Hermes/P2/confirmation. Passiveviewer8773 giữactualresults.
+
+**Approvedcapacity12/11:** [protocol](../experiments/capacity-h64-h128-approved-v1.md),
+[technical review](research/CAPACITY_INDEPENDENT_REVIEW_20261112.md),
+`evaluation/capacity.py` dimension-onlyconstructoradapters, strictcapacitysnapshot
+format trong `forensic/r8_snapshot.py`; oldH48formats không mởrộng. Runner
+`run_capacity_dev.py`, passiveobserver `serve_capacity_observer.py`:8773.
+H48oldqualityrecords reusehash; H64/H128 chạyfixed1024updates+equalCPU riêng.
+Không thay scientificgates hoặc main/Hermes, không growbeyond128/P2/confirmation.
+
+**ACR12/11:** [results](research/ACR_DEV_RESULTS_20261112.md),
+[independent audit](research/ACR_STATISTICAL_HARNESS_REVIEW_20261112.md),
+[router traces](research/ACR_ROUTER_ANALYSIS_20261112.md),
+[literature comparison](research/ACR_VS_LITERATURE_20261112.md).
+Masterprotocol `experiments/acr-dev-v1.md`; source/equations pin giữ nguyên.
+`evaluation/acr.py` researchonly; runner `run_acr_dev.py`, explicitresumev1/v2/v3,
+auditors `audit_acr_dev.py`/`audit_acr_mechanism.py`/`audit_acr_router_state.py`.
+Raw final59ced4 có375models+CSVv2+source-byte-bundle, giữ parent55/203cells.
+Passive viewer `serve_acr_results.py`:8771, không model/SQLite/live.
+[Capacity diagnostic proposal](../experiments/capacity-diagnostic-proposal-20261112.md)
+chưa phê duyệt training; chưa đổiH48 của lượt đã đo.
+
+**P1 confirmation12seed đã duyệt:** [report](research/R8_P1_CONFIRMATION_20261112.md),
+registration `experiments/r8-reset-credit-confirmation-v1.md`, runner
+`scripts/run_r8_confirmation.py` / `r8_confirmation_worker.py`, statistics
+`evaluation/r8_confirmation.py`, independent reference
+`evaluation/forensic/confirmation_reference.py`. Receipt
+`artifacts/r8-reset-credit-confirmation-v1.json`: numericalP1FAIL, integrityPASS,
+giữ XOR gain và bằng chứng hidden learning; không deploy hoặc mở P2.
+
+**R8 matched/reset DEV:** [kết quả](research/R8_REPAIR_AND_DEV_RESULTS_20261112.md),
+protocols `experiments/r8-{matched-credit,reset-credit}-dev-v1.md`, prototypes
+`evaluation/r8_matched_credit.py` / `r8_stopped_reset.py`, study oracle/probe
+`r8_matched_study.py`. Runners `run_r8_*_dev.py`, raw verifier
+`verify_r8_study_artifacts.py`, readonly observer `serve_matched_observer.py`.
+Receipts `artifacts/r8-*-dev-v1.json`; fresh confirmation remains a proposal.
+
+**R8 state repair P0:** [handoff](research/forensic-r6-20261111/R8_SNAPSHOT_REPAIR_HANDOFF_V1.md),
+`evaluation/forensic/r8_snapshot.py`, `r8_snapshot_fixture.py`,
+`scripts/verify_r8_snapshot_repair.py` / `r8_snapshot_cold.py` và15adaptertests.
+Data-only research wrapper; candidate/main/app không đổi.
+
+**Gemini R8 audit/repairs:** [review](research/forensic-r6-20261111/GEMINI_R8_REVIEW_AND_REPAIRS_VI.md),
+[next proposal](research/forensic-r6-20261111/R8_REPAIR_AND_P1_PROPOSAL_V1.md).
+`scripts/audit_gemini_r8.py` / `r8_engineering_worker.py`, independent gates
+`evaluation/forensic/research_gates.py`, receipt `artifacts/gemini-r8-independent-audit-v1.json`.
+Audit/fixtures only, no new quality training or live change.
+
+**Gemini Cross-SNN review:** [report](research/forensic-r6-20261111/GEMINI_CROSS_SNN_REVIEW_VI.md),
+protocol `experiments/cross-snn-transfer-review-v1.md`, runner
+`scripts/review_cross_snn_transfer.py`, helpers `evaluation/cross_snn_review.py`.
+Pinned Git inputs/raw arithmetic, primary-source corrections; không train mới.
+
 **Data grounding43:** [báo cáo43](research/43_ADAPTIVE_DATA_GROUNDING.md),
 `adaptive-curriculum-grounding-v1.md`, `evaluation/adaptive_grounding.py`,
 `data/fixtures/adaptive_chat_references_v1.json`. Data-only, không pilot/modelchange.

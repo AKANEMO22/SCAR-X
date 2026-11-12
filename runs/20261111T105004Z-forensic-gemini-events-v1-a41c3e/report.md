@@ -1,0 +1,33 @@
+# Gemini raw event follow-up
+
+{
+  "decision": "RAW_EVENT_LABELS_SOURCE_VERIFIED",
+  "rows_checked": 135168,
+  "wrong_labels": 0,
+  "neural_forward_calls": 0,
+  "learning_updates": 0,
+  "fresh_seeds_used": false,
+  "resources": {
+    "peak_rss_bytes": 55242752,
+    "peak_commit_or_vms_bytes": 41320448,
+    "os_process_peak_working_set_bytes": 56684544,
+    "os_process_peak_pagefile_commit_bytes": 42905600,
+    "samples": 464,
+    "interval_seconds": 0.02,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 12.320807800002513,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "error": null,
+  "scope": "Latent generated-event/label consistency. Seeded noise removed only by evaluator, never fed to model; not a guarantee every noisy observation has an unambiguous threshold decoding.",
+  "delivered_24453bd_package_overwritten": false
+}

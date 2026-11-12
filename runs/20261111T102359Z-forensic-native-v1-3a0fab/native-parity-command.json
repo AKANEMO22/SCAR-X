@@ -1,0 +1,32 @@
+{
+  "command": [
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_native.py",
+    "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261111T102359Z-forensic-native-v1-3a0fab\\native-parity.xml"
+  ],
+  "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+  "exit_code": 0,
+  "error": null,
+  "seconds": 2.100424900003418,
+  "resources": {
+    "peak_rss_bytes": 171884544,
+    "peak_commit_or_vms_bytes": 136269824,
+    "os_process_peak_working_set_bytes": 41680896,
+    "os_process_peak_pagefile_commit_bytes": 29237248,
+    "samples": 24,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": false,
+    "elapsed_seconds": 2.100278799996886,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "log": "native-parity.log"
+}

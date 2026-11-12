@@ -1,0 +1,48 @@
+{
+  "scope": "Synthetic numerical throughput fixtures only; no DEV labels or quality scoring",
+  "rows": [
+    {
+      "height": 64,
+      "learner": "CapacityOwn",
+      "fixture_updates": 128,
+      "train_wall_seconds": 0.11099749999993946,
+      "inference64_wall_seconds": 0.013974499997857492,
+      "checkpoint_wall_seconds": 0.006725100000039674,
+      "array_bytes": 39008,
+      "snapshot_bytes": 49476
+    },
+    {
+      "height": 64,
+      "learner": "CapacityACR",
+      "fixture_updates": 128,
+      "train_wall_seconds": 0.18687879999924917,
+      "inference64_wall_seconds": 0.014581600000383332,
+      "checkpoint_wall_seconds": 0.005095699998491909,
+      "array_bytes": 61280,
+      "snapshot_bytes": 75957
+    },
+    {
+      "height": 128,
+      "learner": "CapacityOwn",
+      "fixture_updates": 128,
+      "train_wall_seconds": 0.12765930000023218,
+      "inference64_wall_seconds": 0.01708900000085123,
+      "checkpoint_wall_seconds": 0.004625100002158433,
+      "array_bytes": 77152,
+      "snapshot_bytes": 87623
+    },
+    {
+      "height": 128,
+      "learner": "CapacityACR",
+      "fixture_updates": 128,
+      "train_wall_seconds": 0.21516329999576556,
+      "inference64_wall_seconds": 0.019013400000403635,
+      "checkpoint_wall_seconds": 0.00624940000125207,
+      "array_bytes": 121696,
+      "snapshot_bytes": 136376
+    }
+  ],
+  "estimated_worker_seconds": 711.254496001359,
+  "worker_cap_seconds": 3600,
+  "passes": true
+}

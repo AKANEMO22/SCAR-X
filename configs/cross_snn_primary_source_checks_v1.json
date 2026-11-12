@@ -1,0 +1,44 @@
+{
+  "scope": "Selected primary-source corrections, not certification of all nine repositories. No source copied into a learner.",
+  "checked_date_user_timezone": "2026-11-12",
+  "sources": [
+    {
+      "repo": "IGITUGraz/eligibility_propagation",
+      "revision": "efd02e6879c01cda3fa9a7838e8e2fd08163c16e",
+      "path": "LICENSE",
+      "git_blob_sha": "fc44acdb3a5ca4405389d355f689f3bb1f9cbe7a",
+      "url": "https://github.com/IGITUGraz/eligibility_propagation/blob/efd02e6879c01cda3fa9a7838e8e2fd08163c16e/LICENSE",
+      "observation": "Three numbered redistribution clauses; BSD-style terms, not Apache2.0 as Gemini survey says.",
+      "content": "Copyright 2019-2020, the e-prop team:\nGuillaume Bellec, Franz Scherr, Anand Subramoney, Elias Hajek, Darjan Salaj, Robert Legenstein, Wolfgang Maass\nfrom the Institute for theoretical computer science, TU Graz, Austria.\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+    },
+    {
+      "repo": "hamings1/SpikingLM",
+      "revision": "6d323f2a0ed2758850d2b27c3f8393660b0b4d81",
+      "path": "README.md",
+      "returned_lines": [
+        1,
+        65
+      ],
+      "git_blob_sha": "9c90ee150685896c1316d6f3f66ef5657c11d0a2",
+      "url": "https://github.com/hamings1/SpikingLM/blob/6d323f2a0ed2758850d2b27c3f8393660b0b4d81/README.md",
+      "observation": "ICML2026, BERT-style model, learned q_lam/k_lam/v_lam scaling; not a provided local firing-rate homeostasis rule. License not verified; do not reuse code.",
+      "content_excerpt": "# SpikingLM: Towards Fully Spiking Language Model\n\nOfficial code release for **SpikingLM: Towards Fully Spiking Language Model**, accepted by **ICML 2026**.\n\nSpikingLM is a fully spiking BERT-style language model designed to bridge energy-efficient spiking neural networks and modern language modeling. It addresses two core obstacles in spiking language models: gradient degradation from dead neurons and weak token selectivity after removing Softmax.\n\n## Highlights\n\n- **Fully spiking language model:** removes floating-point Softmax/GELU-style attention dependencies and uses spiking computation in the BERT backbone.\n- **Distribution-aware Scaling:** learnable Q/K/V scaling factors rescale linear outputs into an activation-friendly range. In this release, `q_lam`, `k_lam`, and `v_lam` are initialized to `7` and remain trainable.\n- **No extra inference overhead:** Distribution-aware Scaling can be fused into the preceding linear projection weights at inference.\n- **Spike2Max attention:** restores winner-takes-all token competition through max-subtraction and base-2 exponentiation.\n- **ICML main result:** SpikingLM achieves **77.1 average GLUE score** with **5.79 mJ** estimated energy at `T=4`.\n\n## Repository Layout\n\n```text\nspiking_bert/modeling_spiking_bert.py  # SpikingLM model implementation\nspiking_bert/__init__.py               # model exports\nscripts/pretrain_mlm.py                # masked-language-model pre-training\nscripts/finetune_glue.py               # GLUE fine-tuning and checkpoint loading\nconfigs/bert_base_t4.json              # BERT-base T=4 configuration\nexamples/pretrain_mlm.sh               # pre-training command template\nexamples/finetune_glue.sh              # fine-tuning command template\nresults/glue_logs/                     # ICML GLUE logs and best-result summary\n```\n\n## Installation\n\n```bash\ngit clone https://github.com/hamings1/SpikingLM.git\ncd SpikingLM\npip install -r requirements.txt\n```\n\n`spikingjelly` requires a CUDA/CuPy setup compatible with your local PyTorch and GPU runtime.\n\n## Model Details\n\nThe final ICML model is implemented in `spiking_bert/modeling_spiking_bert.py`.\n\nKey attention components:\n\n```python\nself.q_lam = nn.Parameter(torch.ones(self.all_head_size) * 7)\nself.k_lam = nn.Parameter(torch.ones(self.all_head_size) * 7)\nself.v_lam = nn.Parameter(torch.ones(self.all_head_size) * 7)\nself.learnmax = FP16OptimizedExp2Softmax(T=config.T)\nattention_probs = self.learnmax(attention_scores)\n```\n\nFor a Q/K/V projection `y = Linear(x)`, Distribution-aware Scaling applies `lambda * y`. At inference, this can be folded into the preceding linear layer:\n\n```python\nW_fused = lambda[:, None] * W\nb_fused = lambda * b\n```\n\nThis gives the same forward output while removing the explicit scaling operation.\n\n## Pre-training\n\nThe ICML setting pre-trains a BERT-base backbone with `T=4`, sequence length `128`, learning rate `2e-4`, and `5,000` warmup steps on a mixture of English corpora: STORIES, BookCorpus, CC-News, OpenWebText, and English Wikipedia.\n\nThe script supports either dataset names or a pre-tokenized `datasets.save_to_disk()` directory. A minimal command template is provided:"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v306/liang26ae.html",
+      "observation": "Official SpikingLM proceedings identify Yu Liang et al., ICML2026; not Haming et al. ICML2024."
+    },
+    {
+      "url": "https://github.com/BICLab/SpikingBrain2.0",
+      "observation": "README identifies arXiv2604.22575, 2026, Transformer-to-Hybrid conversion; visible repository license MIT. Survey's Apache2.0/arXiv2502.14447 assertions need correction; no implementation-license certification."
+    },
+    {
+      "url": "https://arxiv.org/abs/2502.14447",
+      "observation": "The cited identifier is a quantum-Rabi thermal-conductance paper, not SpikingBrain2.0."
+    },
+    {
+      "url": "https://www.nature.com/articles/nn.4401",
+      "observation": "Benna-Fusi paper describes interacting multiple-timescale synaptic models; two-state simplification is a hypothesis, not its memory-scaling guarantee."
+    }
+  ]
+}

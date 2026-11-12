@@ -1,0 +1,66 @@
+{
+  "r2": {
+    "sha": "7d590f768b36eb9d60e5c9433f1966e4e620cff3",
+    "result": "runs/20261111T031658Z-r2-substrate-confirmation-v1-37d670/result.json",
+    "evidence": "AGGREGATE_ROW_ARITHMETIC_ONLY_NOT_RUNTIME_REPRODUCED",
+    "means": {
+      "bank5": 0.92431640625,
+      "bank5_proj48": 0.579345703125,
+      "decay025": 0.50634765625,
+      "spikesum": 0.97119140625
+    }
+  },
+  "r3": {
+    "sha": "42ed574264816e3a246a984a274f903f7eecdbfa",
+    "result": "runs/20261111T035124Z-r3-temporal-confirmation-v1-7fe1b9/result.json",
+    "evidence": "AGGREGATE_ROW_ARITHMETIC_ONLY_NOT_RUNTIME_REPRODUCED",
+    "means": {
+      "order": {
+        "bank5": 0.988525390625,
+        "count_plus_fast": 0.971923828125,
+        "decay025": 0.774169921875,
+        "spikesum": 0.778076171875,
+        "temporal_bins_3": 1.0
+      },
+      "pair_binding": {
+        "bank5": 0.998046875,
+        "count_plus_fast": 0.999755859375,
+        "decay025": 0.508544921875,
+        "spikesum": 0.999755859375,
+        "temporal_bins_3": 1.0
+      },
+      "sim_xor": {
+        "bank5": 0.947265625,
+        "count_plus_fast": 0.990234375,
+        "decay025": 0.506103515625,
+        "spikesum": 0.978271484375,
+        "temporal_bins_3": 0.99462890625
+      },
+      "strict_binding": {
+        "bank5": 0.527099609375,
+        "count_plus_fast": 0.53564453125,
+        "decay025": 0.528564453125,
+        "spikesum": 0.53564453125,
+        "temporal_bins_3": 0.500732421875
+      },
+      "xor": {
+        "bank5": 0.583251953125,
+        "count_plus_fast": 0.648681640625,
+        "decay025": 0.49072265625,
+        "spikesum": 0.670166015625,
+        "temporal_bins_3": 0.673583984375
+      }
+    }
+  },
+  "r5": {
+    "sha": "d6c609df6f90fc8df96fb3de424dd54388f8dc59",
+    "result": "runs/20261111T064558Z-r5-information-path-v1-cddd2b/result.json",
+    "evidence": "AGGREGATE_ROW_ARITHMETIC_ONLY_NOT_RUNTIME_REPRODUCED",
+    "means": {
+      "vA": 0.9967447916666666,
+      "vB": 0.9973958333333334,
+      "joint4": 0.986328125,
+      "mixed_pair": 0.9946859903381643
+    }
+  }
+}
