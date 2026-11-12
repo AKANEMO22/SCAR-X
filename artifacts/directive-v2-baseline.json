@@ -1,0 +1,70 @@
+{
+  "run": "runs/20261110T182446Z-directive-v2-baseline-v1-68193a",
+  "decision": "DIRECTIVE_V2_BASELINE_PASS",
+  "stage": 0,
+  "git_head": "1735ad66ea9e7b416f5df15df99d9c13cea46b4e",
+  "branch": "codex/scarx-neural-learning-v2",
+  "exit_code": 0,
+  "tests": {
+    "passed": 288,
+    "skipped": 4
+  },
+  "skips": [
+    {
+      "test": "tests/test_native.py::test_native_learning_parity[frozen]",
+      "reason": "('C:\\\\Users\\\\hachimi\\\\Downloads\\\\model agent\\\\scar-x\\\\local\\\\worktrees\\\\scarx-neural-learning-v2\\\\tests\\\\test_native.py', 12, 'Skipped: Build native kernel with scripts/build_native.py')"
+    },
+    {
+      "test": "tests/test_native.py::test_native_learning_parity[readout]",
+      "reason": "('C:\\\\Users\\\\hachimi\\\\Downloads\\\\model agent\\\\scar-x\\\\local\\\\worktrees\\\\scarx-neural-learning-v2\\\\tests\\\\test_native.py', 12, 'Skipped: Build native kernel with scripts/build_native.py')"
+    },
+    {
+      "test": "tests/test_native.py::test_native_learning_parity[stdp]",
+      "reason": "('C:\\\\Users\\\\hachimi\\\\Downloads\\\\model agent\\\\scar-x\\\\local\\\\worktrees\\\\scarx-neural-learning-v2\\\\tests\\\\test_native.py', 12, 'Skipped: Build native kernel with scripts/build_native.py')"
+    },
+    {
+      "test": "tests/test_native.py::test_native_learning_parity[full]",
+      "reason": "('C:\\\\Users\\\\hachimi\\\\Downloads\\\\model agent\\\\scar-x\\\\local\\\\worktrees\\\\scarx-neural-learning-v2\\\\tests\\\\test_native.py', 12, 'Skipped: Build native kernel with scripts/build_native.py')"
+    }
+  ],
+  "command": "python scripts/run_directive_baseline.py → pytest -q -rs --disable-warnings",
+  "seconds": 95.38579490000848,
+  "resources": {
+    "peak_rss_bytes": 1280393216,
+    "peak_commit_or_vms_bytes": 2142011392,
+    "os_process_peak_working_set_bytes": 715476992,
+    "os_process_peak_pagefile_commit_bytes": 1162944512,
+    "samples": 761,
+    "interval_seconds": 0.1,
+    "limit_bytes": 2000000000,
+    "observed_over_limit": true,
+    "elapsed_seconds": 95.3857774999924,
+    "hard_cap_enforced": false,
+    "igpu_measured": false,
+    "energy_joules": null,
+    "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+  },
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "protected_source_unchanged": true,
+  "live_before": {
+    "cores_loaded": 1,
+    "ticks": 4027229,
+    "updates": 241129,
+    "ram_bytes": 60481536
+  },
+  "live_after": {
+    "cores_loaded": 1,
+    "ticks": 4031713,
+    "updates": 241129,
+    "ram_bytes": 59244544
+  },
+  "live_sqlite_written": false,
+  "main_training": false,
+  "main_restored": false,
+  "research_pilot_run": false,
+  "knowledge_acceptance_passed": false
+}

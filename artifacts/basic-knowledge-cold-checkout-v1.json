@@ -1,0 +1,131 @@
+{
+  "run": "runs/20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48",
+  "decision": "PUBLIC_FACTORY_COLD_CHECK_PASS",
+  "source_pin": "037d77e24e2a3a545b72bc0d1dbcbfbd4b3369c7",
+  "private_cli_evidence_present": false,
+  "cold_pool_hashes": {
+    "data/candidates/20261110T191533Z-basic-knowledge-repair-v1-231806/verified-pool.json": "13bb051467b27caa10bf8d16039d52fa830baf77a5e87bd63e3520d8b96ed062",
+    "data/candidates/20261110T184918Z-basic-fact-ledger-v1-b0dcd0/facts.json": "036035daf4106853e607dba742dabafb87c0d5f34b391baab33adefb13d70ef1"
+  },
+  "frozen_data_preserved": true,
+  "public_records_verified": 320,
+  "private_origin_attestation_claimed_in_cold_check": false,
+  "checks": [
+    {
+      "label": "public-provenance",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "scripts/verify_basic_knowledge_provenance.py",
+        "--public-only"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-basicfactory-037d77e",
+      "exit_code": 0,
+      "seconds": 0.7108121000055689,
+      "resources": {
+        "peak_rss_bytes": 107380736,
+        "peak_commit_or_vms_bytes": 95002624,
+        "os_process_peak_working_set_bytes": 40771584,
+        "os_process_peak_pagefile_commit_bytes": 27344896,
+        "samples": 25,
+        "interval_seconds": 0.02,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 0.7108003999965149,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      }
+    },
+    {
+      "label": "targeted-tests",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_knowledge_factory.py",
+        "tests/test_basic_knowledge_eval.py",
+        "tests/test_adaptive_curriculum_data.py",
+        "tests/test_public_research_mirror.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48\\cold-tests.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-basicfactory-037d77e",
+      "exit_code": 0,
+      "seconds": 2.238379399997939,
+      "resources": {
+        "peak_rss_bytes": 166969344,
+        "peak_commit_or_vms_bytes": 139403264,
+        "os_process_peak_working_set_bytes": 40804352,
+        "os_process_peak_pagefile_commit_bytes": 27344896,
+        "samples": 73,
+        "interval_seconds": 0.02,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.2383702999941306,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      }
+    },
+    {
+      "label": "offline-wheel",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "--wheel-dir",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48\\wheels",
+        "."
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-basicfactory-037d77e",
+      "exit_code": 0,
+      "seconds": 2.9545400999995763,
+      "resources": {
+        "peak_rss_bytes": 145235968,
+        "peak_commit_or_vms_bytes": 106668032,
+        "os_process_peak_working_set_bytes": 40804352,
+        "os_process_peak_pagefile_commit_bytes": 27344896,
+        "samples": 96,
+        "interval_seconds": 0.02,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.954531199997291,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      }
+    }
+  ],
+  "wheel_checks": [
+    {
+      "file": "runs/20261111T164121Z-basic-knowledge-cold-checkout-v1-b07d48/wheels/scar_x-0.1.0-py3-none-any.whl",
+      "sha256": "1cb8f25443db4e63c0aa1f598a9beaa37392b9a6c58708f4cebc3aa525d9fe51",
+      "files": 108,
+      "required_modules_present": true,
+      "private_content_paths_present": false,
+      "scope": "Python package only. Dataset/CLI source scripts are delivered through the source checkout, not falsely claimed to be bundled training data."
+    }
+  ],
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "main_before_after": "e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541",
+  "protected_source_changed": false,
+  "new_generation_calls": 0,
+  "student_training": false,
+  "codec_implemented": false,
+  "live_state_accessed": false,
+  "production_ready": false,
+  "error": null
+}

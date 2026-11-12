@@ -1,0 +1,638 @@
+{
+  "scope": "Read-only source/results review plus bounded engineering checks; no training or live-state access",
+  "created_utc": "2026-11-11T01:36:50.934321+00:00",
+  "run_dir": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d",
+  "ponytail_available": false,
+  "branches": {
+    "grok": {
+      "commit": "4b93593df4368011f7ec2066ce4e3a6478a6dcb6",
+      "worktree": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-grok-round1"
+    },
+    "mtb_deepseek_session": {
+      "commit": "5e39c8f8fb3f316c2713d1c2f6d5edea0598882f",
+      "worktree": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\antigravity-scarx-neural-round1-20261111",
+      "result": "runs/20261110T194509Z-collab-mtb-screen-v1-de8c62/result.json",
+      "result_sha256": "79ab0cd54d2ebf1a258276e21badb70d5f75fe4a300b9aae057eb27c92445935",
+      "screen_pass": false,
+      "trials": 297
+    },
+    "deepseek": {
+      "commit": "02be6e9a916df9faf61c6fd746280ba9ea225fc7",
+      "worktree": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-round1",
+      "result": "runs/20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc/result.json",
+      "result_sha256": "ba55ba9e8645b9518e40b0737ca55da456339eb949dd023af2f31080036b7302",
+      "screen_pass": false,
+      "trials": 108
+    },
+    "antigravity_gemini": {
+      "commit": "81641f773145f5c441b5ad3b0f5771f645a5cbd6",
+      "worktree": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-81641f7",
+      "result": "artifacts/collab/scarx-neural-round1-20261111/antigravity/dc-alif-round1-latest.json",
+      "result_sha256": "4a104c694893e1e45f77185b9daf102e2035d98ff46df36634d7333eea09b59a",
+      "p1_confirmation": {
+        "seeds": [
+          35201,
+          35219,
+          35227,
+          35233,
+          35239,
+          35243,
+          35257,
+          35261
+        ],
+        "passing_tasks": [
+          "xor",
+          "strict_binding"
+        ],
+        "phase_gate_pass": true,
+        "by_task": {
+          "order": {
+            "valid_bag_baseline": true,
+            "bag_only_mean": 0.4873046875,
+            "correct_direct": {
+              "mean": 0.640380859375,
+              "lower95": 0.579833984375,
+              "upper95": 0.7168029785156249,
+              "n_seeds": 8
+            },
+            "correct_probe": {
+              "mean": 0.753173828125,
+              "lower95": 0.719970703125,
+              "upper95": 0.780517578125,
+              "n_seeds": 8
+            },
+            "correct_probe_gain": {
+              "mean": -0.082763671875,
+              "lower95": -0.18092651367187498,
+              "upper95": 0.037353515625,
+              "n_seeds": 8
+            },
+            "frozen_direct": {
+              "mean": 0.8251953125,
+              "lower95": 0.699462890625,
+              "upper95": 0.9345703125,
+              "n_seeds": 8
+            },
+            "frozen_probe": {
+              "mean": 0.8359375,
+              "lower95": 0.71826171875,
+              "upper95": 0.941162109375,
+              "n_seeds": 8
+            },
+            "shuffled_direct": {
+              "mean": 0.828369140625,
+              "lower95": 0.736566162109375,
+              "upper95": 0.9169921875,
+              "n_seeds": 8
+            },
+            "shuffled_probe": {
+              "mean": 0.845458984375,
+              "lower95": 0.763427734375,
+              "upper95": 0.921630859375,
+              "n_seeds": 8
+            },
+            "no_gate_direct": {
+              "mean": 0.695556640625,
+              "lower95": 0.65087890625,
+              "upper95": 0.7333984375,
+              "n_seeds": 8
+            },
+            "no_gate_probe": {
+              "mean": 0.7099609375,
+              "lower95": 0.66455078125,
+              "upper95": 0.7587890625,
+              "n_seeds": 8
+            },
+            "bptt_control_direct": {
+              "mean": 0.8935546875,
+              "lower95": 0.830560302734375,
+              "upper95": 0.945556640625,
+              "n_seeds": 8
+            },
+            "bptt_control_probe": {
+              "mean": 0.9287109375,
+              "lower95": 0.892333984375,
+              "upper95": 0.9609375,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_direct": {
+              "mean": -0.184814453125,
+              "lower95": -0.32275390625,
+              "upper95": -0.01611328125,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_probe": {
+              "mean": -0.082763671875,
+              "lower95": -0.18092651367187498,
+              "upper95": 0.037353515625,
+              "n_seeds": 8
+            },
+            "correct_minus_shuffled_probe": {
+              "mean": -0.09228515625,
+              "lower95": -0.161865234375,
+              "upper95": -0.016357421875,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_direct": {
+              "mean": -0.05517578125,
+              "lower95": -0.128662109375,
+              "upper95": 0.03541259765624982,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_probe": {
+              "mean": 0.043212890625,
+              "lower95": -0.000244140625,
+              "upper95": 0.08984375,
+              "n_seeds": 8
+            },
+            "signflip_p_probe_gain": 0.203125,
+            "signflip_p_vs_frozen": 0.203125,
+            "signflip_p_vs_shuffled": 0.0625,
+            "signflip_p_vs_no_gate": 0.125,
+            "probe_time_permuted_mean": 0.488037109375,
+            "probe_state_reset_mean": 0.5009765625,
+            "ood_probe_mean": 0.70703125,
+            "holm_gain_p": 0.203125,
+            "holm_vs_frozen_p": 0.203125,
+            "task_gate_pass": false
+          },
+          "xor": {
+            "valid_bag_baseline": true,
+            "bag_only_mean": 0.4873046875,
+            "correct_direct": {
+              "mean": 0.9814453125,
+              "lower95": 0.97998046875,
+              "upper95": 0.983154296875,
+              "n_seeds": 8
+            },
+            "correct_probe": {
+              "mean": 0.968994140625,
+              "lower95": 0.963134765625,
+              "upper95": 0.974609375,
+              "n_seeds": 8
+            },
+            "correct_probe_gain": {
+              "mean": 0.123291015625,
+              "lower95": 0.078125,
+              "upper95": 0.176513671875,
+              "n_seeds": 8
+            },
+            "frozen_direct": {
+              "mean": 0.8583984375,
+              "lower95": 0.802978515625,
+              "upper95": 0.905517578125,
+              "n_seeds": 8
+            },
+            "frozen_probe": {
+              "mean": 0.845703125,
+              "lower95": 0.793701171875,
+              "upper95": 0.8908752441406249,
+              "n_seeds": 8
+            },
+            "shuffled_direct": {
+              "mean": 0.918212890625,
+              "lower95": 0.881585693359375,
+              "upper95": 0.949462890625,
+              "n_seeds": 8
+            },
+            "shuffled_probe": {
+              "mean": 0.8916015625,
+              "lower95": 0.85107421875,
+              "upper95": 0.9306640625,
+              "n_seeds": 8
+            },
+            "no_gate_direct": {
+              "mean": 0.911865234375,
+              "lower95": 0.883544921875,
+              "upper95": 0.938232421875,
+              "n_seeds": 8
+            },
+            "no_gate_probe": {
+              "mean": 0.89013671875,
+              "lower95": 0.853759765625,
+              "upper95": 0.92041015625,
+              "n_seeds": 8
+            },
+            "bptt_control_direct": {
+              "mean": 0.978271484375,
+              "lower95": 0.97119140625,
+              "upper95": 0.984619140625,
+              "n_seeds": 8
+            },
+            "bptt_control_probe": {
+              "mean": 0.963623046875,
+              "lower95": 0.95263671875,
+              "upper95": 0.972900390625,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_direct": {
+              "mean": 0.123046875,
+              "lower95": 0.07568359375,
+              "upper95": 0.1787109375,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_probe": {
+              "mean": 0.123291015625,
+              "lower95": 0.078125,
+              "upper95": 0.176513671875,
+              "n_seeds": 8
+            },
+            "correct_minus_shuffled_probe": {
+              "mean": 0.077392578125,
+              "lower95": 0.0400390625,
+              "upper95": 0.118896484375,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_direct": {
+              "mean": 0.069580078125,
+              "lower95": 0.0439453125,
+              "upper95": 0.09692993164062491,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_probe": {
+              "mean": 0.078857421875,
+              "lower95": 0.044921875,
+              "upper95": 0.11914672851562491,
+              "n_seeds": 8
+            },
+            "signflip_p_probe_gain": 0.0078125,
+            "signflip_p_vs_frozen": 0.0078125,
+            "signflip_p_vs_shuffled": 0.015625,
+            "signflip_p_vs_no_gate": 0.0078125,
+            "probe_time_permuted_mean": 0.82421875,
+            "probe_state_reset_mean": 0.5,
+            "ood_probe_mean": 0.8505859375,
+            "holm_gain_p": 0.0234375,
+            "holm_vs_frozen_p": 0.0234375,
+            "task_gate_pass": true
+          },
+          "strict_binding": {
+            "valid_bag_baseline": true,
+            "bag_only_mean": 0.484375,
+            "correct_direct": {
+              "mean": 0.98779296875,
+              "lower95": 0.986083984375,
+              "upper95": 0.9892578125,
+              "n_seeds": 8
+            },
+            "correct_probe": {
+              "mean": 0.968505859375,
+              "lower95": 0.953857421875,
+              "upper95": 0.9814453125,
+              "n_seeds": 8
+            },
+            "correct_probe_gain": {
+              "mean": 0.241943359375,
+              "lower95": 0.191162109375,
+              "upper95": 0.300537109375,
+              "n_seeds": 8
+            },
+            "frozen_direct": {
+              "mean": 0.752197265625,
+              "lower95": 0.69482421875,
+              "upper95": 0.798828125,
+              "n_seeds": 8
+            },
+            "frozen_probe": {
+              "mean": 0.7265625,
+              "lower95": 0.6669921875,
+              "upper95": 0.7788146972656249,
+              "n_seeds": 8
+            },
+            "shuffled_direct": {
+              "mean": 0.855712890625,
+              "lower95": 0.822021484375,
+              "upper95": 0.8896484375,
+              "n_seeds": 8
+            },
+            "shuffled_probe": {
+              "mean": 0.846435546875,
+              "lower95": 0.816400146484375,
+              "upper95": 0.8740234375,
+              "n_seeds": 8
+            },
+            "no_gate_direct": {
+              "mean": 0.624267578125,
+              "lower95": 0.578607177734375,
+              "upper95": 0.666748046875,
+              "n_seeds": 8
+            },
+            "no_gate_probe": {
+              "mean": 0.595458984375,
+              "lower95": 0.55712890625,
+              "upper95": 0.6318359375,
+              "n_seeds": 8
+            },
+            "bptt_control_direct": {
+              "mean": 0.988525390625,
+              "lower95": 0.98681640625,
+              "upper95": 0.989990234375,
+              "n_seeds": 8
+            },
+            "bptt_control_probe": {
+              "mean": 0.969970703125,
+              "lower95": 0.962890625,
+              "upper95": 0.97705078125,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_direct": {
+              "mean": 0.235595703125,
+              "lower95": 0.188720703125,
+              "upper95": 0.292724609375,
+              "n_seeds": 8
+            },
+            "correct_minus_frozen_probe": {
+              "mean": 0.241943359375,
+              "lower95": 0.191162109375,
+              "upper95": 0.300537109375,
+              "n_seeds": 8
+            },
+            "correct_minus_shuffled_probe": {
+              "mean": 0.1220703125,
+              "lower95": 0.088134765625,
+              "upper95": 0.154052734375,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_direct": {
+              "mean": 0.363525390625,
+              "lower95": 0.320068359375,
+              "upper95": 0.409423828125,
+              "n_seeds": 8
+            },
+            "correct_minus_no_gate_probe": {
+              "mean": 0.373046875,
+              "lower95": 0.32958984375,
+              "upper95": 0.41796875,
+              "n_seeds": 8
+            },
+            "signflip_p_probe_gain": 0.0078125,
+            "signflip_p_vs_frozen": 0.0078125,
+            "signflip_p_vs_shuffled": 0.0078125,
+            "signflip_p_vs_no_gate": 0.0078125,
+            "probe_time_permuted_mean": 0.78125,
+            "probe_state_reset_mean": 0.499755859375,
+            "ood_probe_mean": null,
+            "holm_gain_p": 0.0234375,
+            "holm_vs_frozen_p": 0.0234375,
+            "task_gate_pass": true
+          }
+        },
+        "cold_continuations_verified": 144
+      },
+      "p2_retention_summary": {
+        "dc_alif_reservoir_usefulness": {
+          "acquisition": {
+            "mean": 0.7154947916666666,
+            "lower95": 0.7058593749999998,
+            "upper95": 0.734375,
+            "n_seeds": 3
+          },
+          "final": {
+            "mean": 0.5613281250000001,
+            "lower95": 0.53671875,
+            "upper95": 0.577734375,
+            "n_seeds": 3
+          },
+          "mean_forgetting": {
+            "mean": 0.21888020833333333,
+            "lower95": 0.210546875,
+            "upper95": 0.228125,
+            "n_seeds": 3
+          },
+          "worst_forgetting": {
+            "mean": 0.5494791666666666,
+            "lower95": 0.46875,
+            "upper95": 0.65625,
+            "n_seeds": 3
+          },
+          "joint_refit_probe": {
+            "mean": 0.4837239583333333,
+            "lower95": 0.4734375,
+            "upper95": 0.493359375,
+            "n_seeds": 3
+          },
+          "mean_head_only_drop": 0.017626858475718356,
+          "mean_hidden_only_drop": -0.006034123993803757,
+          "mean_interaction_drop": 0.008680256341184675,
+          "joint_gate_all_seeds": false
+        },
+        "dc_alif_reservoir_unprotected": {
+          "acquisition": {
+            "mean": 0.7764322916666666,
+            "lower95": 0.736328125,
+            "upper95": 0.801171875,
+            "n_seeds": 3
+          },
+          "final": {
+            "mean": 0.56796875,
+            "lower95": 0.526953125,
+            "upper95": 0.611328125,
+            "n_seeds": 3
+          },
+          "mean_forgetting": {
+            "mean": 0.2524739583333333,
+            "lower95": 0.223046875,
+            "upper95": 0.2734375,
+            "n_seeds": 3
+          },
+          "worst_forgetting": {
+            "mean": 0.6015625,
+            "lower95": 0.5703125,
+            "upper95": 0.6171875,
+            "n_seeds": 3
+          },
+          "joint_refit_probe": {
+            "mean": 0.5177083333333333,
+            "lower95": 0.4984374999999999,
+            "upper95": 0.539453125,
+            "n_seeds": 3
+          },
+          "mean_head_only_drop": 0.027248261610817875,
+          "mean_hidden_only_drop": -0.005635060650091789,
+          "mean_interaction_drop": 0.004695929709391863,
+          "joint_gate_all_seeds": false
+        },
+        "dc_alif_frozen_reservoir": {
+          "acquisition": {
+            "mean": 0.3083333333333333,
+            "lower95": 0.301953125,
+            "upper95": 0.319921875,
+            "n_seeds": 3
+          },
+          "final": {
+            "mean": 0.2610677083333333,
+            "lower95": 0.25078125,
+            "upper95": 0.270703125,
+            "n_seeds": 3
+          },
+          "mean_forgetting": {
+            "mean": 0.10247395833333332,
+            "lower95": 0.081640625,
+            "upper95": 0.11953125000000002,
+            "n_seeds": 3
+          },
+          "worst_forgetting": {
+            "mean": 0.34375,
+            "lower95": 0.2734375,
+            "upper95": 0.390625,
+            "n_seeds": 3
+          },
+          "joint_refit_probe": {
+            "mean": 0.3963541666666666,
+            "lower95": 0.37109375,
+            "upper95": 0.4242187499999999,
+            "n_seeds": 3
+          },
+          "mean_head_only_drop": 0.011233619629781616,
+          "mean_hidden_only_drop": 0.0,
+          "mean_interaction_drop": 0.0,
+          "joint_gate_all_seeds": false
+        }
+      },
+      "resources": {
+        "peak_rss_bytes": 608903168,
+        "peak_commit_or_vms_bytes": 1080418304,
+        "os_process_peak_working_set_bytes": 52924416,
+        "os_process_peak_pagefile_commit_bytes": 71835648,
+        "samples": 6319,
+        "interval_seconds": 0.2,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 1288.3094391999998,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      }
+    }
+  },
+  "checks": {
+    "mtb_mode_and_capacity_argument": {
+      "returncode": 0,
+      "seconds": 0.2339999999999236,
+      "sampled_peak_tree_rss_bytes": 27488256,
+      "sampled_peak_tree_commit_or_vms_bytes": 18141184,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\mtb-mode.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import json, numpy as np\nfrom scarx.neural.core import Config, SpikingCore\nfrom scarx.evaluation.multi_timescale import MTCore\nc=Config(inputs=8,hidden=48,outputs=2,fan_in=8,plastic_rows=12,seed=17)\na=MTCore(c,deterministic=True); b=MTCore.loads(a.dumps())\nbefore={\"original_deterministic\":a.deterministic,\"restored_deterministic\":b.deterministic}\nfor _ in range(4): a.step(np.zeros(8,np.float32)); b.step(np.zeros(8,np.float32))\nbefore[\"continuation_spikes_equal\"]=bool(np.array_equal(a.spikes,b.spikes))\nbefore[\"continuation_rng_equal\"]=a.rng.bit_generator.state==b.rng.bit_generator.state\nc=Config(inputs=8,hidden=48,outputs=2,fan_in=8,plastic_rows=12,threshold=.5,feature_decay=0.)\nm=SpikingCore(c);m.w_in.fill(0);m.w_rec.fill(0);m.w_out.fill(0);m.bias.fill(0)\nm.w_in[0,:2]=1.;m.w_in[1,:2]=1./3.;m.w_out[1,0]=2.;m.w_out[1,1]=-4.;m.bias[1]=-1.\nrows=[]\nfor x,y in [(0,0),(0,1),(1,0),(1,1)]:\n v=np.zeros(8,np.float32);v[:2]=[x,y];p=m.forward([v]);rows.append({\"input\":[x,y],\"prediction\":int(p.argmax()),\"target\":x^y})\nprint(json.dumps({\"mtb_checkpoint_mode\":before,\"threshold_xor_counterexample\":rows,\"xor_scope\":\"Hand-set one-tick threshold circuit only: refutes additive-current-implies-linear argument, not evidence of learning or strict-binding capacity.\"}))\n"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\antigravity-scarx-neural-round1-20261111",
+      "output": {
+        "mtb_checkpoint_mode": {
+          "original_deterministic": true,
+          "restored_deterministic": false,
+          "continuation_spikes_equal": false,
+          "continuation_rng_equal": false
+        },
+        "threshold_xor_counterexample": [
+          {
+            "input": [
+              0,
+              0
+            ],
+            "prediction": 0,
+            "target": 0
+          },
+          {
+            "input": [
+              0,
+              1
+            ],
+            "prediction": 1,
+            "target": 1
+          },
+          {
+            "input": [
+              1,
+              0
+            ],
+            "prediction": 1,
+            "target": 1
+          },
+          {
+            "input": [
+              1,
+              1
+            ],
+            "prediction": 0,
+            "target": 0
+          }
+        ],
+        "xor_scope": "Hand-set one-tick threshold circuit only: refutes additive-current-implies-linear argument, not evidence of learning or strict-binding capacity."
+      }
+    },
+    "deepseek_summary_only": {
+      "returncode": 0,
+      "seconds": 0.23500000000012733,
+      "sampled_peak_tree_rss_bytes": 37691392,
+      "sampled_peak_tree_commit_or_vms_bytes": 25354240,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\deepseek-summary.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-c",
+        "import json, pathlib, runpy, sys\np=pathlib.Path.cwd();sys.path.insert(0,str(p/'scripts'))\nd=json.loads((p/'runs/20261110T203340Z-deepseek-pair-binding-screen-v1-9da1fc/result.json').read_text())\nns=runpy.run_path(str(p/'scripts/run_deepseek_pair_binding.py'))\ns=ns['summarise'](d['trials'],d['summary']['locked_readout_lr'])\nprint(json.dumps({\"stored_gates\":d['summary']['gates'],\"stored_unknown\":d['summary']['gates_unknown'],\"recomputed_gates\":s['gates'],\"recomputed_unknown\":s['gates_unknown'],\"stored_screen_pass\":d['summary']['screen_pass'],\"recomputed_screen_pass\":s['screen_pass'],\"means\":{k:v['direct']['mean'] for k,v in s['per_task']['pair_binding'].items()},\"diagnostic_script_tracked\":False}))\n"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-deepseek-round1",
+      "output": {
+        "stored_gates": {
+          "C1_task_valid": true,
+          "C2_frozen_below_gate": true,
+          "C3_learning_measurable": false,
+          "score_beats_readout": false,
+          "score_beats_shuffle": false,
+          "frozen_hidden_untouched": true
+        },
+        "stored_unknown": [
+          "C1_task_valid"
+        ],
+        "recomputed_gates": {
+          "C2_frozen_below_gate": true,
+          "C3_learning_measurable": false,
+          "score_beats_readout": false,
+          "score_beats_shuffle": false,
+          "frozen_hidden_untouched": true,
+          "C1a_product_basis_solves_tape": true,
+          "C1b_neuron_can_form_basis": false
+        },
+        "recomputed_unknown": [],
+        "stored_screen_pass": false,
+        "recomputed_screen_pass": false,
+        "means": {
+          "score": 0.4895833333333333,
+          "frozen": 0.5143229166666666,
+          "readout": 0.4856770833333333,
+          "shuffle": 0.4947916666666667
+        },
+        "diagnostic_script_tracked": false
+      }
+    },
+    "gemini_engineering_tests": {
+      "returncode": 0,
+      "seconds": 6.311999999999898,
+      "sampled_peak_tree_rss_bytes": 633741312,
+      "sampled_peak_tree_commit_or_vms_bytes": 1087004672,
+      "sample_interval_seconds": 0.05,
+      "log": "runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\gemini-p0-tests.log",
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_dc_alif_p0.py",
+        "tests/test_readout_eligibility.py",
+        "tests/test_readout_usefulness_p0.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-neural-learning-v2\\runs\\20261111T013650Z-round1-handoff-review-v2-cb9d2d\\gemini-p0-junit.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-81641f7"
+    }
+  },
+  "production_learner_integrated": false,
+  "main_before_after": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "other_agent_source_edited": false
+}

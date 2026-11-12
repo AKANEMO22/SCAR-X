@@ -12,6 +12,8 @@ from scarx.runtime.work_trace import activity
 
 CHAT=('greet','identity','thanks','bye','learning','capability')
 VISION=('single_color','single_shape','object_count','left_color')
+TEACHER_MODEL='gemini-3.8-flash-high'
+TEACHER_EFFORT='high'
 
 
 def normalized(text):
@@ -61,20 +63,29 @@ def old_public_wording():
 
 def main():
     if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
+    # Existing wording runs keep their original model provenance. A completed or
+    # partial v1 budget cannot silently trigger more calls through the old default.
+    reservation=root/'artifacts/generation-budgets/adaptive-curriculum-data-v1'
+    if reservation.exists() or (root/'artifacts/adaptive-curriculum-data.json').exists() or any((root/'runs').glob('*-adaptive-curriculum-data-v1-*')):
+        raise ValueError('Registered wording generation budget already started; revalidate existing data or register a separately approved version')
     cli=Path.home()/'.gemini/bin/agy.exe'
     if not cli.is_file():raise FileNotFoundError('Installed authorized AGYCLI missing')
     contract='data/contracts/ANTIGRAVITY_ADAPTIVE_CURRICULUM_V1.md'
+    reservation.parent.mkdir(parents=True,exist_ok=True)
+    try:reservation.mkdir()
+    except FileExistsError as exc:raise ValueError('Registered wording generation budget already started concurrently') from exc
+    write_json(reservation/'reservation.json',{'protocol':'adaptive-curriculum-data-v1','created_unix':time.time(),'automatic_retry_allowed':False})
     run=new_run(root,'adaptive-curriculum-data-v1',{'protocol':'experiments/adaptive-curriculum-data-v1.md',
         'display_title':'AGY ·128wording chat/vision mới · chỉ chuẩn bị data',
         'observability_kind':'data_generation','model_scope':'Publiccontract only. No SCAR-X training/inference, no newlearner. Development candidates require all-row review.',
-        'teacher':'gemini-3.8-flash-low','items':128,'new_training':False},data_description='Publicwording contract; no privatechat/images/DB/weights/answers.',data_files=[contract])
+        'teacher':TEACHER_MODEL,'effort':TEACHER_EFFORT,'items':128,'new_training':False},data_description='Publicwording contract; no privatechat/images/DB/weights/answers.',data_files=[contract])
     private=root/'local/adaptive-curriculum'/run.name;private.mkdir(parents=True)
     candidate=root/'data/candidates'/run.name;candidate.mkdir(parents=True)
     sandbox=Path(tempfile.mkdtemp(prefix='scarx-agy-wording-')).resolve()
     fields={k:{'type':'string'} for k in ('id','modality','family','language','prompt')}
     schema={'type':'object','properties':{'items':{'type':'array','minItems':128,'maxItems':128,'items':{'type':'object','properties':fields,'required':list(fields),'additionalProperties':False}}},'required':['items'],'additionalProperties':False}
     schema_path=sandbox/'schema.json';write_json(schema_path,schema)
-    args=[str(cli),'--print',(root/contract).read_text(encoding='utf-8'),'--model','gemini-3.8-flash-low','--output-format','stream-json','--json-schema',str(schema_path),'--disable-slash-commands','--print-timeout','4m']
+    args=[str(cli),'--print',(root/contract).read_text(encoding='utf-8'),'--model',TEACHER_MODEL,'--effort',TEACHER_EFFORT,'--output-format','stream-json','--json-schema',str(schema_path),'--disable-slash-commands','--print-timeout','4m']
     start=time.perf_counter();process=None;error=None;result=None
     (run/'report.md').write_text('# AGY developmentwording\n\nActualCLI call pending; no neurallearning.\n',encoding='utf-8')
     activity(run,'AntigravityCLI tạo wording chat/vision','128candidate công khai; không đáp án teacher/ảnh riêng/weights. Review toàn bộ trước dùng; không code hoặc chạy learner U.',status='started',evidence={'contract':contract,'new_training':False})
@@ -93,6 +104,8 @@ def main():
                 try:parsed.append(json.loads(line))
                 except ValueError:continue
             results=[e.get('result',e) for e in parsed if e.get('event')=='result' or e.get('status') in ('SUCCESS','ERROR')]
+            inits=[e['init'].get('model') for e in parsed if e.get('event')=='init']
+            if not inits or inits[-1]!=TEACHER_MODEL:raise ValueError('Requested/reported teacher model mismatch')
             if process.returncode or not results or results[-1].get('status')!='SUCCESS':raise ValueError('CLI did not return SUCCESS')
             response=results[-1];value=response.get('structured_output')
             if value is None:value=json.loads(response['response'])
@@ -104,7 +117,7 @@ def main():
                 seen.add(key)
                 (quarantine if reason else clean).append({**row,**({'reason':reason} if reason else {})})
             path=candidate/'candidate.json';write_json(path,{'items':clean,'quarantine':quarantine,'semantic_review_pending':True,'automatic_learning_allowed':False,'targets_generated_by_teacher':False,'scope':'Developmentwording only, not unseenfinaltest.'})
-            result={'run':run.relative_to(root).as_posix(),'decision':'ADAPTIVE_WORDING_REVIEW_PENDING','data':path.relative_to(root).as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'items':128,'candidate_rows':len(clean),'quarantined_rows':len(quarantine),'compared_public_sources':sources,'native_finish_count':len(steps),'teacher':'gemini-3.8-flash-low','semantic_review_pending':True}
+            result={'run':run.relative_to(root).as_posix(),'decision':'ADAPTIVE_WORDING_REVIEW_PENDING','data':path.relative_to(root).as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'items':128,'candidate_rows':len(clean),'quarantined_rows':len(quarantine),'compared_public_sources':sources,'native_finish_count':len(steps),'teacher':TEACHER_MODEL,'effort':TEACHER_EFFORT,'semantic_review_pending':True}
         except Exception as exc:error=type(exc).__name__+': '+str(exc)[:220]
         finally:
             if process and process.poll() is None:
@@ -120,4 +133,10 @@ def main():
     return int(error is not None)
 
 
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--factory',choices=('legacy-wording-v1','basic-knowledge-v1'),default='legacy-wording-v1');args=parser.parse_args()
+    if args.factory=='basic-knowledge-v1':
+        from basic_knowledge_factory import main as basic_main
+        raise SystemExit(basic_main())
+    raise SystemExit(main())

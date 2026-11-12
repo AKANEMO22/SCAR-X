@@ -1,0 +1,155 @@
+{
+  "scope": "Published-row arithmetic only; not a replacement statistical gate",
+  "diagnostic_bootstrap": {
+    "seed": 2101,
+    "resamples": 10000
+  },
+  "grok": {
+    "grok-slow-trace-v1": {
+      "mean": 0.060546875,
+      "lower95": 0.01953125,
+      "upper95": 0.111328125,
+      "n": 8,
+      "result_sha256": "645f76d68804ee132fd90a9f80c51eaa898cf199668fbed130b6de8cd2904583",
+      "gains": [
+        0.0,
+        0.21875,
+        0.046875,
+        0.03125,
+        0.03125,
+        0.109375,
+        0.046875,
+        0.0
+      ],
+      "lower_bound_reaches_registered_0_05": false
+    },
+    "grok-slow-trace-v1a-confirmation-71005": {
+      "mean": 0.02734375,
+      "lower95": 0.0078125,
+      "upper95": 0.052734375,
+      "n": 8,
+      "result_sha256": "e4459ac1e54abf05482265e5a7533fce571be0a6cbfeafb51675bdadcdd261b7",
+      "gains": [
+        0.0,
+        0.109375,
+        0.0,
+        0.015625,
+        0.0,
+        0.03125,
+        0.03125,
+        0.03125
+      ],
+      "lower_bound_reaches_registered_0_05": false
+    }
+  },
+  "gemini": {
+    "order": {
+      "direct_means": {
+        "correct": 0.640380859375,
+        "frozen": 0.8251953125,
+        "zero": 0.8251953125,
+        "shuffled": 0.828369140625,
+        "no_gate": 0.695556640625,
+        "bptt_control": 0.8935546875
+      },
+      "direct_mean_matches_stored": {
+        "correct": true,
+        "frozen": true,
+        "shuffled": true,
+        "no_gate": true,
+        "bptt_control": true
+      },
+      "correct_minus_frozen_direct": {
+        "mean": -0.184814453125,
+        "lower95": -0.32275390625,
+        "upper95": -0.01611328125,
+        "n": 8
+      },
+      "correct_minus_frozen_probe": {
+        "mean": -0.082763671875,
+        "lower95": -0.18092651367187498,
+        "upper95": 0.037353515625,
+        "n": 8
+      },
+      "zero_frozen_direct_equal_all_seeds": true,
+      "initial_to_trained_probe_gain": {
+        "mean": -0.082763671875,
+        "lower95": -0.18092651367187498,
+        "upper95": 0.037353515625,
+        "n": 8
+      }
+    },
+    "xor": {
+      "direct_means": {
+        "correct": 0.9814453125,
+        "frozen": 0.8583984375,
+        "zero": 0.8583984375,
+        "shuffled": 0.918212890625,
+        "no_gate": 0.911865234375,
+        "bptt_control": 0.978271484375
+      },
+      "direct_mean_matches_stored": {
+        "correct": true,
+        "frozen": true,
+        "shuffled": true,
+        "no_gate": true,
+        "bptt_control": true
+      },
+      "correct_minus_frozen_direct": {
+        "mean": 0.123046875,
+        "lower95": 0.07568359375,
+        "upper95": 0.1787109375,
+        "n": 8
+      },
+      "correct_minus_frozen_probe": {
+        "mean": 0.123291015625,
+        "lower95": 0.078125,
+        "upper95": 0.176513671875,
+        "n": 8
+      },
+      "zero_frozen_direct_equal_all_seeds": true,
+      "initial_to_trained_probe_gain": {
+        "mean": 0.123291015625,
+        "lower95": 0.078125,
+        "upper95": 0.176513671875,
+        "n": 8
+      }
+    },
+    "strict_binding": {
+      "direct_means": {
+        "correct": 0.98779296875,
+        "frozen": 0.752197265625,
+        "zero": 0.752197265625,
+        "shuffled": 0.855712890625,
+        "no_gate": 0.624267578125,
+        "bptt_control": 0.988525390625
+      },
+      "direct_mean_matches_stored": {
+        "correct": true,
+        "frozen": true,
+        "shuffled": true,
+        "no_gate": true,
+        "bptt_control": true
+      },
+      "correct_minus_frozen_direct": {
+        "mean": 0.235595703125,
+        "lower95": 0.188720703125,
+        "upper95": 0.292724609375,
+        "n": 8
+      },
+      "correct_minus_frozen_probe": {
+        "mean": 0.241943359375,
+        "lower95": 0.191162109375,
+        "upper95": 0.300537109375,
+        "n": 8
+      },
+      "zero_frozen_direct_equal_all_seeds": true,
+      "initial_to_trained_probe_gain": {
+        "mean": 0.241943359375,
+        "lower95": 0.191162109375,
+        "upper95": 0.300537109375,
+        "n": 8
+      }
+    }
+  }
+}

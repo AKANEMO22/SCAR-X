@@ -1,0 +1,18 @@
+{
+  "name": "BASIC_KNOWLEDGE_ACCEPTANCE_V1",
+  "status": "REGISTERED_NOT_EXECUTED",
+  "domain": "32 versioned Config/UnifiedCore configuration facts; controlled technical natural-language queries",
+  "source_commit": "495dab2f4bac0180e4d1cd28674391f055ccf09d",
+  "knowledge_inference_input": ["prompt"],
+  "disabled_at_neural_evaluation": ["retrieval", "answer_templates", "answer_mapping", "Qwen", "external_LLM", "ground_truth_in_inference"],
+  "factual_learning": {"minimum_exact_normalized_accuracy": 0.8, "report_typed_semantic_correctness_separately": true},
+  "generalization": {"minimum_heldout_paraphrase_accuracy": 0.75, "frozen_and_readout_only_contrasts_required": true, "confirmation_forbidden_for_model_selection": true},
+  "unknown_detection": {"minimum_unknown_rejection": 0.95, "scope": "Outside the32fact training domain, not unknowable/false in the world", "controller_abstention_reported_separately": true, "report_confident_wrong_answers": true},
+  "retention": {"minimum_acquisition_and_final_quality": 0.65, "maximum_mean_forgetting_pp": 3, "maximum_worst_forgetting_pp": 5, "restart_and_paraphrases_required": true},
+  "causal_grounding_controls": ["meaningful_input_change", "hidden_state_intervention", "frozen_hidden", "shuffled_labels", "no_input", "retrieval_disabled"],
+  "runtime": {"cpu_first": true, "max_bytes": 2000000000, "checkpoint_rollback_cold_restart": true, "no_live_user_data_writes": true, "no_orphan_test_processes": true},
+  "source_clustering_for_statistics": "Report fact/initialization clusters, not each paraphrase as independent evidence",
+  "research_gates_replaced": false,
+  "normal_chat_or_general_vision_claim": false,
+  "production_ready": false
+}
