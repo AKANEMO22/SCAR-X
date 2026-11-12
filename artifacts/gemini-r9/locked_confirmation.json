@@ -1,0 +1,326 @@
+{
+  "H4-049": {
+    "candidate_id": "H4-049",
+    "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)",
+    "params": {
+      "reset_mode": "subtractive_exact",
+      "damped_lambda": 0.0,
+      "surrogate_fn": "fast_sigmoid",
+      "surrogate_gamma": 0.5,
+      "surrogate_param": 0.5,
+      "timescale_dist": "hetero_linear",
+      "gating_mode": "recurrent_only",
+      "sensory_threshold": 0.4,
+      "sensory_floor": 0.15,
+      "learned_attenuation": false,
+      "attenuation_factor": 0.0,
+      "noise_sensitive_credit": false,
+      "readout_mode": "context_gated",
+      "n_keys": 2,
+      "use_bf_cascade": false,
+      "kappa1": 0.004,
+      "kappa2": 0.001
+    },
+    "tasks": {
+      "strict_binding": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.7400390625,
+          "direct_acc_sd": 0.07998782807047222,
+          "probe_acc_mean": 0.7505859375,
+          "probe_acc_sd": 0.10174200383039682,
+          "probe_gain_mean": 0.1203125,
+          "probe_gain_lower95": 0.055783264024883844,
+          "probe_gain_upper95": 0.18484173597511616
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.6302734375
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.530078125
+        },
+        "causal_revert": {
+          "drop_mean": 0.1203125,
+          "drop_sd": 0.09021191925368857
+        }
+      },
+      "distractor_binding": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.6021484375,
+          "direct_acc_sd": 0.07522870267860353,
+          "probe_acc_mean": 0.6240234375,
+          "probe_acc_sd": 0.08294204400244155,
+          "probe_gain_mean": 0.0771484375,
+          "probe_gain_lower95": 0.016607218453438023,
+          "probe_gain_upper95": 0.13768965654656198
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.546875
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.5130859375
+        },
+        "causal_revert": {
+          "drop_mean": 0.0771484375,
+          "drop_sd": 0.08463666866061155
+        }
+      },
+      "xor": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.9392578125,
+          "direct_acc_sd": 0.025087500140567043,
+          "probe_acc_mean": 0.9634765625,
+          "probe_acc_sd": 0.01989781874092488,
+          "probe_gain_mean": 0.0955078125,
+          "probe_gain_lower95": 0.056905955389946715,
+          "probe_gain_upper95": 0.13410966961005327
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.86796875
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.8560546875
+        },
+        "causal_revert": {
+          "drop_mean": 0.0955078125,
+          "drop_sd": 0.053965424571234925
+        }
+      },
+      "order": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.998046875,
+          "direct_acc_sd": 0.004318521862441927,
+          "probe_acc_mean": 0.9994140625,
+          "probe_acc_sd": 0.0013182589017784235,
+          "probe_gain_mean": 0.048828125,
+          "probe_gain_lower95": 0.026109090898655665,
+          "probe_gain_upper95": 0.07154715910134433
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.9505859375
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.991796875
+        },
+        "causal_revert": {
+          "drop_mean": 0.048828125,
+          "drop_sd": 0.031761226348048094
+        }
+      }
+    },
+    "continual_stream": {
+      "acquisition_mean": 0.8330729166666666,
+      "final_mean": 0.5898437500000001,
+      "mean_forgetting": 0.2432291666666667,
+      "mean_forgetting_ci95": [
+        0.21190221468495596,
+        0.2745561186483774
+      ],
+      "worst_forgetting": 0.5234375,
+      "per_seed_worst_forgettings": [
+        0.46875,
+        0.5234375,
+        0.24609375,
+        0.46875,
+        0.3671875,
+        0.41796875,
+        0.40234375,
+        0.4375,
+        0.50390625,
+        0.46875
+      ]
+    },
+    "gate_verdict": "GATE_FAIL",
+    "continual_eval": {
+      "status": "FAIL",
+      "checks": {
+        "acquisition_gte_65": {
+          "value": 0.8330729166666666,
+          "threshold": 0.65,
+          "pass": true
+        },
+        "final_gte_65": {
+          "value": 0.5898437500000001,
+          "threshold": 0.65,
+          "pass": false
+        },
+        "mean_forgetting_lte_3pp": {
+          "value": 0.2432291666666667,
+          "threshold": 0.03,
+          "pass": false
+        },
+        "worst_forgetting_lte_5pp": {
+          "value": 0.5234375,
+          "threshold": 0.05,
+          "pass": false
+        }
+      },
+      "failed_checks": [
+        "final_gte_65",
+        "mean_forgetting_lte_3pp",
+        "worst_forgetting_lte_5pp"
+      ]
+    }
+  },
+  "H4-050": {
+    "candidate_id": "H4-050",
+    "hypothesis": "Associative retrieval for 2 keys with context_gated readout (hetero_linear, recurrent_only)",
+    "params": {
+      "reset_mode": "subtractive_exact",
+      "damped_lambda": 0.0,
+      "surrogate_fn": "fast_sigmoid",
+      "surrogate_gamma": 0.5,
+      "surrogate_param": 0.5,
+      "timescale_dist": "hetero_linear",
+      "gating_mode": "recurrent_only",
+      "sensory_threshold": 0.6,
+      "sensory_floor": 0.15,
+      "learned_attenuation": false,
+      "attenuation_factor": 0.0,
+      "noise_sensitive_credit": false,
+      "readout_mode": "context_gated",
+      "n_keys": 2,
+      "use_bf_cascade": false,
+      "kappa1": 0.004,
+      "kappa2": 0.001
+    },
+    "tasks": {
+      "strict_binding": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.7412109375,
+          "direct_acc_sd": 0.08180488152937812,
+          "probe_acc_mean": 0.747265625,
+          "probe_acc_sd": 0.09709997817568627,
+          "probe_gain_mean": 0.1169921875,
+          "probe_gain_lower95": 0.055490670123947525,
+          "probe_gain_upper95": 0.17849370487605248
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.6302734375
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.534375
+        },
+        "causal_revert": {
+          "drop_mean": 0.1169921875,
+          "drop_sd": 0.08597916643003897
+        }
+      },
+      "distractor_binding": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.5796875,
+          "direct_acc_sd": 0.06556348389924793,
+          "probe_acc_mean": 0.597265625,
+          "probe_acc_sd": 0.0890133727810275,
+          "probe_gain_mean": 0.050390625,
+          "probe_gain_lower95": -0.016497156005223466,
+          "probe_gain_upper95": 0.11727840600522346
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.546875
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.5220703125
+        },
+        "causal_revert": {
+          "drop_mean": 0.050390625,
+          "drop_sd": 0.09350916693680505
+        }
+      },
+      "xor": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.9400390625,
+          "direct_acc_sd": 0.025349693235956882,
+          "probe_acc_mean": 0.9634765625,
+          "probe_acc_sd": 0.01989781874092488,
+          "probe_gain_mean": 0.0955078125,
+          "probe_gain_lower95": 0.056905955389946715,
+          "probe_gain_upper95": 0.13410966961005327
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.86796875
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.860546875
+        },
+        "causal_revert": {
+          "drop_mean": 0.0955078125,
+          "drop_sd": 0.053965424571234925
+        }
+      },
+      "order": {
+        "learned_candidate": {
+          "direct_acc_mean": 0.998046875,
+          "direct_acc_sd": 0.004318521862441927,
+          "probe_acc_mean": 0.9994140625,
+          "probe_acc_sd": 0.0013182589017784235,
+          "probe_gain_mean": 0.048828125,
+          "probe_gain_lower95": 0.026109090898655665,
+          "probe_gain_upper95": 0.07154715910134433
+        },
+        "frozen_hidden": {
+          "probe_acc_mean": 0.9505859375
+        },
+        "shuffled_signal": {
+          "probe_acc_mean": 0.98828125
+        },
+        "causal_revert": {
+          "drop_mean": 0.048828125,
+          "drop_sd": 0.031761226348048094
+        }
+      }
+    },
+    "continual_stream": {
+      "acquisition_mean": 0.8330729166666666,
+      "final_mean": 0.5898437500000001,
+      "mean_forgetting": 0.2432291666666667,
+      "mean_forgetting_ci95": [
+        0.21190221468495596,
+        0.2745561186483774
+      ],
+      "worst_forgetting": 0.5234375,
+      "per_seed_worst_forgettings": [
+        0.46875,
+        0.5234375,
+        0.24609375,
+        0.46875,
+        0.3671875,
+        0.41796875,
+        0.40234375,
+        0.4375,
+        0.50390625,
+        0.46875
+      ]
+    },
+    "gate_verdict": "GATE_FAIL",
+    "continual_eval": {
+      "status": "FAIL",
+      "checks": {
+        "acquisition_gte_65": {
+          "value": 0.8330729166666666,
+          "threshold": 0.65,
+          "pass": true
+        },
+        "final_gte_65": {
+          "value": 0.5898437500000001,
+          "threshold": 0.65,
+          "pass": false
+        },
+        "mean_forgetting_lte_3pp": {
+          "value": 0.2432291666666667,
+          "threshold": 0.03,
+          "pass": false
+        },
+        "worst_forgetting_lte_5pp": {
+          "value": 0.5234375,
+          "threshold": 0.05,
+          "pass": false
+        }
+      },
+      "failed_checks": [
+        "final_gte_65",
+        "mean_forgetting_lte_3pp",
+        "worst_forgetting_lte_5pp"
+      ]
+    }
+  }
+}
