@@ -1,0 +1,492 @@
+{
+  "run": "runs/20261112T062822Z-gemini-r9-independent-review-v1-9453bf",
+  "peer_sha": "2c41fdaf6fc491845879d638ac80449caf597471",
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "manifest": {
+    "declared_rows": 512,
+    "groups": {
+      "H1_temporal_credit_reset": 160,
+      "H2_hidden_representation_timescales": 96,
+      "H3_distractor_state_preservation": 96,
+      "H4_readout_associative_memory": 80,
+      "H5_continual_learning_cascade": 80
+    },
+    "effective_model_signatures": 412,
+    "effective_model_plus_evaluation_signatures": 464,
+    "duplicate_effective_evaluation_groups": [
+      [
+        "H1-005",
+        "H2-062"
+      ],
+      [
+        "H1-006",
+        "H2-030"
+      ],
+      [
+        "H1-007",
+        "H2-078"
+      ],
+      [
+        "H1-008",
+        "H2-046"
+      ],
+      [
+        "H2-001",
+        "H2-002",
+        "H2-003",
+        "H2-004"
+      ],
+      [
+        "H2-017",
+        "H2-018",
+        "H2-019",
+        "H2-020"
+      ],
+      [
+        "H2-033",
+        "H2-034",
+        "H2-035",
+        "H2-036"
+      ],
+      [
+        "H2-049",
+        "H2-050",
+        "H2-051",
+        "H2-052"
+      ],
+      [
+        "H2-065",
+        "H2-066",
+        "H2-067",
+        "H2-068"
+      ],
+      [
+        "H2-081",
+        "H2-082",
+        "H2-083",
+        "H2-084"
+      ],
+      [
+        "H4-004",
+        "H4-005",
+        "H4-006"
+      ],
+      [
+        "H4-010",
+        "H4-011",
+        "H4-012"
+      ],
+      [
+        "H4-016",
+        "H4-017",
+        "H4-018"
+      ],
+      [
+        "H4-022",
+        "H4-023",
+        "H4-024"
+      ],
+      [
+        "H4-028",
+        "H4-029",
+        "H4-030"
+      ],
+      [
+        "H4-034",
+        "H4-035",
+        "H4-036"
+      ],
+      [
+        "H4-040",
+        "H4-041",
+        "H4-042"
+      ],
+      [
+        "H4-046",
+        "H4-047",
+        "H4-048"
+      ],
+      [
+        "H4-052",
+        "H4-053",
+        "H4-054"
+      ],
+      [
+        "H4-058",
+        "H4-059",
+        "H4-060"
+      ],
+      [
+        "H4-064",
+        "H4-065",
+        "H4-066"
+      ],
+      [
+        "H4-070",
+        "H4-071",
+        "H4-072"
+      ],
+      [
+        "H4-076",
+        "H4-077",
+        "H4-078"
+      ]
+    ],
+    "h4_coverage": [
+      {
+        "readout": "context_gated",
+        "n_keys": 2,
+        "configs": 12
+      },
+      {
+        "readout": "context_gated",
+        "n_keys": 4,
+        "configs": 12
+      },
+      {
+        "readout": "context_gated",
+        "n_keys": 8,
+        "configs": 8
+      },
+      {
+        "readout": "standard_linear",
+        "n_keys": 2,
+        "configs": 12
+      },
+      {
+        "readout": "standard_linear",
+        "n_keys": 4,
+        "configs": 12
+      },
+      {
+        "readout": "standard_linear",
+        "n_keys": 8,
+        "configs": 12
+      },
+      {
+        "readout": "standard_linear",
+        "n_keys": 16,
+        "configs": 12
+      }
+    ],
+    "stage_b_actual_screen_function_calls": 1536,
+    "run_count_scope": "screen_*calls from source branch flow, not an asserted complete physical run ledger"
+  },
+  "screening": {
+    "rows": 512,
+    "composite_mismatches": [],
+    "all_status_complete": true,
+    "recorded_runtime_sum_seconds": 1221.418439200008,
+    "max_sampled_record_rss_mb": 43.8515625
+  },
+  "bh_fdr_function_actual_calls_in_runner": 0,
+  "screen_cache_byte_identical_after_factory_and_prediction_fix": true,
+  "old_confirmation_candidates": [
+    "H4-049",
+    "H4-050"
+  ],
+  "new_confirmation_candidates": [
+    "H5-070",
+    "H2-012"
+  ],
+  "old_locked_bank": [
+    191001,
+    191007,
+    191013,
+    191019,
+    191025,
+    191031,
+    191037,
+    191043,
+    191049,
+    191055
+  ],
+  "new_locked_bank": [
+    191001,
+    191007,
+    191013,
+    191019,
+    191025,
+    191031,
+    191037,
+    191043,
+    191049,
+    191055
+  ],
+  "same_locked_bank_in_old_and_new_runner": true,
+  "overlap_with_running_codex_12seed_bank": [],
+  "author_final_summary": {
+    "campaign": "SCAR-X Round 9",
+    "date": "2026-11-12",
+    "total_unique_configs": 512,
+    "screened_configs": 512,
+    "top16_candidates": [
+      "H4-049",
+      "H4-050",
+      "H4-051",
+      "H1-022",
+      "H1-086",
+      "H1-085",
+      "H1-090",
+      "H2-087",
+      "H2-027",
+      "H2-012",
+      "H3-050",
+      "H3-030",
+      "H3-058",
+      "H5-078",
+      "H5-070",
+      "H5-077"
+    ],
+    "top5_candidates": [
+      "H1-090",
+      "H2-012",
+      "H5-070",
+      "H4-049",
+      "H4-050"
+    ],
+    "confirmed_candidates": [
+      "H5-070",
+      "H2-012"
+    ],
+    "total_wall_clock_seconds": 332.7552119000011,
+    "peak_ram_mb": 41.98828125,
+    "final_verdicts": {
+      "H5-070": "GATE_FAIL",
+      "H2-012": "GATE_FAIL"
+    }
+  },
+  "confirmation_summaries": {
+    "H5-070": {
+      "tasks": {
+        "strict_binding": {
+          "direct": 0.562890625,
+          "gain": 0.0171875,
+          "gain_lower95": -0.010713798356011526,
+          "gain_arithmetic_matches": true
+        },
+        "distractor_binding": {
+          "direct": 0.5140625,
+          "gain": -0.0080078125,
+          "gain_lower95": -0.032601171875,
+          "gain_arithmetic_matches": true
+        },
+        "xor": {
+          "direct": 0.69140625,
+          "gain": 0.01171875,
+          "gain_lower95": -0.04883590086157129,
+          "gain_arithmetic_matches": true
+        },
+        "order": {
+          "direct": 0.8703125,
+          "gain": 0.01953125,
+          "gain_lower95": 0.005177572390652425,
+          "gain_arithmetic_matches": true
+        }
+      },
+      "continual": {
+        "acquisition_mean": 0.7106770833333333,
+        "final_mean": 0.5291666666666666,
+        "mean_forgetting": 0.18151041666666665,
+        "mean_forgetting_ci95": [
+          0.1621060942790632,
+          0.2009147390542701
+        ],
+        "worst_forgetting": 0.48046875,
+        "per_seed_worst_forgettings": [
+          0.4375,
+          0.359375,
+          0.3359375,
+          0.33203125,
+          0.3828125,
+          0.44921875,
+          0.41015625,
+          0.48046875,
+          0.3203125,
+          0.30859375
+        ]
+      },
+      "gate_verdict": "GATE_FAIL",
+      "worst_equals_per_seed_max": true
+    },
+    "H2-012": {
+      "tasks": {
+        "strict_binding": {
+          "direct": 0.7474609375,
+          "gain": 0.164453125,
+          "gain_lower95": 0.11415463755399952,
+          "gain_arithmetic_matches": true
+        },
+        "distractor_binding": {
+          "direct": 0.5896484375,
+          "gain": 0.075,
+          "gain_lower95": 0.029915548273539073,
+          "gain_arithmetic_matches": true
+        },
+        "xor": {
+          "direct": 0.6673828125,
+          "gain": -0.0568359375,
+          "gain_lower95": -0.0959845034301332,
+          "gain_arithmetic_matches": true
+        },
+        "order": {
+          "direct": 0.9458984375,
+          "gain": 0.039453125,
+          "gain_lower95": 0.011872353161276435,
+          "gain_arithmetic_matches": true
+        }
+      },
+      "continual": {
+        "acquisition_mean": 0.7089843750000001,
+        "final_mean": 0.565234375,
+        "mean_forgetting": 0.14609375,
+        "mean_forgetting_ci95": [
+          0.12072755779721778,
+          0.1714599422027822
+        ],
+        "worst_forgetting": 0.42578125,
+        "per_seed_worst_forgettings": [
+          0.36328125,
+          0.42578125,
+          0.32421875,
+          0.27734375,
+          0.36328125,
+          0.20703125,
+          0.37890625,
+          0.25,
+          0.40625,
+          0.375
+        ]
+      },
+      "gate_verdict": "GATE_FAIL",
+      "worst_equals_per_seed_max": true
+    }
+  },
+  "new_quality_or_confirmation_runs": 0,
+  "counterexamples": {
+    "peer_sha": "2c41fdaf6fc491845879d638ac80449caf597471",
+    "new_learning_calls": 0,
+    "hard_reset_vs_subtractive": {
+      "forward_voltage_max_difference": 0.0,
+      "eligibility_max_difference": 2.521394729614258,
+      "interpretation": "Different eligibility recurrences over the same subtractive ALIF forward; not a hard-reset neuron trial"
+    },
+    "uniform_mid_actual": 0.5849999785423279,
+    "bipolar_query_context_trace": {
+      "all4query_bits_flipped": true,
+      "context_trace_identical": true,
+      "scope": "Absolute-value raw context trace loses query polarity; hidden features may still differ, so not an impossibility theorem"
+    },
+    "rng_state_preserved": false,
+    "missing_momentum_state_accepted_and_reset": true
+  },
+  "engineering_evidence_run": "20261112T062349Z-gemini-r9-independent-review-v1-40df26",
+  "engineering_reexecuted": false,
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r9_unified_mechanisms.py",
+        "tests/test_r9_suite.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T062349Z-gemini-r9-independent-review-v1-40df26\\peer-unit-tests.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r9-2c41fda",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 2.5886276999990514,
+      "resources": {
+        "peak_rss_bytes": 179650560,
+        "peak_commit_or_vms_bytes": 176676864,
+        "os_process_peak_working_set_bytes": 49516544,
+        "os_process_peak_pagefile_commit_bytes": 37027840,
+        "samples": 29,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.5881988000001,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "peer-unit-tests.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\scripts\\r9_engineering_review_worker.py",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r9-2c41fda",
+        "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T062349Z-gemini-r9-independent-review-v1-40df26\\counterexamples.json"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\review-gemini-r9-2c41fda",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 0.5482652999999118,
+      "resources": {
+        "peak_rss_bytes": 88674304,
+        "peak_commit_or_vms_bytes": 56619008,
+        "os_process_peak_working_set_bytes": 49516544,
+        "os_process_peak_pagefile_commit_bytes": 37027840,
+        "samples": 7,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 0.5473143999988679,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "counterexamples.log"
+    },
+    {
+      "command": [
+        "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_r9_review.py",
+        "--junitxml=C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111\\runs\\20261112T062349Z-gemini-r9-independent-review-v1-40df26\\audit-unit-tests.xml"
+      ],
+      "cwd": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-forensic-r6-20261111",
+      "exit_code": 0,
+      "error": null,
+      "seconds": 2.6061693000010564,
+      "resources": {
+        "peak_rss_bytes": 174616576,
+        "peak_commit_or_vms_bytes": 140193792,
+        "os_process_peak_working_set_bytes": 49516544,
+        "os_process_peak_pagefile_commit_bytes": 37027840,
+        "samples": 27,
+        "interval_seconds": 0.1,
+        "limit_bytes": 2000000000,
+        "observed_over_limit": false,
+        "elapsed_seconds": 2.6058120999987295,
+        "hard_cap_enforced": false,
+        "igpu_measured": false,
+        "energy_joules": null,
+        "note": "Tree sums may double-count shared pages; Windows pagefile is commit, not bytes swapped. No iGPU allocated."
+      },
+      "log": "audit-unit-tests.log"
+    }
+  ],
+  "engineering_checks_passed": true,
+  "decision": "REQUEST_CHANGES_NO_MAIN_PROMOTION"
+}

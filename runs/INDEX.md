@@ -179,3 +179,5 @@
 - [20261111T170938Z-output-codec-p0-v1-e3f834](20261111T170938Z-output-codec-p0-v1-e3f834/report.md) — output-codec-p0-v1
 - [20261111T171706Z-output-codec-p0-v1-ecc876](20261111T171706Z-output-codec-p0-v1-ecc876/report.md) — output-codec-p0-v1
 - [20261111T171709Z-output-codec-p0-regression-v1-baa310](20261111T171709Z-output-codec-p0-regression-v1-baa310/report.md) — output-codec-p0-regression-v1
+- [20261112T062349Z-gemini-r9-independent-review-v1-40df26](20261112T062349Z-gemini-r9-independent-review-v1-40df26/report.md) — gemini-r9-independent-review-v1
+- [20261112T062822Z-gemini-r9-independent-review-v1-9453bf](20261112T062822Z-gemini-r9-independent-review-v1-9453bf/report.md) — gemini-r9-independent-review-v1
