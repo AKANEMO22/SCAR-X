@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-12",
+  "scope": "Source/license audit only; no upstream framework quality benchmark; no main/Hermes/live changes",
+  "ponytail": "Unavailable in tool inventory",
+  "entries": [
+    {
+      "name": "eligibility_propagation",
+      "url": "https://github.com/IGITUGraz/eligibility_propagation",
+      "commit": "efd02e6879c01cda3fa9a7838e8e2fd08163c16e",
+      "tracked_clean": true,
+      "external_local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\references\\eligibility_propagation",
+      "license_assessment": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "license_sha256": "de49241c88fb2e91333728c588d95f9da07b2c52ac016aa629aa5756f785ae94",
+      "license_copy": "eligibility_propagation-LICENSE.txt",
+      "source_sha256": {
+        "Figure_3_and_S7_e_prop_tutorials/models.py": "53360882ef676442fac80311d0a48769cfa1e979ff68bb87e2f095dcb90a3c3b",
+        "numerical_verification_eprop_hardcoded_vs_autodiff.py": "8a5b62a6dc08a8d0e2e022c8174f0fe7833068013835c3adea81fa29d47f6844",
+        "numerical_verification_eprop_factorization_vs_BPTT.py": "17c459b781c701de123b80328281685b686ed55a822629db4e279258602e1d7b"
+      },
+      "source_code_copied_into_product": false
+    },
+    {
+      "name": "braintrace",
+      "url": "https://github.com/chaobrain/braintrace",
+      "commit": "fafa25753b743a2e2d5b47209c4ee947abc02cfb",
+      "tracked_clean": true,
+      "external_local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\references\\braintrace",
+      "license_assessment": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_sha256": "147888ad8f6d4fc8447d0913f68d2775590566be9f31012874cc2c57445a45b6",
+      "license_copy": "braintrace-LICENSE.txt",
+      "source_sha256": {
+        "braintrace/_algorithm/d_rtrl.py": "9c8ff191a3a1f4f2ddd3213d3dbfe3614bf30445338b3e78fac3a83772c46f4a",
+        "braintrace/_algorithm/d_rtrl_test.py": "804c6a872db7b098b4f23ae12fc7599062c3a1bc06bcc3f7e4efc6af8137edbe"
+      },
+      "source_code_copied_into_product": false
+    },
+    {
+      "name": "pathint",
+      "url": "https://github.com/ganguli-lab/pathint",
+      "commit": "86c5e07c5603d6a44c2f53585c19ee70773ef15c",
+      "tracked_clean": true,
+      "external_local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\references\\pathint",
+      "license_assessment": "MIT",
+      "license_file": "LICENSE",
+      "license_sha256": "9910dbde3a1f2cb8b6928ab647151b3eb8682ed0387b5ec75e514afaecd323b7",
+      "license_copy": "pathint-LICENSE.txt",
+      "source_sha256": {
+        "pathint/protocols.py": "1c9aa76c511ec0d6e93f0bda3f5d933add262e17e30714900eb0aa974c94f18d",
+        "pathint/optimizers.py": "c4b724a9551b375242037ba3a838d4dd182d6b3741e5ed657622fab89b730571",
+        "pathint/utils.py": "c0706c159e65c908a1071b7a0de5aa682021c324e683cdcc1b559c8c63010a31"
+      },
+      "source_code_copied_into_product": false
+    },
+    {
+      "name": "continual-learning-baselines",
+      "url": "https://github.com/ContinualAI/continual-learning-baselines",
+      "commit": "4900462fa58d7e0ab03cec7c6c0d9918b553095a",
+      "tracked_clean": true,
+      "external_local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\references\\continual-learning-baselines",
+      "license_assessment": "MIT wrapper only; Avalanche implementation not separately pinned",
+      "license_file": "LICENSE",
+      "license_sha256": "8085bc8d7db290f635c78e82d2bda772492a881bb7f83e399682b6ca5e81afcf",
+      "license_copy": "continual-learning-baselines-LICENSE.txt",
+      "source_sha256": {
+        "experiments/permuted_mnist/ewc.py": "1774d391b96e1cedca7cbd4c1a15b15c75d565f39240ea72b0976c7fe0f1f6e1",
+        "tests/ewc/experiment.py": "80be27796b23fbd7fd3b995456e21b72c68bf0695bd64d3e301e72de6b0a5c7e"
+      },
+      "source_code_copied_into_product": false
+    },
+    {
+      "name": "decolle-public",
+      "url": "https://github.com/nmi-lab/decolle-public",
+      "commit": "7d72cb105891fe71a4d6a8b7f9c8e95303219078",
+      "tracked_clean": true,
+      "external_local_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\references\\decolle-public",
+      "license_assessment": "Non-commercial commercial-reservation terms plus BSD text; stale GPLv3 README/setup",
+      "license_file": "LICENSE.txt",
+      "license_sha256": "1def8d39c3c3a81b8ae37b02d01eb7ddf38595de2d03879dec0accd51e5865cf",
+      "license_copy": "decolle-public-LICENSE.txt",
+      "source_sha256": {
+        "README.md": "833910d9393c614c10d3874ce5e05cea4fe32265557284c67a98e7b334d27f62",
+        "setup.py": "b8a9fa7c4bfc045b33db398fe7c297842c1a8b31d3926c0bee743266eb28cbb9",
+        "decolle/base_model.py": "3c4c53a806b181429968c80e985b49f0a0c16ea9be363d735bd0c7b55502e3f6",
+        "decolle/lenet_decolle_model.py": "d68b23b3b072d29a62078b81fe08b23472ff104b499f96714d4e3ba23ca6b6d2",
+        "decolle/utils.py": "a56933c85020f03e5d674df3e14376704864b0720d2effea5342b5cbee2a0e00"
+      },
+      "source_code_copied_into_product": false
+    },
+    {
+      "name": "DGN",
+      "paper_url": "https://arxiv.org/html/2509.03281v1",
+      "venue_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc92064236f06645e0b5ec5a8a16565d-Abstract-Conference.html",
+      "paper_version": "arXiv2509.03281v1; ICLR2026venuechecked",
+      "official_code_repository": null,
+      "commit": null,
+      "license_assessment": "Official code not located/verified in examined primary sources; paper access is not a code license",
+      "source_code_copied_into_product": false
+    }
+  ]
+}

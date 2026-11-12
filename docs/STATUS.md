@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## Literature-first P0 — reference sẵn sàng kiểm DEV
+
+97targettests qua, gồm native parity, actual upstream e-prop trace AST,
+coldresume/rollback và độc lập fullsurrogate oracle. Hai adapter e-prop và
+BrainTrace D-RTRL giữ forwardALIF, source readout/optimizer; chưa paperperformance
+reproduction. [Protocol](../experiments/literature-reference-dev-v1.md),
+[e-prop](research/literature/eprop.md), [BrainTrace](research/literature/braintrace.md).
+21frozenfixture directionrows có evidence, không accuracy/retentionclaim.
+ACR run cũ bị gián đoạn ngoài tiến trình sau55reportedjobs; giữraw, không rerun
+confirmation. Main/Hermes/live không thay. Mọi qualitystatus chờ DEV/audit.
+
 ## ACR P0 — mở DEV có giới hạn, chưa kết luận chất lượng
 
 [P0](research/ACR_P0_20261112.md), [protocol](../experiments/acr-dev-v1.md).
