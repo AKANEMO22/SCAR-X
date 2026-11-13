@@ -5,7 +5,7 @@ import os
 import threading
 import time
 import psutil
-from .gpu_memory import SharedGPU
+from .gpu_memory import SharedGPU, DedicatedGPU
 from .config import MAX_RAM_BYTES
 
 
@@ -20,8 +20,11 @@ class ResourceMonitor:
         self.peak_rss = 0
         self.peak_commit = 0
         self.exceeded = False
+        self.first_exceed = None
         self.last = {}
         self.gpu = SharedGPU()
+        self.dedicated_gpu = DedicatedGPU()
+        self.peak_dedicated_gpu = 0
         self.peak_ram = 0
         self.stop_event = threading.Event()
         self.thread = None
@@ -79,24 +82,37 @@ class ResourceMonitor:
         self.peak_rss = max(self.peak_rss, rss)
         self.peak_commit = max(self.peak_commit, commit)
         gpu = self.gpu.sample(processes)
+        dedicated = self.dedicated_gpu.sample(processes)
+        self.peak_dedicated_gpu = max(self.peak_dedicated_gpu, dedicated["bytes"])
         conservative_ram = rss + gpu["bytes"]
         self.peak_ram = max(self.peak_ram, conservative_ram)
-        self.exceeded |= max(conservative_ram, commit) > self.limit
+        self.exceeded |= (
+            self.limit is not None and max(conservative_ram, commit) > self.limit
+        )
         self.last = {
             "rss_bytes": rss,
             "private_commit_bytes": commit,
             "peak_rss_bytes": self.peak_rss,
             "peak_private_commit_bytes": self.peak_commit,
             "limit_bytes": self.limit,
+            "memory_limit_enforced": self.limit is not None,
             "exceeded": self.exceeded,
             "processes": details,
             "included_client_pids": sorted(self.extra_pids),
             "gpu_shared": gpu,
+            "gpu_dedicated": dedicated,
+            "peak_gpu_dedicated_bytes": self.peak_dedicated_gpu,
             "conservative_ram_bytes": conservative_ram,
             "peak_conservative_ram_bytes": self.peak_ram,
-            "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+            "accounting": "RSS + shared GPU and private commit reported; gated only when limit_bytes is set. Dedicated VRAM separate; native precision unchanged",
             "sampling_seconds": 0.05,
         }
+        if (
+            self.limit is not None
+            and max(conservative_ram, commit) > self.limit
+            and self.first_exceed is None
+        ):
+            self.first_exceed = dict(self.last)
         return self.last
 
     def start(self):
@@ -131,6 +147,7 @@ class ResourceMonitor:
             self.thread.join(timeout=1)
         result = self.sample()
         self.gpu.close()
+        self.dedicated_gpu.close()
         return result
 
 
@@ -193,8 +210,8 @@ def windows_tree_commit_limit(limit=MAX_RAM_BYTES):
     kernel.GetCurrentProcess.restype = w.HANDLE
     handle = kernel.CreateJobObjectW(None, None)
     info = Extended()
-    info.basic.flags = 0x200 | 0x2000
-    info.job_memory = limit
+    info.basic.flags = (0x200 if limit is not None else 0) | 0x2000
+    info.job_memory = limit or 0
     good = bool(
         handle
         and kernel.SetInformationJobObject(
@@ -212,6 +229,11 @@ def windows_tree_commit_limit(limit=MAX_RAM_BYTES):
     _JOB_HANDLE = handle
     return {
         "enforced": True,
-        "kind": "Windows aggregate job private commit; owned children killed if gateway exits; RSS sampled separately",
+        "kind": (
+            "Windows aggregate job private commit; owned children killed if gateway exits; RSS sampled separately"
+            if limit is not None
+            else "Windows lifecycle job; no memory cap; owned children killed if gateway exits"
+        ),
         "limit_bytes": limit,
+        "memory_limit_enforced": limit is not None,
     }

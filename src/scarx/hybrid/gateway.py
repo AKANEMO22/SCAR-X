@@ -12,7 +12,7 @@ import time
 from urllib.parse import parse_qs, urlparse
 import uuid
 from .backends import NativeBackends
-from .config import HybridConfig
+from .config import HybridConfig, load_runtime_config
 from .engine import HybridEngine
 from .media import VideoMemory
 from .qualification import native_parity, verify_native_storage
@@ -23,21 +23,27 @@ from .ownership import OwnerLock
 from .screen import ScreenMemory, window_sources
 from .video_context import VideoContext
 from .temporal import temporal_direction
+from .search_service import SearchService
 
 
 class Gateway:
     def __init__(self, directory, port=8775):
         self.directory = Path(directory).resolve()
-        self.config = HybridConfig()
+        self.config = load_runtime_config(self.directory)
         self.port = port
         self.ownership = OwnerLock(self.directory)
         self.store = Store(self.directory)
         self.token = secrets.token_urlsafe(32)
         self.monitor = ResourceMonitor(
-            self.config.ram_limit, include_hermes=True
+            self.config.effective_ram_limit, include_hermes=True
         ).start()
-        self.job = windows_tree_commit_limit(self.config.ram_limit)
-        self.backend = NativeBackends(self.directory, self.store, self.monitor)
+        self.job = windows_tree_commit_limit(self.config.effective_ram_limit)
+        self.backend = NativeBackends(
+            self.directory, self.store, self.monitor, self.config
+        )
+        self.search_service = SearchService(
+            self.store, self.monitor, self.config.searxng_enabled
+        )
         self.work_trace = WorkTrace(self.store)
         self.work_trace.start()
         self.engine = HybridEngine(self.store, self.backend, self.monitor, self.config)
@@ -59,10 +65,11 @@ class Gateway:
             self.engine.stop_event.set()
             self.video.stop_event.set()
             self.backend.close()
+            self.search_service.close()
             self.screen.close()
             self.store.event(
                 "resource_guard_stopped_workers",
-                {"resources": self.monitor.last},
+                {"resources": self.monitor.first_exceed or self.monitor.last},
                 "runtime",
             )
 
@@ -81,6 +88,7 @@ class Gateway:
             integrity = verify_native_storage(self.directory)
             self.store.event("native_storage_verified", integrity, "runtime")
             self.backend.start()
+            self.search_service.start()
             parity = native_parity(self.backend, self.directory)
             receipt = {
                 "status": "NATIVE_PARITY_PASS",
@@ -111,6 +119,7 @@ class Gateway:
                 "runtime", "status", {"phase": "P0 blocked", "note": str(exc)}
             )
             self.backend.close()
+            self.search_service.close()
 
     def status(self, after=0):
         return self.engine.status() | {
@@ -739,6 +748,7 @@ class Gateway:
         self.video.stop_event.set()
         # Abort native inference before joining capture/controller threads.
         self.backend.close()
+        self.search_service.close()
         self.screen.close()
         self.video.close()
         self.engine.close()
@@ -839,7 +849,8 @@ def serve(directory, port=8775):
                             "local_synaptic_learning": True,
                             "proactive_questions": True,
                             "policy_qualified": False,
-                            "ram_limit_bytes": gateway.config.ram_limit,
+                            "ram_limit_bytes": gateway.config.effective_ram_limit,
+                            "execution_mode": gateway.config.execution_mode,
                         }
                     )
                 if parsed.path == "/v1/learning/feed":

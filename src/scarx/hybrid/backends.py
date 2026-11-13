@@ -4,6 +4,7 @@ import base64
 import hashlib
 import json
 import secrets
+import os
 import socket
 from pathlib import Path
 import subprocess
@@ -11,13 +12,15 @@ import threading
 import time
 from urllib.request import Request, urlopen
 from .store import encode
+from .config import HybridConfig
 
 
 class NativeBackends:
-    def __init__(self, directory, store, monitor):
+    def __init__(self, directory, store, monitor, config=None):
         self.directory = Path(directory)
         self.store = store
         self.monitor = monitor
+        self.config = config or HybridConfig()
         self.vlm = None
         self.asr = None
         self.lock = threading.RLock()
@@ -68,7 +71,7 @@ class NativeBackends:
         projected = (
             report.get("conservative_ram_bytes", report["rss_bytes"]) + 600_000_000
         )
-        if projected <= self.monitor.limit:
+        if self.monitor.limit is None or projected <= self.monitor.limit:
             return
         if self.vlm and self.vlm.poll() is None:
             self.vlm.terminate()
@@ -110,7 +113,12 @@ class NativeBackends:
 
     def start(self):
         native = self.directory / "models/native"
-        llama = self.directory / "runtime/llama.cpp-b12360/llama-server.exe"
+        runtime = (
+            "llama.cpp-b12360-cuda12.4"
+            if self.config.execution_mode == "gpu"
+            else "llama.cpp-b12360"
+        )
+        llama = self.directory / "runtime" / runtime / "llama-server.exe"
         whisper = self.directory / "runtime/whisper.cpp-b5454/Release/whisper-cli.exe"
         for path in (
             llama,
@@ -128,8 +136,12 @@ class NativeBackends:
                         "Native worker port is occupied; refusing to load a second model: "
                         + str(port)
                     )
-        # One bounded slot, no GPU or unbounded prefix cache. KV uses the
-        # checkpoint's native BF16 compute type; stored BF16/F32 weights unchanged.
+        # Modes change execution placement, never stored BF16/F32 model tensors.
+        placement = (
+            ["--device", "CUDA" + str(self.config.gpu_device)]
+            if self.config.execution_mode == "gpu"
+            else ["--no-mmproj-offload"]
+        )
         self.vlm = self._spawn(
             [
                 str(llama),
@@ -137,25 +149,26 @@ class NativeBackends:
                 str(native / "qwen-native-bf16.gguf"),
                 "--mmproj",
                 str(native / "qwen-vision-native-bf16.gguf"),
-                "--no-mmproj-offload",
+                *placement,
                 "--host",
                 "127.0.0.1",
                 "--port",
                 "18776",
                 "-ngl",
-                "0",
+                "99" if self.config.execution_mode == "gpu" else "0",
                 "-t",
                 "4",
                 "-tb",
                 "4",
                 "-c",
-                "16384",
+                str(self.config.context_tokens),
                 "-np",
                 "1",
                 "-b",
                 "128",
                 "-ub",
                 "64",
+                "--no-warmup",
                 "--cache-ram",
                 "0",
                 "--cache-type-k",
@@ -165,6 +178,8 @@ class NativeBackends:
                 "--jinja",
                 "--reasoning-budget",
                 "0",
+                "--fit",
+                "off",
                 "--alias",
                 "scarx-hybrid",
                 "--api-key",

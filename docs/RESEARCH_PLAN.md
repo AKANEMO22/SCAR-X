@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Phê duyệt GPU mới nhất13/11:** nhánhHybrid có2executionmodeCPU/GPU. CPU vẫn
+4,5GB; người dùng đã bỏ capRAM/privatecommit củaSCAR-X choGPUmode. ĐoVRAM riêng,
+không đổi precision/ALIF/context16K và không rewriteFAIL4,5GB trước đó. Đã chuyển
+sangRTX4050, SearXNGnativeWindows khôngDocker/WSL và đo18requestCPU/GPU.
+[Cấu hình, số đo và giới hạn](hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
+
 **Phê duyệt mới nhất13/11:** trần vận hành nhánhHybrid **4.500.000.000byte**,
 soft idle4.250.000.000byte; context mặc định16.384token giữ nguyên. Đây là ngân
 sách cho lượt mới, không sửa kết quả/gates4GB của benchmarkcontext đã hoàn tất.

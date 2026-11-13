@@ -1,0 +1,65 @@
+{
+  "integrity": "RAW_LABEL_SPLIT_METRIC_PASS",
+  "training_run_decision": "NOT_QUALIFIED_UNCHANGED",
+  "rows": 1072,
+  "predictions": 2304,
+  "groups_disjoint": true,
+  "scores": [
+    {
+      "file": "270113-frozen.predictions.json",
+      "correct": 59,
+      "balanced_accuracy": 0.14460784313725492,
+      "unsafe_count": 0
+    },
+    {
+      "file": "270113-learned.predictions.json",
+      "correct": 223,
+      "balanced_accuracy": 0.8970588235294118,
+      "unsafe_count": 23
+    },
+    {
+      "file": "270113-readout_only.predictions.json",
+      "correct": 184,
+      "balanced_accuracy": 0.751736111111111,
+      "unsafe_count": 28
+    },
+    {
+      "file": "270127-frozen.predictions.json",
+      "correct": 17,
+      "balanced_accuracy": 0.08854166666666667,
+      "unsafe_count": 105
+    },
+    {
+      "file": "270127-learned.predictions.json",
+      "correct": 214,
+      "balanced_accuracy": 0.8349673202614379,
+      "unsafe_count": 21
+    },
+    {
+      "file": "270127-readout_only.predictions.json",
+      "correct": 183,
+      "balanced_accuracy": 0.7161968954248366,
+      "unsafe_count": 28
+    },
+    {
+      "file": "270131-frozen.predictions.json",
+      "correct": 25,
+      "balanced_accuracy": 0.0778186274509804,
+      "unsafe_count": 0
+    },
+    {
+      "file": "270131-learned.predictions.json",
+      "correct": 203,
+      "balanced_accuracy": 0.8121936274509803,
+      "unsafe_count": 13
+    },
+    {
+      "file": "270131-readout_only.predictions.json",
+      "correct": 184,
+      "balanced_accuracy": 0.732843137254902,
+      "unsafe_count": 19
+    }
+  ],
+  "counterfactual_note": "V1 substring -0- selects variant0 plus other variants from source index0; extra48cases, total1072locked before training. Do not call this a corrected fresh test.",
+  "semantic_split_limit": "lexical duplicate grouping only, not independently verified semantic OOD"
+}

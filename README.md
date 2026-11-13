@@ -4,7 +4,9 @@
 của **chat Hermes bình thường**. Video dùng menu đính kèm sẵn có; xem màn hình
 qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local tại
 [localhost8775](http://127.0.0.1:8775), Qwen nguyên precision + ALIF local learner,
-trần toàn hệ4,5GB theo phê duyệt mới nhất; context16K giữ nguyên sau benchmark.
+CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
+SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
+Context16K giữ nguyên sau benchmark.
 Đây là bản thử nghiệm, chưa đạt quality/lifelong gates.
 [Cài/chạy/bảo trì](docs/hybrid/README.md), [kết quả và giới hạn](docs/research/HYBRID_IMPLEMENTATION_20261113.md).
 Các mục bên dưới tiếp tục mô tả sản phẩm SNN-only gốc, được giữ nguyên.

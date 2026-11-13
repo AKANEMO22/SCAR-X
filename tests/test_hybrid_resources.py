@@ -49,6 +49,19 @@ def test_private_commit_still_gated_when_rss_is_low(monkeypatch):
     m.close()
 
 
+def test_explicit_unlimited_still_measures_and_never_fakes_a_lower_peak(monkeypatch):
+    m = monitor(monkeypatch, 8_000_000_000, 9_000_000_000, 100_000_000)
+    m.limit = None
+    try:
+        result = m.check()
+        assert result["limit_bytes"] is None and not result["memory_limit_enforced"]
+        assert result["conservative_ram_bytes"] == 8_100_000_000
+        assert result["private_commit_bytes"] == 9_000_000_000
+        assert not result["exceeded"] and m.first_exceed is None
+    finally:
+        m.close()
+
+
 def test_async_breach_still_notifies_worker_shutdown(monkeypatch):
     m = monitor(monkeypatch, MAX_RAM_BYTES + 1, 100)
     called = threading.Event()

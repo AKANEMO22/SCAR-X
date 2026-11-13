@@ -56,10 +56,20 @@ def main():
             from tools.registry import registry as _scarx_registry
             _raw = dict(_raw) if isinstance(_raw, dict) else {}
             _raw.update(enabled="on", listing="off", listing_max_tokens=200,
-                        defer=[entry.name for entry in _scarx_registry.get_all_entries()])
+                        defer=[entry.name for entry in _scarx_registry.get_all_entries()
+                               if entry.name not in ("web_search", "web_extract")])
         return ToolSearchConfig.from_raw(_raw)"""
+    search_previous = search_new.replace(
+        "defer=[entry.name for entry in _scarx_registry.get_all_entries()\n"
+        '                               if entry.name not in ("web_search", "web_extract")]',
+        "defer=[entry.name for entry in _scarx_registry.get_all_entries()]",
+    )
     if search_new in search_text:
         search_updated = search_original
+    elif search_text.count(search_previous) == 1:
+        search_updated = search_text.replace(search_previous, search_new, 1).encode(
+            "utf-8"
+        )
     elif search_text.count(search_old) == 1:
         search_updated = search_text.replace(search_old, search_new, 1).encode("utf-8")
     else:
@@ -151,7 +161,7 @@ def main():
         "normal_agent_features_retained": True,
         "original_source_sha256": hashlib.sha256(original).hexdigest(),
         "patched_source_sha256": hashlib.sha256(updated).hexdigest(),
-        "tool_disclosure": "existing Hermes bridge, all enabled tool names remain discoverable",
+        "tool_disclosure": "web_search/web_extract eager for SCAR-X; existing bridge retains every other enabled tool",
         "tool_search_before": hashlib.sha256(search_original).hexdigest(),
         "tool_search_after": hashlib.sha256(search_updated).hexdigest(),
     }

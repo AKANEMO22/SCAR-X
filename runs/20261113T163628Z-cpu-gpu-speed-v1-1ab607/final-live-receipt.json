@@ -1,0 +1,183 @@
+{
+  "recorded_epoch": 1794589351.613677,
+  "ready": true,
+  "runtime_pid": 39816,
+  "config": {
+    "ram_limit": 4500000000,
+    "soft_ram_limit": 4250000000,
+    "execution_mode": "gpu",
+    "gpu_device": 0,
+    "searxng_enabled": true,
+    "hidden": 128,
+    "seed": 260113,
+    "search_per_hour": 12,
+    "conversations_per_hour": 3,
+    "max_attempts": 2,
+    "idle_cpu_fraction": 0.1,
+    "presence_seconds": 600,
+    "review_quiet_seconds": 30,
+    "review_interval_seconds": 60,
+    "archive_bytes": 10000000000,
+    "archive_seconds": 604800,
+    "context_tokens": 16384,
+    "frame_interval": 8.0,
+    "segment_seconds": 10,
+    "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "asr_revision": "e37978b90ca9030d5170a5c07aadb050351a65bb",
+    "effective_ram_limit": null,
+    "effective_soft_ram_limit": null
+  },
+  "resources": {
+    "rss_bytes": 3820064768,
+    "private_commit_bytes": 4762501120,
+    "peak_rss_bytes": 3933110272,
+    "peak_private_commit_bytes": 4938252288,
+    "limit_bytes": null,
+    "memory_limit_enforced": false,
+    "exceeded": false,
+    "processes": [
+      {
+        "pid": 39816,
+        "name": "python.exe",
+        "rss_bytes": 66060288,
+        "private_commit_bytes": 48533504
+      },
+      {
+        "pid": 30476,
+        "name": "llama-server.exe",
+        "rss_bytes": 2197590016,
+        "private_commit_bytes": 3157016576
+      },
+      {
+        "pid": 39740,
+        "name": "python.exe",
+        "rss_bytes": 8507392,
+        "private_commit_bytes": 1654784
+      },
+      {
+        "pid": 27744,
+        "name": "conhost.exe",
+        "rss_bytes": 9617408,
+        "private_commit_bytes": 1847296
+      },
+      {
+        "pid": 20876,
+        "name": "python.exe",
+        "rss_bytes": 69144576,
+        "private_commit_bytes": 54943744
+      },
+      {
+        "pid": 39648,
+        "name": "conhost.exe",
+        "rss_bytes": 9469952,
+        "private_commit_bytes": 1859584
+      },
+      {
+        "pid": 35648,
+        "name": "Hermes.exe",
+        "rss_bytes": 177090560,
+        "private_commit_bytes": 153812992
+      },
+      {
+        "pid": 33460,
+        "name": "Hermes.exe",
+        "rss_bytes": 183697408,
+        "private_commit_bytes": 374288384
+      },
+      {
+        "pid": 34300,
+        "name": "Hermes.exe",
+        "rss_bytes": 56766464,
+        "private_commit_bytes": 13885440
+      },
+      {
+        "pid": 24556,
+        "name": "Hermes.exe",
+        "rss_bytes": 397561856,
+        "private_commit_bytes": 438923264
+      },
+      {
+        "pid": 20472,
+        "name": "conhost.exe",
+        "rss_bytes": 9273344,
+        "private_commit_bytes": 1949696
+      },
+      {
+        "pid": 25680,
+        "name": "powershell.exe",
+        "rss_bytes": 48132096,
+        "private_commit_bytes": 58568704
+      },
+      {
+        "pid": 35784,
+        "name": "Hermes.exe",
+        "rss_bytes": 110477312,
+        "private_commit_bytes": 11280384
+      },
+      {
+        "pid": 29524,
+        "name": "conhost.exe",
+        "rss_bytes": 9408512,
+        "private_commit_bytes": 1949696
+      },
+      {
+        "pid": 27532,
+        "name": "powershell.exe",
+        "rss_bytes": 48136192,
+        "private_commit_bytes": 58515456
+      },
+      {
+        "pid": 39052,
+        "name": "hermes.exe",
+        "rss_bytes": 8032256,
+        "private_commit_bytes": 1609728
+      },
+      {
+        "pid": 26908,
+        "name": "conhost.exe",
+        "rss_bytes": 8556544,
+        "private_commit_bytes": 1814528
+      },
+      {
+        "pid": 36384,
+        "name": "python.exe",
+        "rss_bytes": 402542592,
+        "private_commit_bytes": 380047360
+      }
+    ],
+    "included_client_pids": [
+      35648,
+      39052
+    ],
+    "gpu_shared": {
+      "available": true,
+      "bytes": 98574336,
+      "sampling_seconds": 2,
+      "error": null,
+      "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+    },
+    "gpu_dedicated": {
+      "available": true,
+      "bytes": 2201260032,
+      "sampling_seconds": 2,
+      "error": null,
+      "accounting": "Dedicated GPU allocation, reported separately; never added to host RAM gate"
+    },
+    "peak_gpu_dedicated_bytes": 2201346048,
+    "conservative_ram_bytes": 3918639104,
+    "peak_conservative_ram_bytes": 4031684608,
+    "accounting": "Conservative summed RSS + shared GPU and private commit both gated; dedicated VRAM reported separately; native model precision unchanged",
+    "sampling_seconds": 0.05
+  },
+  "other_credential_values_unchanged": true,
+  "published_event_ids": [
+    2898,
+    2899,
+    2900,
+    2901
+  ],
+  "tests_python": 83,
+  "node_checks": 4,
+  "original_neural_code_changed": false,
+  "LoRA_live": false
+}

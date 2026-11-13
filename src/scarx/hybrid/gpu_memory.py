@@ -7,7 +7,7 @@ import time
 
 
 class SharedGPU:
-    def __init__(self):
+    def __init__(self, counter_name="Shared Usage"):
         self.available = False
         self.error = None
         self.values = {}
@@ -45,7 +45,7 @@ class SharedGPU:
             if (
                 self.pdh.PdhAddEnglishCounterW(
                     self.query,
-                    r"\GPU Process Memory(*)\Shared Usage",
+                    "\\GPU Process Memory(*)\\" + counter_name,
                     0,
                     c.byref(self.counter),
                 )
@@ -114,3 +114,15 @@ class SharedGPU:
             self.pdh.PdhCloseQuery.argtypes = [c.c_void_p]
             self.pdh.PdhCloseQuery(self.query)
             self.available = False
+
+
+class DedicatedGPU(SharedGPU):
+    def __init__(self):
+        super().__init__("Dedicated Usage")
+
+    def sample(self, pids):
+        value = super().sample(pids)
+        value.pop("deduplication", None)
+        return value | {
+            "accounting": "Dedicated GPU allocation, reported separately; never added to host RAM gate"
+        }

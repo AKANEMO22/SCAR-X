@@ -311,9 +311,9 @@ class HybridEngine:
         if not self.state["learning_enabled"]:
             return "learning_paused"
         memory = self.monitor.sample()
-        if (
+        if self.config.effective_soft_ram_limit is not None and (
             memory.get("conservative_ram_bytes", memory["rss_bytes"])
-            > self.config.soft_ram_limit
+            > self.config.effective_soft_ram_limit
         ):
             return "ram_headroom"
         if now - self.state["last_presence"] < self.config.review_quiet_seconds:
@@ -554,7 +554,11 @@ class HybridEngine:
         with self.lock:
             if self.foreground.is_set() or not self.state["learning_enabled"]:
                 return None
-            if self.monitor.sample()["rss_bytes"] > self.config.soft_ram_limit:
+            if (
+                self.config.effective_soft_ram_limit is not None
+                and self.monitor.sample()["rss_bytes"]
+                > self.config.effective_soft_ram_limit
+            ):
                 return None
             goal = next(
                 (g for g in self.state["goals"].values() if g["status"] == "open"), None
@@ -993,10 +997,10 @@ class HybridEngine:
                             },
                             "runtime",
                         )
-                    if (
-                        not self.state["learning_enabled"]
-                        or self.monitor.sample()["rss_bytes"]
-                        > self.config.soft_ram_limit
+                    if not self.state["learning_enabled"] or (
+                        self.config.effective_soft_ram_limit is not None
+                        and self.monitor.sample()["rss_bytes"]
+                        > self.config.effective_soft_ram_limit
                     ):
                         continue
                     if self.step() is None and not self.foreground.is_set():

@@ -1,0 +1,19 @@
+{
+  "scope": "one actual tool-using engineering turn, not a capability benchmark",
+  "prompt": "Hãy dùng web_search tìm nguồn Chính phủ về số thành phố trực thuộc trung ương Việt Nam hiện nay. Nếu cần tìm công cụ, tìm đúng tên web_search. Đọc kết quả rồi trả lời ngắn gọn bằng tiếng Việt, kèm URL nguồn. Không trả lời bằng trí nhớ cũ.",
+  "model": "scarx-hybrid",
+  "provider": "custom:scarx-local",
+  "max_turns": 5,
+  "finished": true,
+  "seconds": 56.21800000000076,
+  "tool_names": [
+    "tool_search",
+    "tool_search",
+    "tool_search",
+    "tool_search",
+    "tool_search"
+  ],
+  "tool_call_count": 5,
+  "classification": "AGENT_TOOL_USE_NOT_QUALIFIED; stale/reused history observed; final answer100 incorrect",
+  "raw_sha256": "b6c3afa477edb387b853752480b6f3bfd3a67e1a3076f889c5d40e128ecfa185"
+}

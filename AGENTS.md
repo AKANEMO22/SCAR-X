@@ -1,5 +1,7 @@
 # SCAR-X working rules
 
+- Latest GPU amendment2026-11-13: user explicitly requested cpu/gpu modes and removed the SCAR-X RAM/private-commit cap for GPU mode only. Keep CPU4.5GB and immutable historical failures. GPU mode records RAM/shared/dedicatedVRAM separately; never hide physical OOM or lower native precision. Use native Windows SearXNG; user rejected Docker. Adapter teaching/data task remains pending behind search/GPU/speed priorities.
+
 - Latest user approval2026-11-13 raises only the hybrid whole-system maximum to4,500,000,000decimalbytes, soft idle threshold4,250,000,000bytes. Context stays16,384 unless separately qualified. The completed context benchmark remains a4GB historical run; do not reinterpret it as a4.5GB PASS or change its frozen protocol/source/results.
 
 - Later on2026-11-13 user explicitly raised only the hybrid whole-system RAM cap to4,000,000,000bytes. New-run resource amendment overrides the3GB line below; historical receipts and scientific thresholds stay unchanged.

@@ -6,6 +6,19 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[DataAntigravity và pilotchọnLoRA](ADAPTER_POLICY_PILOT_20261113.md): đãhọcALIF
+trên syntheticcontract nhưngchưađạtgate, chưabậttựtạo/dùngadapter trongHermes.
+
+**Mới nhất13/11:** đang chạyGPUmodeRTX4050, không đặt trầnRAM/commit choGPU.
+CPUmode vẫn4,5GB. SearXNGnativeWindows được gateway quản lý, khôngDocker/WSL.
+[Fileconfig, chuyểnmode và benchmarkCPU/GPU](GPU_AND_NATIVE_SEARCH_20261113.md).
+Các số4,5GB ở mục lịch sử bên dưới áp dụngCPU/các lượt trước amendmentGPU.
+
+[Tìm web trong Hermes](HERMES_WEB_SEARCH_20261113.md): hiện searchSearXNGnative
+đã thử querythật; extractvẫnExafree/keyless riêng vìSearXNGsearch-only.
+Toolsearch là discovery, khác websearch. DDGS đã cài quaPM nhưng probechưa dùng được;
+SearXNG giờ là servernativechild đã chạy, khôngDocker.
+
 [Kiểm tra pipeline thực](PIPELINE_AUDIT_20261113.md): chat/tool/ảnh/persistence
 đã chạy; sửa chọn ảnh đầu/cuối và faultisolationASR. Video21s mất31,66s,
 ASRVi còn yếu; chưa đạt real-time/lifelongquality. TabDebug có đánh dấu coverage
@@ -117,8 +130,10 @@ khi gateway đã dừng để phục hồi cả database/WAL và nguồn media.
 | `local/hybrid-v1` | Private weights, binaries, DB, source copies, per-install backups |
 | `runs/*hybrid*` | Immutable engineering/reference/audit receipts, including failed attempts |
 
-Trần4,500,000,000byte, ngưỡng nền4,250,000,000byte, bao gồm gateway/worker/capture/Hermes, cộng sharedGPU theo
+ỞCPUmode:trần4,500,000,000byte, ngưỡng nền4,250,000,000byte, bao gồm gateway/worker/capture/Hermes, cộng sharedGPU theo
 PDH một cách bảo thủ (có thể double-count nếu không chứng minh được cùng trang).
+ỞGPUmode người dùng đã bỏcapRAM/commit; dedicatedVRAM báo riêng, vẫn đo đủ RAM
+và lỗiOOM thật. SearXNGnative cũng là child được tính. [Amendment/mode](GPU_AND_NATIVE_SEARCH_20261113.md).
 WindowsJob áp aggregateprivatecommit lên worker tree; RSS được lấy mẫu50ms,
 sharedGPU2s. Đây không phải hardphysical-RAM guarantee: vi phạm đã được ghi lại
 và dừng worker, không xóa khỏi báo cáo. Không dùng pagefile/weightoffloading để

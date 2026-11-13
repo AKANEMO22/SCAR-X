@@ -1,5 +1,28 @@
 # Trạng thái SCAR-X
 
+## Adapterpolicy pilot13/11 — NOTQUALIFIED, khôngautodeploy
+
+ActualAGYFlashHigh/effortHigh tạo96bilingualwordings; independentcontractlabels
+và lexicalgroupsplit trước train.3seed×3arm×512steps ALIFlocal,256TEST/arm.
+Hidden89,71/83,50/81,22% balancedvsreadout75,17/71,62/73,28%, nhưng23/21/13
+wrongcreate/reuseproposals. Gate85%allseed +0unsafe không đạt, khôngnới.
+Coldnextupdateexact9/9. NoVLM-LoRAtrained/loaded; productionneuralweights giữ.
+Generatorcounterfactualsubstringextra48rows và CIprimarylimitation được giữ rõ.
+Data/pilotbudgets đóng, khôngsilentretuneTEST. [Report](hybrid/ADAPTER_POLICY_PILOT_20261113.md).
+
+## GPU + SearXNGnative13/11
+
+Đã chuyểnRTX4050/CUDA12.4, userbỏ capRAM/commitGPU; CPUgiữ4,5GB. Modeconfig
+`local/hybrid-v1/config.json`; weightsnative/ALIF/context16K giữ nguyên. SearXNG
+nativeWindows/Waitress, khôngDocker/WSL, ~86MBRSS lúc quan sát, child được giám sát.
+18requestcùnginput/cfg: medianVi4,859→1,375s(3,53×), log9,938→1,578s(6,30×),
+ảnh1,766→0,344s(5,13×); decode~27→99tok/s. Đây làVLMspeed, khôngagentqualityPASS.
+3numericalparitycasesqua mỗi mode; raw/SHA/chấm lại giữ. Lỗi3GPUstartupcap4,5GB
+và benchmarkparentjobkillrestoredgateway được giữ/đính chính; đã restore từ ngoài
+job vàreadyGPU. AGY96wordings/policy-learningpilot sau đóđãchạyNOTQUALIFIED;
+VLM-LoRAtraining/activationchưa chạy.
+[Báo cáo/cấu hình](hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
+
 ## Pipeline audit13/11 — plumbing chạy, quality/lifelong chưa đạt
 
 Đã chạy inference thật quachat/tool/ảnh/video21s/windowfixture/rollback/restart.
