@@ -14,6 +14,7 @@ test = ["pytest>=8"]
 control = ["torch>=2"]
 hermes-test = ["openai>=1", "PyYAML>=6"]
 vision = ["Pillow>=10"]
+hybrid = ["Pillow>=10", "windows-capture==2.0.1; platform_system == 'Windows'", "PyAudioWPatch==0.2.12.9; platform_system == 'Windows'"]
 training = ["scikit-learn>=1.4", "Pillow>=10"]
 
 [project.scripts]
@@ -26,6 +27,7 @@ include = ["scarx*"]
 
 [tool.setuptools.package-data]
 "scarx.app" = ["web/*.html", "web/*.css", "web/*.js", "generation_web/*.html", "generation_web/*.css", "generation_web/*.js"]
+"scarx.hybrid" = ["web.html"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

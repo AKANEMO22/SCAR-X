@@ -26,6 +26,7 @@ flowchart TD
   G13["GeminiR13 cũ f4272ba<br/>invalidcontrols/symbolic bridge; archive-only"]
   LIVE["R13-family đang chạy (ảnh ban đầu R13.1)<br/>GIỮ NGUYÊN worktree / branch / cache / process"]
   NEXT["Còn mở: credit quality, readout stability,<br/>task-agnostic retention, shared skills, language/vision"]
+  HYB["Hybrid v1: VLM frozen + ALIF local policy<br/>Hermes/video/screen engineeringMVP, QA/retention chưaPASS"]
   P2-->P21-->G1-->R1
   R1-->GH-->F
   R1-->DH-->F
@@ -39,6 +40,8 @@ flowchart TD
   ACR-->G10
   D7-->NEXT
   CAP-->NEXT
+  CAP-."reuse trace/local-credit/checkpoint; không chuyển scores".->HYB
+  HYB-->NEXT
   G12-->NEXT
   LIVE-."chưa có kết quả cuối trong cleanup".->NEXT
   classDef measured fill:#dcefe6,stroke:#25734c,color:#10291b

@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+Hybrid riêng: [hướng dẫn và sơ đồ](hybrid/README.md),
+[kết quả hiện tại](research/HYBRID_IMPLEMENTATION_20261113.md).
+Entrypoint`run_hybrid.py`; `src/scarx/hybrid` chứa runtime/learner mới;
+`integrations/hermes/hybrid_plugin` là adapter desktop/tool/debug duy nhất.
+Data/model/binary/backups ở`local/hybrid-v1`, không commit. Runs mới immutable.
+
 ## Điều hướng chính sau hợp nhất13/11
 
 - [Master plan](RESEARCH_PLAN.md): định hướng/constraints, không coi lịch sử là approvalmới.

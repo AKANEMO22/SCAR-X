@@ -1,0 +1,216 @@
+"""Whole owned-process-tree monitoring, not the old per-process-only guard."""
+
+import ctypes
+import os
+import threading
+import time
+import psutil
+from .gpu_memory import SharedGPU
+
+
+class ResourceMonitor:
+    def __init__(self, limit=4_000_000_000, extra_pids=(), include_hermes=False):
+        self.limit = limit
+        self.root = psutil.Process()
+        self.extra_pids = set(extra_pids)
+        self.include_hermes = include_hermes
+        self.last_client_scan = 0.0
+        self.on_exceed = None
+        self.peak_rss = 0
+        self.peak_commit = 0
+        self.exceeded = False
+        self.last = {}
+        self.gpu = SharedGPU()
+        self.peak_ram = 0
+        self.stop_event = threading.Event()
+        self.thread = None
+
+    def sample(self):
+        if self.include_hermes and time.monotonic() - self.last_client_scan > 10:
+            self.last_client_scan = time.monotonic()
+            discovered = set()
+            for process in psutil.process_iter(["name", "cmdline", "exe"]):
+                try:
+                    name = (process.info["name"] or "").lower()
+                    args = process.info["cmdline"] or []
+                    desktop = name == "hermes.exe" and not any(
+                        a.startswith("--type=") for a in args
+                    )
+                    backend = (
+                        name.startswith("python")
+                        and "\\hermes\\" in (process.info["exe"] or "").lower()
+                        and "hermes_cli.main" in args
+                    )
+                    if desktop or backend:
+                        discovered.add(process.pid)
+                except psutil.Error:
+                    continue
+            self.extra_pids = discovered
+        processes = {self.root.pid: self.root}
+        for root in [self.root] + [
+            psutil.Process(pid) for pid in self.extra_pids if psutil.pid_exists(pid)
+        ]:
+            processes[root.pid] = root
+            try:
+                processes.update({p.pid: p for p in root.children(recursive=True)})
+            except psutil.Error:
+                pass
+        rss = commit = 0
+        details = []
+        for p in processes.values():
+            try:
+                memory = p.memory_info()
+                rss += memory.rss
+                private = getattr(
+                    memory, "private", getattr(memory, "pagefile", memory.vms)
+                )
+                commit += private
+                details.append(
+                    {
+                        "pid": p.pid,
+                        "name": p.name(),
+                        "rss_bytes": memory.rss,
+                        "private_commit_bytes": private,
+                    }
+                )
+            except psutil.Error:
+                continue
+        self.peak_rss = max(self.peak_rss, rss)
+        self.peak_commit = max(self.peak_commit, commit)
+        gpu = self.gpu.sample(processes)
+        conservative_ram = rss + gpu["bytes"]
+        self.peak_ram = max(self.peak_ram, conservative_ram)
+        self.exceeded |= max(conservative_ram, commit) > self.limit
+        self.last = {
+            "rss_bytes": rss,
+            "private_commit_bytes": commit,
+            "peak_rss_bytes": self.peak_rss,
+            "peak_private_commit_bytes": self.peak_commit,
+            "limit_bytes": self.limit,
+            "exceeded": self.exceeded,
+            "processes": details,
+            "included_client_pids": sorted(self.extra_pids),
+            "gpu_shared": gpu,
+            "conservative_ram_bytes": conservative_ram,
+            "peak_conservative_ram_bytes": self.peak_ram,
+            "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+            "sampling_seconds": 0.05,
+        }
+        return self.last
+
+    def start(self):
+        self.stop_event.clear()
+
+        def monitor():
+            while not self.stop_event.wait(0.05):
+                try:
+                    self.sample()
+                except psutil.Error:
+                    continue
+                if self.exceeded and self.on_exceed:
+                    callback = self.on_exceed
+                    self.on_exceed = None
+                    callback()
+
+        self.thread = threading.Thread(target=monitor, daemon=True)
+        self.thread.start()
+        return self
+
+    def check(self):
+        report = self.sample()
+        if self.exceeded:
+            raise MemoryError(
+                "Whole hybrid tree exceeded configured budget: " + str(report)
+            )
+        return report
+
+    def close(self):
+        self.stop_event.set()
+        if self.thread:
+            self.thread.join(timeout=1)
+        result = self.sample()
+        self.gpu.close()
+        return result
+
+
+def windows_tree_commit_limit(limit=4_000_000_000):
+    if os.name != "nt":
+        return {
+            "enforced": False,
+            "reason": "Windows Job unavailable; sampled gate only",
+        }
+    from ctypes import wintypes as w
+
+    class Basic(ctypes.Structure):
+        _fields_ = [
+            ("process_time", ctypes.c_longlong),
+            ("job_time", ctypes.c_longlong),
+            ("flags", w.DWORD),
+            ("min_ws", ctypes.c_size_t),
+            ("max_ws", ctypes.c_size_t),
+            ("active", w.DWORD),
+            ("affinity", ctypes.c_size_t),
+            ("priority", w.DWORD),
+            ("scheduling", w.DWORD),
+        ]
+
+    class IO(ctypes.Structure):
+        _fields_ = [
+            (k, ctypes.c_ulonglong)
+            for k in (
+                "read_ops",
+                "write_ops",
+                "other_ops",
+                "read_bytes",
+                "write_bytes",
+                "other_bytes",
+            )
+        ]
+
+    class Extended(ctypes.Structure):
+        _fields_ = [
+            ("basic", Basic),
+            ("io", IO),
+            ("process_memory", ctypes.c_size_t),
+            ("job_memory", ctypes.c_size_t),
+            ("peak_process", ctypes.c_size_t),
+            ("peak_job", ctypes.c_size_t),
+        ]
+
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel.CreateJobObjectW.argtypes = [ctypes.c_void_p, w.LPCWSTR]
+    kernel.CreateJobObjectW.restype = w.HANDLE
+    kernel.SetInformationJobObject.argtypes = [
+        w.HANDLE,
+        ctypes.c_int,
+        ctypes.c_void_p,
+        w.DWORD,
+    ]
+    kernel.SetInformationJobObject.restype = w.BOOL
+    kernel.AssignProcessToJobObject.argtypes = [w.HANDLE, w.HANDLE]
+    kernel.AssignProcessToJobObject.restype = w.BOOL
+    kernel.GetCurrentProcess.restype = w.HANDLE
+    handle = kernel.CreateJobObjectW(None, None)
+    info = Extended()
+    info.basic.flags = 0x200 | 0x2000
+    info.job_memory = limit
+    good = bool(
+        handle
+        and kernel.SetInformationJobObject(
+            handle, 9, ctypes.byref(info), ctypes.sizeof(info)
+        )
+        and kernel.AssignProcessToJobObject(handle, kernel.GetCurrentProcess())
+    )
+    if not good:
+        return {
+            "enforced": False,
+            "reason": "Job assignment failed",
+            "winerror": ctypes.get_last_error(),
+        }
+    global _JOB_HANDLE
+    _JOB_HANDLE = handle
+    return {
+        "enforced": True,
+        "kind": "Windows aggregate job private commit; owned children killed if gateway exits; RSS sampled separately",
+        "limit_bytes": limit,
+    }

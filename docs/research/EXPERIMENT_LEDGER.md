@@ -5,6 +5,14 @@ Ngày hợp nhất13/11/2026. [Sơ đồ](EXPERIMENT_MAP.md) · [Tra theo mã](e
 đổi scientific gates. Phạm vi kiểm từng nguồn được ghi riêng; không chấp nhận
 PASS chỉ từ tiêu đề của một agent.
 
+## Hybrid v1 — nhánh riêng13/11
+
+[Báo cáo](HYBRID_IMPLEMENTATION_20261113.md): originalprecisionVLM + ALIFH128,
+Hermesnormalchat/toolprotocol, realfile/screen capture, fullstatepersistence,
+publicweb lookup. Engineeringreceipts giữ cả3GB/4GBfailures. Finalaudio scheduling
+21sfixture peak3.629GB; QA/ViASR còn yếu. Chưa có P1 100DEV/100TEST, P2
+matchedhidden/retention3seed hoặc P3 8h; không scientificGO từ kỹ thuậtMVP.
+
 ## Foundation và G1
 
 [Reports01–44](experiment-catalog.json) vẫn ở đường dẫn gốc `docs/research/NN_*.md`.

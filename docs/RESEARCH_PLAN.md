@@ -1,5 +1,27 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+## Phê duyệt mới 13/11/2026 — nhánh Hybrid cô lập
+
+**Bổ sung sau đó cùng ngày:** người dùng cho phép **4.000.000.000 byte RAM**.
+[Resource amendment](../experiments/hybrid-v1-resource-amendment-4gb.md) áp dụng
+cho các lượt mới; giữ nguyên mọi receipt3GB và toàn bộ scientific thresholds.
+
+Người dùng phê duyệt VLM nhỏ + SNN ALIF local learning, video/âm thanh Việt/Anh,
+trí nhớ SSD và vòng tự học chủ động. Trần toàn hệ mới cho nhánh này là
+**3.000.000.000 byte**, CPU-first; **cấm quantization/pruning/hạ precision**.
+Qwen3.5-0.8B checkpoint gốc và Whisper base FP32 là ứng viên, không phải model
+đã vượt kiểm chứng. VLM frozen; chưa LoRA. Original SNN-only core, kết quả lịch
+sử, 2GB historical gates và active R13-family giữ nguyên. Đây là ngoại lệ được
+người dùng duyệt đối với lệnh cấm LLM-serving trước đây, chỉ trong nhánh hybrid.
+
+SNN cần học ưu tiên/quan hệ/chọn hành động; không coi prompt, retrieval hoặc
+weight movement là bằng chứng hidden representation. Khi vắng người dùng,
+tự tìm hiểu nhưng gom câu hỏi. Nguồn local trước rồi web public có kiểm soát
+privacy. [ADR0015](decisions/0015-hybrid-autonomous-memory.md) và
+[protocol đã khóa](../experiments/hybrid-v1.md) xác định phạm vi/gates.
+Hermes Desktop dùng một gateway loopback chung với trace; không chuỗi proxy.
+Không promote model chưa qua integrity/resource checks vào phiên live.
+
 **Hợp nhất tài liệu và kết quả13/11/2026:** người dùng cho phép dọn GitHub/local,
 đưa completedresearch vềmain và archivebranch sau khi bảo toàn evidence. Đây
 không phải phê duyệt learner mới vào serving, đổi ALIF hoặc mở training/P2/

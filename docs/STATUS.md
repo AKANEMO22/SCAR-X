@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Hybrid13/11 — engineering MVP, scientific gates chưa đạt
+
+Nhánh`codex/scarx-hybrid-20261113` cô lập: Qwen3.5-0.8B nativeBF16/F32,
+Whisper-base directFP32, ALIFH128localpolicy, SQLite và một gateway8775.
+Hermes đã chọn được model trong chat thường, có token streaming/tool-call;
+tabSCAR-X chỉ debug, không thanhVideo/Screen/RAM thêm vào composer.
+Storagehash/native-types và3ca probability parity qua;245ASR tensors readbackexact.
+ChatHermes mới qua lời chào; coldTTFT14.515s vẫn vượt mục tiêu5s.
+Actualscreen capture→VLM đã qua trên cửa sổ fixture riêng, tắt micro/audio.
+Retained video events tồn tại sau restart nhưng QA vẫn sai hình; ViASR yếu.
+Không kết luận usefulhidden/retention/autonomyPASS. P1/P2/P3 chưa mở vì chưa có
+quality/data qualification tương ứng. [Báo cáo](research/HYBRID_IMPLEMENTATION_20261113.md).
+Main gốc/R13 đang chạy không đổi; không merge/deploy research learner vào G1.
+
 ## Hợp nhất workspace13/11/2026
 
 Đã lênmain. Dọn30remoteheads/33localbranches,36oldworktrees+1temporaryclone;

@@ -1,5 +1,13 @@
 # SCAR-X · Thế hệ đầu
 
+**Nhánh Hybrid mới, được duyệt13/11:** dùng SCAR-X Hybrid trong bộ chọn model
+của **chat Hermes bình thường**. Video dùng menu đính kèm sẵn có; xem màn hình
+qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local tại
+[localhost8775](http://127.0.0.1:8775), Qwen nguyên precision + ALIF local learner,
+trần toàn hệ4GB. Đây là bản thử nghiệm, chưa đạt quality/lifelong gates.
+[Cài/chạy/bảo trì](docs/hybrid/README.md), [kết quả và giới hạn](docs/research/HYBRID_IMPLEMENTATION_20261113.md).
+Các mục bên dưới tiếp tục mô tả sản phẩm SNN-only gốc, được giữ nguyên.
+
 ## Tra cứu nghiên cứu
 
 Toàn bộ kết quả hoàn tất được tập trung ở [trung tâm nghiên cứu](docs/research/README.md):

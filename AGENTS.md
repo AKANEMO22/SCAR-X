@@ -1,5 +1,9 @@
 # SCAR-X working rules
 
+- Later on2026-11-13 user explicitly raised only the hybrid whole-system RAM cap to4,000,000,000bytes. New-run resource amendment overrides the3GB line below; historical receipts and scientific thresholds stay unchanged.
+
+- User approval 2026-11-13: isolated SCAR-X Hybrid may serve original-precision Qwen3.5-0.8B plus Whisper base FP32 and an ALIF local learner under a 3,000,000,000-byte whole-system budget. No quantization, pruning, precision reduction or LoRA. This exception applies only to `scarx.hybrid`/`run_hybrid.py`; original serving/neural modules and active peer experiments remain unchanged. See ADR0015 and the hybrid protocol. Historical 2GB results/gates remain historical.
+
 - Load ponytail rules/tools/context first when available. Record unavailability honestly.
 - Keep all SCAR-X changes inside this project; the parent contains unrelated font work.
 - Start at README.md, then docs/PROJECT_MAP.md and docs/STATUS.md.

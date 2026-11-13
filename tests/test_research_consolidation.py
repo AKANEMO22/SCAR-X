@@ -7,7 +7,9 @@ ROOT=Path(__file__).resolve().parents[1]
 def test_catalog_has_protected_active_experiment_and_scoped_results():
     d=json.loads((ROOT/'docs/research/experiment-catalog.json').read_text(encoding='utf-8'))
     ids={v['id']:v for v in d['entries']}
-    assert len(ids)==len(d['entries'])==120
+    assert len(ids)==len(d['entries'])==121
+    assert len(set(ids)-{'HYBRID-V1'})==120
+    assert ids['HYBRID-V1']['status']=='ENGINEERING_MVP_PIVOT_QUALITY'
     assert ids['R13-1-ACTIVE']['status']=='IN_PROGRESS_EXCLUDED'
     assert ids['R13-1-ACTIVE']['reports']==[]
     assert ids['CODEX-R8-CONFIRMATION']['status']=='P1_FAIL_RESEARCH_ONLY'
@@ -33,9 +35,14 @@ def test_cleanup_target_guard_blocks_primary_and_active_worktree(tmp_path):
     assert module.safe_target(repo,ended,{active})==ended.resolve()
 
 def test_production_source_unchanged_from_precleanup_main():
-    paths=['src/scarx/neural','src/scarx/app','src/scarx/learning','integrations','run_app.py','capabilities.json','project.json']
+    paths=['src/scarx/neural','src/scarx/app','src/scarx/learning','run_app.py','capabilities.json','project.json']
     r=subprocess.run(['git','diff','--exit-code','e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541','--',*paths],cwd=ROOT,capture_output=True)
     assert r.returncode==0,r.stdout.decode(errors='replace')
+    # New hybrid plugin is an approved isolated addition, never a replacement
+    # of the old G1 Hermes adapter. Check this after staging new files too.
+    r=subprocess.run(['git','diff','--name-status','e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541','--','integrations'],cwd=ROOT,capture_output=True,text=True)
+    assert r.returncode==0
+    assert all(line.startswith('A\tintegrations/hermes/hybrid_plugin/') for line in r.stdout.splitlines())
     # New isolated research registrations may be added to configs/, but none
     # of the existing serving configurations may be modified or deleted.
     r=subprocess.run(['git','diff','--name-only','--diff-filter=MD','e94ad1e7a4029d8d41c8e0e1aafc0fa3bf430541','--','configs'],cwd=ROOT,capture_output=True)

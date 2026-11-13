@@ -4,6 +4,10 @@ Cập nhật13/11/2026. Đây là điểm bắt đầu duy nhất để tra kế
 từng branch hoặc suy từ một báo cáo tác giả. [Master plan](../RESEARCH_PLAN.md)
 quản lý định hướng; các protocol và số đo lịch sử giữ nguyên.
 
+**Hybrid13/11 mới:** [implementation/giới hạn](HYBRID_IMPLEMENTATION_20261113.md),
+[vận hành](../hybrid/README.md). Qwenfrozen+localALIF, chatHermes thường,
+trace8775; engineeringMVP, chưa scientificPASS. Source G1 và activepeer không đổi.
+
 | Cần tìm | Mở |
 |---|---|
 | Đã thử những gì, đi theo nhánh nào? | [Sơ đồ thí nghiệm](EXPERIMENT_MAP.md) |
