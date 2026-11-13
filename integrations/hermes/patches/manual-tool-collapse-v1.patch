@@ -1,29 +1,14 @@
 --- a/apps/desktop/src/components/assistant-ui/tool/fallback.tsx
 +++ b/apps/desktop/src/components/assistant-ui/tool/fallback.tsx
-@@ -1010,7 +1010,7 @@
-  * index is what made an earlier attempt at this reshuffle the moment a turn
-  * settled. `lib/tool-run-continuity.test.ts` locks that agreement down.
-  *
+@@ -1013 +1013 @@
 - * Live, the run is a summary plus the one-line ticker. Settled, the summary is
 + * Live, the run previews one line unless explicitly closed. Settled, the summary is
-  * the whole of it until the user opens it. `ToolEmbedContext` is false so each
-  * row still owns its own chrome (timer / copy) when shown.
-  */
-@@ -1064,7 +1064,7 @@
-             summary={summary}
-           />
-         )}
+@@ -1067 +1067 @@
 -        {count > 1 && live && !expanded && <ToolRunTicker>{children}</ToolRunTicker>}
 +        {count > 1 && live && !expanded && persistedOpen !== false && <ToolRunTicker>{children}</ToolRunTicker>}
-         {expanded && <div className="grid min-w-0 max-w-full gap-(--tool-row-gap)">{children}</div>}
-       </motion.div>
-     </ToolRunDisclosureContext.Provider>
 --- a/apps/desktop/src/components/assistant-ui/tool/tool-group.test.tsx
 +++ b/apps/desktop/src/components/assistant-ui/tool/tool-group.test.tsx
-@@ -425,10 +425,9 @@
-     expect(toggle().getAttribute('aria-expanded')).toBe('true')
-     expect(container.querySelector('[data-tool-ticker]')).toBeNull()
-     fireEvent.click(toggle())
+@@ -428,4 +428,3 @@
 -    const row = container.querySelector('[data-tool-ticker] [data-tool-row] button[aria-expanded="false"]')
 -    expect(row).not.toBeNull()
 -    fireEvent.click(row as Element)
@@ -31,17 +16,8 @@
 +    expect(toggle().getAttribute('aria-expanded')).toBe('false')
 +    expect(container.querySelector('[data-tool-ticker]')).toBeNull()
 +    expect(container.querySelectorAll('[data-tool-row]')).toHaveLength(0)
- 
-     const next = {
-       ...message,
-@@ -445,6 +444,10 @@
-     } as ThreadMessage
- 
-     rerender(<GroupHarness message={next} />)
+@@ -447,0 +447,4 @@
 +    await waitFor(() => expect(toggle().getAttribute('aria-expanded')).toBe('false'))
 +    expect(container.querySelector('[data-tool-ticker]')).toBeNull()
 +    expect(container.querySelectorAll('[data-tool-row]')).toHaveLength(0)
 +    fireEvent.click(toggle())
-     await waitFor(() => expect(container.querySelectorAll('[data-tool-row]')).toHaveLength(3))
-     rerender(<GroupHarness message={{ ...next, status: { type: 'complete', reason: 'stop' } }} />)
-     await waitFor(() => expect(toggle().getAttribute('aria-expanded')).toBe('true'))
