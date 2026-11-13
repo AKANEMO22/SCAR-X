@@ -8,7 +8,9 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 1. Mở Hermes Desktop, chọn **SCAR-X Hybrid** trong bộ chọn model, dùng chat thường.
 2. Đính kèm video bằng **Files…** của Hermes. Plugin chuyển file thành một nguồn
-   quan sát local và giữ tham chiếu `scarx://stream/...` trong hội thoại.
+   quan sát local; tham chiếu được gửi bằng metadata nội bộ theo phiên, không
+   chèn liên kết hoặc đổi nội dung câu bạn viết. Các khóa video cũ của plugin
+   không được dùng lại. Cửa sổ đã dừng chia sẻ không tự theo sang lượt mới.
 3. Muốn xem video đang phát: yêu cầu nhìn màn hình trong chat. Công cụ
    `scarx_video` liệt kê cửa sổ và quan sát đúng cửa sổ được chỉ định. Không có
    toolbarVideo/Screen riêng; model phải gọi đúng công cụ. Chưa chứng minh độ tin

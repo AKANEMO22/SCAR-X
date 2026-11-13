@@ -221,13 +221,10 @@ function Panel({ ctx }) {
                     jsx("p", {
                       children: `Đã thu ${v.capture_frontier.toFixed(1)}s · âm thanh ${v.asr_frontier.toFixed(1)}s · ảnh ${v.vision_frontier.toFixed(1)}s`,
                     }),
-                    button("Kèm vào câu hỏi tiếp theo", () =>
-                      rememberStream(
-                        ctx,
-                        v.id,
-                        v.window?.title || "Video đã xem",
-                      ),
-                    ),
+                    jsx("small", {
+                      children:
+                        "Nguồn đã lưu để debug; không tự gắn vào tin nhắn.",
+                    }),
                   ],
                 },
                 v.id,
@@ -361,29 +358,27 @@ function Panel({ ctx }) {
             }),
             jsx("div", {
               className: "sxh-feed",
-              children: [...trace]
-                .reverse()
-                .map((e) =>
-                  jsxs(
-                    "details",
-                    {
-                      children: [
-                        jsx("summary", {
-                          children:
-                            new Date(e.created * 1000).toLocaleTimeString() +
-                            " · " +
-                            e.actor +
-                            " · " +
-                            e.kind,
-                        }),
-                        jsx("pre", {
-                          children: JSON.stringify(e.payload, null, 2),
-                        }),
-                      ],
-                    },
-                    e.id,
-                  ),
+              children: [...trace].reverse().map((e) =>
+                jsxs(
+                  "details",
+                  {
+                    children: [
+                      jsx("summary", {
+                        children:
+                          new Date(e.created * 1000).toLocaleTimeString() +
+                          " · " +
+                          e.actor +
+                          " · " +
+                          e.kind,
+                      }),
+                      jsx("pre", {
+                        children: JSON.stringify(e.payload, null, 2),
+                      }),
+                    ],
+                  },
+                  e.id,
                 ),
+              ),
             }),
           ],
         }),
@@ -391,21 +386,27 @@ function Panel({ ctx }) {
   });
 }
 
-function ownerKey() {
-  return (
-    host.state.focusedStoredSessionId.get() ||
-    host.state.focusedSessionId.get() ||
-    "draft"
-  );
+function sessionIds() {
+  return [
+    ...new Set(
+      [
+        host.state.focusedSessionId.get(),
+        host.state.focusedStoredSessionId.get(),
+      ].filter((id) => typeof id === "string" && id && id !== "draft"),
+    ),
+  ];
 }
-function rememberStream(ctx, id, label) {
-  ctx.storage.set("video:" + ownerKey(), { id, label, created: Date.now() });
+function clearLegacyVideoContext(ctx) {
+  for (const key of ["draft", ...sessionIds()])
+    ctx.storage.remove("video:" + key);
 }
+const pendingUploads = new Map();
 function isScarx() {
   return String(host.state.model.get() || "").includes("scarx-hybrid");
 }
 async function attachVideos(ctx, draft) {
   if (!isScarx()) return draft;
+  clearLegacyVideoContext(ctx);
   const videos = (draft.attachments || []).filter(
     (a) => a.path && /\.(mp4|mkv|webm|mov|avi)$/i.test(a.path),
   );
@@ -413,22 +414,57 @@ async function attachVideos(ctx, draft) {
     host.notifyError("Bản đầu nhận một video mỗi lượt.");
     return null;
   }
+  // Plain turns remain byte-for-byte the same draft, regardless of old plugin
+  // storage. No sticky global "draft" video or renderer-authored prompt suffix.
+  if (!videos.length) return draft;
+  const sessions = sessionIds();
   try {
     for (const attachment of videos) {
-      let stream = await ctx.rest("/observe", {
+      const key = JSON.stringify([
+        sessions,
+        attachment.occurrenceId || attachment.id || attachment.path,
+      ]);
+      let upload = pendingUploads.get(key);
+      if (!upload || Date.now() - upload.created > 240000) {
+        upload = { id: crypto.randomUUID(), created: Date.now(), stream: null };
+        pendingUploads.set(key, upload);
+        while (pendingUploads.size > 16)
+          pendingUploads.delete(pendingUploads.keys().next().value);
+      }
+      if (!upload.stream)
+        upload.stream = await ctx.rest("/observe", {
+          method: "POST",
+          body: { path: attachment.path, client_id: upload.id },
+          timeoutMs: 20000,
+        });
+      if (JSON.stringify(sessionIds()) !== JSON.stringify(sessions))
+        throw Error(
+          "Đã chuyển phiên chat; video chưa được gắn. Gửi lại ở đúng cuộc trò chuyện.",
+        );
+      const bytes = new TextEncoder().encode(draft.text.trim());
+      const digest = Array.from(
+        new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
+        (v) => v.toString(16).padStart(2, "0"),
+      ).join("");
+      if (upload.digest !== digest) {
+        upload.ticket = crypto.randomUUID();
+        upload.digest = digest;
+      }
+      await ctx.rest("/observe", {
         method: "POST",
-        body: { path: attachment.path },
-        timeoutMs: 20000,
+        body: {
+          existing_stream_id: upload.stream.id,
+          video_context: {
+            text_sha256: digest,
+            session_ids: sessions,
+            ticket_id: upload.ticket,
+          },
+        },
+        timeoutMs: 15000,
       });
-      rememberStream(ctx, stream.id, attachment.label || "Video đính kèm");
     }
-    let selected = ctx.storage.get("video:" + ownerKey(), null);
-    if (!selected) return draft;
     return {
       ...draft,
-      text:
-        draft.text +
-        `\n\n[Video: ${selected.label.replace(/[\[\]\n]/g, " ")}](scarx://stream/${selected.id})`,
       attachments: (draft.attachments || []).filter((a) => !videos.includes(a)),
     };
   } catch (e) {
@@ -515,6 +551,7 @@ export default {
   description:
     "Normal Hermes model uses one local gateway; this panel is observation only.",
   register(ctx) {
+    clearLegacyVideoContext(ctx);
     const style = document.createElement("style");
     style.textContent = CSS;
     document.head.append(style);

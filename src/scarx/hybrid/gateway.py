@@ -7,7 +7,6 @@ import json
 import os
 from pathlib import Path
 import secrets
-import re
 import threading
 import time
 from urllib.parse import parse_qs, urlparse
@@ -22,6 +21,7 @@ from .store import Store, encode
 from .work_trace import WorkTrace
 from .ownership import OwnerLock
 from .screen import ScreenMemory, window_sources
+from .video_context import VideoContext
 
 
 class Gateway:
@@ -48,6 +48,7 @@ class Gateway:
         self.initializer = None
         self.screen_requests = {}
         self.active_screen_streams = {}
+        self.video_context = VideoContext(self.store)
 
         def resource_stop():
             self.ready = False
@@ -128,29 +129,16 @@ class Gateway:
         self.validate_request(body)
         messages = copy.deepcopy(body["messages"])
         stream = body.get("scarx_stream_id")
-        for message in reversed(messages):
-            if message.get("role") != "user":
-                continue
-            content = message.get("content", "")
-            parts = (
-                content
-                if isinstance(content, list)
-                else [{"type": "text", "text": content}]
-            )
-            text = "\n".join(
-                part.get("text", "")
-                for part in parts
-                if isinstance(part, dict) and part.get("type") == "text"
-            )
-            found = re.findall(r"scarx://stream/([a-f0-9]{32})", text)
-            if not stream and found:
-                stream = found[-1]
-            if stream:
-                break
+        session = body.get("scarx_session_id", "local")
         if not stream:
-            stream = self.active_screen_streams.get(
-                body.get("scarx_session_id", "local")
-            )
+            stream = self.video_context.resolve(messages, session)
+        if not stream:
+            stream = self.active_screen_streams.get(session)
+            if stream:
+                active = self.store.get("stream", stream)
+                if not active or active.get("status") not in ("starting", "sharing"):
+                    self.active_screen_streams.pop(session, None)
+                    stream = None
         if stream:
             record = self.store.get("stream", stream)
             if not record:
@@ -929,8 +917,26 @@ def serve(directory, port=8775):
                 elif path == "/api/presence":
                     response = {"question": gateway.engine.presence()}
                 elif path == "/api/observe":
-                    response = gateway.video.observe(
-                        body["path"], body.get("public_topic_id")
+                    if body.get("existing_stream_id"):
+                        context = body.get("video_context")
+                        if not isinstance(context, dict):
+                            raise ValueError("Expected explicit video context metadata")
+                        response = gateway.video_context.queue(
+                            body["existing_stream_id"],
+                            context["text_sha256"],
+                            context.get("session_ids", []),
+                            context.get("ticket_id"),
+                        )
+                    else:
+                        response = gateway.video.observe(
+                            body["path"], body.get("public_topic_id")
+                        )
+                elif path == "/api/video/context":
+                    response = gateway.video_context.queue(
+                        body["stream_id"],
+                        body["text_sha256"],
+                        body.get("session_ids", []),
+                        body.get("ticket_id"),
                     )
                 elif path == "/api/screen/start":
                     response = gateway.screen.start(

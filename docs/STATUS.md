@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Sửa video reference13/11 — không chèn metadata vào tin nhắn
+
+PluginHybrid cũ giữ một selectedvideo trong rendererstorage rồi nối
+`[Video: ...](scarx://stream/...)` vào mọi câu hỏi, kể cả fixture đã dừng.
+Đã bỏ stickyselection và lịch sửURI routing: lượt thường trả nguyên draft;
+upload mới gửi short-lived ticket qua metadata, bind đúng session sau submit.
+Legacy`video:draft`/current-session keys được bỏ lúc pluginreload. Fixtures và
+tin nhắn lịch sử được giữ để audit, không tự viết lại hội thoại. Debug không
+còn nút gắn nguồn tùy ý vào lượt sau. Không sửa neural/weights/scientificgates.
+
 ## Hybrid13/11 — engineering MVP, scientific gates chưa đạt
 
 Nhánh`codex/scarx-hybrid-20261113` cô lập: Qwen3.5-0.8B nativeBF16/F32,

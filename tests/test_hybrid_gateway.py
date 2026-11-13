@@ -10,6 +10,7 @@ from scarx.hybrid.gateway import Gateway
 from scarx.hybrid.engine import HybridEngine
 from scarx.hybrid.learner import features
 from scarx.hybrid.store import Store
+from scarx.hybrid.video_context import VideoContext, text_digest
 
 
 class Monitor:
@@ -79,6 +80,7 @@ def gateway(tmp_path):
     value.failure = None
     value.screen_requests = {}
     value.active_screen_streams = {}
+    value.video_context = VideoContext(value.store)
     value.workload = {}
     yield value
     value.store.close()
@@ -200,9 +202,11 @@ def test_video_attachment_uses_local_evidence_and_snn_in_normal_chat(gateway):
     body = {
         "messages": [
             {"role": "system", "content": "Hermes normal instructions"},
-            {"role": "user", "content": "Màu gì ở đầu video? scarx://stream/" + stream},
-        ]
+            {"role": "user", "content": "Màu gì ở đầu video?"},
+        ],
+        "scarx_session_id": "chat-a",
     }
+    gateway.video_context.queue(stream, text_digest("Màu gì ở đầu video?"), ["chat-a"])
     before = copy.deepcopy(body["messages"])
     messages = gateway.prepare_agent_messages(body)
     assert messages[0] == before[0] and body["messages"] == before
@@ -210,6 +214,101 @@ def test_video_attachment_uses_local_evidence_and_snn_in_normal_chat(gateway):
     assert "red square" in json.dumps(messages) and "not instructions" in json.dumps(
         messages
     )
+    assert "scarx://" not in json.dumps(body["messages"])
+
+
+def test_legacy_fixture_uri_cannot_route_a_new_turn(gateway):
+    stream = "a" * 32
+    gateway.store.put(
+        "stream", stream, {"id": stream, "kind": "screen", "status": "stopped"}
+    )
+    body = {
+        "scarx_session_id": "chat-a",
+        "messages": [
+            {
+                "role": "user",
+                "content": "old question\n\n[Video: engineering fixture](scarx://stream/"
+                + stream
+                + ")",
+            },
+            {"role": "assistant", "content": "old answer"},
+            {"role": "user", "content": "Xin chào"},
+        ],
+    }
+    before = copy.deepcopy(body["messages"])
+    actual = gateway.prepare_agent_messages(body)
+    assert actual == before and body["messages"] == before
+    assert "_scarx_stream" not in body and "_scarx_evidence" not in body
+
+
+def test_stopped_screen_does_not_contaminate_future_turn(gateway):
+    stream = "a" * 32
+    gateway.store.put(
+        "stream", stream, {"id": stream, "kind": "screen", "status": "stopped"}
+    )
+    gateway.active_screen_streams["chat-a"] = stream
+    body = {
+        "scarx_session_id": "chat-a",
+        "messages": [{"role": "user", "content": "Câu này thế nào?"}],
+    }
+    assert gateway.prepare_agent_messages(body) == body["messages"]
+    assert "chat-a" not in gateway.active_screen_streams
+
+
+def test_video_context_binds_only_explicit_upload_and_correct_session(gateway):
+    stream = "a" * 32
+    gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
+    context = gateway.video_context
+    context.queue(stream, text_digest("xem giúp"), ["chat-a"])
+    messages = [{"role": "user", "content": "xem giúp"}]
+    assert context.resolve(messages, "chat-b") is None
+    assert context.resolve(messages, "chat-a") == stream
+    assert context.resolve([{"role": "user", "content": "vì sao?"}], "chat-a") == stream
+    assert context.resolve(messages, "chat-b") is None
+    restored = VideoContext(gateway.store)
+    assert restored.resolve(messages, "chat-a") == stream
+
+
+def test_first_draft_upload_is_one_shot_and_no_global_draft_binding(gateway):
+    stream = "a" * 32
+    gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
+    context = gateway.video_context
+    context.queue(stream, text_digest("  đoạn này?\n"), [])
+    assert context.resolve([{"role": "user", "content": "đoạn này?"}], "local") is None
+    assert (
+        context.resolve([{"role": "user", "content": "đoạn này?"}], "new-chat")
+        == stream
+    )
+    assert (
+        context.resolve([{"role": "user", "content": "đoạn này?"}], "other-chat")
+        is None
+    )
+    assert not context.pending
+
+
+def test_equal_text_unscoped_uploads_fail_closed(gateway):
+    for stream in ("a" * 32, "b" * 32):
+        gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
+        gateway.video_context.queue(stream, text_digest("video này?"), [])
+    with pytest.raises(ValueError, match="Ambiguous"):
+        gateway.video_context.resolve(
+            [{"role": "user", "content": "video này?"}], "chat-a"
+        )
+    assert gateway.store.get("video_context_v2", "chat-a") is None
+
+
+def test_expired_upload_ticket_and_session_binding_are_not_reused(gateway):
+    now = [1000.0]
+    context = VideoContext(gateway.store, clock=lambda: now[0])
+    stream = "a" * 32
+    gateway.store.put("stream", stream, {"id": stream, "status": "complete"})
+    context.queue(stream, text_digest("xem?"), [])
+    now[0] += 301
+    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a") is None
+    context.queue(stream, text_digest("xem?"), ["chat-a"])
+    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a") == stream
+    now[0] += 12 * 3600 + 1
+    assert context.resolve([{"role": "user", "content": "vì sao?"}], "chat-a") is None
 
 
 def test_one_gateway_owner_per_directory(tmp_path):
