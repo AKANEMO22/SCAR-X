@@ -1,0 +1,181 @@
+--- a/apps/desktop/src/api/canonical-protocol.ts
++++ b/apps/desktop/src/api/canonical-protocol.ts
+@@ -415 +415 @@
+-      return { session_id: params.session_id, source: 'desktop', ...(params.profile ? { profile: params.profile } : {}) }
++      return { session_id: params.session_id, source: 'desktop', display_projection: true, ...(params.profile ? { profile: params.profile } : {}) }
+@@ -420 +420 @@
+-    if (method === 'session.resume' && 'lazy' in params) {
++    if (method === 'session.resume') {
+@@ -422,2 +422,5 @@
+-
+-      return { ...resume, omit_messages: false }
++      const rendered = 'lazy' in params ? { ...resume, omit_messages: false } : resume
++
++      // The owner retains model-only carriers for continuation and rewind.
++      // A Desktop transcript must ask for its separate display projection.
++      return rendered.omit_messages === true ? rendered : { ...rendered, display_projection: true }
+@@ -774 +777,5 @@
+-    return { ...value, open_requests, pending_approval: prompts.find((p: any) => p.kind === 'approval'), pending_clarify: prompts.find((p: any) => p.kind === 'clarify'), info: { ...value.info, stored_session_id: value.stored_session_id, pending_submissions: value.pending_submissions, replay_epoch: value.replay_epoch, last_sequence: value.last_sequence, execution_generation: value.execution_generation, running: value.running } }
++    // An empty display projection is authoritative too: never fall back to
++    // model compaction text merely because it contains no visible messages.
++    const messages = Array.isArray(value.display_messages) ? value.display_messages : value.messages
++
++    return { ...value, messages, stored_messages: value.messages, open_requests, pending_approval: prompts.find((p: any) => p.kind === 'approval'), pending_clarify: prompts.find((p: any) => p.kind === 'clarify'), info: { ...value.info, stored_session_id: value.stored_session_id, pending_submissions: value.pending_submissions, replay_epoch: value.replay_epoch, last_sequence: value.last_sequence, execution_generation: value.execution_generation, running: value.running } }
+--- /dev/null
++++ b/apps/desktop/src/api/canonical-display-projection.test.ts
+@@ -0,0 +1,155 @@
++// @vitest-environment node
++import { expect, test } from 'vitest'
++
++import { chatMessageText, toChatMessages } from '@/lib/chat-messages'
++import type { SessionMessage } from '@/types/hermes'
++
++import { CanonicalDesktopProtocol } from './canonical-protocol'
++import { HermesGateway } from './client'
++
++test('rendering resumes and warm activations request the owner display projection, metadata attaches do not', () => {
++  const protocol = new CanonicalDesktopProtocol()
++
++  for (const [method, extras] of [
++    ['session.resume', {}],
++    ['session.resume', { lazy: true }],
++    ['session.activate', {}]
++  ] as const) {
++    const params = protocol.prepare(method, { session_id: 's', profile: 'work', ...extras })
++
++    expect(params).toMatchObject({ session_id: 's', profile: 'work', display_projection: true })
++    expect(params).not.toHaveProperty('lazy')
++  }
++
++  expect(
++    protocol.prepare('session.resume', {
++      session_id: 's',
++      profile: 'work',
++      defer_history: true,
++      omit_messages: true
++    })
++  ).toEqual({ session_id: 's', profile: 'work', defer_history: true, omit_messages: true })
++})
++
++test('a real canonical socket renders the projected rows and retains raw compaction only as stored history', async () => {
++  const raw = [
++    { role: 'user', content: 'Keep working', message_uid: 'user-1', row_id: 1 },
++    {
++      role: 'assistant',
++      content:
++        '[PRIOR CONTEXT — for reference only; not a new message]\n\n[END OF PRIOR CONTEXT — COMPACTION SUMMARY BELOW]\n\n[CONTEXT COMPACTION — REFERENCE ONLY] Internal handoff',
++      message_uid: 'carrier',
++      row_id: 2,
++      tool_calls: [
++        { id: 'call-1', type: 'function', function: { name: 'read_file', arguments: '{"path":"example.py"}' } }
++      ]
++    },
++    { role: 'tool', content: 'Real file output', tool_call_id: 'call-1', tool_name: 'read_file', row_id: 3 },
++    { role: 'assistant', content: 'The file is ready.', message_uid: 'reply-1', row_id: 4 }
++  ]
++
++  // This is the existing owner's authoritative display contract: raw carrier
++  // omitted, authentic user/reply and labelled tool output survive.
++  const display = [
++    { role: 'user', text: 'Keep working', id: 'user-1', row_id: 1 },
++    {
++      role: 'tool',
++      text: 'Real file output',
++      id: 'call-1',
++      name: 'read_file',
++      args: { path: 'example.py' },
++      row_id: 3
++    },
++    { role: 'assistant', text: 'The file is ready.', id: 'reply-1', row_id: 4 }
++  ]
++
++  const wsPackage = 'ws'
++  const { WebSocketServer } = await import(wsPackage)
++  const server = new WebSocketServer({ host: '127.0.0.1', port: 0 })
++  await new Promise<void>(resolve => server.once('listening', resolve))
++  const frames: any[] = []
++  server.on('connection', (socket: any) => {
++    socket.send(
++      JSON.stringify({
++        jsonrpc: '2.0',
++        method: 'event',
++        params: {
++          type: 'gateway.ready',
++          payload: { session_authority: true }
++        }
++      })
++    )
++    socket.on('message', (bytes: Buffer) => {
++      const frame = JSON.parse(bytes.toString())
++      frames.push(frame)
++      socket.send(
++        JSON.stringify({
++          jsonrpc: '2.0',
++          id: frame.id,
++          result: {
++            session_id: 's',
++            stored_session_id: 's',
++            revision: 2,
++            execution_generation: 1,
++            messages: raw,
++            display_messages: display,
++            message_count: raw.length,
++            running: false
++          }
++        })
++      )
++    })
++  })
++  const client = new HermesGateway()
++
++  try {
++    const address = server.address() as { port: number }
++    await client.connect(`ws://127.0.0.1:${address.port}/api/ws`)
++
++    const result = await client.request<{ messages: SessionMessage[]; stored_messages: typeof raw }>('session.resume', {
++      session_id: 's',
++      profile: 'work'
++    })
++
++    expect(frames.find(f => f.method === 'session.resume')?.params).toMatchObject({ display_projection: true })
++    expect(result.messages).toEqual(display)
++    expect(result.stored_messages).toEqual(raw)
++    expect(result.messages[1]).toMatchObject({ id: 'call-1', name: 'read_file', args: { path: 'example.py' } })
++    const painted = toChatMessages(result.messages).map(chatMessageText).join('\n')
++
++    expect(painted).toContain('Keep working')
++    expect(painted).toContain('The file is ready.')
++    expect(painted).not.toContain('PRIOR CONTEXT')
++    expect(painted).not.toContain('CONTEXT COMPACTION')
++    expect(result.stored_messages[1].content).toContain('CONTEXT COMPACTION')
++  } finally {
++    client.close()
++
++    for (const socket of server.clients) {
++      socket.terminate()
++    }
++
++    await new Promise<void>(resolve => server.close(() => resolve()))
++  }
++})
++
++test('an explicitly empty projection never falls back to raw internal rows, old owners keep their existing shape', () => {
++  const protocol = new CanonicalDesktopProtocol()
++  const raw = [{ role: 'assistant', content: 'opaque internal payload' }]
++
++  const projected = protocol.result(
++    'session.resume',
++    { session_id: 's' },
++    {
++      session_id: 's',
++      messages: raw,
++      display_messages: []
++    }
++  )
++
++  expect(projected.messages).toEqual([])
++  expect(projected.stored_messages).toEqual(raw)
++  const legacy = protocol.result('session.resume', { session_id: 's' }, { session_id: 's', messages: raw })
++
++  expect(legacy.messages).toEqual(raw)
++})

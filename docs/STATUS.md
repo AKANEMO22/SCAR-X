@@ -1,5 +1,12 @@
 # Trạng thái SCAR-X
 
+## Hermes compact display13/11
+
+SửaadapterDesktoplấy nhầmrawhistory: renderingresume/activate nay yêu cầu
+`display_projection`vàUIlấy`display_messages`; raw giữ cho model/rewind.
+139checksqua,3testsđỏtrướcfix; chỉcàirenderer, khôngxóachat/sửaneural.
+[Nguyên nhân và bảo trì](hybrid/HERMES_COMPACTION_DISPLAY_FIX_20261113.md).
+
 ## Hermes tool-log collapse13/11
 
 Đã sửa livepreview còn lộ sau explicitclose trongrendererHermes.25checksqua,

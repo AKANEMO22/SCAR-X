@@ -1,11 +1,12 @@
-"""Install only the rebuilt Hermes renderer; preserve native code and backups.
+"""Install only rebuilt Hermes UI fixes, preserving native code and backups.
 
-Source fix: respect an explicit closed tool-run instead of retaining its live
-ticker. Old hashed assets remain, so restoring the backed-up index/manifest
-recovers the prior UI without deleting data or stopping an agent session.
+Handles the explicit-collapse and compaction-display renderer builds. Old hashed
+assets remain, so restoring the backed-up index/manifest recovers the prior UI
+without deleting data or stopping an agent session.
 """
 
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 import os
@@ -35,7 +36,17 @@ def atomic_write(path, raw):
 
 
 def main():
-    build = (ROOT / "local/hermes-renderer-tool-collapse-20261113").resolve()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--build-dir",
+        type=Path,
+        default=ROOT / "local/hermes-renderer-tool-collapse-20261113",
+    )
+    parser.add_argument(
+        "--label", choices=("collapse", "compaction-display"), default="collapse"
+    )
+    args = parser.parse_args()
+    build = args.build_dir.resolve()
     hermes = (Path(os.environ["LOCALAPPDATA"]) / "hermes/hermes-agent").resolve()
     target = (
         hermes / "apps/desktop/release/win-unpacked/resources/app.asar.unpacked/dist"
@@ -79,7 +90,7 @@ def main():
         ROOT
         / "local"
         / (
-            "hermes-collapse-renderer-backup-"
+            f"hermes-{args.label}-renderer-backup-"
             + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
             + "-"
             + uuid.uuid4().hex[:6]
@@ -119,7 +130,7 @@ def main():
     (backup / "receipt.json").write_text(
         json.dumps(receipt, indent=2), encoding="utf-8"
     )
-    (ROOT / "local/hermes-collapse-renderer-current.json").write_text(
+    (ROOT / f"local/hermes-{args.label}-renderer-current.json").write_text(
         json.dumps(receipt), encoding="utf-8"
     )
     print(
