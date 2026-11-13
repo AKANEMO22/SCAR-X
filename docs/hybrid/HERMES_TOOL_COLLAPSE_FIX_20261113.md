@@ -14,7 +14,7 @@ không bị tắt. Không sửaCSS toàncục hoặc xóa nội dunglog.
 
 Patch`integrations/hermes/patches/manual-tool-collapse-v1.patch` giữ cả source
 và regressiontest. Test được chạy đỏ trên bản cũ: sau close vẫn có DOMticker.
-Patch dùng zero-context unifieddiff (`git apply --unidiff-zero`); đối chiếu đúng
+Patch dùng zero-context unifieddiff (`git apply --unidiff-zero --ignore-space-change`); đối chiếu đúng
 sourcehash trong receipt trước áp lại. Reverse-check trên source đã sửa qua.
 Sau sửa25toolgroup/delegate/chrometests qua; Prettier và scopedESLint qua.
 Renderer build dùng toolchainHermes pinnedNode26.12.1/pnpm12.15.0, không đổi
