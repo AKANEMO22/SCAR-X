@@ -1,0 +1,923 @@
+{
+  "upstream_revision": "e05f4ce6132c80ed33392b81535b077d56ab28fd",
+  "source_sha256": {
+    "src/tooltalk/apis/api.py": "f212e7e9479973911a6e4e29b656e150f6153b585383a902907488dcd9a1c2c8",
+    "src/tooltalk/evaluation/tool_executor.py": "879ab775c68886510addafa807b5d48979d0ea3d4d8545cde2876c6cbdaa5cc8"
+  },
+  "schema_validation": {
+    "original": {
+      "name": "OwnedRead",
+      "description": "Fixture only",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Owned source"
+          }
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
+    "repaired": {
+      "name": "OwnedRead",
+      "description": "Fixture only",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Owned source"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    "original_empty_args_accepted": true,
+    "repaired_empty_args_accepted": false,
+    "repaired_valid_args_accepted": true
+  },
+  "scorer_fixtures": {
+    "correct_only": {
+      "conversation": [
+        {
+          "role": "user",
+          "text": "Owned fixture"
+        },
+        {
+          "role": "assistant",
+          "apis": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "match": true
+            }
+          ],
+          "predictions": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "role": "api",
+              "match": true,
+              "bad_action": false
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0
+      }
+    },
+    "correct_plus24_failed_identical_reads": {
+      "conversation": [
+        {
+          "role": "user",
+          "text": "Owned fixture"
+        },
+        {
+          "role": "assistant",
+          "apis": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "match": true
+            }
+          ],
+          "predictions": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "role": "api",
+              "match": true,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "predictions": 25,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.04,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0
+      }
+    },
+    "correct_plus_successful_unintended_mutation": {
+      "conversation": [
+        {
+          "role": "user",
+          "text": "Owned fixture"
+        },
+        {
+          "role": "assistant",
+          "apis": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "match": true
+            }
+          ],
+          "predictions": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "role": "api",
+              "match": true,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": {
+                "changed": true
+              },
+              "exception": null,
+              "role": "api",
+              "match": false,
+              "bad_action": true
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 1.0,
+        "success": false,
+        "soft_success": 0.0
+      }
+    },
+    "correct_plus24_failed_mutations": {
+      "conversation": [
+        {
+          "role": "user",
+          "text": "Owned fixture"
+        },
+        {
+          "role": "assistant",
+          "apis": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "match": true
+            }
+          ],
+          "predictions": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "role": "api",
+              "match": true,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            },
+            {
+              "request": {
+                "api_name": "OwnedMutation",
+                "parameters": {}
+              },
+              "response": null,
+              "exception": "Denied",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "predictions": 25,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 24,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.04,
+        "recall": 1.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0
+      }
+    },
+    "no_correct_call": {
+      "conversation": [
+        {
+          "role": "user",
+          "text": "Owned fixture"
+        },
+        {
+          "role": "assistant",
+          "apis": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "README.md"
+                }
+              },
+              "response": {
+                "value": 9237
+              },
+              "exception": null,
+              "match": false
+            }
+          ],
+          "predictions": [
+            {
+              "request": {
+                "api_name": "OwnedRead",
+                "parameters": {
+                  "path": "missing.md"
+                }
+              },
+              "response": null,
+              "exception": "FileNotFound",
+              "role": "api",
+              "match": false,
+              "bad_action": false
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0
+      }
+    }
+  },
+  "verdict": "DO_NOT_USE_PUBLISHER_SUCCESS_ALONE_FOR_SCARX_ERROR_RECOVERY",
+  "scope": "Actual isolated upstream pure methods with fixture comparator; not API execution or a model score",
+  "upstream_whole_modules_executed": false,
+  "loaded_embedding_or_LLM": false,
+  "live_model_modified": false
+}

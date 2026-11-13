@@ -1,0 +1,21 @@
+    def to_openai_doc(cls, disable_doc: bool = False) -> dict:
+        parameters = dict()
+        required = list()
+        for name, attributes in cls.parameters.items():
+            if attributes["required"]:
+                required.append(name)
+            attributes = attributes.copy()
+            del attributes["required"]
+            if disable_doc:
+                attributes["description"] = ""
+            parameters[name] = attributes
+        description = "" if disable_doc else cls.description
+        return {
+            "name": cls.__name__,
+            "description": description,
+            "parameters": {
+                "type": "object",
+                "properties": parameters,
+            },
+            "required": required,
+        }

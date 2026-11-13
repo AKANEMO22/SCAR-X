@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Information-path/harnessaudit14/11](docs/hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
+ba lỗi file thật tạo cùng inputSNN; encoder có error/probe mới researchonly,
+chưatrain/deploy. Không gọi toolguard hoặc publishersuccess là neuralselfrepair.
 [Tool feedback và thử tận dụng thêm VRAM14/11](docs/hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
 boundedincident/probe/explicitreward đã nối; chưa chứng minh neuralselfrepair.
 Native2B thiếureserve, LFM1.6B chưa qua qualitygate; live giữ0.8B, không nhồiVRAM.

@@ -1,5 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Root information-path P014/11:** actualtool3probe states có cùng neuralinput;
+goal_sequence chưa nhận observederror/probe/reason, verify executor chỉ sốhọc.
+Nghiên cứu causalobservationencoder + action/verifier bridge là ưu tiên trước
+train/scale. EncoderV2 mới researchonly,0updates; không đưa vào live. External
+ToolTalkscorer có thểPASS dù24failedcalls; giữ metricgốc và thêm recovery/cost
+trước mọi comparison. [Bằng chứng và roadmap](hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md).
+Fullgoal/hiddenretention/8hproduction chưađạt, không rút thành P0success.
+
 **Incident/VRAM engineering14/11:** thêm bounded tool-observation→goal→explicit
 ownerfeedback, dùng existinglocalALIFupdate; không coi repeatcounter/readonlyprobe
 là learnedsemanticselfrepair. Questionclosure+synapse/RNG/replay atomic khi save

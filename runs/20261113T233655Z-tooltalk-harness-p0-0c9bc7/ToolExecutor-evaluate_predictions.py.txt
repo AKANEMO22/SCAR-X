@@ -1,0 +1,99 @@
+    def evaluate_predictions(self, conversation_with_predictions: dict) -> dict:
+        """
+        Compare predictions in a conversation with complete ground truth in conversation returning metrics.
+        Calculates recall over ground truth, where predictions can only match to function in ground truth once.
+        Additionally, calculates action precision, number of actions that match ground truth.
+        Finally, calculates success, which is recall == 1.0 and action precision == 1.0.
+
+        Metrics:
+            predictions: number of predictions
+            ground_truths: number of ground truths
+            matches: number of predictions that match ground truth
+            actions: number of predictions that are actions
+            valid_actions: number of actions that match ground truth
+            bad_actions: number of actions that don't match ground truth
+            precision: matches / predictions
+            recall: matches / ground_truths
+            action_precision: valid_actions / actions
+            bad_action_rate: bad_actions / actions
+            success: recall == 1.0 and bad_action_rate == 0.0
+        """
+        predictions = list()
+        ground_truths = list()
+        for turn in conversation_with_predictions["conversation"]:
+            if turn["role"] == "User":
+                continue
+            if "predictions" in turn:
+                # last prediction will be assistant response
+                for prediction in turn["predictions"]:
+                    if prediction['role'] == 'api':
+                        predictions.append(prediction)
+            if "apis" in turn:
+                ground_truths.extend(turn["apis"])
+
+        # remove ground truth as they get matched to predictions
+        match_count = 0
+        action_count = 0
+        valid_action_count = 0
+        bad_action_count = 0
+        current_ground_truths = deque(ground_truths)
+        for prediction in predictions:
+            is_match = False
+            new_ground_truths = deque()
+            while current_ground_truths:
+                ground_truth = current_ground_truths.popleft()
+                if self.compare_api_calls(prediction, ground_truth):
+                    # don't add back in ground truth that matches
+                    is_match = True
+                    ground_truth["match"] = True
+                    break
+                else:
+                    new_ground_truths.append(ground_truth)
+            else:
+                logger.debug(f"Failed {json.dumps(prediction, indent=4)}")
+
+            # alter prediction data
+            is_action = self.is_action(prediction["request"]["api_name"])
+            is_successful = prediction["exception"] is None
+            is_bad_action = not is_match and is_action and is_successful
+            prediction["match"] = is_match
+            prediction["bad_action"] = is_bad_action
+
+            # add back in ground truths that don't match
+            while current_ground_truths:
+                new_ground_truths.append(current_ground_truths.popleft())
+            current_ground_truths = new_ground_truths
+
+            # update counters
+            match_count += is_match
+            action_count += is_action
+            valid_action_count += is_action and is_match
+            bad_action_count += is_bad_action
+
+        for ground_truth in current_ground_truths:
+            ground_truth["match"] = False
+
+        precision = match_count / len(predictions) if len(predictions) > 0 else 0
+        recall = match_count / len(ground_truths)
+        action_precision = valid_action_count / action_count if action_count > 0 else 1
+        bad_action_rate = bad_action_count / action_count if action_count > 0 else 0
+        success = recall == 1.0 and bad_action_rate == 0.0
+        soft_success = recall * (1.0 - bad_action_rate)
+        metrics = {
+            "predictions": len(predictions),
+            "ground_truths": len(ground_truths),
+            "matches": match_count,
+            "actions": action_count,
+            "valid_actions": valid_action_count,
+            "bad_actions": bad_action_count,
+            "precision": precision,
+            "recall": recall,
+            "action_precision": action_precision,
+            # number of actions matching ground truth
+            "bad_action_rate": bad_action_rate,
+            # how often an action is bad aka successful but not matching ground truth
+            "success": success,
+            "soft_success": soft_success,
+        }
+        conversation_with_predictions["metrics"] = metrics
+        return conversation_with_predictions

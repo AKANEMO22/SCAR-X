@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Incident information-path và externalharnessP014/11](hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
+evaluation/hybrid_incident_encoder.py + tooltalk_schema.py researchonly;
+audit_hybrid_incident_information.py, data-only verifier, upstreamintake/harness
+scripts. Chưa train/importserving; [goal completion audit](hybrid/GOAL_COMPLETION_AUDIT_20261114.md).
+
 [Tool feedback + nativeGPUcandidates14/11](hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
 hybrid/incidents.py, device_budget.py; Hermes publiclearning_hooks.py;
 accept_hybrid_tool_experience.py + faulttests; nativeLFMsetup/build/probe/audit

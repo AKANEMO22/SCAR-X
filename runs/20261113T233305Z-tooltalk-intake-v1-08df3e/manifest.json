@@ -1,0 +1,1569 @@
+{
+  "repository": "https://github.com/microsoft/ToolTalk",
+  "revision": "e05f4ce6132c80ed33392b81535b077d56ab28fd",
+  "archive_url": "https://codeload.github.com/microsoft/ToolTalk/zip/e05f4ce6132c80ed33392b81535b077d56ab28fd",
+  "archive_sha256": "287fc2347c8d0f9ef00ce82ccb65dc1470f65ae1ca2eaab96426c0d5ebbfa6bc",
+  "uncompressed_bytes": 682193,
+  "local_snapshot": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\upstream\\ToolTalk-e05f4ce6132c80ed33392b81535b077d56ab28fd",
+  "file_sha256": {
+    ".gitignore": "0bfd8b53af94e73a1f73caac933ce9f7b1a62856b2f86545ab6ea411544b815c",
+    "CODE_OF_CONDUCT.md": "9daeae709a0bd71bcfd1c96dc5822ecec5210327eff929da64b0ae7f8faf1444",
+    "CONTRIBUTING.md": "9cc0ebb0eb4bfed81b3205f9d3fea953ce0cd0dfffad93f21bd9f852cfc97fd9",
+    "LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "NOTICE": "e5998059ad3d4982b37ac9c453e6a8e936b63bd68721490e9750030d2208390d",
+    "README.md": "d43ee5965152cfa21e9addf9d734b61ad9a36b679c622d5b2efce942c037d3c7",
+    "SECURITY.md": "7b6976eec43edfa68b79a459dd089c56b7a395916dbf1a01bd11e6d86e12128f",
+    "SUPPORT.md": "149773411caf2c59cb1a6bfb2c6f070d1d054f1f018e7a80be319a8c384eeaf5",
+    "data/databases/Account.json": "51631726362f4703404bc6ed739d335696d505a97fd444477efcd7d41491ba39",
+    "data/databases/Alarm.json": "988a49f1df3f13f22bb1f91f863514531b70be0b4b81c0ce97e4113657b1d006",
+    "data/databases/Calendar.json": "0ad464fd1ab9300d224226c5f1c1b58060f1587b2f47f4d2f1479f850acb812b",
+    "data/databases/Email.json": "5c02e5d3c07dd7874df012c3b91121f482b68ee6b2c52a07a45d70b40e0764e0",
+    "data/databases/HistoricWeather.json": "f2547227fc5a050dc8292caf8e466925ff5ddcc1f551f86e110bda0d2468716b",
+    "data/databases/Message.json": "e88bcd00a6650d92cd8316e03e3ea3e4348ce0b35ff127257a952bf90984115c",
+    "data/databases/Reminder.json": "58211bd863351a43d9ca288ffc3954c56ed353bcef9a0fac5d642515c11b45b8",
+    "data/databases/Weather.json": "0d72090539f83a45caf48361c1c20c4a6d19eb3a3912c82e901c634455b68ddb",
+    "data/easy/AddAlarm-easy.json": "802a73e375a9cae34755f8598795d12ea8d11374c49113f3f82956e65a8649a8",
+    "data/easy/AddReminder-easy.json": "4d5d7c42f5a057d3673c9ab263a082949fc9867bfcf039c1c15a20808a3a8829",
+    "data/easy/ChangePassword-easy.json": "205c9967f1da32dc1030e14aee722f2140bd82bf893c106d04a549b3666672e5",
+    "data/easy/CompleteReminder-easy.json": "6003fb139980b64d5629ab40542f322884000f9b33fdde088aa244e6cd43794b",
+    "data/easy/CreateEvent-easy.json": "8140a18dcc59a23fd2c521bdb3c69cbbb7b2936017fcfc539ae2af56f2524194",
+    "data/easy/CurrentWeather-easy.json": "bbaf19e5a73a4f5591006a22832f63f9b1c5323ce42abc9148e81f1b339a66fb",
+    "data/easy/DeleteAccount-easy.json": "bf6c1e6993d64aa5516e81bf4f2bfaf5ee2d2efcf84b1e6df94589e075ac28b1",
+    "data/easy/DeleteAlarm-easy.json": "02cf4ba89498a1129c5774e2379e92fd8ddd267e018c204182e665ba01ce610c",
+    "data/easy/DeleteEvent-easy.json": "ddcafc19a513fce7bb5a6d252915c90f39006fa468969df055b3a63bb60440e4",
+    "data/easy/DeleteReminder-easy.json": "58b402c7ff337d25799a6d494c7ec3fe3de707bdd73f0599f63c911bb61d794a",
+    "data/easy/FindAlarms-easy.json": "1c4997ff914c7647fba12544e233d860844435acb640490cbd8092c1baa942d6",
+    "data/easy/ForecastWeather-easy.json": "638b6df8973fd6c910f19b2522ac56ea8d0f00cf7c1a43e23273ff1d9978a155",
+    "data/easy/GetAccountInformation-easy.json": "f1ce6b71e1d1e20a23142da09ae28964d4bb680cadbd49627600656d514aa733",
+    "data/easy/GetReminders-easy.json": "bcff5a40431355753aaa91f3f0e1ae75a93e5627d6250e78ca361688d8645981",
+    "data/easy/HistoricWeather-easy.json": "59c4f1cef1fcd7be721f4fc250dd7df927e04c09177f5ea59f597afa503f87f7",
+    "data/easy/LogoutUser-easy.json": "e2c2abfa293e0a9f7335f2904988ffe7446258ba70c7229770f858b051c232c7",
+    "data/easy/ModifyEvent-easy.json": "0a449c95b4676d41b4bd14cb0567161a962135e4b2bd10d8467da831d24a2396",
+    "data/easy/QueryCalendar-easy.json": "13034cb991fd82d652b954f0482b82fe76159f684f9843db33e26a45d89b8eac",
+    "data/easy/QueryUser-easy.json": "c833b2679fab2d2eca28fa4877d3340e44d8b0154e5f74cfd39a9a778f7e44ed",
+    "data/easy/RegisterUser-easy.json": "0b44077fb15383d8288e2e9884a60092cd2446d618aa53ff8a226d13430414be",
+    "data/easy/ResetPassword-easy.json": "8cafec77c604986dd1cc1a7d0b73f68dcf77aba63448c2e5a6fa80ce3f7d7a6d",
+    "data/easy/SearchInbox-easy.json": "d20402aa4c303e17f5a82085eadedb6f2c2c5c44a7e52c018c9eb7ea2b645961",
+    "data/easy/SearchMessages-easy.json": "d0a8330bee03089574b571eeaff1aff3058d15bbf6103d55115956b627343cd0",
+    "data/easy/SendEmail-easy.json": "f65aa2031eab32a8b7e822f7963f509ae68f19ebcfeb857d026e1d4b00e58d98",
+    "data/easy/SendMessage-easy.json": "003e4d5e068db0f96c81d11dedca52acb4876e6c2bc0bdcc76b545bee9c5d94d",
+    "data/easy/SendVerificationCode-easy.json": "226ec8c82252b49b6e66e3ddfda970543d66a39a168af24f7cf796b273029db6",
+    "data/easy/UpdateAccountInformation-easy.json": "089fa8f606b2f7ca59e0c3229ddbdbd001c2f3a73ed5063804d6eca5c5a9d854",
+    "data/easy/UserLogin-easy.json": "bf16a2c37af11fc3f6e47af7fdea5ce73495ff0996f55829e6f043db3860f85d",
+    "data/tooltalk/AccountTools-Alarm-Calendar-AddAlarm-0.json": "5a2691dc39b7e53edb5192e373f8654fb7c2270566e5e1a21180cb96404de9fa",
+    "data/tooltalk/AccountTools-Alarm-Email-GetAccountInformati-0.json": "5d638ae2bcfcb7e35e05808bef28daf813594fed98a4d8cdc074ef20e4d40aee",
+    "data/tooltalk/AccountTools-Alarm-Messages-FindAlarm-0.json": "0a94e01d4bb4dc535758aff278d2db2ef37aa5caa2a13719fce2eaae48988355",
+    "data/tooltalk/AccountTools-Alarm-Weather-DeleteAccount-2.json": "2f703652a30535ad0c376630df5589569bca830bd3eeed00a116ae9a5a3b04c5",
+    "data/tooltalk/AccountTools-Calendar-Weather-RegisterUser-0.json": "b3187e3fd742e83026ca226953ad4e08846895e4eb18815299c1df96cf6acb99",
+    "data/tooltalk/AccountTools-Email-Reminder-ChangePassword-1.json": "1f2963ec47a87644664e1603ddf628447dd38c26b860a75f558b4f31a7bdc74e",
+    "data/tooltalk/Alarm-Calendar-Email-DeleteAlarm-1.json": "14d3ecdc2d993c327aef76910787a655720defb7ae95c938f8eb732f274b3bed",
+    "data/tooltalk/Alarm-Calendar-Messages-AddAlarm-1.json": "b78d9f76504180552ef9ccb289250ff62bbd025c4a70a9f8cea1a35626ec0353",
+    "data/tooltalk/Alarm-Messages-Reminder-GetReminder-2.json": "8a0a487b990e3d2caea50ede751970d1d894ed889a1b44ff1e5121c4d396bc1f",
+    "data/tooltalk/Alarm-Reminder-Weather-AddReminder-1.json": "33d2242ec0494c2ddbe14b990c0f8e7df5ed1499f16bcd576904c880a1fdafd9",
+    "data/tooltalk/Alarm-Reminder-Weather-DeleteAlarm-2.json": "7bbdc46c51d4aabe293d43afd208c75020bad99e19ade0e8a060bdc6731e4ed4",
+    "data/tooltalk/Alarm-Reminder-Weather-FindAlarm-2.json": "c9218e5ce8ce7b86eca25fa0a235b45467ed29aa56a2e81a84b98a6322c5b6c4",
+    "data/tooltalk/Calendar-Email-Reminder-GetReminder-1.json": "de2ff57bd6da02ed50ee06b36bf383bbee2720d3181ec9486040746758787041",
+    "data/tooltalk/Calendar-Email-Reminder-SendEmail-2.json": "efadf698788ff33c8f0336cf37a2fe5c9554fccae8c6d15f56de4f46debd22ee",
+    "data/tooltalk/Calendar-Messages-Reminder-AddReminder-1.json": "40ca6ce517901879117b91dbe53a99f3675c166de4f1270c1e350d96a3446974",
+    "data/tooltalk/Calendar-Messages-Reminder-CreateEvent-1.json": "ab82bf84072e8453b39d9bf493a6f8bdde1afebaf9693044618a71d980ea2631",
+    "data/tooltalk/Calendar-Messages-Reminder-ModifyEvent-0.json": "14ab311d61af151fa86025c26914384801199c6391d2d46287779acae895455d",
+    "data/tooltalk/Calendar-Messages-Reminder-QueryCalendar-2.json": "062053a24d2887792b8a87f45eb37c3a7b8009ad3873202476654733480ea87a",
+    "data/tooltalk/Calendar-Messages-Weather-DeleteEvent-0.json": "cc8b6fe96ef71ef2ca395a4ad1766a650f212214f6ffba28d95ad506d11e9528",
+    "data/tooltalk/Calendar-Messages-Weather-SendMessage-0.json": "ab323b6844ed664f223048662c8451b0d5a00913889d278e0ce1e8feff86c9fc",
+    "data/tooltalk/Calendar-Messages-Weather-SendMessage-1.json": "ac2340667185d44bfcd985a22ac4931888ed6e2e3a547cfda16e0a38d361b2b8",
+    "data/tooltalk/Calendar-Reminder-Weather-CompleteReminder-1.json": "ebf9de11d7e8c3333784e7187a066864703666a996d816b1f2fe13d1230edb2e",
+    "data/tooltalk/Calendar-Reminder-Weather-CreateEvent-1.json": "1f314c440b851228863f7ffcc465938da9c040cfd532dfe48d4286da79b87a4c",
+    "data/tooltalk/Calendar-Reminder-Weather-DeleteEvent-0.json": "81e2ccb94c3b5b5d9a869563c84b7014fafd476beb4c61707d4e3d656d308793",
+    "data/tooltalk/Calendar-Reminder-Weather-DeleteReminder-1.json": "c2ea9f08e33e1a23e31befab7ecc1a8c7410970b89777e3804c8338dad0aac8b",
+    "data/tooltalk/Calendar-Reminder-Weather-ModifyEvent-0.json": "3bc53559ce4ef27e75cabfdf930a67e642ccfca1599fad5733d87780ca1db881",
+    "data/tooltalk/Calendar-Reminder-Weather-ModifyEvent-1.json": "4d5a83a6f6f25b8830a790c58b6974db9327d05d17f13439299c79db05f69339",
+    "data/tooltalk/Calendar-Reminder-Weather-QueryCalendar-0.json": "95fe78a1644d7bf21fb63736c9f90cf18ed1f9ca585a94fa09fcd6acc96c69fc",
+    "data/tooltalk/Email-Messages-Reminder-DeleteReminder-1.json": "f2a704ede4b9849c6adac404cc271534cf47d7e07fd14ea0f456308705ff5fa8",
+    "data/tooltalk/Email-Messages-Reminder-SearchMessage-1.json": "4be7495691b4947a6e993f95a9233ea45e41e8032e0470cf7a8e54921261df8c",
+    "data/tooltalk/Email-Messages-Reminder-SendEmail-2.json": "913f5ea25dc90a44dd3d91fdf6281808862e803d7857c8137c55a1baba40ddb9",
+    "data/tooltalk/Email-Messages-Reminder-SendMessage-2.json": "6e91352e626b15ecfe34642c0d555a668e0cb12fd90148610975dc7edcaa291f",
+    "data/tooltalk/Email-Messages-Weather-SendMessage-2.json": "8d4ab91e7c75d02b882a26ed3b5e128f264dd2e483fc5931e43e852b43c3061e",
+    "data/tooltalk/Email-Reminder-Weather-CompleteReminder-2.json": "bd793f55de4e644890e9159e3c779097a64063681372514729c18ede378b3bd0",
+    "data/tooltalk/Email-Reminder-Weather-DeleteReminder-0.json": "f9ee774800d65b755ac9f76d8da24ebac9381fec8ae596df2590e584cefd4662",
+    "data/tooltalk/Email-Reminder-Weather-GetReminder-0.json": "4586a679a2599a8481d2865f94e38d4f78d343df5c8789588bef9bc2052171e8",
+    "data/tooltalk/Email-Reminder-Weather-SearchInbox-1.json": "78597c0c51c9436ad42cf8808a09edbbca0d49f69faf6b903fa361cb8980c34a",
+    "data/tooltalk/Email-Reminder-Weather-SendEmail-2.json": "19a95a850fefcaddd0aa01be0f9e1936e2b2718b29f6a9bd0d0dc5a5993b46d7",
+    "data/tooltalk/Messages-Reminder-Weather-AddReminder-1.json": "bb957c51924ae9d9a48b33b1fac10dfebf6bb7f645785aed63c940590b6c5ca3",
+    "data/tooltalk/Messages-Reminder-Weather-CompleteReminder-1.json": "c7bcfe8645248f96f7eb0154a3b6d5684d5fa46f6f23334dd0b91687d86a6fa3",
+    "data/tooltalk/Messages-Reminder-Weather-ForecastWeather-1.json": "ecfb4fd5c4cae0fd8eed43ab4022bcb0acbead611df9e9a3d1fee7b17ec16f20",
+    "data/tooltalk/Messages-Reminder-Weather-GetReminder-0.json": "63394f03964bd40e9899941d9f549663a9aa4524b0a009ecfe73761e4b826837",
+    "data/tooltalk/Messages-Reminder-Weather-SearchMessage-2.json": "28635ff904a75c43295dea70ead37f0cedb8c8cd223bf3cb734ba4fa7c38877f",
+    "data/tooltalk/Messages-Reminder-Weather-SendMessage-2.json": "b9be2b8bb6060b53f6cd85b15045f3d3265fb33dc78713007f3df60f6c5e8e24",
+    "data/tooltalk/golden_conversation_1.json": "27fdf025d1ff95bcfcf88fd15d821beec1e3886333d6ff217e4e7c9f84346038",
+    "data/tooltalk/golden_conversation_2.json": "14d9e21f41c22b20d7f2599b108e0b5a207377bca2a2e59fc02b83fca5947200",
+    "data/tooltalk/golden_conversation_3.json": "61ea8c4d4491d14c961c77ed638815ce78b4bb06d5ca7e53a3db49422c0b986f",
+    "data/tooltalk/golden_conversation_4.json": "86bf7bc8fc0d53262017b0fb67be09db0bd29abac26c3f317e91747738bc1794",
+    "data/tooltalk/golden_conversation_5.json": "c3f30e13726e5c7e5f74857a621b3ce91a4d9f8536a252e54b9c1c39adb436f4",
+    "data/tooltalk/golden_conversation_6.json": "012d55cf012a8a1d62f187e849692cef220579515578a8181a0000c691143380",
+    "images/Evaluation.png": "18ecf6ecf182375c2d99fdd0963c767e9f5e0861af1eff27011550cf55f95eaf",
+    "requirements.txt": "d6f79ecc56e16522e9ba16c3d41c56800b1c80dcd3653020e14f027d5232fd3e",
+    "scripts/evaluate_gpt35turbo.sh": "96534eff760e3604dda7877f0b5abfc59a13dce63223c0b2f196afc080d742bd",
+    "scripts/evaluate_gpt4.sh": "c2e396461ee270b5ecb690226746f14a0658057825eff0dd113ee2a2474963e3",
+    "setup.cfg": "df3d410e31a39b21ae1406fe0edb5ac677dc2d4eeb4e56058f53d17eb79bf23e",
+    "setup.py": "848650d83250a597b2c01fb04421a3116839480b91e369317925790c5a061f57",
+    "src/__init__.py": "93f69383d8105a47e34f5b3cbf8a58d68643cdeeb9745000f82bac8fa1fe43da",
+    "src/prompts/scenario_template.md": "cc406b350b659074aba1262d87f035924e261c48ae53bce03d211058daa32765",
+    "src/scripts/fix_apis_used.py": "cbe348f9ceeadcfa4adc875c2ab9316e1e3541af54c0a05fe16d908a7172c657",
+    "src/scripts/refactor_tool_talk.py": "c791bcd4b4e35e4a5a8e94a53f6a3024c9b49798162f9c38db8d5f8e2bbfda91",
+    "src/tooltalk/__init__.py": "93f69383d8105a47e34f5b3cbf8a58d68643cdeeb9745000f82bac8fa1fe43da",
+    "src/tooltalk/apis/__init__.py": "43ae601525f9f871ec4c0abbded3f033e19bfb37c9ba3bc7e45ff24a4b87459a",
+    "src/tooltalk/apis/account.py": "a5046c283c05825794e7a072cd73e670bf1292336689adfb3fbbf4d6997ab537",
+    "src/tooltalk/apis/alarm.py": "1d210979f13843794658982db2c2590a8b44b2c5c000f5d52bdf7110a407d503",
+    "src/tooltalk/apis/api.py": "f212e7e9479973911a6e4e29b656e150f6153b585383a902907488dcd9a1c2c8",
+    "src/tooltalk/apis/calendar.py": "9e94031ceaa401ba949476b4517078a12e5930f8aba5ee1db574682d2296556d",
+    "src/tooltalk/apis/email.py": "a5872b60408fe2f8d95284415c0ffcaba4aac477bf6b12c7d78c3bc00b4ba414",
+    "src/tooltalk/apis/exceptions.py": "ab03725c572f4132c6e4332869e02d17909d829ab61bab3488be028046eb8fe6",
+    "src/tooltalk/apis/message.py": "8cad12aec95c6befd7aefe0f938918d42a3b2d642eaedd8e142a3993db8118b8",
+    "src/tooltalk/apis/reminder.py": "0b60d01b00e69ed90777bb343b2742a19d4fa582fb4705a5833e3730c84e05d0",
+    "src/tooltalk/apis/utils.py": "a284d1dad4722d9618718ee51af857113774a06397eb56044e54e96b4bac7683",
+    "src/tooltalk/apis/weather.py": "329c94ad88ced915649918adc2632fa5e716ab8e440e9439684979bb28f354d5",
+    "src/tooltalk/evaluation/__init__.py": "93f69383d8105a47e34f5b3cbf8a58d68643cdeeb9745000f82bac8fa1fe43da",
+    "src/tooltalk/evaluation/calculate_error_types.py": "f2ac408bfd974fb0d7f151c8162501d6ed060134d5c7ded5ba0bdd0ece24b067",
+    "src/tooltalk/evaluation/evaluate_openai.py": "c53ddeeb09a39aea062c1f46d609e50388f2020fc0785aee5ea46891c52590ce",
+    "src/tooltalk/evaluation/tool_executor.py": "879ab775c68886510addafa807b5d48979d0ea3d4d8545cde2876c6cbdaa5cc8",
+    "src/tooltalk/generation/__init__.py": "93f69383d8105a47e34f5b3cbf8a58d68643cdeeb9745000f82bac8fa1fe43da",
+    "src/tooltalk/generation/scenario_generator.py": "4636293c31cd4ef4f05b659fcd30d7edd624ffeccc0d45e9a856f64a09353e2e",
+    "src/tooltalk/utils/__init__.py": "0634eced801e0890ca3442703817699b3c006bf5024b3fc4f193ccf93afdac1e",
+    "src/tooltalk/utils/file_utils.py": "fea298b00901f89ec082f184179042da4b9dc3842148d6876e20f4e4268dc01e",
+    "src/tooltalk/utils/openai_utils.py": "c8118705a195fc520243512586f578379439c8bb1708b2d8fa4ad04d153448a6",
+    "tests/test_documentation.py": "6efa40ff33a4fa05ad58a978a953c3fb0314e6f552c3a655489e99be966d5a09",
+    "tests/test_oracle.py": "18e8079f0738c4e6d622a3ce044b2b56919d5131632a47756b7a93d679d78636"
+  },
+  "python_AST_imports": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "src/__init__.py": [],
+    "src/scripts/fix_apis_used.py": [
+      "argparse",
+      "functools",
+      "json",
+      "os",
+      "tooltalk.apis"
+    ],
+    "src/scripts/refactor_tool_talk.py": [
+      "argparse",
+      "json",
+      "os",
+      "paper.utils.file_utils"
+    ],
+    "src/tooltalk/__init__.py": [],
+    "src/tooltalk/apis/__init__.py": [
+      "account",
+      "alarm",
+      "calendar",
+      "email",
+      "message",
+      "reminder",
+      "weather"
+    ],
+    "src/tooltalk/apis/account.py": [
+      "abc",
+      "api",
+      "exceptions",
+      "typing",
+      "utils"
+    ],
+    "src/tooltalk/apis/alarm.py": [
+      "api",
+      "copy",
+      "datetime",
+      "exceptions"
+    ],
+    "src/tooltalk/apis/api.py": [
+      "abc",
+      "dataclasses",
+      "datetime",
+      "exceptions",
+      "os",
+      "random",
+      "typing"
+    ],
+    "src/tooltalk/apis/calendar.py": [
+      "api",
+      "copy",
+      "dataclasses",
+      "datetime",
+      "exceptions",
+      "logging",
+      "typing",
+      "utils"
+    ],
+    "src/tooltalk/apis/email.py": [
+      "api",
+      "copy",
+      "datetime",
+      "exceptions",
+      "typing",
+      "utils"
+    ],
+    "src/tooltalk/apis/exceptions.py": [],
+    "src/tooltalk/apis/message.py": [
+      "api",
+      "copy",
+      "datetime",
+      "exceptions",
+      "re",
+      "typing",
+      "utils"
+    ],
+    "src/tooltalk/apis/reminder.py": [
+      "api",
+      "copy",
+      "datetime",
+      "exceptions",
+      "typing",
+      "utils"
+    ],
+    "src/tooltalk/apis/utils.py": [
+      "functools",
+      "numpy",
+      "re",
+      "sent2vec.vectorizer",
+      "typing"
+    ],
+    "src/tooltalk/apis/weather.py": [
+      "abc",
+      "api",
+      "datetime",
+      "exceptions"
+    ],
+    "src/tooltalk/evaluation/__init__.py": [],
+    "src/tooltalk/evaluation/calculate_error_types.py": [
+      "argparse",
+      "collections",
+      "json",
+      "logging",
+      "tooltalk.utils.file_utils"
+    ],
+    "src/tooltalk/evaluation/evaluate_openai.py": [
+      "argparse",
+      "collections",
+      "enum",
+      "json",
+      "logging",
+      "openai",
+      "os",
+      "tooltalk.apis",
+      "tooltalk.evaluation.tool_executor",
+      "tooltalk.utils.file_utils",
+      "tooltalk.utils.openai_utils",
+      "tqdm",
+      "typing"
+    ],
+    "src/tooltalk/evaluation/tool_executor.py": [
+      "abc",
+      "collections",
+      "datetime",
+      "json",
+      "logging",
+      "os",
+      "tooltalk.apis",
+      "tooltalk.apis.account",
+      "tooltalk.utils.file_utils",
+      "typing"
+    ],
+    "src/tooltalk/generation/__init__.py": [],
+    "src/tooltalk/generation/scenario_generator.py": [
+      "argparse",
+      "itertools",
+      "json",
+      "logging",
+      "openai",
+      "os",
+      "re",
+      "tooltalk.apis",
+      "tooltalk.utils.file_utils",
+      "tooltalk.utils.openai_utils",
+      "tqdm",
+      "typing"
+    ],
+    "src/tooltalk/utils/__init__.py": [],
+    "src/tooltalk/utils/file_utils.py": [
+      "os"
+    ],
+    "src/tooltalk/utils/openai_utils.py": [
+      "functools",
+      "logging",
+      "openai",
+      "time"
+    ],
+    "tests/test_documentation.py": [
+      "inspect",
+      "tooltalk.apis"
+    ],
+    "tests/test_oracle.py": [
+      "argparse",
+      "copy",
+      "json",
+      "logging",
+      "os",
+      "pytest",
+      "tooltalk.evaluation.tool_executor",
+      "tooltalk.utils.file_utils",
+      "tqdm",
+      "typing"
+    ]
+  },
+  "conversation_files": [
+    {
+      "path": "data/easy/AddAlarm-easy.json",
+      "sha256": "802a73e375a9cae34755f8598795d12ea8d11374c49113f3f82956e65a8649a8",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/AddReminder-easy.json",
+      "sha256": "4d5d7c42f5a057d3673c9ab263a082949fc9867bfcf039c1c15a20808a3a8829",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/ChangePassword-easy.json",
+      "sha256": "205c9967f1da32dc1030e14aee722f2140bd82bf893c106d04a549b3666672e5",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/CompleteReminder-easy.json",
+      "sha256": "6003fb139980b64d5629ab40542f322884000f9b33fdde088aa244e6cd43794b",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/CreateEvent-easy.json",
+      "sha256": "8140a18dcc59a23fd2c521bdb3c69cbbb7b2936017fcfc539ae2af56f2524194",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/CurrentWeather-easy.json",
+      "sha256": "bbaf19e5a73a4f5591006a22832f63f9b1c5323ce42abc9148e81f1b339a66fb",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/DeleteAccount-easy.json",
+      "sha256": "bf6c1e6993d64aa5516e81bf4f2bfaf5ee2d2efcf84b1e6df94589e075ac28b1",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/DeleteAlarm-easy.json",
+      "sha256": "02cf4ba89498a1129c5774e2379e92fd8ddd267e018c204182e665ba01ce610c",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/DeleteEvent-easy.json",
+      "sha256": "ddcafc19a513fce7bb5a6d252915c90f39006fa468969df055b3a63bb60440e4",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/DeleteReminder-easy.json",
+      "sha256": "58b402c7ff337d25799a6d494c7ec3fe3de707bdd73f0599f63c911bb61d794a",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/FindAlarms-easy.json",
+      "sha256": "1c4997ff914c7647fba12544e233d860844435acb640490cbd8092c1baa942d6",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/ForecastWeather-easy.json",
+      "sha256": "638b6df8973fd6c910f19b2522ac56ea8d0f00cf7c1a43e23273ff1d9978a155",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/GetAccountInformation-easy.json",
+      "sha256": "f1ce6b71e1d1e20a23142da09ae28964d4bb680cadbd49627600656d514aa733",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/GetReminders-easy.json",
+      "sha256": "bcff5a40431355753aaa91f3f0e1ae75a93e5627d6250e78ca361688d8645981",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/HistoricWeather-easy.json",
+      "sha256": "59c4f1cef1fcd7be721f4fc250dd7df927e04c09177f5ea59f597afa503f87f7",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/LogoutUser-easy.json",
+      "sha256": "e2c2abfa293e0a9f7335f2904988ffe7446258ba70c7229770f858b051c232c7",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/ModifyEvent-easy.json",
+      "sha256": "0a449c95b4676d41b4bd14cb0567161a962135e4b2bd10d8467da831d24a2396",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/QueryCalendar-easy.json",
+      "sha256": "13034cb991fd82d652b954f0482b82fe76159f684f9843db33e26a45d89b8eac",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/QueryUser-easy.json",
+      "sha256": "c833b2679fab2d2eca28fa4877d3340e44d8b0154e5f74cfd39a9a778f7e44ed",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/RegisterUser-easy.json",
+      "sha256": "0b44077fb15383d8288e2e9884a60092cd2446d618aa53ff8a226d13430414be",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/ResetPassword-easy.json",
+      "sha256": "8cafec77c604986dd1cc1a7d0b73f68dcf77aba63448c2e5a6fa80ce3f7d7a6d",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/SearchInbox-easy.json",
+      "sha256": "d20402aa4c303e17f5a82085eadedb6f2c2c5c44a7e52c018c9eb7ea2b645961",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/SearchMessages-easy.json",
+      "sha256": "d0a8330bee03089574b571eeaff1aff3058d15bbf6103d55115956b627343cd0",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/SendEmail-easy.json",
+      "sha256": "f65aa2031eab32a8b7e822f7963f509ae68f19ebcfeb857d026e1d4b00e58d98",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/SendMessage-easy.json",
+      "sha256": "003e4d5e068db0f96c81d11dedca52acb4876e6c2bc0bdcc76b545bee9c5d94d",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/SendVerificationCode-easy.json",
+      "sha256": "226ec8c82252b49b6e66e3ddfda970543d66a39a168af24f7cf796b273029db6",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/UpdateAccountInformation-easy.json",
+      "sha256": "089fa8f606b2f7ca59e0c3229ddbdbd001c2f3a73ed5063804d6eca5c5a9d854",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/easy/UserLogin-easy.json",
+      "sha256": "bf16a2c37af11fc3f6e47af7fdea5ce73495ff0996f55829e6f043db3860f85d",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Alarm-Calendar-AddAlarm-0.json",
+      "sha256": "5a2691dc39b7e53edb5192e373f8654fb7c2270566e5e1a21180cb96404de9fa",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Alarm-Email-GetAccountInformati-0.json",
+      "sha256": "5d638ae2bcfcb7e35e05808bef28daf813594fed98a4d8cdc074ef20e4d40aee",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Alarm-Messages-FindAlarm-0.json",
+      "sha256": "0a94e01d4bb4dc535758aff278d2db2ef37aa5caa2a13719fce2eaae48988355",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Alarm-Weather-DeleteAccount-2.json",
+      "sha256": "2f703652a30535ad0c376630df5589569bca830bd3eeed00a116ae9a5a3b04c5",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Calendar-Weather-RegisterUser-0.json",
+      "sha256": "b3187e3fd742e83026ca226953ad4e08846895e4eb18815299c1df96cf6acb99",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/AccountTools-Email-Reminder-ChangePassword-1.json",
+      "sha256": "1f2963ec47a87644664e1603ddf628447dd38c26b860a75f558b4f31a7bdc74e",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Calendar-Email-DeleteAlarm-1.json",
+      "sha256": "14d3ecdc2d993c327aef76910787a655720defb7ae95c938f8eb732f274b3bed",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Calendar-Messages-AddAlarm-1.json",
+      "sha256": "b78d9f76504180552ef9ccb289250ff62bbd025c4a70a9f8cea1a35626ec0353",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Messages-Reminder-GetReminder-2.json",
+      "sha256": "8a0a487b990e3d2caea50ede751970d1d894ed889a1b44ff1e5121c4d396bc1f",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Reminder-Weather-AddReminder-1.json",
+      "sha256": "33d2242ec0494c2ddbe14b990c0f8e7df5ed1499f16bcd576904c880a1fdafd9",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Reminder-Weather-DeleteAlarm-2.json",
+      "sha256": "7bbdc46c51d4aabe293d43afd208c75020bad99e19ade0e8a060bdc6731e4ed4",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Alarm-Reminder-Weather-FindAlarm-2.json",
+      "sha256": "c9218e5ce8ce7b86eca25fa0a235b45467ed29aa56a2e81a84b98a6322c5b6c4",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Email-Reminder-GetReminder-1.json",
+      "sha256": "de2ff57bd6da02ed50ee06b36bf383bbee2720d3181ec9486040746758787041",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Email-Reminder-SendEmail-2.json",
+      "sha256": "efadf698788ff33c8f0336cf37a2fe5c9554fccae8c6d15f56de4f46debd22ee",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Reminder-AddReminder-1.json",
+      "sha256": "40ca6ce517901879117b91dbe53a99f3675c166de4f1270c1e350d96a3446974",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Reminder-CreateEvent-1.json",
+      "sha256": "ab82bf84072e8453b39d9bf493a6f8bdde1afebaf9693044618a71d980ea2631",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Reminder-ModifyEvent-0.json",
+      "sha256": "14ab311d61af151fa86025c26914384801199c6391d2d46287779acae895455d",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Reminder-QueryCalendar-2.json",
+      "sha256": "062053a24d2887792b8a87f45eb37c3a7b8009ad3873202476654733480ea87a",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Weather-DeleteEvent-0.json",
+      "sha256": "cc8b6fe96ef71ef2ca395a4ad1766a650f212214f6ffba28d95ad506d11e9528",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Weather-SendMessage-0.json",
+      "sha256": "ab323b6844ed664f223048662c8451b0d5a00913889d278e0ce1e8feff86c9fc",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Messages-Weather-SendMessage-1.json",
+      "sha256": "ac2340667185d44bfcd985a22ac4931888ed6e2e3a547cfda16e0a38d361b2b8",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-CompleteReminder-1.json",
+      "sha256": "ebf9de11d7e8c3333784e7187a066864703666a996d816b1f2fe13d1230edb2e",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-CreateEvent-1.json",
+      "sha256": "1f314c440b851228863f7ffcc465938da9c040cfd532dfe48d4286da79b87a4c",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-DeleteEvent-0.json",
+      "sha256": "81e2ccb94c3b5b5d9a869563c84b7014fafd476beb4c61707d4e3d656d308793",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-DeleteReminder-1.json",
+      "sha256": "c2ea9f08e33e1a23e31befab7ecc1a8c7410970b89777e3804c8338dad0aac8b",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-ModifyEvent-0.json",
+      "sha256": "3bc53559ce4ef27e75cabfdf930a67e642ccfca1599fad5733d87780ca1db881",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-ModifyEvent-1.json",
+      "sha256": "4d5a83a6f6f25b8830a790c58b6974db9327d05d17f13439299c79db05f69339",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Calendar-Reminder-Weather-QueryCalendar-0.json",
+      "sha256": "95fe78a1644d7bf21fb63736c9f90cf18ed1f9ca585a94fa09fcd6acc96c69fc",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Messages-Reminder-DeleteReminder-1.json",
+      "sha256": "f2a704ede4b9849c6adac404cc271534cf47d7e07fd14ea0f456308705ff5fa8",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Messages-Reminder-SearchMessage-1.json",
+      "sha256": "4be7495691b4947a6e993f95a9233ea45e41e8032e0470cf7a8e54921261df8c",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Messages-Reminder-SendEmail-2.json",
+      "sha256": "913f5ea25dc90a44dd3d91fdf6281808862e803d7857c8137c55a1baba40ddb9",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Messages-Reminder-SendMessage-2.json",
+      "sha256": "6e91352e626b15ecfe34642c0d555a668e0cb12fd90148610975dc7edcaa291f",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Messages-Weather-SendMessage-2.json",
+      "sha256": "8d4ab91e7c75d02b882a26ed3b5e128f264dd2e483fc5931e43e852b43c3061e",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Reminder-Weather-CompleteReminder-2.json",
+      "sha256": "bd793f55de4e644890e9159e3c779097a64063681372514729c18ede378b3bd0",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Reminder-Weather-DeleteReminder-0.json",
+      "sha256": "f9ee774800d65b755ac9f76d8da24ebac9381fec8ae596df2590e584cefd4662",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Reminder-Weather-GetReminder-0.json",
+      "sha256": "4586a679a2599a8481d2865f94e38d4f78d343df5c8789588bef9bc2052171e8",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Reminder-Weather-SearchInbox-1.json",
+      "sha256": "78597c0c51c9436ad42cf8808a09edbbca0d49f69faf6b903fa361cb8980c34a",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Email-Reminder-Weather-SendEmail-2.json",
+      "sha256": "19a95a850fefcaddd0aa01be0f9e1936e2b2718b29f6a9bd0d0dc5a5993b46d7",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-AddReminder-1.json",
+      "sha256": "bb957c51924ae9d9a48b33b1fac10dfebf6bb7f645785aed63c940590b6c5ca3",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-CompleteReminder-1.json",
+      "sha256": "c7bcfe8645248f96f7eb0154a3b6d5684d5fa46f6f23334dd0b91687d86a6fa3",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-ForecastWeather-1.json",
+      "sha256": "ecfb4fd5c4cae0fd8eed43ab4022bcb0acbead611df9e9a3d1fee7b17ec16f20",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-GetReminder-0.json",
+      "sha256": "63394f03964bd40e9899941d9f549663a9aa4524b0a009ecfe73761e4b826837",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-SearchMessage-2.json",
+      "sha256": "28635ff904a75c43295dea70ead37f0cedb8c8cd223bf3cb734ba4fa7c38877f",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/Messages-Reminder-Weather-SendMessage-2.json",
+      "sha256": "b9be2b8bb6060b53f6cd85b15045f3d3265fb33dc78713007f3df60f6c5e8e24",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_1.json",
+      "sha256": "27fdf025d1ff95bcfcf88fd15d821beec1e3886333d6ff217e4e7c9f84346038",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_2.json",
+      "sha256": "14d9e21f41c22b20d7f2599b108e0b5a207377bca2a2e59fc02b83fca5947200",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_3.json",
+      "sha256": "61ea8c4d4491d14c961c77ed638815ce78b4bb06d5ca7e53a3db49422c0b986f",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_4.json",
+      "sha256": "86bf7bc8fc0d53262017b0fb67be09db0bd29abac26c3f317e91747738bc1794",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_5.json",
+      "sha256": "c3f30e13726e5c7e5f74857a621b3ce91a4d9f8536a252e54b9c1c39adb436f4",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    },
+    {
+      "path": "data/tooltalk/golden_conversation_6.json",
+      "sha256": "012d55cf012a8a1d62f187e849692cef220579515578a8181a0000c691143380",
+      "type": "dict",
+      "keys": [
+        "apis_used",
+        "conversation",
+        "conversation_id",
+        "metadata",
+        "name",
+        "scenario",
+        "suites_used",
+        "user"
+      ],
+      "list_length": null
+    }
+  ],
+  "counts": {
+    "easy": 28,
+    "tooltalk": 50
+  },
+  "exact_canonical_duplicate_conversations": [],
+  "executed_upstream_code": false,
+  "installed_dependencies": false,
+  "model_inference_or_training": false,
+  "scope": "source/schema intake only; external corpus not yet a qualified SCAR-X benchmark"
+}

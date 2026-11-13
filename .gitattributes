@@ -66,3 +66,14 @@ scripts/hermes_tool_experience_fixture.py -text
 experiments/hybrid-native-2b-buffer-v2.md -text
 experiments/hybrid-native-lfm16-vram-v1.md -text
 experiments/hybrid-tool-experience-loop-engineering-v1.md -text
+runs/*-incident-information-p0-*/** -text -whitespace
+runs/*-tooltalk-intake-v1-*/** -text -whitespace
+runs/*-tooltalk-harness-p0-*/** -text -whitespace
+scripts/audit_hybrid_incident_information.py -text
+scripts/hermes_incident_information_fixture.py -text
+scripts/verify_hybrid_incident_information.py -text
+scripts/prepare_hybrid_tooltalk.py -text
+scripts/audit_hybrid_tooltalk_harness.py -text
+experiments/hybrid-incident-information-p0-v1.md -text
+experiments/hybrid-external-tool-benchmark-intake-v1.md -text
+experiments/hybrid-tool-benchmark-harness-p0-v1.md -text

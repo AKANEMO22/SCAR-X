@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## Incident information-path + external harnessP0 —14/11
+
+ActualHermes file/probe3states tạo cùng servinginput8×64; goal_sequence chưa đưa
+error/probe/reason vàoSNN. Research-only sequenceV2 táchstate, có cutoff/timeguards,
+chưa train/deploy.0updates, arrays/coldrestoreexact;2immutableP0/audit qua.
+ToolTalkpinnedintake28easy+50hard/266goldcalls; schema required-placement được
+kiểm/sửa ởresearchwrapper. Actualisolatedscorer vẫnPASS correctcall+24failedloops:
+không dùng publisher success đơn lẻ để chứng minh tựhọc. Noembedding/API/model
+loaded; failed ASTnamespace attempt giữ nguyên. [Findings/nextsteps](hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md).
+[Goal audit](hybrid/GOAL_COMPLETION_AUDIT_20261114.md): fullobjective chưađạt,
+khôngblocker; priorGOALturn làprogress. Native0.8B/GPU/live5updates giữ nguyên.
+
 ## Tool feedback + native GPU candidates14/11 — engineering GO, quality PIVOT
 
 Đã nối Hermes publictoolhooks→boundedincident→existingALIFgoal, readonlyproject

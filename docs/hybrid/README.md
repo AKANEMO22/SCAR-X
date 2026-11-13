@@ -6,6 +6,11 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Root input/harnessaudit14/11](INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
+SNN hiện chưa nhận phần error/probe phân biệt được; encoderV2 mớiresearchonly,
+chưatrain/deploy. ExternalToolTalkharness cần schema/cost/loopchecks trước dùng
+điểm để kết luận; [goal audit](GOAL_COMPLETION_AUDIT_20261114.md) giữ rõ phầnchưađạt.
+
 [Tool feedback và nativeGPUcandidates](TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
 đã nối observedtoolerrors với existingALIFgoal và explicitownerfeedback.
 Trả lời thường/Bỏqua không là reward; chỉ đánh giá hữu ích/chưa hữu ích mới có
