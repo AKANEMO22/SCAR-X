@@ -124,6 +124,11 @@ eligibility/learning signals; nó không chứng minh semantic awareness trongSC
 
 ## ~3GBVRAM nên dùng vào đâu?
 
+**Cập nhật tiếp14/11:** [ba2Bbufferprofiles và nativeLFM1.6B](TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md)
+đã hoàn tất;2B vẫn thiếureserve, LFMvừaVRAM nhưng strictqualitygate6/12<8/12
+chưaqua. Boundedtoolincident/explicitfeedbackloop đãnối, chưasemanticselfrepair.
+Các số và khuyến nghị phía dưới mô tả lượt2Bbanđầu, không rewrite lịch sử.
+
 Đã đo trực tiếp model lớn hơn thay vì cấp phát VRAM rỗng:
 [native2Bprotocol](../../experiments/hybrid-native-2b-vram-probe-v1.md),
 [nguồn và reference](../../runs/20261113T212018Z-native-2b-vram-v1-77a5fb/reference.json),

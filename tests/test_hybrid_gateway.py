@@ -405,6 +405,77 @@ def test_overview_budget_returns_honest_runtime_halt_without_model_call(gateway)
     assert response["choices"][0]["finish_reason"] == "stop"
 
 
+def test_client_json_schema_reaches_native_stream_unchanged(gateway, monkeypatch):
+    captured = {}
+
+    def stream(messages, max_tokens, tools, tool_choice, response_format=None):
+        captured["schema"] = response_format
+        yield {
+            "choices": [
+                {
+                    "index": 0,
+                    "delta": {"content": '{"value":9237}'},
+                    "finish_reason": "stop",
+                }
+            ]
+        }
+
+    monkeypatch.setattr(gateway.backend, "stream", stream)
+    schema = {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "setting",
+            "schema": {
+                "type": "object",
+                "properties": {"value": {"type": "integer"}},
+                "required": ["value"],
+            },
+        },
+    }
+    body = {
+        "messages": [{"role": "user", "content": "The current value is9237."}],
+        "response_format": schema,
+        "stream": True,
+    }
+    chunks = list(gateway.stream_chat(body))
+    assert (
+        captured["schema"] == schema
+        and chunks[0]["choices"][0]["delta"]["content"] == '{"value":9237}'
+    )
+
+
+def test_user_only_nonstream_json_schema_uses_native_protocol_path(
+    gateway, monkeypatch
+):
+    captured = {}
+
+    def generate(messages, **kwargs):
+        captured.update(kwargs)
+        return {
+            "raw": {
+                "choices": [
+                    {"message": {"content": '{"value":9237}'}, "finish_reason": "stop"}
+                ],
+                "usage": {},
+            },
+            "text": '{"value":9237}',
+            "usage": {},
+        }
+
+    monkeypatch.setattr(gateway.backend, "generate", generate, raising=False)
+    schema = {"type": "json_object"}
+    response = gateway.chat(
+        {
+            "messages": [{"role": "user", "content": "Reply JSON with value9237"}],
+            "response_format": schema,
+        }
+    )
+    assert (
+        captured["response_format"] == schema
+        and response["choices"][0]["message"]["content"] == '{"value":9237}'
+    )
+
+
 def test_video_source_reinspection_never_reads_unowned_original(gateway, tmp_path):
     from scarx.hybrid.media import VideoMemory
 

@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Tool feedback + nativeGPUcandidates14/11](hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
+hybrid/incidents.py, device_budget.py; Hermes publiclearning_hooks.py;
+accept_hybrid_tool_experience.py + faulttests; nativeLFMsetup/build/probe/audit
+và2Bbufferprofile. Run/sourcebytes riêng, candidates không nhập live.
+
 [So sánh cùngVLM: RAG/SNN và thửVRAM2B14/11](hybrid/RAG_SNN_AND_VRAM_20261114.md):
 `evaluation/hybrid_rag_snn_dev.py`, runner`compare_hybrid_rag_snn.py`,
 `audit_hybrid_rag_snn.py`; candidate2B ở`local/hybrid-v1/candidates/`, chưaserve.

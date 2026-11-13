@@ -308,6 +308,7 @@ class LocalALIF:
             },
             "accepted": True,
             "mode": self.mode,
+            "reward": float(reward),
             "evidence": evidence,
         }
 

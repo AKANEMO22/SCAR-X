@@ -24,6 +24,7 @@ from .review import (
 from ..learning.verifiers import parse_integer_expression, integer_answer
 from .temporal import temporal_direction
 from .cognition import CognitiveLoop, initial_cognition
+from .incidents import IncidentLedger
 
 
 class HybridEngine:
@@ -37,6 +38,7 @@ class HybridEngine:
         self.stop_event = threading.Event()
         self.web = PublicWeb(store, local_search=self.config.searxng_enabled)
         self.model = LocalALIF(self.config.seed)
+        self.incidents = IncidentLedger(store)
         self.web.initialize_public_curriculum()
         self.state = {
             "goals": {},
@@ -77,6 +79,59 @@ class HybridEngine:
 
     def begin_foreground(self):
         self.cognition.begin_foreground()
+
+    def observe_tool_experience(self, payload):
+        result = self.incidents.observe(payload)
+        incident = result.get("incident")
+        if incident:
+            with self.lock:
+                try:
+                    probe = incident.get("diagnostic_probe")
+                    if probe:
+                        self.store.observe(
+                            "Diagnostic for "
+                            + incident["tool"]
+                            + ": recorded-project file "
+                            + probe["source_name"]
+                            + " "
+                            + (
+                                "was readable"
+                                if probe["read_ok"]
+                                else "was not established as readable"
+                            )
+                            + ". Semantic task resolution is not verified.",
+                            source="hermes:diagnostic:" + incident["id"],
+                            stream="diagnostics",
+                            status="observed",
+                        )
+                    goal = self.goal(
+                        "Vì sao công cụ "
+                        + incident["tool"]
+                        + " không tiến triển khi lặp cùng kết quả? Cần kiểm tra nguồn, workspace, quyền truy cập và phản hồi lỗi.",
+                        reason="Mechanical nonprogress observation; root cause unverified, no self-training label."
+                        + (
+                            " Recorded-project "
+                            + probe["source_name"]
+                            + " read "
+                            + ("succeeded" if probe["read_ok"] else "was inconclusive")
+                            + "; confirm this is the intended source."
+                            if probe
+                            else ""
+                        ),
+                        origin="runtime",
+                        identity_scope=incident["id"],
+                    )
+                    goal["incident_id"] = incident["id"]
+                    self.incidents.attach_goal(incident["id"], goal["id"])
+                    self.save()
+                    self.cognition.wake_event.set()
+                except ValueError as exc:
+                    self.store.event(
+                        "tool_incident_goal_deferred",
+                        {"incident": incident["id"], "reason": str(exc)},
+                        "runtime",
+                    )
+        return result
 
     def end_foreground(self):
         self.cognition.end_foreground()
@@ -162,7 +217,13 @@ class HybridEngine:
         return time.time() - self.state["last_presence"] < self.config.presence_seconds
 
     def goal(
-        self, question, *, reason="missing evidence", public_topic_id=None, origin="vlm"
+        self,
+        question,
+        *,
+        reason="missing evidence",
+        public_topic_id=None,
+        origin="vlm",
+        identity_scope=None,
     ):
         if not isinstance(question, str) or not 2 <= len(question) <= 1000:
             raise ValueError("Invalid learning question")
@@ -180,9 +241,16 @@ class HybridEngine:
                     "heuristic",
                 )
                 public_topic_id = None
-        identifier = hashlib.sha256(question.strip().casefold().encode()).hexdigest()[
-            :24
-        ]
+        if identity_scope is not None and (
+            origin != "runtime"
+            or not isinstance(identity_scope, str)
+            or len(identity_scope) > 80
+        ):
+            raise ValueError("Invalid internal goal scope")
+        identity = question.strip().casefold() + (
+            "\0" + identity_scope if identity_scope is not None else ""
+        )
+        identifier = hashlib.sha256(identity.encode()).hexdigest()[:24]
         with self.lock:
             if identifier in self.state["goals"]:
                 existing = self.state["goals"][identifier]
@@ -705,6 +773,8 @@ class HybridEngine:
             while len(self.state["decisions"]) > 64:
                 del self.state["decisions"][next(iter(self.state["decisions"]))]
             goal.update(decision_id=identifier, last_action=action)
+            if goal.get("incident_id"):
+                self.incidents.decision(goal["incident_id"], decision)
             self.state["last_action"] = action
             self.store.event(
                 "autonomous_action",
@@ -977,6 +1047,8 @@ class HybridEngine:
     def feedback(
         self, identifier, text=None, helpful=None, positive_ids=(), negative_ids=()
     ):
+        if helpful is not None and type(helpful) is not bool:
+            raise ValueError("Expected explicit helpful boolean or no rating")
         with self.lock:
             if self.foreground.is_set() or self.cognition.request_pending.is_set():
                 raise RuntimeError(
@@ -984,6 +1056,7 @@ class HybridEngine:
                 )
             question = self.state["question"]
             if question and identifier == question["id"]:
+                goal = self.state["goals"][question["goal_id"]]
                 if not isinstance(text, str) or not 1 <= len(text) <= 4000:
                     raise ValueError("Expected a question reply")
                 if text.strip().casefold() in (
@@ -992,12 +1065,19 @@ class HybridEngine:
                     "không biết",
                     "chưa biết",
                 ):
+                    previous = self.model.dumps(self.state)
                     self.state["goals"][question["goal_id"]]["status"] = "deferred"
                     self.state["goals"][question["goal_id"]][
                         "clarification_skipped"
                     ] = True
                     self.state["question"] = None
-                    self.save()
+                    try:
+                        self.save()
+                    except Exception:
+                        self.model, self.state = self._decode_snapshot(previous)
+                        raise
+                    if goal.get("incident_id"):
+                        self.incidents.feedback(goal["incident_id"], None, skipped=True)
                     self.store.event(
                         "question_skipped",
                         {"id": identifier, "label_created": False},
@@ -1026,16 +1106,38 @@ class HybridEngine:
                 )
                 decision = self.state["decisions"].get(question["decision_id"])
                 metrics = None
-                if decision and helpful is True:
+
+                def finish_reply(_result=None):
+                    self.state["goals"][question["goal_id"]]["status"] = (
+                        "deferred" if helpful is False else "resolved_human"
+                    )
+                    self.state["question"] = None
+
+                if decision and helpful in (True, False) and type(helpful) is bool:
                     metrics = self._guarded_learn(
                         decision["sequence"],
                         ACTIONS.index(decision["action"]),
                         "action",
-                        1.0,
+                        1.0 if helpful else -1.0,
                         {"kind": "human_feedback", "id": identifier},
+                        update_controller=finish_reply,
                     )
-                self.state["goals"][question["goal_id"]]["status"] = "resolved_human"
-                self.state["question"] = None
+                    if metrics.get("persistence_failed"):
+                        raise OSError(
+                            "Feedback checkpoint transaction failed: "
+                            + metrics["reason"]
+                        )
+                else:
+                    previous = self.model.dumps(self.state)
+                    finish_reply()
+                    try:
+                        self.save()
+                    except Exception:
+                        self.model, self.state = self._decode_snapshot(previous)
+                        raise
+                goal = self.state["goals"][question["goal_id"]]
+                if goal.get("incident_id"):
+                    self.incidents.feedback(goal["incident_id"], helpful, metrics)
                 self.store.event(
                     "question_answered",
                     {
@@ -1046,7 +1148,6 @@ class HybridEngine:
                     },
                     "user",
                 )
-                self.save()
                 return {
                     "accepted": True,
                     "factual_verification": False,
@@ -1152,6 +1253,7 @@ class HybridEngine:
                 "present": self.present(),
                 "learning_enabled": self.state["learning_enabled"],
                 "cognition": self.cognition.summary(),
+                "tool_incidents": self.incidents.summary(),
                 "review": {
                     "pending": len(self.state["review"]["pending"]),
                     "completed": self.state["review"]["completed"],

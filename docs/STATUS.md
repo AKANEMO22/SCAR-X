@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Tool feedback + native GPU candidates14/11 — engineering GO, quality PIVOT
+
+Đã nối Hermes publictoolhooks→boundedincident→existingALIFgoal, readonlyproject
+probe có guards, explicit +/-ownerreward; trả lời thường/bỏqua không tự là nhãn.
+Atomicquestion/goal/weights/RNG/replay checkpoint có fault/retrychecks. Actual
+sandbox5e0ead:23,953s, missingfile3calls→1incident/goal, probe đọc được, injected
+negativefixture1update rồirollback0exact; nguyênnhânsemantic/chuyểngiaokỹnăng chưa
+được chứng minh. Live giữ5updates thật/0.8B/GPU, không nhập labweights.
+169SCARX+64Hermes+5Nodechecks qua; pluginvalidation publicSDK qua, installbackup.
+Ba2Bbufferprofiles vẫnminfree423/418/424MiB<512, dừng trước inputlớn. LFM1.6B
+nativeparity/resourceprobe qua(minfree964MiB) nhưng strict12caselocked6/12vs
+0.8B8/12; không promote/retune/sửa gate. [Report/raw/audit](hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md).
+Ponytail không có tool/context khả dụng trong phiên; không giả định đã nạp.
+
 ## RAG/SNN + tận dụng VRAM14/11 — PIVOT, không nhập weights nghiên cứu
 
 3seed×20stages currentH128/guard;48syntheticheld-outqueries,198actualnative

@@ -4,6 +4,11 @@ import json
 
 MAX_RAM_BYTES = 4_500_000_000
 DEFAULT_SOFT_RAM_BYTES = 4_250_000_000
+NATIVE_VLMS = {
+    "Qwen/Qwen3.5-0.8B": "2fc06364715b967f1860aea9cf38778875588b17",
+    "Qwen/Qwen3.5-2B": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "LiquidAI/LFM2.5-VL-1.6B": "919fde3d022e3f90a4716006f993938ee8c2eb97",
+}
 
 
 @dataclass(frozen=True)
@@ -28,15 +33,22 @@ class HybridConfig:
     rest_after_seconds: int = 180
     release_vlm_on_rest: bool = True
     gpu_keep_warm: bool = True
+    batch_size: int = 128
+    microbatch_size: int = 64
+    flash_attention: str = "auto"
+    cuda_graphs: bool = True
     archive_bytes: int = 10_000_000_000
     archive_seconds: int = 7 * 86400
     context_tokens: int = 16384
     frame_interval: float = 8.0
     segment_seconds: int = 10
     model_revision: str = "2fc06364715b967f1860aea9cf38778875588b17"
+    model_name: str = "Qwen/Qwen3.5-0.8B"
     asr_revision: str = "e37978b90ca9030d5170a5c07aadb050351a65bb"
 
     def __post_init__(self):
+        if NATIVE_VLMS.get(self.model_name) != self.model_revision:
+            raise ValueError("Unregistered native VLM identity/revision")
         if (
             self.execution_mode not in ("cpu", "gpu")
             or type(self.gpu_device) is not int
@@ -45,6 +57,14 @@ class HybridConfig:
             raise ValueError("Expected cpu/gpu mode and a valid CUDA device index")
         if type(self.searxng_enabled) is not bool:
             raise ValueError("Expected boolean searxng_enabled")
+        if (
+            type(self.batch_size) is not int
+            or type(self.microbatch_size) is not int
+            or not 16 <= self.microbatch_size <= self.batch_size <= 1024
+            or self.flash_attention not in ("auto", "on", "off")
+            or type(self.cuda_graphs) is not bool
+        ):
+            raise ValueError("Invalid bounded native execution buffers")
         for field in (
             "review_quiet_seconds",
             "review_interval_seconds",
@@ -117,6 +137,12 @@ def load_runtime_config(directory):
         "rest_after_seconds",
         "release_vlm_on_rest",
         "gpu_keep_warm",
+        "batch_size",
+        "microbatch_size",
+        "flash_attention",
+        "cuda_graphs",
+        "model_name",
+        "model_revision",
     }:
         raise ValueError("Unknown runtime config fields")
     return HybridConfig(**value)

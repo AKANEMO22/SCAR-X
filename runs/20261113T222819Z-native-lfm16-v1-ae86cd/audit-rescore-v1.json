@@ -1,0 +1,254 @@
+{
+  "run_id": "20261113T222819Z-native-lfm16-v1-ae86cd",
+  "integrity_problems": [],
+  "arms": {
+    "baseline": {
+      "identity": {
+        "name": "Qwen/Qwen3.5-0.8B",
+        "revision": "2fc06364715b967f1860aea9cf38778875588b17"
+      },
+      "score": 8,
+      "Vi_score": 1,
+      "sampled_min_free_MiB": 2198,
+      "native_parity_pass": true,
+      "engineering_resource_pass": true,
+      "max_ttft_seconds": 0.8590000000040163,
+      "median_native_decode_tokens_per_second": 89.30624117873992,
+      "asr_cycle_seconds": [
+        2.2189999999973224,
+        1.5469999999986612,
+        1.5780000000013388
+      ],
+      "records": [
+        {
+          "id": "math_en",
+          "language": "en",
+          "answer": "42",
+          "correct": true,
+          "ttft_seconds": 0.11000000000058208,
+          "native_decode_tokens_per_second": 81.07998540560263
+        },
+        {
+          "id": "math_vi",
+          "language": "vi",
+          "answer": "17 + 25 = 42",
+          "correct": false,
+          "ttft_seconds": 0.0940000000045984,
+          "native_decode_tokens_per_second": 93.26357218134169
+        },
+        {
+          "id": "instruction_vi",
+          "language": "vi",
+          "answer": "chỉ viết đúng một từ: **chỉ**",
+          "correct": false,
+          "ttft_seconds": 0.10900000000401633,
+          "native_decode_tokens_per_second": 94.70267664201526
+        },
+        {
+          "id": "setting_en",
+          "language": "en",
+          "answer": "9237",
+          "correct": true,
+          "ttft_seconds": 0.10900000000401633,
+          "native_decode_tokens_per_second": 91.23879473552154
+        },
+        {
+          "id": "setting_vi",
+          "language": "vi",
+          "answer": "Dựa trên thông tin bạn cung cấp, đây là mã số cổng ban đầu và mã số cổng hiện tại:\n\n**Cổng ban đầu:** 8123\n**Cổng hiện tại:** 9237\n\n*(Lưu ý: Trong hệ thống mạng, các số thường được viết dưới dạng 4 chữ số. Nếu đây là mã 8-bit hoặc 16-bit, thì 8123 có thể là 8123",
+          "correct": false,
+          "ttft_seconds": 0.125,
+          "native_decode_tokens_per_second": 94.5764864934822
+        },
+        {
+          "id": "distractor",
+          "language": "en",
+          "answer": "9237",
+          "correct": true,
+          "ttft_seconds": 0.31199999999807915,
+          "native_decode_tokens_per_second": 87.91981712678037
+        },
+        {
+          "id": "strict_json",
+          "language": "en",
+          "answer": "{\n  \"code\": \"JADE-472\",\n  \"port\": 8123\n}",
+          "correct": false,
+          "ttft_seconds": 0.125,
+          "native_decode_tokens_per_second": 73.76618955073555
+        },
+        {
+          "id": "long_compact_regression",
+          "language": "en",
+          "answer": "9237",
+          "correct": true,
+          "ttft_seconds": 0.31199999999807915,
+          "native_decode_tokens_per_second": 90.69266523069948
+        },
+        {
+          "id": "missing_fact",
+          "language": "en",
+          "answer": "{\n  \"birth_year\": null\n}",
+          "correct": true,
+          "ttft_seconds": 0.125,
+          "native_decode_tokens_per_second": 92.10902023635174
+        },
+        {
+          "id": "small_vision",
+          "language": "en",
+          "answer": "blue",
+          "correct": true,
+          "ttft_seconds": 0.17199999999866122,
+          "native_decode_tokens_per_second": 83.68901163277262
+        },
+        {
+          "id": "large_vision",
+          "language": "en",
+          "answer": "blue",
+          "correct": true,
+          "ttft_seconds": 0.8590000000040163,
+          "native_decode_tokens_per_second": 81.41333550435562
+        },
+        {
+          "id": "temporal_vi",
+          "language": "vi",
+          "answer": "xanh",
+          "correct": true,
+          "ttft_seconds": 0.09399999999732245,
+          "native_decode_tokens_per_second": 85.98082627574051
+        }
+      ]
+    },
+    "candidate": {
+      "identity": {
+        "name": "LiquidAI/LFM2.5-VL-1.6B",
+        "revision": "919fde3d022e3f90a4716006f993938ee8c2eb97"
+      },
+      "score": 6,
+      "Vi_score": 2,
+      "sampled_min_free_MiB": 964,
+      "native_parity_pass": true,
+      "engineering_resource_pass": true,
+      "max_ttft_seconds": 1.4529999999940628,
+      "median_native_decode_tokens_per_second": 70.56169338504537,
+      "asr_cycle_seconds": [
+        1.5780000000013388,
+        1.625,
+        1.625
+      ],
+      "records": [
+        {
+          "id": "math_en",
+          "language": "en",
+          "answer": "42",
+          "correct": true,
+          "ttft_seconds": 0.0930000000007567,
+          "native_decode_tokens_per_second": 61.0798924993892
+        },
+        {
+          "id": "math_vi",
+          "language": "vi",
+          "answer": "17 + 25 = 42",
+          "correct": false,
+          "ttft_seconds": 0.10900000000401633,
+          "native_decode_tokens_per_second": 71.56366610438072
+        },
+        {
+          "id": "instruction_vi",
+          "language": "vi",
+          "answer": "Xong",
+          "correct": true,
+          "ttft_seconds": 0.125,
+          "native_decode_tokens_per_second": 70.52186177715092
+        },
+        {
+          "id": "setting_en",
+          "language": "en",
+          "answer": "9237",
+          "correct": true,
+          "ttft_seconds": 0.125,
+          "native_decode_tokens_per_second": 70.60152499293984
+        },
+        {
+          "id": "setting_vi",
+          "language": "vi",
+          "answer": "Cổng hiện tại là 9237.",
+          "correct": false,
+          "ttft_seconds": 0.11000000000058208,
+          "native_decode_tokens_per_second": 72.4949786566254
+        },
+        {
+          "id": "distractor",
+          "language": "en",
+          "answer": "9237",
+          "correct": true,
+          "ttft_seconds": 0.35899999999674037,
+          "native_decode_tokens_per_second": 69.90562740300594
+        },
+        {
+          "id": "strict_json",
+          "language": "en",
+          "answer": "{\n  \"code\": \"JADE-472\",\n  \"port\": 8123\n}",
+          "correct": false,
+          "ttft_seconds": 0.10899999999674037,
+          "native_decode_tokens_per_second": 66.39246578298295
+        },
+        {
+          "id": "long_compact_regression",
+          "language": "en",
+          "answer": "The current port is **9237**.",
+          "correct": false,
+          "ttft_seconds": 0.3899999999994179,
+          "native_decode_tokens_per_second": 71.8671894339261
+        },
+        {
+          "id": "missing_fact",
+          "language": "en",
+          "answer": "{\n  \"birth_year\": null\n}",
+          "correct": true,
+          "ttft_seconds": 0.10899999999674037,
+          "native_decode_tokens_per_second": 71.43010207361586
+        },
+        {
+          "id": "small_vision",
+          "language": "en",
+          "answer": "Blue.",
+          "correct": false,
+          "ttft_seconds": 0.23399999999674037,
+          "native_decode_tokens_per_second": 70.8215297450425
+        },
+        {
+          "id": "large_vision",
+          "language": "en",
+          "answer": "Blue.",
+          "correct": false,
+          "ttft_seconds": 1.4529999999940628,
+          "native_decode_tokens_per_second": 69.72528238739366
+        },
+        {
+          "id": "temporal_vi",
+          "language": "vi",
+          "answer": "xanh",
+          "correct": true,
+          "ttft_seconds": 0.11000000000058208,
+          "native_decode_tokens_per_second": 70.51191651389085
+        }
+      ]
+    }
+  },
+  "locked_quality_gate_pass": false,
+  "candidate_qualified_for_promotion": false,
+  "verdict": "NOT_QUALIFIED_KEEP_CURRENT_MODEL",
+  "scope": "12 engineering DEV cases; no formal quality, 8h, retention or neural advantage claim",
+  "original_failures_retained": true,
+  "trains_or_changes_serving": false,
+  "inputs_sha256": {
+    "conversion.json": "54c907fd7c84d6c6c3929b25d88cf30469d6541abd4fd2e47b6d9c3efb062032",
+    "manifest.json": "8d3ad54a1f67fd469abdff406cdf7ab6c5d55e5722a9587140edabc5a0a08c2b",
+    "paired-baseline.json": "52a81cdc1ccf8e815a7acec678406e5afb5ecf4ecfd2cef6300699ce69c748a5",
+    "paired-candidate.json": "d7f005f4a0f0c6697002bded029866fac5e306b692b36f5b593ca51803bee580",
+    "paired-cases.json": "ad8a3d3a2bf93726d83c01c2a88c96d86a198815853241c936da0c4c3c78a193",
+    "paired-lock.json": "7bc496934f1387e3a35b687e80e5239280e7a493ae5556fadd5490207906738a",
+    "reference-keymap-v2.json": "e94d7cd99f31de79f141ca08af04bb36fc68d428e86b2a559f2d26acbf974893",
+    "reference.json": "5471694b35fbe4a32022c3c94dddf4ca3d19f7cdfbf5cd44c561e3222d044fb6"
+  }
+}

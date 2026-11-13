@@ -24,6 +24,10 @@ def main():
         home
         / "plugins/scarx-hybrid/__init__.py": (source / "__init__.py").read_bytes(),
         home
+        / "plugins/scarx-hybrid/learning_hooks.py": (
+            source / "learning_hooks.py"
+        ).read_bytes(),
+        home
         / "plugins/scarx-hybrid/plugin.yaml": (source / "plugin.yaml").read_bytes(),
         home
         / "plugins/scarx-hybrid/dashboard/plugin_api.py": (

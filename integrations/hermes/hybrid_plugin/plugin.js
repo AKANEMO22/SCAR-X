@@ -150,6 +150,12 @@ function Panel({ ctx }) {
               : "Đang kết nối",
           ),
           stat(
+            "VRAM riêng · nhóm tiến trình",
+            s?.resources?.gpu_dedicated?.available
+              ? `${(s.resources.gpu_dedicated.bytes / 1048576).toFixed(0)} MiB`
+              : "Chưa đo",
+          ),
+          stat(
             "Neuron phát xung / đã cấp",
             s?.neural ? `${s.neural.active} / ${s.neural.hidden}` : "—",
           ),
@@ -314,6 +320,17 @@ function Panel({ ctx }) {
               children:
                 "Khi bạn vắng: tự tìm hiểu, gom câu hỏi, không thông báo. Bỏ qua không thành nhãn sai.",
             }),
+            ...(s?.tool_incidents?.recent || []).map((incident) => jsxs("div", {
+              className: "sxh-card",
+              children: [
+                jsx("b", { children: `Lỗi đang kiểm tra: ${incident.tool} lặp ${incident.observed_repeats} lần cùng kết quả` }),
+                jsx("p", { children: "Nguyên nhân chưa được xác minh. Việc phát hiện lặp chưa phải bằng chứng synapse đã học cách sửa." }),
+                jsx("small", { children: `${incident.status} · ${incident.observed_empty_result ? "Kết quả rỗng" : "Kết quả không thay đổi"}` }),
+                incident.diagnostic_probe && jsx("p", { children: `Đã kiểm tra ${incident.diagnostic_probe.source_name} trong project ${incident.diagnostic_probe.project_label}: ${incident.diagnostic_probe.read_ok ? "đọc được nguồn thay thế; cần xác nhận đúng ý bạn" : "chưa xác lập được nguồn đọc được"}.` }),
+                incident.last_policy_action && jsx("p", { children: `Lựa chọn gần nhất: ${incident.last_policy_action.action} · ${incident.last_policy_action.selector}` }),
+                incident.last_feedback && jsx("pre", { children: JSON.stringify(incident.last_feedback, null, 2) }),
+              ],
+            }, incident.id)),
             s?.question &&
               jsxs("div", {
                 className: "sxh-card",
@@ -333,11 +350,15 @@ function Panel({ ctx }) {
                           void send("/feedback", {
                             id: s.question.id,
                             text: reply,
-                            helpful: true,
                           })
                             .then(() => setReply(""))
                             .catch(() => {}),
                       ),
+                      button("Trả lời · hữu ích", () => void send("/feedback", {
+                        id: s.question.id,
+                        text: reply,
+                        helpful: true,
+                      }).then(() => setReply("")).catch(() => {})),
                       button(
                         "Bỏ qua",
                         () =>
@@ -346,6 +367,11 @@ function Panel({ ctx }) {
                             text: "bỏ qua",
                           }).catch(() => {}),
                       ),
+                      button("Chưa hữu ích", () => void send("/feedback", {
+                        id: s.question.id,
+                        text: "Câu hỏi này chưa hữu ích cho tác vụ.",
+                        helpful: false,
+                      }).catch(() => {})),
                     ],
                   }),
                 ],
@@ -634,12 +660,13 @@ function LearningQuestion({ ctx }) {
   if (!String(model || "").includes("scarx-hybrid") || !q.data?.question)
     return null;
   const question = q.data.question;
-  async function answer(text) {
+  async function answer(text, helpful) {
     setBusy(true);
     try {
       await ctx.rest("/feedback", {
         method: "POST",
-        body: { id: question.id, text, helpful: true },
+        body: { id: question.id, text,
+          ...(typeof helpful === "boolean" ? { helpful } : {}) },
       });
       setReply("");
       void q.refetch();
@@ -668,6 +695,18 @@ function LearningQuestion({ ctx }) {
         disabled: busy || !reply.trim(),
         onClick: () => void answer(reply),
         children: "Trả lời",
+      }),
+      jsx("button", {
+        type: "button",
+        disabled: busy || !reply.trim(),
+        onClick: () => void answer(reply, true),
+        children: "Trả lời · hữu ích",
+      }),
+      jsx("button", {
+        type: "button",
+        disabled: busy,
+        onClick: () => void answer("Câu hỏi này chưa hữu ích cho tác vụ.", false),
+        children: "Chưa hữu ích",
       }),
       jsx("button", {
         type: "button",

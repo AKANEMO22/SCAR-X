@@ -13,6 +13,7 @@ import time
 from urllib.request import Request, urlopen
 from .store import encode
 from .config import HybridConfig
+from .device_budget import gpu_headroom, audio_requires_release
 
 
 class NativeBackends:
@@ -52,11 +53,22 @@ class NativeBackends:
         # Popen gives the child its own handle; do not retain one Python file
         # handle for every frozen-ASR activation across a long-running session.
         with (self.directory / logname).open("ab") as log:
+            child_env = None
+            if (
+                Path(command[0]).name == "llama-server.exe"
+                and self.config.execution_mode == "gpu"
+            ):
+                child_env = dict(os.environ)
+                if self.config.cuda_graphs:
+                    child_env.pop("GGML_CUDA_DISABLE_GRAPHS", None)
+                else:
+                    child_env["GGML_CUDA_DISABLE_GRAPHS"] = "1"
             process = subprocess.Popen(
                 command,
                 stdout=log,
                 stderr=subprocess.STDOUT,
                 creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+                env=child_env,
             )
         self.store.event(
             "worker_started",
@@ -80,7 +92,12 @@ class NativeBackends:
         projected = (
             report.get("conservative_ram_bytes", report["rss_bytes"]) + 600_000_000
         )
-        if self.monitor.limit is None or projected <= self.monitor.limit:
+        gpu = None
+        if self.config.execution_mode == "gpu":
+            gpu = gpu_headroom(self.config.gpu_device)
+            if not audio_requires_release(gpu):
+                return
+        elif self.monitor.limit is None or projected <= self.monitor.limit:
             return
         if self.vlm and self.vlm.poll() is None:
             self.vlm.terminate()
@@ -94,6 +111,10 @@ class NativeBackends:
                 {
                     "projected_bytes": projected,
                     "limit_bytes": self.monitor.limit,
+                    "GPU_headroom": gpu,
+                    "reason": (
+                        "GPU workspace reserve" if gpu else "CPU aggregate RAM headroom"
+                    ),
                     "state": "frozen sensory model unloaded as a whole; SNN/evidence/checkpoint retained",
                     "cost": "next VLM call reloads whole checkpoint and loses prefix cache; no layer/weight paging",
                 },
@@ -110,7 +131,7 @@ class NativeBackends:
         if self.asset_signatures is not None and current != self.asset_signatures:
             from .qualification import verify_native_storage
 
-            verify_native_storage(self.directory)
+            verify_native_storage(self.directory, self.config)
             self.asset_signatures = current
         self.monitor.check()
         started = time.monotonic()
@@ -220,9 +241,11 @@ class NativeBackends:
                 "-np",
                 "1",
                 "-b",
-                "128",
+                str(self.config.batch_size),
                 "-ub",
-                "64",
+                str(self.config.microbatch_size),
+                "-fa",
+                self.config.flash_attention,
                 "--no-warmup",
                 "--cache-ram",
                 "0",
@@ -399,7 +422,14 @@ class NativeBackends:
             "raw": result,
         }
 
-    def stream(self, messages, max_tokens=512, tools=None, tool_choice=None):
+    def stream(
+        self,
+        messages,
+        max_tokens=512,
+        tools=None,
+        tool_choice=None,
+        response_format=None,
+    ):
         body = {
             "model": "scarx-hybrid",
             "messages": messages,
@@ -415,6 +445,8 @@ class NativeBackends:
             body["tools"] = tools
         if tool_choice is not None:
             body["tool_choice"] = tool_choice
+        if response_format is not None:
+            body["response_format"] = response_format
         with self.lock:
             self.stop_asr()
             self.ensure_vlm()

@@ -63,6 +63,34 @@ function setup(sessions = ["chat-a", "stored-a"]) {
   return { sandbox, calls, storage };
 }
 
+test("learning replies reward the controller only with an explicit rating", async () => {
+  for (const [label, rating] of [
+    ["Trả lời", undefined],
+    ["Trả lời · hữu ích", true],
+    ["Chưa hữu ích", false],
+    ["Bỏ qua", undefined],
+  ]) {
+    const { sandbox, calls } = setup();
+    sandbox.useValue = (atom) => atom.get();
+    sandbox.useState = (initial) => [initial === "" ? "Owner guidance" : initial, () => {}];
+    sandbox.useQuery = () => ({
+      data: { question: { id: "pending" } },
+      refetch: async () => {},
+    });
+    sandbox.useEffect = () => {};
+    sandbox.jsx = sandbox.jsxs = (tag, props) => ({ tag, ...props });
+    const widget = vm.runInContext("LearningQuestion({ctx})", sandbox);
+    const button = widget.children.find((c) => c.tag === "button" && c.children === label);
+    assert.ok(button);
+    button.onClick();
+    await new Promise((resolve) => setImmediate(resolve));
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].endpoint, "/feedback");
+    assert.equal(calls[0].body.helpful, rating);
+    assert.equal(Object.hasOwn(calls[0].body, "helpful"), typeof rating === "boolean");
+  }
+});
+
 test("plain turn stays identical despite stale engineering fixture storage", async () => {
   const { sandbox, calls, storage } = setup();
   sandbox.draft = { text: "câu này ntn", attachments: [] };

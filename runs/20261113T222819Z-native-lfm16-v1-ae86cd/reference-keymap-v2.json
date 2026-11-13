@@ -1,0 +1,1924 @@
+{
+  "run_id": "20261113T222819Z-native-lfm16-v1-ae86cd",
+  "identity": {
+    "name": "LiquidAI/LFM2.5-VL-1.6B",
+    "revision": "919fde3d022e3f90a4716006f993938ee8c2eb97"
+  },
+  "cases": [
+    {
+      "prompt": "Say hello in one short sentence.",
+      "input_ids": [
+        1,
+        1,
+        6,
+        6423,
+        708,
+        560,
+        892,
+        64033,
+        797,
+        1235,
+        3290,
+        13184,
+        523,
+        7,
+        708,
+        6,
+        64015,
+        708
+      ],
+      "top_ids": [
+        36309,
+        42120,
+        550,
+        511,
+        4023,
+        548,
+        560,
+        50471
+      ],
+      "top_probs": [
+        0.8942567110061646,
+        0.025368111208081245,
+        0.022387277334928513,
+        0.018559705466032028,
+        0.007736836560070515,
+        0.0034332002978771925,
+        0.0028462233021855354,
+        0.002673779148608446
+      ],
+      "seconds": 0.9689999999973224
+    },
+    {
+      "prompt": "Chào bạn, trả lời ngắn gọn bằng tiếng Việt.",
+      "input_ids": [
+        1,
+        1,
+        6,
+        6423,
+        708,
+        2435,
+        2218,
+        588,
+        794,
+        33931,
+        604,
+        587,
+        521,
+        1122,
+        33931,
+        606,
+        809,
+        25086,
+        761,
+        582,
+        21955,
+        33931,
+        617,
+        587,
+        836,
+        25086,
+        745,
+        587,
+        794,
+        33931,
+        619,
+        1382,
+        18299,
+        33931,
+        633,
+        1382,
+        19990,
+        25086,
+        739,
+        593,
+        523,
+        7,
+        708,
+        6,
+        64015,
+        708
+      ],
+      "top_ids": [
+        2435,
+        565,
+        544,
+        543,
+        561,
+        552,
+        638,
+        5083
+      ],
+      "top_probs": [
+        0.5340983271598816,
+        0.323947012424469,
+        0.07694416493177414,
+        0.03207509592175484,
+        0.007156921550631523,
+        0.0040778908878564835,
+        0.0028026907239109278,
+        0.0018095532432198524
+      ],
+      "seconds": 2.0780000000013388
+    },
+    {
+      "prompt": "What is 7 plus 8?",
+      "input_ids": [
+        1,
+        1,
+        6,
+        6423,
+        708,
+        3493,
+        856,
+        730,
+        532,
+        2729,
+        730,
+        533,
+        540,
+        7,
+        708,
+        6,
+        64015,
+        708
+      ],
+      "top_ids": [
+        532,
+        1098,
+        1463,
+        3097,
+        2746,
+        5957,
+        4453,
+        534
+      ],
+      "top_probs": [
+        0.8472589254379272,
+        0.11466402560472488,
+        0.01135327573865652,
+        0.005533144809305668,
+        0.0033560218289494514,
+        0.002961678896099329,
+        0.0015852726064622402,
+        0.0009615164017304778
+      ],
+      "seconds": 0.8590000000040163
+    }
+  ],
+  "mismatches": [],
+  "unused_tensors": [],
+  "loader_key_renames": [
+    {
+      "source": "model.vision_tower.vision_model.embeddings.patch_embedding.bias",
+      "loaded": "model.vision_tower.embeddings.patch_embedding.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.embeddings.patch_embedding.weight",
+      "loaded": "model.vision_tower.embeddings.patch_embedding.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.embeddings.position_embedding.weight",
+      "loaded": "model.vision_tower.embeddings.position_embedding.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.0.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.0.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.1.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.1.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.10.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.10.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.11.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.11.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.12.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.12.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.13.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.13.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.14.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.14.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.15.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.15.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.16.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.16.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.17.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.17.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.18.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.18.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.19.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.19.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.2.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.2.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.20.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.20.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.21.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.21.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.22.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.22.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.23.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.23.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.24.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.24.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.25.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.25.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.26.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.26.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.3.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.3.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.4.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.4.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.5.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.5.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.6.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.6.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.7.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.7.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.8.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.8.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.layer_norm1.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.layer_norm1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.layer_norm1.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.layer_norm1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.layer_norm2.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.layer_norm2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.layer_norm2.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.layer_norm2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.mlp.fc1.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.mlp.fc1.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.mlp.fc1.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.mlp.fc1.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.mlp.fc2.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.mlp.fc2.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.mlp.fc2.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.mlp.fc2.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.k_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.k_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.k_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.k_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.out_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.out_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.out_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.out_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.q_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.q_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.q_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.q_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.v_proj.bias",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.v_proj.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.encoder.layers.9.self_attn.v_proj.weight",
+      "loaded": "model.vision_tower.encoder.layers.9.self_attn.v_proj.weight"
+    },
+    {
+      "source": "model.vision_tower.vision_model.post_layernorm.bias",
+      "loaded": "model.vision_tower.post_layernorm.bias"
+    },
+    {
+      "source": "model.vision_tower.vision_model.post_layernorm.weight",
+      "loaded": "model.vision_tower.post_layernorm.weight"
+    }
+  ],
+  "key_mapping_version": 2,
+  "status": "REFERENCE_READY",
+  "seconds": 10.968000000000757
+}

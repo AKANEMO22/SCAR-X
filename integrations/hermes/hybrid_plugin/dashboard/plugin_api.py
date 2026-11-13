@@ -30,6 +30,31 @@ def settings():
     return value
 
 
+def observe_tool(payload):
+    """Best effort while gateway is already alive; never spawn a model to log a tool."""
+    base = settings()["gateway"]
+    opener = build_opener(NoRedirect())
+    with opener.open(
+        Request(
+            base + "/api/status?after=2147483647", headers={"X-SCARX-Backend": "hermes"}
+        ),
+        timeout=0.4,
+    ) as response:
+        status = json.loads(response.read(2_000_000))
+    with opener.open(
+        Request(
+            base + "/api/tool-experience",
+            data=json.dumps(payload, ensure_ascii=False, allow_nan=False).encode(),
+            headers={
+                "Content-Type": "application/json",
+                "X-SCARX-Token": status["token"],
+            },
+        ),
+        timeout=0.6,
+    ) as response:
+        return json.loads(response.read(32000))
+
+
 def ensure_gateway():
     global _owned
     config = settings()

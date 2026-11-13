@@ -97,7 +97,7 @@ class Gateway:
                     + " workers loading; no scientific quality claim",
                 },
             )
-            integrity = verify_native_storage(self.directory)
+            integrity = verify_native_storage(self.directory, self.config)
             self.store.event("native_storage_verified", integrity, "runtime")
             self.engine.model.to_device(
                 self.config.execution_mode, self.config.gpu_device
@@ -155,6 +155,10 @@ class Gateway:
             "events": self.store.events(after),
             "gateway_port": self.port,
             "model": "scarx-hybrid",
+            "VLM_identity": {
+                "name": self.config.model_name,
+                "revision": self.config.model_revision,
+            },
             "pid": os.getpid(),
             "execution_placement": {
                 "VLM_vision": self.config.execution_mode,
@@ -563,10 +567,14 @@ class Gateway:
             )
         # Normal Hermes agent traffic keeps its instructions, history, tool IDs
         # and tool results. The debug panel is not the primary chat surface.
-        if body.get("tools") is not None or any(
-            m.get("role") in ("system", "developer", "tool")
-            for m in messages
-            if isinstance(m, dict)
+        if (
+            body.get("tools") is not None
+            or body.get("response_format") is not None
+            or any(
+                m.get("role") in ("system", "developer", "tool")
+                for m in messages
+                if isinstance(m, dict)
+            )
         ):
             self.engine.begin_foreground()
             try:
@@ -579,6 +587,11 @@ class Gateway:
                     max_tokens=self.output_budget(body, prepared),
                     tools=body.get("tools"),
                     tool_choice=self.select_tool_choice(body, prepared),
+                    **(
+                        {"response_format": body["response_format"]}
+                        if body.get("response_format") is not None
+                        else {}
+                    ),
                 )
                 response = output["raw"]
                 response["model"] = "scarx-hybrid"
@@ -815,6 +828,11 @@ class Gateway:
                 self.output_budget(body, messages),
                 body.get("tools"),
                 self.select_tool_choice(body, messages),
+                **(
+                    {"response_format": body["response_format"]}
+                    if body.get("response_format") is not None
+                    else {}
+                ),
             ):
                 usage = chunk.get("usage") or usage
                 for choice in chunk.get("choices", []):
@@ -1139,6 +1157,8 @@ def serve(directory, port=8775):
                             activity=body.get("activity", False)
                         )
                     }
+                elif path == "/api/tool-experience":
+                    response = gateway.engine.observe_tool_experience(body)
                 elif path == "/api/cognition":
                     response = gateway.engine.cognition.command(body.get("intent"))
                 elif path == "/api/observe":

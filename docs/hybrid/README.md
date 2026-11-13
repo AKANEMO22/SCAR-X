@@ -6,6 +6,13 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Tool feedback và nativeGPUcandidates](TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
+đã nối observedtoolerrors với existingALIFgoal và explicitownerfeedback.
+Trả lời thường/Bỏqua không là reward; chỉ đánh giá hữu ích/chưa hữu ích mới có
+tín hiệu+/-locallearning. Probe đọc được nguồn không tự xác minh câu trả lời.
+Debug có allocationVRAM riêng.2Bbufferprofiles thiếureserve; LFM1.6B vừaVRAM
+nhưng chưa vượt gate12ca; tiếp tục0.8Bnative và5updates thật, không nhậplabweights.
+
 [RAG/SNN và VRAMcòn lại](RAG_SNN_AND_VRAM_20261114.md): currentSNN chưa qua
 matchedDEVadvantage; native2B dùnggầnđầyVRAMnhưngmixedreservechưađạt, chưaserve.
 Live tiếp tục0.8B/all-neuralGPU, không cóhaiVLMchạyđồngthời, khôngautoLoRA.
@@ -20,7 +27,8 @@ CPU/GPU/persistence qua, chất lượng phân tích/code/context-use vẫn PIVO
 **Mới nhất14/11:** [vòng thức/xem lại/củng cố/nghỉ](COGNITIVE_LOOP_20261114.md)
 đã chạy thật và qua persistence/preemption. Mặc định tự động: quiet30s mới
 xem lại; replay tối đa4lượt/mỗi revision đã chấp nhận; sau180s rảnh không có
-việc thì nhả nguyên VLM. Nhắn trong chat bình thường sẽ nạp lại/đánh thức.
+việc thì có thể nhả nguyên VLM; amendmentGPUkeepwarm giữ VLM để tránhcoldstart,
+Ngủ thủ công vẫn nhả. Nhắn trong chat bình thường sẽ nạp lại/đánh thức nếu đã nhả.
 Debug có Tự động/Thức/Ngủ; không cần bấm để xem trace. Đây là vòng vận hành,
 chưa phải chứng minh model tự học kỹ năng hoặc tự cải thiện ngôn ngữ.
 
@@ -77,7 +85,7 @@ trợ lý video dùng ổn định, chưa đạt lifelong/autonomous-quality gat
 flowchart LR
   H[Hermes: chat + tools + upload] --> G[Gateway127.0.0.1:8775]
   D[Debug thụ động] --> G
-  G --> V[Qwen frozen: llama.cpp CPU]
+  G --> V[Qwen frozen: llama.cpp CUDA hoặc CPU theo mode]
   G --> A[Whisper FP32: nạp theo đoạn âm thanh]
   G --> S[ALIF H128: local learner]
   G <--> M[SQLite: evidence / goals / replay / checkpoint]

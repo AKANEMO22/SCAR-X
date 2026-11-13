@@ -284,7 +284,7 @@ def test_changed_assets_are_reverified_before_resume(engine, tmp_path, monkeypat
     backend.asset_signatures = ("old",)
     monkeypatch.setattr(backend, "_asset_signatures", lambda: ("changed",))
 
-    def reject(_):
+    def reject(*_):
         raise ValueError("native integrity mismatch")
 
     monkeypatch.setattr(qualification, "verify_native_storage", reject)

@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import importlib.util
 
+_tool_observer = None
+
 SCHEMA = {
     "name": "scarx_video",
     "description": "Use when the user asks to look at their screen or the video they are watching. "
@@ -44,9 +46,15 @@ def _backend():
 def handler(args, **kwargs):
     backend = _backend()
     action = args.get("action")
-    from agent.opencode_affinity import resolve_affinity_key
-
-    session = resolve_affinity_key(None) or "local"
+    session = (
+        kwargs.get("session_id")
+        or (
+            _tool_observer.session_for_task(kwargs.get("task_id"))
+            if _tool_observer
+            else None
+        )
+        or "local"
+    )
     if action == "sources":
         result = backend.forward("/api/screen/sources")
     elif action == "watch":
@@ -73,6 +81,16 @@ def handler(args, **kwargs):
 
 
 def register(ctx):
+    global _tool_observer
+    # Keep hook code inside the standalone plugin, use only public ctx hooks.
+    spec = importlib.util.spec_from_file_location(
+        "_scarx_learning_hooks", Path(__file__).with_name("learning_hooks.py")
+    )
+    hooks = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(hooks)
+    _tool_observer = hooks.register_observer(
+        ctx, lambda payload: _backend().observe_tool(payload)
+    )
     ctx.register_tool(
         name="scarx_video",
         toolset="scarx_video",

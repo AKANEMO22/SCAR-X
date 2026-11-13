@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 from .store import encode
 
 
-def verify_native_storage(directory):
+def verify_native_storage(directory, config=None):
     report = json.loads(
         (directory / "native-integrity.json").read_text(encoding="utf-8")
     )
@@ -17,6 +17,17 @@ def verify_native_storage(directory):
         or report.get("quantized") is not False
     ):
         raise ValueError("Native storage audit is missing or failed")
+    if config is not None:
+        identity = report.get("model_identity")
+        if identity is not None and identity != {
+            "name": config.model_name,
+            "revision": config.model_revision,
+        }:
+            raise ValueError(
+                "Native source identity does not match selected runtime model"
+            )
+        if identity is None and config.model_name != "Qwen/Qwen3.5-0.8B":
+            raise ValueError("Candidate needs an explicit native source identity")
     expected = {
         "qwen-native-bf16.gguf",
         "qwen-vision-native-bf16.gguf",

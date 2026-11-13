@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Tool feedback và thử tận dụng thêm VRAM14/11](docs/hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md):
+boundedincident/probe/explicitreward đã nối; chưa chứng minh neuralselfrepair.
+Native2B thiếureserve, LFM1.6B chưa qua qualitygate; live giữ0.8B, không nhồiVRAM.
 [Sửa workspace/tool-loop/compression14/11](docs/hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md):
 GPUmode gồmVLM/vision+ASR+ALIF; CPUmode toànneuralCPU, khôngGPUrời.30phút
 vận hành qua, semantic/lifelongquality vẫn PIVOT; không bậtLoRA chưađạtchuẩn.

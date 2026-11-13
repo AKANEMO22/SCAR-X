@@ -1,5 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Incident/VRAM engineering14/11:** thêm bounded tool-observation→goal→explicit
+ownerfeedback, dùng existinglocalALIFupdate; không coi repeatcounter/readonlyprobe
+là learnedsemanticselfrepair. Questionclosure+synapse/RNG/replay atomic khi save
+fail. Ordinaryanswer/skip không là reward. [Cơ chế thật, nghiệm thu và giới hạn](hybrid/TOOL_FEEDBACK_AND_GPU_CANDIDATES_20261114.md).
+Ba2Bbufferprofiles vẫn thiếu512MiBreserve. NativeLFM1.6B vừaVRAM nhưng6/12strict
+DEV<0.8B8/12; giữ0.8B, không nới gate hoặc đổi SNN để đạt điểm.8h/longterm/
+representation/credit/retention vẫn mở, không có production/lifelongPASS.
+
 **MatchedHybridDEV14/11:** currenthiddenSNN chưa vượt cùngVLM+strongRAG;
 giữ PIVOT representation/credit/readoutstability, không scale/LoRA hoặc gọi
 ruleguard là neuralselfrepair.3seeds/20stages thăm dò, source/outputs/audit và

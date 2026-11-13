@@ -1,3 +1,8 @@
 name: scarx-hybrid
 description: Local original-precision SCAR-X model, video observation and passive debugging.
-version: 0.1.0
+version: 0.1.1
+provides_tools:
+  - scarx_video
+provides_hooks:
+  - pre_api_request
+  - post_tool_call

@@ -54,3 +54,15 @@ scripts/probe_hybrid_qwen2b.py -text
 experiments/hybrid-rag-snn-comparison-dev-v1.md -text
 experiments/hybrid-rag-snn-inference-completion-v1.md -text
 experiments/hybrid-native-2b-vram-probe-v1.md -text
+runs/*-native-2b-buffer-v2-*/** -text -whitespace
+runs/*-native-lfm16-v1-*/** -text -whitespace
+runs/*-tool-experience-v1-*/** -text -whitespace
+scripts/profile_hybrid_2b_buffers.py -text
+scripts/setup_hybrid_lfm16.py -text
+scripts/build_hybrid_lfm16.py -text
+scripts/probe_hybrid_lfm16.py -text
+scripts/accept_hybrid_tool_experience.py -text
+scripts/hermes_tool_experience_fixture.py -text
+experiments/hybrid-native-2b-buffer-v2.md -text
+experiments/hybrid-native-lfm16-vram-v1.md -text
+experiments/hybrid-tool-experience-loop-engineering-v1.md -text
