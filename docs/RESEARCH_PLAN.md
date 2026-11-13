@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Sửa lifecycleHybrid13/11:** thêm queuexem lại trải nghiệm thực sau30squiet,
+boundedJSONschema, snapshotmigration và replay có nguồn khi không cóopengoal;
+không đổiALIFrule/precision/scientificgates.16,384tokens vẫn là buffer thực dưới
+4GB; nhật kýSSD và phân trangDebug không đồng nghĩa neuralmemory/contextvôhạn.
+Benchmarkmodelonline là đối đầu khi hoàn thiện, không cam kết bằng điểm trước đo.
+[Audit và tiêu chí](hybrid/CONTEXT_REVIEW_AND_ONLINE_BENCHMARK.md).
+
 ## Phê duyệt mới 13/11/2026 — nhánh Hybrid cô lập
 
 **Bổ sung sau đó cùng ngày:** người dùng cho phép **4.000.000.000 byte RAM**.

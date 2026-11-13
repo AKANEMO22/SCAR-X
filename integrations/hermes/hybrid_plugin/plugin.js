@@ -25,6 +25,7 @@ function Panel({ ctx }) {
     [history, setHistory] = useState([]),
     [trace, setTrace] = useState([]),
     [checkpoint, setCheckpoint] = useState(""),
+    [archive, setArchive] = useState(null),
     cursor = useRef(0),
     lastInteraction = useRef(Date.now());
   const query = useQuery({
@@ -124,9 +125,30 @@ function Panel({ ctx }) {
             s?.neural ? `${s.neural.active} / ${s.neural.hidden}` : "—",
           ),
           stat("Cập nhật synapse", s?.neural?.updates ?? "—"),
+          stat("Lượt xem lại đã hoàn tất", s?.review?.completed ?? "—"),
         ],
       }),
       jsx("p", { children: s?.phase || "Đang kết nối gateway…" }),
+      s?.review &&
+        jsxs("div", {
+          className: "sxh-card",
+          children: [
+            jsx("b", { children: "Tự xem lại công việc" }),
+            jsx("p", {
+              children: `${s.review.pending} lượt chờ · ${s.review.completed} đã xem lại · ${s.review.verified_replay_items} mẫu có nguồn để ôn · ${s.review.replay_updates} cập nhật replay`,
+            }),
+            jsx("small", {
+              children:
+                "Trạng thái: " +
+                (s.review.blocker || "sẵn sàng") +
+                " · VLM frozen; review chưa được kiểm chứng không tự trở thành nhãn đúng.",
+            }),
+            s.review.last_result &&
+              jsx("pre", {
+                children: JSON.stringify(s.review.last_result, null, 2),
+              }),
+          ],
+        }),
       (error || query.error || s?.failure) &&
         jsx("p", {
           className: "sxh-error",
@@ -352,6 +374,65 @@ function Panel({ ctx }) {
           className: "sxh-card",
           children: [
             jsx("h2", { children: "Trace trực tiếp" }),
+            jsx("small", {
+              children:
+                "Nhật ký lưu trên SSD, độc lập với cửa sổ token. Trang trực tiếp chỉ giữ một phần gần nhất trong RAM.",
+            }),
+            jsxs("div", {
+              className: "sxh-row",
+              children: [
+                button(
+                  "Xem nhật ký từ đầu",
+                  () =>
+                    void ctx
+                      .rest("/status?after=0")
+                      .then((r) => setArchive(r.events || []))
+                      .catch((e) => setError(e.message)),
+                ),
+                archive &&
+                  button(
+                    "Trang tiếp theo",
+                    () =>
+                      void ctx
+                        .rest("/status?after=" + (archive.at(-1)?.id || 0))
+                        .then((r) => setArchive(r.events || []))
+                        .catch((e) => setError(e.message)),
+                  ),
+                archive && button("Đóng lịch sử", () => setArchive(null)),
+              ],
+            }),
+            archive &&
+              jsxs("div", {
+                className: "sxh-card sxh-feed",
+                children: [
+                  jsx("small", {
+                    children: archive.length
+                      ? `Sự kiện ${archive[0].id}–${archive.at(-1).id}`
+                      : "Không có sự kiện tiếp theo",
+                  }),
+                  ...archive.map((e) =>
+                    jsxs(
+                      "details",
+                      {
+                        children: [
+                          jsx("summary", {
+                            children:
+                              e.id +
+                              " · " +
+                              new Date(e.created * 1000).toLocaleString() +
+                              " · " +
+                              e.kind,
+                          }),
+                          jsx("pre", {
+                            children: JSON.stringify(e.payload, null, 2),
+                          }),
+                        ],
+                      },
+                      "archive" + e.id,
+                    ),
+                  ),
+                ],
+              }),
             jsx("small", {
               children:
                 "Tự cập nhật hoạt động thực; actor phân biệt neural, model và thao tác triển khai.",

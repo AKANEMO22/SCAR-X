@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Reviewqueue/trace13/11 — sửa lifecycle, chưa claim tự cải thiện
+
+Auditlive:0updates/0hiddenupdates/0replay/0goals;14proposalJSONbịreject và
+`last_review=0`. Đã thêm post-turnreviewqueue,30squiet/60scadence, boundedJSON
+schema, replay có nguồn độc lập vớiopengoal và explicitcheckpointmigration.
+Debug hiển thị vì sao chờ, lượtreview, actualupdates và có đọc nhật kýSSD cũ.
+Không đổiVLMweights/ALIFrule/4GB/scientificgates.16Kwindow vẫn là trần runtime
+đã phục vụ, chưa tăng32KkhôngđoRAM. Benchmarkonline là đích sau này, không hứa
+ngang điểm trước phép đo. [Audit và protocol đối đầu](hybrid/CONTEXT_REVIEW_AND_ONLINE_BENCHMARK.md).
+
 ## Sửa video reference13/11 — không chèn metadata vào tin nhắn
 
 PluginHybrid cũ giữ một selectedvideo trong rendererstorage rồi nối

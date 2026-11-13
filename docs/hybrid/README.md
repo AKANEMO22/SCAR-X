@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Context, tự xem lại và đối chứng online](CONTEXT_REVIEW_AND_ONLINE_BENCHMARK.md):
+reviewqueue sau lượt thật, trạng thái/blocker trongDebug, đọc nhật kýSSD phân
+trang; không gọi review tự sinh là nhãn đúng hoặc weightlearning đã thành công.
+
 1. Mở Hermes Desktop, chọn **SCAR-X Hybrid** trong bộ chọn model, dùng chat thường.
 2. Đính kèm video bằng **Files…** của Hermes. Plugin chuyển file thành một nguồn
    quan sát local; tham chiếu được gửi bằng metadata nội bộ theo phiên, không

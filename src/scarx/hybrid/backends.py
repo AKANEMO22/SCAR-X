@@ -214,7 +214,13 @@ class NativeBackends:
         raise TimeoutError("Native worker readiness deadline")
 
     def generate(
-        self, messages, max_tokens=160, background=False, tools=None, tool_choice=None
+        self,
+        messages,
+        max_tokens=160,
+        background=False,
+        tools=None,
+        tool_choice=None,
+        response_format=None,
     ):
         if not 1 <= max_tokens <= 1024:
             raise ValueError("Bounded output")
@@ -231,6 +237,8 @@ class NativeBackends:
             body["tools"] = tools
             if tool_choice is not None:
                 body["tool_choice"] = tool_choice
+        if response_format is not None:
+            body["response_format"] = response_format
         started = time.monotonic()
         with self.lock:
             self.stop_asr()

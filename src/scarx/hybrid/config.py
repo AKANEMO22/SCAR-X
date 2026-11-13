@@ -13,6 +13,8 @@ class HybridConfig:
     max_attempts: int = 2
     idle_cpu_fraction: float = 0.10
     presence_seconds: int = 600
+    review_quiet_seconds: int = 30
+    review_interval_seconds: int = 60
     archive_bytes: int = 10_000_000_000
     archive_seconds: int = 7 * 86400
     context_tokens: int = 16384
@@ -30,6 +32,11 @@ class HybridConfig:
             raise ValueError("Registered initial H128 / bounded working buffer")
         if not 0 < self.idle_cpu_fraction <= 0.10 or self.max_attempts != 2:
             raise ValueError("Registered idle-learning limits")
+        if (
+            not 10 <= self.review_quiet_seconds <= 600
+            or not 30 <= self.review_interval_seconds <= 3600
+        ):
+            raise ValueError("Bounded post-turn review cadence")
         if (
             not 0 < self.search_per_hour <= 12
             or not 0 < self.conversations_per_hour <= 3
