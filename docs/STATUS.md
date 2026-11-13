@@ -1,5 +1,12 @@
 # Trạng thái SCAR-X
 
+## Hermes tool-log collapse13/11
+
+Đã sửa livepreview còn lộ sau explicitclose trongrendererHermes.25checksqua,
+testđỏ trên bản cũ; build/cài renderer vàreloadnativeGUI, chỉ cònsummary khi
+đóng. Có patch/backup để bảo trì, không đổimodel/backend hoặc dữ liệuchat.
+[Biên bản](hybrid/HERMES_TOOL_COLLAPSE_FIX_20261113.md).
+
 ## Reviewqueue/trace13/11 — sửa lifecycle, chưa claim tự cải thiện
 
 Auditlive:0updates/0hiddenupdates/0replay/0goals;14proposalJSONbịreject và
