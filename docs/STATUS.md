@@ -1,5 +1,18 @@
 # Trạng thái SCAR-X
 
+## RAG/SNN + tận dụng VRAM14/11 — PIVOT, không nhập weights nghiên cứu
+
+3seed×20stages currentH128/guard;48syntheticheld-outqueries,198actualnative
+responses được chia sẻ theohash,1008armrecords. GroundedQA: BM25RAG50%,
+provenancesourcerule100%(contractceiling), episodic30,56%, frozen17,36%,
+readout46,53%, hidden37,50%, hiddenreset38,89%. Chưa hiddenadvantage;
+retention8DEVprobes không qua3/5pp. Parenttimeout900s giữ nguyên, completion
+chỉ57missingVLMcalls/9,5s, khôngtrain/rerank. Không formalhybridP2PASS.
+NativeQwen3.5-2B đã thửGPU16K/BF16-F32, source/numericparity qua;~5.530MiB
+globalVRAM, minfree388MiB, không đạt512MiBreserve và cầnunloadVLMchoASR.
+Khôngpromote2B; live0.8B/all-neuralCUDA/keepwarm đãrestore, SNN5updatesgiữ.
+[Report/raw/protocol](hybrid/RAG_SNN_AND_VRAM_20261114.md).
+
 ## Workspace / compression / unifiedGPU14/11 — vận hành qua, chất lượng PIVOT
 
 Đã xác minh projectcwd đúng; desktop guard warn-only cho31toolcalls/22repeat

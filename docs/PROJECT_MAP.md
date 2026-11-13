@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[So sánh cùngVLM: RAG/SNN và thửVRAM2B14/11](hybrid/RAG_SNN_AND_VRAM_20261114.md):
+`evaluation/hybrid_rag_snn_dev.py`, runner`compare_hybrid_rag_snn.py`,
+`audit_hybrid_rag_snn.py`; candidate2B ở`local/hybrid-v1/candidates/`, chưaserve.
+
 [Workspace/tool-loop, compression và GPUtoànneural14/11](hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md):
 `hybrid/cuda_alif.py`, `hybrid/tool_routing.py`, installerHermes có backup;
 `hybrid_reliability_soak.py` + `audit_hybrid_reliability.py` giữraw/negativecases.

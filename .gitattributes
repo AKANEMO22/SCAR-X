@@ -44,3 +44,13 @@ scripts/hybrid_reliability_soak.py -text
 scripts/hybrid_agent_workload.py -text
 experiments/hybrid-workspace-gpu-reliability-v1.md -text
 experiments/hybrid-workspace-purpose-repair-v2.md -text
+runs/*-hybrid-rag-snn-dev-v1-*/** -text -whitespace
+runs/*-native-2b-vram-v1-*/** -text -whitespace
+scripts/compare_hybrid_rag_snn.py -text
+scripts/complete_rag_snn_inference.py -text
+scripts/setup_hybrid_qwen2b.py -text
+scripts/convert_hybrid_qwen2b.py -text
+scripts/probe_hybrid_qwen2b.py -text
+experiments/hybrid-rag-snn-comparison-dev-v1.md -text
+experiments/hybrid-rag-snn-inference-completion-v1.md -text
+experiments/hybrid-native-2b-vram-probe-v1.md -text

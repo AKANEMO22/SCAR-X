@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[RAG/SNN và VRAMcòn lại](RAG_SNN_AND_VRAM_20261114.md): currentSNN chưa qua
+matchedDEVadvantage; native2B dùnggầnđầyVRAMnhưngmixedreservechưađạt, chưaserve.
+Live tiếp tục0.8B/all-neuralGPU, không cóhaiVLMchạyđồngthời, khôngautoLoRA.
+
 **Cập nhật14/11:** [workspace/tool-loop/compression và unifiedGPU](WORKSPACE_GPU_RELIABILITY_20261114.md).
 GPUmode nay bao gồm VLM/vision, ASR và ALIF; CPUmode không dùng GPU rời cho neural
 compute. Mặc địnhGPU`gpu_keep_warm=true` để tránh reload sau mỗi lúc nghỉ;

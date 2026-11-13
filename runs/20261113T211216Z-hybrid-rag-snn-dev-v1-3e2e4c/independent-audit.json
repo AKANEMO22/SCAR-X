@@ -1,0 +1,511 @@
+{
+  "run_id": "20261113T211216Z-hybrid-rag-snn-dev-v1-3e2e4c",
+  "complete": true,
+  "integrity_problems": [],
+  "raw_failures": [],
+  "parent_failures": [
+    "TimeoutError: Registered15minute DEV budget exhausted"
+  ],
+  "registered_parent_budget_pass": false,
+  "completion": {
+    "started": 1794605325.012592,
+    "parent_sha256": "837729a9c7257909ddf27ed80c13fee4d3830b8351c3f5cb69e62ba663d5e304",
+    "selection_sha256": "95660286364e17aa117edb00b122332bc757579e7a19b8dfb235d1fdc4425720",
+    "existing_native_inputs": 141,
+    "budget_seconds": 180,
+    "no_training": true,
+    "native_pid": 42872,
+    "seconds": 9.5,
+    "new_native_inputs": 57,
+    "parent_protocol_budget_compliance": false
+  },
+  "metrics": {
+    "bm25": {
+      "n": 144,
+      "grounded_QA": 0.5,
+      "source_selection": 0.5,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.5
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.5
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.5
+        }
+      }
+    },
+    "source_rule": {
+      "n": 144,
+      "grounded_QA": 1.0,
+      "source_selection": 1.0,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 1.0
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 1.0
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 1.0
+        }
+      }
+    },
+    "episodic": {
+      "n": 144,
+      "grounded_QA": 0.3055555555555556,
+      "source_selection": 0.3055555555555556,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.2708333333333333
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.375
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.2708333333333333
+        }
+      }
+    },
+    "frozen": {
+      "n": 144,
+      "grounded_QA": 0.1736111111111111,
+      "source_selection": 0.1736111111111111,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.125
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.3541666666666667
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.041666666666666664
+        }
+      }
+    },
+    "readout_only": {
+      "n": 144,
+      "grounded_QA": 0.4652777777777778,
+      "source_selection": 0.4652777777777778,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.5625
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.375
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.4583333333333333
+        }
+      }
+    },
+    "hidden": {
+      "n": 144,
+      "grounded_QA": 0.375,
+      "source_selection": 0.375,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.22916666666666666
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.3333333333333333
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.5625
+        }
+      }
+    },
+    "hidden_reset": {
+      "n": 144,
+      "grounded_QA": 0.3888888888888889,
+      "source_selection": 0.3888888888888889,
+      "per_seed": {
+        "260113": {
+          "n": 48,
+          "grounded_QA": 0.4166666666666667
+        },
+        "260137": {
+          "n": 48,
+          "grounded_QA": 0.2708333333333333
+        },
+        "260171": {
+          "n": 48,
+          "grounded_QA": 0.4791666666666667
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "hidden_minus_bm25": {
+      "difference_pp": -12.5,
+      "CI95_pp": [
+        -88.19444444444444,
+        63.906249999999744
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    },
+    "hidden_minus_source_rule": {
+      "difference_pp": -62.5,
+      "CI95_pp": [
+        -88.90624999999999,
+        -33.33333333333333
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    },
+    "hidden_minus_episodic": {
+      "difference_pp": 6.944444444444445,
+      "CI95_pp": [
+        -26.38888888888889,
+        36.80555555555556
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    },
+    "hidden_minus_frozen": {
+      "difference_pp": 20.13888888888889,
+      "CI95_pp": [
+        -6.25,
+        50.0
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    },
+    "hidden_minus_readout_only": {
+      "difference_pp": -9.027777777777777,
+      "CI95_pp": [
+        -31.25,
+        9.722222222222223
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    },
+    "hidden_minus_hidden_reset": {
+      "difference_pp": -1.3888888888888888,
+      "CI95_pp": [
+        -19.444444444444446,
+        15.972222222222221
+      ],
+      "bootstrap_repetitions": 5000,
+      "scope": "exploratory hierarchical paired resampling; only3independent neural seeds, same native responses shared for identical inputs; not a confirmatory claim"
+    }
+  },
+  "learning": {
+    "260113": {
+      "readout_only": {
+        "attempts": 480,
+        "accepted": 384,
+        "prior_wrong": 115,
+        "seconds": 144.10800000004383,
+        "hidden_weight_movement_accepted": 0
+      },
+      "hidden": {
+        "attempts": 480,
+        "accepted": 392,
+        "prior_wrong": 90,
+        "seconds": 144.22799999992276,
+        "hidden_weight_movement_accepted": 392
+      }
+    },
+    "260137": {
+      "readout_only": {
+        "attempts": 480,
+        "accepted": 74,
+        "prior_wrong": 225,
+        "seconds": 79.77900000000955,
+        "hidden_weight_movement_accepted": 0
+      },
+      "hidden": {
+        "attempts": 480,
+        "accepted": 231,
+        "prior_wrong": 180,
+        "seconds": 116.53899999988789,
+        "hidden_weight_movement_accepted": 231
+      }
+    },
+    "260171": {
+      "readout_only": {
+        "attempts": 480,
+        "accepted": 357,
+        "prior_wrong": 137,
+        "seconds": 142.29999999992287,
+        "hidden_weight_movement_accepted": 0
+      },
+      "hidden": {
+        "attempts": 480,
+        "accepted": 296,
+        "prior_wrong": 115,
+        "seconds": 138.5570000001171,
+        "hidden_weight_movement_accepted": 296
+      }
+    }
+  },
+  "retention": {
+    "260113": {
+      "bm25": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.25,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "source_rule": {
+        "first_accuracy": 1.0,
+        "final_accuracy": 1.0,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "episodic": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.5,
+        "positive_forgetting_pp": {
+          "latest": 50.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 100.0
+        },
+        "mean_forgetting_pp": 37.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "frozen": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.125,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "readout_only": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.5,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 50.0
+        },
+        "mean_forgetting_pp": 12.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "hidden": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.375,
+        "positive_forgetting_pp": {
+          "latest": 100.0,
+          "before": 50.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 37.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      }
+    },
+    "260137": {
+      "bm25": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.25,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "source_rule": {
+        "first_accuracy": 1.0,
+        "final_accuracy": 1.0,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "episodic": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.5,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 50.0,
+          "correction": 0.0,
+          "absent": 100.0
+        },
+        "mean_forgetting_pp": 37.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "frozen": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.125,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "readout_only": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.0,
+        "positive_forgetting_pp": {
+          "latest": 50.0,
+          "before": 50.0,
+          "correction": 50.0,
+          "absent": 100.0
+        },
+        "mean_forgetting_pp": 62.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "hidden": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.25,
+        "positive_forgetting_pp": {
+          "latest": 100.0,
+          "before": 50.0,
+          "correction": 100.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 62.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      }
+    },
+    "260171": {
+      "bm25": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.25,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "source_rule": {
+        "first_accuracy": 1.0,
+        "final_accuracy": 1.0,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "episodic": {
+        "first_accuracy": 0.25,
+        "final_accuracy": 0.5,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 50.0,
+          "correction": 0.0,
+          "absent": 100.0
+        },
+        "mean_forgetting_pp": 37.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "frozen": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.125,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 0.0,
+          "correction": 0.0,
+          "absent": 0.0
+        },
+        "mean_forgetting_pp": 0.0,
+        "retention_gate": true,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "readout_only": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.25,
+        "positive_forgetting_pp": {
+          "latest": 50.0,
+          "before": 50.0,
+          "correction": 50.0,
+          "absent": 100.0
+        },
+        "mean_forgetting_pp": 62.5,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      },
+      "hidden": {
+        "first_accuracy": 0.125,
+        "final_accuracy": 0.625,
+        "positive_forgetting_pp": {
+          "latest": 0.0,
+          "before": 50.0,
+          "correction": 0.0,
+          "absent": 50.0
+        },
+        "mean_forgetting_pp": 25.0,
+        "retention_gate": false,
+        "note": "fixed8DEV probes; no claim of20real skills or formal retention"
+      }
+    }
+  },
+  "native_unique_calls": 198,
+  "score_denominator_note": "same48questions x3neural seeds; identical VLM requests reused, not144independent question samples",
+  "SNN_advantage_qualified_on_this_DEV": false,
+  "verdict": "PIVOT_NO_PROVEN_SNN_ADVANTAGE",
+  "generalization_limit": "procedural provenance contract, small DEV; rule can hit ceiling, cannot establish broad language/vision gain",
+  "current_scientific_gates_unchanged": true
+}

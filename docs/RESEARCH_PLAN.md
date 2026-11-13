@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**MatchedHybridDEV14/11:** currenthiddenSNN chưa vượt cùngVLM+strongRAG;
+giữ PIVOT representation/credit/readoutstability, không scale/LoRA hoặc gọi
+ruleguard là neuralselfrepair.3seeds/20stages thăm dò, source/outputs/audit và
+timeout+inferencecompletion riêng giữ ở [report](hybrid/RAG_SNN_AND_VRAM_20261114.md).
+Người dùng xác nhận~3GBcòn lại làVRAM: đã đo native2B riêng, không nhập vào
+cùng-modelcomparison hoặc live vìmixedheadroom chưađạt. ALIF/topology/rules giữ.
+
 **Execution amendment14/11:** theo yêu cầu mới, GPUmode phải áp dụng cả
 VLM/vision, ASR và ALIFnumerics/locallearning; CPUmode dùng CPU, chưa qualification
 iGPU. Host I/O/tokenizer/SQLite/RNG vẫn CPU. Nativeprecision, topology/equations,
