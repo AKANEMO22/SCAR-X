@@ -49,6 +49,10 @@ class Gateway:
         self.engine = HybridEngine(self.store, self.backend, self.monitor, self.config)
         self.video = VideoMemory(self.engine)
         self.screen = ScreenMemory(self.engine, prune=self.video.prune)
+        self.engine.capture_active = lambda: (
+            any(t.is_alive() for t in list(self.video.threads))
+            or any(p.poll() is None for p, _ in list(self.screen.jobs.values()))
+        )
         self.ready = False
         self.failure = None
         self.workload = {}
@@ -215,11 +219,7 @@ class Gateway:
                     "heuristic",
                 )
             candidates = [e["id"] for e in observations]
-            observations = sorted(
-                observations,
-                key=lambda e: self.engine.model.relevance(query, e),
-                reverse=True,
-            )[:4]
+            observations = self.engine.rank_candidates(query, observations)
             context = [
                 {
                     "ref": "E" + str(i + 1),
@@ -293,11 +293,7 @@ class Gateway:
             observations = self.store.search(query, stream="conversation", limit=6)
             if observations:
                 candidates = [e["id"] for e in observations]
-                observations = sorted(
-                    observations,
-                    key=lambda e: self.engine.model.relevance(query, e),
-                    reverse=True,
-                )[:4]
+                observations = self.engine.rank_candidates(query, observations)
                 body["_scarx_evidence"] = observations
                 body["_scarx_candidates"] = candidates
                 parts.append(
@@ -463,8 +459,7 @@ class Gateway:
             for m in messages
             if isinstance(m, dict)
         ):
-            self.engine.foreground.set()
-            self.backend.cancel_idle.set()
+            self.engine.begin_foreground()
             try:
                 output = self.backend.generate(
                     self.prepare_agent_messages(body),
@@ -528,11 +523,9 @@ class Gateway:
                 }
                 return response
             finally:
-                self.engine.foreground.clear()
-                self.backend.cancel_idle.clear()
+                self.engine.end_foreground()
         if images:
-            self.engine.foreground.set()
-            self.backend.cancel_idle.set()
+            self.engine.begin_foreground()
             try:
                 output = self.backend.generate(
                     [
@@ -564,12 +557,17 @@ class Gateway:
                     "usage": output["usage"],
                     "image_count": len(images),
                 }
-                self.store.put("answer", record["id"], record)
-                self.store.event("answer", record, "vlm")
+                self.engine.record_agent_answer(
+                    record["id"],
+                    text,
+                    output["text"],
+                    usage=output["usage"],
+                    image_count=len(images),
+                    source="inline image answer; text review only",
+                )
                 self.engine.presence()
             finally:
-                self.engine.foreground.clear()
-                self.backend.cancel_idle.clear()
+                self.engine.end_foreground()
         else:
             record = self.engine.ask(
                 text,
@@ -623,24 +621,7 @@ class Gateway:
         if not self.ready:
             raise RuntimeError(self.failure or "Native workers initializing")
         self.register_screen_request(body)
-        messages = self.prepare_agent_messages(body)
-        self.engine.foreground.set()
-        self.backend.cancel_idle.set()
-        self.store.event(
-            "hermes_request_prepared",
-            {
-                "messages": len(messages),
-                "message_text_characters": [
-                    {"role": m.get("role"), "characters": len(encode(m.get("content")))}
-                    for m in messages
-                ],
-                "tools": len(body.get("tools") or []),
-                "tool_schema_characters": len(encode(body.get("tools") or [])),
-                "stream": True,
-                "no_hidden_prompt_replacement": True,
-            },
-            "runtime",
-        )
+        self.engine.begin_foreground()
         text = []
         calls = {}
         usage = {}
@@ -648,6 +629,25 @@ class Gateway:
         first_token = None
         finish = None
         try:
+            messages = self.prepare_agent_messages(body)
+            self.store.event(
+                "hermes_request_prepared",
+                {
+                    "messages": len(messages),
+                    "message_text_characters": [
+                        {
+                            "role": m.get("role"),
+                            "characters": len(encode(m.get("content"))),
+                        }
+                        for m in messages
+                    ],
+                    "tools": len(body.get("tools") or []),
+                    "tool_schema_characters": len(encode(body.get("tools") or [])),
+                    "stream": True,
+                    "no_hidden_prompt_replacement": True,
+                },
+                "runtime",
+            )
             for chunk in self.backend.stream(
                 messages,
                 body.get("max_tokens") or 512,
@@ -739,8 +739,7 @@ class Gateway:
             self.engine.presence()
             self.engine.save()
         finally:
-            self.engine.foreground.clear()
-            self.backend.cancel_idle.clear()
+            self.engine.end_foreground()
 
     def close(self):
         self.work_trace.close()
@@ -971,7 +970,15 @@ def serve(directory, port=8775):
                         return
                     response = gateway.chat(body)
                 elif path == "/api/presence":
-                    response = {"question": gateway.engine.presence()}
+                    if type(body.get("activity", False)) is not bool:
+                        raise ValueError("Expected boolean activity flag")
+                    response = {
+                        "question": gateway.engine.presence(
+                            activity=body.get("activity", False)
+                        )
+                    }
+                elif path == "/api/cognition":
+                    response = gateway.engine.cognition.command(body.get("intent"))
                 elif path == "/api/observe":
                     if body.get("existing_stream_id"):
                         context = body.get("video_context")
@@ -1070,6 +1077,7 @@ def serve(directory, port=8775):
                     with gateway.engine.lock:
                         gateway.engine.state["learning_enabled"] = body["enabled"]
                         gateway.engine.save()
+                        gateway.engine.cognition.wake_event.set()
                     response = {"enabled": gateway.engine.state["learning_enabled"]}
                 elif path == "/v1/learning/message":
                     if body.get("kind") == "reply":

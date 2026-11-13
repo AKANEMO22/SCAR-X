@@ -40,6 +40,9 @@ class Reviewer:
 def engine(tmp_path):
     store = Store(tmp_path)
     value = HybridEngine(store, Reviewer(), Monitor())
+    # Explicitly place this fixture after the quiet period. Fresh runtimes now
+    # start their activity clock at boot instead of looking idle since epoch0.
+    value.state["cognition"]["last_activity"] = time.time() - 45
     yield value
     store.close()
 
@@ -51,6 +54,7 @@ def record(
         "a", question, answer, source="actual-controller-fixture"
     )
     engine.state["last_presence"] = time.time() - 45
+    engine.state["cognition"]["last_activity"] = time.time() - 45
 
 
 def test_completed_turn_is_queued_and_title_helper_is_excluded(engine):
@@ -85,7 +89,7 @@ def test_review_respects_priority_pause_quiet_and_resource_budget(engine, reason
     elif reason == "paused":
         engine.state["learning_enabled"] = False
     elif reason == "quiet":
-        engine.state["last_presence"] = time.time()
+        engine.presence(activity=True)
     else:
         engine.monitor.sample = lambda: {
             "rss_bytes": 30_000_000,

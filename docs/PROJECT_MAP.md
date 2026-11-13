@@ -4,6 +4,8 @@ Hybrid riêng: [hướng dẫn và sơ đồ](hybrid/README.md),
 [kết quả hiện tại](research/HYBRID_IMPLEMENTATION_20261113.md).
 [Pipeline audit và lỗi còn lại](hybrid/PIPELINE_AUDIT_20261113.md).
 [CPU/GPU, config và SearXNGnative](hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
+[Vòng thức/ngủ và nghiệm thu thật14/11](hybrid/COGNITIVE_LOOP_20261114.md):
+`hybrid/cognition.py`, runner `scripts/hybrid_cognition_acceptance.py`.
 Entrypoint`run_hybrid.py`; `src/scarx/hybrid` chứa runtime/learner mới;
 `integrations/hermes/hybrid_plugin` là adapter desktop/tool/debug duy nhất.
 Data/model/binary/backups ở`local/hybrid-v1`, không commit. Runs mới immutable.

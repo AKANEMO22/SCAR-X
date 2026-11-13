@@ -12,6 +12,7 @@ import io
 import json
 import re
 import zipfile
+import time
 import numpy as np
 from ..neural.core import Config, SpikingCore
 from ..evaluation.readout_eligibility import spike_slope
@@ -70,6 +71,9 @@ class LocalALIF:
         self.updates = 0
         self.hidden_updates = 0
         self.ticks = 0
+        self.last_step_epoch = (
+            0.0  # Ephemeral measurement, not learning/checkpoint state.
+        )
         self.replay_seen = 0
         self.replay = []
         self.reward_mean = 0.0
@@ -121,6 +125,7 @@ class LocalALIF:
             z_e[:, 64:] *= 1.0 if np.max(np.abs(row)) > 0.6 else 0.15
             self.e_f[:] = self.gamma * self.e_f + (1.0 - self.gamma) * z_e
         self.ticks += 1
+        self.last_step_epoch = time.time()
 
     def forward(self, sequence, head="action", track=False):
         seq = np.asarray(sequence, np.float32)

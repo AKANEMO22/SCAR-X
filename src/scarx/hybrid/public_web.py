@@ -7,7 +7,7 @@ import socket
 import time
 from urllib.error import HTTPError
 from urllib.parse import urlencode, urljoin, urlparse
-from urllib.request import Request, HTTPRedirectHandler, build_opener
+from urllib.request import Request, HTTPRedirectHandler, build_opener, urlopen
 
 
 def public_url(url):
@@ -81,8 +81,9 @@ class PlainText(HTMLParser):
 
 
 class PublicWeb:
-    def __init__(self, store):
+    def __init__(self, store, local_search=False):
         self.store = store
+        self.local_search = local_search
 
     def initialize_public_curriculum(self):
         if self.store.get("runtime", "public_curriculum_initialized"):
@@ -137,6 +138,8 @@ class PublicWeb:
             )
         if language not in ("vi", "en"):
             raise ValueError("Supported search languages vi/en")
+        if self.local_search:
+            return self.search_local(topic)
         # The exact approved topic is the only outgoing query. No private suffix.
         parameters = {
             "action": "query",
@@ -208,6 +211,55 @@ class PublicWeb:
                     {"from_evidence": linked["id"], "error": str(exc)},
                     "runtime",
                 )
+        return evidence
+
+    def search_local(self, topic):
+        # Fixed owned loopback service, not an arbitrary model-supplied URL.
+        url = "http://127.0.0.1:18778/search?" + urlencode(
+            {"q": topic["topic"], "format": "json"}
+        )
+        self.store.event(
+            "web_search_started",
+            {
+                "topic_id": topic["id"],
+                "query": topic["topic"],
+                "backend": "native_searxng",
+                "private_goal_sent": False,
+            },
+        )
+        with urlopen(
+            Request(url, headers={"Accept": "application/json"}), timeout=10
+        ) as response:
+            raw = response.read(1_000_001)
+        if len(raw) > 1_000_000:
+            raise ValueError("SearXNG observation bound exceeded")
+        data = json.loads(raw)
+        evidence = []
+        parser = PlainText()
+        for row in data.get("results", [])[:3]:
+            source = public_url(row["url"])
+            parser = PlainText()
+            parser.feed(row.get("title", "") + " " + row.get("content", ""))
+            text = " ".join(" ".join(parser.parts).split())[:12000]
+            if text:
+                evidence.append(
+                    self.store.observe(
+                        text,
+                        source=source,
+                        stream="public:" + topic["id"],
+                        modality="web",
+                        public_topic=topic["id"],
+                    )
+                )
+        self.store.event(
+            "web_search_completed",
+            {
+                "topic_id": topic["id"],
+                "backend": "native_searxng",
+                "evidence_ids": [r["id"] for r in evidence],
+                "status": "search snippets observed, not full-page verification",
+            },
+        )
         return evidence
 
     def read_linked(self, evidence_id, index=0):

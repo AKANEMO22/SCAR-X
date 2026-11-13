@@ -1,5 +1,15 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Vận hành Hybrid14/11:** người dùng yêu cầu nối cơ chế thức/ngủ. Đã có runtime
+scheduler trên cùng ALIFH128: phục vụ/quan sát ưu tiên, idle review mục tiêu thật,
+verifier/hỏi lại, bounded replay và unload nguyên frozenVLM khi nghỉ. Save/load
+bao gồm RNG/replay/cognitivebudget; foreground preemption/coldrestart/rollback
+qua nghiệm thu kỹ thuật cô lập. Không đổi learningrule, precision, context hoặc
+gate; không gọi đây là useful consolidation/ACT/hiddenrepresentationPASS.
+[Kết quả, lỗi giữ lại và giới hạn](hybrid/COGNITIVE_LOOP_20261114.md).
+Các mục “chưa có scheduler” dưới đây mô tả SNN-only/mốc lịch sử; không bị sửa
+thành chứng cứ đã đạt semantic/procedural skill hoặc retention dài hạn.
+
 **Phê duyệt GPU mới nhất13/11:** nhánhHybrid có2executionmodeCPU/GPU. CPU vẫn
 4,5GB; người dùng đã bỏ capRAM/privatecommit củaSCAR-X choGPUmode. ĐoVRAM riêng,
 không đổi precision/ALIF/context16K và không rewriteFAIL4,5GB trước đó. Đã chuyển

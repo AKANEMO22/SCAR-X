@@ -83,6 +83,7 @@ MAPPING = {
     "save": "/api/save",
     "rollback": "/api/rollback",
     "learning": "/api/learning",
+    "cognition": "/api/cognition",
     "chat": "/v1/chat/completions",
     "screen-start": "/api/screen/start",
     "screen-stop": "/api/screen/stop",

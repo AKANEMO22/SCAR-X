@@ -30,6 +30,7 @@ class NativeBackends:
         self.vlm_url = "http://127.0.0.1:18776"
         self.native_token = secrets.token_urlsafe(32)
         self.vlm_command = None
+        self.asset_signatures = None
 
     def headers(self):
         return {
@@ -97,6 +98,12 @@ class NativeBackends:
             return
         if not self.vlm_command:
             raise RuntimeError("VLM was never initialized")
+        current = self._asset_signatures()
+        if self.asset_signatures is not None and current != self.asset_signatures:
+            from .qualification import verify_native_storage
+
+            verify_native_storage(self.directory)
+            self.asset_signatures = current
         self.monitor.check()
         started = time.monotonic()
         self.vlm = self._spawn(self.vlm_command, "vlm.log")
@@ -109,6 +116,46 @@ class NativeBackends:
                 "precision": "original BF16/F32",
             },
             "runtime",
+        )
+
+    def hibernate(self, reason, permitted=None):
+        with self.lock:
+            if self.cancel_idle.is_set() or (permitted is not None and not permitted()):
+                raise InterruptedError("Foreground preempts model hibernation")
+            if self.vlm is None or self.vlm.poll() is not None:
+                self.vlm = None
+                return False
+            pid = self.vlm.pid
+            self.vlm.terminate()
+            try:
+                self.vlm.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                self.vlm.kill()
+                self.vlm.wait()
+            self.vlm = None
+            self.store.event(
+                "vlm_hibernated",
+                {
+                    "pid": pid,
+                    "reason": reason,
+                    "ALIF_retained": True,
+                    "weights_changed": False,
+                    "next_answer": "reloads frozen model; cold prefix",
+                },
+            )
+            return True
+
+    def wake(self):
+        with self.lock:
+            self.ensure_vlm()
+
+    def _asset_signatures(self):
+        return tuple(
+            (p.name, p.stat().st_size, p.stat().st_mtime_ns)
+            for p in (
+                self.directory / "models/native/qwen-native-bf16.gguf",
+                self.directory / "models/native/qwen-vision-native-bf16.gguf",
+            )
         )
 
     def start(self):
@@ -189,6 +236,7 @@ class NativeBackends:
         )
         self.wait(self.vlm, self.vlm_url + "/health")
         self.monitor.check()
+        self.asset_signatures = self._asset_signatures()
         # Frozen ASR is activated only for an audio chunk. This is component
         # scheduling, not weight paging or reduced precision. A single VLM and
         # one audio chunk execute at a time under the aggregate RAM budget.

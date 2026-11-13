@@ -6,6 +6,13 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+**Mới nhất14/11:** [vòng thức/xem lại/củng cố/nghỉ](COGNITIVE_LOOP_20261114.md)
+đã chạy thật và qua persistence/preemption. Mặc định tự động: quiet30s mới
+xem lại; replay tối đa4lượt/mỗi revision đã chấp nhận; sau180s rảnh không có
+việc thì nhả nguyên VLM. Nhắn trong chat bình thường sẽ nạp lại/đánh thức.
+Debug có Tự động/Thức/Ngủ; không cần bấm để xem trace. Đây là vòng vận hành,
+chưa phải chứng minh model tự học kỹ năng hoặc tự cải thiện ngôn ngữ.
+
 [DataAntigravity và pilotchọnLoRA](ADAPTER_POLICY_PILOT_20261113.md): đãhọcALIF
 trên syntheticcontract nhưngchưađạtgate, chưabậttựtạo/dùngadapter trongHermes.
 
@@ -122,9 +129,10 @@ khi gateway đã dừng để phục hồi cả database/WAL và nguồn media.
 |---|---|
 | `hybrid/gateway.py`, `backends.py` | OpenAI-compatible stream/tool-calls, owned native workers |
 | `engine.py`, `learner.py` | Goals, action authorization, ALIF eligibility, guards/replay |
+| `cognition.py` | One persistent wake/review/replay/rest scheduler; foreground preemption |
 | `store.py`, `ownership.py` | Transactions, full-state snapshots, single learning writer |
 | `media.py`, `screen.py` | Filevideo1×, selected-window capture, raw TTL, reinspection |
-| `public_web.py` | Exact approved public-topic queries, Wikipedia vi/en, bounded linked reads |
+| `public_web.py` | Exact approved public topics; native SearXNG khi bật, Wikipedia fallback theo config; nguồn luôn chưa tự xác minh |
 | `resources.py`, `gpu_memory.py` | Process-treeRSS/privatecommit and conservative sharedGPU accounting |
 | `integrations/hermes/hybrid_plugin` | Normal-composer middleware, screen tool, learning question, Debug |
 | `local/hybrid-v1` | Private weights, binaries, DB, source copies, per-install backups |

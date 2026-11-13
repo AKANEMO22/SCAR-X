@@ -11,6 +11,19 @@ import { jsx, jsxs } from "react/jsx-runtime";
 
 const ID = "scarx-hybrid",
   PATH = "/scarx-hybrid";
+const COGNITIVE_LABELS = {
+  starting: "Khởi động",
+  serving: "Đang làm việc",
+  observing: "Đang quan sát",
+  reflecting: "Xem lại trải nghiệm",
+  verifying: "Kiểm chứng",
+  exploring: "Tìm hiểu mục tiêu",
+  sleep_consolidating: "Ngủ · củng cố",
+  resting: "Nghỉ",
+  awake_idle: "Thức · chờ việc",
+  paused: "Tạm dừng học",
+  waking: "Đang thức dậy",
+};
 const CSS = `.sxh{height:100%;overflow:auto;padding:22px;max-width:1200px;margin:auto;color:var(--ui-text-primary);font:14px/1.5 system-ui}.sxh h1{font-size:23px;margin:0}.sxh h2{font-size:16px}.sxh small{color:var(--ui-text-secondary)}.sxh button,.sxh input,.sxh textarea{font:inherit;color:inherit;border:1px solid var(--ui-stroke-secondary);border-radius:7px;padding:9px;background:var(--ui-bg-secondary)}.sxh button{cursor:pointer}.sxh textarea{width:100%;min-height:85px}.sxh input{flex:1;min-width:100px}.sxh-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}.sxh-card{padding:15px;border:1px solid var(--ui-stroke-secondary);border-radius:10px;margin:12px 0}.sxh-stat{flex:1;min-width:140px}.sxh-stat b{display:block;font-size:20px}.sxh-feed{max-height:50vh;overflow:auto}.sxh pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 ui-monospace,monospace}.sxh-error{color:var(--ui-danger,#ee867e);white-space:pre-wrap}.sxh-message{border-bottom:1px solid var(--ui-stroke-secondary);padding:12px 0;white-space:pre-wrap}.sxh button[aria-selected=true]{border-color:var(--ui-accent,#6cbaac)}`;
 
 function Panel({ ctx }) {
@@ -48,8 +61,15 @@ function Panel({ ctx }) {
     }
   }, [s]);
   useEffect(() => {
+    let lastActivityPing = 0;
     const mark = () => {
       lastInteraction.current = Date.now();
+      if (Date.now() - lastActivityPing >= 2000) {
+        lastActivityPing = Date.now();
+        void ctx
+          .rest("/presence", { method: "POST", body: { activity: true } })
+          .catch(() => {});
+      }
     };
     const presence = () => {
       if (
@@ -58,7 +78,7 @@ function Panel({ ctx }) {
         Date.now() - lastInteraction.current < 30000
       )
         void ctx
-          .rest("/presence", { method: "POST", body: {} })
+          .rest("/presence", { method: "POST", body: { activity: false } })
           .catch(() => {});
     };
     const disposers = [
@@ -129,6 +149,25 @@ function Panel({ ctx }) {
         ],
       }),
       jsx("p", { children: s?.phase || "Đang kết nối gateway…" }),
+      s?.cognition &&
+        jsxs("div", {
+          className: "sxh-card",
+          children: [
+            jsx("h2", { children: COGNITIVE_LABELS[s.cognition.phase] || s.cognition.phase }),
+            jsx("p", { children: s.cognition.reason }),
+            jsx("small", {
+              children: `VLM ${s.cognition.VLM_resident ? "đang nạp" : "đã nhả tài nguyên"} · ${s.cognition.state.consolidations} lượt ôn có nguồn · ${s.cognition.state.replay_used}/${s.config.sleep_replay_budget} ngân sách lượt hiện tại. Đây là trạng thái xử lý, không phải độc thoại nội tâm.`,
+            }),
+            jsxs("div", {
+              className: "sxh-row",
+              children: [
+                ["auto", "Tự động"], ["awake", "Thức"], ["sleep", "Ngủ / củng cố"],
+              ].map(([intent, label]) => button(label, () => { void send("/cognition", { intent }).catch(() => {}); }, {
+                "aria-pressed": s.cognition.state.intent === intent,
+              })),
+            }),
+          ],
+        }),
       s?.review &&
         jsxs("div", {
           className: "sxh-card",
@@ -569,7 +608,9 @@ function LearningQuestion({ ctx }) {
     const ping = () => {
       if (!isScarx() || Date.now() - last < 15000) return;
       last = Date.now();
-      void ctx.rest("/presence", { method: "POST", body: {} }).catch(() => {});
+      void ctx
+        .rest("/presence", { method: "POST", body: { activity: true } })
+        .catch(() => {});
     };
     const a = ctx.addEventListener(window, "pointerdown", ping),
       b = ctx.addEventListener(window, "keydown", ping);

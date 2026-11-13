@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+Vòng [thức/xem lại/củng cố/nghỉ](docs/hybrid/COGNITIVE_LOOP_20261114.md) đã nối:
+tự nhường chat, nhả VLM khi nghỉ và đánh thức lại, có trace thật/persistence;
+chưa chứng minh learned-skill/retention hoặc adaptive deep reasoning.
 Đây là bản thử nghiệm, chưa đạt quality/lifelong gates.
 [Cài/chạy/bảo trì](docs/hybrid/README.md), [kết quả và giới hạn](docs/research/HYBRID_IMPLEMENTATION_20261113.md).
 Các mục bên dưới tiếp tục mô tả sản phẩm SNN-only gốc, được giữ nguyên.

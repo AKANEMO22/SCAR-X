@@ -18,9 +18,12 @@ from .review import (
     arithmetic_check,
     review_format,
     parse_review,
+    is_social_exchange,
+    topic_relevant,
 )
 from ..learning.verifiers import parse_integer_expression, integer_answer
 from .temporal import temporal_direction
+from .cognition import CognitiveLoop, initial_cognition
 
 
 class HybridEngine:
@@ -32,7 +35,7 @@ class HybridEngine:
         self.lock = threading.RLock()
         self.foreground = threading.Event()
         self.stop_event = threading.Event()
-        self.web = PublicWeb(store)
+        self.web = PublicWeb(store, local_search=self.config.searxng_enabled)
         self.model = LocalALIF(self.config.seed)
         self.web.initialize_public_curriculum()
         self.state = {
@@ -49,11 +52,15 @@ class HybridEngine:
             "last_action": None,
             "learning_enabled": True,
             "review": initial_review(),
+            "cognition": initial_cognition(time.time()),
         }
+        required = set(self.state)
         active = store.get("runtime", "active_checkpoint")
         if active:
             self.model, self.state = LocalALIF.loads(store.snapshot(active["id"]))
             self.state = upgrade_controller(self.state)
+            if set(self.state) != required:
+                raise ValueError("Incompatible serving controller snapshot")
         if (
             not self.state["review"]["pending"]
             and not self.state["review"]["completed"]
@@ -61,11 +68,18 @@ class HybridEngine:
             for record in reversed(self.store.list("answer", limit=8)):
                 if not is_auxiliary_answer(
                     record.get("question", ""), record.get("answer", "")
-                ):
+                ) and not is_social_exchange(record.get("question", "")):
                     self._queue_review(record["id"])
         self.thread = None
         self._last_review_blocker = None
         self._reviewing_answer = None
+        self.cognition = CognitiveLoop(self)
+
+    def begin_foreground(self):
+        self.cognition.begin_foreground()
+
+    def end_foreground(self):
+        self.cognition.end_foreground()
 
     def save(self, pinned=False, learning_event=None):
         with self.lock:
@@ -77,6 +91,14 @@ class HybridEngine:
 
     def load(self, identifier):
         with self.lock:
+            if (
+                self.foreground.is_set()
+                or self.cognition.request_pending.is_set()
+                or self.cognition.work_active.is_set()
+            ):
+                raise RuntimeError(
+                    "Rollback waits until the foreground answer has finished"
+                )
             model, state = LocalALIF.loads(self.store.snapshot(identifier))
             state = upgrade_controller(state)
             required = set(self.state)
@@ -99,9 +121,13 @@ class HybridEngine:
             )
             return identifier
 
-    def presence(self):
+    def presence(self, activity=True):
         with self.lock:
             self.state["last_presence"] = time.time()
+            if activity:
+                self.state["cognition"]["last_activity"] = time.time()
+                if hasattr(self, "cognition"):
+                    self.cognition.wake_event.set()
             question = self.state["question"]
             now = time.time()
             self.state["conversation_times"] = [
@@ -137,12 +163,31 @@ class HybridEngine:
             raise ValueError("Invalid learning question")
         if public_topic_id and not self.store.get("public_topic", public_topic_id):
             raise PermissionError("Unknown owner-approved public topic")
+        if origin == "vlm" and public_topic_id:
+            topic = self.store.get("public_topic", public_topic_id)
+            if not topic_relevant(question, topic["topic"]):
+                self.store.event(
+                    "unrelated_proposed_topic_discarded",
+                    {
+                        "topic_id": public_topic_id,
+                        "reason": "Proposed topic does not lexically match gap; no private query sent",
+                    },
+                    "heuristic",
+                )
+                public_topic_id = None
         identifier = hashlib.sha256(question.strip().casefold().encode()).hexdigest()[
             :24
         ]
         with self.lock:
             if identifier in self.state["goals"]:
-                return self.state["goals"][identifier]
+                existing = self.state["goals"][identifier]
+                if origin == "user" and existing["status"] == "deferred":
+                    existing["status"] = "open"
+                    existing.pop("clarification_skipped", None)
+                    self.store.put("goal", identifier, existing)
+                    self.save()
+                    self.cognition.wake_event.set()
+                return existing
             if len(self.state["goals"]) >= 64:
                 closed = next(
                     (
@@ -180,17 +225,32 @@ class HybridEngine:
                 origin if origin in ("vlm", "user") else "runtime",
             )
             self.save()
+            if hasattr(self, "cognition"):
+                self.cognition.wake_event.set()
             return goal
 
     def observe(self, text, **kwargs):
         with self.lock:
             item = self.store.observe(text, **kwargs)
+            changed = False
             for goal in self.state["goals"].values():
-                if goal["status"] == "deferred" and self.store.search(
-                    goal["question"], limit=1
+                if (
+                    goal["status"] == "deferred"
+                    and not goal.get("clarification_skipped")
+                    and any(
+                        e["id"] == item["id"]
+                        for e in self.store.search(
+                            goal["question"], stream=item["stream"], limit=12
+                        )
+                    )
                 ):
                     goal["status"] = "open"
                     goal["reviewed"] = False
+                    self.store.put("goal", goal["id"], goal)
+                    changed = True
+            if changed:
+                self.save()
+                self.cognition.wake_event.set()
             return item
 
     def allowed(self, goal):
@@ -199,6 +259,18 @@ class HybridEngine:
             t for t in self.state["search_times"] if now - t < 3600
         ]
         result = ["defer"]
+        if goal.get("origin") == "vlm" and goal.get("public_topic_id"):
+            topic = self.store.get("public_topic", goal["public_topic_id"])
+            if not topic or not topic_relevant(goal["question"], topic["topic"]):
+                self.store.event(
+                    "unrelated_proposed_topic_discarded",
+                    {
+                        "topic_id": goal["public_topic_id"],
+                        "reason": "legacy gap/topic mismatch; no outbound private question",
+                    },
+                    "heuristic",
+                )
+                goal["public_topic_id"] = None
         # Local evidence must be checked before an outbound public lookup.
         if not goal["reviewed"] and goal["attempts"] < 2:
             return ["review"]
@@ -213,9 +285,14 @@ class HybridEngine:
             result.append("verify")
         if not self.state["question"]:
             result.append("ask")
-        if self.model.replay:
-            result.append("consolidate")
+        # Sleep replay has its own bounded scheduler; it must not defer a goal.
         return result
+
+    def rank_candidates(self, query, candidates, limit=4):
+        with self.lock:
+            return sorted(
+                candidates, key=lambda e: self.model.relevance(query, e), reverse=True
+            )[:limit]
 
     def remember_human_turn(self, question, identifier):
         declaration = question.casefold()
@@ -267,7 +344,16 @@ class HybridEngine:
             }
             self.store.put("answer", identifier, record)
             self.store.event("answer", record, "vlm")
-            if is_auxiliary_answer(question, answer):
+            if is_auxiliary_answer(question, answer) or is_social_exchange(
+                question, answer
+            ):
+                self.store.event(
+                    "review_not_scheduled",
+                    {
+                        "answer_id": identifier,
+                        "reason": "social or auxiliary turn; no factual self-label",
+                    },
+                )
                 return record
             self._queue_review(identifier)
             self.remember_human_turn(question, identifier)
@@ -316,13 +402,24 @@ class HybridEngine:
             > self.config.effective_soft_ram_limit
         ):
             return "ram_headroom"
-        if now - self.state["last_presence"] < self.config.review_quiet_seconds:
+        if (
+            now - self.state["cognition"]["last_activity"]
+            < self.config.review_quiet_seconds
+        ):
             return "waiting_for_quiet"
         if now - self.state["last_review"] < self.config.review_interval_seconds:
             return "review_cooldown"
         if self.state["review"]["pending"]:
             return None
         if self.model.replay:
+            d = self.state["cognition"]
+            if (
+                d["replay_revision"] == self.model.replay_seen
+                and d["replay_used"] >= self.config.sleep_replay_budget
+            ):
+                return "sleep_replay_budget_exhausted"
+            if now < d["next_replay"]:
+                return "replay_cooldown"
             return None
         return "no_pending_experience_or_verified_replay"
 
@@ -334,33 +431,7 @@ class HybridEngine:
             self.state["last_review"] = time.time()
             review = self.state["review"]
             if not review["pending"]:
-                row = copy.deepcopy(
-                    self.model.replay[
-                        int(self.model.rng.integers(len(self.model.replay)))
-                    ]
-                )
-                result = self._guarded_learn(
-                    row["sequence"],
-                    row["target"],
-                    row["head"],
-                    row["reward"],
-                    row["evidence"],
-                    remember=False,
-                )
-                self.state["review"]["replay_updates"] += int(
-                    result.get("accepted", False)
-                )
-                self.store.event(
-                    "idle_verified_replay",
-                    {
-                        "evidence": row["evidence"],
-                        "learning": result,
-                        "new_self_label": False,
-                    },
-                    "runtime",
-                )
-                self.save()
-                return result
+                return self.cognition.consolidate_once()
             identifier = review["pending"][0]
             record = self.store.get("answer", identifier)
             if record is None:
@@ -492,8 +563,24 @@ class HybridEngine:
             ),
         )
 
-    def _guarded_learn(self, sequence, target, head, reward, evidence, remember=True):
-        previous = self.model.dumps(self.state)
+    def _guarded_learn(
+        self,
+        sequence,
+        target,
+        head,
+        reward,
+        evidence,
+        remember=True,
+        transaction_snapshot=None,
+        update_controller=None,
+    ):
+        previous = transaction_snapshot or self.model.dumps(self.state)
+        if self.foreground.is_set() or self.cognition.request_pending.is_set():
+            if transaction_snapshot:
+                self.model, self.state = LocalALIF.loads(previous)
+            raise InterruptedError(
+                "Synaptic micro-update deferred for foreground request"
+            )
         baseline, _ = LocalALIF.loads(previous)
 
         def score(model, probe):
@@ -538,6 +625,8 @@ class HybridEngine:
                     ]
                 )[-16:]
         try:
+            if update_controller:
+                update_controller(result)
             self.save(learning_event=result)
         except Exception as exc:
             self.model, self.state = LocalALIF.loads(previous)
@@ -551,8 +640,13 @@ class HybridEngine:
         return result
 
     def step(self):
+        external = None
         with self.lock:
-            if self.foreground.is_set() or not self.state["learning_enabled"]:
+            if (
+                self.foreground.is_set()
+                or self.cognition.request_pending.is_set()
+                or not self.state["learning_enabled"]
+            ):
                 return None
             if (
                 self.config.effective_soft_ram_limit is not None
@@ -565,16 +659,38 @@ class HybridEngine:
             )
             if goal is None:
                 return None
-            sequence = self.goal_sequence(goal)
+            if is_social_exchange(goal["question"], ""):
+                goal["status"] = "deferred"
+                goal["defer_reason"] = (
+                    "social turn is not an independently checkable learning gap"
+                )
+                self.save()
+                return None
             allowed = self.allowed(goal)
-            action, probabilities = self.model.decide(sequence, allowed)
+            sequence = self.goal_sequence(goal)
+            proposed, probabilities = self.model.decide(sequence, allowed)
+            action = proposed
+            verifiable = parse_integer_expression(goal["question"]) is not None
+            if verifiable and goal["reviewed"] and not goal["verified_attempted"]:
+                action = "verify"
+            elif proposed == "defer":
+                action = (
+                    "search"
+                    if "search" in allowed
+                    else "ask" if "ask" in allowed else "defer"
+                )
             if action not in allowed:
-                raise ValueError("Neural policy selected an unauthorized action")
+                raise ValueError("Unauthorized autonomous action")
+            selector = (
+                "neural_policy" if action == proposed else "runtime_progress_guard"
+            )
             identifier = uuid.uuid4().hex
             decision = {
                 "id": identifier,
                 "goal_id": goal["id"],
                 "action": action,
+                "proposed_action": proposed,
+                "selector": selector,
                 "sequence": sequence.tolist(),
                 "probabilities": probabilities,
                 "created": time.time(),
@@ -583,14 +699,13 @@ class HybridEngine:
             self.state["decisions"][identifier] = decision
             while len(self.state["decisions"]) > 64:
                 del self.state["decisions"][next(iter(self.state["decisions"]))]
-            goal["decision_id"] = identifier
-            goal["last_action"] = action
+            goal.update(decision_id=identifier, last_action=action)
             self.state["last_action"] = action
             self.store.event(
                 "autonomous_action",
                 {k: v for k, v in decision.items() if k != "sequence"}
                 | {"allowed": allowed, "policy_status": "experimental_unqualified"},
-                "neural_policy",
+                "neural_policy" if selector == "neural_policy" else "runtime",
             )
             try:
                 if action == "review":
@@ -603,11 +718,11 @@ class HybridEngine:
                     self.state["search_times"].append(time.time())
                     goal["searched"] = True
                     goal["attempts"] += 1
-                    found = self.web.search(goal["public_topic_id"])
-                    goal["evidence_ids"] = (
-                        goal["evidence_ids"] + [e["id"] for e in found]
-                    )[-12:]
+                    external = (goal["id"], goal["public_topic_id"])
                 elif action == "verify":
+                    self.cognition.transition(
+                        "verifying", "independent bounded arithmetic verifier"
+                    )
                     goal["verified_attempted"] = True
                     expression = parse_integer_expression(goal["question"])
                     if expression:
@@ -629,20 +744,22 @@ class HybridEngine:
                             },
                             "verifier",
                         )
-                        self._guarded_learn(
+                        learning = self._guarded_learn(
                             sequence,
                             ACTIONS.index(action),
                             "action",
                             1.0,
                             {"kind": "machine_verifier", "id": verification_id},
                         )
+                        goal = self.state["goals"][goal["id"]]
+                        goal["learning_outcome"] = learning
                         goal["status"] = "resolved_verified"
                     else:
                         self.store.event(
                             "verification_unavailable",
                             {
                                 "goal_id": goal["id"],
-                                "reason": "No independent verifier; web/model agreement is not truth",
+                                "reason": "No independent verifier; generated agreement is not truth",
                             },
                         )
                 elif action == "ask":
@@ -651,39 +768,36 @@ class HybridEngine:
                         "goal_id": goal["id"],
                         "question": goal["question"],
                         "reason": goal["reason"],
-                        "origin": "neural_policy",
+                        "origin": selector,
                         "status": "queued_absent",
                         "decision_id": identifier,
                         "created": time.time(),
                     }
                     goal["status"] = "awaiting_human"
                     if self.present():
-                        self.presence()
+                        self.presence(activity=False)
                     self.store.event(
-                        "question_queued", self.state["question"], "neural_policy"
+                        "question_queued",
+                        self.state["question"],
+                        "neural_policy" if selector == "neural_policy" else "runtime",
                     )
-                elif action == "consolidate":
-                    if self.model.replay:
-                        row = copy.deepcopy(
-                            self.model.replay[
-                                int(self.model.rng.integers(len(self.model.replay)))
-                            ]
-                        )
-                        self._guarded_learn(
-                            row["sequence"],
-                            row["target"],
-                            row["head"],
-                            row["reward"],
-                            row["evidence"],
-                            remember=False,
-                        )
-                    goal["status"] = "deferred"
                 else:
                     goal["status"] = "deferred"
+                    goal["defer_reason"] = (
+                        "one clarification already pending; no useful permitted action"
+                    )
                 if goal["attempts"] >= 2 and action in ("review", "search"):
-                    # Exploration ends; a later policy decision may ask/verify/defer.
                     goal["reviewed"] = True
                     goal["searched"] = True
+            except InterruptedError:
+                if action == "verify":
+                    goal["verified_attempted"] = False
+                self.store.event(
+                    "autonomous_action_preempted",
+                    {"goal_id": goal["id"], "action": action},
+                )
+                self.save()
+                return None
             except Exception as exc:
                 self.store.event(
                     "autonomous_action_failed",
@@ -692,14 +806,40 @@ class HybridEngine:
                 goal["status"] = "deferred"
             self.store.put("goal", goal["id"], goal)
             self.save()
-            return action
+        if external:
+            # Network work must never hold the learner lock or block a chat.
+            goal_id, topic_id = external
+            try:
+                if self.cognition.request_pending.is_set() or self.stop_event.is_set():
+                    raise InterruptedError("Foreground before web lookup")
+                found = self.web.search(topic_id)
+                with self.lock:
+                    current = self.state["goals"].get(goal_id)
+                    if current and current["status"] == "open":
+                        current["evidence_ids"] = (
+                            current["evidence_ids"] + [e["id"] for e in found]
+                        )[-12:]
+                        self.store.put("goal", goal_id, current)
+                        self.save()
+            except InterruptedError:
+                self.store.event("public_lookup_preempted", {"goal_id": goal_id})
+                return None
+            except Exception as exc:
+                with self.lock:
+                    current = self.state["goals"].get(goal_id)
+                    if current:
+                        current["searched"] = True
+                    self.store.event(
+                        "autonomous_action_failed",
+                        {"goal_id": goal_id, "action": "search", "error": str(exc)},
+                    )
+                    self.save()
+        return action
 
     def ask(self, question, stream=None, before=None):
         if not isinstance(question, str) or not 1 <= len(question) <= 6000:
             raise ValueError("Question length exceeds working input bound")
-        self.foreground.set()
-        if hasattr(self.backend, "cancel_idle"):
-            self.backend.cancel_idle.set()
+        self.begin_foreground()
         try:
             with self.lock:
                 self.presence()
@@ -827,14 +967,16 @@ class HybridEngine:
                 self.save()
                 return record
         finally:
-            self.foreground.clear()
-            if hasattr(self.backend, "cancel_idle"):
-                self.backend.cancel_idle.clear()
+            self.end_foreground()
 
     def feedback(
         self, identifier, text=None, helpful=None, positive_ids=(), negative_ids=()
     ):
         with self.lock:
+            if self.foreground.is_set() or self.cognition.request_pending.is_set():
+                raise RuntimeError(
+                    "Feedback learning waits until the foreground answer finishes"
+                )
             question = self.state["question"]
             if question and identifier == question["id"]:
                 if not isinstance(text, str) or not 1 <= len(text) <= 4000:
@@ -846,6 +988,9 @@ class HybridEngine:
                     "chưa biết",
                 ):
                     self.state["goals"][question["goal_id"]]["status"] = "deferred"
+                    self.state["goals"][question["goal_id"]][
+                        "clarification_skipped"
+                    ] = True
                     self.state["question"] = None
                     self.save()
                     self.store.event(
@@ -975,47 +1120,7 @@ class HybridEngine:
         return self.review_once()
 
     def start(self):
-        def loop():
-            while not self.stop_event.wait(1):
-                if self.foreground.is_set():
-                    continue
-                started = time.process_time()
-                wall = time.monotonic()
-                try:
-                    self.monitor.check()
-                    blocker = self.review_blocker()
-                    if blocker != self._last_review_blocker:
-                        self._last_review_blocker = blocker
-                        self.store.event(
-                            "learning_scheduler_state",
-                            {
-                                "review_blocker": blocker,
-                                "pending": len(self.state["review"]["pending"]),
-                                "verified_replay_items": len(self.model.replay),
-                                "updates": self.model.updates,
-                                "vlm_frozen": True,
-                            },
-                            "runtime",
-                        )
-                    if not self.state["learning_enabled"] or (
-                        self.config.effective_soft_ram_limit is not None
-                        and self.monitor.sample()["rss_bytes"]
-                        > self.config.effective_soft_ram_limit
-                    ):
-                        continue
-                    if self.step() is None and not self.foreground.is_set():
-                        self.discover()
-                except Exception as exc:
-                    self.store.event("idle_error", {"error": str(exc)})
-                used = max(0.0, time.process_time() - started)
-                elapsed = max(0.001, time.monotonic() - wall)
-                # Wall-duty cap also covers native child CPU work conservatively.
-                self.stop_event.wait(
-                    max(1.0, elapsed * (1 / self.config.idle_cpu_fraction - 1))
-                )
-
-        self.thread = threading.Thread(target=loop, daemon=True)
-        self.thread.start()
+        self.cognition.start()
 
     def status(self):
         with self.lock:
@@ -1023,7 +1128,13 @@ class HybridEngine:
                 "resources": self.monitor.sample(),
                 "neural": {
                     "hidden": 128,
-                    "active": int(np.count_nonzero(self.model.core.spikes)),
+                    "active": (
+                        int(np.count_nonzero(self.model.core.spikes))
+                        if time.time() - self.model.last_step_epoch < 1.5
+                        else 0
+                    ),
+                    "active_last_step": int(np.count_nonzero(self.model.core.spikes)),
+                    "last_step_epoch": self.model.last_step_epoch or None,
                     "ticks": self.model.ticks,
                     "updates": self.model.updates,
                     "hidden_updates": self.model.hidden_updates,
@@ -1034,6 +1145,7 @@ class HybridEngine:
                 "question": self.state["question"] if self.present() else None,
                 "present": self.present(),
                 "learning_enabled": self.state["learning_enabled"],
+                "cognition": self.cognition.summary(),
                 "review": {
                     "pending": len(self.state["review"]["pending"]),
                     "completed": self.state["review"]["completed"],
@@ -1049,7 +1161,7 @@ class HybridEngine:
                     "quiet_seconds_remaining": max(
                         0.0,
                         self.config.review_quiet_seconds
-                        - (time.time() - self.state["last_presence"]),
+                        - (time.time() - self.state["cognition"]["last_activity"]),
                     ),
                     "last_result": self.state["review"]["last_result"],
                     "vlm_weights_frozen": True,
@@ -1066,6 +1178,7 @@ class HybridEngine:
 
     def close(self):
         self.stop_event.set()
+        self.cognition.wake_event.set()
         if self.thread:
             self.thread.join(timeout=15)
         self.save()

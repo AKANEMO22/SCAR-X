@@ -22,6 +22,11 @@ class HybridConfig:
     presence_seconds: int = 600
     review_quiet_seconds: int = 30
     review_interval_seconds: int = 60
+    consolidation_after_seconds: int = 60
+    consolidation_interval_seconds: int = 60
+    sleep_replay_budget: int = 4
+    rest_after_seconds: int = 180
+    release_vlm_on_rest: bool = True
     archive_bytes: int = 10_000_000_000
     archive_seconds: int = 7 * 86400
     context_tokens: int = 16384
@@ -39,6 +44,24 @@ class HybridConfig:
             raise ValueError("Expected cpu/gpu mode and a valid CUDA device index")
         if type(self.searxng_enabled) is not bool:
             raise ValueError("Expected boolean searxng_enabled")
+        for field in (
+            "review_quiet_seconds",
+            "review_interval_seconds",
+            "consolidation_after_seconds",
+            "consolidation_interval_seconds",
+            "rest_after_seconds",
+        ):
+            if type(getattr(self, field)) is not int:
+                raise ValueError("Expected integer scheduler timing")
+        if (
+            type(self.release_vlm_on_rest) is not bool
+            or type(self.sleep_replay_budget) is not int
+            or not 1 <= self.sleep_replay_budget <= 4
+            or not 1 <= self.consolidation_interval_seconds <= 3600
+            or not self.review_quiet_seconds <= self.consolidation_after_seconds <= 3600
+            or not self.review_quiet_seconds <= self.rest_after_seconds <= 86400
+        ):
+            raise ValueError("Invalid bounded wake/sleep policy")
         if not 0 < self.soft_ram_limit < self.ram_limit <= MAX_RAM_BYTES:
             raise ValueError(
                 "Whole-system RAM budget must not exceed 4,500,000,000 bytes"
@@ -84,6 +107,13 @@ def load_runtime_config(directory):
         "execution_mode",
         "gpu_device",
         "searxng_enabled",
+        "review_quiet_seconds",
+        "review_interval_seconds",
+        "consolidation_after_seconds",
+        "consolidation_interval_seconds",
+        "sleep_replay_budget",
+        "rest_after_seconds",
+        "release_vlm_on_rest",
     }:
         raise ValueError("Unknown runtime config fields")
     return HybridConfig(**value)

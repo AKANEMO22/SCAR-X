@@ -101,7 +101,9 @@ def test_first_screen_question_uses_first_frame(tmp_path):
         },
     )
     engine = SimpleNamespace(
-        store=store, model=SimpleNamespace(relevance=lambda *args: 0.0)
+        store=store,
+        model=SimpleNamespace(relevance=lambda *args: 0.0),
+        rank_candidates=lambda query, items: items[:4],
     )
     gw = Gateway.__new__(Gateway)
     gw.store, gw.engine = store, engine
@@ -162,7 +164,10 @@ def test_explicit_time_constraint_cannot_be_overridden_by_relevance(
     gw = Gateway.__new__(Gateway)
     gw.store = store
     gw.engine = SimpleNamespace(
-        model=SimpleNamespace(relevance=lambda query, e: 100 - e["start"])
+        model=SimpleNamespace(relevance=lambda query, e: 100 - e["start"]),
+        rank_candidates=lambda query, items: sorted(
+            items, key=lambda e: 100 - e["start"], reverse=True
+        )[:4],
     )
     gw.video = SimpleNamespace(snapshot=lambda *a: None)
     gw.video_context = VideoContext(store)

@@ -4,6 +4,7 @@ import copy
 import json
 import re
 from ..learning.verifiers import parse_integer_expression, integer_answer
+from .cognition import initial_cognition, validate_cognition
 
 
 def initial_review():
@@ -20,6 +21,9 @@ def initial_review():
 
 def upgrade_controller(state):
     value = copy.deepcopy(state)
+    if "cognition" not in value:
+        value["cognition"] = initial_cognition(value.get("last_presence", 0.0))
+    validate_cognition(value["cognition"])
     # Explicit additive migration from the shipped pre-review controller.
     if "review" not in value:
         value["review"] = initial_review()
@@ -53,6 +57,12 @@ def upgrade_controller(state):
 def is_auxiliary_answer(question, answer):
     # Old receipts accidentally logged title-generation as a dialogue answer.
     # Do not turn a helper's {"title":...} output into a learning experience.
+    if (
+        "TURNS TO SUMMARIZE:" in question
+        and "## Historical Task Snapshot" in question
+        and "context checkpoint" in question.lower()
+    ):
+        return True
     try:
         parsed = json.loads(answer)
     except (ValueError, TypeError):
@@ -62,6 +72,58 @@ def is_auxiliary_answer(question, answer):
         and set(parsed) == {"title"}
         and isinstance(parsed["title"], str)
     )
+
+
+def is_social_exchange(question, answer=""):
+    value = re.sub(r"[\s.!?…,]+", " ", question.casefold()).strip()
+    return value in {
+        "hi",
+        "hello",
+        "chào",
+        "chào bạn",
+        "xin chào",
+        "hey",
+        "cảm ơn",
+        "thanks",
+        "thank you",
+        "ok",
+        "okay",
+        "ừ",
+        "ukm",
+        "tạm biệt",
+        "bye",
+        "ăn cơm",
+        "chúc ngủ ngon",
+        "good night",
+        "good morning",
+    }
+
+
+def topic_relevant(question, topic):
+    # Conservative routing guard, not a claim of semantic understanding.
+    stop = {
+        "học",
+        "về",
+        "của",
+        "và",
+        "là",
+        "có",
+        "gì",
+        "nào",
+        "tôi",
+        "bạn",
+        "the",
+        "a",
+        "of",
+        "what",
+        "is",
+        "in",
+        "how",
+    }
+    words = (
+        lambda value: set(re.findall(r"[^\W_]+", value.casefold(), re.UNICODE)) - stop
+    )
+    return bool(words(question) & words(topic))
 
 
 def arithmetic_check(question, answer):

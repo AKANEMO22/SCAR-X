@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Wake / reflect / consolidate / rest14/11 — GO kỹ thuật
+
+Đã nối scheduler thật vào Hybrid/Hermes: chat preempts nền, xem lại sau quiet,
+verifier/clarification, replay tối đa4attempt/revision, nghỉ nhả nguyên VLM và
+đánh thức khi có tin nhắn. Presence heartbeat không ngăn ngủ. RNG/replaybudget
+commit cùng checkpoint; DBfault/parallel-request regressions có test.
+Lab GPU nonce-isolated có1verified update+2replays, không self-grow; fullrollback
+và coldrestart exact, warm-preemptTTFT0,172s/coldwake1,515s. RAM3,825→1,483GB,
+dedicatedVRAM2,201→0,112GB.105Python(4nativeparity)+4Nodechecks qua.
+Giữ run lỗi Windows10053 riêng; run sửa probe qua, không đổi scientificgates.
+Production restore0updates/GPU/auto; không nhập labweights. VLM có factualerror
+ALIF trong sample; chưa learned-skill/retention/LoRA/ACTPASS.
+[Báo cáo và raw](hybrid/COGNITIVE_LOOP_20261114.md).
+
 ## Adapterpolicy pilot13/11 — NOTQUALIFIED, khôngautodeploy
 
 ActualAGYFlashHigh/effortHigh tạo96bilingualwordings; independentcontractlabels
