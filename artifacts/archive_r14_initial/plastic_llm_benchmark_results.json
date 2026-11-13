@@ -1,0 +1,272 @@
+{
+  "timestamp": 1794513326.665052,
+  "dev_seed": 140011,
+  "device": "cuda",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_parameters": 494032768,
+  "weight_bytes": 988065536,
+  "results_by_variant": {
+    "A": {
+      "variant_id": "A",
+      "exp01_learning_accuracy": 0.15,
+      "exp01_learning_correct": 15,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 1406.646303000598,
+      "exp02_mistake_recovery_rate": 0.0,
+      "exp02_recovered_count": 0,
+      "exp02_failed_initial_count": 85,
+      "exp03_unseen_generalization_accuracy": 0.11666666666666667,
+      "exp03_unseen_correct": 7,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 1407.763546667411,
+      "exp04_pre_retention_accuracy": 0.1,
+      "exp04_post_retention_accuracy": 0.1,
+      "exp04_forgetting_rate": 0.0,
+      "exp04_retention_stability": 1.0,
+      "exp05_idle_stats": {},
+      "memory_rss_mb": 1976.01953125,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    },
+    "B": {
+      "variant_id": "B",
+      "exp01_learning_accuracy": 0.13,
+      "exp01_learning_correct": 13,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 1301.744422000047,
+      "exp02_mistake_recovery_rate": 0.022988505747126436,
+      "exp02_recovered_count": 2,
+      "exp02_failed_initial_count": 87,
+      "exp03_unseen_generalization_accuracy": 0.016666666666666666,
+      "exp03_unseen_correct": 1,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 1617.6173916666205,
+      "exp04_pre_retention_accuracy": 0.25,
+      "exp04_post_retention_accuracy": 0.025,
+      "exp04_forgetting_rate": 0.225,
+      "exp04_retention_stability": 0.1,
+      "exp05_idle_stats": {},
+      "memory_rss_mb": 1977.9375,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    },
+    "C": {
+      "variant_id": "C",
+      "exp01_learning_accuracy": 0.2,
+      "exp01_learning_correct": 20,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 1022.2760239990021,
+      "exp02_mistake_recovery_rate": 0.075,
+      "exp02_recovered_count": 6,
+      "exp02_failed_initial_count": 80,
+      "exp03_unseen_generalization_accuracy": 0.23333333333333334,
+      "exp03_unseen_correct": 14,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 919.350946667449,
+      "exp04_pre_retention_accuracy": 0.35,
+      "exp04_post_retention_accuracy": 0.25,
+      "exp04_forgetting_rate": 0.09999999999999998,
+      "exp04_retention_stability": 0.7142857142857143,
+      "exp05_idle_stats": {},
+      "memory_rss_mb": 1978.203125,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    },
+    "D": {
+      "variant_id": "D",
+      "exp01_learning_accuracy": 0.2,
+      "exp01_learning_correct": 20,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 988.119766999589,
+      "exp02_mistake_recovery_rate": 0.075,
+      "exp02_recovered_count": 6,
+      "exp02_failed_initial_count": 80,
+      "exp03_unseen_generalization_accuracy": 0.18333333333333332,
+      "exp03_unseen_correct": 11,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 895.2895966668924,
+      "exp04_pre_retention_accuracy": 0.35,
+      "exp04_post_retention_accuracy": 0.3,
+      "exp04_forgetting_rate": 0.04999999999999999,
+      "exp04_retention_stability": 0.8571428571428572,
+      "exp05_idle_stats": {
+        "total_cycles_run": 2,
+        "total_practiced": 10,
+        "total_verified": 8,
+        "total_consolidated": 8,
+        "cycle_details": [
+          {
+            "cycle": 1,
+            "tasks_practiced": 5,
+            "verified_rehearsals": 4,
+            "failed_rehearsals": 1,
+            "duration_sec": 0.018437799997627735,
+            "learned_items": [
+              {
+                "task_id": "idle_math_01",
+                "skill": "code_execution",
+                "success": true
+              },
+              {
+                "task_id": "idle_stat_01",
+                "skill": "data_analysis",
+                "success": true
+              },
+              {
+                "task_id": "idle_debug_01",
+                "skill": "python_debug",
+                "success": true
+              },
+              {
+                "task_id": "idle_unit_01",
+                "skill": "unit_test",
+                "success": true
+              }
+            ]
+          },
+          {
+            "cycle": 2,
+            "tasks_practiced": 5,
+            "verified_rehearsals": 4,
+            "failed_rehearsals": 1,
+            "duration_sec": 0.017467800003942102,
+            "learned_items": [
+              {
+                "task_id": "idle_math_01",
+                "skill": "code_execution",
+                "success": true
+              },
+              {
+                "task_id": "idle_stat_01",
+                "skill": "data_analysis",
+                "success": true
+              },
+              {
+                "task_id": "idle_debug_01",
+                "skill": "python_debug",
+                "success": true
+              },
+              {
+                "task_id": "idle_unit_01",
+                "skill": "unit_test",
+                "success": true
+              }
+            ]
+          }
+        ]
+      },
+      "memory_rss_mb": 1978.82421875,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    },
+    "E": {
+      "variant_id": "E",
+      "exp01_learning_accuracy": 0.13,
+      "exp01_learning_correct": 13,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 1310.8058449992677,
+      "exp02_mistake_recovery_rate": 0.022988505747126436,
+      "exp02_recovered_count": 2,
+      "exp02_failed_initial_count": 87,
+      "exp03_unseen_generalization_accuracy": 0.08333333333333333,
+      "exp03_unseen_correct": 5,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 1391.0759966660407,
+      "exp04_pre_retention_accuracy": 0.25,
+      "exp04_post_retention_accuracy": 0.025,
+      "exp04_forgetting_rate": 0.225,
+      "exp04_retention_stability": 0.1,
+      "exp05_idle_stats": {
+        "total_cycles_run": 2,
+        "total_practiced": 10,
+        "total_verified": 8,
+        "total_consolidated": 8,
+        "cycle_details": [
+          {
+            "cycle": 1,
+            "tasks_practiced": 5,
+            "verified_rehearsals": 4,
+            "failed_rehearsals": 1,
+            "duration_sec": 0.020942200004355982,
+            "learned_items": [
+              {
+                "task_id": "idle_math_01",
+                "skill": "code_execution",
+                "success": true
+              },
+              {
+                "task_id": "idle_stat_01",
+                "skill": "data_analysis",
+                "success": true
+              },
+              {
+                "task_id": "idle_debug_01",
+                "skill": "python_debug",
+                "success": true
+              },
+              {
+                "task_id": "idle_unit_01",
+                "skill": "unit_test",
+                "success": true
+              }
+            ]
+          },
+          {
+            "cycle": 2,
+            "tasks_practiced": 5,
+            "verified_rehearsals": 4,
+            "failed_rehearsals": 1,
+            "duration_sec": 0.010969399998430163,
+            "learned_items": [
+              {
+                "task_id": "idle_math_01",
+                "skill": "code_execution",
+                "success": true
+              },
+              {
+                "task_id": "idle_stat_01",
+                "skill": "data_analysis",
+                "success": true
+              },
+              {
+                "task_id": "idle_debug_01",
+                "skill": "python_debug",
+                "success": true
+              },
+              {
+                "task_id": "idle_unit_01",
+                "skill": "unit_test",
+                "success": true
+              }
+            ]
+          }
+        ]
+      },
+      "memory_rss_mb": 1979.46484375,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    },
+    "F": {
+      "variant_id": "F",
+      "exp01_learning_accuracy": 0.07,
+      "exp01_learning_correct": 7,
+      "exp01_learning_total": 100,
+      "exp01_mean_latency_ms": 1114.0146689997346,
+      "exp02_mistake_recovery_rate": 0.20430107526881722,
+      "exp02_recovered_count": 19,
+      "exp02_failed_initial_count": 93,
+      "exp03_unseen_generalization_accuracy": 0.2,
+      "exp03_unseen_correct": 12,
+      "exp03_unseen_total": 60,
+      "exp03_mean_latency_ms": 976.4230200004628,
+      "exp04_pre_retention_accuracy": 0.4,
+      "exp04_post_retention_accuracy": 0.2,
+      "exp04_forgetting_rate": 0.2,
+      "exp04_retention_stability": 0.5,
+      "exp05_idle_stats": {},
+      "memory_rss_mb": 1980.35546875,
+      "memory_vram_mb": 950.44775390625,
+      "within_2gb_limit": true
+    }
+  }
+}

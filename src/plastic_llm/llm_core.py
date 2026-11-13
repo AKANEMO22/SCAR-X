@@ -44,6 +44,7 @@ class FrozenQwenCore:
         self.rss_after = self.process.memory_info().rss
         self.total_parameters = sum(p.numel() for p in self.model.parameters())
         self.weight_bytes = sum(p.numel() * p.element_size() for p in self.model.parameters())
+        self.peak_rss_bytes = max(self.process.memory_info().rss, self.weight_bytes)
 
         # Check RAM gate
         if self.weight_bytes > self.RAM_LIMIT_BYTES:
@@ -65,23 +66,40 @@ class FrozenQwenCore:
         }
 
     def get_current_rss(self) -> int:
-        return self.process.memory_info().rss
+        cur = self.process.memory_info().rss
+        if cur > self.peak_rss_bytes:
+            self.peak_rss_bytes = cur
+        return cur
 
     def get_memory_stats(self) -> Dict[str, Any]:
-        rss_current = self.process.memory_info().rss
-        vram_allocated = torch.cuda.memory_allocated() if torch.cuda.is_available() and self.device.startswith("cuda") else 0
+        rss_current = self.get_current_rss()
+        vram_allocated = torch.cuda.memory_allocated() if torch.cuda.is_available() and str(self.device).startswith("cuda") else 0
         return {
             "parameter_count": self.total_parameters,
             "weight_bytes": self.weight_bytes,
+            "weight_mb_decimal": float(self.weight_bytes / 1_000_000),
+            "weight_mib_binary": float(self.weight_bytes / (1024 * 1024)),
             "rss_bytes": rss_current,
-            "rss_mb": float(rss_current / (1024 * 1024)),
+            "rss_mb": float(rss_current / 1_000_000),
+            "rss_mb_decimal": float(rss_current / 1_000_000),
+            "rss_mib_binary": float(rss_current / (1024 * 1024)),
+            "peak_rss_bytes": self.peak_rss_bytes,
+            "peak_rss_mb_dec": float(self.peak_rss_bytes / 1_000_000),
+            "peak_rss_mib_bin": float(self.peak_rss_bytes / (1024 * 1024)),
+            "peak_rss_mb_decimal": float(self.peak_rss_bytes / 1_000_000),
+            "peak_rss_mib_binary": float(self.peak_rss_bytes / (1024 * 1024)),
             "vram_bytes": vram_allocated,
-            "vram_mb": float(vram_allocated / (1024 * 1024)),
-            "device": self.device,
-            "within_2gb_limit": bool(self.weight_bytes <= self.RAM_LIMIT_BYTES and rss_current <= 2_500_000_000),
+            "vram_mb": float(vram_allocated / 1_000_000),
+            "vram_mb_decimal": float(vram_allocated / 1_000_000),
+            "vram_mib_binary": float(vram_allocated / (1024 * 1024)),
+            "device": str(self.device),
+            "within_2gb_limit_weights": bool(self.weight_bytes <= self.RAM_LIMIT_BYTES),
+            "within_2gb_limit_peak_rss": bool(self.peak_rss_bytes <= self.RAM_LIMIT_BYTES),
+            "within_2gb_limit": bool(self.peak_rss_bytes <= self.RAM_LIMIT_BYTES),
+            "excess_bytes": max(0, self.peak_rss_bytes - self.RAM_LIMIT_BYTES),
         }
 
-    def generate(self, prompt: str, max_new_tokens: int = 128) -> Tuple[str, float]:
+    def generate(self, prompt: str, max_new_tokens: int = 96) -> Tuple[str, float]:
         """Greedy deterministic generation."""
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         t0 = time.perf_counter()
@@ -96,4 +114,8 @@ class FrozenQwenCore:
         lat_ms = (time.perf_counter() - t0) * 1000.0
         gen_tokens = out[0][inputs.input_ids.shape[1]:]
         text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True).strip()
+
+        # Update peak RSS tracker
+        self.get_current_rss()
+
         return text, lat_ms

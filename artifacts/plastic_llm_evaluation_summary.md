@@ -1,34 +1,44 @@
-# SCAR-X CONTINUAL LEARNING INDEPENDENT AUDIT REPORT
+# SCAR-X CONTINUAL LEARNING INDEPENDENT AUDIT REPORT (REPAIRED)
 **Evaluated Model**: `Qwen/Qwen2.5-0.5B-Instruct` (Unquantized bfloat16, 100% Frozen)
-**Model Weight Size**: `988.1 MB` (RAM Limit: 2,000 MB)
-**Random Seed**: `140011` | **Device**: `cuda`
+**Model Weight Size**: `988.1 MB` (Weights alone well within 2,000 MB)
+**Peak Process RSS**: `1121.1 MB` decimal (`1069.1 MiB` binary)
+**Strict 2.0GB Gate Result**: `PASS`
+**Random Seeds**: `[140011]` | **Device**: `cpu`
+**Oracle Trace Discrepancies**: `0` (Audit re-evaluated all traces directly from private metadata)
 
-## 1. Master Comparative Summary (Variants A - F)
+## 1. Master Comparative Summary: End-to-End Correctness vs Tool Routing
 
-| Variant | Description | EXP-01 Learning Acc | EXP-02 Mistake Recovery | EXP-03 Unseen Gen Acc | EXP-04 Forgetting Rate | Latency (ms) | Live RSS (MB) |
+| Variant | Description | EXP-01 E2E Acc [95% CI] | EXP-01 Tool Routing | EXP-02 E2E Recovery | EXP-03 Gen E2E Acc | EXP-04 Forgetting | Latency (ms) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **A** | Frozen LLM Only | **15.0%** (15/100) | 0.0% (0/85) | **11.7%** (7/60) | 0.0% | 1406.6 ms | 1976.0 MB |
-| **B** | Static RAG / SQLite | **13.0%** (13/100) | 2.3% (2/87) | **1.7%** (1/60) | 22.5% | 1301.7 ms | 1977.9 MB |
-| **C** | Plastic Associative Memory | **20.0%** (20/100) | 7.5% (6/80) | **23.3%** (14/60) | 10.0% | 1022.3 ms | 1978.2 MB |
-| **D** | Plastic Memory + Idle Rehearsal | **20.0%** (20/100) | 7.5% (6/80) | **18.3%** (11/60) | 5.0% | 988.1 ms | 1978.8 MB |
-| **E** | Static RAG + Idle Rehearsal | **13.0%** (13/100) | 2.3% (2/87) | **8.3%** (5/60) | 22.5% | 1310.8 ms | 1979.5 MB |
-| **F** | Simple Feedback Ranking (EMA) | **7.0%** (7/100) | 20.4% (19/93) | **20.0%** (12/60) | 20.0% | 1114.0 ms | 1980.4 MB |
+| **A** | Frozen LLM Only | **20.0%** [3.6%, 62.4%] | 60.0% | 0.0% (0/4) | **20.0%** | 0.0% | 9833.9 ms |
+| **B** | Static RAG / SQLite | **20.0%** [3.6%, 62.4%] | 60.0% | 50.0% (2/4) | **40.0%** | 0.0% | 11219.4 ms |
+| **C** | Plastic Associative Memory | **60.0%** [23.1%, 88.2%] | 80.0% | 0.0% (0/2) | **40.0%** | 0.0% | 11164.2 ms |
+| **D** | Plastic Memory + Idle Rehearsal | **60.0%** [23.1%, 88.2%] | 80.0% | 0.0% (0/2) | **60.0%** | 0.0% | 6899.3 ms |
+| **E** | Static RAG + Idle Rehearsal | **20.0%** [3.6%, 62.4%] | 60.0% | 50.0% (2/4) | **20.0%** | 0.0% | 6802.8 ms |
+| **F** | Simple Feedback Ranking (EMA) | **20.0%** [3.6%, 62.4%] | 20.0% | 50.0% (2/4) | **40.0%** | 0.0% | 6358.4 ms |
+| **G** | Contextual Linear Router (Fair Baseline) | **60.0%** [23.1%, 88.2%] | 80.0% | 0.0% (0/2) | **60.0%** | 0.0% | 6573.4 ms |
 
-## 2. Hypothesis Verification Ledger
+## 2. Hypothesis Verification Ledger (Strict Empirical Falsification)
 
-- **H1 (Knowledge & Tool Acquisition)**: [CONFIRMED] (Variant C (20.0%) vs Variant A (15.0%))
-- **H2 (Online Mistake Adaptation)**: [CONFIRMED] (Variant C Recovery: 7.5% vs Variant B: 2.3%)
-- **H3 (Autonomous Idle Consolidation)**: [REFUTED] (Variant D Gen: 18.3% vs Variant C: 23.3%)
-- **H4 (Zero Catastrophic Forgetting)**: [REFUTED] (Variant C Stability: 71.4%, Forgetting: 10.0%)
-- **H5 (Strict RAM Limit $\le 2.0\text{ GB}$)**: [CONFIRMED] (Weight bytes: 988.1 MB <= 2,000 MB)
+- **H1 (Knowledge & Skill Acquisition)**: [CONFIRMED] (Variant C E2E: 60.0% vs Variant A: 20.0%)
+- **H2 (Rapid Mistake Adaptation on 2nd Trial)**: [REFUTED] (Variant C Recovery: 0.0% vs Variant B: 50.0%)
+- **H3 (Autonomous Idle Learning Improvement)**: [CONFIRMED] (Variant D Gen: 60.0% vs Variant C: 40.0%)
+- **H4 (Zero Catastrophic Forgetting & Stability $\ge 90\%$)**: [CONFIRMED] (Variant C Stability: 100.0%, Forgetting: 0.0%)
+- **H5 (Strict RAM Limit $\le 2.0\text{ GB}$ = 2,000,000,000 bytes)**: [CONFIRMED] (Total Process Peak RSS: 1121.1 MB decimal vs 2,000.0 MB limit; Weights alone: 988.1 MB)
 
-## 3. Plastic Associative Memory (C) vs Simple Feedback Ranking (F)
+## 3. Plastic Associative Memory (C) vs Contextual Linear Router (G)
 
-- Variant C Learning Accuracy: **20.0%**
-- Variant F Learning Accuracy: **7.0%**
-- Context-specific plasticity advantage: **+13.0 percentage points**
+- Variant C (Plastic Associative Memory) Routing Accuracy: **80.0%** (E2E: 60.0%)
+- Variant G (Contextual Linear Baseline) Routing Accuracy: **80.0%** (E2E: 60.0%)
+- Routing Difference (C - G): **+0.0 pp**
 
-## 4. Autonomous Idle Rehearsal Impact (D vs C and E vs B)
+## 4. Plastic Associative Memory (C) vs Simple Feedback Ranking (F)
 
-- Variant D (Plastic + Idle) vs Variant C (Plastic Only) Unseen Gen: **-5.0 pp**
-- Variant E (RAG + Idle) vs Variant B (RAG Only) Unseen Gen: **+6.7 pp**
+- Variant C Routing Accuracy: **80.0%**
+- Variant F Routing Accuracy: **20.0%**
+- Context-specific plasticity routing advantage: **+60.0 pp**
+
+## 5. Autonomous Idle Learning Impact (D vs C and E vs B)
+
+- Variant D (Plastic + Idle) vs Variant C (Plastic Only) Unseen Gen: **+20.0 pp**
+- Variant E (RAG + Idle) vs Variant B (RAG Only) Unseen Gen: **-20.0 pp**

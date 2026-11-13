@@ -7,6 +7,8 @@ import sys
 import json
 import traceback
 
+from plastic_llm.sandbox_worker import SandboxedPythonWorker
+
 
 class Skill:
     def __init__(
@@ -47,8 +49,9 @@ class Skill:
 
 
 class SkillRegistry:
-    def __init__(self):
+    def __init__(self, sandbox_timeout_sec: float = 4.0):
         self.skills: Dict[str, Skill] = {}
+        self.sandbox = SandboxedPythonWorker(timeout_sec=sandbox_timeout_sec)
         self._register_default_skills()
 
     def register(self, skill: Skill):
@@ -71,33 +74,10 @@ class SkillRegistry:
         ]
 
     def _register_default_skills(self):
-        # 1. code_execution: run python in controlled local namespace
+        # 1. code_execution: run python in isolated, resource-bounded sandbox subprocess
         def exec_code(params: Dict[str, Any]) -> Dict[str, Any]:
             code = params.get("code", "")
-            stdout_trap = io.StringIO()
-            stderr_trap = io.StringIO()
-            old_stdout, old_stderr = sys.stdout, sys.stderr
-            local_scope = {}
-            try:
-                sys.stdout, sys.stderr = stdout_trap, stderr_trap
-                exec(code, {"__builtins__": __builtins__}, local_scope)
-                out = stdout_trap.getvalue()
-                err = stderr_trap.getvalue()
-                return {
-                    "success": True,
-                    "stdout": out,
-                    "stderr": err,
-                    "result": local_scope.get("result", out.strip()),
-                }
-            except Exception as e:
-                return {
-                    "success": False,
-                    "error": str(e),
-                    "stdout": stdout_trap.getvalue(),
-                    "stderr": stderr_trap.getvalue(),
-                }
-            finally:
-                sys.stdout, sys.stderr = old_stdout, old_stderr
+            return self.sandbox.execute_snippet(code)
 
         self.register(Skill(
             "code_execution",
