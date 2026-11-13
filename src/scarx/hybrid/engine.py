@@ -20,6 +20,7 @@ from .review import (
     parse_review,
 )
 from ..learning.verifiers import parse_integer_expression, integer_answer
+from .temporal import temporal_direction
 
 
 class HybridEngine:
@@ -704,9 +705,8 @@ class HybridEngine:
                 retrieval = "FTS candidates"
                 if stream:
                     lower = question.casefold()
-                    last = any(
-                        word in lower for word in ("cuối", "last", "ending", "end of")
-                    )
+                    direction = temporal_direction(question)
+                    last = direction == "last"
                     visual = any(
                         word in lower
                         for word in (
@@ -735,7 +735,7 @@ class HybridEngine:
                         if visual and not speech
                         else ("audio" if speech and not visual else None)
                     )
-                    if modality or not candidates:
+                    if modality or not candidates or direction:
                         candidates = self.store.timeline(
                             stream,
                             limit=12,
@@ -744,8 +744,8 @@ class HybridEngine:
                             modality=modality,
                         )
                         retrieval = "fixed temporal/modality candidate filter; SNN benefit unproven"
-                        if any(word in lower for word in ("đầu", "beginning", "first")):
-                            candidates = candidates[: 1 if modality else 2]
+                        if direction:
+                            candidates = candidates[:1]
                 ranked = sorted(
                     candidates,
                     key=lambda e: self.model.relevance(question, e),

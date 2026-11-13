@@ -1,0 +1,1141 @@
+{
+  "run_id": "20261113T153749Z-hybrid-pipeline-audit-v1-d468f9",
+  "phase": "before_restart",
+  "started": 1794584322.7427032,
+  "cases": [
+    {
+      "case": "streamed_chat",
+      "result": {
+        "response": {
+          "answer": "42",
+          "first_after_headers_seconds": 0.0,
+          "stream_read_seconds": 0.14100000000325963,
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 3,
+            "prompt_tokens": 49,
+            "total_tokens": 52,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 49,
+            "prompt_ms": 227.241,
+            "prompt_per_token_ms": 4.6375714285714285,
+            "prompt_per_second": 215.63010196223394,
+            "predicted_n": 3,
+            "predicted_ms": 70.089,
+            "predicted_per_token_ms": 35.0445,
+            "predicted_per_second": 28.535148168756866
+          },
+          "chunks": [
+            {
+              "choices": [
+                {
+                  "finish_reason": null,
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant",
+                    "content": null
+                  }
+                }
+              ],
+              "created": 1794584330,
+              "id": "chatcmpl-Jaw4zlKLR2AE5eMO8u7asFWRWCe8UyHm",
+              "model": "scarx-hybrid",
+              "system_fingerprint": "b12360-2d8a32502",
+              "object": "chat.completion.chunk"
+            },
+            {
+              "choices": [
+                {
+                  "finish_reason": null,
+                  "index": 0,
+                  "delta": {
+                    "content": "4"
+                  }
+                }
+              ],
+              "created": 1794584330,
+              "id": "chatcmpl-Jaw4zlKLR2AE5eMO8u7asFWRWCe8UyHm",
+              "model": "scarx-hybrid",
+              "system_fingerprint": "b12360-2d8a32502",
+              "object": "chat.completion.chunk"
+            },
+            {
+              "choices": [
+                {
+                  "finish_reason": null,
+                  "index": 0,
+                  "delta": {
+                    "content": "2"
+                  }
+                }
+              ],
+              "created": 1794584330,
+              "id": "chatcmpl-Jaw4zlKLR2AE5eMO8u7asFWRWCe8UyHm",
+              "model": "scarx-hybrid",
+              "system_fingerprint": "b12360-2d8a32502",
+              "object": "chat.completion.chunk"
+            },
+            {
+              "choices": [
+                {
+                  "finish_reason": "stop",
+                  "index": 0,
+                  "delta": {}
+                }
+              ],
+              "created": 1794584330,
+              "id": "chatcmpl-Jaw4zlKLR2AE5eMO8u7asFWRWCe8UyHm",
+              "model": "scarx-hybrid",
+              "system_fingerprint": "b12360-2d8a32502",
+              "object": "chat.completion.chunk"
+            },
+            {
+              "choices": [],
+              "created": 1794584330,
+              "id": "chatcmpl-Jaw4zlKLR2AE5eMO8u7asFWRWCe8UyHm",
+              "model": "scarx-hybrid",
+              "system_fingerprint": "b12360-2d8a32502",
+              "object": "chat.completion.chunk",
+              "usage": {
+                "completion_tokens": 3,
+                "prompt_tokens": 49,
+                "total_tokens": 52,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                }
+              },
+              "timings": {
+                "cache_n": 0,
+                "prompt_n": 49,
+                "prompt_ms": 227.241,
+                "prompt_per_token_ms": 4.6375714285714285,
+                "prompt_per_second": 215.63010196223394,
+                "predicted_n": 3,
+                "predicted_ms": 70.089,
+                "predicted_per_token_ms": 35.0445,
+                "predicted_per_second": 28.535148168756866
+              }
+            }
+          ],
+          "ttft_seconds": 0.2649999999994179,
+          "total_seconds": 0.40600000000267755
+        },
+        "expected": "42"
+      },
+      "seconds": 0.48400000000037835,
+      "completed": true
+    },
+    {
+      "case": "function_round_trip",
+      "result": {
+        "first_response": {
+          "choices": [
+            {
+              "finish_reason": "tool_calls",
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                  {
+                    "type": "function",
+                    "function": {
+                      "name": "lookup_number",
+                      "arguments": "{\"key\":\"ALPHA\"}"
+                    },
+                    "id": "ajleO8wBN1ua0A4UCFg67JrMUH2z8FBX"
+                  }
+                ]
+              }
+            }
+          ],
+          "created": 1794584333,
+          "model": "scarx-hybrid",
+          "system_fingerprint": "b12360-2d8a32502",
+          "object": "chat.completion",
+          "usage": {
+            "completion_tokens": 27,
+            "prompt_tokens": 297,
+            "total_tokens": 324,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "id": "chatcmpl-1WF30VKC3tvxWiWNT4rHLGKkxXlT5r9U",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 297,
+            "prompt_ms": 1127.411,
+            "prompt_per_token_ms": 3.795996632996633,
+            "prompt_per_second": 263.4354286058944,
+            "predicted_n": 27,
+            "predicted_ms": 940.013,
+            "predicted_per_token_ms": 36.154346153846156,
+            "predicted_per_second": 27.659191947345406
+          },
+          "scarx": {
+            "workload": {
+              "request_id": "3a105b46edf5443fa56d29f793881430",
+              "phase": "answered",
+              "input_characters": 32,
+              "input_utf8_bytes": 32,
+              "image_count": 0,
+              "active_neurons": 0,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "tool_schemas": 1,
+              "replayed_messages": 1,
+              "process_rss_bytes": 3303845888
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected_function": "lookup_number",
+        "expected_arguments": {
+          "key": "ALPHA"
+        },
+        "second_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "17"
+              }
+            }
+          ],
+          "created": 1794584333,
+          "model": "scarx-hybrid",
+          "system_fingerprint": "b12360-2d8a32502",
+          "object": "chat.completion",
+          "usage": {
+            "completion_tokens": 3,
+            "prompt_tokens": 343,
+            "total_tokens": 346,
+            "prompt_tokens_details": {
+              "cached_tokens": 323
+            }
+          },
+          "id": "chatcmpl-OFLrX6vEm4PWEQZjG8DdAYIBOVifPoBJ",
+          "timings": {
+            "cache_n": 323,
+            "prompt_n": 20,
+            "prompt_ms": 120.255,
+            "prompt_per_token_ms": 6.01275,
+            "prompt_per_second": 166.3132510082741,
+            "predicted_n": 3,
+            "predicted_ms": 73.122,
+            "predicted_per_token_ms": 36.561,
+            "predicted_per_second": 27.35154946527721
+          },
+          "scarx": {
+            "workload": {
+              "request_id": "f9f448e9cc954a34ac8913bbe4ed4fb9",
+              "phase": "answered",
+              "input_characters": 32,
+              "input_utf8_bytes": 32,
+              "image_count": 0,
+              "active_neurons": 0,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "tool_schemas": 1,
+              "replayed_messages": 3,
+              "process_rss_bytes": 3344834560
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected_answer": "17"
+      },
+      "seconds": 2.7809999999990396,
+      "completed": true
+    },
+    {
+      "case": "inline_vision",
+      "result": {
+        "response": {
+          "id": "chatcmpl-da851cf1e19d48d199cecbade4f5c7ef",
+          "object": "chat.completion",
+          "created": 1794584334,
+          "model": "scarx-hybrid",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "blue"
+              },
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 153,
+            "completion_tokens": 2,
+            "total_tokens": 155
+          },
+          "scarx": {
+            "answer_id": "da851cf1e19d48d199cecbade4f5c7ef",
+            "evidence": [],
+            "workload": {
+              "request_id": "da851cf1e19d48d199cecbade4f5c7ef",
+              "phase": "answered",
+              "input_characters": 52,
+              "input_utf8_bytes": 52,
+              "image_count": 1,
+              "active_neurons": 0,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "neural_input_channels": 64,
+              "neural_input_buffer_bytes": 2048,
+              "neural_arrays_bytes": 315634,
+              "process_rss_bytes": 3300827136,
+              "retrieved_episodes": 0,
+              "note": "VLM perception/language + experimental local ALIF policy; working buffer is not lifelong capacity"
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected": "blue",
+        "image_sha256": "90b7ea47799ae6fea52a1797719f8a939b4a6507c35f6702139276a8dec1b867"
+      },
+      "seconds": 1.110000000000582,
+      "completed": true
+    },
+    {
+      "case": "uploaded_video",
+      "result": {
+        "id": "9b597f3eb37f4e4f90a55cff78080788",
+        "original": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\hybrid-v1\\samples\\engineering-vi-video.mkv",
+        "original_owned": false,
+        "created": 1794584335.0312312,
+        "duration": 21.0,
+        "status": "complete",
+        "capture_frontier": 21.0,
+        "asr_frontier": 21.0,
+        "vision_frontier": 21.0,
+        "audio_available": true,
+        "asr_errors": [],
+        "degraded": false,
+        "analyzed_intervals": [
+          [
+            0.0,
+            10.0
+          ],
+          [
+            10.0,
+            20.0
+          ],
+          [
+            20.0,
+            21.0
+          ]
+        ],
+        "skipped_intervals": [],
+        "public_topic_id": null,
+        "error": null
+      },
+      "seconds": 31.65599999999904,
+      "completed": true
+    },
+    {
+      "case": "video_start_agent",
+      "result": {
+        "response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "blue"
+              }
+            }
+          ],
+          "created": 1794584368,
+          "model": "scarx-hybrid",
+          "system_fingerprint": "b12360-2d8a32502",
+          "object": "chat.completion",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 387,
+            "total_tokens": 389,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "id": "chatcmpl-0HWtk6YB1uLLtMKQdVxZs6KWH4cAVWeU",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 387,
+            "prompt_ms": 2016.028,
+            "prompt_per_token_ms": 5.209374677002584,
+            "prompt_per_second": 191.9616195806804,
+            "predicted_n": 2,
+            "predicted_ms": 34.336,
+            "predicted_per_token_ms": 34.336,
+            "predicted_per_second": 29.12395153774464
+          },
+          "scarx": {
+            "workload": {
+              "request_id": "766adc899b5e4e058ce4a25f39287307",
+              "phase": "answered",
+              "input_characters": 92,
+              "input_utf8_bytes": 92,
+              "image_count": 0,
+              "active_neurons": 29,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "tool_schemas": 0,
+              "replayed_messages": 1,
+              "process_rss_bytes": 3270946816
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected": "blue"
+      },
+      "seconds": 2.3590000000003783,
+      "completed": true
+    },
+    {
+      "case": "video_end_agent",
+      "result": {
+        "response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "yellow"
+              }
+            }
+          ],
+          "created": 1794584371,
+          "model": "scarx-hybrid",
+          "system_fingerprint": "b12360-2d8a32502",
+          "object": "chat.completion",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 383,
+            "total_tokens": 385,
+            "prompt_tokens_details": {
+              "cached_tokens": 22
+            }
+          },
+          "id": "chatcmpl-zHnfsZlOhqfhLnXUoqIuq99Z7sgfMffs",
+          "timings": {
+            "cache_n": 22,
+            "prompt_n": 361,
+            "prompt_ms": 2017.491,
+            "prompt_per_token_ms": 5.588617728531856,
+            "prompt_per_second": 178.9351228828282,
+            "predicted_n": 2,
+            "predicted_ms": 40.124,
+            "predicted_per_token_ms": 40.124,
+            "predicted_per_second": 24.922739507526664
+          },
+          "scarx": {
+            "workload": {
+              "request_id": "252adb47d9094eaca7cb166aaf9b9683",
+              "phase": "answered",
+              "input_characters": 90,
+              "input_utf8_bytes": 90,
+              "image_count": 0,
+              "active_neurons": 33,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "tool_schemas": 0,
+              "replayed_messages": 1,
+              "process_rss_bytes": 3271991296
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected": "yellow"
+      },
+      "seconds": 2.4530000000013388,
+      "completed": true
+    },
+    {
+      "case": "video_start_debug",
+      "result": {
+        "response": {
+          "id": "chatcmpl-adafd438145349eaab636a128be0a7a0",
+          "object": "chat.completion",
+          "created": 1794584372,
+          "model": "scarx-hybrid",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "Blue"
+              },
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 203,
+            "completion_tokens": 2,
+            "total_tokens": 205
+          },
+          "scarx": {
+            "answer_id": "adafd438145349eaab636a128be0a7a0",
+            "evidence": [
+              {
+                "id": "aac6d662287a43cbaf2aa46fbd59c11a",
+                "ref": "E1",
+                "start": 5.0,
+                "end": 5.0,
+                "text": "The image displays two distinct geometric shapes positioned side by side against a plain white background. On the left is a solid red square. On the right is a solid blue circle. There are no additional objects, text, or actions visible in the image.",
+                "source": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261113T153749Z-hybrid-pipeline-audit-v1-d468f9\\archive\\9b597f3eb37f4e4f90a55cff78080788\\000000.mkv",
+                "status": "observed",
+                "source_available": true
+              }
+            ],
+            "workload": {
+              "request_id": "adafd438145349eaab636a128be0a7a0",
+              "phase": "answered",
+              "input_characters": 92,
+              "input_utf8_bytes": 92,
+              "image_count": 0,
+              "active_neurons": 29,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "neural_input_channels": 64,
+              "neural_input_buffer_bytes": 2048,
+              "neural_arrays_bytes": 315634,
+              "process_rss_bytes": 3291017216,
+              "retrieved_episodes": 1,
+              "note": "VLM perception/language + experimental local ALIF policy; working buffer is not lifelong capacity"
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected": "blue"
+      },
+      "seconds": 1.0469999999986612,
+      "completed": true
+    },
+    {
+      "case": "screen_capture_own_fixture",
+      "result": {
+        "stream": {
+          "id": "b2ec76cc1c0a4d60b4c9e12e1a39004d",
+          "kind": "screen",
+          "window": {
+            "id": 9375378,
+            "title": "SCAR-X engineering capture fixture — synthetic shapes"
+          },
+          "session_id": "engineering-pipeline-audit",
+          "system_audio_requested": false,
+          "microphone_used": false,
+          "timebase": "seconds since sharing started, not original player position",
+          "status": "sharing",
+          "capture_frontier": 8.3279999999977,
+          "vision_frontier": 8.3279999999977,
+          "asr_frontier": 0.0,
+          "latest_frame": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261113T153749Z-hybrid-pipeline-audit-v1-d468f9\\archive\\b2ec76cc1c0a4d60b4c9e12e1a39004d\\frame-0000008327.jpg",
+          "audio_available": false,
+          "error": null
+        },
+        "microphone_used": false,
+        "system_audio_requested": false
+      },
+      "seconds": 14.0,
+      "completed": true
+    },
+    {
+      "case": "rollback",
+      "result": {
+        "full_snapshot_exact": true,
+        "evidence_retained": true,
+        "events_retained": true
+      },
+      "seconds": 0.7030000000013388,
+      "completed": true
+    },
+    {
+      "case": "automatic_idle_review",
+      "result": {
+        "new_review_count": 0,
+        "review": {
+          "format": "scarx-review-v1",
+          "pending": [
+            "95962f96c94649ffb20f1de55836d614",
+            "b480d014c84a49efb0ef5fab08feeea4",
+            "f495fbd3534a4e7c937a2d9352bd4b01",
+            "aaaf965f47394677a975646282098ab5",
+            "adafd438145349eaab636a128be0a7a0"
+          ],
+          "reviewed": [],
+          "completed": 0,
+          "rejected": 0,
+          "replay_updates": 0,
+          "last_result": null
+        },
+        "synapse_updates": 0,
+        "hidden_updates": 0,
+        "verified_replay_items": 0
+      },
+      "seconds": 75.26599999999962,
+      "completed": true
+    }
+  ],
+  "failures": [],
+  "scope": "Engineering fixtures, NOT general quality/lifelong PASS",
+  "video_stream": "9b597f3eb37f4e4f90a55cff78080788",
+  "ASR": {
+    "transcript": "Alive Velas Roya của Mexico về thứ 15 trong giải tượng ngồi sức bờ dưới. Dễn cho nèm Aramhon đến từ New Zealand đã sếp thích chính cho mọi sếp ai sụp bưu vui Trước đứng dễn cho nèm",
+    "reference": "Arly Velasquez của Mexico về thứ mười lăm trong giải trượt ngồi Super-G dành cho nam. Adam Hall đến từ New Zealand đã xếp thứ chín trong bảng xếp hạng Super G trượt đứng dành cho nam.",
+    "word_edits": 26,
+    "reference_words": 38,
+    "wer": 0.6842105263157895
+  },
+  "checkpoint": {
+    "id": "23ac762fa02041a5847545289d54f5fd",
+    "payload_sha256": "65b1d6f51c8dcd6bac2e4f5362c3a0bd972ec1b1222767d6d2b3624f324bbedf",
+    "evidence_count": 7
+  },
+  "resources": {
+    "rss_bytes": 3860471808,
+    "private_commit_bytes": 3071541248,
+    "peak_rss_bytes": 3863212032,
+    "peak_private_commit_bytes": 3722182656,
+    "limit_bytes": 4500000000,
+    "exceeded": false,
+    "processes": [
+      {
+        "pid": 33548,
+        "name": "python.exe",
+        "rss_bytes": 67121152,
+        "private_commit_bytes": 48246784
+      },
+      {
+        "pid": 39560,
+        "name": "llama-server.exe",
+        "rss_bytes": 2572312576,
+        "private_commit_bytes": 1581125632
+      },
+      {
+        "pid": 25252,
+        "name": "conhost.exe",
+        "rss_bytes": 9367552,
+        "private_commit_bytes": 1867776
+      },
+      {
+        "pid": 35648,
+        "name": "Hermes.exe",
+        "rss_bytes": 148525056,
+        "private_commit_bytes": 149352448
+      },
+      {
+        "pid": 33460,
+        "name": "Hermes.exe",
+        "rss_bytes": 168460288,
+        "private_commit_bytes": 336543744
+      },
+      {
+        "pid": 34300,
+        "name": "Hermes.exe",
+        "rss_bytes": 56700928,
+        "private_commit_bytes": 13881344
+      },
+      {
+        "pid": 24556,
+        "name": "Hermes.exe",
+        "rss_bytes": 313753600,
+        "private_commit_bytes": 375087104
+      },
+      {
+        "pid": 20472,
+        "name": "conhost.exe",
+        "rss_bytes": 9269248,
+        "private_commit_bytes": 1949696
+      },
+      {
+        "pid": 25680,
+        "name": "powershell.exe",
+        "rss_bytes": 47976448,
+        "private_commit_bytes": 58568704
+      },
+      {
+        "pid": 35784,
+        "name": "Hermes.exe",
+        "rss_bytes": 109547520,
+        "private_commit_bytes": 11313152
+      },
+      {
+        "pid": 29524,
+        "name": "conhost.exe",
+        "rss_bytes": 9367552,
+        "private_commit_bytes": 1986560
+      },
+      {
+        "pid": 27532,
+        "name": "powershell.exe",
+        "rss_bytes": 61726720,
+        "private_commit_bytes": 58544128
+      },
+      {
+        "pid": 34792,
+        "name": "python.exe",
+        "rss_bytes": 31436800,
+        "private_commit_bytes": 20008960
+      },
+      {
+        "pid": 15428,
+        "name": "conhost.exe",
+        "rss_bytes": 9469952,
+        "private_commit_bytes": 1785856
+      },
+      {
+        "pid": 24524,
+        "name": "hermes.exe",
+        "rss_bytes": 7983104,
+        "private_commit_bytes": 1650688
+      },
+      {
+        "pid": 27876,
+        "name": "conhost.exe",
+        "rss_bytes": 8699904,
+        "private_commit_bytes": 1884160
+      },
+      {
+        "pid": 36068,
+        "name": "python.exe",
+        "rss_bytes": 228753408,
+        "private_commit_bytes": 407744512
+      }
+    ],
+    "included_client_pids": [
+      24524,
+      35648
+    ],
+    "gpu_shared": {
+      "available": true,
+      "bytes": 44711936,
+      "sampling_seconds": 2,
+      "error": null,
+      "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+    },
+    "conservative_ram_bytes": 3905183744,
+    "peak_conservative_ram_bytes": 3907923968,
+    "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+    "sampling_seconds": 0.05
+  },
+  "final_active_checkpoint": {
+    "id": "d3ecbb7278e24be98f65967c4781509f",
+    "payload_sha256": "44f04387e457d4ae14402ee5463d1dac106bfaf375b12d373520181697ea5d85"
+  },
+  "native_gate": {
+    "status": "NATIVE_PARITY_PASS",
+    "parity": {
+      "reference_run": "20261113T110321Z-hybrid-reference-8496c6",
+      "top1_required": true,
+      "max_probability_difference": 0.03,
+      "cases": [
+        {
+          "prompt": "Say hello in one short sentence.",
+          "native_top1": 9419,
+          "reference_top1": 9419,
+          "max_probability_difference": 0.0028340858072155584,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 9419,
+              "token": "Hello",
+              "bytes": [
+                72,
+                101,
+                108,
+                108,
+                111
+              ],
+              "logprob": -0.14304257929325104
+            },
+            {
+              "id": 88621,
+              "token": "Greetings",
+              "bytes": [
+                71,
+                114,
+                101,
+                101,
+                116,
+                105,
+                110,
+                103,
+                115
+              ],
+              "logprob": -2.8068056106567383
+            },
+            {
+              "id": 12675,
+              "token": "Hi",
+              "bytes": [
+                72,
+                105
+              ],
+              "logprob": -4.154549598693848
+            },
+            {
+              "id": 14773,
+              "token": "Good",
+              "bytes": [
+                71,
+                111,
+                111,
+                100
+              ],
+              "logprob": -4.493254661560059
+            },
+            {
+              "id": 4199,
+              "token": "How",
+              "bytes": [
+                72,
+                111,
+                119
+              ],
+              "logprob": -4.624648094177246
+            },
+            {
+              "id": 38,
+              "token": "G",
+              "bytes": [
+                71
+              ],
+              "logprob": -5.09030818939209
+            },
+            {
+              "id": 13536,
+              "token": "Welcome",
+              "bytes": [
+                87,
+                101,
+                108,
+                99,
+                111,
+                109,
+                101
+              ],
+              "logprob": -5.233340263366699
+            },
+            {
+              "id": 18103,
+              "token": "Hey",
+              "bytes": [
+                72,
+                101,
+                121
+              ],
+              "logprob": -5.368254661560059
+            }
+          ]
+        },
+        {
+          "prompt": "Chào bạn, trả lời ngắn gọn bằng tiếng Việt.",
+          "native_top1": 1106,
+          "reference_top1": 1106,
+          "max_probability_difference": 0.007559415804300085,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 1106,
+              "token": "Ch",
+              "bytes": [
+                67,
+                104
+              ],
+              "logprob": -0.1889062523841858
+            },
+            {
+              "id": 34,
+              "token": "C",
+              "bytes": [
+                67
+              ],
+              "logprob": -3.6933236122131348
+            },
+            {
+              "id": 35,
+              "token": "D",
+              "bytes": [
+                68
+              ],
+              "logprob": -3.9581074714660645
+            },
+            {
+              "id": 39,
+              "token": "H",
+              "bytes": [
+                72
+              ],
+              "logprob": -4.111268520355225
+            },
+            {
+              "id": 38893,
+              "token": "Đ",
+              "bytes": [
+                196,
+                144
+              ],
+              "logprob": -4.3777594566345215
+            },
+            {
+              "id": 969,
+              "token": "Th",
+              "bytes": [
+                84,
+                104
+              ],
+              "logprob": -4.677128314971924
+            },
+            {
+              "id": 38,
+              "token": "G",
+              "bytes": [
+                71
+              ],
+              "logprob": -4.854153156280518
+            },
+            {
+              "id": 248068,
+              "token": "<think>",
+              "bytes": [
+                60,
+                116,
+                104,
+                105,
+                110,
+                107,
+                62
+              ],
+              "logprob": -5.24176549911499
+            }
+          ]
+        },
+        {
+          "prompt": "What is 7 plus 8?",
+          "native_top1": 1206,
+          "reference_top1": 1206,
+          "max_probability_difference": 0.011818457372175906,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 1206,
+              "token": "To",
+              "bytes": [
+                84,
+                111
+              ],
+              "logprob": -0.9151230454444885
+            },
+            {
+              "id": 22,
+              "token": "7",
+              "bytes": [
+                55
+              ],
+              "logprob": -1.0104714632034302
+            },
+            {
+              "id": 3,
+              "token": "$",
+              "bytes": [
+                36
+              ],
+              "logprob": -1.8303948640823364
+            },
+            {
+              "id": 16,
+              "token": "1",
+              "bytes": [
+                49
+              ],
+              "logprob": -4.153537750244141
+            },
+            {
+              "id": 760,
+              "token": "The",
+              "bytes": [
+                84,
+                104,
+                101
+              ],
+              "logprob": -4.2302093505859375
+            },
+            {
+              "id": 27775,
+              "token": "Based",
+              "bytes": [
+                66,
+                97,
+                115,
+                101,
+                100
+              ],
+              "logprob": -5.303798675537109
+            },
+            {
+              "id": 57517,
+              "token": "Seven",
+              "bytes": [
+                83,
+                101,
+                118,
+                101,
+                110
+              ],
+              "logprob": -5.319950103759766
+            },
+            {
+              "id": 332,
+              "token": "**",
+              "bytes": [
+                42,
+                42
+              ],
+              "logprob": -5.561916351318359
+            }
+          ]
+        }
+      ],
+      "status": "PASS"
+    },
+    "resources": {
+      "rss_bytes": 3216867328,
+      "private_commit_bytes": 2592833536,
+      "peak_rss_bytes": 3219845120,
+      "peak_private_commit_bytes": 2595848192,
+      "limit_bytes": 4500000000,
+      "exceeded": false,
+      "processes": [
+        {
+          "pid": 33548,
+          "name": "python.exe",
+          "rss_bytes": 56086528,
+          "private_commit_bytes": 39325696
+        },
+        {
+          "pid": 39560,
+          "name": "llama-server.exe",
+          "rss_bytes": 2073980928,
+          "private_commit_bytes": 1111592960
+        },
+        {
+          "pid": 25252,
+          "name": "conhost.exe",
+          "rss_bytes": 9424896,
+          "private_commit_bytes": 1986560
+        },
+        {
+          "pid": 35648,
+          "name": "Hermes.exe",
+          "rss_bytes": 148307968,
+          "private_commit_bytes": 149442560
+        },
+        {
+          "pid": 33460,
+          "name": "Hermes.exe",
+          "rss_bytes": 160538624,
+          "private_commit_bytes": 366047232
+        },
+        {
+          "pid": 34300,
+          "name": "Hermes.exe",
+          "rss_bytes": 56700928,
+          "private_commit_bytes": 13881344
+        },
+        {
+          "pid": 24556,
+          "name": "Hermes.exe",
+          "rss_bytes": 288116736,
+          "private_commit_bytes": 366829568
+        },
+        {
+          "pid": 20472,
+          "name": "conhost.exe",
+          "rss_bytes": 9265152,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 25680,
+          "name": "powershell.exe",
+          "rss_bytes": 48009216,
+          "private_commit_bytes": 58568704
+        },
+        {
+          "pid": 35784,
+          "name": "Hermes.exe",
+          "rss_bytes": 109531136,
+          "private_commit_bytes": 11280384
+        },
+        {
+          "pid": 29524,
+          "name": "conhost.exe",
+          "rss_bytes": 9347072,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 27532,
+          "name": "powershell.exe",
+          "rss_bytes": 61775872,
+          "private_commit_bytes": 58515456
+        },
+        {
+          "pid": 24524,
+          "name": "hermes.exe",
+          "rss_bytes": 7966720,
+          "private_commit_bytes": 1622016
+        },
+        {
+          "pid": 27876,
+          "name": "conhost.exe",
+          "rss_bytes": 8679424,
+          "private_commit_bytes": 1847296
+        },
+        {
+          "pid": 36068,
+          "name": "python.exe",
+          "rss_bytes": 169136128,
+          "private_commit_bytes": 407994368
+        }
+      ],
+      "included_client_pids": [
+        24524,
+        35648
+      ],
+      "gpu_shared": {
+        "available": true,
+        "bytes": 41967616,
+        "sampling_seconds": 2,
+        "error": null,
+        "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+      },
+      "conservative_ram_bytes": 3258834944,
+      "peak_conservative_ram_bytes": 3261812736,
+      "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+      "sampling_seconds": 0.05
+    },
+    "job": {
+      "enforced": true,
+      "kind": "Windows aggregate job private commit; owned children killed if gateway exits; RSS sampled separately",
+      "limit_bytes": 4500000000
+    },
+    "hermes_integrated": "not yet measured",
+    "scientific_quality": "P1/P2/P3 not passed"
+  },
+  "gateway_stopped": true,
+  "finished": 1794584463.6424263,
+  "private_events_omitted": true,
+  "raw_sha256": "eaddd1ba5aa835b00b161d1fe195f2fca4af89f53e7412de6c4bcaed61e02ab7"
+}

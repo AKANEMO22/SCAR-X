@@ -1,0 +1,55 @@
+{
+  "keys": [
+    "session_id",
+    "stored_session_id",
+    "messages",
+    "message_count",
+    "todo_state",
+    "display_messages",
+    "running",
+    "authority_epoch",
+    "replay_epoch",
+    "last_sequence",
+    "subscription_id",
+    "revision",
+    "execution_generation",
+    "pending",
+    "prompts",
+    "info",
+    "pending_connection",
+    "open_requests"
+  ],
+  "running": false,
+  "generation": 1,
+  "display_row_count": 2,
+  "rows": [
+    {
+      "keys": [
+        "role",
+        "text",
+        "timestamp",
+        "row_id",
+        "display_metadata"
+      ],
+      "role": "user",
+      "type": null,
+      "content": null,
+      "text": "Reply exactly PIPELINE_OK. Do not call any tools.",
+      "error": null
+    },
+    {
+      "keys": [
+        "role",
+        "text",
+        "timestamp",
+        "row_id"
+      ],
+      "role": "assistant",
+      "type": null,
+      "content": null,
+      "text": "PIPELINE_OK",
+      "error": null
+    }
+  ],
+  "session_info": {}
+}

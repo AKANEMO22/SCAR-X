@@ -239,7 +239,7 @@ function Panel({ ctx }) {
                 {
                   className: "sxh-card",
                   children: [
-                    jsx("b", { children: v.id + " · " + v.status }),
+                    jsx("b", { children: v.id + " · " + v.status + (v.degraded ? " · phân tích chưa đầy đủ" : "") }),
                     jsx("p", {
                       children: `Đã thu ${v.capture_frontier.toFixed(1)}s · âm thanh ${v.asr_frontier.toFixed(1)}s · ảnh ${v.vision_frontier.toFixed(1)}s`,
                     }),

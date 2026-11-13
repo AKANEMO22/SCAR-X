@@ -1,0 +1,146 @@
+{
+  "run": "20261113T153749Z-hybrid-pipeline-audit-v1-d468f9",
+  "cases": [
+    {
+      "case": "streamed_chat",
+      "transport_completed": true,
+      "seconds": 0.48400000000037835,
+      "expected": "42",
+      "actual": "42",
+      "correct": true,
+      "ttft_seconds": 0.2649999999994179
+    },
+    {
+      "case": "function_round_trip",
+      "transport_completed": true,
+      "seconds": 2.7809999999990396,
+      "correct": true
+    },
+    {
+      "case": "inline_vision",
+      "transport_completed": true,
+      "seconds": 1.110000000000582,
+      "expected": "blue",
+      "actual": "blue",
+      "correct": true
+    },
+    {
+      "case": "uploaded_video",
+      "transport_completed": true,
+      "seconds": 31.65599999999904,
+      "source_seconds": 21.0,
+      "capture": 21.0,
+      "ASR": 21.0,
+      "vision": 21.0,
+      "degraded": false,
+      "skipped": [],
+      "status": "complete"
+    },
+    {
+      "case": "video_start_agent",
+      "transport_completed": true,
+      "seconds": 2.3590000000003783,
+      "expected": "blue",
+      "actual": "blue",
+      "correct": true
+    },
+    {
+      "case": "video_end_agent",
+      "transport_completed": true,
+      "seconds": 2.4530000000013388,
+      "expected": "yellow",
+      "actual": "yellow",
+      "correct": true
+    },
+    {
+      "case": "video_start_debug",
+      "transport_completed": true,
+      "seconds": 1.0469999999986612,
+      "expected": "blue",
+      "actual": "Blue",
+      "correct": true
+    },
+    {
+      "case": "screen_capture_own_fixture",
+      "transport_completed": true,
+      "seconds": 14.0,
+      "capture": 8.3279999999977,
+      "vision": 8.3279999999977,
+      "audio_requested": false,
+      "microphone_used": false
+    },
+    {
+      "case": "rollback",
+      "transport_completed": true,
+      "seconds": 0.7030000000013388,
+      "correct": true
+    },
+    {
+      "case": "automatic_idle_review",
+      "transport_completed": true,
+      "seconds": 75.26599999999962,
+      "completed_reviews": 0,
+      "synaptic_updates": 0,
+      "hidden_updates": 0,
+      "replay_items": 0,
+      "classification": "INCONCLUSIVE_CONTAMINATED_BY_LIVE_TRAFFIC"
+    },
+    {
+      "case": "video_after_cold_restart",
+      "transport_completed": true,
+      "seconds": 2.375,
+      "expected": "blue",
+      "actual": "blue",
+      "correct": true
+    }
+  ],
+  "limitations": [
+    "One public speech sample plus synthetic shapes; not P1/P2/P3 or hidden-learning proof."
+  ],
+  "ASR": {
+    "transcript": "Alive Velas Roya của Mexico về thứ 15 trong giải tượng ngồi sức bờ dưới. Dễn cho nèm Aramhon đến từ New Zealand đã sếp thích chính cho mọi sếp ai sụp bưu vui Trước đứng dễn cho nèm",
+    "reference": "Arly Velasquez của Mexico về thứ mười lăm trong giải trượt ngồi Super-G dành cho nam. Adam Hall đến từ New Zealand đã xếp thứ chín trong bảng xếp hạng Super G trượt đứng dành cho nam.",
+    "word_edits": 26,
+    "reference_words": 38,
+    "wer": 0.6842105263157895
+  },
+  "cold_persistence": {
+    "payload_hash_matches": true,
+    "evidence_count": 7,
+    "expected_min_evidence_count": 7,
+    "synapse_updates": 0,
+    "active_state_exact": true
+  },
+  "peak_ram_bytes": 3907923968,
+  "limit_bytes": 4500000000,
+  "traffic": {
+    "before_restart": {
+      "all_streamed_request_count": 13,
+      "expected_fixture_streamed_count": 1,
+      "foreign_streamed_requests_during_idle": 12,
+      "actual_video_reinspection": [
+        {
+          "time": 5.0,
+          "stream_id": "9b597f3eb37f4e4f90a55cff78080788"
+        },
+        {
+          "time": 20.5,
+          "stream_id": "9b597f3eb37f4e4f90a55cff78080788"
+        }
+      ],
+      "peak_RAM_bytes": 3907923968
+    },
+    "after_restart": {
+      "all_streamed_request_count": 0,
+      "expected_fixture_streamed_count": 0,
+      "foreign_streamed_requests_during_idle": 0,
+      "actual_video_reinspection": [
+        {
+          "time": 5.0,
+          "stream_id": "9b597f3eb37f4e4f90a55cff78080788"
+        }
+      ],
+      "peak_RAM_bytes": 3457626112
+    }
+  }
+}

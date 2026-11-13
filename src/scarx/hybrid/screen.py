@@ -277,18 +277,46 @@ class ScreenMemory:
         )
         return {"stopped": True}
 
-    def snapshot(self, identifier):
+    def snapshot(self, identifier, evidence=None):
         state = self.store.get("stream", identifier)
         if not state or state.get("kind") != "screen" or not state.get("latest_frame"):
             return None
         root = (self.directory / "archive" / identifier).resolve()
-        pointer = root / "latest.json"
-        latest = (
-            json.loads(pointer.read_text())
-            if pointer.exists()
-            else {"path": Path(state["latest_frame"]).name}
+        historical = next(
+            (e for e in evidence or () if e.get("modality") == "sampled_frame"), None
         )
-        source = (root / latest["path"]).resolve()
+        if historical:
+            source = Path(historical["source"]).resolve()
+            if not source.is_relative_to(root) or not source.is_file():
+                self.store.event(
+                    "historical_screen_frame_unavailable",
+                    {
+                        "stream_id": identifier,
+                        "evidence_id": historical["id"],
+                        "time": historical["start"],
+                        "reason": "retained source missing; no latest-frame substitution",
+                    },
+                )
+                return None
+            self.store.event(
+                "source_screen_reinspected",
+                {
+                    "stream_id": identifier,
+                    "evidence_id": historical["id"],
+                    "time": historical["start"],
+                    "source": str(source),
+                },
+            )
+        else:
+            source = None
+        if source is None:
+            pointer = root / "latest.json"
+            latest = (
+                json.loads(pointer.read_text())
+                if pointer.exists()
+                else {"path": Path(state["latest_frame"]).name}
+            )
+            source = (root / latest["path"]).resolve()
         if not source.is_relative_to(root) or not source.exists():
             return None
         target = root / "question-frame.jpg"

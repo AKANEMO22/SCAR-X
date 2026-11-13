@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## Pipeline audit13/11 — plumbing chạy, quality/lifelong chưa đạt
+
+Đã chạy inference thật quachat/tool/ảnh/video21s/windowfixture/rollback/restart.
+Sửa lựa chọnfirst/last trước neuralranking, đúng historicalscreenframe và cô lập
+non-resourceASRerror đểvideo cònvision. Câu cuối fixtureblue→yellow được sửa đúng;
+không đổiALIF/weights/precision/context16K. ASR26/38wordedits=68,42% trên1sample,
+21svideo mất31,66s; không claim realtime hoặc hiểu mọiframe. RAMpeak4,093GB<4,5GB.
+Idle lần đầu tựreview thật; lần2lẫn12liveHermesrequests→inconclusive.0synapseupdates
+trongfixtures, không skillgainPASS. Harnessnoncev2 và probeparsertext/content được
+sửa; originals/privateeventbatch giữlocal+hash, không rewrite thànhPASS.
+70Pythonchecks gồm nativeparity và4Nodechecks qua. [Báo cáo](hybrid/PIPELINE_AUDIT_20261113.md).
+
 ## Context benchmark và amendment4,5GB13/11
 
 Đã đo16K/24K/32K bằng cùng nativeVLM/precision; mỗi mức đúng2/6bài chung,

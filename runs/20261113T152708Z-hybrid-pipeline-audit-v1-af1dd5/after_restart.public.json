@@ -1,0 +1,598 @@
+{
+  "run_id": "20261113T152708Z-hybrid-pipeline-audit-v1-af1dd5",
+  "phase": "after_restart",
+  "started": 1794583770.4215205,
+  "cases": [
+    {
+      "case": "video_after_cold_restart",
+      "result": {
+        "response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "blue"
+              }
+            }
+          ],
+          "created": 1794583781,
+          "model": "scarx-hybrid",
+          "system_fingerprint": "b12360-2d8a32502",
+          "object": "chat.completion",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 537,
+            "total_tokens": 539,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "id": "chatcmpl-cWHLX1zvKj6yAQnOhlO0mYkjxfaQmhTw",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 537,
+            "prompt_ms": 2797.023,
+            "prompt_per_token_ms": 5.208608938547486,
+            "prompt_per_second": 191.98984062698088,
+            "predicted_n": 2,
+            "predicted_ms": 38.419,
+            "predicted_per_token_ms": 38.419,
+            "predicted_per_second": 26.028787839350322
+          },
+          "scarx": {
+            "workload": {
+              "request_id": "7b78992dae5b45baa78b1554f8d703f5",
+              "phase": "answered",
+              "input_characters": 92,
+              "input_utf8_bytes": 92,
+              "image_count": 0,
+              "active_neurons": 29,
+              "allocated_neurons": 128,
+              "max_neurons": 128,
+              "tool_schemas": 0,
+              "replayed_messages": 1,
+              "process_rss_bytes": 3418984448
+            },
+            "policy_qualified": false
+          }
+        },
+        "expected": "blue"
+      },
+      "seconds": 3.25,
+      "completed": true
+    }
+  ],
+  "failures": [],
+  "scope": "Engineering fixtures, NOT general quality/lifelong PASS",
+  "cold_persistence": {
+    "payload_hash_matches": true,
+    "evidence_count": 7,
+    "expected_min_evidence_count": 7,
+    "synapse_updates": 0,
+    "active_state_exact": true
+  },
+  "resources": {
+    "rss_bytes": 3419316224,
+    "private_commit_bytes": 2621394944,
+    "peak_rss_bytes": 3419369472,
+    "peak_private_commit_bytes": 2621472768,
+    "limit_bytes": 4500000000,
+    "exceeded": false,
+    "processes": [
+      {
+        "pid": 33320,
+        "name": "python.exe",
+        "rss_bytes": 59789312,
+        "private_commit_bytes": 41922560
+      },
+      {
+        "pid": 29152,
+        "name": "llama-server.exe",
+        "rss_bytes": 2127134720,
+        "private_commit_bytes": 1140273152
+      },
+      {
+        "pid": 24180,
+        "name": "conhost.exe",
+        "rss_bytes": 9420800,
+        "private_commit_bytes": 1966080
+      },
+      {
+        "pid": 35648,
+        "name": "Hermes.exe",
+        "rss_bytes": 147869696,
+        "private_commit_bytes": 149106688
+      },
+      {
+        "pid": 33460,
+        "name": "Hermes.exe",
+        "rss_bytes": 159358976,
+        "private_commit_bytes": 362549248
+      },
+      {
+        "pid": 34300,
+        "name": "Hermes.exe",
+        "rss_bytes": 55570432,
+        "private_commit_bytes": 13881344
+      },
+      {
+        "pid": 24556,
+        "name": "Hermes.exe",
+        "rss_bytes": 289042432,
+        "private_commit_bytes": 367984640
+      },
+      {
+        "pid": 20472,
+        "name": "conhost.exe",
+        "rss_bytes": 8880128,
+        "private_commit_bytes": 1949696
+      },
+      {
+        "pid": 25680,
+        "name": "powershell.exe",
+        "rss_bytes": 47083520,
+        "private_commit_bytes": 58568704
+      },
+      {
+        "pid": 35784,
+        "name": "Hermes.exe",
+        "rss_bytes": 108961792,
+        "private_commit_bytes": 11280384
+      },
+      {
+        "pid": 29524,
+        "name": "conhost.exe",
+        "rss_bytes": 8957952,
+        "private_commit_bytes": 1949696
+      },
+      {
+        "pid": 27532,
+        "name": "powershell.exe",
+        "rss_bytes": 61231104,
+        "private_commit_bytes": 58515456
+      },
+      {
+        "pid": 24524,
+        "name": "hermes.exe",
+        "rss_bytes": 7626752,
+        "private_commit_bytes": 1622016
+      },
+      {
+        "pid": 27876,
+        "name": "conhost.exe",
+        "rss_bytes": 8359936,
+        "private_commit_bytes": 1847296
+      },
+      {
+        "pid": 36068,
+        "name": "python.exe",
+        "rss_bytes": 320028672,
+        "private_commit_bytes": 407977984
+      }
+    ],
+    "included_client_pids": [
+      24524,
+      35648
+    ],
+    "gpu_shared": {
+      "available": true,
+      "bytes": 41918464,
+      "sampling_seconds": 2,
+      "error": null,
+      "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+    },
+    "conservative_ram_bytes": 3461234688,
+    "peak_conservative_ram_bytes": 3461287936,
+    "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+    "sampling_seconds": 0.05
+  },
+  "final_active_checkpoint": {
+    "id": "e5df591f8e9c4dd0bc335c93968f3ab9",
+    "payload_sha256": "21b4d59811122bd5972f7d0cdd9996a0da5de82dbf3858d67ab308af94f3c1d3"
+  },
+  "native_gate": {
+    "status": "NATIVE_PARITY_PASS",
+    "parity": {
+      "reference_run": "20261113T110321Z-hybrid-reference-8496c6",
+      "top1_required": true,
+      "max_probability_difference": 0.03,
+      "cases": [
+        {
+          "prompt": "Say hello in one short sentence.",
+          "native_top1": 9419,
+          "reference_top1": 9419,
+          "max_probability_difference": 0.0028340858072155584,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 9419,
+              "token": "Hello",
+              "bytes": [
+                72,
+                101,
+                108,
+                108,
+                111
+              ],
+              "logprob": -0.14304257929325104
+            },
+            {
+              "id": 88621,
+              "token": "Greetings",
+              "bytes": [
+                71,
+                114,
+                101,
+                101,
+                116,
+                105,
+                110,
+                103,
+                115
+              ],
+              "logprob": -2.8068056106567383
+            },
+            {
+              "id": 12675,
+              "token": "Hi",
+              "bytes": [
+                72,
+                105
+              ],
+              "logprob": -4.154549598693848
+            },
+            {
+              "id": 14773,
+              "token": "Good",
+              "bytes": [
+                71,
+                111,
+                111,
+                100
+              ],
+              "logprob": -4.493254661560059
+            },
+            {
+              "id": 4199,
+              "token": "How",
+              "bytes": [
+                72,
+                111,
+                119
+              ],
+              "logprob": -4.624648094177246
+            },
+            {
+              "id": 38,
+              "token": "G",
+              "bytes": [
+                71
+              ],
+              "logprob": -5.09030818939209
+            },
+            {
+              "id": 13536,
+              "token": "Welcome",
+              "bytes": [
+                87,
+                101,
+                108,
+                99,
+                111,
+                109,
+                101
+              ],
+              "logprob": -5.233340263366699
+            },
+            {
+              "id": 18103,
+              "token": "Hey",
+              "bytes": [
+                72,
+                101,
+                121
+              ],
+              "logprob": -5.368254661560059
+            }
+          ]
+        },
+        {
+          "prompt": "Chào bạn, trả lời ngắn gọn bằng tiếng Việt.",
+          "native_top1": 1106,
+          "reference_top1": 1106,
+          "max_probability_difference": 0.007559415804300085,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 1106,
+              "token": "Ch",
+              "bytes": [
+                67,
+                104
+              ],
+              "logprob": -0.1889062523841858
+            },
+            {
+              "id": 34,
+              "token": "C",
+              "bytes": [
+                67
+              ],
+              "logprob": -3.6933236122131348
+            },
+            {
+              "id": 35,
+              "token": "D",
+              "bytes": [
+                68
+              ],
+              "logprob": -3.9581074714660645
+            },
+            {
+              "id": 39,
+              "token": "H",
+              "bytes": [
+                72
+              ],
+              "logprob": -4.111268520355225
+            },
+            {
+              "id": 38893,
+              "token": "Đ",
+              "bytes": [
+                196,
+                144
+              ],
+              "logprob": -4.3777594566345215
+            },
+            {
+              "id": 969,
+              "token": "Th",
+              "bytes": [
+                84,
+                104
+              ],
+              "logprob": -4.677128314971924
+            },
+            {
+              "id": 38,
+              "token": "G",
+              "bytes": [
+                71
+              ],
+              "logprob": -4.854153156280518
+            },
+            {
+              "id": 248068,
+              "token": "<think>",
+              "bytes": [
+                60,
+                116,
+                104,
+                105,
+                110,
+                107,
+                62
+              ],
+              "logprob": -5.24176549911499
+            }
+          ]
+        },
+        {
+          "prompt": "What is 7 plus 8?",
+          "native_top1": 1206,
+          "reference_top1": 1206,
+          "max_probability_difference": 0.011818457372175906,
+          "passed": true,
+          "native_probabilities": [
+            {
+              "id": 1206,
+              "token": "To",
+              "bytes": [
+                84,
+                111
+              ],
+              "logprob": -0.9151230454444885
+            },
+            {
+              "id": 22,
+              "token": "7",
+              "bytes": [
+                55
+              ],
+              "logprob": -1.0104714632034302
+            },
+            {
+              "id": 3,
+              "token": "$",
+              "bytes": [
+                36
+              ],
+              "logprob": -1.8303948640823364
+            },
+            {
+              "id": 16,
+              "token": "1",
+              "bytes": [
+                49
+              ],
+              "logprob": -4.153537750244141
+            },
+            {
+              "id": 760,
+              "token": "The",
+              "bytes": [
+                84,
+                104,
+                101
+              ],
+              "logprob": -4.2302093505859375
+            },
+            {
+              "id": 27775,
+              "token": "Based",
+              "bytes": [
+                66,
+                97,
+                115,
+                101,
+                100
+              ],
+              "logprob": -5.303798675537109
+            },
+            {
+              "id": 57517,
+              "token": "Seven",
+              "bytes": [
+                83,
+                101,
+                118,
+                101,
+                110
+              ],
+              "logprob": -5.319950103759766
+            },
+            {
+              "id": 332,
+              "token": "**",
+              "bytes": [
+                42,
+                42
+              ],
+              "logprob": -5.561916351318359
+            }
+          ]
+        }
+      ],
+      "status": "PASS"
+    },
+    "resources": {
+      "rss_bytes": 3361148928,
+      "private_commit_bytes": 2590371840,
+      "peak_rss_bytes": 3361148928,
+      "peak_private_commit_bytes": 2590371840,
+      "limit_bytes": 4500000000,
+      "exceeded": false,
+      "processes": [
+        {
+          "pid": 33320,
+          "name": "python.exe",
+          "rss_bytes": 56496128,
+          "private_commit_bytes": 40431616
+        },
+        {
+          "pid": 29152,
+          "name": "llama-server.exe",
+          "rss_bytes": 2072260608,
+          "private_commit_bytes": 1110740992
+        },
+        {
+          "pid": 24180,
+          "name": "conhost.exe",
+          "rss_bytes": 9420800,
+          "private_commit_bytes": 1966080
+        },
+        {
+          "pid": 35648,
+          "name": "Hermes.exe",
+          "rss_bytes": 147869696,
+          "private_commit_bytes": 149106688
+        },
+        {
+          "pid": 33460,
+          "name": "Hermes.exe",
+          "rss_bytes": 159358976,
+          "private_commit_bytes": 362549248
+        },
+        {
+          "pid": 34300,
+          "name": "Hermes.exe",
+          "rss_bytes": 55570432,
+          "private_commit_bytes": 13881344
+        },
+        {
+          "pid": 24556,
+          "name": "Hermes.exe",
+          "rss_bytes": 289042432,
+          "private_commit_bytes": 367984640
+        },
+        {
+          "pid": 20472,
+          "name": "conhost.exe",
+          "rss_bytes": 8880128,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 25680,
+          "name": "powershell.exe",
+          "rss_bytes": 47083520,
+          "private_commit_bytes": 58568704
+        },
+        {
+          "pid": 35784,
+          "name": "Hermes.exe",
+          "rss_bytes": 108961792,
+          "private_commit_bytes": 11280384
+        },
+        {
+          "pid": 29524,
+          "name": "conhost.exe",
+          "rss_bytes": 8957952,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 27532,
+          "name": "powershell.exe",
+          "rss_bytes": 61231104,
+          "private_commit_bytes": 58515456
+        },
+        {
+          "pid": 24524,
+          "name": "hermes.exe",
+          "rss_bytes": 7626752,
+          "private_commit_bytes": 1622016
+        },
+        {
+          "pid": 27876,
+          "name": "conhost.exe",
+          "rss_bytes": 8359936,
+          "private_commit_bytes": 1847296
+        },
+        {
+          "pid": 36068,
+          "name": "python.exe",
+          "rss_bytes": 320028672,
+          "private_commit_bytes": 407977984
+        }
+      ],
+      "included_client_pids": [
+        24524,
+        35648
+      ],
+      "gpu_shared": {
+        "available": true,
+        "bytes": 41918464,
+        "sampling_seconds": 2,
+        "error": null,
+        "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+      },
+      "conservative_ram_bytes": 3403067392,
+      "peak_conservative_ram_bytes": 3403067392,
+      "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+      "sampling_seconds": 0.05
+    },
+    "job": {
+      "enforced": true,
+      "kind": "Windows aggregate job private commit; owned children killed if gateway exits; RSS sampled separately",
+      "limit_bytes": 4500000000
+    },
+    "hermes_integrated": "not yet measured",
+    "scientific_quality": "P1/P2/P3 not passed"
+  },
+  "gateway_stopped": true,
+  "finished": 1794583782.8996444,
+  "private_events_omitted": true,
+  "raw_sha256": "b62a4d27c261d546ad892d1c72e4055ef113cd6007c32647e6637b9834672e2d"
+}

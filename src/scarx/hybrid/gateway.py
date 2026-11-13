@@ -22,6 +22,7 @@ from .work_trace import WorkTrace
 from .ownership import OwnerLock
 from .screen import ScreenMemory, window_sources
 from .video_context import VideoContext
+from .temporal import temporal_direction
 
 
 class Gateway:
@@ -157,6 +158,7 @@ class Gateway:
                 query, stream=stream, limit=6
             ) or self.store.timeline(stream, limit=6, descending=True)
             lower = query.casefold()
+            direction = temporal_direction(query)
             if any(
                 term in lower
                 for term in ("màu", "hình", "nhìn", "color", "shape", "visible")
@@ -165,15 +167,44 @@ class Gateway:
                     self.store.timeline(
                         stream,
                         limit=6,
-                        descending=not any(
-                            term in lower for term in ("đầu", "first", "beginning")
-                        ),
+                        descending=direction != "first",
                         modality="sampled_frame",
                     )
                     or observations
                 )
-            if any(term in lower for term in ("đầu", "first", "beginning")):
-                observations = observations[:1]
+            if direction:
+                temporal = self.store.timeline(
+                    stream,
+                    limit=1,
+                    descending=direction == "last",
+                    modality=(
+                        "sampled_frame"
+                        if any(
+                            term in lower
+                            for term in (
+                                "màu",
+                                "hình",
+                                "nhìn",
+                                "color",
+                                "shape",
+                                "visible",
+                            )
+                        )
+                        else None
+                    ),
+                )
+                observations = temporal or observations[:1]
+                self.store.event(
+                    "temporal_evidence_selected",
+                    {
+                        "stream_id": stream,
+                        "direction": direction,
+                        "ids": [e["id"] for e in observations],
+                        "times": [e["start"] for e in observations],
+                        "selection": "explicit temporal constraint before neural relevance",
+                    },
+                    "heuristic",
+                )
             candidates = [e["id"] for e in observations]
             observations = sorted(
                 observations,
@@ -206,11 +237,25 @@ class Gateway:
                             record.get("vision_frontier"),
                         ]
                     )
+                    + "\nCoverage limits (processed frontier is not proof of continuous understanding): "
+                    + encode(
+                        {
+                            "degraded": record.get("degraded", False),
+                            "audio_available": record.get("audio_available"),
+                            "failed_audio_intervals": [
+                                [e["start"], e["end"]]
+                                for e in record.get("asr_errors", [])[-8:]
+                            ],
+                            "skipped_intervals": record.get("skipped_intervals", [])[
+                                -8:
+                            ],
+                        }
+                    )
                     + "\nUse only observations for claims about this video. If audio is missing/unclear, do not invent speech. Cite E references and timestamps.",
                 }
             )
             frame = (
-                self.screen.snapshot(stream)
+                self.screen.snapshot(stream, observations if direction else None)
                 if record.get("kind") == "screen"
                 else self.video.snapshot(stream, observations)
             )

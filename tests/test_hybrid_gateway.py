@@ -74,7 +74,7 @@ def gateway(tmp_path):
     value.monitor = Monitor()
     value.backend = Backend()
     value.engine = HybridEngine(value.store, value.backend, value.monitor)
-    value.screen = types.SimpleNamespace(snapshot=lambda _: None)
+    value.screen = types.SimpleNamespace(snapshot=lambda *args: None)
     value.video = types.SimpleNamespace(snapshot=lambda *args: None)
     value.ready = True
     value.failure = None

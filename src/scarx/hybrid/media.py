@@ -65,6 +65,11 @@ class VideoMemory:
             "capture_frontier": 0.0,
             "asr_frontier": 0.0,
             "vision_frontier": 0.0,
+            "audio_available": any(
+                s.get("codec_type") == "audio" for s in info["streams"]
+            ),
+            "asr_errors": [],
+            "degraded": False,
             "analyzed_intervals": [],
             "skipped_intervals": [],
             "public_topic_id": public_topic_id,
@@ -195,6 +200,9 @@ class VideoMemory:
                     process.kill()
                     process.wait()
             log.close()
+            state["degraded"] = bool(
+                state.get("asr_errors") or state.get("skipped_intervals")
+            )
             self.store.put("stream", state["id"], state)
 
     def _analyze(self, state, segment, start, end):
@@ -225,18 +233,38 @@ class VideoMemory:
             timeout=20,
         )
         if audio.returncode == 0 and not self.engine.foreground.is_set():
-            text = self.engine.backend.transcribe(wav)
-            if text and text != "[BLANK_AUDIO]":
-                self.engine.observe(
-                    text,
-                    stream=state["id"],
-                    start=start,
-                    end=end,
-                    source=str(segment),
-                    modality="audio",
-                    public_topic=state["public_topic_id"],
-                )
-            state["asr_frontier"] = end
+            try:
+                text = self.engine.backend.transcribe(wav)
+                if text and text != "[BLANK_AUDIO]":
+                    self.engine.observe(
+                        text,
+                        stream=state["id"],
+                        start=start,
+                        end=end,
+                        source=str(segment),
+                        modality="audio",
+                        public_topic=state["public_topic_id"],
+                    )
+                state["asr_frontier"] = end
+            except (MemoryError, InterruptedError):
+                raise
+            except (
+                RuntimeError,
+                OSError,
+                ValueError,
+                TimeoutError,
+                subprocess.SubprocessError,
+            ) as exc:
+                # Never hide a resource breach or train from a failed transcript.
+                self.engine.monitor.check()
+                self._audio_error(state, start, end, str(exc))
+        elif audio.returncode and state.get("audio_available", True):
+            self._audio_error(
+                state,
+                start,
+                end,
+                "Audio extraction failed: " + str(audio.stderr or b"")[:300],
+            )
         if self.engine.foreground.is_set():
             state["skipped_intervals"].append([start, end])
             return
@@ -291,9 +319,27 @@ class VideoMemory:
                 "vision_frontier": state["vision_frontier"],
                 "lag_seconds": max(
                     0.0,
-                    state["capture_frontier"]
-                    - min(state["asr_frontier"], state["vision_frontier"]),
+                    (
+                        state["capture_frontier"]
+                        - min(state["asr_frontier"], state["vision_frontier"])
+                        if state.get("audio_available", True)
+                        else state["capture_frontier"] - state["vision_frontier"]
+                    ),
                 ),
+            },
+        )
+
+    def _audio_error(self, state, start, end, error):
+        entry = {"start": start, "end": end, "error": error}
+        state["asr_errors"] = (state.get("asr_errors", []) + [entry])[-128:]
+        state["degraded"] = True
+        self.store.event(
+            "video_asr_failed",
+            {
+                "stream_id": state["id"],
+                **entry,
+                "vision_continues": True,
+                "transcript_not_created": True,
             },
         )
 

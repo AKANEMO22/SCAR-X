@@ -6,6 +6,11 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Kiểm tra pipeline thực](PIPELINE_AUDIT_20261113.md): chat/tool/ảnh/persistence
+đã chạy; sửa chọn ảnh đầu/cuối và faultisolationASR. Video21s mất31,66s,
+ASRVi còn yếu; chưa đạt real-time/lifelongquality. TabDebug có đánh dấu coverage
+chưa đủ. Lượt idle bị liveHermes preempt được ghi riêng, không gọi model tự học giỏi.
+
 [Benchmark context16K/24K/32K](CONTEXT_BENCHMARK_20261113.md): cùng6bài đều2/6,
 chưa tăng context. Ngân sách vận hành mới **4,5GB**, theo
 [amendment](../../experiments/hybrid-v1-resource-amendment-4_5gb.md); receipts4GB giữ nguyên.
