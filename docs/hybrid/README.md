@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Benchmark context16K/24K/32K](CONTEXT_BENCHMARK_20261113.md): cùng6bài đều2/6,
+chưa tăng context. Ngân sách vận hành mới **4,5GB**, theo
+[amendment](../../experiments/hybrid-v1-resource-amendment-4_5gb.md); receipts4GB giữ nguyên.
+
 [Context, tự xem lại và đối chứng online](CONTEXT_REVIEW_AND_ONLINE_BENCHMARK.md):
 reviewqueue sau lượt thật, trạng thái/blocker trongDebug, đọc nhật kýSSD phân
 trang; không gọi review tự sinh là nhãn đúng hoặc weightlearning đã thành công.
@@ -108,7 +112,7 @@ khi gateway đã dừng để phục hồi cả database/WAL và nguồn media.
 | `local/hybrid-v1` | Private weights, binaries, DB, source copies, per-install backups |
 | `runs/*hybrid*` | Immutable engineering/reference/audit receipts, including failed attempts |
 
-Trần4,000,000,000byte bao gồm gateway/worker/capture/Hermes, cộng sharedGPU theo
+Trần4,500,000,000byte, ngưỡng nền4,250,000,000byte, bao gồm gateway/worker/capture/Hermes, cộng sharedGPU theo
 PDH một cách bảo thủ (có thể double-count nếu không chứng minh được cùng trang).
 WindowsJob áp aggregateprivatecommit lên worker tree; RSS được lấy mẫu50ms,
 sharedGPU2s. Đây không phải hardphysical-RAM guarantee: vi phạm đã được ghi lại

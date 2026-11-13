@@ -1,0 +1,182 @@
+{
+  "scope": "Pre-existing live 16K failure before benchmark, not an arm result",
+  "id": 1437,
+  "created": 1794580728.0327277,
+  "payload": {
+    "resources": {
+      "rss_bytes": 3985289216,
+      "private_commit_bytes": 2824183808,
+      "peak_rss_bytes": 3985289216,
+      "peak_private_commit_bytes": 2906415104,
+      "limit_bytes": 4000000000,
+      "exceeded": true,
+      "processes": [
+        {
+          "pid": 25924,
+          "name": "python.exe",
+          "rss_bytes": 67358720,
+          "private_commit_bytes": 49598464
+        },
+        {
+          "pid": 33100,
+          "name": "llama-server.exe",
+          "rss_bytes": 2224320512,
+          "private_commit_bytes": 1264418816
+        },
+        {
+          "pid": 23508,
+          "name": "conhost.exe",
+          "rss_bytes": 9486336,
+          "private_commit_bytes": 1908736
+        },
+        {
+          "pid": 35648,
+          "name": "Hermes.exe",
+          "rss_bytes": 171954176,
+          "private_commit_bytes": 148086784
+        },
+        {
+          "pid": 33460,
+          "name": "Hermes.exe",
+          "rss_bytes": 199950336,
+          "private_commit_bytes": 347713536
+        },
+        {
+          "pid": 34300,
+          "name": "Hermes.exe",
+          "rss_bytes": 57344000,
+          "private_commit_bytes": 13873152
+        },
+        {
+          "pid": 24556,
+          "name": "Hermes.exe",
+          "rss_bytes": 459862016,
+          "private_commit_bytes": 410406912
+        },
+        {
+          "pid": 20472,
+          "name": "conhost.exe",
+          "rss_bytes": 9338880,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 25680,
+          "name": "powershell.exe",
+          "rss_bytes": 48107520,
+          "private_commit_bytes": 58568704
+        },
+        {
+          "pid": 35784,
+          "name": "Hermes.exe",
+          "rss_bytes": 110575616,
+          "private_commit_bytes": 11276288
+        },
+        {
+          "pid": 29524,
+          "name": "conhost.exe",
+          "rss_bytes": 10174464,
+          "private_commit_bytes": 1949696
+        },
+        {
+          "pid": 27532,
+          "name": "powershell.exe",
+          "rss_bytes": 76705792,
+          "private_commit_bytes": 58150912
+        },
+        {
+          "pid": 21632,
+          "name": "python.exe",
+          "rss_bytes": 31522816,
+          "private_commit_bytes": 20951040
+        },
+        {
+          "pid": 37632,
+          "name": "hermes.exe",
+          "rss_bytes": 8663040,
+          "private_commit_bytes": 1662976
+        },
+        {
+          "pid": 16248,
+          "name": "git.exe",
+          "rss_bytes": 9244672,
+          "private_commit_bytes": 2129920
+        },
+        {
+          "pid": 18996,
+          "name": "git.exe",
+          "rss_bytes": 9244672,
+          "private_commit_bytes": 2117632
+        },
+        {
+          "pid": 25640,
+          "name": "conhost.exe",
+          "rss_bytes": 7540736,
+          "private_commit_bytes": 1261568
+        },
+        {
+          "pid": 26188,
+          "name": "conhost.exe",
+          "rss_bytes": 7544832,
+          "private_commit_bytes": 1277952
+        },
+        {
+          "pid": 35900,
+          "name": "git.exe",
+          "rss_bytes": 8052736,
+          "private_commit_bytes": 2068480
+        },
+        {
+          "pid": 26844,
+          "name": "conhost.exe",
+          "rss_bytes": 7712768,
+          "private_commit_bytes": 1286144
+        },
+        {
+          "pid": 24492,
+          "name": "python.exe",
+          "rss_bytes": 19738624,
+          "private_commit_bytes": 10964992
+        },
+        {
+          "pid": 30232,
+          "name": "conhost.exe",
+          "rss_bytes": 9584640,
+          "private_commit_bytes": 1835008
+        },
+        {
+          "pid": 24524,
+          "name": "hermes.exe",
+          "rss_bytes": 8003584,
+          "private_commit_bytes": 1622016
+        },
+        {
+          "pid": 27876,
+          "name": "conhost.exe",
+          "rss_bytes": 8732672,
+          "private_commit_bytes": 1847296
+        },
+        {
+          "pid": 36068,
+          "name": "python.exe",
+          "rss_bytes": 404525056,
+          "private_commit_bytes": 407257088
+        }
+      ],
+      "included_client_pids": [
+        24524,
+        35648
+      ],
+      "gpu_shared": {
+        "available": true,
+        "bytes": 45817856,
+        "sampling_seconds": 2,
+        "error": null,
+        "deduplication": "conservative addition to summed RSS; possible shared-page double count"
+      },
+      "conservative_ram_bytes": 4031107072,
+      "peak_conservative_ram_bytes": 4031107072,
+      "accounting": "Conservative summed RSS plus private commit, both gated; file-backed pages in RSS; no GPU/offload",
+      "sampling_seconds": 0.05
+    }
+  }
+}

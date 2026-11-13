@@ -794,7 +794,7 @@ def serve(directory, port=8775):
                             "local_synaptic_learning": True,
                             "proactive_questions": True,
                             "policy_qualified": False,
-                            "ram_limit_bytes": 4_000_000_000,
+                            "ram_limit_bytes": gateway.config.ram_limit,
                         }
                     )
                 if parsed.path == "/v1/learning/feed":

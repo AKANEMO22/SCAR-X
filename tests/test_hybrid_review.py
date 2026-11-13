@@ -89,7 +89,7 @@ def test_review_respects_priority_pause_quiet_and_resource_budget(engine, reason
     else:
         engine.monitor.sample = lambda: {
             "rss_bytes": 30_000_000,
-            "conservative_ram_bytes": 3_900_000_000,
+            "conservative_ram_bytes": engine.config.soft_ram_limit + 1,
         }
     assert engine.review_once() is None
     assert not engine.backend.calls and engine.state["review"]["pending"] == ["a"]

@@ -117,7 +117,7 @@ function Panel({ ctx }) {
           stat(
             "RAM toàn hệ",
             s?.resources
-              ? `${(s.resources.rss_bytes / 1e6).toFixed(0)} / 4000 MB`
+              ? `${((s.resources.conservative_ram_bytes ?? s.resources.rss_bytes) / 1e6).toFixed(0)} / ${(s.resources.limit_bytes / 1e6).toFixed(0)} MB`
               : "Đang kết nối",
           ),
           stat(

@@ -1,0 +1,106 @@
+{
+  "integrity_issues": [],
+  "arms": [
+    {
+      "context": 16384,
+      "status": "COMPLETED",
+      "raw_arm_status": "COMPLETED",
+      "common_complete": 6,
+      "common_required": 6,
+      "common_correct": 2,
+      "extra_length_correct": 0,
+      "completed": 6,
+      "peak_accounted_bytes": 3785834496,
+      "median_common_ttft_seconds": 0.41449999999895226,
+      "median_prefill_tokens_s": 209.59633545234942,
+      "median_decode_tokens_s": 26.366062818930118,
+      "scores": {
+        "short-vi-revision": 1,
+        "short-en-math": 0,
+        "short-code": 0,
+        "short-unanswerable": 1,
+        "long-12000-relation": 0,
+        "long-12000-temporal": 0
+      },
+      "registered_conditions": {
+        "all_common_complete": true,
+        "baseline_common_complete": true,
+        "resource_safe_with_150mb_reserve": true,
+        "no_common_accuracy_regression": true,
+        "extra_length_benefit": false,
+        "common_latency_at_most_1_25x": true,
+        "baseline_no_ram_breach": true,
+        "integrity": true
+      },
+      "eligible_for_increase": false
+    },
+    {
+      "context": 24576,
+      "status": "TIMEOUT",
+      "raw_arm_status": "COMPLETED",
+      "common_complete": 6,
+      "common_required": 6,
+      "common_correct": 2,
+      "extra_length_correct": 0,
+      "completed": 6,
+      "peak_accounted_bytes": 3874160640,
+      "median_common_ttft_seconds": 0.4530000000013388,
+      "median_prefill_tokens_s": 174.35171749880936,
+      "median_decode_tokens_s": 23.117166578964515,
+      "scores": {
+        "short-vi-revision": 1,
+        "short-en-math": 0,
+        "short-code": 0,
+        "short-unanswerable": 1,
+        "long-12000-relation": 0,
+        "long-12000-temporal": 0
+      },
+      "registered_conditions": {
+        "all_common_complete": true,
+        "baseline_common_complete": true,
+        "resource_safe_with_150mb_reserve": false,
+        "no_common_accuracy_regression": true,
+        "extra_length_benefit": false,
+        "common_latency_at_most_1_25x": true,
+        "baseline_no_ram_breach": true,
+        "integrity": true
+      },
+      "eligible_for_increase": false
+    },
+    {
+      "context": 32768,
+      "status": "TIMEOUT",
+      "raw_arm_status": "COMPLETED",
+      "common_complete": 6,
+      "common_required": 6,
+      "common_correct": 2,
+      "extra_length_correct": 0,
+      "completed": 6,
+      "peak_accounted_bytes": 3969126400,
+      "median_common_ttft_seconds": 0.38249999999789,
+      "median_prefill_tokens_s": 216.582765743042,
+      "median_decode_tokens_s": 27.92794177906357,
+      "scores": {
+        "short-vi-revision": 1,
+        "short-en-math": 0,
+        "short-code": 0,
+        "short-unanswerable": 1,
+        "long-12000-relation": 0,
+        "long-12000-temporal": 0
+      },
+      "registered_conditions": {
+        "all_common_complete": true,
+        "baseline_common_complete": true,
+        "resource_safe_with_150mb_reserve": false,
+        "no_common_accuracy_regression": true,
+        "extra_length_benefit": false,
+        "common_latency_at_most_1_25x": true,
+        "baseline_no_ram_breach": true,
+        "integrity": true
+      },
+      "eligible_for_increase": false
+    }
+  ],
+  "decision": "DO_NOT_INCREASE",
+  "scope": "Tiny synthetic engineering DEV pilot; no general-capability, video or retention inference. No training. Missing tasks not imputed as completed scores."
+}

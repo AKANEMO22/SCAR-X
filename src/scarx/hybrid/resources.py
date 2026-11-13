@@ -6,10 +6,11 @@ import threading
 import time
 import psutil
 from .gpu_memory import SharedGPU
+from .config import MAX_RAM_BYTES
 
 
 class ResourceMonitor:
-    def __init__(self, limit=4_000_000_000, extra_pids=(), include_hermes=False):
+    def __init__(self, limit=MAX_RAM_BYTES, extra_pids=(), include_hermes=False):
         self.limit = limit
         self.root = psutil.Process()
         self.extra_pids = set(extra_pids)
@@ -133,7 +134,7 @@ class ResourceMonitor:
         return result
 
 
-def windows_tree_commit_limit(limit=4_000_000_000):
+def windows_tree_commit_limit(limit=MAX_RAM_BYTES):
     if os.name != "nt":
         return {
             "enforced": False,

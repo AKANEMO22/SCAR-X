@@ -1,5 +1,9 @@
 # Context, tự xem lại và đối chứng model online
 
+**Cập nhật sau lượt đo:** [benchmark16K/24K/32K](CONTEXT_BENCHMARK_20261113.md)
+đã chạy ởcap4GB, đều2/6trên6bài chung; không tăng context. Sau đó người dùng
+duyệt cap4,5GB cho vận hành mới, soft4,25GB; không sửa kết quả cũ bên dưới.
+
 Audit13/11/2026 trên nhánhHybrid. Người dùng muốn benchmarkSCAR-X hoàn thiện
 với modelonline trong tương lai, không yêu cầu giả định bằng điểm trước khi đo.
 

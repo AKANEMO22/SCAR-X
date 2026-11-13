@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Phê duyệt mới nhất13/11:** trần vận hành nhánhHybrid **4.500.000.000byte**,
+soft idle4.250.000.000byte; context mặc định16.384token giữ nguyên. Đây là ngân
+sách cho lượt mới, không sửa kết quả/gates4GB của benchmarkcontext đã hoàn tất.
+[Amendment4,5GB](../experiments/hybrid-v1-resource-amendment-4_5gb.md),
+[benchmark16K/24K/32K](hybrid/CONTEXT_BENCHMARK_20261113.md).
+Các đoạn3GB/4GB bên dưới mô tả phê duyệt và phép đo trước đó.
+
 **Sửa lifecycleHybrid13/11:** thêm queuexem lại trải nghiệm thực sau30squiet,
 boundedJSONschema, snapshotmigration và replay có nguồn khi không cóopengoal;
 không đổiALIFrule/precision/scientificgates.16,384tokens vẫn là buffer thực dưới

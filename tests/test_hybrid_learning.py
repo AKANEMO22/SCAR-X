@@ -34,9 +34,17 @@ def engine(tmp_path):
 
 
 def test_budget_amendment():
-    assert HybridConfig().ram_limit == 4_000_000_000
+    assert HybridConfig().ram_limit == 4_500_000_000
+    assert HybridConfig().soft_ram_limit == 4_250_000_000
+    assert HybridConfig().context_tokens == 16384
+    assert (
+        HybridConfig(ram_limit=4_000_000_000, soft_ram_limit=3_850_000_000).ram_limit
+        == 4_000_000_000
+    )
     with pytest.raises(ValueError):
-        HybridConfig(ram_limit=4_000_000_001)
+        HybridConfig(ram_limit=4_500_000_001)
+    with pytest.raises(ValueError):
+        HybridConfig(soft_ram_limit=4_500_000_000)
 
 
 def test_checkpoint_exact_cold_next_update():

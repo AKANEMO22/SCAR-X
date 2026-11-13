@@ -1,11 +1,14 @@
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+MAX_RAM_BYTES = 4_500_000_000
+DEFAULT_SOFT_RAM_BYTES = 4_250_000_000
+
 
 @dataclass(frozen=True)
 class HybridConfig:
-    ram_limit: int = 4_000_000_000
-    soft_ram_limit: int = 3_850_000_000
+    ram_limit: int = MAX_RAM_BYTES
+    soft_ram_limit: int = DEFAULT_SOFT_RAM_BYTES
     hidden: int = 128
     seed: int = 260113
     search_per_hour: int = 12
@@ -24,9 +27,9 @@ class HybridConfig:
     asr_revision: str = "e37978b90ca9030d5170a5c07aadb050351a65bb"
 
     def __post_init__(self):
-        if not 0 < self.soft_ram_limit < self.ram_limit <= 4_000_000_000:
+        if not 0 < self.soft_ram_limit < self.ram_limit <= MAX_RAM_BYTES:
             raise ValueError(
-                "Whole-system RAM budget must not exceed 4,000,000,000 bytes"
+                "Whole-system RAM budget must not exceed 4,500,000,000 bytes"
             )
         if self.hidden != 128 or not 128 <= self.context_tokens <= 16384:
             raise ValueError("Registered initial H128 / bounded working buffer")

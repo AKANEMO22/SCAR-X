@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## Context benchmark và amendment4,5GB13/11
+
+Đã đo16K/24K/32K bằng cùng nativeVLM/precision; mỗi mức đúng2/6bài chung,
+đầu ra giống nhau. Peak toàn hệ lần lượt3,786/3,874/3,969GB tại cap4GB;
+bài22Ktimeout,30Kchưa chạy ở32K do tổng20phút. Không tăng context mặc định.
+Giữ originalreceipt và sửa phân loại timeout ở auditor riêng, không sửa raw.
+Người dùng sau đó nâng cap cho lượt mới lên4,5GB; soft4,25GB, context16K.
+Đã áp vào service/livecapabilities/Debug, backendreadytrue; receipt8c8a99.
+60Pythonchecks gồm nativeparity và4Nodecomposerchecks qua; weights/ALIFrule giữ nguyên.
+Không thayprecision/ALIFrule/weights, không mở training hoặc chạm activeR13.
+[Báo cáo và dữ liệu](hybrid/CONTEXT_BENCHMARK_20261113.md).
+
 ## Hermes compact display13/11
 
 SửaadapterDesktoplấy nhầmrawhistory: renderingresume/activate nay yêu cầu
