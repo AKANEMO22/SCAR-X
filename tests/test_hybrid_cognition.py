@@ -244,6 +244,16 @@ def test_explicit_awake_can_load_immediately_even_with_learning_paused(engine):
     assert engine.cognition.choose_work(time.time()) == "waking"
 
 
+def test_gpu_auto_rest_keeps_resident_but_explicit_sleep_releases(engine):
+    engine.config = HybridConfig(execution_mode="gpu")
+    assert not engine.cognition.release_for_rest()
+    engine.cognition.command("sleep")
+    assert engine.cognition.release_for_rest()
+    engine.cognition.command("auto")
+    engine.config = HybridConfig(execution_mode="cpu")
+    assert engine.cognition.release_for_rest()
+
+
 def test_failed_foreground_event_does_not_leak_lease(engine, monkeypatch):
     def fail(*args, **kwargs):
         raise OSError("audit write failure")

@@ -89,6 +89,11 @@ class HybridEngine:
             )
             return identifier
 
+    def _decode_snapshot(self, payload):
+        return LocalALIF.loads(
+            payload, device=self.model.device, gpu_device=self.config.gpu_device
+        )
+
     def load(self, identifier):
         with self.lock:
             if (
@@ -99,7 +104,7 @@ class HybridEngine:
                 raise RuntimeError(
                     "Rollback waits until the foreground answer has finished"
                 )
-            model, state = LocalALIF.loads(self.store.snapshot(identifier))
+            model, state = self._decode_snapshot(self.store.snapshot(identifier))
             state = upgrade_controller(state)
             required = set(self.state)
             if (
@@ -577,11 +582,11 @@ class HybridEngine:
         previous = transaction_snapshot or self.model.dumps(self.state)
         if self.foreground.is_set() or self.cognition.request_pending.is_set():
             if transaction_snapshot:
-                self.model, self.state = LocalALIF.loads(previous)
+                self.model, self.state = self._decode_snapshot(previous)
             raise InterruptedError(
                 "Synaptic micro-update deferred for foreground request"
             )
-        baseline, _ = LocalALIF.loads(previous)
+        baseline, _ = self._decode_snapshot(previous)
 
         def score(model, probe):
             return (
@@ -599,12 +604,12 @@ class HybridEngine:
                 evidence=evidence,
                 remember=remember,
             )
-            candidate, _ = LocalALIF.loads(self.model.dumps())
+            candidate, _ = self._decode_snapshot(self.model.dumps())
             if any(not score(candidate, p) for p in correct):
                 raise ValueError("Previously correct past-experience probe regressed")
             self.monitor.check()
         except Exception as exc:
-            self.model, _ = LocalALIF.loads(previous)
+            self.model, _ = self._decode_snapshot(previous)
             result = {
                 "accepted": False,
                 "rolled_back": True,
@@ -629,7 +634,7 @@ class HybridEngine:
                 update_controller(result)
             self.save(learning_event=result)
         except Exception as exc:
-            self.model, self.state = LocalALIF.loads(previous)
+            self.model, self.state = self._decode_snapshot(previous)
             return {
                 "accepted": False,
                 "rolled_back": True,
@@ -1129,11 +1134,12 @@ class HybridEngine:
                 "neural": {
                     "hidden": 128,
                     "active": (
-                        int(np.count_nonzero(self.model.core.spikes))
+                        self.model.active_spikes()
                         if time.time() - self.model.last_step_epoch < 1.5
                         else 0
                     ),
-                    "active_last_step": int(np.count_nonzero(self.model.core.spikes)),
+                    "active_last_step": self.model.active_spikes(),
+                    "execution_device": self.model.device,
                     "last_step_epoch": self.model.last_step_epoch or None,
                     "ticks": self.model.ticks,
                     "updates": self.model.updates,

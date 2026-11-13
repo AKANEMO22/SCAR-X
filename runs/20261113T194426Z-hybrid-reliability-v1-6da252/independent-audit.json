@@ -1,0 +1,261 @@
+{
+  "run_id": "20261113T194426Z-hybrid-reliability-v1-6da252",
+  "source_bundle_exact": true,
+  "scope": "software endurance and routing; not lifelong or LoRA qualification",
+  "receipts": {
+    "soak": {
+      "sha256": "0b2b7b2b489555a02ee5b2b47b1cbce960657c7118fd4c3775b491dda69bb97a",
+      "failures": [],
+      "seconds": 2076.4850000000006,
+      "gateway_stopped": true,
+      "placement": {
+        "VLM_vision": "gpu",
+        "ASR": "gpu",
+        "ALIF_forward_learning": "gpu",
+        "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+      },
+      "all_cases_executed": true,
+      "agent_processes_completed": true,
+      "required_cases_present": true
+    },
+    "cpu": {
+      "sha256": "9c507adbfbb0dc1be84151940cac820fa7a11f6da88f54e3299feec89824b292",
+      "failures": [],
+      "seconds": 17.98399999999674,
+      "gateway_stopped": true,
+      "placement": {
+        "VLM_vision": "cpu",
+        "ASR": "cpu",
+        "ALIF_forward_learning": "cpu",
+        "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+      },
+      "all_cases_executed": true,
+      "agent_processes_completed": true,
+      "required_cases_present": true
+    },
+    "resume": {
+      "sha256": "19743d9462b1f3c37c0b3a1aad5065569cc4d4ab69a20a523ab073fced494ccd",
+      "failures": [],
+      "seconds": 16.5,
+      "gateway_stopped": true,
+      "placement": {
+        "VLM_vision": "gpu",
+        "ASR": "gpu",
+        "ALIF_forward_learning": "gpu",
+        "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+      },
+      "all_cases_executed": true,
+      "agent_processes_completed": true,
+      "required_cases_present": true
+    }
+  },
+  "quality": {
+    "simple_math_outputs": [
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      },
+      {
+        "answer": "15",
+        "correct": true
+      }
+    ],
+    "workspace_fixture_results": [
+      {
+        "job": "workspace-en",
+        "local_read_used": true,
+        "web_used": false,
+        "tool_calls": [
+          "terminal",
+          "read_file",
+          "read_file"
+        ],
+        "expected_terms_present": {
+          "9237": true
+        },
+        "answer": "**Purpose:** A simple Python script that sums inventory stock counts. It reads a configuration file (port: 9237) and iterates through items in a list, summing their `count` values.",
+        "seconds": 13.21028660000593,
+        "completed": true
+      },
+      {
+        "job": "workspace-short",
+        "local_read_used": true,
+        "web_used": false,
+        "tool_calls": [
+          "terminal",
+          "read_file",
+          "read_file",
+          "search_files",
+          "read_file",
+          "search_files",
+          "search_files",
+          "search_files",
+          "search_files",
+          "search_files"
+        ],
+        "expected_terms_present": {
+          "9237": false
+        },
+        "answer": "Tôi đã đọc và phân tích folder này:\n\n**Folder:** `fixture-project` (trong workspace của Scar-X Hybrid)\n\n**Các file có sẵn:**\n- `README.md`: Mô tả đơn giản về ứng dụng \"Jade inventory\" - một chương trình Python đơn giản chỉ tính tổng số lượng hàng trong danh sách.\n- `main.py`: Hàm Python đơn giản `total_stock(items)` - dùng `sum()` để tính tổng của các giá trị trong danh sách.\n\n**Tóm tắt:** Đây là một dự án test/fixture cho project Scar-X Hybrid, với một ứng dụng Python đơn giản có thể chạy bằng Python 3.14.9.",
+        "seconds": 43.242398099995626,
+        "completed": true
+      },
+      {
+        "job": "workspace-vi",
+        "local_read_used": true,
+        "web_used": false,
+        "tool_calls": [
+          "terminal",
+          "read_file",
+          "read_file"
+        ],
+        "expected_terms_present": {
+          "9237": false
+        },
+        "answer": "Workspace này là một dự án Python đơn giản với hai file:\n\n**README.md**: Chỉ định tên project là \"Jade inventory\" và mô tả là \"This local program sums inventory stock counts.\" (Program này tổng hợp số lượng hàng tồn kho).\n\n**main.py**: Hàm đơn giản `total_stock(items)` dùng `sum()` để tính tổng của các giá trị trong danh sách.\n\nKhông có file nào khác được tìm thấy trong workspace này.",
+        "seconds": 13.44043519999832,
+        "completed": true
+      }
+    ],
+    "compression": {
+      "before_messages": 54,
+      "after_messages": 14,
+      "before_characters": 71056,
+      "after_characters": 46231,
+      "history_actually_reduced": true,
+      "compression_completed_without_64K_error": true,
+      "facts_retained_in_answer": false,
+      "answer": "{\"code\":\"JADE-472\",\"port\":8123}",
+      "seconds": 46.384101899995585,
+      "latest_correct_value_still_in_tail": true
+    },
+    "lifelong_retention": "not measured; unchanged20-stage scientific gates",
+    "automatic_LoRA": "not qualified, disabled",
+    "hidden_advantage": "not measured by device parity or replay counts"
+  },
+  "metrics": {
+    "mixed_elapsed_seconds": 1800.0,
+    "mixed_requests": 45,
+    "TTFT_s": {
+      "median": 0.14100000000325963,
+      "p95": 0.20300000000133878
+    },
+    "total_response_s": {
+      "median": 0.3430000000007567,
+      "p95": 0.4498000000006868
+    },
+    "updates": 3,
+    "hidden_updates": 3,
+    "full_rollback_exact": true,
+    "resources": {
+      "peak_rss_bytes": 4913655808,
+      "peak_private_commit_bytes": 6980567040,
+      "limit_bytes": null,
+      "peak_gpu_dedicated_bytes": 2665725952,
+      "peak_conservative_ram_bytes": 5208375296
+    },
+    "GPU_ASR_s": 1.8439999999973224,
+    "cold_wake_TTFT_s": 1.514999999999418,
+    "CPU_ASR_s": 3.610000000000582,
+    "nvidia-soak": {
+      "samples": 10125,
+      "peak_utilization_percent": 96.0,
+      "peak_device_memory_MiB": 3700.0,
+      "scope": "whole Nvidia device; may include other applications; use owned-process PDH/backend evidence for placement"
+    },
+    "nvidia-cpu": {
+      "samples": 28,
+      "peak_utilization_percent": 0.0,
+      "peak_device_memory_MiB": 977.0,
+      "scope": "whole Nvidia device; may include other applications; use owned-process PDH/backend evidence for placement"
+    },
+    "nvidia-resume": {
+      "samples": 10,
+      "peak_utilization_percent": 86.0,
+      "peak_device_memory_MiB": 3046.0,
+      "scope": "whole Nvidia device; may include other applications; use owned-process PDH/backend evidence for placement"
+    }
+  },
+  "thirty_minutes_completed": true,
+  "engineering_endurance_pass": true
+}

@@ -1,5 +1,7 @@
 # SCAR-X working rules
 
+- Latest mode amendment14/11: GPUmode routes VLM/vision, ASR and ALIF forward/local updates to CUDA; CPUmode uses no discrete GPU for neural compute (iGPU remains optional/unqualified). Host I/O/SQLite/tokenization/serialization/RNG stay CPU. Preserve native precision/local rules; GPU auto-rest keeps VLM warm, explicit sleep releases it. Device parity is not learned-skill/retention qualification. See docs/hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md.
+
 - Latest GPU amendment2026-11-13: user explicitly requested cpu/gpu modes and removed the SCAR-X RAM/private-commit cap for GPU mode only. Keep CPU4.5GB and immutable historical failures. GPU mode records RAM/shared/dedicatedVRAM separately; never hide physical OOM or lower native precision. Use native Windows SearXNG; user rejected Docker. Adapter teaching/data task remains pending behind search/GPU/speed priorities.
 
 - Latest user approval2026-11-13 raises only the hybrid whole-system maximum to4,500,000,000decimalbytes, soft idle threshold4,250,000,000bytes. Context stays16,384 unless separately qualified. The completed context benchmark remains a4GB historical run; do not reinterpret it as a4.5GB PASS or change its frozen protocol/source/results.

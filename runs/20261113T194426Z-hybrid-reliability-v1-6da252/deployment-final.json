@@ -1,0 +1,90 @@
+{
+  "captured": 1794603412.3681855,
+  "ready": true,
+  "failure": null,
+  "placement": {
+    "VLM_vision": "gpu",
+    "ASR": "gpu",
+    "ALIF_forward_learning": "gpu",
+    "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+  },
+  "cognition": {
+    "phase": "resting",
+    "reason": "sleep requested or no actionable verified work",
+    "since": 1794603162.2444024,
+    "foreground_requests": 0,
+    "VLM_resident": true,
+    "capture_active": false,
+    "state": {
+      "format": "scarx-cognition-v1",
+      "intent": "auto",
+      "last_activity": 1794602936.1690354,
+      "last_quantum": 1794603150.6674418,
+      "next_quantum": 1794603161.215442,
+      "next_replay": 1794595680.5923753,
+      "replay_revision": 1,
+      "replay_used": 4,
+      "cycles": 93,
+      "reflections": 36,
+      "consolidations": 4,
+      "explorations": 52,
+      "wakeups": 149,
+      "rests": 4,
+      "last_outcome": {
+        "kind": "verified_replay",
+        "accepted": true,
+        "source": {
+          "kind": "human_feedback",
+          "id": "ab693b50b9bb49debaa4d98393d0486e"
+        }
+      }
+    },
+    "general_ACT": "not implemented/qualified",
+    "LoRA_auto": "not qualified; disabled"
+  },
+  "neural": {
+    "hidden": 128,
+    "active": 0,
+    "active_last_step": 75,
+    "execution_device": "gpu",
+    "last_step_epoch": 1794602991.3816168,
+    "ticks": 832,
+    "updates": 5,
+    "hidden_updates": 5,
+    "state_bytes": 320672,
+    "policy_status": "experimental_unqualified"
+  },
+  "installed_plugin_exact": true,
+  "GUI_verified": "real Hermes native window; VLM/ASR/ALIF GPU, Backend ready",
+  "config": {
+    "ram_limit": 4500000000,
+    "soft_ram_limit": 4250000000,
+    "execution_mode": "gpu",
+    "gpu_device": 0,
+    "searxng_enabled": true,
+    "hidden": 128,
+    "seed": 260113,
+    "search_per_hour": 12,
+    "conversations_per_hour": 3,
+    "max_attempts": 2,
+    "idle_cpu_fraction": 0.1,
+    "presence_seconds": 600,
+    "review_quiet_seconds": 30,
+    "review_interval_seconds": 60,
+    "consolidation_after_seconds": 60,
+    "consolidation_interval_seconds": 60,
+    "sleep_replay_budget": 4,
+    "rest_after_seconds": 180,
+    "release_vlm_on_rest": true,
+    "gpu_keep_warm": true,
+    "archive_bytes": 10000000000,
+    "archive_seconds": 604800,
+    "context_tokens": 16384,
+    "frame_interval": 8.0,
+    "segment_seconds": 10,
+    "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "asr_revision": "e37978b90ca9030d5170a5c07aadb050351a65bb",
+    "effective_ram_limit": null,
+    "effective_soft_ram_limit": null
+  }
+}

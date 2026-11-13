@@ -77,6 +77,41 @@ class LocalALIF:
         self.replay_seen = 0
         self.replay = []
         self.reward_mean = 0.0
+        self.device = "cpu"
+        self.gpu_device = 0
+        self.xp = np
+
+    def to_device(self, device, gpu_device=0):
+        if device not in ("cpu", "gpu"):
+            raise ValueError("Expected cpu/gpu learner device")
+        if device == self.device:
+            if device == "gpu" and gpu_device != self.gpu_device:
+                raise ValueError("Use checkpoint reload to change CUDA device")
+            return self
+        if device == "cpu":
+            payload = self.dumps()
+            restored, _ = type(self).loads(payload)
+            self.__dict__.update(restored.__dict__)
+            return self
+        from .cuda_alif import CudaSpikingCore, cupy_backend
+
+        cp = cupy_backend()
+
+        cp.cuda.Device(gpu_device).use()
+        core = CudaSpikingCore(self.core, cp)
+        names = [k for k in self.arrays() if not k.startswith("core.")]
+        for name in names:
+            setattr(self, name, cp.asarray(getattr(self, name)))
+        self.core, self.xp = core, cp
+        self.device, self.gpu_device = "gpu", gpu_device
+        cp.cuda.get_current_stream().synchronize()
+        return self
+
+    def host(self, value):
+        return self.xp.asnumpy(value) if self.device == "gpu" else value
+
+    def active_spikes(self):
+        return int(self.xp.count_nonzero(self.core.spikes))
 
     def arrays(self):
         return {"core." + k: v for k, v in self.core.arrays().items()} | {
@@ -95,9 +130,10 @@ class LocalALIF:
         }
 
     def step(self, row, track=True):
+        xp = self.xp
         c = self.core.config
-        row = np.asarray(row, np.float32)
-        if row.shape != (64,) or not np.isfinite(row).all():
+        row = xp.asarray(row, xp.float32)
+        if row.shape != (64,) or not xp.isfinite(row).all():
             raise ValueError("Invalid feature row")
         if track:
             old = self.core.spikes
@@ -105,11 +141,18 @@ class LocalALIF:
             u = (
                 c.leak * self.core.voltage
                 + self.core.w_in @ row
-                + np.sum(self.core.w_rec * old[self.core.indices], axis=1)
+                + xp.sum(self.core.w_rec * old[self.core.indices], axis=1)
             )
-            psi = spike_slope(u - theta)
-            pre = np.concatenate(
-                (np.broadcast_to(row, (128, 64)), old[self.core.indices]), axis=1
+            if self.device == "cpu":
+                psi = spike_slope(u - theta)
+            else:
+                raw_slope = (u - theta) / 0.4
+                probability = 1 / (1 + xp.exp(-xp.clip(raw_slope, -20, 20)))
+                psi = (
+                    probability * (1 - probability) / 0.4 * (xp.abs(raw_slope) < 20)
+                ).astype(xp.float32)
+            pre = xp.concatenate(
+                (xp.broadcast_to(row, (128, 64)), old[self.core.indices]), axis=1
             )
             u_e = c.leak * self.e_v + pre
             a_old = self.e_a.copy()
@@ -122,18 +165,21 @@ class LocalALIF:
                 - self.core.spikes[:, None] * c.adaptation_strength * a_old
             )
             self.e_a[:] = c.adaptation_decay * a_old + z_e
-            z_e[:, 64:] *= 1.0 if np.max(np.abs(row)) > 0.6 else 0.15
+            z_e[:, 64:] *= 1.0 if xp.max(xp.abs(row)) > 0.6 else 0.15
             self.e_f[:] = self.gamma * self.e_f + (1.0 - self.gamma) * z_e
         self.ticks += 1
         self.last_step_epoch = time.time()
 
-    def forward(self, sequence, head="action", track=False):
-        seq = np.asarray(sequence, np.float32)
+    def _forward_native(self, sequence, head="action", track=False):
+        xp = self.xp
+        if self.device == "gpu":
+            xp.cuda.Device(self.gpu_device).use()
+        seq = xp.asarray(sequence, xp.float32)
         if (
             seq.ndim != 2
             or seq.shape[1] != 64
             or not 1 <= len(seq) <= 256
-            or not np.isfinite(seq).all()
+            or not xp.isfinite(seq).all()
         ):
             raise ValueError("Invalid local sequence")
         if head not in ("action", "relevance"):
@@ -144,15 +190,18 @@ class LocalALIF:
         self.e_f.fill(0)
         for row in seq:
             self.step(row, track)
-        scale = np.maximum(np.sqrt(self.f_var), 0.05)
+        scale = xp.maximum(xp.sqrt(self.f_var), 0.05)
         raw = (self.core.features - self.f_mean) / scale
-        standardized = np.clip(raw, -5, 5)
-        indices = np.arange(2, 8) if head == "action" else np.arange(2)
+        standardized = xp.clip(raw, -5, 5)
+        indices = xp.arange(2, 8) if head == "action" else xp.arange(2)
         logits = self.core.w_out[indices] @ standardized + self.core.bias[indices]
         logits -= logits.max()
-        p = np.exp(logits)
+        p = xp.exp(logits)
         p /= p.sum()
-        return p.astype(np.float32), standardized, raw, scale, indices
+        return p.astype(xp.float32), standardized, raw, scale, indices
+
+    def forward(self, sequence, head="action", track=False):
+        return tuple(self.host(v) for v in self._forward_native(sequence, head, track))
 
     def decide(self, sequence, allowed):
         if not allowed or any(a not in ACTIONS for a in allowed):
@@ -188,10 +237,11 @@ class LocalALIF:
             )
         if not np.isfinite(reward) or not -1 <= reward <= 1:
             raise ValueError("Invalid reward")
-        p, f, raw, scale, indices = self.forward(sequence, head, track=True)
+        xp = self.xp
+        p, f, raw, scale, indices = self._forward_native(sequence, head, track=True)
         if type(target) is not int or not 0 <= target < len(indices):
             raise ValueError("Invalid action/label")
-        loss = -float(np.log(max(float(p[target]), 1e-12)))
+        loss = -float(xp.log(xp.maximum(p[target].astype(xp.float64), 1e-12)))
         before = {
             k: v.copy() for k, v in self.core.arrays().items() if k.startswith("w_")
         }
@@ -200,19 +250,19 @@ class LocalALIF:
             error[target] += 1.0
             error *= float(reward)
             # Pre-update readout feedback; no reverse traversal through recurrence.
-            signal = (self.core.w_out[indices].T @ error) * (np.abs(raw) < 5) / scale
-            self.core.w_out[indices] += np.clip(
+            signal = (self.core.w_out[indices].T @ error) * (xp.abs(raw) < 5) / scale
+            self.core.w_out[indices] += xp.clip(
                 0.04 * error[:, None] * f[None, :], -0.025, 0.025
             )
-            self.core.bias[indices] += np.clip(0.04 * error, -0.025, 0.025)
+            self.core.bias[indices] += xp.clip(0.04 * error, -0.025, 0.025)
             if self.mode in ("learned", "shuffled"):
                 if self.mode == "shuffled":
-                    signal = signal[self.signal_rng.permutation(128)]
+                    signal = signal[xp.asarray(self.signal_rng.permutation(128))]
                 direction = signal[:, None] * self.e_f
                 self.syn_trace[:] = 0.9 * self.syn_trace + 0.1 * direction
                 self.syn_energy[:] = 0.99 * self.syn_energy + 0.01 * direction**2
-                delta = np.clip(
-                    0.008 * self.syn_trace / (np.sqrt(self.syn_energy) + 1e-4),
+                delta = xp.clip(
+                    0.008 * self.syn_trace / (xp.sqrt(self.syn_energy) + 1e-4),
                     -0.01,
                     0.01,
                 )
@@ -220,12 +270,12 @@ class LocalALIF:
                 self.core.w_rec += delta[:, 64:]
                 self.hidden_updates += 1
             for name in ("w_in", "w_rec", "w_out", "bias"):
-                np.clip(
+                xp.clip(
                     getattr(self.core, name), -3.0, 3.0, out=getattr(self.core, name)
                 )
             self.updates += 1
             self.core.updates += 1
-        if not all(np.isfinite(a).all() for a in self.arrays().values()):
+        if not all(xp.isfinite(a).all() for a in self.arrays().values()):
             raise FloatingPointError("Nonfinite local update")
         # Statistics use only the currently observed experience, never future calibration.
         if self.mode != "frozen":
@@ -253,7 +303,7 @@ class LocalALIF:
             "updates": self.updates,
             "hidden_updates": self.hidden_updates,
             "weight_delta": {
-                k: float(np.linalg.norm(getattr(self.core, k) - v))
+                k: float(xp.linalg.norm(getattr(self.core, k) - v))
                 for k, v in before.items()
             },
             "accepted": True,
@@ -296,7 +346,7 @@ class LocalALIF:
             signal_rng=self.signal_rng.bit_generator.state,
             controller=controller or {},
         )
-        values = self.arrays() | {
+        values = {k: self.host(v) for k, v in self.arrays().items()} | {
             "metadata": np.frombuffer(
                 json.dumps(meta, allow_nan=False).encode(), dtype=np.uint8
             )
@@ -306,7 +356,7 @@ class LocalALIF:
         return output.getvalue()
 
     @classmethod
-    def loads(cls, payload):
+    def loads(cls, payload, device="cpu", gpu_device=0):
         if not isinstance(payload, bytes) or len(payload) > 16_000_000:
             raise ValueError("Snapshot byte bound")
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
@@ -403,4 +453,5 @@ class LocalALIF:
                 model.signal_rng.bit_generator.state = meta["signal_rng"]
             if not isinstance(meta["controller"], dict):
                 raise ValueError("Invalid controller state")
+            model.to_device(device, gpu_device)
             return model, meta["controller"]

@@ -1,5 +1,24 @@
 # Trạng thái SCAR-X
 
+## Workspace / compression / unifiedGPU14/11 — vận hành qua, chất lượng PIVOT
+
+Đã xác minh projectcwd đúng; desktop guard warn-only cho31toolcalls/22repeat
+emptyweb. Nay localSCARX có hardstop3no-progress,6web/turn,24APIiterations;
+filesystem eager, read-only runtime prelude có actor riêng. Native0.8B vẫn có
+lỗi chất lượng, không gọi scaffolding là learned skill. Aux64K được sửa đúng
+route16K; bỏ512summarycap, dùng native outputroom + existing redacted fallback.
+Compression54→14messages chạy được, hỏi lại còn sai port dù newvalue nằm ởtail.
+VLM/vision + FP32ASR + FP32ALIF chạyCUDA; CPUallneural peak3,971GB<4,5GB.
+Đủ1800s/45smallrequests,0mixedexceptions; warmTTFTmedian0,141s/p950,203s,
+coldwake1,515s; GPUhostpeak5,208GBuncapped. CPU/GPUcoldstate/rollback exact.
+128SCARX+64Hermes+4Nodechecks qua;3seed×20GPUupdates parity. H128forwardGPU
+3,407ms vsCPU0,197ms: không phải mọi việc nhỏ lênGPU đều nhanh hơn.
+Project scan được nhưng native0.8B còn repeat/rawXML/empty; overview4-result
+controller chỉ chặn và báo lỗi có nguồn, không fakeanalysis. Harnessspillover và
+fixtureAGENTSconfounds đã đính chính; fixture trung lập đọc9237đúng, compression
+trung lập vẫn chọn8123cũ. RuntimeGO khác semantic/lifelongPASS.
+LoRA vẫn NOTQUALIFIED/tắt. [Nguồn, các lỗi giữ lại và trạng thái](hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md).
+
 ## Wake / reflect / consolidate / rest14/11 — GO kỹ thuật
 
 Đã nối scheduler thật vào Hybrid/Hermes: chat preempts nền, xem lại sau quiet,

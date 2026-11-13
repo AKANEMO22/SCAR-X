@@ -181,6 +181,14 @@ class CognitiveLoop:
         process = getattr(self.engine.backend, "vlm", None)
         return bool(process is not None and process.poll() is None)
 
+    def release_for_rest(self):
+        config = self.engine.config
+        if self.data["intent"] == "sleep":
+            return True
+        if config.execution_mode == "gpu" and config.gpu_keep_warm:
+            return False
+        return config.release_vlm_on_rest
+
     def sleep_permitted(self):
         e = self.engine
         limit = e.config.effective_soft_ram_limit
@@ -342,7 +350,7 @@ class CognitiveLoop:
         result = None
         if work == "resting":
             if (
-                e.config.release_vlm_on_rest
+                self.release_for_rest()
                 and self.resident()
                 and hasattr(e.backend, "hibernate")
             ):
@@ -362,7 +370,7 @@ class CognitiveLoop:
             result = e.step()
         else:
             if (
-                e.config.release_vlm_on_rest
+                self.release_for_rest()
                 and self.resident()
                 and hasattr(e.backend, "hibernate")
             ):

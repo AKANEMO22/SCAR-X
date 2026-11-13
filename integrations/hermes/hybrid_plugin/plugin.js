@@ -40,6 +40,7 @@ function Panel({ ctx }) {
     [checkpoint, setCheckpoint] = useState(""),
     [archive, setArchive] = useState(null),
     cursor = useRef(0),
+    traceProcess = useRef(null),
     lastInteraction = useRef(Date.now());
   const query = useQuery({
       queryKey: [ID, "status"],
@@ -50,6 +51,14 @@ function Panel({ ctx }) {
     s = query.data;
   useEffect(() => {
     if (!s) return;
+    if (traceProcess.current !== null && traceProcess.current !== s.pid) {
+      cursor.current = 0;
+      setTrace([]);
+      setHistory([]);
+      traceProcess.current = s.pid;
+      return;
+    }
+    traceProcess.current = s.pid;
     let rows = s.events || [];
     if (rows.length) {
       cursor.current = rows.at(-1).id;
@@ -155,8 +164,11 @@ function Panel({ ctx }) {
           children: [
             jsx("h2", { children: COGNITIVE_LABELS[s.cognition.phase] || s.cognition.phase }),
             jsx("p", { children: s.cognition.reason }),
+            s.execution_placement && jsx("p", {
+              children: `Tính toán: VLM/vision ${s.execution_placement.VLM_vision.toUpperCase()} · ASR ${s.execution_placement.ASR.toUpperCase()} · ALIF ${s.execution_placement.ALIF_forward_learning.toUpperCase()}. I/O và điều phối trên CPU.`,
+            }),
             jsx("small", {
-              children: `VLM ${s.cognition.VLM_resident ? "đang nạp" : "đã nhả tài nguyên"} · ${s.cognition.state.consolidations} lượt ôn có nguồn · ${s.cognition.state.replay_used}/${s.config.sleep_replay_budget} ngân sách lượt hiện tại. Đây là trạng thái xử lý, không phải độc thoại nội tâm.`,
+              children: `VLM ${s.cognition.VLM_resident ? "đang giữ tài nguyên RAM/VRAM" : "đã nhả tài nguyên"} · ${s.cognition.state.consolidations} lượt ôn có nguồn · ${s.cognition.state.replay_used}/${s.config.sleep_replay_budget} ngân sách lượt hiện tại. Đây là trạng thái xử lý, không phải độc thoại nội tâm.`,
             }),
             jsxs("div", {
               className: "sxh-row",

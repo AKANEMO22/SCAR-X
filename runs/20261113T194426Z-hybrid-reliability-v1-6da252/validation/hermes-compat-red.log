@@ -1,0 +1,210 @@
+▶ not activated — using HERMES_PYTHON: C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-test-env\Scripts\python.exe
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~3 tests) under ['tests\\agent\\test_scarx_local_compat.py']; running with -j 1
+[100.0% |     3/~3 | ✓3 | ✗2] ✗ tests\agent\test_scarx_local_compat.py (3✓ 2✗, 8.1s)
+
+  ╔╍ Failed: tests\agent\test_scarx_local_compat.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'krea' registered image_gen provider: krea
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'meta-ai-image-gen' registered image_gen provider: meta-ai
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openai' registered image_gen provider: openai
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openai-codex' registered image_gen provider: openai-codex
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered image_gen provider: openrouter
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered image_gen provider: nous
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'xai' registered image_gen provider: xai
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'deepinfra' registered video_gen provider: deepinfra
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'fal' registered video_gen provider: fal
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered video_gen provider: openrouter
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'xai' registered video_gen provider: xai
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-brave-free' registered web provider: brave-free
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-ddgs' registered web provider: ddgs
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-exa' registered web provider: exa
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-firecrawl' registered web provider: firecrawl
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-keenable' registered web provider: keenable
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-openai-native' registered web provider: openai-native
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-parallel' registered web provider: parallel
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-perplexity' registered web provider: perplexity
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-searxng' registered web provider: searxng
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-tavily' registered web provider: tavily
+  ║ INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-xai' registered web provider: xai
+  ║ INFO     hermes_cli.plugins:plugins.py:542 Plugin discovery complete: 62 found, 58 enabled
+  ║ INFO     tools.tool_search:tool_search.py:382 tool_search activated (tier 2): 2 core/visible tools kept, 6 deferred (~2366 tokens), listing none (budget ~200 tokens)
+  ║ ------------------------------ Captured log call ------------------------------
+  ║ INFO     agent.auxiliary_client:auxiliary_client.py:4458 Auxiliary auto-detect: using main provider custom:scarx-local (scarx-hybrid)
+  ║ =========================== short test summary info ===========================
+  ║ FAILED tests/agent/test_scarx_local_compat.py::test_local_agent_exposes_filesystem_and_enforces_repeat_halt
+  ║ FAILED tests/agent/test_scarx_local_compat.py::test_same_measured_main_route_passes_real_compression_feasibility
+  ║ 2 failed, 3 passed in 6.92s
+  ║
+  ║  Repro: python -m pytest tests\agent\test_scarx_local_compat.py -q
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 3 tests passed, 2 failed; FAILED: 1 of 1 file (100% complete) in 8.2s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 8.1s  (runner wall: 8.2s, parallelism: 1x)
+  P50: 8.12s  P90: 8.12s  P95: 8.12s  P99: 8.12s  Max: 8.12s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      8.12s  tests\agent\test_scarx_local_compat.py
+
+=== Failure output ===
+
+--- tests\agent\test_scarx_local_compat.py ---
+FF...                                                                    [100%]
+================================== FAILURES ===================================
+________ test_local_agent_exposes_filesystem_and_enforces_repeat_halt _________
+
+agent = <run_agent.AIAgent object at 0x000001836EE6A7B0>
+
+    def test_local_agent_exposes_filesystem_and_enforces_repeat_halt(agent):
+        names={t["function"]["name"] for t in agent.tools}
+>       assert {"terminal","read_file","search_files"} <= names
+E       AssertionError: assert {'read_file',...', 'terminal'} <= {'tool_call',... 'web_search'}
+E         
+E         Extra items in the left set:
+E         'terminal'
+E         'read_file'
+E         'search_files'
+
+tests\agent\test_scarx_local_compat.py:36: AssertionError
+----------------------------- Captured log setup ------------------------------
+INFO     run_agent:agent_runtime_helpers.py:2057 OpenAI client created (agent_init, shared=True) thread=MainThread:40304 provider=custom:scarx-local base_url=http://127.0.0.1:8775/v1 model=scarx-hybrid
+INFO     tools.tool_search:tool_search.py:382 tool_search activated (tier 2): 2 core/visible tools kept, 6 deferred (~2366 tokens), listing none (budget ~200 tokens)
+______ test_same_measured_main_route_passes_real_compression_feasibility ______
+
+agent = <run_agent.AIAgent object at 0x0000018372C782D0>
+
+    def test_same_measured_main_route_passes_real_compression_feasibility(agent):
+        from agent.conversation_compression import check_compression_model_feasibility
+        assert agent._config_context_length==16384
+>       check_compression_model_feasibility(agent)
+
+tests\agent\test_scarx_local_compat.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+agent = <run_agent.AIAgent object at 0x0000018372C782D0>
+
+    def check_compression_model_feasibility(agent: Any) -> None:
+        """Warn at session start if the aux compression context is below the threshold.
+        Called from ``AIAgent.__init__`` (CLI sees it via ``_vprint``); the gateway wires ``status_callback``
+        later, so ``replay_compression_warning`` resends it."""
+        if not agent.compression_enabled:
+            return
+        try:
+            from agent.auxiliary_client import (
+                _resolve_task_provider_model, _try_configured_fallback_for_unavailable_client,
+                get_text_auxiliary_client,
+            )
+            from agent.model_metadata import MINIMUM_CONTEXT_LENGTH, get_model_context_length
+            # Provider may be "auto"; fall back to the client's base_url hostname so the
+            # user can tell where the compression model is actually called.
+            try:
+                _aux_cfg_provider, _, _, _, _ = _resolve_task_provider_model("compression")
+            except Exception:
+                _aux_cfg_provider = ""
+            client, aux_model = get_text_auxiliary_client("compression", main_runtime=agent._current_main_runtime())
+            if client is None or not aux_model:
+                fb_client, fb_model, fb_label = _try_configured_fallback_for_unavailable_client(
+                    "compression", _aux_cfg_provider
+                )
+                if fb_client is not None and fb_model:
+                    client, aux_model = fb_client, fb_model
+                    if "(" in fb_label and fb_label.endswith(")"):
+                        _aux_cfg_provider = fb_label.rsplit("(", 1)[1][:-1]
+            if client is None or not aux_model:
+                if _aux_cfg_provider and _aux_cfg_provider != "auto":
+                    msg = (
+                        f"⚠ Configured auxiliary compression provider '{_aux_cfg_provider}' is unavailable, "
+                        "so older messages in long chats will be cut without a summary. Sign in to that "
+                        "provider again, or change auxiliary.compression in your config."
+                    )
+                else:
+                    msg = (
+                        "⚠ No auxiliary LLM provider configured: Hermes has no helper model for summarising "
+                        "long chats, so older messages will be cut without a summary. Run `hermes setup` to add one."
+                    )
+                _emit_feasibility_notice(agent, msg)
+                logger.warning("No auxiliary LLM provider for compression — summaries will be unavailable.")
+                return
+            aux_base_url = str(getattr(client, "base_url", ""))
+            # client.api_key may be a callable (Entra bearer); the resolver only needs a key
+            # for live catalogue probes, so pass "" rather than mint a JWT for a lookup.
+            _raw_aux_key = getattr(client, "api_key", "")
+            aux_api_key = "" if (callable(_raw_aux_key) and not isinstance(_raw_aux_key, str)) else str(_raw_aux_key or "")
+            # Resolve each model with its own provider so provider-specific paths (Bedrock table, OpenRouter API)
+            # hit the correct client, not the main model's.
+            _aux_provider = (
+                _aux_cfg_provider if _aux_cfg_provider and _aux_cfg_provider != "auto" else getattr(agent, "provider", "")
+            )
+            _aux_cfg_ctx = _configured_compression_context_length(agent)
+            if _aux_cfg_ctx is None and _aux_inherits_main_route(agent, aux_model, aux_base_url):
+                # Same model on the same route: reuse the main model's already-resolved window (which honours
+                # model.context_length / provider pins). Re-resolving from scratch lost the pin and auto-lowered
+                # the session threshold to a catch-all catalog value (#89500, #45519).
+                aux_context = int(agent.context_compressor.context_length)
+            else:
+                aux_context = get_model_context_length(
+                    aux_model, base_url=aux_base_url, api_key=aux_api_key, config_context_length=_aux_cfg_ctx,
+                    provider=_aux_provider, custom_providers=_configured_custom_providers(agent),
+                )
+            # Aux model must meet MINIMUM_CONTEXT_LENGTH like the main model, else it cannot summarise a full window.
+            if aux_context and aux_context < MINIMUM_CONTEXT_LENGTH:
+>               raise ValueError(
+                    f"Auxiliary compression model {aux_model} has a context "
+                    f"window of {aux_context:,} tokens, which is below the "
+                    f"minimum {MINIMUM_CONTEXT_LENGTH:,} required by Hermes "
+                    f"Agent.  Choose a compression model with at least "
+                    f"{MINIMUM_CONTEXT_LENGTH // 1000}K context (set "
+                    f"auxiliary.compression.model in config.yaml), or set "
+                    f"auxiliary.compression.context_length to override the "
+                    f"detected value if it is wrong."
+                )
+E               ValueError: Auxiliary compression model scarx-hybrid has a context window of 16,384 tokens, which is below the minimum 64,000 required by Hermes Agent.  Choose a compression model with at least 64K context (set auxiliary.compression.model in config.yaml), or set auxiliary.compression.context_length to override the detected value if it is wrong.
+
+agent\conversation_compression.py:2093: ValueError
+----------------------------- Captured log setup ------------------------------
+INFO     run_agent:agent_runtime_helpers.py:2057 OpenAI client created (agent_init, shared=True) thread=MainThread:40304 provider=custom:scarx-local base_url=http://127.0.0.1:8775/v1 model=scarx-hybrid
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'browser-browser-use' registered browser provider: browser-use
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'browser-browserbase' registered browser provider: browserbase
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'browser-firecrawl' registered browser provider: firecrawl
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'default' registered delegation provider: default
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'deepinfra' registered image_gen provider: deepinfra
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'fal' registered image_gen provider: fal
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'krea' registered image_gen provider: krea
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'meta-ai-image-gen' registered image_gen provider: meta-ai
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openai' registered image_gen provider: openai
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openai-codex' registered image_gen provider: openai-codex
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered image_gen provider: openrouter
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered image_gen provider: nous
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'xai' registered image_gen provider: xai
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'deepinfra' registered video_gen provider: deepinfra
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'fal' registered video_gen provider: fal
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'openrouter' registered video_gen provider: openrouter
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'xai' registered video_gen provider: xai
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-brave-free' registered web provider: brave-free
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-ddgs' registered web provider: ddgs
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-exa' registered web provider: exa
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-firecrawl' registered web provider: firecrawl
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-keenable' registered web provider: keenable
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-openai-native' registered web provider: openai-native
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-parallel' registered web provider: parallel
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-perplexity' registered web provider: perplexity
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-searxng' registered web provider: searxng
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-tavily' registered web provider: tavily
+INFO     hermes_cli.plugins:plugins_context.py:180 Plugin 'web-xai' registered web provider: xai
+INFO     hermes_cli.plugins:plugins.py:542 Plugin discovery complete: 62 found, 58 enabled
+INFO     tools.tool_search:tool_search.py:382 tool_search activated (tier 2): 2 core/visible tools kept, 6 deferred (~2366 tokens), listing none (budget ~200 tokens)
+------------------------------ Captured log call ------------------------------
+INFO     agent.auxiliary_client:auxiliary_client.py:4458 Auxiliary auto-detect: using main provider custom:scarx-local (scarx-hybrid)
+=========================== short test summary info ===========================
+FAILED tests/agent/test_scarx_local_compat.py::test_local_agent_exposes_filesystem_and_enforces_repeat_halt
+FAILED tests/agent/test_scarx_local_compat.py::test_same_measured_main_route_passes_real_compression_feasibility
+2 failed, 3 passed in 6.92s
+
+=== 1 file with test failures ===
+  tests\agent\test_scarx_local_compat.py  (2 tests failed)

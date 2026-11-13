@@ -388,6 +388,23 @@ def test_native_storage_rejects_tampered_weights(tmp_path):
         verify_native_storage(tmp_path)
 
 
+def test_overview_budget_returns_honest_runtime_halt_without_model_call(gateway):
+    body = {
+        "tools": [{"type": "function", "function": {"name": "terminal"}}],
+        "messages": [
+            {"role": "system", "content": r"Current working directory: C:\Project"},
+            {"role": "user", "content": "đọc folder này xem nó làm gì"},
+        ]
+        + [{"role": "tool", "content": "actual read"}] * 4,
+    }
+    response = gateway.workspace_controller_response(body, body["messages"])
+    assert response["scarx_producer"] == "runtime_controlled_halt"
+    assert response["usage"]["completion_tokens"] == 0
+    text = response["choices"][0]["message"]["content"]
+    assert "runtime SCAR-X" in text and "chưa tạo được" in text
+    assert response["choices"][0]["finish_reason"] == "stop"
+
+
 def test_video_source_reinspection_never_reads_unowned_original(gateway, tmp_path):
     from scarx.hybrid.media import VideoMemory
 

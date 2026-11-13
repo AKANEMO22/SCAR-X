@@ -1,4 +1,4 @@
-"""One bounded CPU VLM worker and one FP32 ASR worker, owned by the gateway."""
+"""Owned native VLM/FP32 ASR workers with explicit CPU or CUDA execution."""
 
 import base64
 import hashlib
@@ -31,6 +31,14 @@ class NativeBackends:
         self.native_token = secrets.token_urlsafe(32)
         self.vlm_command = None
         self.asset_signatures = None
+
+    def whisper_executable(self):
+        runtime = (
+            "whisper.cpp-b5454-cuda12.4"
+            if self.config.execution_mode == "gpu"
+            else "whisper.cpp-b5454"
+        )
+        return self.directory / "runtime" / runtime / "Release/whisper-cli.exe"
 
     def headers(self):
         return {
@@ -166,7 +174,7 @@ class NativeBackends:
             else "llama.cpp-b12360"
         )
         llama = self.directory / "runtime" / runtime / "llama-server.exe"
-        whisper = self.directory / "runtime/whisper.cpp-b5454/Release/whisper-cli.exe"
+        whisper = self.whisper_executable()
         for path in (
             llama,
             whisper,
@@ -285,7 +293,7 @@ class NativeBackends:
         tool_choice=None,
         response_format=None,
     ):
-        if not 1 <= max_tokens <= 1024:
+        if not 1 <= max_tokens <= 4096:
             raise ValueError("Bounded output")
         body = {
             "model": "scarx-hybrid",
@@ -293,6 +301,7 @@ class NativeBackends:
             "max_tokens": max_tokens,
             "temperature": 0.0,
             "chat_template_kwargs": {"enable_thinking": False},
+            "repeat_penalty": 1.05,
             "cache_prompt": True,
             "stream": background,
         }
@@ -394,12 +403,13 @@ class NativeBackends:
         body = {
             "model": "scarx-hybrid",
             "messages": messages,
-            "max_tokens": min(1024, max(1, int(max_tokens))),
+            "max_tokens": min(4096, max(1, int(max_tokens))),
             "temperature": 0.0,
             "stream": True,
             "stream_options": {"include_usage": True},
             "cache_prompt": True,
             "chat_template_kwargs": {"enable_thinking": False},
+            "repeat_penalty": 1.05,
         }
         if tools:
             body["tools"] = tools
@@ -409,6 +419,7 @@ class NativeBackends:
             self.stop_asr()
             self.ensure_vlm()
             self.monitor.check()
+
             with urlopen(
                 Request(
                     self.vlm_url + "/v1/chat/completions",
@@ -429,6 +440,52 @@ class NativeBackends:
                         break
                     yield json.loads(value)
             self.monitor.check()
+
+    def summary_token_budget(self, messages):
+        """Exact native tokenizer count; output fits the measured16K buffer."""
+        with self.lock:
+            self.ensure_vlm()
+
+            def post(path, body):
+                with urlopen(
+                    Request(
+                        self.vlm_url + path,
+                        data=encode(body).encode(),
+                        headers=self.headers(),
+                    ),
+                    timeout=20,
+                ) as response:
+                    raw = response.read(6_000_001)
+                if len(raw) > 6_000_000:
+                    raise ValueError("Summary tokenizer response bound exceeded")
+                return json.loads(raw)
+
+            prompt = post(
+                "/apply-template",
+                {
+                    "messages": messages,
+                    "chat_template_kwargs": {"enable_thinking": False},
+                },
+            )["prompt"]
+            count = len(
+                post("/tokenize", {"content": prompt, "parse_special": True})["tokens"]
+            )
+            room = self.config.context_tokens - count - 32
+            if room < 128:
+                raise ValueError(
+                    "Summary input leaves insufficient output room in measured context"
+                )
+            budget = min(4096, room)
+            self.store.event(
+                "summary_output_budget",
+                {
+                    "input_tokens": count,
+                    "output_tokens": budget,
+                    "context_tokens": self.config.context_tokens,
+                    "measurement": "native tokenizer; no fake64K",
+                },
+            )
+            return budget
 
     def describe(self, image_path, background=False):
         data = Path(image_path).read_bytes()
@@ -468,7 +525,7 @@ class NativeBackends:
         work.mkdir(parents=True, exist_ok=True)
         output = work / uuid.uuid4().hex
         command = [
-            str(self.directory / "runtime/whisper.cpp-b5454/Release/whisper-cli.exe"),
+            str(self.whisper_executable()),
             "-m",
             str(self.directory / "models/native/whisper-base-f32.bin"),
             "-f",
@@ -477,7 +534,11 @@ class NativeBackends:
             "auto",
             "-t",
             "2",
-            "-ng",
+            *(
+                ["-dev", str(self.config.gpu_device)]
+                if self.config.execution_mode == "gpu"
+                else ["-ng"]
+            ),
             "-ojf",
             "-of",
             str(output),
@@ -508,6 +569,7 @@ class NativeBackends:
                     "source": str(source),
                     "raw_result": str(path),
                     "precision": "FP32",
+                    "device": self.config.execution_mode,
                     "backend": "one owned whisper-cli per bounded chunk; no ASR HTTP service",
                 },
                 "asr",

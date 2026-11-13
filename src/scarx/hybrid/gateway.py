@@ -24,6 +24,13 @@ from .screen import ScreenMemory, window_sources
 from .video_context import VideoContext
 from .temporal import temporal_direction
 from .search_service import SearchService
+from .tool_routing import (
+    workspace_tool_choice,
+    workspace_prelude,
+    is_context_summary,
+    workspace_finalization,
+    workspace_halt_text,
+)
 
 
 class Gateway:
@@ -86,11 +93,23 @@ class Gateway:
                 "status",
                 {
                     "phase": "Native qualification",
-                    "note": "CPU workers loading; no scientific quality claim",
+                    "note": self.config.execution_mode.upper()
+                    + " workers loading; no scientific quality claim",
                 },
             )
             integrity = verify_native_storage(self.directory)
             self.store.event("native_storage_verified", integrity, "runtime")
+            self.engine.model.to_device(
+                self.config.execution_mode, self.config.gpu_device
+            )
+            self.store.event(
+                "neural_execution_device",
+                {
+                    "device": self.engine.model.device,
+                    "dtype": "float32",
+                    "local_learning_unchanged": True,
+                },
+            )
             self.backend.start()
             self.search_service.start()
             parity = native_parity(self.backend, self.directory)
@@ -137,6 +156,12 @@ class Gateway:
             "gateway_port": self.port,
             "model": "scarx-hybrid",
             "pid": os.getpid(),
+            "execution_placement": {
+                "VLM_vision": self.config.execution_mode,
+                "ASR": self.config.execution_mode,
+                "ALIF_forward_learning": self.engine.model.device,
+                "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG",
+            },
         }
 
     def prepare_agent_messages(self, body):
@@ -311,6 +336,90 @@ class Gateway:
                 latest["content"] = parts
         return messages
 
+    def select_tool_choice(self, body, messages):
+        bounded, rule = workspace_finalization(
+            messages, body.get("tools"), body.get("tool_choice")
+        )
+        if rule:
+            self.store.event("workspace_overview_finalization", rule, "runtime")
+            return bounded
+        choice, event = workspace_tool_choice(
+            messages, body.get("tools"), body.get("tool_choice")
+        )
+        if event:
+            self.store.event("workspace_tool_route", event, "runtime")
+        return choice
+
+    def output_budget(self, body, messages):
+        if is_context_summary(messages, body.get("tools")):
+            return self.backend.summary_token_budget(messages)
+        return min(1024, max(1, int(body.get("max_tokens") or 512)))
+
+    def workspace_controller_response(self, body, messages):
+        _, limit = workspace_finalization(
+            messages, body.get("tools"), body.get("tool_choice")
+        )
+        if limit:
+            message = workspace_halt_text(messages, limit)
+            self.store.event(
+                "workspace_overview_controlled_halt",
+                limit | {"message": message},
+                "runtime",
+            )
+            return {
+                "id": "scarx-controller-" + uuid.uuid4().hex,
+                "object": "chat.completion",
+                "created": int(time.time()),
+                "model": "scarx-hybrid",
+                "system_fingerprint": "scarx-runtime-controller",
+                "choices": [
+                    {
+                        "index": 0,
+                        "message": {"role": "assistant", "content": message},
+                        "finish_reason": "stop",
+                    }
+                ],
+                "usage": {
+                    "prompt_tokens": 0,
+                    "completion_tokens": 0,
+                    "total_tokens": 0,
+                },
+                "scarx_producer": "runtime_controlled_halt",
+            }
+        request = workspace_prelude(
+            messages, body.get("tools"), body.get("tool_choice")
+        )
+        if request is None:
+            return None
+        call = {
+            "id": "scarx_read_" + uuid.uuid4().hex,
+            "type": "function",
+            "function": {"name": request["name"], "arguments": request["arguments"]},
+        }
+        self.store.event(
+            "workspace_read_prelude", request["event"] | {"tool_call": call}, "runtime"
+        )
+        return {
+            "id": "scarx-controller-" + uuid.uuid4().hex,
+            "object": "chat.completion",
+            "created": int(time.time()),
+            "model": "scarx-hybrid",
+            "system_fingerprint": "scarx-runtime-controller",
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": None,
+                        "tool_calls": [call],
+                    },
+                    "finish_reason": "tool_calls",
+                }
+            ],
+            "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+            "scarx_producer": "runtime_read_only_prelude",
+        }
+
     @staticmethod
     def validate_request(body):
         messages = body.get("messages")
@@ -461,11 +570,15 @@ class Gateway:
         ):
             self.engine.begin_foreground()
             try:
+                prepared = self.prepare_agent_messages(body)
+                controller = self.workspace_controller_response(body, prepared)
+                if controller:
+                    return controller
                 output = self.backend.generate(
-                    self.prepare_agent_messages(body),
-                    max_tokens=min(1024, max(1, int(body.get("max_tokens") or 512))),
+                    prepared,
+                    max_tokens=self.output_budget(body, prepared),
                     tools=body.get("tools"),
-                    tool_choice=body.get("tool_choice"),
+                    tool_choice=self.select_tool_choice(body, prepared),
                 )
                 response = output["raw"]
                 response["model"] = "scarx-hybrid"
@@ -630,6 +743,45 @@ class Gateway:
         finish = None
         try:
             messages = self.prepare_agent_messages(body)
+            controller = self.workspace_controller_response(body, messages)
+            if controller:
+                message = controller["choices"][0]["message"]
+                base = {
+                    k: v for k, v in controller.items() if k not in ("choices", "usage")
+                }
+                base["object"] = "chat.completion.chunk"
+                if message.get("content"):
+                    yield base | {
+                        "choices": [
+                            {"index": 0, "delta": message, "finish_reason": None}
+                        ]
+                    }
+                    yield base | {
+                        "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}],
+                        "usage": controller["usage"],
+                    }
+                    return
+                call = message["tool_calls"][0]
+                yield base | {
+                    "choices": [
+                        {
+                            "index": 0,
+                            "delta": {
+                                "role": "assistant",
+                                "content": None,
+                                "tool_calls": [dict(call, index=0)],
+                            },
+                            "finish_reason": None,
+                        }
+                    ]
+                }
+                yield base | {
+                    "choices": [
+                        {"index": 0, "delta": {}, "finish_reason": "tool_calls"}
+                    ],
+                    "usage": controller["usage"],
+                }
+                return
             self.store.event(
                 "hermes_request_prepared",
                 {
@@ -643,6 +795,16 @@ class Gateway:
                     ],
                     "tools": len(body.get("tools") or []),
                     "tool_schema_characters": len(encode(body.get("tools") or [])),
+                    "tool_choice_requested": body.get("tool_choice"),
+                    "tool_names": [
+                        t.get("function", {}).get("name")
+                        for t in body.get("tools") or []
+                    ],
+                    "workspace_marker_present": any(
+                        "Current working directory:" in str(m.get("content", ""))
+                        for m in messages
+                        if m.get("role") in ("system", "developer")
+                    ),
                     "stream": True,
                     "no_hidden_prompt_replacement": True,
                 },
@@ -650,9 +812,9 @@ class Gateway:
             )
             for chunk in self.backend.stream(
                 messages,
-                body.get("max_tokens") or 512,
+                self.output_budget(body, messages),
                 body.get("tools"),
-                body.get("tool_choice"),
+                self.select_tool_choice(body, messages),
             ):
                 usage = chunk.get("usage") or usage
                 for choice in chunk.get("choices", []):

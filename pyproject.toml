@@ -15,6 +15,7 @@ control = ["torch>=2"]
 hermes-test = ["openai>=1", "PyYAML>=6"]
 vision = ["Pillow>=10"]
 hybrid = ["Pillow>=10", "windows-capture==2.0.1; platform_system == 'Windows'", "PyAudioWPatch==0.2.12.9; platform_system == 'Windows'"]
+hybrid-gpu = ["cupy-cuda12x==14.2.0", "cuda-toolkit[cudart,nvrtc]==12.9.2"]
 training = ["scikit-learn>=1.4", "Pillow>=10"]
 
 [project.scripts]

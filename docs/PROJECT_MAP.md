@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[Workspace/tool-loop, compression và GPUtoànneural14/11](hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md):
+`hybrid/cuda_alif.py`, `hybrid/tool_routing.py`, installerHermes có backup;
+`hybrid_reliability_soak.py` + `audit_hybrid_reliability.py` giữraw/negativecases.
+
 Hybrid riêng: [hướng dẫn và sơ đồ](hybrid/README.md),
 [kết quả hiện tại](research/HYBRID_IMPLEMENTATION_20261113.md).
 [Pipeline audit và lỗi còn lại](hybrid/PIPELINE_AUDIT_20261113.md).

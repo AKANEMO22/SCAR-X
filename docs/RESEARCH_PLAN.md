@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Execution amendment14/11:** theo yêu cầu mới, GPUmode phải áp dụng cả
+VLM/vision, ASR và ALIFnumerics/locallearning; CPUmode dùng CPU, chưa qualification
+iGPU. Host I/O/tokenizer/SQLite/RNG vẫn CPU. Nativeprecision, topology/equations,
+scientificgates giữ nguyên. Runtime workspaceprelude và compressionrecovery chỉ
+là scaffolding, không phải hidden representation/skilllearning. UnifiedGPU,
+tool-loop/16Kcompression repair và endurance có [biên bản riêng](hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md).
+
 **Vận hành Hybrid14/11:** người dùng yêu cầu nối cơ chế thức/ngủ. Đã có runtime
 scheduler trên cùng ALIFH128: phục vụ/quan sát ưu tiên, idle review mục tiêu thật,
 verifier/hỏi lại, bounded replay và unload nguyên frozenVLM khi nghỉ. Save/load

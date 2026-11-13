@@ -6,6 +6,13 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+**Cập nhật14/11:** [workspace/tool-loop/compression và unifiedGPU](WORKSPACE_GPU_RELIABILITY_20261114.md).
+GPUmode nay bao gồm VLM/vision, ASR và ALIF; CPUmode không dùng GPU rời cho neural
+compute. Mặc địnhGPU`gpu_keep_warm=true` để tránh reload sau mỗi lúc nghỉ;
+Ngủ thủ công vẫn nhả VLM. `config.json` đọc khi gateway khởi động lại. Không tăng
+context giả64K hoặc bật LoRA chưa đạt chuẩn.30phút/45requests đã qua vận hành;
+CPU/GPU/persistence qua, chất lượng phân tích/code/context-use vẫn PIVOT.
+
 **Mới nhất14/11:** [vòng thức/xem lại/củng cố/nghỉ](COGNITIVE_LOOP_20261114.md)
 đã chạy thật và qua persistence/preemption. Mặc định tự động: quiet30s mới
 xem lại; replay tối đa4lượt/mỗi revision đã chấp nhận; sau180s rảnh không có

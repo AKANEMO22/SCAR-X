@@ -27,6 +27,7 @@ class HybridConfig:
     sleep_replay_budget: int = 4
     rest_after_seconds: int = 180
     release_vlm_on_rest: bool = True
+    gpu_keep_warm: bool = True
     archive_bytes: int = 10_000_000_000
     archive_seconds: int = 7 * 86400
     context_tokens: int = 16384
@@ -55,6 +56,7 @@ class HybridConfig:
                 raise ValueError("Expected integer scheduler timing")
         if (
             type(self.release_vlm_on_rest) is not bool
+            or type(self.gpu_keep_warm) is not bool
             or type(self.sleep_replay_budget) is not int
             or not 1 <= self.sleep_replay_budget <= 4
             or not 1 <= self.consolidation_interval_seconds <= 3600
@@ -114,6 +116,7 @@ def load_runtime_config(directory):
         "sleep_replay_budget",
         "rest_after_seconds",
         "release_vlm_on_rest",
+        "gpu_keep_warm",
     }:
         raise ValueError("Unknown runtime config fields")
     return HybridConfig(**value)
