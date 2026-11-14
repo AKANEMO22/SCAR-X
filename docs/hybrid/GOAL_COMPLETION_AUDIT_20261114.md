@@ -54,3 +54,10 @@ action achieved registeredeffect/status; promptstatusvocabularyconfound recorded
 before deciding labels. No fabricatedpositivefeedback or neuraltraining.
 Replytransportbug fixed4bc50de with actualisolatedHTTP/SQLite test; live5updates
 unchanged.8h554c19 verifiedlive/sourceunchanged, notcompleted; goalstillactive.
+
+Progressbad3a2/finitebound: codevocabulary only2weakpasses, no safelyqualified
+labels; oracle tablemargin4.17pp cannot meet5pp, so no futiletrainingon196043.
+Protectionprototype nowhasactualweightregularization andversionedstate in
+evaluationonly; numericnotquality, aggregatebudget350>300recorded/notPASS.
+No blocker: active8hmeasurement and freshmechanism/dataqualification remain.
+Do not markcomplete based on prototypebuffers changing or elapsedticks.

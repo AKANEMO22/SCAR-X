@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Protection/statusP014/11:** magnitude/anchorprototype cô lập tái sử dụng heuristic
+PlasticCore trên localactualdelta; đây là algorithmresearchmới, không sửa live.
+Importanceđãảnhhưởngupdate/EMA64/coldGPUstate nhưng chưađánh task/retention;
+aggregate350numericupdates>cap300 đượcgiữreview, khôngprotocolPASS.
+Statuscontractdiagnostic khôngbiến weaklabels thànhtruth; finitebank196043
+oracle margin4,17pp<gate5pp nên khôngtrain. [Evidence/limits](hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md).
+
 **Actualrecovery outcomeDEV14/11:**24cases×6snapshotbranches đo266nativecalls,
 12cases chưa có action qua độc lập effect/status. Không tạo labelsuccessful
 khi rolloutfail; schema/codevocabulary là một confound cần fixeddiagnostic

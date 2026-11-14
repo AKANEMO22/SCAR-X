@@ -246,6 +246,35 @@ def test_missing_historical_frame_does_not_fallback_to_current_frame(tmp_path):
         store.close()
 
 
+def test_nonce_rejection_consumes_only_bounded_request_body_before_response():
+    import io
+    p = Path(__file__).resolve().parents[1] / "scripts/hybrid_pipeline_audit.py"
+    spec = importlib.util.spec_from_file_location("nonce_body_fixture", p)
+    audit = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(audit)
+    calls, responses, timeouts = [], [], []
+
+    class Base:
+        def do_POST(self):
+            calls.append("executed")
+
+        def send(self, body, status):
+            responses.append(status)
+
+    wrapped = audit.isolated_handler(Base, "owned")
+    for length, expected_consumed in (2, 2), (100_000, 0):
+        handler = wrapped()
+        handler.headers = {"Content-Length": str(length)}
+        handler.rfile = io.BytesIO(b"{}")
+        handler.connection = SimpleNamespace(
+            gettimeout=lambda: None, settimeout=timeouts.append)
+        handler.do_POST()
+        assert handler.rfile.tell() == expected_consumed
+        assert handler.close_connection is True
+    assert calls == [] and responses == [503, 503]
+    assert timeouts[-1] is None
+
+
 def test_isolated_http_rejects_every_foreign_mutation_without_executing_it():
     p = Path(__file__).resolve().parents[1] / "scripts/hybrid_pipeline_audit.py"
     spec = importlib.util.spec_from_file_location("pipeline_audit_nonce", p)

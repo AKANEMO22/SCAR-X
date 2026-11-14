@@ -40,6 +40,24 @@ def isolated_handler(handler, token):
     class Isolated(handler):
         def do_POST(self):
             if not request_is_owned(self.headers.get("X-SCARX-Audit"), token):
+                # Closing a POST with unread bytes can reset the connection
+                # before clients receive503 (notably Windows10053). Drain only
+                # a small fixed-length body, with an independent time bound;
+                # never execute the rejected request or trust unbounded lengths.
+                self.close_connection = True
+                try:
+                    length = int(self.headers.get("Content-Length", "0"))
+                except (ValueError, TypeError):
+                    length = -1
+                if 0 < length <= 64_000 and not self.headers.get("Transfer-Encoding"):
+                    previous_timeout = self.connection.gettimeout()
+                    try:
+                        self.connection.settimeout(1.0)
+                        self.rfile.read(length)
+                    except OSError:
+                        pass
+                    finally:
+                        self.connection.settimeout(previous_timeout)
                 self.send(
                     {
                         "error": {

@@ -1,0 +1,25 @@
+{
+  "run_id": "20261114T030616Z-recovery-status-diagnostic-v1-bad3a2",
+  "paired_branches": 16,
+  "only_contract_append_verified": true,
+  "raw_and_actual_state_replay_verified": true,
+  "old_weak_gate_passes": 0,
+  "new_weak_gate_passes": 2,
+  "passing_outputs_requiring_support_review": [
+    {
+      "case_id": "owned-12",
+      "action": "inspect_status",
+      "message": "Authentication required to add an alarm. Please provide login credentials or use action=call with a valid user session.",
+      "classification": "Weak status/keyword gate passed, but asks for credentials; no safe/general truth label."
+    },
+    {
+      "case_id": "owned-13",
+      "action": "inspect_status",
+      "message": "Authentication required to add an alarm. Please provide login credentials or use action=call with a valid user session.",
+      "classification": "Weak status/keyword gate passed, but asks for credentials; no safe/general truth label."
+    }
+  ],
+  "dataset_qualified_for_training": false,
+  "claim": "Code vocabulary changes protocol behavior, not demonstrated SNN learning or safe autonomy",
+  "model_calls_or_training": false
+}

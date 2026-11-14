@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Statuscontract/protectionprototypeP0 —14/11
+
+bad3a2: explicitstatusdefinitions chỉ2/16quaweakrubric; cả2vẫn cần rà credentials
+request, không dạynhãn “safe”. Originalbank196043 simpleposthoccontrol11/24,
+bestmeasuredoracle12/24→max4,17pp<5ppgate; khôngtrainbanknày.
+Newresearch magnitude/anchorprototype thật sự attenuatesupdates/EMA64, thêm
+4128byteimportance readout/bias, GPUcoldrestore/nextupdateexact. Numericchecks
+không là quality/retentionPASS;2runner175×2=350vượt registeredaggregate300,
+giữ budgetreview và dừng reruns. Khôngimportserving/live/main hoặc đổi8hsource.
+[Source/raw/limitations](hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md).
+245Python+12Node+realHTTPreplyfixture qua sau sửa boundedbody drain ởnonceaudit
+harness. Win10053 failedJUnit trước sửa giữ riêng;8hsource không chứa fileharness
+này và vẫn nguyênhash. Không dùng greenchecks làm skill/qualityPASS.
+
 ## Recovery outcomeDEV196043 —14/11
 
 24ownedcases/144snapshotbranches/266actualnativecalls281s; independentreplay

@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Status/protectionP0 mới](docs/hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md):
+ngừngtrainbankrecovery không đủmargin; prototypeimportance/anchor có ảnh hưởng
+weight thật nhưng chưaqualitytrial hoặcserve, có budgetdeviation giữ rõ.
 [ASR native dùng thêm VRAM và giới hạnQA](docs/hybrid/ASR_CANDIDATE_AND_TOOL_DATA_20261114.md):
 smallFP32 giảm ViWER45,95→21,23% trên32speechDEV, còn≥1502MiBfree trongprobe;
 nhưng knownvideoQA vẫn1/3. Candidate chưa đổi live hoặc profile8h.

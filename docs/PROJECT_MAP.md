@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Statuscontract + protectionprototypeP0](hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md):
+diagnose/audit_hybrid_recovery_status.py, recovery_bank_bounds.py,
+magnitude_protection_p0.py + numericrunner/tests. Distinctalgorithmformat,
+khôngserving; campaignbudgetdeviation retained, chưaqualitytrial.
+
 [Actualrecovery actionoutcomesDEV](hybrid/RECOVERY_ACTION_OUTCOMES_DEV_20261114.md):
 evaluation/recovery_outcome_bank.py; build_hybrid_recovery_outcomes.py và
 audit_hybrid_recovery_outcomes.py. Currentbank chưaqualifiedđểtrain; actualeffect

@@ -16,6 +16,13 @@ allaction/status codes, same schemas/tools/initialstates/owner/model/dtype/128to
 same old outcomes as baseline (not rerun untilgood). Source/case/hash lock before
 calls; max8owned noauth/missingtimecases×2actions(inspect_status/clarify),
 max3nativecalls/branch. Exact original cases are knownDEV, not finalTEST.
+Execution registration14/11 before additionalcalls:16branches exactly those
+8cases×2actions, max48unique calls/5minutes. Preserve source/model/initialstate/
+schemas/outputbudget and casehash. Only append code-vocabulary explanation to
+the first systemmessage; subsequent realtoolresponses use original format.
+Save paired old/new actualresults, exactfirstinputdiff and snapshot-afterhash.
+No training, reward, productionpolicy or finalTEST conclusion. Catch failures
+and preservepartialreceipt. Publishing example “question” uses ownedtasks only.
 New instructions may improve protocolcompliance; this is a control/harness
 repair, NOT parametricSNN learning/autonomy. Never select prompts on finalTEST.
 

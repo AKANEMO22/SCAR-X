@@ -121,3 +121,10 @@ runs/*-recovery-outcome-bank-dev-v1-*/** -text -whitespace
 scripts/build_hybrid_recovery_outcomes.py -text
 scripts/audit_hybrid_recovery_outcomes.py -text
 experiments/hybrid-recovery-outcome-bank-dev-v1.md -text
+runs/*-recovery-status-diagnostic-v1-*/** -text -whitespace
+runs/*-magnitude-protection-p0-*/** -text -whitespace
+scripts/diagnose_hybrid_recovery_status.py -text
+scripts/audit_hybrid_recovery_status.py -text
+scripts/probe_hybrid_magnitude_protection_p0.py -text
+experiments/hybrid-recovery-status-contract-diagnostic-v1.md -text
+experiments/hybrid-magnitude-protection-prototype-p0-v1.md -text
