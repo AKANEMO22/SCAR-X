@@ -74,7 +74,8 @@ async def main():
                         events.append(frame)
                         kind=params.get('type', frame.get('method'))
                         if kind == 'tool.start':
-                            turn['tool_calls'].append({'name':payload.get('tool_name', payload.get('name')), 'args':payload.get('args')})
+                            turn['tool_calls'].append({'name':payload.get('tool_name', payload.get('name')),
+                                'tool_call_id':payload.get('tool_call_id'), 'args':payload.get('args')})
                         if kind == 'tool.complete':
                             turn['tool_results'].append(payload)
                         if kind == 'message.complete':

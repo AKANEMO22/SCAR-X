@@ -1,14 +1,14 @@
 {
   "format": "scarx-hybrid-release-allowlist-v1",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.11",
   "deployment": "existing-registered-Windows-installation-overlay",
   "model_id": "scarx-hybrid",
   "gateway": "http://127.0.0.1:8775",
   "predecessor": {
-    "archive": "artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.9+ea781e4679e2.zip",
-    "sha256": "63d030c14eed423ebba46cf567cba5c508150eb3430266a35a193eb1cb83ee83",
-    "version": "1.0.0-rc.9",
-    "source_git_sha": "ea781e4679e272eb81700184e3dc574169684fe6"
+    "archive": "artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.10+a6886daf2134.zip",
+    "sha256": "766913656fe44e153f2442c8596cb09d5baf80b2b665a00a8e0b2186d723e477",
+    "version": "1.0.0-rc.10",
+    "source_git_sha": "a6886daf2134ea18b7992842483e30c105a58503"
   },
   "files": [
     "integrations/hermes/hybrid_plugin/__init__.py",
@@ -60,6 +60,7 @@
     "src/scarx/hybrid/web.html",
     "src/scarx/hybrid/work_trace.py",
     "src/scarx/hybrid/web_routing.py",
+    "src/scarx/hybrid/web_evidence.py",
     "src/scarx/learning/__init__.py",
     "src/scarx/learning/verifiers.py",
     "src/scarx/neural/__init__.py",

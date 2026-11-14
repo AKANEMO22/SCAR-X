@@ -1,8 +1,14 @@
-# SCAR-X Hybrid 1.0.0-rc.10
+# SCAR-X Hybrid 1.0.0-rc.11
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
+
+RC11 lưu nguồn web đúng lượt tool và câu hỏi gốc cho việc xem lại/feedback.
+Không trộn FTS trí nhớ cá nhân vào câu hỏi web công khai; nguồn snippet luôn
+`observed`, không tự thành verified. Diễn giải viết tắt chỉ là metadata runtime,
+không sửa dòng chat hoặc tuyên bố neuron đã học. Có thể còn trả lời sai/thiếu;
+nguồn đúng và self-review có ngữ cảnh không tự chứng minh có kỹ năng bền vững.
 
 RC10 chọn web_search thật qua Hermes cho câu hỏi thông tin mới và giải quyết
 lượt tiếp “tìm kiếm đi” theo chủ đề người dùng trước đó. Scope này dùng SearXNG,
@@ -21,7 +27,7 @@ Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; 
 coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
 tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
-Đường nâng cấp RC10 pin đúng payload RC9 và từ chối source khác trước khi sửa.
+Đường nâng cấp RC11 pin đúng payload RC10 và từ chối source khác trước khi sửa.
 Source gate của test đã hủy nhận đúng bản trước/bản kế tiếp, không yêu cầu source
 đóng băng vĩnh viễn ở baseline cũ. Test đang chạy vẫn chặn cập nhật; trạng thái
 hủy vẫn không thành PASS. Backup/rollback chỉ phục hồi code, giữ trải nghiệm mới.

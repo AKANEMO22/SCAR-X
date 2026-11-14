@@ -27,6 +27,7 @@ from .media_reply import omit_unused_host_steering,media_parts,reference_footer
 from .temporal import temporal_direction
 from .search_service import SearchService
 from .web_routing import public_web_scope, web_prelude, WEB_TOOLS
+from .web_evidence import supplied_web_sources, persist_web_sources, task_interpretation, task_user_message
 from .tool_routing import (
     workspace_tool_choice,
     workspace_prelude,
@@ -214,7 +215,7 @@ class Gateway:
 
     def prepare_agent_messages(self, body):
         for key in ('_scarx_evidence','_scarx_candidates','_scarx_stream','_scarx_media_kind',
-                    '_scarx_media_query','_scarx_unused_steering_omitted'):
+                    '_scarx_media_query','_scarx_unused_steering_omitted','_scarx_task_question','_scarx_web_coverage','_scarx_task_interpretation'):
             body.pop(key,None)
         self.validate_request(body)
         messages = copy.deepcopy(body["messages"])
@@ -233,7 +234,7 @@ class Gateway:
             record = self.store.get("stream", stream)
             if not record:
                 raise ValueError("Video attachment is not present in local memory")
-            latest = next(m for m in reversed(messages) if m.get("role") == "user")
+            latest = task_user_message(messages)
             content = latest.get("content", "")
             parts = (
                 content
@@ -363,7 +364,7 @@ class Gateway:
             messages,omitted=omit_unused_host_steering(messages)
             body['_scarx_unused_steering_omitted']=omitted
         else:
-            latest = next(m for m in reversed(messages) if m.get("role") == "user")
+            latest = task_user_message(messages)
             content = latest.get("content", "")
             parts = (
                 content
@@ -373,6 +374,29 @@ class Gateway:
             query = " ".join(
                 p.get("text", "") for p in parts if p.get("type") == "text"
             )
+            # Public facts must not be grounded by an unrelated global personal
+            # FTS hit. Preserve the actual tool sources and task across follow-ups.
+            web, coverage = supplied_web_sources(body['messages'])
+            scope = public_web_scope(body['messages'], body.get('tools'), None)
+            if scope is None and web:
+                # Interpret retained results when a finalization call omits
+                # schemas. This metadata does not restore tool permissions.
+                scope = public_web_scope(body['messages'], [{'function': {'name': 'web_search'}}], None)
+            if scope or web:
+                task = scope['query'] if scope else query
+                body['_scarx_task_question'] = task[:6000]
+                body['_scarx_task_interpretation'] = task_interpretation(task)
+                body['_scarx_web_coverage'] = coverage
+                observations = persist_web_sources(self.store, web, session)
+                body['_scarx_evidence'] = observations
+                body['_scarx_candidates'] = [e['id'] for e in observations]
+                parts.append({'type': 'text', 'text':
+                    'SCAR-X task context from this user conversation: ' + encode(body['_scarx_task_interpretation'])
+                    + '\nAnswer that specific question from the supplied tool results. Search snippets are unverified observations; '
+                      'if they do not establish the requested current value, state that or ask a concise clarification. '
+                      'Do not replace the requested value with a related date or title.'})
+                latest['content'] = parts
+                return messages
             observations = self.search_turn_evidence(query, stream="conversation", limit=6)
             if observations:
                 candidates = [e["id"] for e in observations]
@@ -606,7 +630,7 @@ class Gateway:
             raise RuntimeError(self.failure or "Native workers are initializing")
         self.register_screen_request(body)
         messages = body.get("messages")
-        if not isinstance(messages, list) or not messages:
+        if not isinstance(messages, list) or not messages or not all(isinstance(m, dict) for m in messages):
             raise ValueError("Expected messages")
         latest = next(
             (
@@ -618,6 +642,7 @@ class Gateway:
         )
         if latest is None:
             raise ValueError("No user turn")
+        latest = task_user_message(messages)
         content = latest.get("content", "")
         images = []
         if isinstance(content, list):
@@ -719,6 +744,8 @@ class Gateway:
                         usage=output.get("usage"),
                         source="normal Hermes agent turn",
                         native_answer=native_text,runtime_reference_footer=footer,
+                        task_question=body.get('_scarx_task_question'),web_coverage=body.get('_scarx_web_coverage'),
+                        task_interpretation=body.get('_scarx_task_interpretation'),
                     )
                 self.workload = {
                     "request_id": body.get("scarx_request_id") or uuid.uuid4().hex,
@@ -969,9 +996,7 @@ class Gateway:
                 yield chunk
                 if runtime_footer:delivered_footer=runtime_footer
             identifier = uuid.uuid4().hex
-            user = next(
-                m for m in reversed(body["messages"]) if m.get("role") == "user"
-            )
+            user = task_user_message(body['messages'])
             content = user.get("content", "")
             question = (
                 content
@@ -1010,6 +1035,8 @@ class Gateway:
                     usage=usage,
                     source="normal Hermes streaming turn",
                     native_answer=''.join(text),runtime_reference_footer=delivered_footer,
+                    task_question=body.get('_scarx_task_question'),web_coverage=body.get('_scarx_web_coverage'),
+                    task_interpretation=body.get('_scarx_task_interpretation'),
                     first_token_seconds=first_token,
                     seconds=time.monotonic() - started,
                 )
