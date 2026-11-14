@@ -5,6 +5,14 @@ Không cần chuyển sang tab Debug để trò chuyện. Gateway local: `127.0.
 Một worker Qwen3.5-0.8B nguyên BF16/F32; Whisper-small FP32 và ALIF H128 trên
 GPU. Không LoRA, quantization, pruning hoặc thay cơ chế học.
 
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.3+ce24c185bda2.zip`,
+796.057 byte, 50 payload files. SHA256:
+`3f03da4dfc08f5d604258e3dfef524ce50c1221793e794b218d5a845549f1a94`.
+Git SHA nguồn gói: `ce24c185bda2834d1a79361ab95aaedc150c0eb5`.
+Sidecar `.installed-verification.json` đã xác nhận payload khớp bản đang cài,
+64 asset pins/1.159 file Hermes/dependency đều khớp; không restart hoặc gọi model
+trong phép kiểm cuối. Main vẫn ở SHA cũ, không merge hoặc push.
+
 ## Dùng ngay
 
 - Chọn **Scarx Hybrid** trong chat Hermes như model trước đây.
@@ -43,6 +51,7 @@ Snapshot trước/sau activation xác nhận các mảng, RNG/replay và 5 cập
 [Bằng chứng read-only](evidence/RC3_OPERATIONAL_SMOKE_20261114.json) tách việc
 đã đo khỏi khả năng chưa chứng minh. Source audit tại
 `scripts/audit_hybrid_rc_operational.py`; raw prompt/checkpoint/log ở vùng private.
+Verifier artifact-to-install: `scripts/verify_installed_hybrid_rc.py`.
 
 ## Test 8 giờ đã hủy
 

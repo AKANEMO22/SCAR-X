@@ -1,0 +1,70 @@
+"""Read-only final artifact-to-install verification. No restart or inference."""
+
+import argparse
+from datetime import datetime,timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+import sys
+import xml.etree.ElementTree as ET
+import zipfile
+
+ROOT=Path(__file__).resolve().parents[1]
+
+
+def load(name,path):
+    spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec)
+    old=sys.dont_write_bytecode;sys.dont_write_bytecode=True
+    try:spec.loader.exec_module(m)
+    finally:sys.dont_write_bytecode=old
+    return m
+
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('archive',type=Path);args=parser.parse_args()
+    archive=args.archive.resolve();digest=hashlib.sha256(archive.read_bytes()).hexdigest()
+    if archive.with_suffix('.zip.sha256').read_text(encoding='ascii').split()[0]!=digest:raise ValueError('ZIP hash mismatch')
+    packager=load('_final_RC_packager',ROOT/'scripts/package_hybrid_rc.py')
+    manager=load('_final_RC_manager',ROOT/'release/hybrid/manage.py')
+    checker=load('_final_RC_source_trust',ROOT/'scripts/verify_hybrid_rc_candidate.py')
+    stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+    directory=ROOT/'local/release-verification'/stamp;package=directory/'package';package.mkdir(parents=True)
+    with zipfile.ZipFile(archive) as bundle:
+        for member in packager.zip_members(bundle):
+            dest=package/member.filename;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(bundle.read(member))
+    manifest=manager.verify_package(package);checker.validate_trusted_sources(packager,package,manifest)
+    root,data,python,home=manager.registered_target()
+    if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Installed code does not match final payload')
+    manager.assert_registered_owner_runtime(root,data)
+    manager.validate_existing_assets(root,home,package)
+    suite=ET.parse(ROOT/'local/hybrid-rc3-final-targeted-20261114.xml').getroot().find('testsuite')
+    assert int(suite.attrib['tests'])==140 and int(suite.attrib['failures'])==0 and int(suite.attrib['errors'])==0
+    assert int(suite.attrib['skipped'])==0  # native CPU parity was deselected, not run
+    evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
+    assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
+    sys.path.insert(0,str(ROOT/'src'))
+    from scarx.evaluation.shared_native import SharedNative
+    native=SharedNative(ROOT);status=native.status()
+    assert status['ready'] and not status['failure'] and status['neural']['execution_device']=='gpu'
+    main_sha=subprocess.check_output(['git','-C',str(ROOT.parents[2]),'rev-parse','main'],text=True).strip()
+    assert main_sha=='37749041ef45d54951558fdeb0c3695616b47cb5'
+    report={'status':'FINAL_RC_PAYLOAD_MATCHES_INSTALLED_CODE_AND_REGISTERED_RUNTIME',
+            'version':manifest['version'],'source_git_sha':manifest['source_git_sha'],
+            'archive':str(archive.relative_to(ROOT)),'archive_sha256':digest,'archive_bytes':archive.stat().st_size,
+            'payload_files':len(manifest['target_before_sha256']),'pending_payload_changes':0,
+            'native_asset_Hermes_dependency_pins_match':True,
+            'Python_checks_passed':int(suite.attrib['tests']),'native_CPU_parity_deselected':1,
+            'gateway_pid':native.owner.pid,'native_GPU_pid':native.worker.pid,
+            'live_neural_updates':status['neural']['updates'],'original_main_sha_unchanged':main_sha,
+            'eight_hour_run_cancelled_not_PASS':True,'new_native_calls_or_training':0,
+            'operational_evidence':'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json',
+            'research_or_production_PASS':False}
+    path=archive.with_suffix('.installed-verification.json')
+    with path.open('x',encoding='utf-8') as f:json.dump(report,f,indent=2)
+    (directory/'result.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    print(json.dumps(report))
+
+
+if __name__=='__main__':main()
