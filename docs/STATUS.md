@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Hermes file-read contract —14/11
+
+[Actual file repro và sửa](hybrid/HERMES_FILE_READ_CONTRACT_20261114.md): file24byte
+bị exclusive lock từng trả cùng packet thành công0byte với file rỗng thật.
+P03ce157 giữ lỗi; repair3aeff8 đã cài parser compound fail-closed/sibling nhỏ,
+20actualcalls gồm cold imports installedsource,11target checks qua. Canonical
+base104pass/19fail/9skip vs candidate114/9/9;9failure cũ giữ rõ, không all-green.
+Gateway nạp lại/Desktopready; nativeVLM39372/liveALIF5updates giữ nguyên.
+Sequential/pipeline masking và neuralerrorinput vẫn mở, chưa productionPASS.
+
 ## Hidden binding và common probe —14/11
 
 [Hai chẩn đoán inference-only](hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md):

@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Sửa phản hồi đọc file sai](HERMES_FILE_READ_CONTRACT_20261114.md): file bị khóa
+không còn thành empty-file trên default compound path. Đã cài/back up/reload
+backend và kiểm source thật; chưa sửa mọi fallback hoặc học neural từ lỗi.
+
 [Hidden đã đổi gì?](HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md): query contrasts
 và common ridge head tách hidden khỏi readout. Hidden fit train tốt hơn nhưng
 gainDEV chưa chắc chắn, protection không giúp representation probe. Chưa

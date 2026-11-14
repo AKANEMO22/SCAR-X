@@ -168,3 +168,14 @@ test("common-head diagnostic separates seen fit from heldout transfer", () => {
   assert.match(completed,/2.33 điểm % · CI95% \[-3.08; 8.17\]/);
   assert.match(completed,/Readout offline chẩn đoán/);
 });
+
+test("actual file-contract repair does not imply neural learning or all-green upstream tests", () => {
+  const {nodes,event}=setup();
+  event({actor:"orchestrator",kind:"file_contract.repair_verified",payload:{
+    run_id:"owned-file-repair",actual_dispatcher_calls:20,target_tests_passed:11,existing_upstream_failures:9}});
+  const text=nodes.get("read-contract-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/20 lượt công cụ thật/);
+  assert.match(text,/9 test cũ Hermes chưa qua/);
+  assert.match(text,/chưa là SNN tự hiểu nguyên nhân/);
+  assert.equal(nodes.has("updates"),false);
+});

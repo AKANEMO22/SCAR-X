@@ -83,3 +83,14 @@ progress (verifiedinstalledbytes+actualHTTPfailure/retry regression), not merely
 a plan. Fullobjective stillactive: learnederrorrecovery/unseenretention and
 productioncoverage unresolved,8hPID41904/source verifiedlive13072s/44cycles/
 8checkpoints. No repeatedexternalblocker; do not reportcomplete or blocked.
+
+Progress3ce157/3aeff8: actual registered Hermes hooks expose a false-empty read
+for an exclusively locked24byte file, indistinguishable from trueempty. Installed
+exact-source compound-parser/small-sibling repair with backup;20actualcalls,
+11newchecks pass, canonical9existingfailureIDs are a subset of base. Preserve
+first invalid sentinel test, corrected audit prose and raw failure. Fresh
+gateway37992/Desktopready; sourcecoldimports exact; native39372/liveALIF5 remain.
+No SNN update or hiddenadvantage claim. Fullgoal stillnotachieved: sequential/
+pipeline cases, learnedcausepolicy, transfer/retention and8h/quality remainopen.
+PID41904/source verifiedlive16477s/55cycles/10checks. No external blocker; next
+safeaction is a separate whole-read-path engineering check, not neural scaling.

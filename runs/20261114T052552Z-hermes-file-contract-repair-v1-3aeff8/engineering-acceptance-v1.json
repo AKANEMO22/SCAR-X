@@ -1,0 +1,54 @@
+{
+  "run_id": "20261114T052552Z-hermes-file-contract-repair-v1-3aeff8",
+  "actual_calls_v1_plus_refactor": 17,
+  "real_locked_read_now_reports_error": true,
+  "true_empty_and_other_readable_cases_unchanged": true,
+  "refactor_preserves_v1_actual_three_cases_exactly": true,
+  "canonical_new_contract_tests_passed": 11,
+  "baseline_contract_test_failures_repaired": [
+    "tests/tools/test_scarx_file_read_contract.py::test_empty_sample_for_nonempty_file_is_not_a_successful_read",
+    "tests/tools/test_scarx_file_read_contract.py::test_failed_sample_does_not_allow_success_via_downstream_pipeline_status",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_file_size_is_not_an_empty_file[-1]",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_file_size_is_not_an_empty_file[]",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_file_size_is_not_an_empty_file[unavailable]",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_line_count_is_not_a_valid_read[-1]",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_line_count_is_not_a_valid_read[]",
+    "tests/tools/test_scarx_file_read_contract.py::test_unknown_or_negative_line_count_is_not_a_valid_read[unavailable]",
+    "tests/tools/test_scarx_file_read_contract.py::test_zero_size_with_returned_content_is_inconclusive_not_empty"
+  ],
+  "baseline_other_failures": [
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[18]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[2]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[63]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_overwrite_still_preserves_existing_mode",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_sorts_files_and_directories_before_pagination",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_excludes_gitignored_empty_directory",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_includes_matching_empty_directory",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_read_file_tool_rejects_device_symlink_before_io",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_symlink_to_blocked_device_is_blocked",
+    "tests/tools/test_file_read_guards.py::TestFileDedup::test_background_review_fork_gets_content_and_read_mark_not_stub"
+  ],
+  "candidate_existing_failures": [
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[18]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[2]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[63]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_overwrite_still_preserves_existing_mode",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_sorts_files_and_directories_before_pagination",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_excludes_gitignored_empty_directory",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_includes_matching_empty_directory",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_read_file_tool_rejects_device_symlink_before_io",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_symlink_to_blocked_device_is_blocked"
+  ],
+  "new_canonical_failures": [],
+  "whole_upstream_suite_green": false,
+  "baseline_only_unrelated_test_not_claimed_fixed": [
+    "tests/tools/test_file_read_guards.py::TestFileDedup::test_background_review_fork_gets_content_and_read_mark_not_stub"
+  ],
+  "core_before_sha256": "d33e0bc43516f9c5da4dd1ab75bd57b03837034c5c4accb91df1d78b92131b51",
+  "core_after_sha256": "68bb3ef6fb07c12384641f1359a7744dbf4814e1d84a79b7b20407d2bad3dee9",
+  "sibling_sha256": "e846b861d9a2f672f47f026b72aab2b4799109b93cef55f9720309192add5a2f",
+  "source_artifacts": "refactor-v2",
+  "no_neural_learning_or_architecture_changes": true,
+  "live_activation_verified": false,
+  "verdict": "ENGINEERING_READ_CONTRACT_REPAIR_QUALIFIED_WITH_EXISTING_OS_TEST_FAILURES"
+}

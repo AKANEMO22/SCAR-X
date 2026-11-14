@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Tool truth14/11:** actual Hermes read của file khóa bị báo thành empty0byte;
+đã sửa compound response parser và cold-validate installedsource. Không dùng
+reported status làm nhãn đúng khi contract chưa đủ; không coi sửa phần mềm là
+SNN tự hiểu nguyên nhân. Sequential/pipeline và goalinput còn cần xử lý;
+[source/results/giới hạn](hybrid/HERMES_FILE_READ_CONTRACT_20261114.md).
+
 **Hidden common-probe14/11:** các raw feature matrices đổi bởi hidden update;
 reset riêng w_in/w_rec đưa chúng về đúng frozen, không do readout/statistics.
 Cùng diagnosticridge head: hidden56,08%DEV vs frozen53,75%, gain2,33pp/CI

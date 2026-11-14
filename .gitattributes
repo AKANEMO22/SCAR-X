@@ -148,3 +148,14 @@ scripts/audit_hybrid_predicate_binding.py -text
 scripts/audit_hybrid_hidden_common_probe.py -text
 experiments/hybrid-predicate-binding-diagnostic-v1.md -text
 experiments/hybrid-hidden-common-probe-diagnostic-v1.md -text
+runs/*-file-contract-p0-v1-*/** -text -whitespace
+runs/*-hermes-file-contract-repair-v1-*/** -text -whitespace
+experiments/hybrid-file-observation-contract-p0-v1.md -text
+experiments/hybrid-hermes-file-read-contract-repair-v1.md -text
+scripts/hermes_file_contract_fixture.py -text
+scripts/audit_hybrid_file_contract.py -text
+scripts/audit_hermes_file_read_repair.py -text
+scripts/install_hermes_file_read_repair.py -text
+integrations/hermes/file_read_contract_patch.py -text
+integrations/hermes/file_operations_read_contract.py -text
+integrations/hermes/file_read_contract_pytest.py -text

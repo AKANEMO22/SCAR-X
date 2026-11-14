@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Hermes file contract](hybrid/HERMES_FILE_READ_CONTRACT_20261114.md):
+hermes_file_contract_fixture.py, two data-only auditors, exact-version installer;
+integrations/hermes/file_read_contract_patch.py + file_operations_read_contract.py.
+Runs3ce157/3aeff8 giữ raw public hooks, source trước/sau, canonical logs và source
+activation receipt; actualsourceHermes có backup, không thay ALIF hoặc main.
+
 [Binding và common-head hidden diagnostic](hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md):
 evaluation/predicate_binding_diagnostic.py, common_probe_diagnostic.py;
 diagnose/audit_hybrid_predicate_binding.py và diagnose/audit_hybrid_hidden_common_probe.py.

@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Sửa phản hồi đọc file Hermes](docs/hybrid/HERMES_FILE_READ_CONTRACT_20261114.md):
+file bị khóa không còn thành empty-file trên default path; đã cài/back up,
+giữ rõ fallback và neural self-recovery còn chưa được chứng minh.
 [Hidden binding/common-probe mới](docs/hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md):
 hidden làm đổi representation và tăng fit train, nhưng common-head DEV56,08%
 so với frozen53,75%, CI gain còn chứa0; protection52,58%. Không promote.

@@ -1,0 +1,25 @@
+{
+  "run_id": "20261114T051425Z-file-contract-p0-v1-3ce157",
+  "actual_dispatcher_public_hook_calls": 14,
+  "actual_public_hook_data_integrity_verified": true,
+  "empty_and_exclusively_locked_file_reported_envelopes_identical": true,
+  "locked_source_bytes_after_handle_closed": 24,
+  "locked_source_construction": "Primary Windows fixture writes23CRLFbytes then holds a GENERIC_READ/share0 handle throughout actual tool call; no write/delete during call",
+  "metadata_only_parser_can_distinguish_this_pair": false,
+  "binary_fixture_tool_report": {
+    "content": "1|潷湥搠扩湡特\u0001ɦ楸瑵牥�",
+    "total_lines": 1,
+    "file_size": 23,
+    "truncated": false,
+    "hint": "Transcoded from UTF-16-BE to UTF-8 for display. Text edits via patch/write_file would re-encode as UTF-8.",
+    "is_binary": false,
+    "is_image": false,
+    "not_found": false
+  },
+  "binary_fixture_caveat": "Tool heuristically interpreted23oddbytes as UTF16BE with replacement. Harness intended binary; no universal encoding oracle is inferred.",
+  "changed_result_digest_preserved": true,
+  "new_neural_learning": false,
+  "observer_candidate_deployed": false,
+  "verdict": "UPSTREAM_FALSE_EMPTY_CONTRACT_FAIL_DO_NOT_TRAIN_ON_REPORTED_SUCCESS",
+  "next_action": "Isolated fail-closed source-read repair; keep this raw failure and active8h source unchanged"
+}

@@ -15,7 +15,7 @@
 <div id="representation-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
-<details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div></details>
+<details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
 </main><script>
 const query=new URLSearchParams(location.search);const startCursor=Number(query.get('after')||0);
@@ -35,6 +35,13 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='file_contract.repair_verified'){
+const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
+para(p,'Kiểm đường đọc file Hermes · '+e.payload.run_id);
+para(p,'File bị khóa: trước báo rỗng, sau báo lỗi đọc. File rỗng thật vẫn đọc thành công.');
+para(p,e.payload.actual_dispatcher_calls+' lượt công cụ thật · '+e.payload.target_tests_passed+' test hợp đồng qua · '+e.payload.existing_upstream_failures+' test cũ Hermes chưa qua.');
+para(p,'Sửa compound parser trong phần mềm, chưa là SNN tự hiểu nguyên nhân. Fallback và neural policy còn cần kiểm.','muted');
+}
 if(e.kind==='hidden_common_probe.actual_score'){
 const p=$('representation-summary');clear('representation-summary');p.classList.remove('hidden');
 para(p,'Kiểm representation bằng readout chung · '+e.payload.run_id);

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="9" tests="121" time="60.117" timestamp="2026-11-14T12:26:11.012118+07:00" hostname="DESKTOP-IH48GF9"><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_ssh_authorized_keys_denied" time="0.948" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_netrc_denied" time="0.026" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_credential_config_files_denied[.pgpass]" time="0.024" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_credential_config_files_denied[.npmrc]" time="0.023" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_credential_config_files_denied[.pypirc]" time="0.023" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_aws_prefix_denied" time="0.043" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_oauth_traversal_denied[./.anthropic_oauth.json]" time="0.022" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_mcp_tokens_dir_protected_in_profile_mode" time="0.043" /><testcase classname="tests.tools.test_file_operations.TestIsWriteDenied" name="test_pairing_dir_denied" time="0.057" /><testcase classname="tests.tools.test_file_operations.TestReadResult" name="test_to_dict_omits_defaults" time="0.039" /><testcase classname="tests.tools.test_file_operations.TestSearchResult" name="test_truncated_flag_marks_total_as_lower_bound" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestSearchResult" name="test_untruncated_total_omits_lower_bound_flag" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestSearchResultDensify" name="test_densify_off_by_default" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestSearchResultDensify" name="test_densify_below_threshold_keeps_verbose" time="0.018" /><testcase classname="tests.tools.test_file_operations.TestSearchResultDensify" name="test_densify_paths_with_spaces" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_normalize_read_pagination_clamps_invalid_values" time="0.055" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_escape_shell_arg_rewrites_forward_slash_native_paths" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_is_likely_binary_by_extension" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_read_file_strips_leaked_terminal_fence_markers" time="0.033" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_newline_terminated_content_has_no_phantom_line" time="0.032" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_non_terminated_content_still_numbered_correctly" time="0.035" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_trailing_blank_line_is_kept" time="0.054" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsHelpers" name="test_newline_terminated_with_offset_has_no_phantom_line" time="0.034" /><testcase classname="tests.tools.test_file_operations.TestSearchPathValidation" name="test_search_nonexistent_path_returns_error" time="0.042" /><testcase classname="tests.tools.test_file_operations.TestSearchPathValidation" name="test_search_rg_error_exit_code" time="0.028" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_rg_target_files_includes_matching_empty_directory" time="4.101"><failure message="AssertionError: assert 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_includes_0\\repo\\vault' in ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault']&#10; +  where 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_includes_0\\repo\\vault' = str(WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault'))&#10; +  and   ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault'] = SearchResult(matches=[], files=['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files...s={}, total_count=1, truncated=False, limit_reason=None, warning=None, error=None, skipped_paths=[], skipped_omitted=0).files">self = &lt;tests.tools.test_file_operations.TestSearchFilesIncludesDirectories object at 0x00000202660DE5D0&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0')
+
+    @pytest.mark.skipif(shutil.which("rg") is None, reason="ripgrep not installed")
+    def test_rg_target_files_includes_matching_empty_directory(self, tmp_path):
+        root = tmp_path / "repo"
+        empty_dir = root / "vault"
+        empty_dir.mkdir(parents=True)
+    
+        ops = ShellFileOperations(LocalEnvironment("/"))
+        result = ops.search("vault", path=str(root), target="files")
+    
+        assert result.error is None
+&gt;       assert str(empty_dir) in result.files
+E       AssertionError: assert 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_includes_0\\repo\\vault' in ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault']
+E        +  where 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_includes_0\\repo\\vault' = str(WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault'))
+E        +  and   ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_includes_0/repo/vault'] = SearchResult(matches=[], files=['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files...s={}, total_count=1, truncated=False, limit_reason=None, warning=None, error=None, skipped_paths=[], skipped_omitted=0).files
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:381: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_rg_target_files_excludes_gitignored_empty_directory" time="5.081"><failure message="AssertionError: assert 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_excludes_0\\repo\\visible_dir' in ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir', '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/ignored_dir']&#10; +  where 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_excludes_0\\repo\\visible_dir' = str(WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir'))&#10; +  and   ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir', '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/ignored_dir'] = SearchResult(matches=[], files=['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files...s={}, total_count=2, truncated=False, limit_reason=None, warning=None, error=None, skipped_paths=[], skipped_omitted=0).files">self = &lt;tests.tools.test_file_operations.TestSearchFilesIncludesDirectories object at 0x00000202660DE710&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0')
+
+    @pytest.mark.skipif(shutil.which("rg") is None, reason="ripgrep not installed")
+    @pytest.mark.skipif(shutil.which("git") is None, reason="git not installed")
+    def test_rg_target_files_excludes_gitignored_empty_directory(self, tmp_path):
+        root = tmp_path / "repo"
+        ignored_dir = root / "ignored_dir"
+        visible_dir = root / "visible_dir"
+        ignored_dir.mkdir(parents=True)
+        visible_dir.mkdir()
+        (root / ".gitignore").write_text("ignored_dir/\n")
+        subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    
+        ops = ShellFileOperations(LocalEnvironment("/"))
+        result = ops.search("*dir", path=str(root), target="files")
+    
+        assert result.error is None
+&gt;       assert str(visible_dir) in result.files
+E       AssertionError: assert 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_excludes_0\\repo\\visible_dir' in ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir', '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/ignored_dir']
+E        +  where 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_target_files_excludes_0\\repo\\visible_dir' = str(WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir'))
+E        +  and   ['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/visible_dir', '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files_excludes_0/repo/ignored_dir'] = SearchResult(matches=[], files=['/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_target_files...s={}, total_count=2, truncated=False, limit_reason=None, warning=None, error=None, skipped_paths=[], skipped_omitted=0).files
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:398: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_rg_sorts_files_and_directories_before_pagination" time="5.075"><failure message="AssertionError: assert ['/c/Users/ha.../alpha-newer'] == ['C:\\Users\\...\alpha-newer']&#10;  &#10;  At index 0 diff: '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_sorts_files_and_direct0/repo/alpha-newer' != 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_sorts_files_and_direct0\\repo\\alpha-newer'&#10;  Use -v to get more diff">self = &lt;tests.tools.test_file_operations.TestSearchFilesIncludesDirectories object at 0x00000202660E1220&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_sorts_files_and_direct0')
+
+    @pytest.mark.skipif(shutil.which("rg") is None, reason="ripgrep not installed")
+    def test_rg_sorts_files_and_directories_before_pagination(self, tmp_path):
+        """A newer directory must page ahead of older files and dirs (globally
+        merged mtime order before offset/limit, not dirs appended after)."""
+        root = tmp_path / "repo"
+        older_file = root / "older.log"
+        newer_dir = root / "alpha-newer"
+        older_dirs = [root / "zulu-older", root / "yankee-older"]
+        root.mkdir()
+        older_file.write_text("x")
+        newer_dir.mkdir()
+        for older_dir in older_dirs:
+            older_dir.mkdir()
+        os.utime(older_file, (1_000, 1_000))
+        for older_dir in older_dirs:
+            os.utime(older_dir, (1_000, 1_000))
+        os.utime(newer_dir, (2_000, 2_000))
+    
+        ops = ShellFileOperations(LocalEnvironment("/"))
+        result = ops.search("*", path=str(root), target="files", limit=1)
+    
+        assert result.error is None
+&gt;       assert result.files == [str(newer_dir)]
+E       AssertionError: assert ['/c/Users/ha.../alpha-newer'] == ['C:\\Users\\...\alpha-newer']
+E         
+E         At index 0 diff: '/c/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_rg_sorts_files_and_direct0/repo/alpha-newer' != 'C:\\Users\\hachimi\\AppData\\Local\\Temp\\pytest-of-hachimi\\pytest-488\\test_rg_sorts_files_and_direct0\\repo\\alpha-newer'
+E         Use -v to get more diff
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:423: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_find_target_files_includes_matching_empty_directory" time="1.846" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_target_files_still_excludes_hidden_matching_directories" time="1.866" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_find_lane_never_returns_the_search_root_itself" time="1.824" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesIncludesDirectories" name="test_target_files_paginates_combined_files_and_directories" time="3.940" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesFallbackHiddenPaths" name="test_hidden_root_with_hidden_ancestor_includes_files" time="1.348" /><testcase classname="tests.tools.test_file_operations.TestSearchFilesFallbackHiddenPaths" name="test_normal_root_still_excludes_hidden_descendants" time="1.348" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsWriteDenied" name="test_write_file_denied_path" time="0.024" /><testcase classname="tests.tools.test_file_operations.TestShellFileOpsWriteDenied" name="test_move_file_failure_path" time="0.055" /><testcase classname="tests.tools.test_file_operations.TestPatchReplacePostWriteVerification" name="test_patch_replace_fails_when_file_not_persisted" time="0.039" /><testcase classname="tests.tools.test_file_operations.TestPatchReplacePostWriteVerification" name="test_patch_replace_fails_when_verify_read_errors" time="0.058" /><testcase classname="tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions" name="test_new_file_gets_umask_default_permissions[18]" time="0.554"><failure message="AssertionError: Expected mode 0644 (umask 0022), got 0666&#10;assert 438 == 420">self = &lt;tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions object at 0x00000202660DF390&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_new_file_gets_umask_defau0')
+test_umask = 18
+
+    @pytest.mark.parametrize("test_umask", [0o022, 0o002, 0o077])
+    def test_new_file_gets_umask_default_permissions(self, tmp_path, test_umask):
+        """Newly created file should get umask-computed perms, not mktemp's 0600.
+    
+        Uses a real subprocess so the shell script actually runs.
+        """
+        ops = ShellFileOperations(make_real_subprocess_env(str(tmp_path)))
+        dest = tmp_path / "new_file.txt"
+        assert not dest.exists()
+    
+        old_umask = os.umask(test_umask)
+        try:
+            result = ops.write_file(str(dest), "test content\n")
+        finally:
+            os.umask(old_umask)
+    
+        assert result.error is None, f"write failed: {result.error}"
+        assert dest.read_text() == "test content\n"
+        expected_mode = 0o666 &amp; ~test_umask
+        actual_mode = dest.stat().st_mode &amp; 0o777
+&gt;       assert actual_mode == expected_mode, (
+            f"Expected mode {expected_mode:04o} (umask {test_umask:04o}), "
+            f"got {actual_mode:04o}"
+        )
+E       AssertionError: Expected mode 0644 (umask 0022), got 0666
+E       assert 438 == 420
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:665: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions" name="test_new_file_gets_umask_default_permissions[2]" time="0.507"><failure message="AssertionError: Expected mode 0664 (umask 0002), got 0666&#10;assert 438 == 436">self = &lt;tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions object at 0x00000202660DF4D0&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_new_file_gets_umask_defau1')
+test_umask = 2
+
+    @pytest.mark.parametrize("test_umask", [0o022, 0o002, 0o077])
+    def test_new_file_gets_umask_default_permissions(self, tmp_path, test_umask):
+        """Newly created file should get umask-computed perms, not mktemp's 0600.
+    
+        Uses a real subprocess so the shell script actually runs.
+        """
+        ops = ShellFileOperations(make_real_subprocess_env(str(tmp_path)))
+        dest = tmp_path / "new_file.txt"
+        assert not dest.exists()
+    
+        old_umask = os.umask(test_umask)
+        try:
+            result = ops.write_file(str(dest), "test content\n")
+        finally:
+            os.umask(old_umask)
+    
+        assert result.error is None, f"write failed: {result.error}"
+        assert dest.read_text() == "test content\n"
+        expected_mode = 0o666 &amp; ~test_umask
+        actual_mode = dest.stat().st_mode &amp; 0o777
+&gt;       assert actual_mode == expected_mode, (
+            f"Expected mode {expected_mode:04o} (umask {test_umask:04o}), "
+            f"got {actual_mode:04o}"
+        )
+E       AssertionError: Expected mode 0664 (umask 0002), got 0666
+E       assert 438 == 436
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:665: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions" name="test_new_file_gets_umask_default_permissions[63]" time="0.528"><failure message="AssertionError: Expected mode 0600 (umask 0077), got 0666&#10;assert 438 == 384">self = &lt;tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions object at 0x00000202660E1480&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_new_file_gets_umask_defau2')
+test_umask = 63
+
+    @pytest.mark.parametrize("test_umask", [0o022, 0o002, 0o077])
+    def test_new_file_gets_umask_default_permissions(self, tmp_path, test_umask):
+        """Newly created file should get umask-computed perms, not mktemp's 0600.
+    
+        Uses a real subprocess so the shell script actually runs.
+        """
+        ops = ShellFileOperations(make_real_subprocess_env(str(tmp_path)))
+        dest = tmp_path / "new_file.txt"
+        assert not dest.exists()
+    
+        old_umask = os.umask(test_umask)
+        try:
+            result = ops.write_file(str(dest), "test content\n")
+        finally:
+            os.umask(old_umask)
+    
+        assert result.error is None, f"write failed: {result.error}"
+        assert dest.read_text() == "test content\n"
+        expected_mode = 0o666 &amp; ~test_umask
+        actual_mode = dest.stat().st_mode &amp; 0o777
+&gt;       assert actual_mode == expected_mode, (
+            f"Expected mode {expected_mode:04o} (umask {test_umask:04o}), "
+            f"got {actual_mode:04o}"
+        )
+E       AssertionError: Expected mode 0600 (umask 0077), got 0666
+E       assert 438 == 384
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:665: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions" name="test_overwrite_still_preserves_existing_mode" time="0.678"><failure message="AssertionError: assert (33206 &amp; 511) == 493&#10; +  where 33206 = os.stat_result(st_mode=33206, st_ino=1688849863558016, st_dev=6966120533882669148, st_nlink=1, st_uid=0, st_gid=0, st_size=25, st_atime=1794634002, st_mtime=1794634002, st_ctime=1794634002).st_mode&#10; +    where os.stat_result(st_mode=33206, st_ino=1688849863558016, st_dev=6966120533882669148, st_nlink=1, st_uid=0, st_gid=0, st_size=25, st_atime=1794634002, st_mtime=1794634002, st_ctime=1794634002) = stat()&#10; +      where stat = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_overwrite_still_preserves0/existing.sh').stat">self = &lt;tests.tools.test_file_operations.TestAtomicWriteNewFilePermissions object at 0x00000202660E15B0&gt;
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_overwrite_still_preserves0')
+
+    def test_overwrite_still_preserves_existing_mode(self, tmp_path):
+        """The new-file branch must not disturb the overwrite path's
+        mode preservation (e.g. an executable script stays 0755)."""
+        ops = ShellFileOperations(make_real_subprocess_env(str(tmp_path)))
+        dest = tmp_path / "existing.sh"
+        dest.write_text("#!/bin/sh\n")
+        dest.chmod(0o755)
+    
+        result = ops.write_file(str(dest), "#!/bin/sh\necho updated\n")
+    
+        assert result.error is None, f"write failed: {result.error}"
+        assert dest.read_text() == "#!/bin/sh\necho updated\n"
+&gt;       assert dest.stat().st_mode &amp; 0o777 == 0o755
+E       AssertionError: assert (33206 &amp; 511) == 493
+E        +  where 33206 = os.stat_result(st_mode=33206, st_ino=1688849863558016, st_dev=6966120533882669148, st_nlink=1, st_uid=0, st_gid=0, st_size=25, st_atime=1794634002, st_mtime=1794634002, st_ctime=1794634002).st_mode
+E        +    where os.stat_result(st_mode=33206, st_ino=1688849863558016, st_dev=6966120533882669148, st_nlink=1, st_uid=0, st_gid=0, st_size=25, st_atime=1794634002, st_mtime=1794634002, st_ctime=1794634002) = stat()
+E        +      where stat = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/pytest-of-hachimi/pytest-488/test_overwrite_still_preserves0/existing.sh').stat
+
+local\hermes-reliability-source\tests\tools\test_file_operations.py:682: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_operations.TestAtomicWriteThroughSymlink" name="test_write_follows_symlink_and_preserves_link" time="0.807" /><testcase classname="tests.tools.test_file_operations.TestAtomicWriteThroughSymlink" name="test_write_through_broken_symlink_falls_back" time="0.593" /><testcase classname="tests.tools.test_file_operations.TestReadNonUtf8IsBinary" name="test_replacement_char_sample_flagged_binary" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestReadNonUtf8IsBinary" name="test_plain_utf8_text_not_flagged" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_cjk_text_cut_mid_character_is_text" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_emoji_cut_at_boundary_is_text" time="0.018" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_utf8_bom_is_text" time="0.041" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_file_containing_real_replacement_char_is_text" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_nul_byte_is_binary" time="0.019" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_latin1_text_stays_read_only" time="0.018" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_empty_sample_is_text" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_truncated_garbage_tail_after_invalid_prefix_is_binary" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_sample_decodes_base64_transport" time="0.017" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_sample_falls_back_on_non_base64_output" time="0.034" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_sample_falls_back_on_nonzero_exit" time="0.030" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_read_file_returns_cjk_content_instead_of_binary_error" time="0.033" /><testcase classname="tests.tools.test_file_operations.TestByteLayerBinaryDetection" name="test_read_file_still_blocks_nul_binaries" time="0.033" /><testcase classname="tests.tools.test_file_operations.TestEscapeNativeToolArg" name="test_windows_native_path_kept_native" time="0.016" /><testcase classname="tests.tools.test_file_operations.TestEscapeNativeToolArg" name="test_msys_path_translated_back_to_native" time="0.043" /><testcase classname="tests.tools.test_file_operations.TestEscapeNativeToolArg" name="test_posix_path_untouched_on_windows" time="0.018" /><testcase classname="tests.tools.test_file_operations.TestEscapeNativeToolArg" name="test_rg_content_search_uses_native_form" time="0.018" /><testcase classname="tests.tools.test_file_operations.TestEscapeNativeToolArg" name="test_shell_linter_uses_native_form" time="0.039" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestIsLikelyBinary" name="test_binary_extension_returns_true" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestIsLikelyBinary" name="test_text_content_returns_false" time="0.018" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestIsLikelyBinary" name="test_just_above_threshold" time="0.019" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestIsLikelyBinary" name="test_tabs_and_newlines_excluded" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestIsLikelyBinary" name="test_content_sample_longer_than_1000" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintBracePaths" name="test_path_with_curly_braces" time="0.018" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintBracePaths" name="test_unsupported_extension_skipped" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintBracePaths" name="test_missing_linter_skipped" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintBracePaths" name="test_lint_failure_returns_output" time="0.018" /><testcase classname="tests.tools.test_file_operations_edge_cases" name="test_local_js_lint_runs_pm_node_never_the_users" time="0.000"><skipped type="pytest.skip" message="POSIX sh stand-ins for node">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_operations_edge_cases.py:116: POSIX sh stand-ins for node</skipped></testcase><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintInproc" name="test_python_inproc_clean" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintInproc" name="test_json_inproc_clean" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintInproc" name="test_toml_inproc_error" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases" name="test_json_write_refuses_only_introduced_nonstandard_constants[NaN]" time="5.234" /><testcase classname="tests.tools.test_file_operations_edge_cases" name="test_json_write_refuses_only_introduced_nonstandard_constants[Infinity]" time="5.093" /><testcase classname="tests.tools.test_file_operations_edge_cases" name="test_json_write_refuses_only_introduced_nonstandard_constants[-Infinity]" time="5.235" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestCheckLintDelta" name="test_pre_existing_remains_flagged_but_not_new" time="0.018" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestSearchContextParsing" name="test_parse_search_context_line_prefers_rightmost_numeric_separator" time="0.017" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestSearchContextParsing" name="test_search_with_grep_context_handles_filename_with_dash_digits" time="0.016" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestNoTrailingNewlineTotalLines" name="test_pagination_admits_final_unterminated_line" time="2.396" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestNoTrailingNewlineTotalLines" name="test_terminated_and_empty_files_unchanged" time="2.409" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestNoTrailingNewlineTotalLines" name="test_native_path_counts_final_unterminated_line" time="0.832" /><testcase classname="tests.tools.test_file_operations_edge_cases.TestNoTrailingNewlineTotalLines" name="test_assembler_bumps_count_only_on_proven_missing_newline" time="0.036" /><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_blocked_device_detection" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:71: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_normal_files_not_blocked" time="0.042" /><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_normpath_alias_to_blocked_device_is_blocked" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:130: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_proc_fd_blocked" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:82: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_proc_legitimate_files_not_blocked" time="0.030" /><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_proc_sensitive_pseudo_files_blocked" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:88: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_proc_task_thread_sensitive_files_blocked" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:113: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_read_file_tool_rejects_device" time="0.000"><skipped type="pytest.skip" message="platforms(linux); host is win32">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:161: platforms(linux); host is win32</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_read_file_tool_rejects_device_symlink_before_io" time="0.056"><failure message="AssertionError: 'device file' not found in 'Object of type MagicMock is not JSON serializable'">self = &lt;tests.tools.test_file_read_guards.TestDevicePathBlocking testMethod=test_read_file_tool_rejects_device_symlink_before_io&gt;
+mock_ops = &lt;MagicMock name='_get_file_ops' id='2209343502864'&gt;
+
+    @patch("tools.file_tools._get_file_ops")
+    def test_read_file_tool_rejects_device_symlink_before_io(self, mock_ops):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            link_path = os.path.join(tmpdir, "zero-link")
+            try:
+                os.symlink("/dev/zero", link_path)
+            except OSError as exc:
+                self.skipTest(f"symlink unavailable: {exc}")
+    
+            result = json.loads(read_file_tool(link_path, task_id="dev_link_test"))
+    
+        self.assertIn("error", result)
+&gt;       self.assertIn("device file", result["error"])
+E       AssertionError: 'device file' not found in 'Object of type MagicMock is not JSON serializable'
+
+local\hermes-reliability-source\tests\tools\test_file_read_guards.py:180: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_read_file_tool_rejects_task_cwd_relative_device_alias_symlink" time="0.019"><skipped type="pytest.skip" message="/dev/stdin is not available on this platform">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:183: /dev/stdin is not available on this platform</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_safe_device_not_blocked" time="0.025" /><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_symlink_to_blocked_device_is_blocked" time="0.023"><failure message="AssertionError: False is not true">self = &lt;tests.tools.test_file_read_guards.TestDevicePathBlocking testMethod=test_symlink_to_blocked_device_is_blocked&gt;
+
+    def test_symlink_to_blocked_device_is_blocked(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            link_path = os.path.join(tmpdir, "zero-link")
+            try:
+                os.symlink("/dev/zero", link_path)
+            except OSError as exc:
+                self.skipTest(f"symlink unavailable: {exc}")
+&gt;           self.assertTrue(_is_blocked_device(link_path))
+E           AssertionError: False is not true
+
+local\hermes-reliability-source\tests\tools\test_file_read_guards.py:146: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_read_guards.TestDevicePathBlocking" name="test_symlink_to_regular_file_not_blocked" time="0.029" /><testcase classname="tests.tools.test_file_read_guards.TestNonRegularFileReads" name="test_missing_file_still_reports_not_found" time="2.379" /><testcase classname="tests.tools.test_file_read_guards.TestNonRegularFileReads" name="test_read_file_tool_on_directory_errors_instead_of_blocking" time="0.504" /><testcase classname="tests.tools.test_file_read_guards.TestNonRegularFileReads" name="test_read_file_tool_on_fifo_errors_instead_of_blocking" time="0.017"><skipped type="pytest.skip" message="platform has no os.mkfifo">C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hermes-reliability-source\tests\tools\test_file_read_guards.py:253: platform has no os.mkfifo</skipped></testcase><testcase classname="tests.tools.test_file_read_guards.TestNonRegularFileReads" name="test_regular_file_still_reads" time="0.828" /><testcase classname="tests.tools.test_file_read_guards.TestCharacterCountGuard" name="test_content_under_limit_passes" time="0.042" /><testcase classname="tests.tools.test_file_read_guards.TestCharacterCountGuard" name="test_oversized_multiline_read_truncated_with_continuation" time="0.037" /><testcase classname="tests.tools.test_file_read_guards.TestFileDedup" name="test_background_review_fork_gets_content_and_read_mark_not_stub" time="0.049" /><testcase classname="tests.tools.test_file_read_guards.TestFileDedup" name="test_different_task_not_deduped" time="0.047" /><testcase classname="tests.tools.test_file_read_guards.TestFileDedup" name="test_second_read_returns_dedup_stub" time="0.048"><failure message="AssertionError: None is not true : Second read should return dedup stub">self = &lt;tests.tools.test_file_read_guards.TestFileDedup testMethod=test_second_read_returns_dedup_stub&gt;
+mock_ops = &lt;MagicMock name='_get_file_ops' id='2209400195120'&gt;
+
+    @patch("tools.file_tools._get_file_ops")
+    def test_second_read_returns_dedup_stub(self, mock_ops):
+        """Second read of same file+range returns non-content dedup status."""
+        mock_ops.return_value = _make_fake_ops(
+            content="line one\nline two\n", file_size=20,
+        )
+        # First read — full content
+        r1 = json.loads(read_file_tool(self._tmpfile, task_id="dup"))
+        self.assertNotIn("dedup", r1)
+    
+        # Second read — should get dedup stub
+        r2 = json.loads(read_file_tool(self._tmpfile, task_id="dup"))
+&gt;       self.assertTrue(r2.get("dedup"), "Second read should return dedup stub")
+E       AssertionError: None is not true : Second read should return dedup stub
+
+local\hermes-reliability-source\tests\tools\test_file_read_guards.py:392: AssertionError</failure></testcase><testcase classname="tests.tools.test_file_read_guards.TestFileDedup" name="test_write_rejects_internal_read_status_text" time="0.044" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_different_ranges_tracked_independently" time="0.059" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_file_modification_clears_block" time="0.109" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_other_tool_call_clears_hits" time="0.048" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_reset_file_dedup_clears_hits" time="0.059" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_subsequent_reads_stay_blocked" time="0.065" /><testcase classname="tests.tools.test_file_read_guards.TestDedupStubLoopGuard" name="test_third_read_is_blocked" time="0.050" /><testcase classname="tests.tools.test_file_read_guards.TestDedupResetOnCompression" name="test_first_post_compaction_read_recovers_exact_content" time="0.051" /><testcase classname="tests.tools.test_file_read_guards.TestConfigOverride" name="test_custom_config_lowers_limit" time="0.049" /><testcase classname="tests.tools.test_file_read_guards.TestConfigOverride" name="test_custom_config_raises_limit" time="0.047" /><testcase classname="tests.tools.test_file_read_guards.TestWriteInvalidatesDedup" name="test_write_invalidates_all_offsets" time="0.088" /><testcase classname="tests.tools.test_file_read_guards.TestWriteInvalidatesDedup" name="test_write_invalidates_dedup_same_second" time="0.061" /></testsuite></testsuites>

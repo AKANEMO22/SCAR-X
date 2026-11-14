@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="11" time="0.316" timestamp="2026-11-14T12:23:58.850950+07:00" hostname="DESKTOP-IH48GF9"><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_file_size_is_not_an_empty_file[]" time="0.130"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = ''
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_file_size_is_not_an_empty_file(value):
+        result = make_ops(size=value).read_file("owned.txt")
+&gt;       assert result.error and "size" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:28: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_file_size_is_not_an_empty_file[unavailable]" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = 'unavailable'
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_file_size_is_not_an_empty_file(value):
+        result = make_ops(size=value).read_file("owned.txt")
+&gt;       assert result.error and "size" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:28: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_file_size_is_not_an_empty_file[-1]" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=1, file_size=-1, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = '-1'
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_file_size_is_not_an_empty_file(value):
+        result = make_ops(size=value).read_file("owned.txt")
+&gt;       assert result.error and "size" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=1, file_size=-1, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:28: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_line_count_is_not_a_valid_read[]" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = ''
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_line_count_is_not_a_valid_read(value):
+        result = make_ops(count=value).read_file("owned.txt")
+&gt;       assert result.error and "line" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:35: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_line_count_is_not_a_valid_read[unavailable]" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = 'unavailable'
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_line_count_is_not_a_valid_read(value):
+        result = make_ops(count=value).read_file("owned.txt")
+&gt;       assert result.error and "line" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:35: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_unknown_or_negative_line_count_is_not_a_valid_read[-1]" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=-1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">value = '-1'
+
+    @pytest.mark.parametrize("value", ("", "unavailable", "-1"))
+    def test_unknown_or_negative_line_count_is_not_a_valid_read(value):
+        result = make_ops(count=value).read_file("owned.txt")
+&gt;       assert result.error and "line" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=-1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:35: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_failed_sample_does_not_allow_success_via_downstream_pipeline_status" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">def test_failed_sample_does_not_allow_success_via_downstream_pipeline_status():
+        result = make_ops(sample_rc=1, fallback_code=1).read_file("owned.txt")
+&gt;       assert result.error and "sample" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:41: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_empty_sample_for_nonempty_file_is_not_a_successful_read" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='1|text', total_lines=1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">def test_empty_sample_for_nonempty_file_is_not_a_successful_read():
+        result = make_ops(sample=b"").read_file("owned.txt")
+&gt;       assert result.error and "sample" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:46: AssertionError</failure></testcase><testcase classname="integrations.hermes.test_file_read_contract" name="test_true_empty_file_still_succeeds_and_does_not_become_missing" time="0.001" /><testcase classname="integrations.hermes.test_file_read_contract" name="test_consistent_nonempty_file_still_has_readable_numbered_content" time="0.001" /><testcase classname="integrations.hermes.test_file_read_contract" name="test_zero_size_with_returned_content_is_inconclusive_not_empty" time="0.001"><failure message="AssertionError: assert (None)&#10; +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error">def test_zero_size_with_returned_content_is_inconclusive_not_empty():
+        result = make_ops(size="0").read_file("owned.txt")
+&gt;       assert result.error and "Inconsistent" in result.error
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+integrations\hermes\test_file_read_contract.py:62: AssertionError</failure></testcase></testsuite></testsuites>
