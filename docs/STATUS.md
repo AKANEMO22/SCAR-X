@@ -1,5 +1,12 @@
 # Trạng thái SCAR-X
 
+## Video entitybinding diagnostic14/11
+
+Knowncase2a3230:16uniqueactualnativecalls/28armrecords. SmallASRđổiorder làm
+AdamHallrank15→9; untrainedSNN3seed15/9/15. Humanoracle cảhaiorderđúng9;
+nonevidence bịa10. ASR sai tên “Aramhorn” nên exactentityanchor chưa có.
+Khôngtrain/claimhiddengain/đổi8hprofile. [Raw/limits](hybrid/VIDEO_ENTITY_BINDING_DIAGNOSTIC_20261114.md).
+
 ## Hermes Hỏi để học UI —14/11
 
 Đã sửa card composer bị dồn một hàng: CSS riêng, câu hỏi/textarea/footer tách
