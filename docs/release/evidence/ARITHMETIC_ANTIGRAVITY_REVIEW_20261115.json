@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-high",
+  "effort": "high",
+  "completed": true,
+  "duration_seconds": 48.6037617,
+  "raw_events_sha256": "c7d60911d321f11ae49e41cf2a83715d3596dfcd1840cc99d0ed4760f60a6bf1",
+  "prompt_sha256": "debe0871f80788c3342202787437d309efb055b306a10e269388cb3acd83c716",
+  "review_response": "### Engineering Review: Integer Arithmetic Task Verifier Patch\n\n#### 1. Blockers\n**None.** The patch successfully replaces substring matching with an anchored `fullmatch` on normalized text, resolving the false verification of incidental expressions in code, color strings, and longer instructions. Unsupported phrasings cleanly return `None` for standard unverified review without producing invalid labels.\n\n---\n\n#### 2. False Authorization Risks & Scope Inconsistencies\n\n1. **Bare Hyphen / Score Collisions (False Label Risk):**\n   * Both the greeting and task-verb prefixes are optional `(...)?`. \n   * A bare string with a hyphen and two integers matches subtraction. If a standalone sport score, ratio, or date fragment enters review, it is authorized as an arithmetic problem.\n   * *Counterexample:* `\"3 - 1\"` (e.g., isolated game score or subclause) with answer `\"2\"` is machine-verified as `3 - 1 = 2`.\n\n2. **Mandatory Greeting Comma (Scope Under-inclusion):**\n   * The greeting regex `(?:hello|hi|...)\\s*,\\s*` strictly requires a comma. Natural questions omitting the comma fail the grammar and fall back to unverified review.\n   * *Counterexample:* `\"Hello 5 + 2\"` or `\"hi 3 + 4?\"` $\\rightarrow$ returns `None`.\n\n3. **Strict Single Punctuation (Scope Under-inclusion):**\n   * Trailing punctuation is constrained to `[?.!]?`. Queries ending in double punctuation or trailing whitespace after punctuation fail parsing.\n   * *Counterexample:* `\"What is 4 + 4??\"` $\\rightarrow$ returns `None`.\n\n---\n\n#### 3. Numeric Parsing & Execution Correctness\n\n* **Normalization:** `unicodedata.normalize('NFKC', text).casefold().split()` standardizes whitespace, case, and Unicode variants. The Unicode minus sign (`−` / U+2212) is captured by the regex and safely routed to `'-'`.\n* **Bounded Domain:** Restricting inputs to `(?P<a>[0-9]{1,2})` and `(?P<b>[0-9]{1,2})` limits tasks to $0 \\le a, b \\le 99$ with operations $\\{+, -\\}$. Negative numbers as inputs are rejected, while negative outputs (e.g., $3 - 8 = -5$) are supported by `(-?\\d+)` in the observed answer regex.\n* **Non-interference:** Core SNN/ALIF modules and weights remain completely untouched. The passing test suite demonstrates bounded grammar containment, not neural learning.\n",
+  "Codex_disposition": [
+    {
+      "finding": "bare ASCII hyphen score/date collision",
+      "decision": "ACCEPT; require a calculation prefix/suffix before authorizing this notation"
+    },
+    {
+      "finding": "greeting without comma and repeated punctuation rejected",
+      "decision": "DOCUMENTED UNDERINCLUSION; unverified fallback retained; not a wrong factual label"
+    },
+    {
+      "finding": "trailing whitespace after punctuation fails",
+      "decision": "REJECT; normalization split/join strips trailing whitespace; direct regression confirms accepted"
+    }
+  ],
+  "CLI_auto_mode_unavailable_default_request_review_used": true,
+  "neural_quality_or_production_approval": false
+}

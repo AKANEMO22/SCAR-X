@@ -11,7 +11,8 @@ from scarx.hybrid.review import arithmetic_check
     ('12+3',15), ('What is 12 + 3?',15), ('Calculate 12-3.',9),
     ('9 minus 11',-2), ('Tính 12 cộng 3',15), ('Hãy tính: 12 trừ 3!',9),
     ('12+3 bằng bao nhiêu?',15), ('chào bạn, 17+25 bằng bao nhiêu?',42),
-    ('１８＋３',21), ('0-99',-99),
+    ('１８＋３',21), ('Compute 0-99',-99), ('3-1 bằng bao nhiêu?',2),
+    ('  \t What is 4+4?  \n ',8),
 ])
 def test_only_supported_complete_tasks_receive_arithmetic_proof(question,expected):
     assert parse_integer_expression(question) is not None
@@ -27,6 +28,7 @@ def test_only_supported_complete_tasks_receive_arithmetic_proof(question,expecte
     'Đừng tính 12+3', 'Do not calculate 12+3', 'What is 12+3 in binary?',
     '12+3=15', '12+3+4', '123+2', '-12+3', '12*3',
     'có 9 bánh, thêm 2', 'Question: 12+3\nActually: what color is the car?',
+    '3 - 1', '03-01',
 ])
 def test_incidental_or_unsupported_expression_never_authorizes_machine_label(question):
     assert parse_integer_expression(question) is None

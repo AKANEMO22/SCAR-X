@@ -10,12 +10,12 @@ import unicodedata
 
 from ..learning.verifiers import integer_answer
 
-VERIFIER_ID = 'integer-arithmetic-explicit-task-v2'
+VERIFIER_ID = 'integer-arithmetic-explicit-task-v3'
 _TASK = re.compile(
     r"(?:(?:chào bạn|xin chào|hi|hello)\s*,\s*)?"
-    r"(?:(?:hãy tính|tính(?: giúp tôi)?|calculate|compute|what is|what's|how much is|kết quả của)\s*:?\s+)?"
+    r"(?:(?P<request>hãy tính|tính(?: giúp tôi)?|calculate|compute|what is|what's|how much is|kết quả của)\s*:?\s+)?"
     r"(?P<a>[0-9]{1,2})\s*(?P<op>\+|-|−|cộng|trừ|plus|minus)\s*(?P<b>[0-9]{1,2})"
-    r"\s*(?:(?:bằng|là) bao nhiêu|bằng mấy|=)?\s*[?.!]?"
+    r"\s*(?P<request_suffix>(?:bằng|là) bao nhiêu|bằng mấy|=)?\s*[?.!]?"
 )
 
 
@@ -25,6 +25,10 @@ def parse_integer_expression(text):
     normalized = ' '.join(unicodedata.normalize('NFKC', text).casefold().split())
     match = _TASK.fullmatch(normalized)
     if match is None:
+        return None
+    # An ASCII hyphen alone can separate a sports score or a date fragment.
+    # An explicit calculation cue is needed before it can authorize a label.
+    if match['op'] == '-' and not (match['request'] or match['request_suffix']):
         return None
     operation = '+' if match['op'] in ('+', 'cộng', 'plus') else '-'
     return int(match['a']), operation, int(match['b'])

@@ -69,3 +69,22 @@ phân biệt82 current/28 package với332 baseline cũ.
 
 Đây là sửa tính đúng đắn của nhãn, không chứng minh SNN đã hiểu nguyên nhân tool
 loop, thắng cùng LLM+RAG hoặc vượt ngưỡng forgetting. Không chạy nghiên cứu mới.
+
+## Review bổ sung và RC14
+
+[Antigravity3.8Flash high/effort high](evidence/ARITHMETIC_ANTIGRAVITY_REVIEW_20261115.json)
+hoàn tất inline code review48,60s, không dùng tools. Codex chấp nhận finding
+chuỗi trần `3-1` có thể là tỷ số/ngày: RC14 yêu cầu prefix/suffix tính toán rõ
+cho dấu `-` ASCII. Bare `03-01` cũng không tự thành subtraction proof. Dấu trừ
+Unicode/word minus và câu tính trực tiếp trong grammar vẫn được xử lý.
+Proof ID mới `integer-arithmetic-explicit-task-v3` phân biệt scope này với RC13.
+
+Không mở rộng greeting/punctuation grammar chỉ để tăng coverage: fallback còn
+unverified. Nhận xét của Antigravity rằng trailing whitespace gây fail **không
+đúng** với bước normalize split/join; regression xác nhận. Không chấp nhận kết
+luận agent mặc định. Đây là kiểm phạm vi checker, không nghiên cứu learner mới.
+
+114 current arithmetic/review/cognition/feedback/web/package checks qua trên
+source cuối, gồm4 case bổ sung và28 package cases. Không cộng overlap với suite
+cũ. Qualification source cuối ở
+[ARITHMETIC_TASK_SCOPE_FINAL_SOURCE](evidence/ARITHMETIC_TASK_SCOPE_FINAL_SOURCE_20261115.json).

@@ -1,8 +1,12 @@
-# SCAR-X Hybrid 1.0.0-rc.13
+# SCAR-X Hybrid 1.0.0-rc.14
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
+
+RC14 yêu cầu lời tính toán rõ ràng cho dấu gạch ngang ASCII; chuỗi trần như
+3-1/03-01 có thể là tỷ số/ngày nên không tự cấp nhãn phép trừ. Proof IDv3.
+Review Antigravity high được kiểm độc lập, không phải approval chất lượng model.
 
 RC13 chỉ cho verifier số học tự xác minh các câu tính toán hoàn chỉnh nằm
 trong grammar hỗ trợ. Biểu thức nằm trong câu hỏi màu, code, chuỗi trích dẫn
@@ -37,7 +41,7 @@ Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; 
 coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
 tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
-Đường nâng cấp RC13 pin đúng payload RC12 và từ chối source khác trước khi sửa.
+Đường nâng cấp RC14 pin đúng payload RC13 và từ chối source khác trước khi sửa.
 Source gate của test đã hủy nhận đúng bản trước/bản kế tiếp, không yêu cầu source
 đóng băng vĩnh viễn ở baseline cũ. Test đang chạy vẫn chặn cập nhật; trạng thái
 hủy vẫn không thành PASS. Backup/rollback chỉ phục hồi code, giữ trải nghiệm mới.
