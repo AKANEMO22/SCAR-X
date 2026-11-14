@@ -11,24 +11,37 @@ import psutil
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def read_heartbeat(path):
+    for attempt in range(3):
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            if attempt == 2:
+                return None  # Concurrent overwrite is not proof the process died.
+            time.sleep(.05)
+
+
 def inspect(run):
     run = Path(run).resolve()
     if ROOT / "runs" not in run.parents:
         raise ValueError("Run must be inside this checkout")
     manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
     process = None
+    identity_path = run / "process-identity-v1.json"
+    identity = json.loads(identity_path.read_text(encoding="utf-8")) if identity_path.exists() else {}
     try:
         candidate = psutil.Process(manifest["pid"])
         if candidate.is_running() and any(
             Path(value).name == "hybrid_shared_endurance.py"
             for value in candidate.cmdline()
-        ):
+        ) and (not identity.get("process_created_epoch")
+               or abs(candidate.create_time() - identity["process_created_epoch"]) < .01):
             process = candidate
     except psutil.Error:
         pass
     final_path = run / "result.json"
     heartbeat_path = run / "heartbeat.json"
-    heartbeat = (json.loads(heartbeat_path.read_text(encoding="utf-8"))
+    heartbeat = (read_heartbeat(heartbeat_path)
                  if heartbeat_path.exists() else None)
     if final_path.exists():
         final = json.loads(final_path.read_text(encoding="utf-8"))

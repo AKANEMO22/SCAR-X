@@ -41,6 +41,35 @@ Tín hiệu target0..3 trong P0 là nhãn kỹ thuật thuộc input fixture s�
 không là bộ kiểm chứng sự thật ngữ nghĩa. Không gọi192 lượt cập nhật riêng này
 là đã học sửa lỗi, tổng quát hóa hoặc giữ kỹ năng dài hạn.
 
+## Đã tách version cho shadow recovery policy
+
+[WrapperP0ac7bb8](../../runs/20261114T013315Z-recovery-policy-p0-ac7bb8/result.json)
+chạy CUDA, ba seed và observation từ filetool thật; không train hay thực thi
+action. [Research wrapper](../../src/scarx/evaluation/recovery_policy.py) giữ
+nguyên64input/H128/sáu slot ALIF, nhưng action order và causalencoder được khóa
+trong envelope checkpoint riêng. Loader live không nhận envelope này; kiểm
+checksum/encoder/actionorder/innerseed/mode/duplicate/size trước khi nạpCUDA.
+Cold proposal và full state khớp; không mang weights lab vào Hermes.
+
+Policy chưa học có thể đề xuất finish khi file còn thiếu hoặc cứ retry. Đó là
+đầu ra chưa qualified, không phải hành động đã chạy hay giải thích nguyên nhân.
+Không dùng P0 để bật policy;8regressionchecks và9proposals chỉ kiểm đường dữ
+liệu/compatibility. [Đề xuất DEV tiếp theo](../../experiments/hybrid-recovery-policy-dev-proposal-v1.md)
+tách RAG/rule/frozen/readout/hidden/shuffle/reset, verifiedeffect/support,
+unseen templates, budget và retention; chưa bắt đầu training từ proposal.
+
+Kiểm tra tổng hợp hiện tại213Python và9Node qua. Một lượt tổng hợp trước có
+WinError10053 ở positive HTTP nonce fixture; lần chạy riêng qua. Fixture nay
+đọc body request được chấp nhận và đóng HTTPError response bị từ chối đúng cách;
+không đổi nonce gate hoặc retry model để ép điểm. Giữ lịch sử failed run trong
+validation receipt; chưa xác định nguyên nhân hệ điều hành của lỗi10053.
+Warnings còn lại: CuPy không có fulltoolkitpath dù kernel/parity qua, và archive
+trùng member được test cố ý tạo để loader bác bỏ.
+
+Đã quan sát trang localhost thật qua browser: panel ghi đúng run554c19, thời
+gian/QA/checkpoint và câu trả lời hình tròn màu vàng, tách bộ đếm live5updates.
+Đây là kiểm UI/trace, không phải điểm chất lượng model hoặc hình ảnh mock.
+
 ## Hệ quả đối với kế hoạch tiếp theo
 
 Ba vấn đề riêng cần kiểm chứng:

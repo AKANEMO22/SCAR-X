@@ -265,6 +265,7 @@ def test_isolated_http_rejects_every_foreign_mutation_without_executing_it():
             self.wfile.write(data)
 
         def do_POST(self):
+            self.rfile.read(int(self.headers.get("Content-Length", "0")))
             called.append(self.path)
             self.send({"accepted": True})
 
@@ -284,6 +285,7 @@ def test_isolated_http_rejects_every_foreign_mutation_without_executing_it():
             with pytest.raises(HTTPError) as error:
                 urlopen(Request(base + route, data=b"{}"), timeout=2)
             assert error.value.code == 503
+            error.value.close()
         assert called == []
         with urlopen(
             Request(

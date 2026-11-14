@@ -11,6 +11,11 @@ này cho PlasticCore lịch sử. Đổi normalization state riêng làm xác su
 Preflight240s7b589e qua; lượt8h0acab3 gián đoạn~17phút, giữ NOTPASS audit.
 Lượt554c19 đang được kiểm bằng PID/source, chạy nền độc lập; chưa có8hverdict.
 Trace có panel lab tự cập nhật/đáp án thật và cảnh báo heartbeat chậm.
+Shadowrecovery wrapperP0ac7bb8 đã qua GPUcoldproposal/checkpointcompatibility,
+encoder/actionorder riêng;0training/0actionexecution, có đề xuất sai finish/retry
+được giữ rõ. DEV tiếp theo mới làproposal, chưa đưa weights/router vàoHermes.
+213Python+9Node hiện qua; giữ một Win10053 ở HTTPfixture trước cleanup trong
+validationhistory, không đổi noncegate. Trangtrace thật đã kiểm trênbrowser.
 
 ## Recovery executor + actualnativefailure14/11 — engineeringqua, learningchưaqualified
 
