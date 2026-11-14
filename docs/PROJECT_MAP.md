@@ -12,6 +12,12 @@ gọi tool Hermes thật, không dựng search results. Tests ở
 `scripts/accept_hermes_public_web.py`, read-only audit qua
 `scripts/audit_hermes_public_web.py`. Thuật toán và weights neural không đổi.
 
+[Web source/review](release/WEB_EVIDENCE_REVIEW_20261115.md):
+`src/scarx/hybrid/web_evidence.py` nhận đúng frame web_search của host, lưu nguồn
+và provenance theo tool call; gateway gắn task gốc cho engine review/feedback.
+`tests/test_hybrid_web_evidence.py` kiểm helper host thật và không sửa trust frame.
+Không biến nguồn/critique thành nhãn đúng hoặc thay rule ALIF.
+
 [Atomic feedback](release/FEEDBACK_TRANSACTION_20261115.md):
 `HybridEngine.feedback_once` + `Store.atomic_feedback` gắn retry identity với
 transaction checkpoint/receipt. `tests/test_hybrid_feedback_transaction.py` chạy

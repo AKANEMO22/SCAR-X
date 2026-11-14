@@ -44,6 +44,29 @@ thành nhãn đúng, và không cập nhật synapse từ những câu tự nh�
   khớp raw tool result, `partial=false` và không sửa messages. Không tìm web,
   gọi VLM hoặc train thêm trong replay này.
 
-Activation và actual Hermes acceptance RC12 sẽ được ghi riêng sau khi thực thi.
-Các giới hạn review/answer quality vẫn giữ cho đến khi có bằng chứng độc lập;
-test plumbing qua không chứng minh khả năng học kỹ năng hoặc hidden advantage.
+## Activation và lượt Hermes thật
+
+[Activation RC12](evidence/RC12_ACTIVATION_20261115.json) đã cập nhật thật hai
+file từ predecessor RC11, qua maintenance lease/CAS và backup đầy đủ. Arrays,
+learned metadata, RNG, replay giữ nguyên; live updates vẫn5. [Read-only installed
+verification](evidence/RC12_INSTALLED_ARTIFACT_20261115.json) xác nhận57 payload
+files, native assets, Hermes/dependency pins và GPU worker đúng cấu hình.
+
+[Một follow-up canonical thật](evidence/RC12_WEB_FRAME_LIVE_20261115.json) trên
+session nghiệm thu riêng trước đó gọi đúng `web_search` với chủ đề JoJo gốc,
+không tìm file/paid extractor.5 URL/snippet khớp raw tool result và persisted
+provenance; task gốc được giữ riêng với user message “tìm kiếm đi”, `partial=false`.
+Không bỏ frame cảnh báo khỏi messages. Runtime sau đó tự review khi rảnh:
+events15656→15661 nhận cùng5 source IDs, không gọi review thủ công.
+
+Native answer vẫn khẳng định “tập11”; snippet nói tổng dự kiến11 tập, chưa đủ
+để xác định tập mới nhất. Reviewer nêu câu hỏi cần xác minh nhưng reason vẫn
+coi con số đó là bằng chứng. Kết luận **pipeline source/review đã chạy thật;
+answer/critic quality chưa đạt kiểm chứng**, không claim model đã tự hiểu lỗi.
+`weights_updated=false`, reason rõ không dùng generated review làm nhãn học.
+
+Mã audit đọc lại receipt, không tìm web/infer/train:
+`scripts/audit_hermes_web_frame_followup.py --run <owned-private-run> --output <new-json>`.
+[Release checks](evidence/RC12_RELEASE_CHECKS_20261115.json) giữ hash/JUnit đúng
+phạm vi. Các giới hạn review/answer quality vẫn giữ cho đến khi có bằng chứng
+độc lập; test plumbing qua không chứng minh học kỹ năng hoặc hidden advantage.

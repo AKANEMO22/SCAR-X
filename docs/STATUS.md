@@ -9,6 +9,17 @@ ghi REUSE/ADAPT/DEFER, baseline mạnh và những lượt không cần chạy l
 BrainTrace upstream vẫn trùng pin đã kiểm; không rerun132 cells. Chưa mở nghiên
 cứu mới hoặc thay gate. Runtime web/review sửa riêng, không neural-quality PASS.
 
+## RC12 — giữ nguồn web cho vòng tự xem lại
+
+[Root cause và sửa](release/WEB_EVIDENCE_REVIEW_20261115.md): RC11 đọc JSON trần
+nhưng Hermes trả JSON trong cảnh báo untrusted. RC12 giữ nguyên frame cho model,
+giải mã bản sao để lưu; một follow-up canonical thật nay gắn5 nguồn `observed`
+và task gốc, `partial=false`; tự review lúc rảnh nhận đủ5 nguồn. Native vẫn trả
+nhầm “tập11”, review chưa là xác minh độc lập và không tạo nhãn học.
+Đã cài RC12 qua predecessor thật, arrays/RNG/replay/updates5 giữ nguyên;35
+targeted và28 package checks qua,332 full RC11 là baseline cũ. Artifact duy nhất
+đang cài theo [CURRENT_RELEASE](release/CURRENT_RELEASE.md). Không mở learner mới.
+
 ## RC10 — câu hỏi mới nhất dùng web, không tìm file
 
 [Root cause/sửa routing](release/WEB_SEARCH_ROUTING_20261115.md): tool web đã có
