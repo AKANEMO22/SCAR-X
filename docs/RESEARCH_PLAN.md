@@ -1,5 +1,10 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**ASRprofile preparation:** resolver pin tên/revision/path/SHA và freshcalllog
+đã có unit/shadowcontracts;2exporthashthật+165archivedlogchecks,0nativecalls.
+Khôngedit/importactiveHybridfrozenfiles trước original8hterminalaudit; source
+runtimeSmall/config/actualcalls cònchờ. [Phạm vi](hybrid/ASR_PROFILE_PREPARATION_20261114.md).
+
 **ASRsmall soak kết thúc:**165actualCUDAFP32calls/1800,532s, componentgate/audit
 qua,minfree1086MiB,p95RTF0,377. Không phải QA/learning/P3PASS hoặc ASRlive đãđổi;
 nativeprofile resolver/identityP0 vẫn cần sau source8hterminalaudit.

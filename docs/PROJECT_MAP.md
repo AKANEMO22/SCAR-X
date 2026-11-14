@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[ASRprofile preparation](hybrid/ASR_PROFILE_PREPARATION_20261114.md):
+runtime/asr_profiles.py pinresolver/storage/currentlogguards chưaactiveimport;
+integrations/hermes/asr_profile_integration_patch.py tạo4shadowcopies,
+tests/test_asr_profile_resolver.py + archived-shadow tests. Raw791db8data-only/
+shadow source/failed+passedJUnit; khôngactualnewASR/runtime/liveprofileclaim.
+
 [ASRsmall componentsoak hoàn tất](hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md):
 292b32terminal/source/raw165calls, audit_hybrid_asr_soak.py và puregate/tests;
 plot_hybrid_asr_soak.py giữ actualtime/callorder. Actualstorage/modelpath tiếp

@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## ASR profile preparation —14/11
+
+[791db8/shadow](hybrid/ASR_PROFILE_PREPARATION_20261114.md): pinnedprofilelibrary
+và4candidatecopies sinh từ exactSHA; chưaimport/sửaactiveHybridfiles. Actual
+checksum2nativeexports qua,20config/path/command/log/resourceboundarychecks
+qua với declaredfakeworkertransports. Guardlog đọc165logthật cũ,0newnativecalls.
+Ngăn fakeASRrevision/path và staleCUDAlog; runtimeintegration/4ASR4VLMbudget
+chưa chạy, chờ8hterminalaudit. ASRlive giữbase, SNNrulehistory vẫnpending.
+
 ## Whisper-small30min kết thúc —14/11
 
 [Kết quả/audit292b32](hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md):actualworker

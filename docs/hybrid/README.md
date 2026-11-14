@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[ASRprofile chuẩn bị](ASR_PROFILE_PREPARATION_20261114.md): đã tách đúng identity/
+nativepath và kiểm logriêngcall,20shadowchecks. Chưa áp bốn sourcefiles đang
+khóa, chưaASRSmalllive hoặc actualintegrationPASS; không chỉđổirevision làxong.
+
 [Whispersmall FP32 componentsoak](WHISPER_SMALL_SOAK_RESULT_20261114.md) đãqua
 30phút/165calls với VLM giữGPU; ASR củaHermes vẫnbase vì resolver/integrity
 cần nối/test đúngprofile sau original8hterminal. Khôngfake revision/path.

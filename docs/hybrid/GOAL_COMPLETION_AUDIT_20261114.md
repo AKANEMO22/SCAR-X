@@ -159,3 +159,12 @@ onlyexistingDEV, repeated1808.6s not165independentqualitycases. ExactASRprofile
 integrationP0plan ready; no source8h change before terminalaudit. Fullgoal still
 active: broaderproduction/learningquality and rootdeployment unresolved;
 newruleapproval pending, not an all-work impasse while8hjob/engineering remain.
+
+Progress791db8/preparation:actualknownbase+smallnativeexporthashes checked,
+unimportedprofilelibrary and exact-source4filecandidatecopies ready.20shadow
+contracts (declaredfakeworkertransports) pass, newcurrentlogguard validatedon
+165archivedrealASRlogs without extra inference. Sourceactive/weights unchanged,
+actualintegration4ASR4VLMbudgetstill0; no runtimeSmallclaim. Initialfakegateway
+fixturefailedJUnit retained and corrected. Goalstillactive;8hPID/source must
+finishbefore applyingpatch and realintegration. Localruleapproval remains
+pending, not permission inferred from automaticgoalcontinuation.

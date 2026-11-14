@@ -1,0 +1,37 @@
+{
+  "source_sha256": {
+    "src/scarx/runtime/asr_profiles.py": "5963a7ca7b5728c0009d5c491d61ec64ecd52b22e342b2e95c17ff7c4e86d212",
+    "integrations/hermes/asr_profile_integration_patch.py": "8f6b7558784ae03240828624ba268eba008c04fd6046d7596fcd1d47be93a411",
+    "experiments/hybrid-ASR-profile-resolver-p0-v1.md": "27af5ad0fcda41b4cc64b63417bb693bf858ab730682e8ddf12344276bbc2783",
+    "experiments/hybrid-ASR-profile-integration-p0-plan-v1.md": "33d3ceedbbc3324169f24d6dd0939141182da55c909e4743608a76659d71948b",
+    "tests/test_asr_profile_resolver.py": "7028add64aed22f67c41676f51fa3e08f7175af951ab72857549a847ba0c112f",
+    "tests/test_asr_profile_shadow_integration.py": "f72279d2220e249c0801dce73df8205f9c2d9e42c1f60dc436f3d71f475efb5e"
+  },
+  "posthoc_preparation_archive": true,
+  "original_profile_storage_run_or_outputs_replaced": false,
+  "reviewed_shadow_source": {
+    "config.py": {
+      "before_sha256": "495a5a645c5ff3302fdcbe28bc3bbf538115c8f586fcaed2c2ad3b882fa04837",
+      "candidate_sha256": "9a2584616a3766dbde3b22714089e47dda26a202f6775844bd682c3acfde8fdc"
+    },
+    "backends.py": {
+      "before_sha256": "d5967732d984f36826090b63dc68ff3fd63d6d1f9a4caa28da44d3cf54257b47",
+      "candidate_sha256": "8ab5801a85dc08831503a6df5989001ca2bfa913a44b3db1f655815ef7f84169"
+    },
+    "qualification.py": {
+      "before_sha256": "170a053eab6cf0d114bb56f53c4c361f71a711d9f7f5a243f0e864717786c849",
+      "candidate_sha256": "f8cc9a1934cc8c5ad32d9233d81bee1aa247aca08a54fd7d48b603cb9cc70678"
+    },
+    "gateway.py": {
+      "before_sha256": "7c0b93967ca44641aa238f4420b7f38276f651972f1b0e75e45c191d13ac375a",
+      "candidate_sha256": "5c0d9326ee093e3a878d9e0fb63b0e80b6738cb9b81148345f5b0dd2bf2b5955"
+    }
+  },
+  "shadow_contract_checks_passed": 20,
+  "initial_shadow_fixture_failure_retained": "Missing engine.model.device in fakegateway fixture, fixed with explicit existingcontract; runtimeunchanged.",
+  "archived_actual_CUDA_FP32_logs_checked_with_new_guard": 165,
+  "new_neural_inference_or_training_or_live_ASR_change": false,
+  "native_integration_4ASR_4VLM_budget_consumed": 0,
+  "activeHybrid_files_modified": false,
+  "verdict": "ASR_SHADOW_COMMAND_CONFIG_AND_CURRENT_LOG_GUARDS_CHECKED_NOT_ACTUAL_RUNTIME_SELECTION_PASS"
+}
