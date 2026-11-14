@@ -1,0 +1,58 @@
+{
+  "verdict": "OBSERVER_PUBLIC_ENVELOPE_REPAIR_ACTUAL_DISPATCH_VERIFIED_ONLY",
+  "baseline": {
+    "source": "actual installed Hermes ApiRequestHooksMixin envelope, plugin discovery and dispatcher",
+    "hook_sha256": "7dbef5a4747ff867b1af4235194b8c831a4383d62f53a4adaf0760e6f9f91c52",
+    "actual_failed_read_calls": 3,
+    "public_post_tool_observations": 3,
+    "readonly_project_probes": 0,
+    "probe_read_ok": false,
+    "semantic_task_resolution_verified": false,
+    "new_neural_VLM_or_web_calls": 0,
+    "live_gateway_or_private_data_modified": false,
+    "learning_success_claimed": false
+  },
+  "candidate": {
+    "source": "actual installed Hermes ApiRequestHooksMixin envelope, plugin discovery and dispatcher",
+    "hook_sha256": "1b1a0cc7430e27e66ec3dee0dc11e4c1077d9f8261fb83e1a5528835be6225e8",
+    "actual_failed_read_calls": 3,
+    "public_post_tool_observations": 3,
+    "readonly_project_probes": 1,
+    "probe_read_ok": true,
+    "semantic_task_resolution_verified": false,
+    "new_neural_VLM_or_web_calls": 0,
+    "live_gateway_or_private_data_modified": false,
+    "learning_success_claimed": false
+  },
+  "guard_replay": {
+    "decisions": [
+      {
+        "failed": true,
+        "action": "allow",
+        "code": "allow"
+      },
+      {
+        "failed": true,
+        "action": "warn",
+        "code": "repeated_exact_failure_warning"
+      },
+      {
+        "failed": true,
+        "action": "warn",
+        "code": "repeated_exact_failure_warning"
+      }
+    ],
+    "fourth_call_action": "block",
+    "fourth_call_allows_execution": false,
+    "new_tool_calls": 0,
+    "configuration_matches_installed_local_thresholds": true
+  },
+  "live_hermes_gateway_pid": 49364,
+  "SNN_gateway_pid_retained": 52192,
+  "native_GPU_pid_retained": 49308,
+  "updates_retained": 5,
+  "installed_hook_matches_candidate": true,
+  "new_8h_run_or_training": false,
+  "neural_error_causality_or_skill_learning_proven": false,
+  "private_result_directory_reference": "local/observer-envelope-validation/20261114T134617760288Z"
+}

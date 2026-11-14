@@ -109,7 +109,11 @@ class ToolExperienceObserver:
             if accepted:
                 self.routes[key] = time.monotonic()
                 request = kwargs.get("request") or {}
-                tools = request.get("tools", []) if isinstance(request, dict) else []
+                # Hermes' public hook wraps API kwargs as {method, body}.
+                # Retain compatibility with the older flat observer fixtures.
+                body = request.get("body", request) if isinstance(request, dict) else {}
+                tools = body.get("tools", []) if isinstance(body, dict) else []
+                tools = tools if isinstance(tools, list) else []
                 message = kwargs.get("user_message", "")
                 message = message[:2000] if isinstance(message, str) else ""
                 plain = "".join(

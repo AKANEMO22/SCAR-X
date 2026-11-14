@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## RC4 — sửa hợp đồng observer Hermes
+
+[Bản sửa](release/OBSERVER_ENVELOPE_REPAIR_20261114.md) đọc đúng `request.body.tools`.
+27 checks qua; actual Hermes envelope + dispatcher trên project riêng xác nhận
+0 probe trước → 1 probe đọc được nguồn sau sửa khi 3 lần đọc sai đường dẫn.
+Đã cài một file có backup/CAS; giữ nguyên model GPU, ALIF và learned state.
+Không gọi model/web hoặc mở nghiên cứu; đây chưa là learned tool repair.
+
 ## Bản đang cài — Hybrid RC, ưu tiên sản phẩm
 
 [Hướng dẫn hiện tại](release/CURRENT_RELEASE.md): đã cài full-query và verifier

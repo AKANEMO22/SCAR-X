@@ -172,6 +172,33 @@ def test_only_one_probe_per_turn_across_new_signatures_and_api_requests():
     assert len(observer.probed) == 1
 
 
+def test_actual_Hermes_request_envelope_enables_one_readonly_probe():
+    attempts=[];sent=[]
+    observer=hooks.ToolExperienceObserver(sent.append,probe=lambda *args: attempts.append(args))
+    for i in range(4):
+        observer.pre_api(model='scarx-hybrid',base_url='http://127.0.0.1:8775/v1',
+            session_id='owned',turn_id='same-turn',task_id='owned-task',
+            request={'method':'POST','body':{'tools':[{'function':{'name':'read_file'}}]}},
+            user_message='Read this project')
+        observer.post_tool(tool_name='read_file',args={'path':'wrong/README.md'},
+            result={'not_found':True},tool_call_id=str(i),session_id='owned',turn_id='same-turn')
+    assert len(sent)==4 and len(attempts)==1
+    assert attempts[0][3]=={'file_tool':True,'local_intent':True}
+
+
+@pytest.mark.parametrize('envelope',[{'body':None},{'body':{'tools':None}},
+    {'body':{'tools':{'read_file':True}}},'invalid'])
+def test_malformed_hook_envelope_never_authorizes_a_probe(envelope):
+    attempts=[]
+    observer=hooks.ToolExperienceObserver(lambda value:None,probe=lambda *args:attempts.append(args))
+    observer.pre_api(model='scarx-hybrid',base_url='http://127.0.0.1:8775/v1',
+        session_id='owned',turn_id='t',request=envelope,user_message='Read project')
+    for i in range(3):
+        observer.post_tool(tool_name='read_file',args={'path':'wrong/README.md'},
+            result={'not_found':True},tool_call_id=str(i),session_id='owned',turn_id='t')
+    assert attempts==[]
+
+
 def test_observer_failure_never_blocks_normal_tool_return():
     def fail(_):
         raise OSError("gateway offline")

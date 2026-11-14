@@ -1,5 +1,13 @@
 # SCAR-X Hybrid — bản RC đang cài trên máy
 
+**Bổ sung RC4:** [sửa observer](OBSERVER_ENVELOPE_REPAIR_20261114.md) để đọc đúng
+envelope công cụ Hermes; actual dispatcher xác nhận đọc lại nguồn trong project
+đúng một lần sau ba lần đọc sai đường dẫn. 27 checks bổ sung qua. Không thay
+model/ALIF hoặc biến kết quả chẩn đoán thành nhãn học. Gói RC3 bên dưới giữ làm
+mốc bàn giao trước bản sửa này; artifact RC4 được ghi khi kiểm bản đóng gói.
+Bộ chặn Hermes hiện có từ chối lần gọi giống hệt thứ tư khi phát lại ba kết
+quả lỗi thực tế. Đây là runtime guard, không phải SNN tự học nguyên nhân.
+
 **Đã cài và chạy trong chat Hermes bình thường**, model ID `scarx-hybrid`.
 Không cần chuyển sang tab Debug để trò chuyện. Gateway local: `127.0.0.1:8775`.
 Một worker Qwen3.5-0.8B nguyên BF16/F32; Whisper-small FP32 và ALIF H128 trên
