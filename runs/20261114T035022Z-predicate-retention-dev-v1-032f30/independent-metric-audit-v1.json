@@ -1,0 +1,287 @@
+{
+  "run_id": "20261114T035022Z-predicate-retention-dev-v1-032f30",
+  "dual_verifier_labels_rederived": 920,
+  "split_owner_overlap": false,
+  "completed_cells": 12,
+  "original_failures_retained": [],
+  "cells": [
+    {
+      "seed": 260113,
+      "arm": "frozen",
+      "final_accuracy": 0.4975,
+      "final_by_family": {
+        "FindAlarms": 0.55,
+        "QueryCalendar": 0.47,
+        "SearchMessages": 0.52,
+        "GetReminders": 0.45
+      },
+      "acquisition": {
+        "FindAlarms": 0.56,
+        "QueryCalendar": 0.54,
+        "SearchMessages": 0.56,
+        "GetReminders": 0.48
+      },
+      "forgetting_mean_pp": 0.0,
+      "forgetting_worst_pp": 0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 0,
+      "extra_cold_diagnostic_updates": 0
+    },
+    {
+      "seed": 260113,
+      "arm": "readout_only",
+      "final_accuracy": 0.5125,
+      "final_by_family": {
+        "FindAlarms": 0.55,
+        "QueryCalendar": 0.56,
+        "SearchMessages": 0.48,
+        "GetReminders": 0.46
+      },
+      "acquisition": {
+        "FindAlarms": 0.48,
+        "QueryCalendar": 0.54,
+        "SearchMessages": 0.46,
+        "GetReminders": 0.54
+      },
+      "forgetting_mean_pp": 7.5000000000000036,
+      "forgetting_worst_pp": 12.000000000000005,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260113,
+      "arm": "current_hidden",
+      "final_accuracy": 0.4775,
+      "final_by_family": {
+        "FindAlarms": 0.46,
+        "QueryCalendar": 0.54,
+        "SearchMessages": 0.49,
+        "GetReminders": 0.42
+      },
+      "acquisition": {
+        "FindAlarms": 0.5,
+        "QueryCalendar": 0.6,
+        "SearchMessages": 0.5,
+        "GetReminders": 0.56
+      },
+      "forgetting_mean_pp": 10.999999999999998,
+      "forgetting_worst_pp": 15.999999999999998,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260113,
+      "arm": "protected_hidden",
+      "final_accuracy": 0.53,
+      "final_by_family": {
+        "FindAlarms": 0.53,
+        "QueryCalendar": 0.49,
+        "SearchMessages": 0.57,
+        "GetReminders": 0.53
+      },
+      "acquisition": {
+        "FindAlarms": 0.46,
+        "QueryCalendar": 0.62,
+        "SearchMessages": 0.56,
+        "GetReminders": 0.56
+      },
+      "forgetting_mean_pp": 7.5,
+      "forgetting_worst_pp": 12.0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260137,
+      "arm": "frozen",
+      "final_accuracy": 0.48,
+      "final_by_family": {
+        "FindAlarms": 0.5,
+        "QueryCalendar": 0.45,
+        "SearchMessages": 0.52,
+        "GetReminders": 0.45
+      },
+      "acquisition": {
+        "FindAlarms": 0.5,
+        "QueryCalendar": 0.5,
+        "SearchMessages": 0.56,
+        "GetReminders": 0.52
+      },
+      "forgetting_mean_pp": 0.0,
+      "forgetting_worst_pp": 0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 0,
+      "extra_cold_diagnostic_updates": 0
+    },
+    {
+      "seed": 260137,
+      "arm": "readout_only",
+      "final_accuracy": 0.545,
+      "final_by_family": {
+        "FindAlarms": 0.55,
+        "QueryCalendar": 0.56,
+        "SearchMessages": 0.51,
+        "GetReminders": 0.56
+      },
+      "acquisition": {
+        "FindAlarms": 0.44,
+        "QueryCalendar": 0.48,
+        "SearchMessages": 0.48,
+        "GetReminders": 0.54
+      },
+      "forgetting_mean_pp": 10.0,
+      "forgetting_worst_pp": 20.0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260137,
+      "arm": "current_hidden",
+      "final_accuracy": 0.5475,
+      "final_by_family": {
+        "FindAlarms": 0.61,
+        "QueryCalendar": 0.55,
+        "SearchMessages": 0.52,
+        "GetReminders": 0.51
+      },
+      "acquisition": {
+        "FindAlarms": 0.54,
+        "QueryCalendar": 0.6,
+        "SearchMessages": 0.56,
+        "GetReminders": 0.58
+      },
+      "forgetting_mean_pp": 7.499999999999996,
+      "forgetting_worst_pp": 12.0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260137,
+      "arm": "protected_hidden",
+      "final_accuracy": 0.57,
+      "final_by_family": {
+        "FindAlarms": 0.59,
+        "QueryCalendar": 0.56,
+        "SearchMessages": 0.61,
+        "GetReminders": 0.52
+      },
+      "acquisition": {
+        "FindAlarms": 0.52,
+        "QueryCalendar": 0.5,
+        "SearchMessages": 0.58,
+        "GetReminders": 0.62
+      },
+      "forgetting_mean_pp": 6.000000000000003,
+      "forgetting_worst_pp": 9.999999999999998,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260171,
+      "arm": "frozen",
+      "final_accuracy": 0.49,
+      "final_by_family": {
+        "FindAlarms": 0.51,
+        "QueryCalendar": 0.46,
+        "SearchMessages": 0.51,
+        "GetReminders": 0.48
+      },
+      "acquisition": {
+        "FindAlarms": 0.5,
+        "QueryCalendar": 0.42,
+        "SearchMessages": 0.5,
+        "GetReminders": 0.52
+      },
+      "forgetting_mean_pp": 0.0,
+      "forgetting_worst_pp": 0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 0,
+      "extra_cold_diagnostic_updates": 0
+    },
+    {
+      "seed": 260171,
+      "arm": "readout_only",
+      "final_accuracy": 0.495,
+      "final_by_family": {
+        "FindAlarms": 0.56,
+        "QueryCalendar": 0.48,
+        "SearchMessages": 0.47,
+        "GetReminders": 0.47
+      },
+      "acquisition": {
+        "FindAlarms": 0.52,
+        "QueryCalendar": 0.52,
+        "SearchMessages": 0.58,
+        "GetReminders": 0.5
+      },
+      "forgetting_mean_pp": 7.5,
+      "forgetting_worst_pp": 12.0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260171,
+      "arm": "current_hidden",
+      "final_accuracy": 0.4925,
+      "final_by_family": {
+        "FindAlarms": 0.56,
+        "QueryCalendar": 0.49,
+        "SearchMessages": 0.5,
+        "GetReminders": 0.42
+      },
+      "acquisition": {
+        "FindAlarms": 0.5,
+        "QueryCalendar": 0.56,
+        "SearchMessages": 0.5,
+        "GetReminders": 0.42
+      },
+      "forgetting_mean_pp": 6.000000000000001,
+      "forgetting_worst_pp": 20.0,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    },
+    {
+      "seed": 260171,
+      "arm": "protected_hidden",
+      "final_accuracy": 0.4925,
+      "final_by_family": {
+        "FindAlarms": 0.52,
+        "QueryCalendar": 0.46,
+        "SearchMessages": 0.54,
+        "GetReminders": 0.45
+      },
+      "acquisition": {
+        "FindAlarms": 0.44,
+        "QueryCalendar": 0.52,
+        "SearchMessages": 0.48,
+        "GetReminders": 0.48
+      },
+      "forgetting_mean_pp": 1.4999999999999987,
+      "forgetting_worst_pp": 3.9999999999999925,
+      "joint_gate": false,
+      "scored_checkpoint_updates": 640,
+      "extra_cold_diagnostic_updates": 1
+    }
+  ],
+  "scored_states_exclude_cold_continuation_update": true,
+  "registered_paired_seed_family_bootstrap": {
+    "mean_pp": 2.5,
+    "paired_seed_family_CI95_pp": [
+      -0.7500000000000002,
+      6.333333333333334
+    ],
+    "runner_CI_scope_deviation": "Original runner used seed-only bootstrap; preserved, superseded for clustering interpretation.",
+    "judgement_changed": false,
+    "scope": "3seeds/4ownedcontractfamilies, exploratory only"
+  },
+  "new_learning_or_serving_edits": false,
+  "verdict": "RECORDED_SCREEN_METRICS_VERIFIED",
+  "scope": "Same-orchestrator independent rescore; not an outside peer review or broad intelligence proof"
+}

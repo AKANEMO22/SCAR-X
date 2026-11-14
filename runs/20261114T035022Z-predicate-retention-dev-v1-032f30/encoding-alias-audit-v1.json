@@ -1,0 +1,151 @@
+{
+  "run_id": "20261114T035022Z-predicate-retention-dev-v1-032f30",
+  "source_entity_disjointness_does_not_imply_encoded_disjointness": true,
+  "cross_split_exact_input_aliases": [
+    {
+      "input_sha256": "0311980e0414926b361ffa41692a435eb51c1f7e59dedf4da919e46120f12ef2",
+      "cases": [
+        {
+          "id": "train:GetReminders:3",
+          "split": "train",
+          "target": 1
+        },
+        {
+          "id": "final_DEV:GetReminders:85",
+          "split": "final_DEV",
+          "target": 1
+        }
+      ]
+    },
+    {
+      "input_sha256": "162f8b3b1522f6b231303f0fa73214df2d0359d6e7ebc138cfdfe3de3291a691",
+      "cases": [
+        {
+          "id": "train:GetReminders:17",
+          "split": "train",
+          "target": 1
+        },
+        {
+          "id": "final_DEV:GetReminders:79",
+          "split": "final_DEV",
+          "target": 1
+        }
+      ]
+    }
+  ],
+  "train_final_alias_case_count": 2,
+  "opposite_label_exact_input_aliases": [],
+  "sensitivity_only_no_rescoring_original": [
+    {
+      "seed": 260113,
+      "arm": "frozen",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.4975,
+      "exclude_input_alias_sensitivity_accuracy": 0.49748743718592964,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260113,
+      "arm": "readout_only",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.5125,
+      "exclude_input_alias_sensitivity_accuracy": 0.5125628140703518,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260113,
+      "arm": "current_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.4775,
+      "exclude_input_alias_sensitivity_accuracy": 0.4748743718592965,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260113,
+      "arm": "protected_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.53,
+      "exclude_input_alias_sensitivity_accuracy": 0.5301507537688442,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260137,
+      "arm": "frozen",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.48,
+      "exclude_input_alias_sensitivity_accuracy": 0.47738693467336685,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260137,
+      "arm": "readout_only",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.545,
+      "exclude_input_alias_sensitivity_accuracy": 0.5452261306532663,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260137,
+      "arm": "current_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.5475,
+      "exclude_input_alias_sensitivity_accuracy": 0.5477386934673367,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260137,
+      "arm": "protected_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.57,
+      "exclude_input_alias_sensitivity_accuracy": 0.5703517587939698,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260171,
+      "arm": "frozen",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.49,
+      "exclude_input_alias_sensitivity_accuracy": 0.4899497487437186,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260171,
+      "arm": "readout_only",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.495,
+      "exclude_input_alias_sensitivity_accuracy": 0.4949748743718593,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260171,
+      "arm": "current_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.4925,
+      "exclude_input_alias_sensitivity_accuracy": 0.4899497487437186,
+      "original_metric_or_gate_changed": false
+    },
+    {
+      "seed": 260171,
+      "arm": "protected_hidden",
+      "original_cases": 400,
+      "sensitivity_cases": 398,
+      "original_accuracy": 0.4925,
+      "exclude_input_alias_sensitivity_accuracy": 0.49246231155778897,
+      "original_metric_or_gate_changed": false
+    }
+  ],
+  "training_heldout_labels_directly_used": false,
+  "scope": "Lossy signed hash can map distinct unseen names to prior model inputs; keep full original metrics and expose 2/400 affected cases.",
+  "decision_affected": false
+}

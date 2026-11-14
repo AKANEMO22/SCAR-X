@@ -10,9 +10,10 @@
 <section id="video" class="tab hidden"><div class="card"><h2>Cho xem video trên máy</h2><p class="muted">Thu nhận 1×; lấy mẫu hình ảnh theo tải. Phần đã lưu, đã nghe và đã phân tích ảnh được đo riêng.</p><form id="video-form"><div class="row"><input id="video-path" placeholder="C:\Videos\video.mp4" required><button>Quan sát</button></div></form><div id="streams"></div></div></section>
 <section id="learn" class="tab hidden"><div class="layout"><div class="card"><h2>Hỏi để học</h2><p class="muted">Khi bạn vắng, SCAR-X gom câu hỏi và tiếp tục tìm hiểu trong ngân sách.</p><div id="pending"></div><form id="reply-form" class="hidden"><textarea id="reply" maxlength="4000" placeholder="Trả lời hoặc nhập “bỏ qua”…"></textarea><div class="row"><button>Trả lời</button><button type="button" id="skip" class="secondary">Bỏ qua</button><button type="button" id="unhelpful" class="secondary">Chưa hữu ích</button></div></form><div id="incidents"></div><div id="goals"></div></div><div class="card"><h2>Nguồn tự học</h2><p class="muted">Chỉ chủ đề công khai được cho phép mới gửi ra web. Nội dung video và hội thoại riêng tư ở lại trên máy.</p><form id="topic-form"><div class="row"><input id="topic" maxlength="160" placeholder="Chủ đề công khai cho phép tra cứu" required><button>Thêm</button></div></form><div id="topics"></div><form id="goal-form"><textarea id="goal-question" maxlength="1000" placeholder="Điều muốn SCAR-X tự tìm hiểu…" required></textarea><div class="row"><input id="topic-id" placeholder="ID chủ đề (trống = chỉ local)"><button>Tạo mục tiêu</button></div></form><div class="row"><button id="pause" class="secondary">Tạm dừng học</button><button id="save" class="secondary">Lưu trạng thái</button></div><form id="rollback-form"><div class="row"><input id="checkpoint" placeholder="ID checkpoint"><button class="secondary">Khôi phục</button></div></form><p id="saved" class="muted"></p></div></div></section>
 <section id="trace" class="tab card"><h2>Trace trực tiếp</h2><p class="muted">Tự cập nhật công việc thực. Phân biệt thao tác triển khai, VLM và quyết định neural; không mô phỏng suy nghĩ.</p>
-<div id="lab-summary" class="goal hidden"></div><div id="lab-answers" class="feed"></div>
-<div id="asr-summary" class="goal hidden"></div><div id="asr-answers" class="feed"></div>
-<div id="recovery-summary" class="goal hidden"></div>
+<div id="learning-screen" class="goal hidden"></div>
+<div id="lab-summary" class="goal hidden"></div>
+<details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
+<details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
 </main><script>
 const query=new URLSearchParams(location.search);const startCursor=Number(query.get('after')||0);
@@ -32,6 +33,20 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='predicate_retention.actual_learning_stage'){
+const p=$('learning-screen');clear('learning-screen');p.classList.remove('hidden');
+const names={frozen:'Khóa học',readout_only:'Chỉ học readout',current_hidden:'Hidden hiện tại',protected_hidden:'Hidden + protection thử nghiệm'};
+para(p,'Đo học & giữ kỹ năng · '+e.payload.run_id);
+para(p,(names[e.payload.arm]||e.payload.arm)+' · seed '+e.payload.seed+' · chặng '+(e.payload.stage+1)+'/20');
+para(p,'Điểm trên mẫu chưa thấy: '+(100*e.payload.accuracy).toFixed(1)+'% · loss học '+Number(e.payload.mean_train_loss).toFixed(3));
+para(p,'Lab: '+e.payload.updates+' cập nhật, '+e.payload.hidden_updates+' cập nhật hidden.','muted');
+para(p,'Dữ liệu truy vấn có kiểm chứng; chưa phải năng lực trò chuyện. Điểm và bộ đếm này không thuộc model live.','muted');
+}
+if(e.kind==='predicate_retention.study_completed'){
+const p=$('learning-screen');clear('learning-screen');p.classList.remove('hidden');
+para(p,'Kết quả đo học & giữ kỹ năng · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,'Chỉ là screening trong lab; chưa đưa protection vào Hermes hoặc kết luận SNN hơn RAG.','muted');
+}
 if(e.kind==='recovery_outcome.actual_branch'){
 const p=$('recovery-summary');clear('recovery-summary');p.classList.remove('hidden');
 const labels={show_schema:'Xem schema',inspect_status:'Kiểm tra trạng thái',retry:'Thử lại',clarify:'Hỏi để làm rõ',defer:'Hoãn',finish:'Kết thúc'};

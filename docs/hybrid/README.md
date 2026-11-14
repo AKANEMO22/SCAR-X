@@ -6,6 +6,13 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Học và giữ kỹ năng trên predicate DEV](PREDICATE_RETENTION_DEV_20261114.md):
+3 seed × 4 arm, 20 chặng đã chạy thật. Protection53,08% so với hidden50,58%,
+chưa qua acquisition/retention hoặc gain gates. Mã hóa có nguy cơ mất binding
+giữa query và record; chưa có causal test xác định nguyên nhân duy nhất.
+Không đưa ứng viên này vào Hermes. Bảng localhost hiển thị loss và điểm chưa
+học của từng chặng, tách riêng cập nhật lab và model live.
+
 [Ứng viên ASR dùng thêm VRAM và giới hạnQA](ASR_CANDIDATE_AND_TOOL_DATA_20261114.md):
 Whisper-small nguyênFP32 giảm ViWER trên32mẫuDEV, actualresourceprobe còn≥1502MiB,
 nhưng QAclip21s vẫn1/3. Đây là candidatechưađổi live, khôngSNNlearninggain;

@@ -127,3 +127,16 @@ test("recovery branch panel reports a failed measured action without claiming le
   assert.match(text, /chưa huấn luyện SNN/);
   assert.equal(nodes.has("updates"), false);
 });
+
+test("actual predicate training stage displays loss and heldout score separately from live", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "predicate_retention.actual_learning_stage",
+    payload: { run_id: "owned-query-screen", arm: "protected_hidden", seed: 260113,
+      stage: 4, accuracy: .55, mean_train_loss: .8, updates: 160, hidden_updates: 160 } });
+  const text = nodes.get("learning-screen").children.map(n => n.textContent).join("\n");
+  assert.match(text, /chặng 5\/20/);
+  assert.match(text, /55.0%/);
+  assert.match(text, /loss học 0.800/);
+  assert.match(text, /không thuộc model live/);
+  assert.equal(nodes.has("updates"), false);
+});

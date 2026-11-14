@@ -1,5 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Predicate retention DEV14/11:** 3 seed × 4 arm, 20 chặng trên query/record có
+nhãn SQL/Python độc lập. Cả 12 joint acquisition/retention gates fail;
+protected53,08% so với hidden50,58%, gain2,5pp/CI[-0,75;6,33]pp. Không promote
+protection, tăng quy mô hay kéo dài epoch. Giữ lỗi CI seed-only ban đầu và
+2/400 encoded aliases; fixed-state fit cho thấy khớp train chưa tổng quát hóa.
+Ưu tiên chẩn đoán binding/encoder/credit trước tối ưu replay thêm.
+[Báo cáo và giới hạn](hybrid/PREDICATE_RETENTION_DEV_20261114.md).
+
 **Protection/statusP014/11:** magnitude/anchorprototype cô lập tái sử dụng heuristic
 PlasticCore trên localactualdelta; đây là algorithmresearchmới, không sửa live.
 Importanceđãảnhhưởngupdate/EMA64/coldGPUstate nhưng chưađánh task/retention;

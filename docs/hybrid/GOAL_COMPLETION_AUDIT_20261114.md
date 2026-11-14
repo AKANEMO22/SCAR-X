@@ -61,3 +61,14 @@ Protectionprototype nowhasactualweightregularization andversionedstate in
 evaluationonly; numericnotquality, aggregatebudget350>300recorded/notPASS.
 No blocker: active8hmeasurement and freshmechanism/dataqualification remain.
 Do not markcomplete based on prototypebuffers changing or elapsedticks.
+
+Continuation progress032f30/bef36b: real3seed×4arm×20stage acquisition/retention
+screen and fixed-state fit completed. All12jointgates fail; protected53.08% vs
+currenthidden50.58%, correctedpairedseed/familyCI[-.75,6.33]pp. 2/400finalDEV
+encodedaliases disclosed with separate sensitivity. Hiddenfitsseen~70% butnot
+unseen (~50%); weightschanging is not sufficient evidence of transferable skill.
+Candidate remainsPIVOT/nolivepromotion. IsolatedHTTPreply regression also passed
+again with installedbytesmatching and live5updates preserved. 554c19 actualPID
+41904/sourceidentity verifiedlive at12018s/40cycles/7checkpoints, not8hcomplete.
+Nextsafeaction is causalquery/record input audit and completing engineering
+qualification; no external blocker or completion claim.

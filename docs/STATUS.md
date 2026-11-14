@@ -1,5 +1,19 @@
 # Trạng thái SCAR-X
 
+## Học predicate và retention DEV — 14/11
+
+[Báo cáo và raw results](hybrid/PREDICATE_RETENTION_DEV_20261114.md):
+032f30 chạy 3 seed × 4 arm, 20 chặng, 320 trải nghiệm mới + 320 replay/arm,
+400 final DEV. Accuracy trung bình frozen/readout/hidden/protected lần lượt
+48,92/51,75/50,58/53,08%; cả 12 joint acquisition/retention gates fail.
+Protection tăng 2,5pp, CI paired seed/family [-0,75;6,33]pp, chưa đủ lợi thế.
+Giữ CI seed-only ban đầu và ghi rõ lỗi clustering; không đổi ngưỡng sau kết quả.
+Source entities disjoint nhưng có 2/400 encoded aliases do signed hash; có
+sensitivity riêng, không xóa mẫu hay sửa điểm gốc. Diagnostic bef36b cho thấy
+hidden khớp seen train khoảng70% nhưng unseen chỉ47,75–54,75%: chưa học được
+quan hệ tổng quát. Không promote protection, tăng neuron hay đổi weights live.
+Trace tự hiển thị loss, stage và heldout score thật riêng với bộ đếm live.
+
 ## Statuscontract/protectionprototypeP0 —14/11
 
 bad3a2: explicitstatusdefinitions chỉ2/16quaweakrubric; cả2vẫn cần rà credentials

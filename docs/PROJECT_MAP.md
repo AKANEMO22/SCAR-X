@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Predicate acquisition/retention DEV](hybrid/PREDICATE_RETENTION_DEV_20261114.md):
+evaluation/predicate_retention_dev.py, run_hybrid_predicate_retention_dev.py,
+metric/encoding auditors và fixed-state fit diagnostic. 032f30/bef36b giữ
+dataset, mọi prediction/curve, 12 checkpoint và source-byte bundle; chưa đạt
+joint gate, không dùng để promote protection hoặc đổi live/8h source.
+
 [Statuscontract + protectionprototypeP0](hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md):
 diagnose/audit_hybrid_recovery_status.py, recovery_bank_bounds.py,
 magnitude_protection_p0.py + numericrunner/tests. Distinctalgorithmformat,
