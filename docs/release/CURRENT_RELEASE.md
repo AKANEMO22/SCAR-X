@@ -1,14 +1,14 @@
-# SCAR-X Hybrid — RC9 đang cài trong Hermes
+# SCAR-X Hybrid — RC10 đang cài trong Hermes
 
 **Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
 Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
 pruning hoặc thay quy tắc học.
 
-Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.9+ea781e4679e2.zip`,
-842.311 byte, 55 payload files. SHA256:
-`63d030c14eed423ebba46cf567cba5c508150eb3430266a35a193eb1cb83ee83`.
-Git SHA nguồn: `ea781e4679e272eb81700184e3dc574169684fe6`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.10+a6886daf2134.zip`,
+849.119 byte, 56 payload files. SHA256:
+`766913656fe44e153f2442c8596cb09d5baf80b2b665a00a8e0b2186d723e477`.
+Git SHA nguồn: `a6886daf2134ea18b7992842483e30c105a58503`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
 asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 
@@ -41,14 +41,17 @@ asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 | Lỗi âm thanh màn hình | FFmpeg thật từ chối WAV hỏng: code cũ dừng toàn ingestion, code sửa vẫn phân tích hai frame bằng VLM GPU thật (`red`, `blue`). Failed/skipped intervals rõ ràng; ba lỗi audio liên tiếp chỉ pause ASR, không giả transcript; resource breach vẫn fatal. Đây là owned journal, chưa live loopback acceptance. |
 | Nâng cấp/bảo trì | Pin payload RC7 thay vì hash candidate đang sửa; terminal source gate nhận đúng predecessor/next bytes và giữ custody không-PASS. Đã chạy thật installer cập nhật ba file, cùng clone CAS/rollback giữ dữ liệu mới; không no-op install claim. |
 | Feedback/retry RC9 | Checkpoint, nhãn, journal và receipt cùng transaction; actual Handler + GPU ALIF tái hiện lỗi trước sửa và kiểm socket mất phản hồi sau commit, concurrent retry, restart/rollback, SQLite ABORT và batch rollback. Cùng mã khác nội dung bị từ chối. Không áp nhãn thử vào model live. |
+| Web routing RC10 | Câu JoJo mới nhất và “tìm kiếm đi” đã gọi web_search thật đúng cùng chủ đề, mỗi lượt5 kết quả; không tìm file hay gọi extractor. Native answer vẫn lấy ngày ra mắt thay số tập hiện tại, không chấm answer-quality PASS. |
 | Tool/workspace/compact/search | Observer đọc đúng envelope; readonly probe thật 0→1 sau 3 lỗi. Guard replay chặn lần thứ tư giống hệt. Project trung lập/7K-char turns và 3 auto compact +1 manual qua; owner display không lộ handoff. Dispatcher SearXNG native trả nguồn thật. |
 | GPU/state | Cả VLM/vision, ASR, ALIF trên GPU; startup/native parity đã kiểm. Full saved arrays/RNG/replay qua activation cuối giữ nguyên, live updates vẫn 5; không nhập lab weights. |
 
-**301 Python checks qua ở RC9**, gồm 9 actual HTTP/CUDA feedback cases,
+**323 full release Python checks qua ở RC10**; sau tinh chỉnh phủ định của web
+intent, **102 targeted gateway/routing/package checks** qua. Không cộng hai
+receipt chồng nhau thành số mẫu độc lập. Có 9 actual HTTP/CUDA feedback cases,
 CPU/native/CUDA parity, audio fault, upgrade CAS/rollback và persistence.
 **29 Node checks +3 UI HTTP feedback
 scenarios qua ở RC7**; 12 Hermes Desktop tests/typecheck qua ở lần sửa admission
-RC6, không chạy lại vì RC9 không đổi renderer/plugin/composer. Các receipt này
+RC6, không chạy lại vì RC10 không đổi renderer/plugin/composer. Các receipt này
 được ghi đúng phiên bản;
 không dùng test transport hoặc test xanh để chấm năng lực đa năng.
 Renderer build/typecheck thành công, Electron main/preload giữ nguyên.
@@ -69,14 +72,18 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
   Codex thực thi suite. Follow-up review source timeout, không tính approval.
 - [Trả lời media và ranh giới footer](MEDIA_REPLY_PRESENTATION_20261114.md),
   [audit actual Hermes](evidence/MEDIA_REPLY_PRESENTATION_20261114.json),
-  [RC9 code/runtime pins](evidence/RC9_INSTALLED_ARTIFACT_20261115.json),
-  [RC9 activation giữ state](evidence/RC9_ACTIVATION_20261115.json),
-  [RC9 regression](evidence/RC9_RELEASE_CHECKS_20261115.json),
+  [RC10 code/runtime pins](evidence/RC10_INSTALLED_ARTIFACT_20261115.json),
+  [RC10 activation giữ state](evidence/RC10_ACTIVATION_20261115.json),
+  [RC10 regression](evidence/RC10_RELEASE_CHECKS_20261115.json),
   [RC7 functional receipts](evidence/RC7_RELEASE_CHECKS_20261114.json).
 - [Feedback atomicity](FEEDBACK_TRANSACTION_20261115.md),
   [exact source qualification](evidence/FEEDBACK_ATOMIC_FINAL_SOURCE_20261115.json).
   RC7 UI fixtures không phủ backend commit gap; RC9 thêm actual Handler/socket
   coverage. Review CLI cho bản sửa này timeout, không approval từ Antigravity.
+- [Public web routing](WEB_SEARCH_ROUTING_20261115.md),
+  [actual Hermes calls/results](evidence/ACTUAL_HERMES_WEB_SEARCH_20261115.json).
+  Runtime chọn tool đầu tiên và giữ query của người dùng; không nói SNN đã học
+  lựa chọn web. SearXNG vẫn search-only; không ngầm dùng Exa extraction của cấu hình.
 - [Audio resilience](SCREEN_AUDIO_RESILIENCE_20261115.md),
   [upgrade source custody](RC_UPGRADE_PATH_20261115.md),
   [goal completion audit](GOAL_COMPLETION_AUDIT_20261115.md) tách kỹ thuật đã

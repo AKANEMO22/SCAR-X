@@ -7,6 +7,9 @@ The first answer refused a capability it had; the follow-up called
 The stream field was null, so private-media tool suppression was not the cause.
 A direct native SearXNG request returned ten real results in about1.2s, with no
 unresponsive engines. This was model tool selection, not a missing search service.
+Foreground chat tool selection currently comes from the frozen VLM; the SNN's
+six-action policy belongs to its separate learning loop. Having a search slot
+there does not make foreground tool selection a learned SNN capability.
 
 ## Repair
 
@@ -47,6 +50,15 @@ Actual canonical Hermes acceptance is recorded separately after activation,
 using a neutral owned hidden session and the exact reported question/follow-up.
 Read [CURRENT_RELEASE](CURRENT_RELEASE.md) for installed version and receipts.
 Code-level checks alone are not presented as an end-to-end or model-quality PASS.
+
+**Actual acceptance completed:** both exact turns called `web_search`, with the
+second request carrying the original JoJo topic. Both received five successful
+results through the existing SearXNG integration. No file or extractor calls.
+The native answers gave a series/launch date instead of the current episode
+number, so **answer quality is still incomplete**; that date was not independently
+verified here. [Raw-result audit](evidence/ACTUAL_HERMES_WEB_SEARCH_20261115.json)
+retains this limitation. `scripts/audit_hermes_public_web.py` rechecks the owned
+RPC receipts without new search/inference. No hardcoded episode answer was added.
 
 Remaining limits: intent rules are conservative, not a general learned router;
 ambiguous “tập” can refer to anime or manga. A search result does not verify the

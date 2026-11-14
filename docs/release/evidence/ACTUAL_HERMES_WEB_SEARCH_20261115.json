@@ -1,0 +1,51 @@
+{
+  "verdict": "ACTUAL_HERMES_WEB_SEARCH_AND_USER_TOPIC_FOLLOWUP_VERIFIED",
+  "canonical_Hermes_chat": true,
+  "turns": [
+    {
+      "query": "jojo ra tập mới nhất là tập bn",
+      "executed_tool": "web_search",
+      "actual_search_query": "jojo ra tập mới nhất là tập bn",
+      "returned_results": 5,
+      "result_urls": [
+        "https://cuoi.tuoitre.vn/jojos-bizarre-adventure-steel-ball-run-tro-lai-voi-lich-phat-song-hang-tuan-100260906144313653.htm",
+        "https://www.netflix.com/vn/title/82116553",
+        "https://www.vietnam.vn/jojo-s-bizarre-adventure-steel-ball-run-tiep-tuc-gay-tranh-cai-kich-liet",
+        "https://tuoitre.vn/jojos-bizarre-adventure-steel-ball-run-tro-lai-sau-tranh-cai-100260907102654436.htm",
+        "https://gamelade.vn/tap-2-cua-jojos-bizarre-adventure-steel-ball-run-an-dinh-ngay-ra-mat/"
+      ],
+      "native_answer": "TẬP MỚI NHẤT: **Steel Ball Run** (JoJo's Bizarre Adventure: Steel Ball Run) lên sóng Netflix ngày 25-9-2026.",
+      "native_answer_is_not_independently_fact_verified": true,
+      "episode_number_after_episode_word_present": false
+    },
+    {
+      "query": "tìm kiếm đi",
+      "executed_tool": "web_search",
+      "actual_search_query": "jojo ra tập mới nhất là tập bn",
+      "returned_results": 5,
+      "result_urls": [
+        "https://cuoi.tuoitre.vn/jojos-bizarre-adventure-steel-ball-run-tro-lai-voi-lich-phat-song-hang-tuan-100260906144313653.htm",
+        "https://www.netflix.com/vn/title/82116553",
+        "https://www.vietnam.vn/jojo-s-bizarre-adventure-steel-ball-run-tiep-tuc-gay-tranh-cai-kich-liet",
+        "https://tuoitre.vn/jojos-bizarre-adventure-steel-ball-run-tro-lai-sau-tranh-cai-100260907102654436.htm",
+        "https://gamelade.vn/tap-2-cua-jojos-bizarre-adventure-steel-ball-run-an-dinh-ngay-ra-mat/"
+      ],
+      "native_answer": "TẬP MỚI NHẤT: **Steel Ball Run** lên sóng Netflix ngày 25-9-2026.",
+      "native_answer_is_not_independently_fact_verified": true,
+      "episode_number_after_episode_word_present": false
+    }
+  ],
+  "local_file_or_paid_extractor_tool_calls": 0,
+  "reported_false_capability_refusal_repeated": false,
+  "remaining_answer_quality_issue": "Both outputs provide series/launch date instead of the requested current episode number; search routing success is not answer-quality success",
+  "new_search_or_inference_calls_in_audit": 0,
+  "raw_receipts_sha256": {
+    "result.json": "8c56fd9ce717d1ffd51102f55a90957bea257fdd31a23cf8ad452f73cafdcff9",
+    "events.json": "44cf7dfa12442968247e35c6caec901cad6a347d888159fed1b559bd2561a019"
+  },
+  "source_sha256": {
+    "src/scarx/hybrid/web_routing.py": "7a3b3171bcf6365220a1b4d33347d35356b5a8d9ad8bda1f691c0fdcc116dd98",
+    "src/scarx/hybrid/gateway.py": "bfea66ba16f9b2127adf84db852eebea95b709ca831089528cbd9f873247a2b8"
+  },
+  "research_or_production_PASS": false
+}

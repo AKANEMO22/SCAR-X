@@ -1,5 +1,10 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**RC10 web routing 15/11:** [sửa câu hỏi mới nhất chọn nhầm file](release/WEB_SEARCH_ROUTING_20261115.md)
+đã kiểm hai lượt JoJo thật trong Hermes/SearXNG. Đây là controller routing,
+không learned SNN foreground policy. Có search results thật nhưng native answer
+chưa trả số tập, không quality/retention PASS; giữ nguyên research gates/P0 FAIL.
+
 **RC9 runtime 15/11:** [feedback transaction](release/FEEDBACK_TRANSACTION_20261115.md)
 khép checkpoint/receipt commit gap,9 actual HTTP/GPU fixture cases;301 release
 Python checks qua. [Artifact đang cài](release/CURRENT_RELEASE.md) giữ nguyên

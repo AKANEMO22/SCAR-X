@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## RC10 — câu hỏi mới nhất dùng web, không tìm file
+
+[Root cause/sửa routing](release/WEB_SEARCH_ROUTING_20261115.md): tool web đã có
+nhưng VLM chọn search_files. Hai lượt exact JoJo + “tìm kiếm đi” trong Hermes
+thật nay gọi web_search đúng query,5 kết quả/lượt. Native vẫn chưa trả số tập,
+không gọi là answer-quality PASS. 323 full +102 targeted checks qua theo scope;
+RC10 đã cài, GPU/state/RNG/replay giữ nguyên. Artifact theo CURRENT_RELEASE.
+
 ## Feedback transaction — sửa khoảng hở ACK/checkpoint
 
 [Actual HTTP repro và sửa](release/FEEDBACK_TRANSACTION_20261115.md): RC8 source

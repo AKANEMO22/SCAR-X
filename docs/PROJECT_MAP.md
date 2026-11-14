@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[Web routing](release/WEB_SEARCH_ROUTING_20261115.md): `src/scarx/hybrid/web_routing.py`
+phân biệt explicit public/freshness/follow-up với local/private scope. Gateway
+gọi tool Hermes thật, không dựng search results. Tests ở
+`tests/test_hybrid_web_routing.py`; actual canonical acceptance qua
+`scripts/accept_hermes_public_web.py`, read-only audit qua
+`scripts/audit_hermes_public_web.py`. Thuật toán và weights neural không đổi.
+
 [Atomic feedback](release/FEEDBACK_TRANSACTION_20261115.md):
 `HybridEngine.feedback_once` + `Store.atomic_feedback` gắn retry identity với
 transaction checkpoint/receipt. `tests/test_hybrid_feedback_transaction.py` chạy
