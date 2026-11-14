@@ -6,7 +6,9 @@
 GPU hoạt động, nhưng SNN-over-RAG/learned tool recovery/retention vẫn chưa đạt.
 [Audio isolation](release/SCREEN_AUDIO_RESILIENCE_20261115.md) tái hiện real
 FFmpeg failure; source sửa vẫn có hai VLM answers thật, không transcript giả,
-284 Python checks qua. Thay đổi chỉ thuộc runtime; artifact đang cài theo
+284 Python checks qua ở mốc audio. Sau [sửa upgrade path](release/RC_UPGRADE_PATH_20261115.md),
+suite cuối **292 qua**. Đã cài RC8 qua real predecessor installer, giữ fullstate/
+RNG/replay và cả ba neural component trên GPU. Thay đổi chỉ thuộc runtime; artifact theo
 [CURRENT_RELEASE](release/CURRENT_RELEASE.md), không tự mở nghiên cứu mới.
 
 ## RC7 — chốt QA và trình bày câu trả lời video

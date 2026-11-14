@@ -1,0 +1,16 @@
+{
+  "verdict": "PINNED_RC7_TO_RC8_SOURCE_GATE_CAS_ROLLBACK_VERIFIED_ON_OWNED_CLONE",
+  "predecessor_archive_sha256": "c24fb159599124dff832c877ee28a5a87362a28395b953a0a93709a5410e366e",
+  "next_archive_sha256": "f093073aa679804cde7f6b9d211b1c1c25eacd816e675741b3987974d47eec0d",
+  "old_permanent_source_freeze_reproduced": true,
+  "changed_payload_paths": [
+    "scripts/hybrid_screen_worker.py",
+    "src/scarx/hybrid/gateway.py",
+    "src/scarx/hybrid/screen.py"
+  ],
+  "both_predecessor_and_next_payload_states_accepted": true,
+  "unexpected_user_source_edit_rejected_before_mutation": true,
+  "code_rollback_preserves_later_fixture_user_data": true,
+  "cancelled_eight_hour_test_remains_not_PASS": true,
+  "actual_live_install_or_neural_calls_in_this_check": false
+}
