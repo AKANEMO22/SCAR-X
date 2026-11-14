@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Hermes gửi trả lời —14/11
+
+[Đường gửi dùng chung](hybrid/HERMES_QUESTION_CARD_FIX_20261114.md): tab Debug
+và composer dùng cùng handler có receipt/giữ draft khi lỗi/guard/20s timeout;
+retry cùng client_id. Run a3bd7a giữ source đã cài +3 ca HTTP cô lập qua, 7
+composer +14 trace checks qua. UI thật xác nhận nhập chữ bật nút gửi. Không
+gửi phản hồi thử vào live; câu hỏi còn chờ, updates5 nguyên vẹn. Nội dung đã
+gõ trước đó chưa được phục hồi; không giả định đã nhận được câu trả lời.
+
 ## ASR profile preparation —14/11
 
 [791db8/shadow](hybrid/ASR_PROFILE_PREPARATION_20261114.md): pinnedprofilelibrary

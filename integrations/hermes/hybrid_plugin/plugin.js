@@ -32,7 +32,6 @@ function Panel({ ctx }) {
     [stream, setStream] = useState(""),
     [video, setVideo] = useState(""),
     [topic, setTopic] = useState(""),
-    [reply, setReply] = useState(""),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [history, setHistory] = useState([]),
@@ -331,51 +330,7 @@ function Panel({ ctx }) {
                 incident.last_feedback && jsx("pre", { children: JSON.stringify(incident.last_feedback, null, 2) }),
               ],
             }, incident.id)),
-            s?.question &&
-              jsxs("div", {
-                className: "sxh-card",
-                children: [
-                  jsx("b", { children: s.question.question }),
-                  jsx("textarea", {
-                    value: reply,
-                    onChange: (e) => setReply(e.target.value),
-                    placeholder: "Trả lời…",
-                  }),
-                  jsxs("div", {
-                    className: "sxh-row",
-                    children: [
-                      button(
-                        "Trả lời",
-                        () =>
-                          void send("/feedback", {
-                            id: s.question.id,
-                            text: reply,
-                          })
-                            .then(() => setReply(""))
-                            .catch(() => {}),
-                      ),
-                      button("Trả lời · hữu ích", () => void send("/feedback", {
-                        id: s.question.id,
-                        text: reply,
-                        helpful: true,
-                      }).then(() => setReply("")).catch(() => {})),
-                      button(
-                        "Bỏ qua",
-                        () =>
-                          void send("/feedback", {
-                            id: s.question.id,
-                            text: "bỏ qua",
-                          }).catch(() => {}),
-                      ),
-                      button("Chưa hữu ích", () => void send("/feedback", {
-                        id: s.question.id,
-                        text: "Câu hỏi này chưa hữu ích cho tác vụ.",
-                        helpful: false,
-                      }).catch(() => {})),
-                    ],
-                  }),
-                ],
-              }),
+            jsx(LearningQuestion, { ctx, debug: true }),
             ...(s?.goals || [])
               .slice(-15)
               .reverse()
@@ -647,7 +602,7 @@ function questionRatingIcon(positive) {
 
 const QUESTION_STATUS_CSS = ".sxq-error{margin:0;color:var(--ui-danger,#f29a9a);font-size:12px;overflow-wrap:anywhere}.sxq.sxq-receipt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;color:var(--ui-text-secondary,#a3abb3)}.sxq-receipt p{margin:0}.sxq-receipt button{flex:none}";
 
-function LearningQuestion({ ctx }) {
+function LearningQuestion({ ctx, debug = false }) {
   const model = useValue(host.state.model),
     [reply, setReply] = useState(""),
     [busy, setBusy] = useState(false),
@@ -655,13 +610,14 @@ function LearningQuestion({ ctx }) {
     [feedbackError, setFeedbackError] = useState(""),
     [receipt, setReceipt] = useState(null),
     sending = useRef(false),
-    answeredId = useRef(null);
+    answeredId = useRef(null),
+    retryTicket = useRef(null);
   const q = useQuery({
     queryKey: [ID, "pending-question"],
     queryFn: () => ctx.rest("/status?after=2147483647"),
     refetchInterval: 8000,
     retry: 1,
-    enabled: String(model || "").includes("scarx-hybrid"),
+    enabled: debug || String(model || "").includes("scarx-hybrid"),
   });
   const pendingId = q.data?.question?.id;
   useEffect(() => {
@@ -686,7 +642,7 @@ function LearningQuestion({ ctx }) {
       b();
     };
   }, [ctx]);
-  if (!String(model || "").includes("scarx-hybrid")) return null;
+  if (!debug && !String(model || "").includes("scarx-hybrid")) return null;
   if (receipt && (!q.data?.question || q.data.question.id === receipt.id)) {
     return jsxs("div", {
       className: "sxq sxq-receipt", role: "status", "aria-live": "polite",
@@ -708,10 +664,16 @@ function LearningQuestion({ ctx }) {
     setBusy(true);
     setFeedbackError("");
     try {
+      const body = { id: question.id, text,
+        ...(typeof helpful === "boolean" ? { helpful } : {}) };
+      const signature = JSON.stringify(body);
+      if (retryTicket.current?.signature !== signature) {
+        retryTicket.current = { signature, id: crypto.randomUUID() };
+      }
       const result = await ctx.rest("/feedback", {
         method: "POST",
-        body: { id: question.id, text,
-          ...(typeof helpful === "boolean" ? { helpful } : {}) },
+        body: { ...body, client_id: retryTicket.current.id },
+        timeoutMs: 20000,
       });
       if (result?.accepted !== true && result?.skipped !== true) {
         throw new Error("Máy chủ chưa xác nhận đã nhận câu trả lời.");
@@ -724,7 +686,7 @@ function LearningQuestion({ ctx }) {
       setRating(null);
       void q.refetch();
     } catch (e) {
-      setFeedbackError("Chưa gửi được: " + (e.message || String(e)));
+      setFeedbackError("Chưa gửi được: " + (e.message || String(e)) + " Nội dung của bạn vẫn được giữ lại.");
     } finally {
       sending.current = false;
       setBusy(false);

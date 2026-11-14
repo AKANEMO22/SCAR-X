@@ -44,3 +44,27 @@ không gửi trùng, không tạo helpful ngầm hoặc neuralupdate. Test đỏ
 b809d1b trước sửa, xanh sau sửa.11Nodechecks +1HTTPintegration qua.
 Installerbackup20261114T024632706683Z/hotreload, kiểm installedbytes khớpsource,
 Hermes backendready. Không tạo/gửi phản hồi thử vào memorylive để kiểm.
+
+## Đồng bộ đường gửi trong Debug và chat — 09:24 UTC
+
+Tab Debug còn dùng bộ xử lý riêng: không kiểm tra accepted/skipped, không có
+receipt, lỗi ở đầu trang thay vì cạnh câu trả lời. Đã thay bằng cùng
+LearningQuestion của composer; Debug vẫn dùng được khi model đang chọn khác.
+Nút gửi trực tiếp, guard double-click, giới hạn chờ 20 giây và giữ draft khi
+lỗi áp dụng chung. Mỗi nội dung/ID/rating có client_id ổn định để thử gửi lại
+sau mất xác nhận nhận được receipt đã lưu, tránh học/ghi nhận trùng.
+
+Run `20261114T092354Z-hermes-question-send-v2-a3bd7a` giữ source JS thực sự
+đã cài, hash, ba log HTTP và receipt. Ba ca chat/Debug/mất receipt sau commit
+đều qua trên HybridEngine + SQLite cô lập. Phần cache receipt trong harness
+là transport fixture theo hợp đồng gateway, không là model response hay dữ
+liệu huấn luyện. Mỗi ca chỉ có một question_answered, 0 cập nhật neural.
+7 composer checks và 14 trace checks cũng qua.
+
+Computer Use xác nhận trên Hermes thật: nhập chữ làm nút Gửi trả lời bật,
+xóa bản nháp kiểm tra làm nút tắt. Không bấm gửi dữ liệu thử vào câu hỏi thật.
+Installer chỉ thay plugin.js, backup `20261114T092124122472Z`; không restart
+gateway/model, live updates vẫn 5 và câu hỏi thật còn pending. Log cũ có
+Unknown answer/question identity; chưa khôi phục được nội dung người dùng từng
+gõ hoặc tái hiện chính xác lần bấm lỗi trên UI live. Đây là sửa/kiểm đường gửi,
+không tuyên bố đã nhận câu trả lời đã mất hoặc synapse học thêm.

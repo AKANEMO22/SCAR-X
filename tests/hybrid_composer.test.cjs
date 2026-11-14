@@ -135,6 +135,21 @@ test("negative rating can be sent without inventing a typed reply; blank default
   }
 });
 
+test("debug learning tab uses the same guarded reply component as the chat card", () => {
+  const { sandbox } = setup();
+  let cursor = 0;
+  const states = ["learn", "", "", "", "", "", false, [], [], "", null];
+  sandbox.useState = () => [states[cursor++], () => {}];
+  sandbox.useQuery = () => ({ data: { question: { id: "debug-pending", question: "Owned fixture" } } });
+  sandbox.useEffect = () => {};
+  sandbox.jsx = sandbox.jsxs = (tag, props) => ({ tag, ...props });
+  const panel = vm.runInContext("Panel({ctx})", sandbox);
+  const all = n => [n, ...(Array.isArray(n?.children) ? n.children.flatMap(all) : [])];
+  const shared = all(panel).filter(n => typeof n?.tag === "function" && n.tag.name === "LearningQuestion");
+  assert.equal(shared.length, 1);
+  assert.equal(shared[0].debug, true);
+});
+
 test("plain turn stays identical despite stale engineering fixture storage", async () => {
   const { sandbox, calls, storage } = setup();
   sandbox.draft = { text: "câu này ntn", attachments: [] };

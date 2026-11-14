@@ -5,6 +5,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 const test = require("node:test");
 const assert = require("node:assert/strict");
+const { webcrypto } = require("node:crypto");
 const file = process.env.SCARX_QUESTION_TEST_SOURCE ||
   path.join(__dirname, "../integrations/hermes/hybrid_plugin/plugin.js");
 const source = fs.readFileSync(file, "utf8")
@@ -12,8 +13,9 @@ const source = fs.readFileSync(file, "utf8")
   .replace("export default", "globalThis.scarxPlugin =");
 const base = process.env.SCARX_QUESTION_TEST_BASE;
 const nonce = process.env.SCARX_QUESTION_TEST_NONCE;
+const scenario = process.env.SCARX_QUESTION_TEST_CASE || "chat";
 
-test("question click keeps failed draft then sends once through real isolated HTTP", { skip: !base }, async () => {
+test(`question ${scenario}: failed draft stays, retry sends once through isolated HTTP`, { skip: !base }, async () => {
   const state = [], refs = [];
   let index = 0, refIndex = 0, query;
   async function request(endpoint, options = {}) {
@@ -27,8 +29,9 @@ test("question click keeps failed draft then sends once through real isolated HT
     return value;
   }
   const sandbox = {
+    crypto: webcrypto,
     host: { state: { model: {} }, notifyError() {} },
-    useValue: () => "scarx-hybrid",
+    useValue: () => scenario === "debug" ? "unrelated-focused-model" : "scarx-hybrid",
     useState(initial) {
       const i = index++;
       if (!(i in state)) state[i] = initial;
@@ -52,7 +55,8 @@ test("question click keeps failed draft then sends once through real isolated HT
   vm.runInContext(source, sandbox, { filename: file });
   function render() {
     index = refIndex = 0;
-    return vm.runInContext("LearningQuestion({ctx})", sandbox);
+    sandbox.debug = scenario === "debug";
+    return vm.runInContext("LearningQuestion({ctx,debug})", sandbox);
   }
   const descend = n => [n, ...(Array.isArray(n?.children) ? n.children.flatMap(descend) : [])];
   const event = () => ({ preventDefault() {}, stopPropagation() {} });
@@ -88,7 +92,9 @@ test("question click keeps failed draft then sends once through real isolated HT
   assert.equal(status.attempts, 2);
   assert.equal(status.updates, 0);
   assert.equal(status.hidden_updates, 0);
+  assert.equal(status.answer_events, 1, "Lost acknowledgement retry cannot record or learn the same answer twice");
   assert.equal(status.last_feedback.text, "Owned UI transport fixture reply");
+  assert.match(status.last_feedback.client_id, /^[0-9a-f-]{36}$/);
   assert.equal(Object.hasOwn(status.last_feedback, "helpful"), false);
   assert.equal(status.question, null);
 });

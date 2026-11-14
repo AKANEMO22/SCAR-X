@@ -1,0 +1,32 @@
+{
+  "verdict": "UI_TRANSPORT_REGRESSION_PASS_ONLY",
+  "actual_installed_source_sha256": "551a5a692f8ff992a31561c4fbf5cc597d1c96509f030d6a1270997bab74c5f5",
+  "installed_source_HTTP_checks": [
+    {
+      "case": "chat",
+      "exit_code": 0
+    },
+    {
+      "case": "debug",
+      "exit_code": 0
+    },
+    {
+      "case": "lost-receipt",
+      "exit_code": 0
+    }
+  ],
+  "composer_checks_preinstall": 7,
+  "trace_checks_preinstall": 14,
+  "native_UI_observed": {
+    "draft_enables_send": true,
+    "cleared_draft_disables_send": true,
+    "test_draft_submitted_to_live": false
+  },
+  "model_gateway_restarted": false,
+  "live_updates_before_after": [
+    5,
+    5
+  ],
+  "actual_user_reply_not_recovered_or_fabricated": true,
+  "live_question_still_pending": true
+}

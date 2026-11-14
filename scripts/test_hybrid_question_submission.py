@@ -18,12 +18,12 @@ from scarx.hybrid.engine import HybridEngine
 from scarx.hybrid.store import Store
 
 
-def main(source):
+def main(source, case="chat"):
     source = source.resolve()
     if ROOT not in source.parents:
         raise ValueError("Test source must be in owned checkout")
     nonce = secrets.token_urlsafe(24)
-    attempts, last_feedback = [], {}
+    attempts, last_feedback, receipts = [], {}, {}
     with tempfile.TemporaryDirectory(prefix="scarx-question-http-") as temporary:
         store = Store(temporary)
         monitor = SimpleNamespace(check=lambda: {"rss_bytes": 0},
@@ -58,19 +58,26 @@ def main(source):
                 self.send_json({
                     "question": engine.state["question"], "attempts": len(attempts),
                     "last_feedback": last_feedback, "updates": engine.model.updates,
-                    "hidden_updates": engine.model.hidden_updates})
+                    "hidden_updates": engine.model.hidden_updates,
+                    "answer_events": sum(e["kind"] == "question_answered"
+                                         for e in store.events())})
 
             def do_POST(self):
                 if not self.allowed() or self.path != "/feedback":
                     return self.send_json({"error": "Wrong fixture scope"}, 403)
                 payload = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
                 attempts.append(payload)
-                if len(attempts) == 1:
+                if len(attempts) == 1 and case != "lost-receipt":
                     return self.send_json({"error": "Controlled UI transport failure"}, 503)
+                if payload["client_id"] in receipts:
+                    return self.send_json(receipts[payload["client_id"]])
                 result = engine.feedback(**{
                     "identifier": payload["id"], "text": payload["text"],
                     **({"helpful": payload["helpful"]} if "helpful" in payload else {})})
                 last_feedback.update(payload)
+                receipts[payload["client_id"]] = result
+                if len(attempts) == 1 and case == "lost-receipt":
+                    return self.send_json({"error": "Controlled receipt loss after commit"}, 503)
                 self.send_json(result)
 
         server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
@@ -81,7 +88,8 @@ def main(source):
             result = subprocess.run([str(node), "--test", "tests/hybrid_question_http.test.cjs"],
                 cwd=ROOT, env=dict(os.environ,
                     SCARX_QUESTION_TEST_BASE=f"http://127.0.0.1:{server.server_port}",
-                    SCARX_QUESTION_TEST_NONCE=nonce, SCARX_QUESTION_TEST_SOURCE=str(source)),
+                    SCARX_QUESTION_TEST_NONCE=nonce, SCARX_QUESTION_TEST_SOURCE=str(source),
+                    SCARX_QUESTION_TEST_CASE=case),
                 timeout=30)
             return result.returncode
         finally:
@@ -94,4 +102,6 @@ def main(source):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--source", type=Path, default=ROOT / "integrations/hermes/hybrid_plugin/plugin.js")
-    raise SystemExit(main(p.parse_args().source))
+    p.add_argument("--case", choices=("chat", "debug", "lost-receipt"), default="chat")
+    args = p.parse_args()
+    raise SystemExit(main(args.source, args.case))
