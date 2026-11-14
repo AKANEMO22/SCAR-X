@@ -2,7 +2,9 @@
 
 **Ưu tiên hiện tại:** [hoàn tất bản cập nhật Hybrid RC](docs/release/HYBRID_RC_PLAN.md)
 cho chat Hermes đang dùng. Gói chỉ cập nhật deployment đã cài, không chứa dữ
-liệu cá nhân hoặc model. Chưa cài khi lượt 8 giờ còn chạy; nghiên cứu mới ở backlog.
+liệu cá nhân hoặc model. Lượt 8 giờ đã dừng theo yêu cầu để ưu tiên sản phẩm;
+không tính là PASS. [RC2 activation](docs/release/RC2_ACTIVATION_20261114.md);
+nghiên cứu mới ở backlog.
 
 **Nhánh Hybrid mới, được duyệt13/11:** dùng SCAR-X Hybrid trong bộ chọn model
 của **chat Hermes bình thường**. Video dùng menu đính kèm sẵn có; xem màn hình

@@ -12,7 +12,8 @@ def shadow_store():
     recipe = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(recipe)
     scope = {"__name__":"full_query_store_shadow"}
-    exec(compile(recipe.patch_bytes((ROOT/"src/scarx/hybrid/store.py").read_bytes()), "shadow-store.py", "exec"), scope)
+    original=ROOT/'runs/20261114T101526Z-full-query-retrieval-p0-v1-7a9ee0/source/src/scarx/hybrid/store.py'
+    exec(compile(recipe.patch_bytes(original.read_bytes()), "shadow-store.py", "exec"), scope)
     return scope["Store"]
 
 

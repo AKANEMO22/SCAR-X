@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.1
+# SCAR-X Hybrid 1.0.0-rc.2
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -12,9 +12,10 @@ cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc che
 3. Mở chat Hermes bình thường, tiếp tục chọn model **Scarx Hybrid** hiện có.
    Model ID `scarx-hybrid`, một gateway tại localhost:8775. Tab Debug chỉ quan sát.
 
-Installer từ chối nếu lượt 8 giờ bảo vệ còn chạy hoặc chưa có receipt/audit hợp lệ.
-Không dừng test để vượt điều kiện. Không xóa/move các thư mục dữ liệu nghiên cứu.
-Gói chuẩn bị trước test kết thúc vẫn là candidate, chưa phải bản đã nghiệm thu.
+Installer từ chối nếu worker bảo vệ còn chạy hoặc không có custody hợp lệ.
+Theo yêu cầu mới của bạn, lượt 8 giờ đã dừng để ưu tiên sản phẩm; receipt và
+audit ghi rõ USER_CANCELLED, không phải endurance PASS. Không xóa dữ liệu cũ.
+Gói RC vẫn cần nghiệm thu vận hành, không chứng minh độ bền 8 giờ.
 
 Model đang dùng: Qwen3.5-0.8B nguyên BF16/F32, Whisper-small FP32, ALIF H128 FP32.
 Các tính toán neural trên GPU hiện có; I/O, SQLite và điều phối trên CPU.

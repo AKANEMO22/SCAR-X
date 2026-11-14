@@ -4,7 +4,9 @@
 trong chat Hermes hiện có. Không mở dataset, benchmark, model hoặc learner mới;
 giữ nghiên cứu chưa xong trong backlog. Không thay kiến trúc ALIF, ngưỡng
 forgetting hoặc kết luận hidden SNN chưa chứng minh vượt cùng LLM + RAG.
-Không restart/sửa source bảo vệ trước terminal và audit lượt 8 giờ `32cd13`.
+Yêu cầu mới đã hủy lượt 8 giờ `32cd13` để ưu tiên sản phẩm; actual worker đã
+terminal, có receipt và cancellation audit, không PASS. Không đợi đủ 8 giờ;
+vẫn bảo toàn source trước activation và kiểm vận hành RC sau cài.
 
 
 **VerifierguardP014/11:** [8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md)

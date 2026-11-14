@@ -2,6 +2,12 @@
 
 ## Ưu tiên hiện tại — phát hành Hybrid RC
 
+**Yêu cầu mới: bỏ test 8 giờ, tập trung sản phẩm.** Đã dừng sạch `32cd13` sau
+11.268,281 giây; 38 chu kỳ, 7 checkpoint, không worker private sót. Giữ result
+`ENDURANCE_INTERRUPTED_OR_FAILED` và cancellation audit `USER_CANCELLED_NOT_EIGHT_HOUR_PASS`.
+Đang chuẩn bị RC2 áp dụng hai patch; không đợi đủ 8 giờ, không nới nghiên cứu.
+31 safety/P0 checks qua. [Theo dõi activation](release/RC2_ACTIVATION_20261114.md).
+
 [Checklist phát hành](release/HYBRID_RC_PLAN.md): dừng mở nghiên cứu mới, giữ
 ALIF/local learning và chuẩn bị gói cập nhật cho chat Hermes bình thường.
 Antigravity CLI đã hỗ trợ review checklist bằng Gemini 3.8 Flash high, effort
@@ -9,8 +15,8 @@ high; [đối chiếu độc lập](release/ANTIGRAVITY_RELEASE_REVIEW_20261114.
 các suy đoán sai và hai review timeout. [Gói RC](release/HYBRID_RC_CANDIDATE_20261114.md)
 787.328 byte đã tạo: 27 safety/P0 và 74 regression từ code giải nén qua.
 Installer từ chối đúng khi worker bảo vệ còn chạy; không import Torch.
-Lượt small mixed `32cd13` còn chạy; chưa cài hai patch, chưa live acceptance,
-chưa production PASS. Metadata/video research chưa xong chuyển backlog.
+Các số liệu RC1 trên là mốc chuẩn bị trước hủy; chưa production PASS.
+Metadata/video research chưa xong chuyển backlog.
 
 ## Startupstorageaudit —14/11
 

@@ -95,6 +95,35 @@ def no_live_protected_run(root):
 
 def protected_run_gate(root):
     run,m=no_live_protected_run(root)
+    for name,digest in m['source_sha256'].items():
+        safe_relative(name)
+        if not (root/name).resolve().is_relative_to(root):raise ValueError('Protected source outside root')
+        if sha((root/name).read_bytes())!=digest:raise RuntimeError('Protected source changed since tested baseline: '+name)
+    cancellation=run/'user-cancellation-audit-v1.json'
+    if cancellation.is_file():
+        request_raw=(run/'user-cancellation-request-v1.json').read_bytes()
+        result_raw=(run/'result.json').read_bytes()
+        request=json.loads(request_raw);result=json.loads(result_raw)
+        audit=json.loads(cancellation.read_bytes())
+        identity=json.loads((run/'process-identity-v1.json').read_text(encoding='utf-8'))
+        if (request.get('action')!='cancel_8h_for_product_release'
+                or request.get('run_id')!=run.name or audit.get('run_id')!=run.name
+                or request.get('pid')!=m['pid'] or audit.get('pid')!=m['pid']
+                or request.get('process_created_epoch')!=identity['process_created_epoch']
+                or audit.get('process_created_epoch')!=identity['process_created_epoch']
+                or audit.get('verdict')!='USER_CANCELLED_NOT_EIGHT_HOUR_PASS'
+                or audit.get('actual_worker_terminal') is not True
+                or audit.get('source_matches_before_activation') is not True
+                or audit.get('residual_private_worker_pids')!=[]
+                or audit.get('request_sha256')!=sha(request_raw)
+                or audit.get('result_sha256')!=sha(result_raw)
+                or audit.get('engineering_eight_hour_qualified') is not False
+                or request.get('eight_hour_PASS_claimed') is not False
+                or result.get('gate_pass') or result.get('formal_P1_P2_P3_or_lifelong_pass')):
+            raise RuntimeError('User-directed cancellation custody is incomplete; not an endurance PASS')
+        return {'run_id':run.name,'release_gate':'user_cancelled_8h_for_RC',
+                'eight_hour_qualified':False,'cancellation_audit_sha256':sha(cancellation.read_bytes()),
+                'result_sha256':sha(result_raw)}
     result=json.loads((run/'result.json').read_text(encoding='utf-8'))
     audit=json.loads((run/'small-mixed-audit-v1.json').read_text(encoding='utf-8'))
     if (m['duration_seconds']!=28800 or not result.get('gate_pass') or result['failures']
@@ -104,10 +133,6 @@ def protected_run_gate(root):
             or not audit['ASR_integrity'] or not audit['source_archive_valid']
             or not audit['private_checkpoint_and_receipt_agree']):
         raise RuntimeError('Completed test/independent data audit not qualified')
-    for name,digest in m['source_sha256'].items():
-        safe_relative(name)
-        if not (root/name).resolve().is_relative_to(root):raise ValueError('Protected source outside root')
-        if sha((root/name).read_bytes())!=digest:raise RuntimeError('Protected source changed since tested baseline: '+name)
     return {'run_id':run.name,'result_sha256':sha((run/'result.json').read_bytes()),
             'audit_sha256':sha((run/'small-mixed-audit-v1.json').read_bytes())}
 

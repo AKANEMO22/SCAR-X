@@ -4,12 +4,17 @@ Ngày 14/11/2026: ưu tiên hoàn tất một bản dùng thử local trong chat
 thường. Dừng mở dataset, benchmark nghiên cứu, model hoặc learner mới; giữ các
 nghiên cứu chưa xong trong backlog. Không sửa main, R13 hoặc kết quả lịch sử.
 
+**Cập nhật yêu cầu mới:** người dùng yêu cầu bỏ test 8 giờ để ưu tiên sản phẩm.
+Đã hủy sạch `32cd13`, giữ result gốc và cancellation audit; không gọi là PASS.
+Điều kiện cài RC chuyển sang custody hủy theo yêu cầu + kiểm vận hành cần thiết.
+Các ngưỡng nghiên cứu/retention và kết quả lịch sử không đổi.
+
 ## Checklist hữu hạn
 
 | Cửa | Điều kiện | Trạng thái |
 |---|---|---|
-| 1. Bảo vệ thử nghiệm | Worker thực sự kết thúc, có receipt đủ 8 giờ và audit độc lập | Small mixed `32cd13` đang chạy; chưa được restart native hoặc sửa 36 file khóa |
-| 2. Gói cập nhật | Allowlist, SHA, closure import, loại dữ liệu riêng, installer/rollback | ZIP đã tạo; 27 safety/P0 + 74 regression trên code giải nén qua; asset/dependency khớp; installer chặn đúng khi worker còn chạy |
+| 1. Khép lượt bị hủy | Actual terminal, giữ result, không residual worker, source khớp trước activation | Đã hủy sau 11.268,281 giây; 38 chu kỳ/7 checkpoint, không PASS |
+| 2. Gói cập nhật | Allowlist, SHA, closure import, loại dữ liệu riêng, installer/rollback | RC1 đã kiểm; RC2 cập nhật custody theo yêu cầu, 31 safety/P0 qua |
 | 3. Áp dụng | Sau cửa 1, gộp hai bản sửa P0, backup checkpoint, CAS, maintenance lease | Chưa áp dụng lên phiên đang chạy |
 | 4. Nghiệm thu | Chat/ACK, workspace, tool có giới hạn và dừng được, compaction, search, ảnh/video, GPU, persistence | Cần nghiệm thu sau cập nhật; không gọi là production PASS |
 
@@ -32,7 +37,7 @@ nghiên cứu chưa xong trong backlog. Không sửa main, R13 hoặc kết qu�
 
 Installer kiểm registration, PID/create-time/cmdpath, source trước/sau và các
 pin model/runtime/Hermes. Khi thí nghiệm còn chạy, từ chối trước stop/write.
-Sau terminal và audit, lấy maintenance lease, dừng đúng owner, sao lưu checkpoint
+Sau terminal và audit hủy hoặc audit đầy đủ, lấy maintenance lease, dừng đúng owner, sao lưu checkpoint
 đầy đủ rồi áp dụng code theo CAS. Backup ở vùng private ngoài gói.
 
 Rollback chỉ phục hồi code khớp SHA; không ghi đè SQLite, rewind checkpoint

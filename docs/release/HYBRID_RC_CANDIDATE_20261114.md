@@ -1,5 +1,10 @@
 # Hybrid RC — gói đã chuẩn bị ngày 14/11/2026
 
+**Đây là biên bản RC1 tại thời điểm chuẩn bị.** Sau đó người dùng yêu cầu hủy
+test 8 giờ và ưu tiên sản phẩm; xem [RC2 activation](RC2_ACTIVATION_20261114.md).
+Giữ số liệu/hash RC1 bên dưới làm lịch sử, không dùng trạng thái đang chạy cũ
+làm điều kiện chặn yêu cầu mới.
+
 **Đã tạo và kiểm gói code; chưa cài hoặc nghiệm thu live.** Thí nghiệm small
 mixed 8 giờ `32cd13` vẫn chạy. Không dừng worker/native để ép phát hành.
 

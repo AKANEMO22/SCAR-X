@@ -121,7 +121,8 @@ def test_overlay_requires_exact_qualified_recipe_and_audit(packager,tmp_path,tam
         audit=entry['audit_reference']
         candidate=str(Path(audit).parent/('candidate-store.py' if target.endswith('store.py') else 'candidate-engine.py'))
         recipe='integrations/hermes/'+('full_query_retrieval_patch.py' if target.endswith('store.py') else 'verifier_capability_guard_patch.py')
-        for relative in (target,audit,candidate,recipe):
+        archived=str(Path(audit).parent/'source'/target)
+        for relative in (target,audit,candidate,recipe,archived):
             destination=tmp_path/relative;destination.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT/relative,destination)
     assert packager.overlay_candidates(tmp_path)[0]==packager.overlay_candidates(ROOT)[0]
@@ -155,3 +156,35 @@ def test_self_consistent_forged_manifest_is_not_executed(manager,packager,tmp_pa
     manager.verify_package(tmp_path)
     with pytest.raises(ValueError,match='trusted'):
         checker.validate_trusted_sources(packager,tmp_path,manifest)
+
+
+@pytest.mark.parametrize('tamper',[None,'claim_PASS','source','identity'])
+def test_explicit_user_cancellation_allows_RC_without_endurance_PASS(manager,tmp_path,tamper):
+    pid=2147483647
+    assert not psutil.pid_exists(pid)
+    run=tmp_path/'runs/cancelled';run.mkdir(parents=True)
+    (tmp_path/'local').mkdir();(tmp_path/'local/current-small-mixed-endurance-run.txt').write_text(str(run))
+    (tmp_path/'core.py').write_bytes(b'unchanged core')
+    manifest={'pid':pid,'source_sha256':{'core.py':manager.sha(b'unchanged core')}}
+    (run/'manifest.json').write_text(json.dumps(manifest))
+    (run/'process-identity-v1.json').write_text(json.dumps({'process_created_epoch':123.0}))
+    request={'action':'cancel_8h_for_product_release','run_id':run.name,'pid':pid,
+             'process_created_epoch':123.0,'eight_hour_PASS_claimed':False}
+    result={'gate_pass':False,'formal_P1_P2_P3_or_lifelong_pass':False}
+    if tamper=='claim_PASS':result['gate_pass']=True
+    request_raw=json.dumps(request).encode();result_raw=json.dumps(result).encode()
+    (run/'user-cancellation-request-v1.json').write_bytes(request_raw)
+    (run/'result.json').write_bytes(result_raw)
+    audit={'run_id':run.name,'pid':pid,'process_created_epoch':123.0,
+           'verdict':'USER_CANCELLED_NOT_EIGHT_HOUR_PASS','actual_worker_terminal':True,
+           'source_matches_before_activation':True,'residual_private_worker_pids':[],
+           'request_sha256':manager.sha(request_raw),'result_sha256':manager.sha(result_raw),
+           'engineering_eight_hour_qualified':False}
+    if tamper=='identity':audit['process_created_epoch']=456.0
+    if tamper=='source':(tmp_path/'core.py').write_bytes(b'concurrent change')
+    (run/'user-cancellation-audit-v1.json').write_text(json.dumps(audit))
+    if tamper is None:
+        gate=manager.protected_run_gate(tmp_path)
+        assert gate['release_gate']=='user_cancelled_8h_for_RC' and gate['eight_hour_qualified'] is False
+    else:
+        with pytest.raises(RuntimeError):manager.protected_run_gate(tmp_path)

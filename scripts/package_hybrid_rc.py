@@ -64,8 +64,11 @@ def overlay_candidates(root):
         scope={'__name__':'_scarx_release_exact_patch'}
         recipe_raw=(root/recipe).read_bytes()
         exec(compile(recipe_raw,recipe,'exec'),scope)
-        if scope['patch_bytes']((root/target).read_bytes())!=raw:
+        baseline=(root/Path(audit).parent/'source'/target).read_bytes()
+        if scope['patch_bytes'](baseline)!=raw:
             raise ValueError('Candidate differs from the qualified exact-source P0 recipe')
+        if (root/target).read_bytes() not in (baseline,raw):
+            raise ValueError('Active source differs from both qualified before/after states')
         changed[target]=raw
         provenance[target]={'candidate_sha256':digest(raw),'audit_sha256':digest((root/audit).read_bytes()),
                             'recipe_sha256':digest(recipe_raw),

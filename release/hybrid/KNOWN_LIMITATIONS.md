@@ -1,5 +1,9 @@
 # Giới hạn của RC
 
+- Lượt small mixed 8 giờ đã dừng theo yêu cầu người dùng sau khoảng 3 giờ 8 phút.
+  Log, 38 chu kỳ và 7 checkpoint được giữ; không đạt hoặc thay thế cửa 8 giờ.
+  Việc cho phép cài RC theo yêu cầu mới không phải giảm tiêu chí nghiên cứu.
+
 - Chất lượng chat/vision của VLM 0.8B còn yếu; có thể hiểu sai, trả lời tự tin
   khi thiếu căn cứ hoặc dùng công cụ chưa hợp lý. Không dùng cho quyết định
   cần độ chính xác cao mà không kiểm tra nguồn.
