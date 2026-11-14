@@ -21,3 +21,16 @@ def normalize_tool_schema(document):
             raise ValueError("Invalid required parameter declaration")
         params["required"] = required
     return value
+
+
+def repair_pinned_calendar_enum(document):
+    """Explicit adapted-harness patch for ToolTalk e05f4ce CreateEvent schema."""
+    value = copy.deepcopy(document)
+    if value.get("name") != "CreateEvent":
+        return value, False
+    properties = value["parameters"]["properties"]
+    if (properties["name"].get("enum") != ["meeting", "event"]
+            or "enum" in properties["event_type"]):
+        raise ValueError("Pinned CreateEvent schema signature changed")
+    properties["event_type"]["enum"] = properties["name"].pop("enum")
+    return value, True

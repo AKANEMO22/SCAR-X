@@ -1,5 +1,28 @@
 # Trạng thái SCAR-X
 
+## Retention buffers và lượt8h mới — 14/11
+
+Audit CUDA3seed×32paired updates: importance=1000/stable+0,25 cho cùng trọng số
+học chính xác; importance mặc định vẫn0. Trong Hybrid hiện tại, các buffer này
+chưa bảo vệ synapse; consolidate là replay, không stable EMA. Không áp kết luận
+này cho PlasticCore lịch sử. Đổi normalization state riêng làm xác suất đổi tới
+0,02430, argmax4probe không đổi; chưa là causal explanation toàn bộ forgetting.
+[Raw/audit/giới hạn](hybrid/RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md).
+Preflight240s7b589e qua; lượt8h0acab3 gián đoạn~17phút, giữ NOTPASS audit.
+Lượt554c19 đang được kiểm bằng PID/source, chạy nền độc lập; chưa có8hverdict.
+Trace có panel lab tự cập nhật/đáp án thật và cảnh báo heartbeat chậm.
+
+## Recovery executor + actualnativefailure14/11 — engineeringqua, learningchưaqualified
+
+Adapterprivate28APIs/JSONbounded+2recoverymacros, actualauthdeny/goalverifier/
+data-onlyRNGrestore qua. RepairedpinnedCreateEvent.enum sourcebug→78conversations/
+266goldcalls0exceptionmismatch;37rawresponseinequalities cần scopedoracle.
+Native0.8Bchạy4casethật qua sharedworker: smoke2/4 nhưng factualsupportreview1/4,
+gồm false-success sauAPIerror và tự điềngiờ10:00khiuserchưanói. Khôngtrainnhãnsai.
+Đã chuẩn bị8hprivate mixedpipeline, oneVLM/Hermesgiữliveweights;90s preflight
+INSUFFICIENT_COVERAGE được giữ,240s cadencepreflight đo riêng trước8h.
+[Source/raw/failures/limitations](hybrid/RECOVERY_EXECUTOR_AND_NATIVE_FAILURES_20261114.md).
+
 ## Incident information-path + external harnessP0 —14/11
 
 ActualHermes file/probe3states tạo cùng servinginput8×64; goal_sequence chưa đưa

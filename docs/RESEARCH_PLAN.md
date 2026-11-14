@@ -1,5 +1,13 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hybrid retention audit14/11:** importance/stable arrays trong currentLocalALIF
+không tham gia learn; 3seed×32paired updates trênCUDA cho trainableweights
+chính xác như nhau khi thay cácbuffer. Không suy thành metaplasticity thất bại
+nói chung hoặc áp vào PlasticCore lịch sử. Normalization state có forwardeffect;
+chưa attribution toàn bộ forgetting. [Raw/counterfactuals/roadmap](hybrid/RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md).
+Recovery executor có exact state/RNG và goalverifier; Qwen vẫn false-success.
+Lượt8h chưa hoàn tất, interruption0acab3 giữ riêng; không đổi qualitygates/live.
+
 **Root information-path P014/11:** actualtool3probe states có cùng neuralinput;
 goal_sequence chưa nhận observederror/probe/reason, verify executor chỉ sốhọc.
 Nghiên cứu causalobservationencoder + action/verifier bridge là ưu tiên trước

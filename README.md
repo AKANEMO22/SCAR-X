@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Retention audit và trace lượt8h](docs/hybrid/RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md):
+Hybrid importance/stable chưa bảo vệ update; đã kiểm3seed trênCUDA. Lượt8h mới
+có panel tiến độ/đáp án thật riêng, không đổi neuralweights live và chưa là PASS.
 [Information-path/harnessaudit14/11](docs/hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
 ba lỗi file thật tạo cùng inputSNN; encoder có error/probe mới researchonly,
 chưatrain/deploy. Không gọi toolguard hoặc publishersuccess là neuralselfrepair.

@@ -6,6 +6,11 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Retention mechanism và trace endurance](RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md):
+Hybrid importance/stable mới là state được lưu, chưa bảo vệ update. Lượt8h mới
+có link trace riêng; xem actual process/final receipt bằng monitor, không suy
+heartbeat cũ thành một job đã hoàn tất. Lab không đổi neuralweights live.
+
 [Root input/harnessaudit14/11](INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
 SNN hiện chưa nhận phần error/probe phân biệt được; encoderV2 mớiresearchonly,
 chưatrain/deploy. ExternalToolTalkharness cần schema/cost/loopchecks trước dùng

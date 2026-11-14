@@ -1,5 +1,14 @@
 # Bản đồ dự án SCAR-X
 
+[Retention buffer audit + active endurance](hybrid/RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md):
+audit_hybrid_retention_mechanisms.py, data-only verifier, monitor_hybrid_endurance.py.
+Lab liveprocess/source check riêng; không restart service từ monitor.
+
+[Recovery execution và nativefailure14/11](hybrid/RECOVERY_EXECUTOR_AND_NATIVE_FAILURES_20261114.md):
+evaluation/tooltalk_sandbox.py, shared_native.py; audit_hybrid_recovery_executor.py,
+probe_hybrid_native_recovery.py và hybrid_shared_endurance.py. PrivateState/
+sharedoneVLM, không đổi serving/hybrid hoặc liveweights.
+
 [Incident information-path và externalharnessP014/11](hybrid/INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md):
 evaluation/hybrid_incident_encoder.py + tooltalk_schema.py researchonly;
 audit_hybrid_incident_information.py, data-only verifier, upstreamintake/harness

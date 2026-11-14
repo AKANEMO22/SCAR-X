@@ -25,3 +25,19 @@ work on information/bridge qualification, so do not mark goal blocked. Next
 research work must keep full acquisition/retention/causal/production requirements;
 do not redefine them as a three-case encoder test or publisher success score.
 See [current root-cause findings](INCIDENT_INFORMATION_AND_BENCHMARK_AUDIT_20261114.md).
+
+Next turn progress: isolated recoveryexecutor+independentclosedgoalverifier
+implemented;78/266actualsource replay after pinned enum repair,0exceptions/37raw
+response differences; actualcurrentVLM4case smoke exposes false success and
+invented parameter. These are authoritative new evidence, not status restatement.
+Private shared-native90spreflight terminalINSUFFICIENT_COVERAGE;240spreflight
+measures original cadence before8h. A planned/live test is not completion.
+See [new implementation/evidence](RECOVERY_EXECUTOR_AND_NATIVE_FAILURES_20261114.md).
+
+Continuation progress:9d1545 numerical CUDA counterfactual proves stored Hybrid
+importance/stable buffers inert in current learn; independentarchive audit agrees.
+This closes an uncertainty about retention implementation, not the retention gate.
+Endurance0acab3 terminal absence confirmed by missing PID+exec handle/no final
+receipt, recorded interrupted (notPASS). Same-source new554c19 verified live in
+detachedprocess after passed240s7b589e. No external blocker; task remainsactive
+and8h/unseen-skill/hiddenadvantage still unachieved.
