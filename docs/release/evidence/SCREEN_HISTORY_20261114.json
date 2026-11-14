@@ -1,0 +1,50 @@
+{
+  "verdict": "ACTUAL_SELECTED_WINDOW_AND_COLD_SCREEN_EVIDENCE_RETRIEVAL_VERIFIED",
+  "capture_surface": "one uniquely named script-owned FFplay window, silent known fixture",
+  "capture_start_path": "installed Hermes scarx_video dispatcher after a session-scoped chat request",
+  "baseline_capture_worked_but_post_stop_binding_missing": true,
+  "captured_frames": 13,
+  "VLM_sampled_frame_descriptions": 2,
+  "capture_frontier_seconds": 12.437999999994645,
+  "vision_frontier_seconds": 8.360000000000582,
+  "timebase": "seconds since sharing began, not original video playback position",
+  "system_audio_or_microphone_used": false,
+  "ungranted_request_denied": true,
+  "ungranted_HTTP_status": 400,
+  "post_stop_answer": "Hình chữ nhật bên trái lúc đầu có màu đỏ.",
+  "cold_restart_answer": "Hình chữ nhật bên trái lúc đầu có màu đỏ.",
+  "source_selected_after_stop_and_restart": true,
+  "source_frame_retained_and_used": true,
+  "unrelated_turn_does_not_inject_old_screen": true,
+  "historical_question_does_not_grant_recapture": true,
+  "owned_player_and_capture_workers_terminal": true,
+  "learned_weights_traces_importance_RNG_replay_preserved": true,
+  "transient_neuron_state_may_advance_before_final_save": [
+    "core.voltage",
+    "core.adaptation",
+    "core.spikes",
+    "core.features"
+  ],
+  "transient_tick_delta_before_final_save": 16,
+  "full_snapshot_byte_equality_claimed": false,
+  "gateway_pid": 24024,
+  "one_native_GPU_pid": 48880,
+  "live_updates": 5,
+  "additional_model_or_capture_calls_in_this_audit": 0,
+  "raw_receipt_sha256": {
+    "before": "08c676410c9b8f4930df9de302dfe73634fa1c5a1a04eff28d1d915c77d2ccc4",
+    "after": "ec549b84bfd510a1acf52160a71b2b47eed902cf0f0152f7ae3e0727d875ef29",
+    "cold": "ca8cbdbf49f5698d88419d1946b1ad5eb072a9836bcd2f43ba5e446bc86d4785",
+    "capture_journal": "12e528e53c8918646a82e7dd085f3fe2cc0dd27fc4d86bfba629d5387d4680cb",
+    "unrelated": "2a4e210c2336adc04efacaccaa39f4b15d4da3c62108b29227df4b9f55fc0549"
+  },
+  "not_proven": [
+    "general screen/video QA quality",
+    "speaker-loopback live acceptance",
+    "fully neural memory or skill learning",
+    "SNN superiority over same LLM+RAG",
+    "all visual Hermes workflows"
+  ],
+  "research_or_production_PASS": false,
+  "eight_hour_run_restarted": false
+}

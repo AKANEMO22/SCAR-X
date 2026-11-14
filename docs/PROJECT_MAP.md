@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[Antigravity QA](release/ANTIGRAVITY_FULL_QA_20261114.md): public sanitized-copy
+handoff bằng `scripts/prepare_antigravity_release_qa.py`, full functional suite
+driver/log ở vùng `local/`, review source được đối chiếu độc lập. Lỗi marker
+dùng `scripts/accept_hermes_greeting_control_marker.py`; capture thật dùng
+`scripts/accept_hybrid_screen_window.py`, audit read-only ở
+`scripts/audit_hybrid_screen_acceptance.py`. Candidate chưa production approval.
+
 [RC đang cài](release/CURRENT_RELEASE.md): `scripts/activate_hybrid_rc.py` áp
 dụng có backup và kiểm learned state; `scripts/audit_hybrid_rc_operational.py`
 đối chiếu actual events/state không gọi model mới. Transport Hermes ở

@@ -1,0 +1,25 @@
+{
+  "scope": "real Hermes canonical turns after the exact user screenshot failure was reproduced",
+  "user_query": "chào bạn",
+  "baseline_answer": "[OUT-OF-BAND USER MESSAGE — Chào bạn]",
+  "actual_fixed_answer": "Chào bạn! Tôi sẵn sàng hỗ trợ với bạn. Bạn có cần gì không?",
+  "other_probe_answers": [
+    {
+      "query": "xin chào",
+      "answer": "Hello! How can I assist you today?"
+    },
+    {
+      "query": "hello",
+      "answer": "What is the goal of your request?"
+    }
+  ],
+  "all_three_without_internal_control_markers": true,
+  "output_masking_or_answer_substitution": false,
+  "scoped_change": "omit only exact unused host steering briefing and tool schemas on pure social turns",
+  "existing_bad_history_native_retry": "Chào bạn!",
+  "installed_helper_matches_source": true,
+  "helper_sha256": "427ae726fa19a4defe046ef411e4b5a6bc73340195fbe11a08b8f3a2e7d6fb20",
+  "VLM_ALIF_weights_or_learning_rule_changed": false,
+  "live_updates": 5,
+  "general_social_language_quality_PASS": false
+}

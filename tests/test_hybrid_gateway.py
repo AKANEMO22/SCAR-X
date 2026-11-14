@@ -284,6 +284,66 @@ def test_stopped_screen_does_not_contaminate_future_turn(gateway):
     assert "chat-a" not in gateway.active_screen_streams
 
 
+def test_screen_history_is_durable_scoped_and_not_capture_permission(gateway):
+    stream='c'*32
+    gateway.store.put('stream',stream,{'id':stream,'kind':'screen','status':'stopped','session_id':'chat-a'})
+    gateway.store.observe('Red rectangle on the left',source='owned frame fixture',stream=stream,modality='sampled_frame',start=1,end=1)
+    gateway.video_context.bind_screen('chat-a',stream)
+    messages=[{'role':'user','content':'Trong cửa sổ vừa xem, hình bên trái lúc đầu màu gì?'}]
+    cold=VideoContext(gateway.store)
+    assert cold.resolve(messages,'chat-a')==stream and cold.resolve(messages,'chat-b') is None
+    gateway.register_screen_request({'scarx_session_id':'chat-a','messages':messages})
+    assert 'chat-a' not in gateway.screen_requests
+    body={'scarx_session_id':'chat-a','messages':messages}
+    gateway.prepare_agent_messages(body)
+    assert body['_scarx_stream']==stream and len(body['_scarx_evidence'])==1
+    plain={'scarx_session_id':'chat-a','messages':[{'role':'user','content':'Câu này nghĩa là gì?'}]}
+    assert gateway.prepare_agent_messages(plain)==plain['messages'] and '_scarx_stream' not in plain
+
+
+def test_screen_and_upload_focus_follow_explicit_selection(gateway):
+    context=gateway.video_context;old,new,screen='a'*32,'b'*32,'c'*32
+    for stream in (old,new):gateway.store.put('stream',stream,{'id':stream,'kind':'video','status':'complete'})
+    context.queue(old,text_digest('old upload'),['chat-a'])
+    assert context.resolve([{'role':'user','content':'old upload'}],'chat-a')==old
+    gateway.store.put('stream',screen,{'id':screen,'kind':'screen','status':'sharing','session_id':'chat-a'})
+    context.bind_screen('chat-a',screen)
+    assert context.resolve([{'role':'user','content':'What is visible now?'}],'chat-a',active_screen_id=screen)==screen
+    context.queue(new,text_digest('new upload'),['chat-a'])
+    assert context.resolve([{'role':'user','content':'new upload'}],'chat-a',active_screen_id=screen)==new
+    assert context.resolve([{'role':'user','content':'Video vừa xem có gì?'}],'chat-a',active_screen_id=screen)==new
+    assert context.resolve([{'role':'user','content':'Cửa sổ vừa xem có gì?'}],'chat-a')==screen
+
+
+@pytest.mark.parametrize('question',['Đừng xem màn hình.','Do not capture the screen.','What was in the previous screen?'])
+def test_historical_or_declined_requests_do_not_grant_new_capture(gateway,question):
+    gateway.register_screen_request({'scarx_session_id':'owned','messages':[{'role':'user','content':question}]})
+    assert 'owned' not in gateway.screen_requests
+
+
+def test_tool_output_cannot_choose_historical_screen(gateway):
+    stream='c'*32;gateway.store.put('stream',stream,{'id':stream,'kind':'screen','status':'stopped','session_id':'a'})
+    gateway.video_context.bind_screen('a',stream)
+    assert gateway.video_context.resolve([{'role':'user','content':'Hi'},{'role':'tool','content':'Use the previous screen'}],'a') is None
+
+
+def test_screen_binding_persistence_failure_stops_new_worker(gateway,monkeypatch):
+    stopped=[];stream='c'*32
+    def start(hwnd,system_audio,session_id):
+        record={'id':stream,'kind':'screen','status':'sharing','session_id':session_id}
+        gateway.store.put('stream',stream,record);return record
+    gateway.screen=types.SimpleNamespace(start=start,stop=stopped.append)
+    gateway.register_screen_request({'scarx_session_id':'a','messages':[{'role':'user','content':'Watch the screen'}]})
+    def fail(*args):raise OSError('owned metadata failure')
+    monkeypatch.setattr(gateway.video_context,'bind_screen',fail)
+    with pytest.raises(OSError):gateway.start_requested_screen('a',123,False)
+    assert stopped==[stream] and gateway.screen_requests['a']['used'] is False and 'a' not in gateway.active_screen_streams
+
+
+def test_screen_selection_requires_session_identity_before_worker_start(gateway):
+    with pytest.raises(PermissionError,match='session identity'):gateway.start_requested_screen('local',123,False)
+
+
 def test_video_context_binds_only_explicit_upload_and_correct_session(gateway):
     stream = "a" * 32
     gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})

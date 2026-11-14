@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## Antigravity QA — 6 finding, chưa approve production
+
+[Review/triage](release/ANTIGRAVITY_FULL_QA_20261114.md): CLI3.8Flash high/effort
+high hoàn thành review source; lệnh test bị sandbox chặn nên Codex chạy cùng
+bản sao, xác nhận 238 Python +27 Node +3 actual HTTP scenarios qua. Không gửi
+dữ liệu riêng hoặc sửa weights. Xác nhận P1 first-draft video có thể bị session
+khác cùng text lấy nhầm; snapshot ghi đè path và hẹp cách hỏi còn mở. Không
+chấp nhận mọi finding mặc định: VI “màn hình vừa rồi” đã match; một share là
+policy; Git là dependency build, không phải installer runtime.
+Marker lời chào đã sửa đúng cause và kiểm qua Hermes thật; không hardcode đáp án.
+
 ## RC5 — chat dài và compact qua gateway thật
 
 [Nghiệm thu](release/LONG_INPUT_AND_COMPACTION_20261114.md): sửa lỗi FTS 6.000

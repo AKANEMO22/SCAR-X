@@ -20,6 +20,23 @@ def social_greeting_only(messages):
     return bool(re.fullmatch(r'\s*(?:xin\s+chao(?:\s+ban)?|chao(?:\s+ban)?|hi|hello|hey)[!.,\s]*(?:(?:tra loi ngan(?: gon)?(?: bang tieng viet)?(?: nhe)?|reply briefly(?: in english)?)[!.,\s]*)?',plain))
 
 
+def omit_unused_steering_example(messages):
+    """A social turn has no tool result at which Hermes can deliver a steer.
+
+    Remove only the host's exact generated briefing from system-role messages;
+    never search/replace control-frame lookalikes in user text, history or tools.
+    Real tool tasks keep the original steering protocol unchanged.
+    """
+    from agent.prompt_builder import STEER_CHANNEL_NOTE
+    changed=False;result=[]
+    for message in messages:
+        content=message.get('content')
+        if message.get('role')=='system' and isinstance(content,str) and content.count(STEER_CHANNEL_NOTE)==1:
+            message=dict(message,content=content.replace(STEER_CHANNEL_NOTE,''));changed=True
+        result.append(message)
+    return result if changed else messages
+
+
 def bind_transcript_session(agent, kwargs):
     url=urlsplit(str(getattr(agent,'base_url','') or ''))
     session=getattr(agent,'session_id',None)
@@ -40,4 +57,5 @@ def bind_transcript_session(agent, kwargs):
         # No generated answer or prompt replacement: narrow host tool exposure
         # for a purely social turn, restoring normal tools on the next task.
         prepared.pop('tools',None);prepared.pop('tool_choice',None)
+        prepared['messages']=omit_unused_steering_example(kwargs['messages'])
     return prepared

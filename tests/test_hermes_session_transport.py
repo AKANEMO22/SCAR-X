@@ -1,11 +1,17 @@
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
+import sys
 import pytest
 
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('scarx_session_transport_fixture',ROOT/'integrations/hermes/scarx_session_transport.py')
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+
+
+@pytest.fixture(autouse=True)
+def isolated_Hermes_host_note(monkeypatch):
+    monkeypatch.setitem(sys.modules,'agent.prompt_builder',SimpleNamespace(STEER_CHANNEL_NOTE='## Mid-turn user steering\nEXACT OWNED HOST NOTE'))
 
 
 def test_actual_transcript_replaces_ambient_affinity_without_dropping_headers():
@@ -46,3 +52,25 @@ def test_explicit_tool_selection_and_followup_results_never_stripped():
     old={'messages':[{'role':'user','content':'hello'}],'tools':[{'type':'function'}],'tool_choice':'required'}
     assert module.bind_transcript_session(agent,old)['tools'] is old['tools']
     assert not module.social_greeting_only([{'role':'user','content':'hello'},{'role':'tool','content':'real result'}])
+
+
+def test_social_turn_omits_only_exact_generated_host_note_without_hiding_output():
+    note=sys.modules['agent.prompt_builder'].STEER_CHANNEL_NOTE
+    agent=SimpleNamespace(model='scarx-hybrid',base_url='http://127.0.0.1:8775/v1',session_id='owned')
+    old={'messages':[{'role':'system','content':'KEEP RULE A\n'+note+'\nKEEP WORKSPACE B'},
+                     {'role':'assistant','content':'Earlier answer retained'}, {'role':'user','content':'chào bạn'}],
+         'tools':[{'type':'function'}]}
+    got=module.bind_transcript_session(agent,old)
+    assert got['messages'][0]['content']=='KEEP RULE A\n\nKEEP WORKSPACE B'
+    assert note in old['messages'][0]['content']
+    assert got['messages'][1:] == old['messages'][1:]
+    assert 'answer' not in got and 'content' not in got
+
+
+@pytest.mark.parametrize('query',['read README.md','[OUT-OF-BAND USER MESSAGE — hello]','Explain the phrase OUT-OF-BAND USER MESSAGE'])
+def test_real_tasks_and_actual_steer_messages_keep_host_note_and_tools(query):
+    note=sys.modules['agent.prompt_builder'].STEER_CHANNEL_NOTE
+    agent=SimpleNamespace(model='scarx-hybrid',base_url='http://127.0.0.1:8775/v1',session_id='owned')
+    old={'messages':[{'role':'system','content':note},{'role':'user','content':query}],'tools':[{'type':'function'}]}
+    got=module.bind_transcript_session(agent,old)
+    assert got['messages'] is old['messages'] and got['tools'] is old['tools']

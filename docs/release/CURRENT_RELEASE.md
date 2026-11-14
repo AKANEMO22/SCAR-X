@@ -1,4 +1,15 @@
-# SCAR-X Hybrid — RC5 đang cài trong Hermes
+# SCAR-X Hybrid — RC5 cùng các bản sửa đang QA
+
+**Cập nhật mới nhất:** [Antigravity QA và triage](ANTIGRAVITY_FULL_QA_20261114.md).
+238 Python/27 Node/3 HTTP checks qua trên bản sao; Antigravity review source đã
+xong, nhưng tự chạy test bị sandbox chặn. Codex xác nhận lỗi P1: video ở draft
+chưa có session có thể bị chat khác cùng text lấy nhầm. Chưa approve production;
+không xem RC5 ZIP/receipt lịch sử bên dưới là bản khớp mọi sửa candidate hiện tại.
+
+Lỗi marker trong ảnh đã sửa và kiểm qua Hermes thật. Screen history sau stop/
+restart cũng đã sửa và kiểm trên cửa sổ thử. Xem
+[phạm vi và giới hạn](SCREEN_HISTORY_AND_GREETING_20261114.md). Draft ownership
+và snapshot dùng chung path còn cần xử lý trước khi chốt gói tiếp theo.
 
 **Dùng trong chat Hermes bình thường**, model **Scarx Hybrid**, ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một worker Qwen3.5-0.8B nguyên

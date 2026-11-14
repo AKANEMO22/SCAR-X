@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.5
+# SCAR-X Hybrid 1.0.0-rc.6
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -40,8 +40,13 @@ action verify khi checker không hỗ trợ. Chúng là sửa runtime, không ph
 chứng SNN đã học kỹ năng mới. Cửa nghiên cứu/retention không được thay.
 
 Hermes dùng đúng mã transcript cho video đính kèm. Với lời chào đơn giản,
-Hermes không gửi 8 schema công cụ không liên quan; tác vụ thật và ảnh vẫn giữ
-đầy đủ công cụ. Không thay nội dung system prompt, không hardcode câu trả lời.
+Hermes không gửi schema công cụ dư hoặc ví dụ steering không dùng tới; tác vụ
+thật và ảnh vẫn giữ công cụ/protocol. Không sửa câu người dùng hoặc hardcode đáp án.
+
+Cửa sổ đã xem được gắn với đúng phiên chat. Sau stop/restart có thể hỏi rõ
+“cửa sổ vừa xem”; hệ thống dùng lại bằng chứng còn giữ mà không capture lại.
+Câu không liên quan không nhận ảnh cũ; upload mới có focus riêng. Đây là
+truy xuất nguồn, chưa là SNN đã học nội dung vào synapse.
 
 Observer đọc đúng envelope `request.body.tools` của Hermes để không bỏ qua
 quyền đọc file khi kiểm tool loop. Tối đa một probe đọc lại nguồn trong project

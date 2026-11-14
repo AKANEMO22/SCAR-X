@@ -15,6 +15,11 @@
   URL/description không đồng nghĩa đã xem toàn video. Không tuyên bố hiểu
   video dài dựa vào test lặp một clip ngắn. Xem màn hình cần quyền/cửa sổ được chọn;
   không mặc định theo dõi toàn máy hoặc microphone.
+- Truy xuất màn hình đã xem hiện nhận các cách nhắc lịch sử có phạm vi và cần
+  metadata/frame còn lưu. Không bảo đảm hiểu mọi cách hỏi hoặc nhớ toàn bộ video.
+  Capture live mới chỉ kiểm cửa sổ thử tắt audio, chưa nghiệm thu speaker loopback.
+- Lời chào đã không còn lặp ví dụ control marker trong trường hợp tái hiện;
+  model 0.8B vẫn có thể trả sai ngôn ngữ hoặc phản hồi xã giao thiếu tự nhiên.
 - Verifier số học chỉ hỗ trợ mẫu hẹp; parser không chứng minh đã hiểu đúng
   ý định. Guard về khả năng công cụ không phải SNN tự học nhận ra mọi lỗi.
 - Context thực vẫn 16K token. Bộ nhớ SSD và nhật ký phân trang không tạo context

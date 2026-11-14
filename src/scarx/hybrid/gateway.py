@@ -215,7 +215,7 @@ class Gateway:
         stream = body.get("scarx_stream_id")
         session = body.get("scarx_session_id", "local")
         if not stream:
-            stream = self.video_context.resolve(messages, session)
+            stream = self.video_context.resolve(messages, session, active_screen_id=self.active_screen_streams.get(session))
         if not stream:
             stream = self.active_screen_streams.get(session)
             if stream:
@@ -505,6 +505,9 @@ class Gateway:
             raise ValueError("Invalid tool schema array")
 
     def register_screen_request(self, body):
+        if (self.video_context.references_screen_history(body.get('messages',[]),include_video=True)
+                or self.video_context.declines_screen_capture(body.get('messages',[]))):
+            return  # Reading retained observations is not permission to capture again.
         latest = next(
             (
                 m
@@ -549,6 +552,20 @@ class Gateway:
                         term in text for term in ("video", "âm thanh", "nghe", "audio")
                     ),
                 }
+
+    def start_requested_screen(self,session,hwnd,system_audio=False):
+        if not self.video_context.valid_session(session):raise PermissionError('Screen sharing needs a bounded chat session identity')
+        grant=self.screen_requests.get(session)
+        if not grant or grant['used'] or time.time()>grant['expires']:
+            raise PermissionError('Screen sharing needs a recent explicit user request in chat')
+        if system_audio and not grant['audio']:raise PermissionError('This request did not authorize system audio')
+        state=self.screen.start(hwnd,system_audio,session_id=session)
+        try:self.video_context.bind_screen(session,state['id'])
+        except Exception:
+            self.screen.stop(state['id'])
+            raise
+        grant['used']=True;self.active_screen_streams[session]=state['id']
+        return state
 
     def chat(self, body):
         if not self.ready:
@@ -1232,22 +1249,11 @@ def serve(directory, port=8775):
                     )
                 elif path == "/api/screen/watch-request":
                     session = body.get("scarx_session_id", "local")
-                    grant = gateway.screen_requests.get(session)
-                    if not grant or grant["used"] or time.time() > grant["expires"]:
-                        raise PermissionError(
-                            "Screen sharing needs a recent explicit user request in chat"
-                        )
-                    if body.get("system_audio", False) and not grant["audio"]:
-                        raise PermissionError(
-                            "This request did not authorize system audio"
-                        )
-                    response = gateway.screen.start(
-                        body["hwnd"], body.get("system_audio", False)
-                    )
-                    grant["used"] = True
-                    gateway.active_screen_streams[session] = response["id"]
+                    response = gateway.start_requested_screen(session,body['hwnd'],body.get('system_audio',False))
                 elif path == "/api/screen/stop":
                     response = gateway.screen.stop(body["id"])
+                    for session,active in list(gateway.active_screen_streams.items()):
+                        if active==body['id']:gateway.active_screen_streams.pop(session,None)
                 elif path == "/api/public-topic":
                     response = {"id": gateway.engine.web.allow_topic(body["topic"])}
                 elif path == "/api/goal":
