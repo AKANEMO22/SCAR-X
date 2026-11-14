@@ -168,3 +168,21 @@ actualintegration4ASR4VLMbudgetstill0; no runtimeSmallclaim. Initialfakegateway
 fixturefailedJUnit retained and corrected. Goalstillactive;8hPID/source must
 finishbefore applyingpatch and realintegration. Localruleapproval remains
 pending, not permission inferred from automaticgoalcontinuation.
+
+## Current continuation — final8hbase and selected-ASR activation
+
+The previous goal turn made progress: unified Hermes reply transport, installed
+one plugin file and verified actual input/button state plus isolated HTTP; no
+live fake teaching. This continuation completed final8h data audit602b72 and
+actual selected-ASR private/runtime acceptance57a681. Native GPU source/profile
+is now real, full saved state restores exactly, learned arrays/RNG/replay keep
+5updates, and299Python/native/CUDA checks pass. Rootunion is installed.
+
+This does not close the full goal. Old8h was base/one21sclip repeated96times;
+small has30mincomponent plus four-call private integration, no8hmixedprofile.
+Neural policy/hidden/retention and root-cause error recovery still lack required
+advantage. Rulehistory variant requires the pending explicit approval; do not
+train it on an automatic continuation. The next available engineering step is
+a separately locked small-profile mixed preflight/longrun, preserving call
+budgets and source provenance. No fullproduction or lifelong completion claim.
+See [current evidence](ASR_RUNTIME_AND_8H_20261114.md).

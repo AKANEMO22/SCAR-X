@@ -7,6 +7,11 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Hiện tại: ASRsmall đã chọn, base8h đã qua audit](docs/hybrid/ASR_RUNTIME_AND_8H_20261114.md):
+4actualprivateASRcalls/3parity+1probe,normalfullrestore/learnedstate giữ nguyên;
+runtimeGPU dùngsmallFP32,299Python/native/CUDAchecks qua. Base8h có96chu kỳclip
+lặp, không8hcontinuousvideo; smallprofile8h/QA/selfrepair/retention cònchưađạt.
+Các mốc trước dưới đây giữ kết luận theo thời điểm đo, không là trạng thái live mới.
 [Bộ đo và ASRsmall thành phần](docs/hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
 đã có bản sao sửa phạm vi đo/P0, source8h giữ nguyên;
 [ASRsmall qua30phút](docs/hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md) cùngVLMnative,

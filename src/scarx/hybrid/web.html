@@ -10,6 +10,7 @@
 <section id="video" class="tab hidden"><div class="card"><h2>Cho xem video trên máy</h2><p class="muted">Thu nhận 1×; lấy mẫu hình ảnh theo tải. Phần đã lưu, đã nghe và đã phân tích ảnh được đo riêng.</p><form id="video-form"><div class="row"><input id="video-path" placeholder="C:\Videos\video.mp4" required><button>Quan sát</button></div></form><div id="streams"></div></div></section>
 <section id="learn" class="tab hidden"><div class="layout"><div class="card"><h2>Hỏi để học</h2><p class="muted">Khi bạn vắng, SCAR-X gom câu hỏi và tiếp tục tìm hiểu trong ngân sách.</p><div id="pending"></div><form id="reply-form" class="hidden"><textarea id="reply" maxlength="4000" placeholder="Trả lời hoặc nhập “bỏ qua”…"></textarea><div class="row"><button>Trả lời</button><button type="button" id="skip" class="secondary">Bỏ qua</button><button type="button" id="unhelpful" class="secondary">Chưa hữu ích</button></div></form><div id="incidents"></div><div id="goals"></div></div><div class="card"><h2>Nguồn tự học</h2><p class="muted">Chỉ chủ đề công khai được cho phép mới gửi ra web. Nội dung video và hội thoại riêng tư ở lại trên máy.</p><form id="topic-form"><div class="row"><input id="topic" maxlength="160" placeholder="Chủ đề công khai cho phép tra cứu" required><button>Thêm</button></div></form><div id="topics"></div><form id="goal-form"><textarea id="goal-question" maxlength="1000" placeholder="Điều muốn SCAR-X tự tìm hiểu…" required></textarea><div class="row"><input id="topic-id" placeholder="ID chủ đề (trống = chỉ local)"><button>Tạo mục tiêu</button></div></form><div class="row"><button id="pause" class="secondary">Tạm dừng học</button><button id="save" class="secondary">Lưu trạng thái</button></div><form id="rollback-form"><div class="row"><input id="checkpoint" placeholder="ID checkpoint"><button class="secondary">Khôi phục</button></div></form><p id="saved" class="muted"></p></div></div></section>
 <section id="trace" class="tab card"><h2>Trace trực tiếp</h2><p class="muted">Tự cập nhật công việc thực. Phân biệt thao tác triển khai, VLM và quyết định neural; không mô phỏng suy nghĩ.</p>
+<div id="asr-profile-summary" class="goal hidden"></div>
 <div id="asr-soak-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Kiểm toán độ bền và phạm vi tài nguyên</summary><div id="endurance-scope" class="goal hidden"></div><div id="client-root-summary" class="goal hidden"></div></details>
@@ -46,11 +47,23 @@ para(p,cadence+' · '+smallSoak.complete_calls+' lượt phiên âm · '+(smallS
 para(p,'VRAM vật lý trống lúc lấy mẫu: '+smallSoak.GPU_headroom.free_MiB+' MiB.','muted');
 if(Date.now()/1000-smallSoak.received_epoch>90)para(p,'Chưa nhận nhịp ASR mới; cần kiểm PID để biết tiến trình còn sống.','error');
 }
-para(p,'ASR của Hermes vẫn giữ nguyên. Đây là soak riêng, không phải tự học hoặc dữ liệu TEST mới.','muted');
+para(p,'Đây là soak riêng của cấu hình tại thời điểm đo; profile Hermes hiện tại được ghi riêng. Không phải tự học hoặc dữ liệu TEST mới.','muted');
 if(smallSoak.audit)para(p,'Audit dữ liệu: '+smallSoak.audit.verdict+' · '+smallSoak.audit.unique_audio_source_ids+' audio nguồn duy nhất.','muted');
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='ASR_profile.live_activation_verified'){
+const r=e.payload,p=$('asr-profile-summary');clear('asr-profile-summary');p.classList.remove('hidden');
+para(p,'Runtime đã nạp · '+r.ASR_model.name+' · '+r.ASR_model.precision);
+para(p,r.verdict);para(p,'4 lượt ASR qua runtime cô lập + 3 parity và 1 câu kiểm VLM sau restart. Trạng thái học giữ nguyên: '+r.updates+' cập nhật.');
+para(p,'Chưa có lượt phiên âm video live bằng profile mới trong nghiệm thu này; chưa qua 8 giờ với small hoặc chứng minh tự học kỹ năng.','muted');
+}
+if(e.kind==='ASR_profile.actual_selected_call'){
+const r=e.payload,p=$('asr-answers'),a=document.createElement('article');a.className='message';
+para(a,'Runtime ASR cô lập · '+r.model+' · '+r.language+' · '+r.sample_id);
+para(a,'Phiên âm thực: '+r.actual_transcript);para(a,'CUDA0 · trọng số FP32 gốc · '+r.seconds.toFixed(3)+' giây. Dữ liệu DEV đã dùng, không phải kết quả model trả lời hoặc nhãn tự học.','muted');
+p.prepend(a);while(p.children.length>16)p.lastChild.remove();
+}
 if(e.kind==='ASR_small_soak.heartbeat'){
 smallSoak={...e.payload,finished:false,received_epoch:e.created||Date.now()/1000};renderSmallSoak();
 }

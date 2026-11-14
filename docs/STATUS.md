@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## ASRsmall đã chọn trong runtime; final8hbase qua —14/11
+
+[Báo cáo hiện tại](hybrid/ASR_RUNTIME_AND_8H_20261114.md):57a681 có4actualprivate
+ASRcalls đúngFP32/CUDA/path; runtimeactivation vàdataaudit qua,3startup+1probe
+VLM,normalfullcontrollerrestore và learnedarrays/RNG/replay exact,updates5giữ.
+Livegateway32012/native4728,smallstorage verified;299Python/native/CUDA và22Node
+checks qua. Maintenancelease chặn autostart giữa transaction,clientrootunion
+đã cài. Không claim đã phiên âm livevideo bằngsmall hoặc smallprofile8hPASS.
+Base8h554c19 terminal28.800,391s/96cycles/16checks/100labupdates; audit602b72
+qua đúngengineering scope. Clip lặp33phút36s, oldRAMrootgap còn ghi rõ. Neural
+advantage/retention/causelearning chưađạt; không mở rulehistory đangchờduyệt.
+
 ## Hermes gửi trả lời —14/11
 
 [Đường gửi dùng chung](hybrid/HERMES_QUESTION_CARD_FIX_20261114.md): tab Debug

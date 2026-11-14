@@ -1,6 +1,7 @@
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import json
+from ..runtime.asr_profiles import selected_profile
 
 MAX_RAM_BYTES = 4_500_000_000
 DEFAULT_SOFT_RAM_BYTES = 4_250_000_000
@@ -44,6 +45,7 @@ class HybridConfig:
     segment_seconds: int = 10
     model_revision: str = "2fc06364715b967f1860aea9cf38778875588b17"
     model_name: str = "Qwen/Qwen3.5-0.8B"
+    asr_model_name: str = "openai/whisper-base"
     asr_revision: str = "e37978b90ca9030d5170a5c07aadb050351a65bb"
 
     def __post_init__(self):
@@ -55,6 +57,7 @@ class HybridConfig:
             or not 0 <= self.gpu_device <= 7
         ):
             raise ValueError("Expected cpu/gpu mode and a valid CUDA device index")
+        selected_profile(self.asr_model_name, self.asr_revision, self.execution_mode)
         if type(self.searxng_enabled) is not bool:
             raise ValueError("Expected boolean searxng_enabled")
         if (
@@ -143,6 +146,8 @@ def load_runtime_config(directory):
         "cuda_graphs",
         "model_name",
         "model_revision",
+        "asr_model_name",
+        "asr_revision",
     }:
         raise ValueError("Unknown runtime config fields")
     return HybridConfig(**value)

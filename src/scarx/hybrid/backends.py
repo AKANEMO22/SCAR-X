@@ -13,6 +13,7 @@ import time
 from urllib.request import Request, urlopen
 from .store import encode
 from .config import HybridConfig
+from ..runtime.asr_profiles import selected_profile, model_path, verify_asr_storage, verify_execution_log
 from .device_budget import gpu_headroom, audio_requires_release
 
 
@@ -32,6 +33,46 @@ class NativeBackends:
         self.native_token = secrets.token_urlsafe(32)
         self.vlm_command = None
         self.asset_signatures = None
+        self.asr_asset_signature = None
+        self.asr_storage_receipt = None
+
+    def asr_profile(self):
+        return selected_profile(self.config.asr_model_name, self.config.asr_revision,
+                                self.config.execution_mode)
+
+    def asr_model_path(self):
+        return model_path(self.directory, self.asr_profile())
+
+    def ensure_asr_storage(self):
+        path = self.asr_model_path()
+        stat = path.stat()
+        signature = (str(path), stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+        if signature != self.asr_asset_signature:
+            self.asr_storage_receipt = None
+            receipt = verify_asr_storage(self.directory, self.config.asr_model_name,
+                                        self.config.asr_revision, self.config.execution_mode)
+            current = path.stat()
+            if signature != (str(path), current.st_size, current.st_mtime_ns, current.st_ctime_ns):
+                raise RuntimeError("ASR asset changed while verifying its integrity")
+            self.asr_storage_receipt = receipt
+            self.asr_asset_signature = signature
+        return path
+
+    def wait_asr(self, timeout=120):
+        deadline = time.monotonic() + timeout
+        while True:
+            code = self.asr.poll()
+            if code is not None:
+                return code
+            self.monitor.check()
+            if self.config.execution_mode == "gpu":
+                if gpu_headroom(self.config.gpu_device)["free_MiB"] < 512:
+                    raise MemoryError("ASR physical GPU reserve below 512 MiB; stop owned ASR without CPU fallback")
+            if self.cancel_idle.is_set():
+                raise InterruptedError("Foreground work preempts the owned background ASR chunk")
+            if time.monotonic() >= deadline:
+                raise TimeoutError("Owned ASR chunk did not finish within its timeout")
+            time.sleep(0.25)
 
     def whisper_executable(self):
         runtime = (
@@ -88,6 +129,12 @@ class NativeBackends:
         return process
 
     def pause_vlm_for_audio(self):
+        if (self.config.execution_mode == "gpu"
+                and self.asr_profile().name == "openai/whisper-small"):
+            headroom = gpu_headroom(self.config.gpu_device)
+            if headroom["free_MiB"] < 1800:
+                raise MemoryError("Whisper-small requires 1800 MiB physical launch headroom; VLM stays resident, no CPU fallback")
+            return
         report = self.monitor.sample()
         projected = (
             report.get("conservative_ram_bytes", report["rss_bytes"]) + 600_000_000
@@ -196,12 +243,13 @@ class NativeBackends:
         )
         llama = self.directory / "runtime" / runtime / "llama-server.exe"
         whisper = self.whisper_executable()
+        selected_asr = self.ensure_asr_storage()
         for path in (
             llama,
             whisper,
             native / "qwen-native-bf16.gguf",
             native / "qwen-vision-native-bf16.gguf",
-            native / "whisper-base-f32.bin",
+            selected_asr,
         ):
             if not path.is_file():
                 raise FileNotFoundError("Run setup/conversion first: " + str(path))
@@ -559,7 +607,7 @@ class NativeBackends:
         command = [
             str(self.whisper_executable()),
             "-m",
-            str(self.directory / "models/native/whisper-base-f32.bin"),
+            str(self.asr_model_path()),
             "-f",
             str(source),
             "-l",
@@ -577,11 +625,21 @@ class NativeBackends:
         ]
         with self.lock, self.asr_lock:
             self.monitor.check()
+            self.ensure_asr_storage()
             self.pause_vlm_for_audio()
+            asr_log = self.directory / "asr.log"
+            log_offset = asr_log.stat().st_size if asr_log.exists() else 0
             self.asr = self._spawn(command, "asr.log")
             try:
-                if self.asr.wait(timeout=120):
+                if self.wait_asr(timeout=120):
                     raise RuntimeError("Native FP32 ASR failed; inspect asr.log")
+                with asr_log.open("rb") as current_log:
+                    current_log.seek(log_offset)
+                    fresh_log = current_log.read(262145)
+                if len(fresh_log) > 262144:
+                    raise ValueError("ASR worker log exceeds bounded current-call evidence")
+                execution = verify_execution_log(fresh_log.decode("utf-8", errors="replace"),
+                                                 self.config.execution_mode, self.config.gpu_device)
                 path = output.with_suffix(".json")
                 if path.stat().st_size > 1_000_000:
                     raise ValueError("ASR result exceeds bound")
@@ -601,6 +659,10 @@ class NativeBackends:
                     "source": str(source),
                     "raw_result": str(path),
                     "precision": "FP32",
+                    "ASR_identity": self.asr_profile().identity(),
+                    "model_path": str(self.asr_model_path()),
+                    "storage_verified": self.asr_storage_receipt is not None,
+                    **execution,
                     "device": self.config.execution_mode,
                     "backend": "one owned whisper-cli per bounded chunk; no ASR HTTP service",
                 },

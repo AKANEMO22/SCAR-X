@@ -6,6 +6,16 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+**Runtime hiện tại:** [Whisper-small GPU và final8hbase](ASR_RUNTIME_AND_8H_20261114.md).
+SmallFP32 đã chọn đúng profile/path/storage, VLM0.8B/vision/ASR/ALIF đềuGPU;
+fullsavedstate/learnedRNG/replay giữ qua restart. Source/config có backupprivate,
+maintenancelease tránh autostart race, monitor hiện hợp dynamicHermesroots.
+299Python/native/CUDA+22Nodechecks qua. Base8h qua engineering vàdataaudit;
+smallprofile chưa có8h, chưa videoquality/retention/selfrepairPASS. Khi chuyển
+CPU cần chọn rõ base/name/revision cùngmode, không chỉ đổi mode mà giữsmall.
+
+### Các mốc trước activation (giữ phạm vi lịch sử)
+
 [ASRprofile chuẩn bị](ASR_PROFILE_PREPARATION_20261114.md): đã tách đúng identity/
 nativepath và kiểm logriêngcall,20shadowchecks. Chưa áp bốn sourcefiles đang
 khóa, chưaASRSmalllive hoặc actualintegrationPASS; không chỉđổirevision làxong.

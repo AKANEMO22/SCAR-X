@@ -13,6 +13,8 @@ class ResourceMonitor:
     def __init__(self, limit=MAX_RAM_BYTES, extra_pids=(), include_hermes=False):
         self.limit = limit
         self.root = psutil.Process()
+        self.fixed_extra_pids = set(extra_pids)
+        self.hermes_client_roots = set()
         self.extra_pids = set(extra_pids)
         self.include_hermes = include_hermes
         self.last_client_scan = 0.0
@@ -30,6 +32,8 @@ class ResourceMonitor:
         self.thread = None
 
     def sample(self):
+        # Keep roots attached through the existing public extra_pids.add API.
+        self.fixed_extra_pids.update(self.extra_pids - self.hermes_client_roots)
         if self.include_hermes and time.monotonic() - self.last_client_scan > 10:
             self.last_client_scan = time.monotonic()
             discovered = set()
@@ -49,7 +53,8 @@ class ResourceMonitor:
                         discovered.add(process.pid)
                 except psutil.Error:
                     continue
-            self.extra_pids = discovered
+            self.hermes_client_roots = discovered
+        self.extra_pids = self.fixed_extra_pids | self.hermes_client_roots
         processes = {self.root.pid: self.root}
         for root in [self.root] + [
             psutil.Process(pid) for pid in self.extra_pids if psutil.pid_exists(pid)
@@ -99,6 +104,8 @@ class ResourceMonitor:
             "exceeded": self.exceeded,
             "processes": details,
             "included_client_pids": sorted(self.extra_pids),
+            "explicit_root_pids": sorted(self.fixed_extra_pids),
+            "discovered_hermes_roots": sorted(self.hermes_client_roots),
             "gpu_shared": gpu,
             "gpu_dedicated": dedicated,
             "peak_gpu_dedicated_bytes": self.peak_dedicated_gpu,

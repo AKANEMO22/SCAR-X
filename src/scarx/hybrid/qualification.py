@@ -6,6 +6,7 @@ import hashlib
 import time
 from urllib.request import Request, urlopen
 from .store import encode
+from ..runtime.asr_profiles import verify_asr_storage
 
 
 def verify_native_storage(directory, config=None):
@@ -48,6 +49,8 @@ def verify_native_storage(directory, config=None):
     return {
         "status": "PASS",
         "audit_run": report["run_id"],
+        "selected_ASR_storage": verify_asr_storage(directory, config.asr_model_name,
+            config.asr_revision, config.execution_mode) if config is not None else None,
         "model_files": 3,
         "no_quantization": True,
     }

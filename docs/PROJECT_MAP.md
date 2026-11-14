@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[ASRruntime và final8h](hybrid/ASR_RUNTIME_AND_8H_20261114.md): accept_hybrid_ASR_profile.py
+khóa4nativecases, audit_hybrid_ASR_profile.py kiểm actualcommand/log/JSON;
+install_hybrid_ASR_profile.py CAS/backup6targets, activate_hybrid_ASR_profile.py
+quản lýmaintenancelease/restore/3parity+1probe, audit_hybrid_ASR_activation.py
+đối chiếu source/storage/state/budget. runtime/maintenance.py và run_hybrid.py
+chặn autostart trong transaction. Raw57a681 và602b72; không privatecheckpoint
+trongGit, không overwrite các source/preparation/kết quả base8h lịch sử.
+
 [ASRprofile preparation](hybrid/ASR_PROFILE_PREPARATION_20261114.md):
 runtime/asr_profiles.py pinresolver/storage/currentlogguards chưaactiveimport;
 integrations/hermes/asr_profile_integration_patch.py tạo4shadowcopies,

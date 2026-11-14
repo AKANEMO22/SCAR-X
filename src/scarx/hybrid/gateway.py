@@ -159,6 +159,12 @@ class Gateway:
                 "name": self.config.model_name,
                 "revision": self.config.model_revision,
             },
+            "ASR_identity": {
+                "name": self.config.asr_model_name,
+                "revision": self.config.asr_revision,
+                "precision": "originalFP32",
+                "storage_verified": getattr(self.backend, "asr_storage_receipt", None) is not None,
+            },
             "pid": os.getpid(),
             "execution_placement": {
                 "VLM_vision": self.config.execution_mode,

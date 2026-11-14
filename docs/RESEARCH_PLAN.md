@@ -1,5 +1,15 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hiện tại14/11 sau09:33UTC:** [ASRruntime/8h](hybrid/ASR_RUNTIME_AND_8H_20261114.md).
+Whisper-smallFP32 đã được chọn trong HermesGPUprofile sau4actualASRprivatecalls,
+exact-sourceactivation,3nativeparity+1fixedprobe; fullrestore/learnedRNG/replay
+giữ nguyên,299Python/native/CUDAchecks qua. Final8hbase554c19 và dataaudit602b72
+qua engineering:96clip21slặp/16checkpointchecks/100labupdates; không8hcontinuous
+video, CPUcap hoặc qualityPASS. Rootunion hiện đã cài; oldRAMgap không backfill.
+Small-profile8h vẫn chưa làm. Không đổi SNNrule/weights/gates; hidden advantage,
+causalerrorrecovery và retention cònPIVOT, historyablation vẫnchờduyệt.
+Các mục preparation/pending bên dưới ghi trạng thái tại thời điểm trước đó.
+
 **ASRprofile preparation:** resolver pin tên/revision/path/SHA và freshcalllog
 đã có unit/shadowcontracts;2exporthashthật+165archivedlogchecks,0nativecalls.
 Khôngedit/importactiveHybridfrozenfiles trước original8hterminalaudit; source

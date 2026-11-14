@@ -58,6 +58,25 @@ test("deep link begins at requested event without changing live model counters",
   assert.equal(nodes.has("updates"), false);
 });
 
+test("selected ASR runtime receipt separates actual private execution from live video and learning claims", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "ASR_profile.live_activation_verified", payload: {
+    ASR_model: { name: "openai/whisper-small", precision: "originalFP32" },
+    verdict: "LIVE_ASR_SOURCE_STORAGE_PERSISTENCE_DATA_VERIFIED_NOT_PRODUCTION_PASS", updates: 5,
+  }});
+  const text = nodes.get("asr-profile-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /Runtime đã nạp.*whisper-small/);
+  assert.match(text, /Chưa có lượt phiên âm video live/);
+  assert.match(text, /chứng minh tự học kỹ năng/);
+  assert.equal(nodes.has("updates"), false);
+  event({ actor: "orchestrator", kind: "ASR_profile.actual_selected_call", payload: {
+    model: "small", language: "en", sample_id: "owned-fixture", actual_transcript: "Observed output", seconds: 2,
+  }});
+  const answer = nodes.get("asr-answers").children[0].children.map(n => n.textContent).join("\n");
+  assert.match(answer, /Phiên âm thực: Observed output/);
+  assert.match(answer, /không phải kết quả model trả lời hoặc nhãn tự học/);
+});
+
 test("stale heartbeat warns without claiming a missing process is terminal", () => {
   const { nodes, event } = setup();
   event({ actor: "orchestrator", kind: "shared_endurance.heartbeat",
@@ -243,7 +262,7 @@ test("ASR soak is a real component profile separate from deployed model and trai
     GPU_headroom:{free_MiB:1400}}});
   const text=nodes.get("asr-soak-summary").children.map(n=>n.textContent).join("\n");
   assert.match(text,/2\/30 phút · 8 lượt phiên âm/);
-  assert.match(text,/ASR của Hermes vẫn giữ nguyên/);
+  assert.match(text,/cấu hình tại thời điểm đo; profile Hermes hiện tại được ghi riêng/);
   event({actor:"orchestrator",kind:"ASR_small_soak.actual_transcript",payload:{attempt:8,source_id:"owned-public-audio",
     actual_transcript:"Actual fixture transcript for DOM test only",seconds:1.7,RTF:.17,native_CUDA_FP32_verified:true}});
   const output=nodes.get("asr-soak-text").children[0].children.map(n=>n.textContent).join("\n");

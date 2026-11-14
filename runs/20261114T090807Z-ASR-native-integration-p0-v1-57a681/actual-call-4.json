@@ -1,0 +1,255 @@
+{
+	"systeminfo": "WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "base",
+		"multilingual": true,
+		"vocab": 51865,
+		"audio": {
+			"ctx": 1500,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"text": {
+			"ctx": 448,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"mels": 80,
+		"ftype": 0
+	},
+	"params": {
+		"model": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T090807Z-ASR-native-integration-p0-v1-57a681\\models\\native\\whisper-base-f32.bin",
+		"language": "auto",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:02,800"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 2800
+			},
+			"text": " \"He built a Wi-Fi doorbell,\" he said.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50364,
+					"p": 0.779342,
+					"t_dtw": -1
+				},
+				{
+					"text": " \"",
+					"timestamps": {
+						"from": "00:00:00,010",
+						"to": "00:00:00,080"
+					},
+					"offsets": {
+						"from": 10,
+						"to": 80
+					},
+					"id": 503,
+					"p": 0.471172,
+					"t_dtw": -1
+				},
+				{
+					"text": "He",
+					"timestamps": {
+						"from": "00:00:00,080",
+						"to": "00:00:00,230"
+					},
+					"offsets": {
+						"from": 80,
+						"to": 230
+					},
+					"id": 5205,
+					"p": 0.912295,
+					"t_dtw": -1
+				},
+				{
+					"text": " built",
+					"timestamps": {
+						"from": "00:00:00,310",
+						"to": "00:00:00,650"
+					},
+					"offsets": {
+						"from": 310,
+						"to": 650
+					},
+					"id": 3094,
+					"p": 0.988336,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:00,650",
+						"to": "00:00:00,680"
+					},
+					"offsets": {
+						"from": 650,
+						"to": 680
+					},
+					"id": 257,
+					"p": 0.996538,
+					"t_dtw": -1
+				},
+				{
+					"text": " Wi",
+					"timestamps": {
+						"from": "00:00:00,750",
+						"to": "00:00:00,880"
+					},
+					"offsets": {
+						"from": 750,
+						"to": 880
+					},
+					"id": 14035,
+					"p": 0.525226,
+					"t_dtw": -1
+				},
+				{
+					"text": "-",
+					"timestamps": {
+						"from": "00:00:00,940",
+						"to": "00:00:00,950"
+					},
+					"offsets": {
+						"from": 940,
+						"to": 950
+					},
+					"id": 12,
+					"p": 0.982135,
+					"t_dtw": -1
+				},
+				{
+					"text": "Fi",
+					"timestamps": {
+						"from": "00:00:00,970",
+						"to": "00:00:01,130"
+					},
+					"offsets": {
+						"from": 970,
+						"to": 1130
+					},
+					"id": 13229,
+					"p": 0.991021,
+					"t_dtw": -1
+				},
+				{
+					"text": " door",
+					"timestamps": {
+						"from": "00:00:01,130",
+						"to": "00:00:01,450"
+					},
+					"offsets": {
+						"from": 1130,
+						"to": 1450
+					},
+					"id": 2853,
+					"p": 0.980395,
+					"t_dtw": -1
+				},
+				{
+					"text": "bell",
+					"timestamps": {
+						"from": "00:00:01,450",
+						"to": "00:00:01,750"
+					},
+					"offsets": {
+						"from": 1450,
+						"to": 1750
+					},
+					"id": 7100,
+					"p": 0.728972,
+					"t_dtw": -1
+				},
+				{
+					"text": ",\"",
+					"timestamps": {
+						"from": "00:00:01,810",
+						"to": "00:00:01,950"
+					},
+					"offsets": {
+						"from": 1810,
+						"to": 1950
+					},
+					"id": 2494,
+					"p": 0.92577,
+					"t_dtw": -1
+				},
+				{
+					"text": " he",
+					"timestamps": {
+						"from": "00:00:02,010",
+						"to": "00:00:02,170"
+					},
+					"offsets": {
+						"from": 2010,
+						"to": 2170
+					},
+					"id": 415,
+					"p": 0.980426,
+					"t_dtw": -1
+				},
+				{
+					"text": " said",
+					"timestamps": {
+						"from": "00:00:02,170",
+						"to": "00:00:02,490"
+					},
+					"offsets": {
+						"from": 2170,
+						"to": 2490
+					},
+					"id": 848,
+					"p": 0.998955,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:02,490",
+						"to": "00:00:02,800"
+					},
+					"offsets": {
+						"from": 2490,
+						"to": 2800
+					},
+					"id": 13,
+					"p": 0.988527,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_140]",
+					"timestamps": {
+						"from": "00:00:02,800",
+						"to": "00:00:02,800"
+					},
+					"offsets": {
+						"from": 2800,
+						"to": 2800
+					},
+					"id": 50504,
+					"p": 0.0531788,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}
