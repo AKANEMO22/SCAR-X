@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Ưu tiên phát hành ngày 14/11:** hoàn tất [Hybrid RC](release/HYBRID_RC_PLAN.md)
+trong chat Hermes hiện có. Không mở dataset, benchmark, model hoặc learner mới;
+giữ nghiên cứu chưa xong trong backlog. Không thay kiến trúc ALIF, ngưỡng
+forgetting hoặc kết luận hidden SNN chưa chứng minh vượt cùng LLM + RAG.
+Không restart/sửa source bảo vệ trước terminal và audit lượt 8 giờ `32cd13`.
+
+
 **VerifierguardP014/11:** [8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md)
 chuẩn bị capabilitymask cho checkerthực có,192contexts/ASTaudit qua,0neuralcalls.
 Chưa cài vì32cd13source khóa. Parseracceptance không là userintentproof;

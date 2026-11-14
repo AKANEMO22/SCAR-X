@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Ưu tiên hiện tại — phát hành Hybrid RC
+
+[Checklist phát hành](release/HYBRID_RC_PLAN.md): dừng mở nghiên cứu mới, giữ
+ALIF/local learning và chuẩn bị gói cập nhật cho chat Hermes bình thường.
+Antigravity CLI đã hỗ trợ review checklist bằng Gemini 3.8 Flash high, effort
+high; [đối chiếu độc lập](release/ANTIGRAVITY_RELEASE_REVIEW_20261114.md) ghi rõ
+các suy đoán sai và hai review timeout. 25 kiểm tra đóng gói/P0 qua.
+Lượt small mixed `32cd13` còn chạy; chưa cài hai patch, chưa live acceptance,
+chưa production PASS. Metadata/video research chưa xong chuyển backlog.
+
 ## Startupstorageaudit —14/11
 
 [add9f5](hybrid/STARTUP_STORAGE_TIMELINE_20261114.md): mốc boot cũ→nativegate

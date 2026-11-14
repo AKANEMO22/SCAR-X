@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[Phát hành Hybrid RC](release/HYBRID_RC_PLAN.md): `release/hybrid/` giữ allowlist,
+installer code, asset/dependency pins và tài liệu sử dụng. Build bằng
+`scripts/package_hybrid_rc.py`, không dùng packager Generation1. Safety tests
+ở `tests/test_hybrid_rc_package.py`; artifact ở `artifacts/releases/`.
+[Biên bản CLI](release/ANTIGRAVITY_RELEASE_REVIEW_20261114.md) tách review tham khảo
+khỏi kiểm tra code độc lập. Chưa cài khi lượt 8 giờ còn chạy.
+
+
 [Startuptimelineadd9f5](hybrid/STARTUP_STORAGE_TIMELINE_20261114.md):
 audit_hybrid_startup_storage.py actualevents+three realreadonlyhashstages;
 verify_hybrid_startup_storage.py rederives eventintervals/bytecounts without
