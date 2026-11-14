@@ -327,6 +327,8 @@ class Gateway:
                         {
                             "degraded": record.get("degraded", False),
                             "audio_available": record.get("audio_available"),
+                            "audio_status": record.get("asr_status"),
+                            "skipped_audio_intervals": record.get("audio_skipped_intervals", [])[-8:],
                             "failed_audio_intervals": [
                                 [e["start"], e["end"]]
                                 for e in record.get("asr_errors", [])[-8:]

@@ -29,7 +29,7 @@ def main():
            'test_hybrid_rc_package.py','test_full_query_retrieval_shadow.py','test_verifier_capability_shadow.py',
            'test_asr_profile_resolver.py','test_hermes_resource_roots.py',
            'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py',
-           'test_media_reply_presentation.py']
+           'test_media_reply_presentation.py','test_hybrid_screen_audio.py','test_hybrid_pipeline_audit.py']
     files=list((ROOT/'src/scarx').rglob('*.py'))
     files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'src/scarx/hybrid/hermes_protocol_notes.json',
               ROOT/'run_hybrid.py',ROOT/'pyproject.toml']
@@ -40,7 +40,7 @@ def main():
     files += [ROOT/'scripts'/name for name in ('package_hybrid_rc.py','verify_hybrid_rc_candidate.py',
         'hybrid_service.py','hybrid_screen_worker.py','run_native_searxng.py','install_hybrid_hermes.py',
         'install_hybrid_provider.py','install_hermes_session_transport.py','install_hermes_observer_envelope.py',
-        'test_hybrid_question_submission.py')]
+        'test_hybrid_question_submission.py','hybrid_pipeline_audit.py')]
     for run,candidate in [('20261114T101526Z-full-query-retrieval-p0-v1-7a9ee0','candidate-store.py'),
                           ('20261114T105211Z-verifier-capability-p0-v1-8e205a','candidate-engine.py')]:
         folder=ROOT/'runs'/run

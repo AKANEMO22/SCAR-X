@@ -1,0 +1,39 @@
+{
+  "verdict": "REAL_FFMPEG_AUDIO_FAILURE_ISOLATED_WHILE_NATIVE_FRAME_ANALYSIS_CONTINUES",
+  "scope": "owned journal fixture; real FFmpeg decode failure and real VLM; not a WGC/loopback or quality test",
+  "baseline_failed_whole_capture": true,
+  "candidate_visual_frames_observed": 2,
+  "actual_native_VLM_calls": 2,
+  "actual_ASR_calls": 0,
+  "failed_audio_interval": [
+    0,
+    1
+  ],
+  "false_transcripts": 0,
+  "live_SNN_updates_before_and_after": 5,
+  "GPU_free_point_sample_min_MiB": 2785,
+  "not_continuous_whole_system_peak_measurement": true,
+  "all_owned_fixture_processes_terminal": true,
+  "source_sha256": {
+    "baseline-screen.py": "7bcff42d5a2ebcdb942f10643a705365bd7144d81fb732e8dc283937a2f42cd6",
+    "candidate-screen.py": "7e9a4004b0aa5cb0bd7ba286ebab9f60f6a58226c8f2674e656dfac86a0242ec"
+  },
+  "new_learning_or_production_PASS": false,
+  "actual_frame_answers": [
+    {
+      "question": "Describe the visible color briefly. Do not infer speech.",
+      "answer": "red",
+      "source_time": 1
+    },
+    {
+      "question": "Describe the visible color briefly. Do not infer speech.",
+      "answer": "blue",
+      "source_time": 10
+    }
+  ],
+  "existing_raw_receipt_sha256": {
+    "baseline": "bca57fb7b7dc972c483b2aa37f98c7e4b96a659adba5d16d597872e6cc811550",
+    "candidate": "8a036f0ae318611af0a447d81136f8e4588781283482a0fef869dc169ef213fc"
+  },
+  "published_without_additional_inference": true
+}

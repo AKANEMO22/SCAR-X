@@ -18,6 +18,10 @@
 - Truy xuất màn hình đã xem hiện nhận các cách nhắc lịch sử có phạm vi và cần
   metadata/frame còn lưu. Không bảo đảm hiểu mọi cách hỏi hoặc nhớ toàn bộ video.
   Capture live mới chỉ kiểm cửa sổ thử tắt audio, chưa nghiệm thu speaker loopback.
+- Decode/ASR audio lỗi không còn mặc định dừng luôn hình màn hình; sau ba lỗi
+  liên tiếp, ASR tạm dừng đến lần chia sẻ mới. Đã kiểm real FFmpeg lỗi + hai VLM
+  calls trên journal fixture, không phải live speaker-loopback acceptance.
+  Resource breach vẫn fatal, không ngầm chuyển CPU hoặc tạo transcript giả.
 - Lời chào đã không còn lặp ví dụ control marker trong trường hợp tái hiện;
   model 0.8B vẫn có thể trả sai ngôn ngữ hoặc phản hồi xã giao thiếu tự nhiên.
 - Bài UI video draft mới ở RC6 đã gắn đúng nguồn/nhận đúng màu nhưng trả tiếng

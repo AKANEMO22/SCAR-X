@@ -82,6 +82,12 @@ class ScreenMemory:
             "asr_frontier": 0.0,
             "latest_frame": None,
             "audio_available": False,
+            "asr_status": "waiting" if system_audio else "not_requested",
+            "audio_error": None,
+            "asr_errors": [],
+            "audio_skipped_intervals": [],
+            "consecutive_audio_errors": 0,
+            "degraded": False,
             "error": None,
         }
         command = [
@@ -133,6 +139,75 @@ class ScreenMemory:
         thread.start()
         return state
 
+    def _audio_gap(self, state, row, reason):
+        gap = {"start": row["start"], "end": row["end"], "reason": reason}
+        state["audio_skipped_intervals"] = (
+            state.get("audio_skipped_intervals", []) + [gap]
+        )[-128:]
+        state["degraded"] = True
+        self.store.event("screen_audio_skipped", {"stream_id": state["id"], **gap})
+
+    def _ingest_audio(self, state, row, owned, previous):
+        audio = (owned / row["path"]).resolve()
+        if not audio.is_relative_to(owned.resolve()):
+            raise ValueError("Invalid capture source")
+        if state.get("asr_status") == "paused_after_errors":
+            self._audio_gap(state, row, "audio paused after three consecutive failures; restart sharing to retry")
+            return None
+        if self.engine.foreground.is_set():
+            self._audio_gap(state, row, "foreground_preempted")
+            return None
+        # Only a successfully transcribed predecessor may supply overlap.
+        # Failed or deferred chunks must not be silently bridged by later text.
+        if previous and not previous[0].is_file():
+            previous = None
+        output = owned / "asr-input.wav"
+        inputs = ["-i", str(audio)]
+        filters = []
+        if previous:
+            inputs = ["-i", str(previous[0]), *inputs]
+            filters = ["-filter_complex", "[0:a][1:a]concat=n=2:v=0:a=1[a]", "-map", "[a]"]
+        try:
+            subprocess.run(
+                ["ffmpeg", "-v", "error", "-nostdin", "-y"] + inputs + filters
+                + ["-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", str(output)],
+                capture_output=True, check=True, timeout=15,
+            )
+            if self.engine.foreground.is_set():
+                raise InterruptedError("Foreground preempts screen audio")
+            text = self.engine.backend.transcribe(output)
+            if text and text != "[BLANK_AUDIO]":
+                self.engine.observe(
+                    text, stream=state["id"], start=previous[1] if previous else row["start"],
+                    end=row["end"], source=str(audio), modality="audio",
+                )
+            state["asr_frontier"] = row["end"]
+            state["asr_status"] = "ready"
+            state["consecutive_audio_errors"] = 0
+            state["audio_error"] = None
+            return audio, row["start"]
+        except InterruptedError:
+            self._audio_gap(state, row, "foreground_preempted")
+        except MemoryError:
+            raise  # Resource violations still stop the pipeline; no CPU fallback.
+        except (OSError, RuntimeError, ValueError, TimeoutError, subprocess.SubprocessError) as exc:
+            self.engine.monitor.check()
+            entry = {"start": row["start"], "end": row["end"],
+                     "error": (type(exc).__name__ + ": " + str(exc))[:600]}
+            state["asr_errors"] = (state.get("asr_errors", []) + [entry])[-128:]
+            state["audio_error"] = entry["error"]
+            state["consecutive_audio_errors"] = state.get("consecutive_audio_errors", 0) + 1
+            state["asr_status"] = (
+                "paused_after_errors" if state["consecutive_audio_errors"] >= 3 else "error"
+            )
+            state["degraded"] = True
+            self.store.event("screen_asr_failed", {
+                "stream_id": state["id"], **entry,
+                "asr_status": state["asr_status"], "vision_continues": True,
+                "transcript_not_created": True, "observation_is_training_label": False,
+            })
+        return None
+
     def _ingest(self, state, process, owned):
         journal = owned / "capture.jsonl"
         offset = 0
@@ -164,57 +239,15 @@ class ScreenMemory:
                     elif row["kind"] == "audio_unavailable":
                         state["audio_available"] = False
                         state["audio_error"] = row["error"]
+                        state["asr_status"] = "unavailable"
+                        state["degraded"] = True
+                        previous_audio = None
+                        self.store.event("screen_audio_unavailable", {
+                            "stream_id": state["id"], "error": row["error"],
+                            "vision_continues": True, "microphone_used": False,
+                        })
                     elif row["kind"] == "audio":
-                        audio = (owned / row["path"]).resolve()
-                        if not audio.is_relative_to(owned.resolve()):
-                            raise ValueError("Invalid capture source")
-                        output = owned / "asr-input.wav"
-                        inputs = []
-                        filters = None
-                        if previous_audio and previous_audio.exists():
-                            inputs = ["-i", str(previous_audio), "-i", str(audio)]
-                            filters = [
-                                "-filter_complex",
-                                "[0:a][1:a]concat=n=2:v=0:a=1[a]",
-                                "-map",
-                                "[a]",
-                            ]
-                        else:
-                            inputs = ["-i", str(audio)]
-                            filters = []
-                        subprocess.run(
-                            ["ffmpeg", "-v", "error", "-nostdin", "-y"]
-                            + inputs
-                            + filters
-                            + [
-                                "-ar",
-                                "16000",
-                                "-ac",
-                                "1",
-                                "-c:a",
-                                "pcm_s16le",
-                                str(output),
-                            ],
-                            capture_output=True,
-                            check=True,
-                            timeout=15,
-                        )
-                        if not self.engine.foreground.is_set():
-                            text = self.engine.backend.transcribe(output)
-                            if text and text != "[BLANK_AUDIO]":
-                                self.engine.observe(
-                                    text,
-                                    stream=state["id"],
-                                    start=max(
-                                        0.0,
-                                        row["start"] - (10 if previous_audio else 0),
-                                    ),
-                                    end=row["end"],
-                                    source=str(audio),
-                                    modality="audio",
-                                )
-                            state["asr_frontier"] = row["end"]
-                        previous_audio = audio
+                        previous_audio = self._ingest_audio(state, row, owned, previous_audio)
                 if (
                     frames
                     and frame["time"] - last_vision >= 8

@@ -36,6 +36,8 @@ def main():
 
     def emit(kind, **fields):
         with lock:
+            if journal.closed:
+                return
             journal.write(
                 json.dumps(
                     {"kind": kind, "time": time.monotonic() - started, **fields},
@@ -45,11 +47,12 @@ def main():
             )
 
     def audio():
-        import pyaudiowpatch as pa
-
-        api = pa.PyAudio()
+        api = None
         stream = None
         try:
+            import pyaudiowpatch as pa
+
+            api = pa.PyAudio()
             info = api.get_default_wasapi_loopback()
             if not info.get("isLoopbackDevice"):
                 raise RuntimeError(
@@ -95,7 +98,8 @@ def main():
             if stream:
                 stream.stop_stream()
                 stream.close()
-            api.terminate()
+            if api:
+                api.terminate()
 
     capture = WindowsCapture(
         window_hwnd=args.hwnd,

@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[Audio resilience](release/SCREEN_AUDIO_RESILIENCE_20261115.md):
+`ScreenMemory._ingest_audio` giữ failed/skipped intervals và bounded pause;
+`tests/test_hybrid_screen_audio.py` kiểm fault isolation/resource boundaries;
+`scripts/accept_hybrid_screen_audio.py` chạy real FFmpeg +2 native VLM calls
+trên owned journal, không capture máy người dùng. [Goal audit hiện tại](release/GOAL_COMPLETION_AUDIT_20261115.md)
+tách vận hành, quality, hidden contribution và retention.
+
 [Media presentation](release/MEDIA_REPLY_PRESENTATION_20261114.md):
 `src/scarx/hybrid/media_reply.py` và integrity-pinned
 `hermes_protocol_notes.json`; `tests/test_media_reply_presentation.py` kiểm

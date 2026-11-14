@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — tiếp tục mục tiêu gốc và sửa audio fault
+
+[Completion audit](release/GOAL_COMPLETION_AUDIT_20261115.md) giữ đầy đủ yêu cầu:
+GPU hoạt động, nhưng SNN-over-RAG/learned tool recovery/retention vẫn chưa đạt.
+[Audio isolation](release/SCREEN_AUDIO_RESILIENCE_20261115.md) tái hiện real
+FFmpeg failure; source sửa vẫn có hai VLM answers thật, không transcript giả,
+284 Python checks qua. Thay đổi chỉ thuộc runtime; artifact đang cài theo
+[CURRENT_RELEASE](release/CURRENT_RELEASE.md), không tự mở nghiên cứu mới.
+
 ## RC7 — chốt QA và trình bày câu trả lời video
 
 [Bản sửa media](release/MEDIA_REPLY_PRESENTATION_20261114.md): canonical Hermes

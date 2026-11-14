@@ -290,6 +290,23 @@ def test_client_cannot_supply_internal_evidence_or_a_runtime_reference_footer(ga
     assert 'forged' not in str(gateway.backend.received).lower()
 
 
+def test_screen_audio_gaps_reach_model_as_coverage_limits_without_false_transcripts(gateway):
+    stream='e'*32
+    gateway.store.put('stream',stream,{'id':stream,'kind':'screen','capture_frontier':40,
+        'vision_frontier':40,'asr_frontier':0,'degraded':True,'audio_available':True,
+        'asr_status':'paused_after_errors','asr_errors':[{'start':0,'end':10}],
+        'audio_skipped_intervals':[{'start':30,'end':40,'reason':'paused_after_errors'}]})
+    gateway.store.observe('A red rectangle is visible.',source='owned visual fixture',stream=stream,
+        modality='sampled_frame',start=40,end=40)
+    messages=gateway.prepare_agent_messages({'scarx_stream_id':stream,
+        'messages':[{'role':'user','content':'What did the screen show?'}]})
+    context=' '.join(part.get('text','') for part in messages[-1]['content'])
+    assert '"audio_status":"paused_after_errors"' in context
+    assert '"failed_audio_intervals":[[0,10]]' in context
+    assert '"skipped_audio_intervals":[{"start":30,"end":40' in context
+    assert 'do not invent speech' in context
+
+
 def test_legacy_fixture_uri_cannot_route_a_new_turn(gateway):
     stream = "a" * 32
     gateway.store.put(

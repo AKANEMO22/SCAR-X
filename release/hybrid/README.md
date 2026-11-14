@@ -1,8 +1,13 @@
-# SCAR-X Hybrid 1.0.0-rc.7
+# SCAR-X Hybrid 1.0.0-rc.8
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
+
+RC8 tách lỗi decode/ASR không phải lỗi tài nguyên khỏi luồng hình màn hình.
+Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; hình tiếp tục,
+coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
+tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
 Từ RC6, gói cần Hermes đã có đường metadata admission tương ứng được build/cài.
 Installer đối chiếu fingerprints và từ chối app cũ; không tự thay source hoặc
