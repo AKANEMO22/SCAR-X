@@ -1,5 +1,10 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**VerifierguardP014/11:** [8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md)
+chuẩn bị capabilitymask cho checkerthực có,192contexts/ASTaudit qua,0neuralcalls.
+Chưa cài vì32cd13source khóa. Parseracceptance không là userintentproof;
+negativeutility/selferrorlearning vàhiddenadvantage vẫn chưađạt, khôngrulechange.
+
 **Actionlearningaudit14/11:** [70f370/b66e37](hybrid/WHAT_THE_SNN_LEARNS_20261114.md)
 phân20new/80replay và20verifyactionlabels; không học đáp án số vàoVLM. Seenstate
 GPUreset:initial0/final20/hiddenreset17/readoutreset13 trên20states. Có hiddeneffect

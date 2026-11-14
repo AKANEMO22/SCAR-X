@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## VerifiercapabilityguardP0 —14/11
+
+[8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md): candidate chỉthay
+allowedmethod,192controllercontexts/dataASTaudit qua.28unsupportedverify masks
+được bỏ,150parser-accepted masks nguyên (gồm6câuýđịnhmơhồ).10unitchecks,
+0neural/VLMcalls; khônglearnedrepair/intentunderstanding. Chưa càiEngineactive
+đangkhóa32cd13; có thểgộpfullquerypatch sauactualterminal/audit. Parserfalse-
+positive ýđịnh vànegativeutilityfeedback cònmở, không nớiqualitygates.
+
 ## Actiontargets và resetGPU —14/11
 
 [70f370/b66e37](hybrid/WHAT_THE_SNN_LEARNS_20261114.md):100base8hupdates là20new+

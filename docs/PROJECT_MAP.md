@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Verifierguard8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md):
+integrations/hermes/verifier_capability_guard_patch.py exactEngineSHA;
+accept_hybrid_verifier_capability.py gọi actualunboundallowed trên contextowned,
+verify_hybrid_verifier_capability.py kiểm rawmaskdelta vàAST. Candidatekhông
+khởi tạo model; activeEngine/ALIF/rule giữ nguyên, chờsource8hunlock.
+
 [Target/provenance và actionresets](hybrid/WHAT_THE_SNN_LEARNS_20261114.md):
 audit_hybrid_learning_targets.py/verify_hybrid_learning_targets.py đọc rawbase8h
 events/replay; diagnose_hybrid_action_policy.py chỉ80CUDAforwards/clonereset,
