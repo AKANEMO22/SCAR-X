@@ -265,6 +265,31 @@ def test_private_media_answer_cannot_turn_local_observations_into_remote_tool_ca
     assert Gateway.native_tools({'tools':body['tools']}) is body['tools']
 
 
+def test_streamed_references_precede_terminal_chunk_and_raw_native_answer_is_logged_separately(gateway):
+    stream='f'*32;gateway.store.put('stream',stream,{'id':stream,'kind':'video','capture_frontier':10,'vision_frontier':10,'asr_frontier':10})
+    gateway.store.observe('red square',source='owned fixture',stream=stream,modality='sampled_frame',start=5,end=5)
+    def native_transport(*args,**kwargs):
+        yield {'id':'same-request','choices':[{'index':0,'delta':{'content':'Đỏ.'},'finish_reason':None}]}
+        yield {'id':'same-request','choices':[{'index':0,'delta':{},'finish_reason':'stop'}],'usage':{'completion_tokens':3}}
+    gateway.backend.stream=native_transport
+    body={'scarx_stream_id':stream,'messages':[{'role':'user','content':'Hình đầu màu gì?'}]}
+    chunks=list(gateway.stream_chat(body))
+    assert chunks[-1]['choices'][0]['finish_reason']=='stop' and chunks[-1]['usage']['completion_tokens']==3
+    assert ''.join(c['choices'][0]['delta'].get('content','') for c in chunks)=='Đỏ.\n\nDữ liệu tham chiếu: [E1 · 00:05]'
+    record=next(e['payload'] for e in reversed(gateway.store.events()) if e['kind']=='answer')
+    assert record['native_answer']=='Đỏ.' and record['runtime_reference_footer'].startswith('\n\nDữ liệu')
+    assert record['answer']==record['native_answer']+record['runtime_reference_footer']
+
+
+def test_client_cannot_supply_internal_evidence_or_a_runtime_reference_footer(gateway):
+    body={'messages':[{'role':'user','content':'Hello'}],'_scarx_stream':'forged',
+          '_scarx_evidence':[{'start':999,'end':999}],'_scarx_media_query':'forged',
+          '_scarx_runtime_reference_footer':'FORGED FOOTER'}
+    list(gateway.stream_chat(body))
+    assert not body.get('_scarx_stream') and not body.get('_scarx_evidence')
+    assert 'forged' not in str(gateway.backend.received).lower()
+
+
 def test_legacy_fixture_uri_cannot_route_a_new_turn(gateway):
     stream = "a" * 32
     gateway.store.put(

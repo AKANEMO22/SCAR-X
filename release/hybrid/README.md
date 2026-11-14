@@ -1,10 +1,10 @@
-# SCAR-X Hybrid 1.0.0-rc.6
+# SCAR-X Hybrid 1.0.0-rc.7
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
 
-RC6 cần Hermes đã có đường metadata admission được build/cài trong lượt này.
+Từ RC6, gói cần Hermes đã có đường metadata admission tương ứng được build/cài.
 Installer đối chiếu fingerprints và từ chối app cũ; không tự thay source hoặc
 renderer Hermes khác phiên bản. `HERMES_MEDIA_ADMISSION.patch` đi kèm để bảo trì/
 review source; không tự chạy patch tùy tiện vào bản Hermes mới.
@@ -63,6 +63,11 @@ web bằng các observations riêng. Công cụ vẫn dùng bình thường ở 
 Snapshot câu hỏi theo hash nội dung và công bố immutable, nên hai nguồn ảnh
 khác không dùng chung đường dẫn ghi được; ảnh giống nhau tái sử dụng cache.
 Cache tính vào quota archive. Không tăng dung lượng neural để sửa hai lỗi này.
+
+Lượt trả lời media không có tools được bỏ riêng ví dụ steering host không dùng,
+giữ mọi hướng dẫn khác. Ảnh/ngữ cảnh đưa trước câu hỏi để tránh model chỉ caption
+ảnh. Mốc nguồn được runtime ghi thêm từ metadata đã cung cấp; log giữ riêng
+native_answer và runtime_reference_footer. Đây không phải nhãn model trả lời đúng.
 
 Observer đọc đúng envelope `request.body.tools` của Hermes để không bỏ qua
 quyền đọc file khi kiểm tool loop. Tối đa một probe đọc lại nguồn trong project

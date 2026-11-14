@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[Media presentation](release/MEDIA_REPLY_PRESENTATION_20261114.md):
+`src/scarx/hybrid/media_reply.py` và integrity-pinned
+`hermes_protocol_notes.json`; `tests/test_media_reply_presentation.py` kiểm
+input/JSON/SSE/source-footer boundary, `scripts/audit_hybrid_media_presentation.py`
+đối chiếu completion Hermes với native answer, metadata nguồn và receipt hiện có.
+Không neural-rule change hoặc model call mới trong audit.
+
 [Sửa hai finding media](release/MEDIA_ADMISSION_REPAIRS_20261114.md):
 `src/scarx/hybrid/frame_snapshot.py`, `tests/test_hybrid_frame_snapshot.py` kiểm
 immutable cache/concurrency/quota. Request ownership ở `video_context.py`,

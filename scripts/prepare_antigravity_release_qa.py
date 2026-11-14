@@ -28,9 +28,11 @@ def main():
            'test_hybrid_maintenance.py','test_hybrid_tool_routing.py','test_hybrid_cuda.py','test_hermes_session_transport.py',
            'test_hybrid_rc_package.py','test_full_query_retrieval_shadow.py','test_verifier_capability_shadow.py',
            'test_asr_profile_resolver.py','test_hermes_resource_roots.py',
-           'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py']
+           'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py',
+           'test_media_reply_presentation.py']
     files=list((ROOT/'src/scarx').rglob('*.py'))
-    files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'run_hybrid.py',ROOT/'pyproject.toml']
+    files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'src/scarx/hybrid/hermes_protocol_notes.json',
+              ROOT/'run_hybrid.py',ROOT/'pyproject.toml']
     files += [ROOT/'tests'/name for name in tests]
     files += [ROOT/'tests'/name for name in ('hybrid_trace.test.cjs','hybrid_composer.test.cjs','hybrid_question_http.test.cjs')]
     files += [p for p in (ROOT/'integrations/hermes').rglob('*') if p.is_file() and p.suffix in ('.py','.js','.json','.yaml','.patch') and p.name!='settings.json' and '__pycache__' not in p.parts]

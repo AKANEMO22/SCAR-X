@@ -28,7 +28,7 @@ include = ["scarx*"]
 
 [tool.setuptools.package-data]
 "scarx.app" = ["web/*.html", "web/*.css", "web/*.js", "generation_web/*.html", "generation_web/*.css", "generation_web/*.js"]
-"scarx.hybrid" = ["web.html"]
+"scarx.hybrid" = ["web.html", "hermes_protocol_notes.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

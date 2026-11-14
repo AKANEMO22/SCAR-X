@@ -20,9 +20,11 @@
   Capture live mới chỉ kiểm cửa sổ thử tắt audio, chưa nghiệm thu speaker loopback.
 - Lời chào đã không còn lặp ví dụ control marker trong trường hợp tái hiện;
   model 0.8B vẫn có thể trả sai ngôn ngữ hoặc phản hồi xã giao thiếu tự nhiên.
-- Bài UI video draft mới đã gắn đúng nguồn và nhận đúng màu, nhưng model trả
-  tiếng Anh và bỏ timestamp. Chưa đạt đầy đủ yêu cầu ngôn ngữ/dẫn nguồn chỉ từ
-  việc fix admission. Chưa là chất lượng video/production PASS.
+- Bài UI video draft mới ở RC6 đã gắn đúng nguồn/nhận đúng màu nhưng trả tiếng
+  Anh và bỏ timestamp. Canonical Hermes probe sau sửa presentation trả tiếng
+  Việt trên cùng clip đã biết. Timestamp hiện do runtime hiển thị từ nguồn
+  đầu vào, log riêng với native answer; không phải model đã học dẫn nguồn hay
+  đã xác minh mọi câu trả lời. Chưa là chất lượng video/production PASS.
 - Khi trả lời dựa vào media local, gateway không cấp tool schemas cho native
   call để ngăn biến observations riêng thành truy vấn web. Đây là policy ở
   runtime, chưa phải SNN học được lúc nào nên dùng công cụ.

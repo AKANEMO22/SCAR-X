@@ -1,0 +1,27 @@
+{
+  "verdict": "KNOWN_CLIP_HERMES_NATIVE_VI_ANSWER_WITH_SEPARATE_RUNTIME_SOURCE_FOOTER",
+  "actual_canonical_Hermes_completion": true,
+  "acceptance_event_id": 13939,
+  "native_model_answer": "Hình đầu tiên là một hình vuông màu đỏ.",
+  "runtime_supplied_source_footer": "\n\nDữ liệu tham chiếu: [E1 · 00:05]",
+  "source_time_seconds": 5.0,
+  "Hermes_tool_events": 0,
+  "checkpoint_arrays_RNG_replay_preserved_at_activation": true,
+  "live_synaptic_updates_at_activation": 5,
+  "Python_release_checks_passed": 263,
+  "new_LLM_ASR_calls_in_this_readonly_audit": 0,
+  "weights_or_learning_rule_changed": false,
+  "known_fixture_only_not_general_video_quality_PASS": true,
+  "footer_is_not_a_native_learned_citation_or_truth_verification": true,
+  "research_or_production_PASS": false,
+  "source_sha256": {
+    "src/scarx/hybrid/gateway.py": "fcedcd94c73ab2c0be959d2642a652b59fe5422af56a7e69c6ab76019265bbd0",
+    "src/scarx/hybrid/media_reply.py": "ddc057392369bda72c4fe294c7aa12637c2c069a79d44e5ad16e47a323133dbd",
+    "src/scarx/hybrid/hermes_protocol_notes.json": "b2ce5c87a9cb8382698d8d142e1fd29c4a6fc5fde7a7c21e6353a56e403548bd"
+  },
+  "receipt_sha256": {
+    "actual-Hermes-result.json": "661d228354f9cf949a80f7e69c2a17cdd39ea2ba3fe8e7981808f5a69a893301",
+    "actual-Hermes-events.json": "02abf3356cc551ed348b2619bea13d50229502ca657a341230ecbc44ed4dae63",
+    "state-preserved.json": "2a2df2b2e34e82eaa897a579a22f9f541850a99544f62e67fa3ae1c17353255a"
+  }
+}

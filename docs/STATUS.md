@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## RC7 — chốt QA và trình bày câu trả lời video
+
+[Bản sửa media](release/MEDIA_REPLY_PRESENTATION_20261114.md): canonical Hermes
+thật trả tiếng Việt trên clip đã biết, footer nguồn 00:05 do runtime thêm và log
+riêng với câu native. 263 Python +29 Node +3 HTTP cases qua. Hai finding đã xác
+nhận từ Antigravity đã sửa ở RC6; CLI bị sandbox chặn test và follow-up timeout,
+không gọi là agent approval. Các mốc bên dưới là lịch sử; trạng thái artifact
+theo [CURRENT_RELEASE](release/CURRENT_RELEASE.md). Chưa production/lifelong PASS.
+
 ## Hai finding QA đã sửa và kiểm thật
 
 [Video admission/snapshot](release/MEDIA_ADMISSION_REPAIRS_20261114.md): bỏ

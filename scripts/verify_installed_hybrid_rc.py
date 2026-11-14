@@ -39,9 +39,14 @@ def main():
     if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Installed code does not match final payload')
     manager.assert_registered_owner_runtime(root,data)
     manager.validate_existing_assets(root,home,package)
-    suite=ET.parse(ROOT/'local/media-admission-final-release-20261114.xml').getroot().find('testsuite')
+    receipts={
+        '1.0.0-rc.6':('local/media-admission-final-release-20261114.xml',256),
+        '1.0.0-rc.7':('local/media-presentation-final-release-20261114/python.xml',263),
+    }
+    receipt_path,expected_count=receipts[manifest['version']]
+    suite=ET.parse(ROOT/receipt_path).getroot().find('testsuite')
     cases=list(suite.iter('testcase'))
-    assert len(cases)==int(suite.attrib['tests']) and len(cases)==256
+    assert len(cases)==int(suite.attrib['tests']) and len(cases)==expected_count
     assert not int(suite.attrib['failures']) and not int(suite.attrib['errors'])
     skipped=[c for c in cases if c.find('skipped') is not None]
     assert all(c.attrib['name']=='test_hybrid_alif_forward_matches_existing_native_core' for c in skipped)
@@ -50,6 +55,9 @@ def main():
     assert 'test_actual_Hermes_request_envelope_enables_one_readonly_probe' in names
     assert 'test_different_drafts_with_identical_text_cannot_steal_each_others_video' in names
     assert 'test_distinct_frame_requests_never_change_a_previous_returned_path' in names
+    if manifest['version']=='1.0.0-rc.7':
+        assert 'test_non_ascii_questions_in_other_languages_are_not_forced_into_vietnamese' in names
+        assert 'test_streamed_references_precede_terminal_chunk_and_raw_native_answer_is_logged_separately' in names
     evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
     assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
     sys.path.insert(0,str(ROOT/'src'))
@@ -64,6 +72,7 @@ def main():
             'payload_files':len(manifest['target_before_sha256']),'pending_payload_changes':0,
             'native_asset_Hermes_dependency_pins_match':True,
             'Python_checks_passed':len(cases)-len(skipped),'native_CPU_parity_skipped':len(skipped),
+            'Python_regression_receipt':receipt_path,
             'long_input_and_compaction_evidence':'docs/release/evidence/LONG_INPUT_AND_COMPACTION_20261114.json',
             'request_owned_media_evidence':'docs/release/evidence/MEDIA_ADMISSION_REPAIRS_20261114.json',
             'gateway_pid':native.owner.pid,'native_GPU_pid':native.worker.pid,
