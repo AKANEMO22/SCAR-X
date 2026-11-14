@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Target/provenance và actionresets](hybrid/WHAT_THE_SNN_LEARNS_20261114.md):
+audit_hybrid_learning_targets.py/verify_hybrid_learning_targets.py đọc rawbase8h
+events/replay; diagnose_hybrid_action_policy.py chỉ80CUDAforwards/clonereset,
+verify_hybrid_action_policy.py tính lại initializedweights/readoutprobabilities.
+Raw70f370/b66e37, không liveweights/mainchange hoặc newlearnertraining.
+
 [Fullqueryshadow7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md):
 integrations/hermes/full_query_retrieval_patch.py exactStoreSHA recipe;
 accept_hybrid_full_query_retrieval.py actualSQLite/coldbackup/latency/heap,

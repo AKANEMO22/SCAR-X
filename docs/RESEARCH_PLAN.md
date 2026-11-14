@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Actionlearningaudit14/11:** [70f370/b66e37](hybrid/WHAT_THE_SNN_LEARNS_20261114.md)
+phân20new/80replay và20verifyactionlabels; không học đáp án số vàoVLM. Seenstate
+GPUreset:initial0/final20/hiddenreset17/readoutreset13 trên20states. Có hiddeneffect
+trong phép canthiệp, chưa independentusefulrepresentation vìposthoc/singletarget/
+statisticsconfounds vàconstantverify cũng20. Giữ PIVOT/gates, khôngrulechange;
+negativeactionfeedback khi verifierunsupported vẫn là đường cònthiếu.
+
 **FullqueryP014/11:** [shadow7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md)
 khắc phục16wordprefix ở bản saoSQLite,21fixedcases/1028records/10shortcompat
 qua independentSQL/dataaudit. Chưa nạpStorelive vì32cd13đangđo;0newneuralcalls,

@@ -14,7 +14,7 @@
 <div id="asr-soak-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Kiểm toán độ bền và phạm vi tài nguyên</summary><div id="endurance-scope" class="goal hidden"></div><div id="client-root-summary" class="goal hidden"></div></details>
-<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="input-budget-summary" class="goal hidden"></div><div id="retrieval-p0-summary" class="goal hidden"></div><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
+<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="learning-target-summary" class="goal hidden"></div><div id="action-CF-summary" class="goal hidden"></div><div id="input-budget-summary" class="goal hidden"></div><div id="retrieval-p0-summary" class="goal hidden"></div><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
 <details><summary>Đáp án và phiên âm thực từ các lượt đo</summary><div id="asr-soak-text" class="feed"></div><div id="cold-memory-answers" class="feed"></div><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
@@ -52,6 +52,21 @@ if(smallSoak.audit)para(p,'Audit dữ liệu: '+smallSoak.audit.verdict+' · '+s
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='action_policy_counterfactual.data_verified'){
+const r=e.payload,p=$('action-CF-summary');clear('action-CF-summary');p.classList.remove('hidden');
+para(p,'Can thiệp cloneGPU trên các state đã học · '+r.run_id);
+for(const cell of r.cells||[])para(p,cell.arm+': '+cell.verify_choices_on_recorded_seen_states+'/'+cell.cases+' state chọn verify.');
+para(p,'80 CUDAforward, không học mới. Trạng thái cuối có huấn luyện xảy ra sau các quyết định đầu; đây là đo lại state cũ, không phải TEST.','muted');
+para(p,'Nhãn chỉ có verify: luật luôn chọn verify cũng khớp bộ này. Reset giữ statistics; chưa matchedreadout-only hoặc unseenconfirmation, chưa chứng minh hidden có lợi thế.','muted');
+}
+if(e.kind==='learning_target_audit.data_verified'){
+const r=e.payload,p=$('learning-target-summary');clear('learning-target-summary');p.classList.remove('hidden');
+para(p,'SNN đang được dạy điều gì? · kiểm toán lượt base8h đã hoàn tất');
+para(p,r.accepted_updates+' cập nhật = '+r.new_source_experiences+' trải nghiệm mới + '+r.replay_updates+' lượt replay. Nhãn mới đều là hành động verify, không phải đáp án số.');
+para(p,'Quyết định nhận nhãn mới: '+(r.new_selectors.neural_policy||0)+' neural tự chọn trong nhiều lựa chọn; '+(r.new_selectors.runtime_progress_guard||0)+' do runtime guard chọn. Chưa là đối chứng nhân quả.');
+para(p,'Trong lượt này: '+r.new_negative_feedback_examples+' phản hồi âm, '+r.verified_tool_error_recovery_examples+' mẫu sửa tool được kiểm chứng, '+r.VLM_weight_updates+' cập nhật trọng số VLM.','muted');
+para(p,'Số liệu lab lịch sử, không cộng vào live hoặc lượt small8h đang chạy; không chứng minh learned arithmetic, hidden advantage hay tự sửa sai.','muted');
+}
 if(e.kind==='full_query_retrieval.data_verified'){
 const r=e.payload,p=$('retrieval-p0-summary');clear('retrieval-p0-summary');p.classList.remove('hidden');
 para(p,'Bản vá truy xuất trên SQLite cô lập · '+r.run_id);

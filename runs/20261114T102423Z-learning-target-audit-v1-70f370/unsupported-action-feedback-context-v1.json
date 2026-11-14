@@ -1,0 +1,72 @@
+{
+  "scope": "Completed owned base8h, failure feedback provenance only; no learner change",
+  "failures": [
+    {
+      "observed_failure": {
+        "event_id": 65,
+        "kind": "verification_unavailable",
+        "payload": {
+          "goal_id": "0fe3daf6319b6c4ad0847e32",
+          "reason": "No independent verifier; generated agreement is not truth"
+        }
+      },
+      "nearby_same_goal_records": [
+        {
+          "event_id": 63,
+          "kind": "autonomous_action",
+          "payload": {
+            "id": "f9b7ab5ae516441da596902cfca89740",
+            "goal_id": "0fe3daf6319b6c4ad0847e32",
+            "action": "verify",
+            "proposed_action": "verify",
+            "selector": "neural_policy",
+            "probabilities": {
+              "review": 0.0007558492943644524,
+              "search": 0.005340977106243372,
+              "verify": 0.988158643245697,
+              "ask": 0.0005965869058854878,
+              "defer": 0.004036591853946447,
+              "consolidate": 0.0011112485080957413
+            },
+            "created": 1794619200.9755647,
+            "trained_updates": 1,
+            "allowed": [
+              "defer",
+              "verify",
+              "ask"
+            ],
+            "policy_status": "experimental_unqualified"
+          }
+        },
+        {
+          "event_id": 70,
+          "kind": "autonomous_action",
+          "payload": {
+            "id": "75387d6d41194f28a68c001d0da56adb",
+            "goal_id": "0fe3daf6319b6c4ad0847e32",
+            "action": "ask",
+            "proposed_action": "defer",
+            "selector": "runtime_progress_guard",
+            "probabilities": {
+              "review": 0.00022492764401249588,
+              "search": 0.0015151726547628641,
+              "verify": 0.9951668977737427,
+              "ask": 0.00020853891328442842,
+              "defer": 0.0022502699866890907,
+              "consolidate": 0.0006341396365314722
+            },
+            "created": 1794619202.1120563,
+            "trained_updates": 1,
+            "allowed": [
+              "defer",
+              "ask"
+            ],
+            "policy_status": "experimental_unqualified"
+          }
+        }
+      ]
+    }
+  ],
+  "no_new_neural_calls": true,
+  "interpretation": "verification_unavailable is logged; engine branch contains no negative _guarded_learn. Arithmetic positive samples do not test this recovery."
+}

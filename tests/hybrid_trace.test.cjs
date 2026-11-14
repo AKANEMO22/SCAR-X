@@ -130,6 +130,40 @@ test("shadow query repair reports actual SQLite cost separately from neural or l
   assert.equal(nodes.has("updates"), false);
 });
 
+test("learning target ledger separates action learning, replay and verified task skills", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "learning_target_audit.data_verified", payload: {
+    accepted_updates: 100, new_source_experiences: 20, replay_updates: 80,
+    new_selectors: { neural_policy: 19, runtime_progress_guard: 1 },
+    new_negative_feedback_examples: 0, verified_tool_error_recovery_examples: 0, VLM_weight_updates: 0,
+  }});
+  const text = nodes.get("learning-target-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /100 cập nhật = 20 trải nghiệm mới \+ 80 lượt replay/);
+  assert.match(text, /verify, không phải đáp án số/);
+  assert.match(text, /19 neural tự chọn/);
+  assert.match(text, /0 mẫu sửa tool được kiểm chứng/);
+  assert.match(text, /không cộng vào live/);
+  assert.equal(nodes.has("updates"), false);
+});
+
+test("recorded-state reset outcomes retain single-label and posthoc limitations", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "action_policy_counterfactual.data_verified", payload: {
+    run_id: "owned-old-state-diagnostic", cells: [
+      { arm: "initial", verify_choices_on_recorded_seen_states: 0, cases: 20 },
+      { arm: "final", verify_choices_on_recorded_seen_states: 20, cases: 20 },
+      { arm: "hidden_reset", verify_choices_on_recorded_seen_states: 17, cases: 20 },
+      { arm: "readout_reset", verify_choices_on_recorded_seen_states: 13, cases: 20 },
+    ],
+  }});
+  const text = nodes.get("action-CF-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /hidden_reset: 17\/20/);
+  assert.match(text, /không phải TEST/);
+  assert.match(text, /luật luôn chọn verify cũng khớp/);
+  assert.match(text, /chưa chứng minh hidden có lợi thế/);
+  assert.equal(nodes.has("updates"), false);
+});
+
 test("stale heartbeat warns without claiming a missing process is terminal", () => {
   const { nodes, event } = setup();
   event({ actor: "orchestrator", kind: "shared_endurance.heartbeat",

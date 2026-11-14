@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Actiontargets và resetGPU —14/11
+
+[70f370/b66e37](hybrid/WHAT_THE_SNN_LEARNS_20261114.md):100base8hupdates là20new+
+80replay, toànnhãnverifyaction;0negative/toolrepair/VLMweightupdate.19/20new
+labels sau neuralchoice và1guard.80actualCUDAforwards trên20seenstates:
+initial/final/hiddenreset/readoutreset chọnverify0/20/17/13. Dữ liệu/reset/
+probability được đối chiếu. Constantverify cũng20/20; keptstatistics/posthoc/
+one-seed confounds giữrõ, khônghiddenadvantage/qualityPASS.1unsupportedverify
+chưa tạo rewardâm ởcontroller.20Nodechecks qua;source8h khôngđổi.
+
 ## FullqueryretrievalP0 —14/11
 
 [7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md): exact-source shadowSQLite
