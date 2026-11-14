@@ -19,6 +19,9 @@
   ý định. Guard về khả năng công cụ không phải SNN tự học nhận ra mọi lỗi.
 - Context thực vẫn 16K token. Bộ nhớ SSD và nhật ký phân trang không tạo context
   vô hạn hoặc đảm bảo nhớ mọi chi tiết qua synapse.
+- Chat dài chia query truy xuất theo giới hạn riêng, không cắt nội dung đưa
+  VLM; pool hữu hạn vẫn có thể bỏ sót bằng chứng. Trần 65.536 ký tự của đường
+  xử lý text không đồng nghĩa model có context 65K token.
 - SearXNG chạy native Windows, vẫn cần Internet/engine tìm kiếm bên ngoài.
   Có thể timeout, bị giới hạn hoặc không có kết quả; không giả nguồn đúng.
 - Gói này chỉ cập nhật deployment Hermes/runtime đã cài và có fingerprints phù

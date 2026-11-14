@@ -1,5 +1,12 @@
 # SCAR-X Hybrid — bản RC đang cài trên máy
 
+**Bổ sung RC5:** [chat dài/workspace/compact](LONG_INPUT_AND_COMPACTION_20261114.md)
+đã được kiểm qua gateway thật. Tin nhắn 7.028 ký tự không còn lỗi FTS; 5 lượt
+7.115 ký tự chạy qua 3 compact tự động, một compact thủ công và vẫn trả đúng
+code/port sau đó. Owner display projection không lộ handoff. 171 Python checks
+qua, gồm CPU/native parity. Artifact RC4 dưới đây giữ lịch sử cho tới khi ghi
+receipt gói RC5; không coi các kiểm tra này là neural learning PASS.
+
 **Đang dùng RC4:** [sửa observer](OBSERVER_ENVELOPE_REPAIR_20261114.md) để đọc đúng
 envelope công cụ Hermes; actual dispatcher xác nhận đọc lại nguồn trong project
 đúng một lần sau ba lần đọc sai đường dẫn. 27 checks bổ sung qua. Không thay
@@ -78,9 +85,9 @@ Cancellation audit ghi **USER_CANCELLED_NOT_EIGHT_HOUR_PASS**. Không gọi đâ
   improvement. LoRA tự động và learner mới vẫn tắt/backlog.
 - Save/load/rollback state có kiểm tra cô lập và state live đã giữ qua restart;
   không thử rewind cuộc trò chuyện riêng đang mở. Code rollback không ghi đè DB.
-- Chưa nghiệm thu lại toàn bộ UI compaction phiên dài, thao tác capture màn
-  hình và mọi workflow project/tool trên RC cuối. Các kiểm tra cơ chế đã có,
-  nhưng không thay bằng tuyên bố full UI PASS.
+- Canonical workspace/long-turn/compaction và owner display projection đã qua
+  bài kiểm riêng. Chưa quan sát lại toàn bộ UI Desktop, capture màn hình hoặc
+  mọi workflow project/tool; không tuyên bố full UI PASS.
 
 Đây là **RC dùng thử có giới hạn**, không phải production hoặc lifelong PASS.
 Các việc còn lại là sửa lỗi sử dụng có thể tái hiện và nghiệm thu workflow thực

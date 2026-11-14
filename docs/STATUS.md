@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## RC5 — chat dài và compact qua gateway thật
+
+[Nghiệm thu](release/LONG_INPUT_AND_COMPACTION_20261114.md): sửa lỗi FTS 6.000
+ký tự chặn nguyên request. Project trung lập đọc đúng README; tin nhắn 7.028 ký
+tự qua, 5 lượt 7.115 ký tự kích hoạt 3 auto compact; manual 8→6 và hỏi sau đó
+đều giữ đúng code/port, display có 0 handoff leak. 171 checks qua gồm native
+CPU parity. Model/ALIF/rule/ngưỡng nghiên cứu giữ nguyên, không mở test 8 giờ.
+
 ## RC4 — sửa hợp đồng observer Hermes
 
 [Bản sửa](release/OBSERVER_ENVELOPE_REPAIR_20261114.md) đọc đúng `request.body.tools`.

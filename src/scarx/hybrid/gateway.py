@@ -174,6 +174,41 @@ class Gateway:
             },
         }
 
+    def search_turn_evidence(self, query, *, stream, limit=6):
+        if len(query) <= 6000:
+            return self.store.search(query, stream=stream, limit=limit)
+        if len(query) > 65536:
+            raise ValueError("Chat text exceeds the 65536-character processing bound; split the document. Native token limits still apply.")
+        import re
+        terms = list(dict.fromkeys(re.findall(r"[^\W_]+", query, flags=re.UNICODE)))
+        chunks, current, size, skipped = [], [], 0, 0
+        for word in terms:
+            if len(word) > 6000:
+                skipped += 1
+                continue
+            cost = len(word) + bool(current)
+            if current and size + cost > 6000:
+                chunks.append(" ".join(current));current=[];size=0;cost=len(word)
+            current.append(word);size += cost
+        if current:chunks.append(" ".join(current))
+        groups = [self.store.search(chunk, stream=stream, limit=limit) for chunk in chunks]
+        # Interleave every bounded query rather than keeping only a prefix of
+        # the user's text. The original messages still reach the VLM unchanged.
+        selected, seen = [], set()
+        for rank in range(limit):
+            for group in groups:
+                if rank < len(group) and group[rank]["id"] not in seen:
+                    selected.append(group[rank]);seen.add(group[rank]["id"])
+                    if len(selected) == 32:break
+            if len(selected) == 32:break
+        self.store.event("chat_retrieval_budget", {
+            "original_characters":len(query),"FTS_chunks":len(chunks),
+            "FTS_chunk_character_limit":6000,"candidate_pool_limit":32,
+            "oversized_terms_not_searched":skipped,"user_message_modified":False,
+            "retrieval_is_neural_learning":False,
+        }, "runtime")
+        return selected
+
     def prepare_agent_messages(self, body):
         self.validate_request(body)
         messages = copy.deepcopy(body["messages"])
@@ -202,7 +237,7 @@ class Gateway:
             query = " ".join(
                 p.get("text", "") for p in parts if p.get("type") == "text"
             )
-            observations = self.store.search(
+            observations = self.search_turn_evidence(
                 query, stream=stream, limit=6
             ) or self.store.timeline(stream, limit=6, descending=True)
             lower = query.casefold()
@@ -325,7 +360,7 @@ class Gateway:
             query = " ".join(
                 p.get("text", "") for p in parts if p.get("type") == "text"
             )
-            observations = self.store.search(query, stream="conversation", limit=6)
+            observations = self.search_turn_evidence(query, stream="conversation", limit=6)
             if observations:
                 candidates = [e["id"] for e in observations]
                 observations = self.engine.rank_candidates(query, observations)
@@ -567,10 +602,6 @@ class Gateway:
             raise ValueError("At most two images per bounded turn")
         if not text.strip() and not images:
             raise ValueError("Empty turn")
-        if len(text) > 6000:
-            raise ValueError(
-                "Per-turn working input limit is6000characters; not neural memory capacity"
-            )
         # Normal Hermes agent traffic keeps its instructions, history, tool IDs
         # and tool results. The debug panel is not the primary chat surface.
         if (
@@ -656,6 +687,10 @@ class Gateway:
                 return response
             finally:
                 self.engine.end_foreground()
+        if len(text) > 6000:
+            raise ValueError(
+                "Per-turn debug working input limit is6000characters; not neural memory capacity"
+            )
         if images:
             self.engine.begin_foreground()
             try:

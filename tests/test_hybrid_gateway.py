@@ -86,6 +86,35 @@ def gateway(tmp_path):
     value.store.close()
 
 
+def test_long_chat_queries_search_every_chunk_without_rewriting_model_input(gateway):
+    rows=[gateway.store.observe(word,source='owned fixture',stream='conversation')
+          for word in ('firstneedle','centerneedle','lastneedle')]
+    query='firstneedle '+' '.join('term'+str(i) for i in range(1500))+' centerneedle '+' '.join('term'+str(i) for i in range(1500,3000))+' lastneedle'
+    assert 6000<len(query)<65536
+    found=gateway.search_turn_evidence(query,stream='conversation')
+    assert {row['id'] for row in rows}<={row['id'] for row in found}
+    body={'messages':[{'role':'system','content':'KEEP PROJECT CONTEXT'},{'role':'user','content':query}]}
+    prepared=gateway.prepare_agent_messages(body)
+    assert body['messages'][-1]['content']==query
+    assert prepared[-1]['content'][0]['text']==query
+    budget=next(e['payload'] for e in reversed(gateway.store.events()) if e['kind']=='chat_retrieval_budget')
+    assert budget['FTS_chunks']>1 and budget['user_message_modified'] is False
+
+
+@pytest.mark.parametrize('streaming',[False,True])
+def test_Hermes_long_document_reaches_model_in_both_HTTP_modes(gateway,streaming):
+    query='Archived unrelated observation; no configuration change. '*130+'\nGive a brief answer.'
+    body={'messages':[{'role':'system','content':'Keep all instructions'},{'role':'user','content':query}]}
+    if streaming:list(gateway.stream_chat(body))
+    else:
+        def transport_fixture(messages,**kwargs):
+            gateway.backend.received=copy.deepcopy(messages)
+            return {'raw':{'choices':[{'message':{'content':''},'finish_reason':'stop'}]}}
+        gateway.backend.generate=transport_fixture
+        gateway.chat(body)
+    assert gateway.backend.received[-1]['content']==query
+
+
 def test_hermes_history_and_tool_results_are_preserved(gateway):
     messages = [
         {"role": "system", "content": "Use tools and obey project rules."},

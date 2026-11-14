@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.4
+# SCAR-X Hybrid 1.0.0-rc.5
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -46,6 +46,11 @@ Hermes không gửi 8 schema công cụ không liên quan; tác vụ thật và 
 Observer đọc đúng envelope `request.body.tools` của Hermes để không bỏ qua
 quyền đọc file khi kiểm tool loop. Tối đa một probe đọc lại nguồn trong project
 cho mỗi turn; kết quả chưa được xem là nhãn đúng hoặc kỹ năng neural đã học.
+
+Tin nhắn chat dài không còn bị từ chối chỉ vì query truy xuất vượt 6.000 ký tự.
+Gateway chia query FTS thành phần nhỏ, giới hạn pool 32 ứng viên; nội dung gửi
+model giữ nguyên. Trần xử lý văn bản 65.536 ký tự không phải context 65K token;
+context model vẫn 16.384 token và còn phụ thuộc system prompt/history/công cụ.
 
 Xem `KNOWN_LIMITATIONS.md`, `MANIFEST.json`, `ASSETS.json` và `DEPENDENCIES.json`.
 SHA/version/codeoverlay có trong manifest; không xuất token hay cấu hình bí mật.

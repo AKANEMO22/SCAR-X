@@ -1,0 +1,44 @@
+{
+  "verdict": "OWNED_PROJECT_LONG_TURN_AND_CANONICAL_COMPACTION_VERIFIED_NOT_NEURAL_QUALITY_PASS",
+  "baseline_long_turn_HTTP_format_error": true,
+  "accepted_long_turn_characters": 7028,
+  "actual_project_read_calls": 1,
+  "project_read_selector": "runtime readonly prelude; VLM produced the answer",
+  "correct_project_purpose_receipt_and_port": true,
+  "additional_real_turns": 5,
+  "characters_per_additional_turn": 7115,
+  "automatic_compressions": 3,
+  "manual_compression": "8 -> 6 messages",
+  "working_context_tokens": 16384,
+  "max_observed_context_used": 13048,
+  "raw_handoff_rows": 4,
+  "display_handoff_rows": 0,
+  "all_seven_original_fixture_user_texts_retained_in_display": true,
+  "desktop_owner_projection_verified": true,
+  "visual_Desktop_capture_in_this_check": false,
+  "gateway_pid": 55768,
+  "one_native_GPU_pid": 49956,
+  "private_learned_state_preserved_at_restart": true,
+  "live_updates": 5,
+  "new_learning_rule_training_dataset_or_8h_run": false,
+  "native_inference_was_executed_by_acceptance": true,
+  "additional_native_calls_in_this_readonly_audit": 0,
+  "receipt_hashes": {
+    "baseline": "cf49ddf4c25e9689bb09ba32f246494b5d8c028e57831d3fa6b17029414a874e",
+    "workspace": "f4e91ec6fd6c85442706b4cd9cb55174f1476ee7c932d152cf9a19cb9cd35d1d",
+    "context": "2aa83a8fa290f35ae4c60eb084d09b86076514d0491093de3d3b7870aefe657c",
+    "projection": "bd628de604f661f5bfeff39c4e512d35b54e3fc1ec81b1780f3cabcbb651f504"
+  },
+  "harness_errors_preserved": [
+    "invalid surface=desktop; normal desktop omits it",
+    "constant titled create resumed earlier owned session; use unique title/request ID",
+    "legacy session.compress RPC refused; Desktop uses revision-fenced session.mutate"
+  ],
+  "not_proven": [
+    "unseen knowledge retention",
+    "SNN advantage over same LLM+RAG",
+    "learned tool-error causality",
+    "general long-work quality",
+    "all visual Desktop and screen workflows"
+  ]
+}
