@@ -26,13 +26,16 @@ def inspect(run):
     if ROOT / "runs" not in run.parents:
         raise ValueError("Run must be inside this checkout")
     manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+    runner = manifest.get("runner", "scripts/hybrid_shared_endurance.py")
+    if runner not in ("scripts/hybrid_shared_endurance.py", "scripts/hybrid_small_mixed_endurance.py"):
+        raise ValueError("Unregistered endurance runner")
     process = None
     identity_path = run / "process-identity-v1.json"
     identity = json.loads(identity_path.read_text(encoding="utf-8")) if identity_path.exists() else {}
     try:
         candidate = psutil.Process(manifest["pid"])
         if candidate.is_running() and any(
-            Path(value).name == "hybrid_shared_endurance.py"
+            Path(value).resolve() == ROOT / runner
             for value in candidate.cmdline()
         ) and (not identity.get("process_created_epoch")
                or abs(candidate.create_time() - identity["process_created_epoch"]) < .01):

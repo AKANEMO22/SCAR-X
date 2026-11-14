@@ -208,7 +208,12 @@ src/scarx/evaluation/integration_call_budget.py -text
 src/scarx/runtime/maintenance.py -text
 run_hybrid.py -text
 src/scarx/hybrid/config.py -text
-src/scarx/hybrid/backends.py -text
-src/scarx/hybrid/gateway.py -text
+src/scarx/hybrid/backends.py -text whitespace=cr-at-eol
+src/scarx/hybrid/gateway.py -text whitespace=cr-at-eol
 src/scarx/hybrid/qualification.py -text
 src/scarx/hybrid/resources.py -text
+runs/*-small-mixed-endurance-v1-*/** -text -whitespace
+experiments/hybrid-small-mixed-endurance-v1.md -text
+scripts/hybrid_small_mixed_endurance.py -text
+scripts/monitor_hybrid_endurance.py -text
+src/scarx/evaluation/mixed_call_budget.py -text

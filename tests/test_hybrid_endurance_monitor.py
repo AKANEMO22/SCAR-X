@@ -37,3 +37,23 @@ def test_partial_heartbeat_write_is_retried_without_inventing_terminal_state(mon
     assert monitor.read_heartbeat(path)["elapsed_seconds"] == 31
     broken = SimpleNamespace(read_text=lambda **kwargs: "{")
     assert monitor.read_heartbeat(broken) is None
+
+
+def test_small_mixed_monitor_requires_exact_owned_runner_and_creation_time(tmp_path, monkeypatch):
+    run = tmp_path / "runs/owned-small"
+    run.mkdir(parents=True)
+    runner = "scripts/hybrid_small_mixed_endurance.py"
+    (run / "manifest.json").write_text(json.dumps({"pid": 1234, "runner": runner, "source_sha256": {}}))
+    (run / "process-identity-v1.json").write_text(json.dumps({"process_created_epoch": 111}))
+    data = tmp_path / "local/hybrid-v1"
+    data.mkdir(parents=True)
+    with sqlite3.connect(data / "hybrid.sqlite") as db:
+        db.execute("CREATE TABLE events(id INTEGER,kind TEXT,payload TEXT)")
+    command = ["python", str(tmp_path / runner)]
+    process = SimpleNamespace(pid=1234, is_running=lambda: True, create_time=lambda: 111,
+                              cmdline=lambda: command)
+    monkeypatch.setattr(monitor, "ROOT", tmp_path)
+    monkeypatch.setattr(monitor.psutil, "Process", lambda pid: process)
+    assert monitor.inspect(run)["actual_process_live"] is True
+    command[1] = str(tmp_path / "foreign/hybrid_small_mixed_endurance.py")
+    assert monitor.inspect(run)["actual_process_live"] is False
