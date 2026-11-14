@@ -46,6 +46,7 @@ def main():
         '1.0.0-rc.9':('local/feedback-atomic-wire-final-release-20261115/python.xml',301),
         '1.0.0-rc.10':('local/web-routing-final-release-20261115/python.xml',323),
         '1.0.0-rc.11':('local/web-context-release-20261115/python.xml',332),
+        '1.0.0-rc.12':('local/web-context-release-20261115/python.xml',332),
     }
     receipt_path,expected_count=receipts[manifest['version']]
     suite=ET.parse(ROOT/receipt_path).getroot().find('testsuite')
@@ -59,14 +60,14 @@ def main():
     assert 'test_actual_Hermes_request_envelope_enables_one_readonly_probe' in names
     assert 'test_different_drafts_with_identical_text_cannot_steal_each_others_video' in names
     assert 'test_distinct_frame_requests_never_change_a_previous_returned_path' in names
-    if manifest['version'] in ('1.0.0-rc.7','1.0.0-rc.8','1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11'):
+    if manifest['version'] in ('1.0.0-rc.7','1.0.0-rc.8','1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11','1.0.0-rc.12'):
         assert 'test_non_ascii_questions_in_other_languages_are_not_forced_into_vietnamese' in names
         assert 'test_streamed_references_precede_terminal_chunk_and_raw_native_answer_is_logged_separately' in names
-    if manifest['version'] in ('1.0.0-rc.8','1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11'):
+    if manifest['version'] in ('1.0.0-rc.8','1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11','1.0.0-rc.12'):
         assert 'test_actual_ffmpeg_audio_decode_failure_keeps_frame_ingestion_alive' in names
         assert 'test_screen_audio_gaps_reach_model_as_coverage_limits_without_false_transcripts' in names
         assert 'test_upgrade_baseline_is_loaded_from_pinned_predecessor_not_new_worktree' in names
-    if manifest['version'] in ('1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11'):
+    if manifest['version'] in ('1.0.0-rc.9','1.0.0-rc.10','1.0.0-rc.11','1.0.0-rc.12'):
         assert 'test_actual_http_commit_before_response_cache_loss_is_retryable_without_second_learning' in names
         assert 'test_actual_sqlite_abort_returns_retryable_error_and_reverts_all_nested_commits' in names
         assert 'test_actual_socket_response_loss_after_commit_retries_without_learning_twice' in names
@@ -74,10 +75,13 @@ def main():
         assert 'test_bare_search_followup_uses_previous_user_topic_not_assistant_or_tool_instructions' in names
         targeted=ET.parse(ROOT/'local/web-routing-final-targeted-20261115.xml').getroot().find('testsuite')
         assert targeted.attrib['tests']=='102' and targeted.attrib['failures']==targeted.attrib['errors']=='0'
-    if manifest['version']=='1.0.0-rc.11':
+    if manifest['version'] in ('1.0.0-rc.11','1.0.0-rc.12'):
         assert 'test_public_web_context_excludes_unrelated_global_personal_memory' in names
         assert 'test_followup_keeps_actual_user_message_but_review_uses_original_task_and_sources' in names
         assert 'test_host_tool_continuation_is_not_saved_as_the_user_question' in names
+    if manifest['version']=='1.0.0-rc.12':
+        target=ET.parse(ROOT/'local/web-frame-time-final-20261115.xml').getroot().find('testsuite')
+        assert target.attrib['tests']=='35' and target.attrib['errors']==target.attrib['failures']=='0'
     evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
     assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
     sys.path.insert(0,str(ROOT/'src'))
@@ -93,6 +97,8 @@ def main():
             'native_asset_Hermes_dependency_pins_match':True,
             'Python_checks_passed':len(cases)-len(skipped),'native_CPU_parity_skipped':len(skipped),
             'Python_regression_receipt':receipt_path,
+            'full_regression_reused_from_RC11':manifest['version']=='1.0.0-rc.12',
+            'RC12_current_wrapper_review_feedback_targeted_checks':35 if manifest['version']=='1.0.0-rc.12' else None,
             'long_input_and_compaction_evidence':'docs/release/evidence/LONG_INPUT_AND_COMPACTION_20261114.json',
             'request_owned_media_evidence':'docs/release/evidence/MEDIA_ADMISSION_REPAIRS_20261114.json',
             'gateway_pid':native.owner.pid,'native_GPU_pid':native.worker.pid,

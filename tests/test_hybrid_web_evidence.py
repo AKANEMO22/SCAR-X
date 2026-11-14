@@ -1,8 +1,13 @@
 """Source/task binding and persistence, not a source-truth or intelligence test."""
 
 import copy
+import ast
 import json
 import sqlite3
+import re
+import os
+from pathlib import Path
+from typing import Any
 import time
 from types import SimpleNamespace
 
@@ -62,6 +67,38 @@ def test_only_current_turn_matching_web_call_results_are_observations():
     assert supplied_web_sources(original+[{'role':'user','content':'Different task'}])[0]==[]
     changed=copy.deepcopy(original);changed[1]['tool_calls'][0]['function']['name']='search_files'
     assert supplied_web_sources(changed)[0]==[]
+
+
+def host_wrap(raw):
+    source=Path(os.environ['LOCALAPPDATA'])/'hermes/hermes-agent/agent/tool_dispatch_helpers.py'
+    tree=ast.parse(source.read_text(encoding='utf-8'))
+    functions=[n for n in tree.body if isinstance(n,ast.FunctionDef)
+               and n.name in ('_neutralize_delimiters','_maybe_wrap_untrusted')]
+    assert len(functions)==2 and not any(isinstance(n,(ast.Import,ast.ImportFrom)) for f in functions for n in ast.walk(f))
+    scope={'Any':Any,'_DELIMITER_TOKEN_RE':re.compile('untrusted_tool_result',re.IGNORECASE),
+           '_is_untrusted_tool':lambda name:name=='web_search','_UNTRUSTED_WRAP_MIN_CHARS':0}
+    exec(compile(ast.Module(body=functions,type_ignores=[]),str(source),'exec'),scope)
+    return scope['_maybe_wrap_untrusted']('web_search',raw)
+
+
+def test_actual_installed_Hermes_wrapper_is_decoded_only_for_storage(system):
+    gateway,_,_=system;original=turn()
+    original[2]['content']=host_wrap(original[2]['content']);before=copy.deepcopy(original)
+    sources,coverage=supplied_web_sources(original)
+    assert len(sources)==1 and coverage['paired_results']==1 and not coverage['partial']
+    body={'messages':original,'tools':[{'function':{'name':'web_search'}}]}
+    prepared=gateway.prepare_agent_messages(body)
+    assert original==before and prepared[2]['content']==before[2]['content']
+    assert prepared[2]['content'].startswith('<untrusted_tool_result source="web_search">')
+    assert body['_scarx_evidence'][0]['status']=='observed'
+
+
+def test_wrong_wrapper_and_arbitrary_prefix_remain_unparsed_unverified():
+    for content in (host_wrap(turn()[2]['content']).replace('source="web_search"','source="read_file"'),
+                    'Arbitrary prefix\n'+turn()[2]['content']):
+        original=turn();original[2]['content']=content
+        sources,coverage=supplied_web_sources(original)
+        assert sources==[] and coverage['partial']
 
 
 def test_host_tool_continuation_is_not_saved_as_the_user_question(system):
@@ -146,6 +183,8 @@ def test_followup_keeps_actual_user_message_but_review_uses_original_task_and_so
     result=engine.review_once()
     content=json.loads(engine.backend.calls[-1][1]['content'])
     assert content['question']==QUERY and content['user_message']=='tìm kiếm đi'
+    assert content['answer_time_utc'].endswith('+00:00') and content['review_time_utc'].endswith('+00:00')
+    assert 'planned total' in content['time_reference']
     assert content['task_interpretation']['expanded_question'].endswith('tập bao nhiêu')
     assert content['evidence'][0]['modality']=='web_search_snippet'
     assert content['evidence'][0]['status']=='observed'

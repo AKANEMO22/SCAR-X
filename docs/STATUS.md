@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — literature-first trước mọi nghiên cứu mới
+
+[Master plan §0](RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới)
+bắt buộc đọc paper/code tác giả và artifact SCAR-X trước khi đăng ký thí nghiệm.
+[Intake tám hướng liên quan](research/literature/REUSE_DECISIONS_20261115.md)
+ghi REUSE/ADAPT/DEFER, baseline mạnh và những lượt không cần chạy lại.
+BrainTrace upstream vẫn trùng pin đã kiểm; không rerun132 cells. Chưa mở nghiên
+cứu mới hoặc thay gate. Runtime web/review sửa riêng, không neural-quality PASS.
+
 ## RC10 — câu hỏi mới nhất dùng web, không tìm file
 
 [Root cause/sửa routing](release/WEB_SEARCH_ROUTING_20261115.md): tool web đã có

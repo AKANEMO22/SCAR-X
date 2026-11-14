@@ -6,6 +6,7 @@ import json
 import threading
 import time
 import uuid
+from datetime import datetime, timezone
 import numpy as np
 from .config import HybridConfig
 from .learner import ACTIONS, LocalALIF, features
@@ -570,6 +571,9 @@ class HybridEngine:
                     "answer_id": identifier,
                     "question": (record.get("task_question") or record["question"])[:1000],
                     "user_message": record["question"][:1000],
+                    "answer_time_utc": datetime.fromtimestamp(record["created"], timezone.utc).isoformat(),
+                    "review_time_utc": datetime.now(timezone.utc).isoformat(),
+                    "time_reference": "Assess latest/current claims at answer_time_utc; a planned total is not a currently released index.",
                     "task_interpretation": record.get("task_interpretation"),
                     "web_coverage": record.get("web_coverage"),
                     "generated_answer_unverified": record["answer"][:2200],

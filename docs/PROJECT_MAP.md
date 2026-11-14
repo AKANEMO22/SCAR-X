@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Literature-first](RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới):
+master giữ gate; [reuse decisions](research/literature/REUSE_DECISIONS_20261115.md)
+và `docs/research/literature/sources/source-check-20261115.json` giữ nguồn/pin,
+khoảng trống, quyết định không lặp lại nghiên cứu đã biết. Không tự mở DEV.
+
 [Web routing](release/WEB_SEARCH_ROUTING_20261115.md): `src/scarx/hybrid/web_routing.py`
 phân biệt explicit public/freshness/follow-up với local/private scope. Gateway
 gọi tool Hermes thật, không dựng search results. Tests ở

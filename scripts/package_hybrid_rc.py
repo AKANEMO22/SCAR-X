@@ -93,7 +93,7 @@ def overlay_candidates(root):
             raise ValueError('Candidate differs from the qualified exact-source P0 recipe')
         legacy = raw
         followup_recipe = root/'integrations/hermes/atomic_feedback_patch.py'
-        followup_audit = root/'docs/release/evidence/WEB_CONTEXT_RELEASE_SOURCE_20261115.json'
+        followup_audit = root/'docs/release/evidence/WEB_WRAPPER_TIME_SOURCE_20261115.json'
         followup = None
         if followup_recipe.exists() or followup_audit.exists():
             if not followup_recipe.is_file() or not followup_audit.is_file():
@@ -110,7 +110,7 @@ def overlay_candidates(root):
             if digest(raw)!=qualification['after_sha256'][target]:
                 raise ValueError('Atomic feedback result differs from tested source')
             followup={'recipe':'integrations/hermes/atomic_feedback_patch.py',
-                      'audit':'docs/release/evidence/WEB_CONTEXT_RELEASE_SOURCE_20261115.json',
+                      'audit':'docs/release/evidence/WEB_WRAPPER_TIME_SOURCE_20261115.json',
                       'recipe_sha256':digest(recipe_bytes),'audit_sha256':digest(followup_audit.read_bytes()),
                       'legacy_qualified_candidate_sha256':digest(legacy)}
         if (root/target).read_bytes() not in (baseline,legacy,raw):
