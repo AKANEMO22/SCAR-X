@@ -73,3 +73,10 @@ Smallmixed8h32cd13 vẫn có actualPID46940/source36files nguyên vẹn khi đo;
 diện ghi0neuralforward/update/VLMcall và không cộng số liệu audit vào live.
 Main và R13 giữ nguyên. Goal toàn phần chưa đạt, tiếp tục PIVOT input/credit/
 representation/retention; đây là thêm bằng chứng về nguyên nhân cần sửa.
+
+Theo dõi UI sau đó: đã thấy panel hiện đúng dữ liệu40c5f3 trên localhost thật.
+Banner `Failed to fetch` cũ còn treo sau khi poll đã hồi phục; nay tách lỗi kết
+nối, lỗi runtime và lỗi thao tác. Poll thành công chỉ xóa cảnh báo kết nối,
+không che lỗi thao tác hoặc lỗi backend đang có.17tracechecks cuối qua, có
+controlledtransport failure/recovery riêng (không modelinference), nguồn/log ở
+`ui-followup-v1`. Không restart gateway hoặc sửa sourcePython của32cd13.

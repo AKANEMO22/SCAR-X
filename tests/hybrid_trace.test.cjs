@@ -94,6 +94,28 @@ test("input boundary audit is shown as data loss, never a learned quality gain",
   assert.equal(nodes.has("updates"), false);
 });
 
+test("successful reconnect clears network warning without erasing action or runtime errors", async () => {
+  const { nodes, sandbox } = setup();
+  vm.runInContext("error('Owned action failure: draft must stay')", sandbox);
+  sandbox.fetch = async () => { throw Error("Controlled transport disconnect, no model inference"); };
+  await vm.runInContext("poll()", sandbox);
+  assert.match(nodes.get("connection-error").textContent, /tự thử lại/);
+  assert.match(nodes.get("error").textContent, /Owned action failure/);
+  const status = { phase: "fixture transport only", failure: "Owned runtime failure",
+    resources: { rss_bytes: 0, limit_bytes: null }, neural: { active: 0, hidden: 128, updates: 5, hidden_updates: 5 },
+    goals: [], events: [], streams: [], public_topics: [], question: null, ready: false,
+  };
+  sandbox.fetch = async () => ({ ok: true, json: async () => status });
+  await vm.runInContext("poll()", sandbox);
+  assert.equal(nodes.get("connection-error").textContent, "");
+  assert.match(nodes.get("error").textContent, /Owned action failure/);
+  assert.equal(nodes.get("runtime-error").textContent, "Owned runtime failure");
+  status.failure = null;
+  await vm.runInContext("poll()", sandbox);
+  assert.equal(nodes.get("runtime-error").textContent, "");
+  assert.match(nodes.get("error").textContent, /Owned action failure/);
+});
+
 test("stale heartbeat warns without claiming a missing process is terminal", () => {
   const { nodes, event } = setup();
   event({ actor: "orchestrator", kind: "shared_endurance.heartbeat",
