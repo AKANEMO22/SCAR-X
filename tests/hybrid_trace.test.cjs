@@ -248,5 +248,11 @@ test("ASR soak is a real component profile separate from deployed model and trai
     actual_transcript:"Actual fixture transcript for DOM test only",seconds:1.7,RTF:.17,native_CUDA_FP32_verified:true}});
   const output=nodes.get("asr-soak-text").children[0].children.map(n=>n.textContent).join("\n");
   assert.match(output,/RTF 0.170/);assert.match(output,/CUDA\/FP32 đã kiểm log/);
+  event({actor:"orchestrator",kind:"ASR_small_soak.completed",payload:{run_id:"owned-asr-soak",
+    verdict:"COMPONENT_ONLY",complete_calls:165,elapsed_seconds:1800.532,completed_audio_seconds:1808.6,
+    RTF_p95:.37696,min_sampled_global_free_MiB:1086}});
+  const final=nodes.get("asr-soak-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(final,/165 lượt hoàn tất · 30.01 phút/);
+  assert.match(final,/RTFp95 0.377 · minVRAM trống đã lấy mẫu 1086 MiB/);
   assert.equal(nodes.has("updates"),false);
 });

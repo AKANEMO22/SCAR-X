@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Whispersmall FP32 componentsoak](WHISPER_SMALL_SOAK_RESULT_20261114.md) đãqua
+30phút/165calls với VLM giữGPU; ASR củaHermes vẫnbase vì resolver/integrity
+cần nối/test đúngprofile sau original8hterminal. Khôngfake revision/path.
+
 [Bộ đo clientroots và ASRsmall soak](RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
 bản vá đang overlayP0, chưa đụng sourceactive. ASRsmall chạy profilethử30min,
 Hermes vẫnbase; xemmonitor/PID thật và rawtranscripts, không gọi soak là học.

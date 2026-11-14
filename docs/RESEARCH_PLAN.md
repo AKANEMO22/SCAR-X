@@ -1,5 +1,10 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**ASRsmall soak kết thúc:**165actualCUDAFP32calls/1800,532s, componentgate/audit
+qua,minfree1086MiB,p95RTF0,377. Không phải QA/learning/P3PASS hoặc ASRlive đãđổi;
+nativeprofile resolver/identityP0 vẫn cần sau source8hterminalaudit.
+[Raw và giới hạn](hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md).
+
 **Clientroot/ASRcomponent14/11:** P0 xác nhận discovery cũ tìm gateway khi bật;
 giữ explicit+dynamicroots/attachmentAPI trong overlay, chưa cài activefile.
 NativeWhispersmallFP32 đãqua30smechanicalpreflight và chạy30minpacedsoak riêng;

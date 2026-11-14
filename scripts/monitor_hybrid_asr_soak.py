@@ -37,9 +37,10 @@ def inspect(run):
             for rel,expected in manifest['source_sha256'].items()),
         'qualified_monitor_overlay_matches':overlay.is_file() and hashlib.sha256(overlay.read_bytes()).hexdigest()==
             '8774db6c6f91adb8bcb2f990341aa086eebe88f57b047521837603829e0af2c8',
-        'elapsed_seconds':heartbeat.get('elapsed_seconds') if heartbeat else None,
-        'requested_seconds':manifest['seconds'],'complete_calls':heartbeat.get('complete_calls') if heartbeat else None,
-        'completed_audio_seconds':heartbeat.get('completed_audio_seconds') if heartbeat else None,
+        'elapsed_seconds':final.get('elapsed_seconds') if final else heartbeat.get('elapsed_seconds') if heartbeat else None,
+        'last_heartbeat_elapsed_seconds':heartbeat.get('elapsed_seconds') if heartbeat else None,
+        'requested_seconds':manifest['seconds'],'complete_calls':final.get('complete_calls') if final else heartbeat.get('complete_calls') if heartbeat else None,
+        'completed_audio_seconds':final.get('completed_audio_seconds') if final else heartbeat.get('completed_audio_seconds') if heartbeat else None,
         'heartbeat_age_seconds':time.time()-(run/'heartbeat.json').stat().st_mtime if heartbeat else None,
         'final_verdict':final.get('verdict') if final else None,'live_ASR_changed':False,
         'observation_does_not_restart_or_modify_job':True}

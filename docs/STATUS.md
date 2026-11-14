@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Whisper-small30min kết thúc —14/11
+
+[Kết quả/audit292b32](hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md):actualworker
+terminal sau1800,532s;165CUDA0FP32calls,1808,60audioseconds lặp/32nguồn345,76s,
+RTFp95~0,377,551activeresourcesamples,minfree1086MiB,0lỗi/preemption.
+Datachecks/source/log/rootunion qua;169aggregatechargedattempts≤256 gồm
+failedpreflight. ComponentengineeringPASS, chưaASRlivepromotion/videoP1/P3.
+ASRresolver/identity hardcodedbase cònphảinối/test theo plan sau8hsourceunlock.
+
 ## Resource-root P0 và activeASRsmall soak —14/11
 
 [Report](hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):actualP0 cho thấy old

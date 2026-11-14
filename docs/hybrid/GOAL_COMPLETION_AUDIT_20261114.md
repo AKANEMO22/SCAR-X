@@ -150,3 +150,12 @@ no liveASRchange/newneuralupdates. This is meaningful progress, not completion
 or unchangedstatus. Bothactualjobs need terminalaudit; fullpolicy/representation/
 retention remainunproven and newlocalruleapproval stayspending. No whole-goal
 externalimpasse while jobverification/deploymentqualification continues.
+
+Progress292b32terminal:165actualCUDAFP32ASRcalls/1800.532s, nativeworkerexit
+verified; independentdataaudit checks all logs/transcripts/source/budget and
+recomputesRTFp95.37696/minfree1086MiB/551activesamples, noerrors. Componentonly,
+not livepromotion/videoP3/SNNlearning.32uniqueoldutterances/345.76saudio remain
+onlyexistingDEV, repeated1808.6s not165independentqualitycases. ExactASRprofile
+integrationP0plan ready; no source8h change before terminalaudit. Fullgoal still
+active: broaderproduction/learningquality and rootdeployment unresolved;
+newruleapproval pending, not an all-work impasse while8hjob/engineering remain.

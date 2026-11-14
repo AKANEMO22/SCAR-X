@@ -36,13 +36,18 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 function renderSmallSoak(){
 if(!smallSoak)return;const p=$('asr-soak-summary');clear('asr-soak-summary');p.classList.remove('hidden');
 para(p,'Whisper-small FP32 · kiểm thành phần · '+smallSoak.run_id);
-if(smallSoak.finished)para(p,smallSoak.verdict);else{
+if(smallSoak.finished){
+para(p,smallSoak.verdict);
+if(typeof smallSoak.complete_calls==='number')para(p,smallSoak.complete_calls+' lượt hoàn tất · '+(smallSoak.elapsed_seconds/60).toFixed(2)+' phút vận hành · '+(smallSoak.completed_audio_seconds/60).toFixed(1)+' phút audio lặp.');
+if(typeof smallSoak.RTF_p95==='number')para(p,'RTFp95 '+smallSoak.RTF_p95.toFixed(3)+' · minVRAM trống đã lấy mẫu '+smallSoak.min_sampled_global_free_MiB+' MiB.');
+}else{
 const cadence=smallSoak.requested_seconds<60?Math.floor(smallSoak.elapsed_seconds)+'/'+smallSoak.requested_seconds+' giây':Math.floor(smallSoak.elapsed_seconds/60)+'/'+Math.floor(smallSoak.requested_seconds/60)+' phút';
 para(p,cadence+' · '+smallSoak.complete_calls+' lượt phiên âm · '+(smallSoak.completed_audio_seconds/60).toFixed(1)+' phút audio có sẵn lặp lại.');
 para(p,'VRAM vật lý trống lúc lấy mẫu: '+smallSoak.GPU_headroom.free_MiB+' MiB.','muted');
 if(Date.now()/1000-smallSoak.received_epoch>90)para(p,'Chưa nhận nhịp ASR mới; cần kiểm PID để biết tiến trình còn sống.','error');
 }
 para(p,'ASR của Hermes vẫn giữ nguyên. Đây là soak riêng, không phải tự học hoặc dữ liệu TEST mới.','muted');
+if(smallSoak.audit)para(p,'Audit dữ liệu: '+smallSoak.audit.verdict+' · '+smallSoak.audit.unique_audio_source_ids+' audio nguồn duy nhất.','muted');
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
@@ -58,6 +63,7 @@ p.prepend(a);while(p.children.length>6)p.lastChild.remove();
 if(e.kind==='ASR_small_soak.completed'){
 smallSoak={...e.payload,finished:true,received_epoch:e.created||Date.now()/1000};renderSmallSoak();
 }
+if(e.kind==='ASR_small_soak.independent_audit'&&smallSoak?.run_id===e.payload.run_id){smallSoak.audit=e.payload;renderSmallSoak();}
 if(e.kind==='endurance_data_audit.snapshot'&&(!lab||e.payload.parent_endurance_run===lab.run_id)){
 const p=$('endurance-scope');clear('endurance-scope');p.classList.remove('hidden');
 para(p,'Audit dữ liệu · '+e.payload.parent_endurance_run);para(p,e.payload.verdict);

@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[ASRsmall componentsoak hoàn tất](hybrid/WHISPER_SMALL_SOAK_RESULT_20261114.md):
+292b32terminal/source/raw165calls, audit_hybrid_asr_soak.py và puregate/tests;
+plot_hybrid_asr_soak.py giữ actualtime/callorder. Actualstorage/modelpath tiếp
+tục trong integrationP0plan, chưa thaysource8h/HermesASR hoặc main.
+
 [Resource roots và ASRpacedsoak](hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
 integrations/hermes/resource_client_roots_patch.py exact-sourceoverlay,
 probe_hybrid_client_roots_p0.py; evaluation/hermes_resource_roots.py auditonly.

@@ -1,5 +1,9 @@
 # Bản sửa bộ đo đã có P0; Whisper-small đang kiểm thành phần
 
+**Cập nhật cuối:** [lượt30phút đã hoàn tất và audit](WHISPER_SMALL_SOAK_RESULT_20261114.md),
+165CUDAFP32calls,RTFp95~0,377/minfree1086MiB,0lỗi. Các mục “đang chạy” bên dưới
+là lịch sử khởi chạy; ASRlive vẫnbase, source8h/resourcepatch chưa thay.
+
 **Chưa cài resourcepatch hoặc thay ASR đang dùng trong Hermes.** Hai lượt thật
 đang chạy độc lập: mixedendurance8h554c19 và pacedWhispersmall30phút292b32.
 NativeVLM39372 vẫn là một worker dùng chung, ALIF live không nhận các dữ liệu
