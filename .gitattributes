@@ -295,3 +295,5 @@ tests/test_hybrid_screen_audio.py text eol=lf
 src/scarx/evaluation/history_ablation_p0.py -text
 scripts/run_hybrid_history_p0.py -text
 tests/test_history_ablation_p0.py text eol=lf
+runs/*-history-ablation-p0-v1/** -text -whitespace
+scripts/audit_hybrid_history_p0.py text eol=lf

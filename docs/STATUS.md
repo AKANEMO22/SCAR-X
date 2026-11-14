@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## P0 history — dừng đúng gate, Hermes vẫn GPU
+
+[Kết quả và root cause](hybrid/HISTORY_P0_RESULT_20261115.md):177/600 charged
+fixture calls gồm34 diagnostic, không qua parity current-hidden tại neuron sát
+ngưỡng cứng. Frozen/readout-only qua ở seed đầu; hai rule mới và seed hai chưa
+chạy đủ, không P0/DEV/retention PASS. Antigravity3.8Flash high/effort high hỗ trợ
+math review43.7s; Codex kiểm độc lập. RC8/liveweights/RNG/replay giữ nguyên.
+
 ## 15/11 — tiếp tục mục tiêu gốc và sửa audio fault
 
 [Completion audit](release/GOAL_COMPLETION_AUDIT_20261115.md) giữ đầy đủ yêu cầu:

@@ -1,0 +1,37 @@
+{
+  "verdict": "P0_RECORDED_PARITY_GATE_FAILURE_CONFIRMED_NOT_PASS",
+  "actual_attempted_model_calls_including_diagnostic": 177,
+  "maximum_attempts_arm_seed": 87,
+  "charged_call_span_seconds": 106.330237865448,
+  "charged_seeds": [
+    260313
+  ],
+  "intended_two_seed_full_matrix_completed": false,
+  "completed_control_cells": [
+    "frozen",
+    "readout_only"
+  ],
+  "audited_hidden_math_records": 17,
+  "completed_GPU_steps_before_failure": 57,
+  "first_spike_divergence_in_failed_step": {
+    "tick": 7,
+    "neurons": [
+      91
+    ],
+    "CPU_margin": [
+      0.0
+    ],
+    "GPU_margin": [
+      -1.7881393432617188e-07
+    ]
+  },
+  "recomputed_loss_gap": 0.011901463753982738,
+  "current_only_and_matched_learning_trajectories_executed": false,
+  "unchanged_threshold_not_loosened_after_failure": true,
+  "resource_scope": "research process only; VLM/Hermes not included, GPU points not continuous peaks",
+  "peak_research_process_RSS_bytes": 757800960,
+  "sampled_physical_free_GPU_min_MiB": 2769,
+  "new_forward_backward_or_learning_in_this_audit": 0,
+  "P0_quality_retention_or_production_PASS": false,
+  "interpretation": "FP32 near-threshold hard spike divergence observed; not evidence CPU or GPU semantics is superior, nor proof of a hidden-history benefit"
+}

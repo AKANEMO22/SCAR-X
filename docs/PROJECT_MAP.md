@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[History P0](hybrid/HISTORY_P0_RESULT_20261115.md):
+`src/scarx/evaluation/history_ablation_p0.py` là bản copy phương thức được pin/
+AST kiểm, không serving import. Runner `scripts/run_hybrid_history_p0.py` và
+auditor `scripts/audit_hybrid_history_p0.py` tách thực thi khỏi tính lại dữ liệu;
+`tests/test_history_ablation_p0.py` không gọi model.learn. Global charged ledger
+ở `local/`, không được reset khi rerun. Source/result/threshold diagnostic được
+giữ; model live không nhận checkpoint research.
+
 [RC upgrade custody](release/RC_UPGRADE_PATH_20261115.md): predecessor pins tại
 `release/hybrid/payload-files.json`, parser/packer tại `scripts/package_hybrid_rc.py`,
 source gate/CAS/rollback tại `release/hybrid/manage.py`. Actual RC7 clone replay

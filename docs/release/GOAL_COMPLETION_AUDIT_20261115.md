@@ -1,5 +1,12 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Later P0 update:** user steered the pending isolated P0 to retain GPU and use
+Antigravity. [The actual P0](../hybrid/HISTORY_P0_RESULT_20261115.md) stopped at
+the unchanged current-hidden parity gate:177 charged calls including diagnostic,
+no DEV/live promotion. The unapproved-research statements below describe the
+release-audit scope before that steering; no broad research authorization or
+scientific success is inferred. The original objective remains incomplete.
+
 **The full objective remains incomplete.** Operational repairs are real;
 stronger intelligence, learned causal tool recovery and retention are not
 established. The preceding goal turn made progress through RC7 code, actual

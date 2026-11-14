@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**P0 history 15/11 — STOP, không DEV:** [actual result](hybrid/HISTORY_P0_RESULT_20261115.md)
+dừng tại parity current-hidden;177/600 calls cả diagnostic, neuron sát ngưỡng
+cứng phát xung khác giữa FP32 CPU/CUDA. Không nới gate hoặc thử tiếp hai rule mới
+để che lỗi. Fullsaved livearrays/RNG/replay và55 payload RC8 giữ nguyên; Hermes
+vẫn GPU. Nhận xét Antigravity là tham khảo được kiểm toán, không approval.
+
 **15/11 — P0 history cô lập:** người dùng phản hồi câu hỏi P0 bằng yêu cầu giữ
 mode GPU và tận dụng Antigravity CLI. [Protocol P0](../experiments/hybrid-update-history-p0-v1.md)
 giữ scope câu hỏi:≤600 fixture updates/≤5phút, hai seed kỹ thuật, không DEV hoặc
