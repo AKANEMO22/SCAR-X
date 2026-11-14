@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**FullqueryP014/11:** [shadow7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md)
+khắc phục16wordprefix ở bản saoSQLite,21fixedcases/1028records/10shortcompat
+qua independentSQL/dataaudit. Chưa nạpStorelive vì32cd13đangđo;0newneuralcalls,
+khôngrepresentation/retention/productionclaim.128wordneuralinputloss vàcredit
+vẫn riêng; không nới nghiêncứugates từ cải thiệntruyxuất.
+
 **InputbudgetP014/11:** [40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md)
 cho thấy longquery có thể đẩy nội dungevent/error khỏi128wordprefix;FTS cắt
 16từ đầu. Data-onlyarrays/SQLite được đối chiếu,0newneuralcalls. Không giải

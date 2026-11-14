@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Fullqueryshadow7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md):
+integrations/hermes/full_query_retrieval_patch.py exactStoreSHA recipe;
+accept_hybrid_full_query_retrieval.py actualSQLite/coldbackup/latency/heap,
+verify_hybrid_full_query_retrieval.py literalterms+readonlySQL replay. Source/
+cases/failedauditor/finalaudit kept inrun, chưa đổiStore active đang khóa8h.
+
 [Inputboundary40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md):
 audit_hybrid_input_budget.py chụp actualmethod input bằng tap khôngneural,
 verify_hybrid_input_budget.py tái tính hasharrays và SQLiteFTS; rawcases/NPZ/

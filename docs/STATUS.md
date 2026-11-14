@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## FullqueryretrievalP0 —14/11
+
+[7a9ee0](hybrid/FULL_QUERY_RETRIEVAL_P0_20261114.md): exact-source shadowSQLite
+giữ toàn request≤6000characters, không16wordprefix.21case trên1028records qua
+rawSQL/datacrosscheck;keyword17/32/129/cuối câu tìm được,10shortqueryorderedIDs
+nguyên. MaxSQLwall16ms cótracing/peakPythonheap358157byte khôngwholeRAM/speed
+benchmark.2SQLitechecks+18Nodechecks qua. Chưa nạpStorelive/source8h,0neuralcalls;
+không biến retrievalfix thành hiddenlearninggain, vẫnthiếu representation/credit.
+
 ## Inputbudgetaudit —14/11
 
 [40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md): input-onlytap actualrelevance,

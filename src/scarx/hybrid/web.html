@@ -14,7 +14,7 @@
 <div id="asr-soak-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Kiểm toán độ bền và phạm vi tài nguyên</summary><div id="endurance-scope" class="goal hidden"></div><div id="client-root-summary" class="goal hidden"></div></details>
-<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="input-budget-summary" class="goal hidden"></div><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
+<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="input-budget-summary" class="goal hidden"></div><div id="retrieval-p0-summary" class="goal hidden"></div><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
 <details><summary>Đáp án và phiên âm thực từ các lượt đo</summary><div id="asr-soak-text" class="feed"></div><div id="cold-memory-answers" class="feed"></div><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
@@ -52,6 +52,13 @@ if(smallSoak.audit)para(p,'Audit dữ liệu: '+smallSoak.audit.verdict+' · '+s
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='full_query_retrieval.data_verified'){
+const r=e.payload,p=$('retrieval-p0-summary');clear('retrieval-p0-summary');p.classList.remove('hidden');
+para(p,'Bản vá truy xuất trên SQLite cô lập · '+r.run_id);
+para(p,r.fixture_records+' bản ghi · '+r.ordered_short_query_compatibility_cases+' ca ngắn giữ đúng thứ tự nguồn · các từ phân biệt ở cuối câu đã có trong MATCH.');
+para(p,'Max SQLwall có tracing '+(r.maxima.candidate_seconds*1000).toFixed(1)+'ms · peakPythonheap '+fmt(r.maxima.candidate_peak_python_bytes)+' byte; không phải peakRAM toàn hệ.');
+para(p,'Chưa nạp vào live. Đây là thay đổi truy xuất dữ liệu; 0 neural/VLMcalls và chưa có bằng chứng SNN học hoặc quality tổng quát tốt hơn.','muted');
+}
 if(e.kind==='input_budget_audit.completed'){
 const r=e.payload,p=$('input-budget-summary');clear('input-budget-summary');p.classList.remove('hidden');
 para(p,'Kiểm toán đầu vào · '+r.run_id);

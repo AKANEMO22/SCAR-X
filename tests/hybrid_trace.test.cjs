@@ -116,6 +116,20 @@ test("successful reconnect clears network warning without erasing action or runt
   assert.match(nodes.get("error").textContent, /Owned action failure/);
 });
 
+test("shadow query repair reports actual SQLite cost separately from neural or live capability", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "full_query_retrieval.data_verified", payload: {
+    run_id: "owned-shadow-SQL", fixture_records: 1028, ordered_short_query_compatibility_cases: 10,
+    maxima: { candidate_seconds: .016, candidate_peak_python_bytes: 358157 },
+  }});
+  const text = nodes.get("retrieval-p0-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /1028 bản ghi/);
+  assert.match(text, /10 ca ngắn giữ đúng thứ tự nguồn/);
+  assert.match(text, /Chưa nạp vào live/);
+  assert.match(text, /0 neural\/VLMcalls/);
+  assert.equal(nodes.has("updates"), false);
+});
+
 test("stale heartbeat warns without claiming a missing process is terminal", () => {
   const { nodes, event } = setup();
   event({ actor: "orchestrator", kind: "shared_endurance.heartbeat",
