@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**15/11 — P0 history cô lập:** người dùng phản hồi câu hỏi P0 bằng yêu cầu giữ
+mode GPU và tận dụng Antigravity CLI. [Protocol P0](../experiments/hybrid-update-history-p0-v1.md)
+giữ scope câu hỏi:≤600 fixture updates/≤5phút, hai seed kỹ thuật, không DEV hoặc
+live promotion. CPU chỉ đối chiếu số học, Hermes vẫn GPU. [RC8](release/CURRENT_RELEASE.md)
+đã cài audio isolation/upgrade custody; không đổi ALIF/precision hoặc qualitygates.
+Các pending/small8h-active notices bên dưới là lịch sử, không mở lại test đã hủy.
+
 **Release repair hiện tại:** [admission video và immutable snapshot](release/MEDIA_ADMISSION_REPAIRS_20261114.md)
 giải quyết hai finding kỹ thuật có repro; không đổi ALIF/local learning hoặc
 kết luận khoa học. Model vẫn có lỗi ngôn ngữ/dẫn timestamp; không ghi chất lượng
