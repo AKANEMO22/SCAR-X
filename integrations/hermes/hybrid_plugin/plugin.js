@@ -630,10 +630,26 @@ async function attachVideos(ctx, draft) {
     return null;
   }
 }
+const QUESTION_CSS = ".sxq{box-sizing:border-box;display:grid;gap:12px;width:100%;min-width:0;padding:14px;margin:0 0 10px;border:1px solid var(--ui-stroke-secondary,#343b43);border-radius:12px;background:var(--ui-bg-secondary,#151a20);color:var(--ui-text-primary,#e4e8ec);font:14px/1.5 system-ui,sans-serif}.sxq *{box-sizing:border-box}.sxq-header{display:flex;align-items:center;gap:8px;color:var(--ui-text-secondary,#a3abb3);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}.sxq-dot{width:6px;height:6px;flex:none;border-radius:50%;background:var(--ui-accent,#80c9b0)}.sxq-question{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;font-weight:500;line-height:1.55}.sxq textarea{display:block;width:100%;min-width:0;min-height:64px;margin:0;padding:10px 12px;resize:vertical;border:1px solid var(--ui-stroke-secondary,#343b43);border-radius:8px;background:var(--ui-bg-primary,#10141a);color:inherit;font:inherit;outline:none}.sxq textarea::placeholder{color:var(--ui-text-tertiary,#858e97)}.sxq textarea:focus-visible{border-color:var(--ui-accent,#80c9b0);box-shadow:0 0 0 2px color-mix(in srgb,var(--ui-accent,#80c9b0) 16%,transparent)}.sxq-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.sxq-actions,.sxq-rating{display:flex;gap:6px;align-items:center}.sxq-rating{color:var(--ui-text-secondary,#a3abb3);font-size:12px}.sxq button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:32px;margin:0;padding:6px 11px;border:1px solid transparent;border-radius:7px;background:transparent;color:inherit;font:inherit;white-space:nowrap;cursor:pointer}.sxq button:hover{background:var(--ui-bg-tertiary,#242c34)}.sxq button:focus-visible{outline:2px solid var(--ui-accent,#80c9b0);outline-offset:2px}.sxq button:disabled{opacity:.45;cursor:default}.sxq .sxq-rate{width:30px;height:30px;min-height:30px;padding:6px}.sxq .sxq-rate[aria-pressed=true]{color:var(--ui-accent,#80c9b0);background:color-mix(in srgb,var(--ui-accent,#80c9b0) 12%,transparent);border-color:var(--ui-stroke-secondary,#343b43)}.sxq .sxq-skip{color:var(--ui-text-secondary,#a3abb3)}.sxq .sxq-submit{background:var(--ui-accent,#80c9b0);color:var(--ui-on-accent,#10261e);font-weight:600}.sxq .sxq-submit:hover{filter:brightness(1.08)}@media(max-width:520px){.sxq{padding:12px;gap:10px}.sxq-footer{align-items:flex-start}.sxq-actions{margin-left:auto}.sxq-rating-label{display:none}}";
+
+function questionRatingIcon(positive) {
+  return jsxs("svg", {
+    width: 16, height: 16, viewBox: "0 0 24 24", fill: "none",
+    stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round",
+    strokeLinejoin: "round", "aria-hidden": true,
+    style: positive ? undefined : { transform: "rotate(180deg)" },
+    children: [
+      jsx("path", { d: "M7 10v10H3V10z" }),
+      jsx("path", { d: "M7 19h10a2 2 0 0 0 2-1.7l1-6A2 2 0 0 0 18 9h-5l1-4a2 2 0 0 0-2-2L7 10" }),
+    ],
+  });
+}
+
 function LearningQuestion({ ctx }) {
   const model = useValue(host.state.model),
     [reply, setReply] = useState(""),
-    [busy, setBusy] = useState(false);
+    [busy, setBusy] = useState(false),
+    [rating, setRating] = useState(null);
   const q = useQuery({
     queryKey: [ID, "pending-question"],
     queryFn: () => ctx.rest("/status?after=2147483647"),
@@ -641,6 +657,11 @@ function LearningQuestion({ ctx }) {
     retry: 1,
     enabled: String(model || "").includes("scarx-hybrid"),
   });
+  const pendingId = q.data?.question?.id;
+  useEffect(() => {
+    setReply("");
+    setRating(null);
+  }, [pendingId]);
   useEffect(() => {
     let last = 0;
     const ping = () => {
@@ -669,6 +690,7 @@ function LearningQuestion({ ctx }) {
           ...(typeof helpful === "boolean" ? { helpful } : {}) },
       });
       setReply("");
+      setRating(null);
       void q.refetch();
     } catch (e) {
       host.notifyError(e.message);
@@ -676,44 +698,59 @@ function LearningQuestion({ ctx }) {
       setBusy(false);
     }
   }
-  return jsxs("div", {
-    style: {
-      padding: 10,
-      border: "1px solid var(--ui-stroke-secondary)",
-      borderRadius: 8,
-      marginBottom: 8,
-    },
+  const canSend = !busy && (!!reply.trim() || rating === false);
+  const submit = () => {
+    if (!canSend) return;
+    void answer(reply.trim() || "Câu hỏi này chưa hữu ích cho tác vụ.", rating);
+  };
+  return jsxs("form", {
+    className: "sxq",
+    "aria-label": "Hỏi để học từ SCAR-X",
+    onSubmit: (event) => { event.preventDefault(); submit(); },
     children: [
-      jsx("b", { children: "SCAR-X hỏi để học: " + question.question }),
-      jsx("input", {
+      jsxs("div", { className: "sxq-header", children: [
+        jsx("span", { className: "sxq-dot", "aria-hidden": true }),
+        jsx("span", { children: "SCAR-X · Hỏi để học" }),
+      ]}),
+      jsx("p", { className: "sxq-question", children: question.question }),
+      jsx("textarea", {
         value: reply,
         onChange: (e) => setReply(e.target.value),
-        placeholder: "Trả lời…",
-      }),
-      jsx("button", {
-        type: "button",
-        disabled: busy || !reply.trim(),
-        onClick: () => void answer(reply),
-        children: "Trả lời",
-      }),
-      jsx("button", {
-        type: "button",
-        disabled: busy || !reply.trim(),
-        onClick: () => void answer(reply, true),
-        children: "Trả lời · hữu ích",
-      }),
-      jsx("button", {
-        type: "button",
+        onKeyDown: (event) => {
+          if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            submit();
+          }
+        },
+        rows: 2,
+        maxLength: 4000,
         disabled: busy,
-        onClick: () => void answer("Câu hỏi này chưa hữu ích cho tác vụ.", false),
-        children: "Chưa hữu ích",
+        "aria-label": "Trả lời SCAR-X",
+        placeholder: "Nhập câu trả lời của bạn…",
       }),
-      jsx("button", {
-        type: "button",
-        disabled: busy,
-        onClick: () => void answer("bỏ qua"),
-        children: "Bỏ qua",
-      }),
+      jsxs("div", { className: "sxq-footer", children: [
+        jsxs("div", { className: "sxq-rating", children: [
+          jsx("span", { className: "sxq-rating-label", children: "Câu hỏi hữu ích?" }),
+          ...[[true, "Hữu ích"], [false, "Chưa hữu ích"]].map(([value, label]) =>
+            jsx("button", {
+              type: "button", className: "sxq-rate", title: label,
+              "aria-label": label, "aria-pressed": rating === value,
+              disabled: busy,
+              onClick: () => setRating(rating === value ? null : value),
+              children: questionRatingIcon(value),
+            }, label)),
+        ]}),
+        jsxs("div", { className: "sxq-actions", children: [
+          jsx("button", {
+            type: "button", className: "sxq-skip", disabled: busy,
+            onClick: () => void answer("bỏ qua"), children: "Bỏ qua",
+          }),
+          jsx("button", {
+            type: "submit", className: "sxq-submit", disabled: !canSend,
+            children: busy ? "Đang gửi…" : (!reply.trim() && rating === false ? "Gửi đánh giá" : "Gửi trả lời"),
+          }),
+        ]}),
+      ]}),
     ],
   });
 }
@@ -726,7 +763,7 @@ export default {
   register(ctx) {
     clearLegacyVideoContext(ctx);
     const style = document.createElement("style");
-    style.textContent = CSS;
+    style.textContent = CSS + QUESTION_CSS;
     document.head.append(style);
     ctx.onDispose(() => style.remove());
     ctx.registerMany([

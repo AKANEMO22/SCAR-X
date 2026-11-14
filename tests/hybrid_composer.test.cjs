@@ -64,30 +64,68 @@ function setup(sessions = ["chat-a", "stored-a"]) {
 }
 
 test("learning replies reward the controller only with an explicit rating", async () => {
-  for (const [label, rating] of [
-    ["Trả lời", undefined],
-    ["Trả lời · hữu ích", true],
-    ["Chưa hữu ích", false],
-    ["Bỏ qua", undefined],
+  for (const [rating, skip] of [
+    [undefined, false], [true, false], [false, false],
+    [undefined, true], [true, true], [false, true],
   ]) {
     const { sandbox, calls } = setup();
+    const state = ["Owner guidance", false, null];
+    let cursor = 0;
     sandbox.useValue = (atom) => atom.get();
-    sandbox.useState = (initial) => [initial === "" ? "Owner guidance" : initial, () => {}];
+    sandbox.useState = () => {
+      const index = cursor++;
+      return [state[index], (value) => { state[index] = value; }];
+    };
     sandbox.useQuery = () => ({
       data: { question: { id: "pending" } },
       refetch: async () => {},
     });
     sandbox.useEffect = () => {};
     sandbox.jsx = sandbox.jsxs = (tag, props) => ({ tag, ...props });
-    const widget = vm.runInContext("LearningQuestion({ctx})", sandbox);
-    const button = widget.children.find((c) => c.tag === "button" && c.children === label);
-    assert.ok(button);
-    button.onClick();
+    const render = () => {
+      cursor = 0;
+      return vm.runInContext("LearningQuestion({ctx})", sandbox);
+    };
+    const descendants = (n) => [n, ...(Array.isArray(n?.children) ? n.children.flatMap(descendants) : [])];
+    let widget = render();
+    assert.equal(widget.tag, "form");
+    assert.ok(descendants(widget).some(n => n.tag === "textarea"));
+    if (typeof rating === "boolean") {
+      const button = descendants(widget).find(n => n["aria-label"] === (rating ? "Hữu ích" : "Chưa hữu ích"));
+      button.onClick();
+      assert.equal(calls.length, 0, "Selecting a rating cannot create a learning label yet");
+      widget = render();
+    }
+    if (skip) {
+      descendants(widget).find(n => n.children === "Bỏ qua").onClick();
+    } else {
+      widget.onSubmit({ preventDefault() {} });
+    }
     await new Promise((resolve) => setImmediate(resolve));
     assert.equal(calls.length, 1);
     assert.equal(calls[0].endpoint, "/feedback");
-    assert.equal(calls[0].body.helpful, rating);
-    assert.equal(Object.hasOwn(calls[0].body, "helpful"), typeof rating === "boolean");
+    const expectedRating = skip ? undefined : rating;
+    assert.equal(calls[0].body.helpful, expectedRating);
+    assert.equal(Object.hasOwn(calls[0].body, "helpful"), typeof expectedRating === "boolean");
+  }
+});
+
+test("negative rating can be sent without inventing a typed reply; blank default cannot submit", async () => {
+  for (const rating of [null, false]) {
+    const { sandbox, calls } = setup();
+    let cursor = 0;
+    const state = ["", false, rating];
+    sandbox.useValue = atom => atom.get();
+    sandbox.useState = () => [state[cursor++], () => {}];
+    sandbox.useQuery = () => ({ data: { question: { id: "pending", question: "Question" } },
+      refetch: async () => {} });
+    sandbox.useEffect = () => {};
+    sandbox.jsx = sandbox.jsxs = (tag, props) => ({ tag, ...props });
+    const widget = vm.runInContext("LearningQuestion({ctx})", sandbox);
+    widget.onSubmit({ preventDefault() {} });
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(calls.length, rating === false ? 1 : 0);
+    if (calls.length) assert.equal(calls[0].body.helpful, false);
   }
 });
 

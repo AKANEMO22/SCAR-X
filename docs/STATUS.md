@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## Hermes Hỏi để học UI —14/11
+
+Đã sửa card composer bị dồn một hàng: CSS riêng, câu hỏi/textarea/footer tách
+rõ, hai action chính và ratingicon; optionalfeedback chỉ gửi khi chủ độngsubmit.
+11Nodechecks qua; cài cóbackup/hotreload, quan sát đúngHermes thấybố cục mới.
+Không gửifeedback thật/restartmodel hoặc đổi8hsource.
+[Chi tiết](hybrid/HERMES_QUESTION_CARD_FIX_20261114.md).
+
 ## ASR dùng VRAM có gain, QA chưa gain —14/11
 
 Whisper-small nguồnFP32/479tensor exactbyte audit; paired32FLEURSDEV mới:
