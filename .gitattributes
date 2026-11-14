@@ -297,5 +297,5 @@ scripts/run_hybrid_history_p0.py -text
 tests/test_history_ablation_p0.py text eol=lf
 runs/*-history-ablation-p0-v1/** -text -whitespace
 scripts/audit_hybrid_history_p0.py text eol=lf
-integrations/hermes/atomic_feedback_patch.py -text
+integrations/hermes/atomic_feedback_patch.py -text whitespace=cr-at-eol
 tests/test_hybrid_feedback_transaction.py text eol=lf

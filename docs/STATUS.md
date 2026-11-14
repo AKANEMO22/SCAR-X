@@ -6,7 +6,9 @@
 thất bại lost-postcommit-cache và same-ID/different-body. Bản sửa có durable
 receipt cùng transaction với checkpoint, giữ semantics khi restart/rollback;
 9 actual HTTP/CUDA fixture cases qua. Original learning rule không đổi, chưa
-chứng minh learned skills. Artifact đang cài theo [CURRENT_RELEASE](release/CURRENT_RELEASE.md).
+chứng minh learned skills. Suite release cuối301 Python checks qua; đã cài RC9
+qua actual RC8 predecessor update, fullsaved arrays/RNG/replay giữ nguyên.
+Artifact đang cài theo [CURRENT_RELEASE](release/CURRENT_RELEASE.md).
 
 ## P0 history — dừng đúng gate, Hermes vẫn GPU
 

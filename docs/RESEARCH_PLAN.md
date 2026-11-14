@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**RC9 runtime 15/11:** [feedback transaction](release/FEEDBACK_TRANSACTION_20261115.md)
+khép checkpoint/receipt commit gap,9 actual HTTP/GPU fixture cases;301 release
+Python checks qua. [Artifact đang cài](release/CURRENT_RELEASE.md) giữ nguyên
+ALIF/localrule/nativeprecision và5 liveupdates. Đây là nhãn truyền/lưu đúng
+transaction, chưa là learned causality/retention. P0 history bên dưới vẫn FAIL.
+
 **P0 history 15/11 — STOP, không DEV:** [actual result](hybrid/HISTORY_P0_RESULT_20261115.md)
 dừng tại parity current-hidden;177/600 calls cả diagnostic, neuron sát ngưỡng
 cứng phát xung khác giữa FP32 CPU/CUDA. Không nới gate hoặc thử tiếp hai rule mới

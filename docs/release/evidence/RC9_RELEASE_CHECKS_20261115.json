@@ -1,0 +1,24 @@
+{
+  "status": "RC9_301_FUNCTIONAL_CHECKS_PASS_NOT_NEURAL_QUALITY_OR_PRODUCTION_PASS",
+  "executor": "Codex",
+  "Python_passed": 301,
+  "failed": 0,
+  "skipped": 0,
+  "actual_shipped_HTTP_Handler_CUDA_feedback_cases": 9,
+  "baseline_reproductions_failed": 2,
+  "baseline_faults": [
+    "post-checkpoint HTTP cache failure then retry unknown question",
+    "same client ID changed body silently old ACK"
+  ],
+  "real_socket_closed_after_commit_and_retry_accepted_without_second_update": true,
+  "CPU_native_CUDA_parity_included": true,
+  "CuPy_CUDA_PATH_discovery_warning": true,
+  "same_neural_algorithm_not_history_variant": true,
+  "P0_history_attempts_not_reset": 177,
+  "suite_sha256": "f481e74ce5f0b3ad4610a256295b9c326fd0e8506b6c21d62f1507d66085b4db",
+  "stdout_sha256": "c332b7f2dd8bd2fd68a46f86dd09c2cd65219084576be05c321beda83f51fc5a",
+  "prior_Node_Desktop_UI_HTTP_receipts_not_rerun": "RC7 29 Node +3 UI HTTP; RC6 12 Desktop, these surfaces unchanged",
+  "live_owner_feedback_submitted_by_tests": false,
+  "live_updates_preserved": 5,
+  "research_or_production_PASS": false
+}
