@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Perception/verification14/11:** nativeWhisper-smallFP32 có ViWERgain trên32speech
+DEV và resourceprobe vừaVRAM, nhưng integratedknownvideoQA1/3khônghơnbase.
+Không biến perceptiongain thành SNNlearningclaim hoặc tựpromoteASR khi8hbase
+đang frozen.49independentSQLqueries khớp actual; fullresponse/goldannotation/
+userintent là ba tầng kiểm riêng, corpus chưaqualifiedđểteach. [Evidence](hybrid/ASR_CANDIDATE_AND_TOOL_DATA_20261114.md).
+
 **Hybrid retention audit14/11:** importance/stable arrays trong currentLocalALIF
 không tham gia learn; 3seed×32paired updates trênCUDA cho trainableweights
 chính xác như nhau khi thay cácbuffer. Không suy thành metaplasticity thất bại

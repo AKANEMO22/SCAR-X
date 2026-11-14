@@ -1,0 +1,61 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 6140 MiB):
+  Device 0: NVIDIA GeForce RTX 4050 Laptop GPU, compute capability 8.9, VMM: yes, VRAM: 6140 MiB
+load_backend: loaded CUDA backend from C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\runtime\whisper.cpp-b5454-cuda12.4\Release\ggml-cuda.dll
+load_backend: loaded CPU backend from C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\runtime\whisper.cpp-b5454-cuda12.4\Release\ggml-cpu-alderlake.dll
+whisper_init_from_file_with_params_no_state: loading model from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\candidates\whisper-small\whisper-small-f32.bin'
+whisper_init_with_params_no_state: use gpu    = 1
+whisper_init_with_params_no_state: flash attn = 1
+whisper_init_with_params_no_state: gpu_device = 0
+whisper_init_with_params_no_state: dtw        = 0
+whisper_init_with_params_no_state: devices    = 2
+whisper_init_with_params_no_state: backends   = 2
+whisper_model_load: loading model
+whisper_model_load: n_vocab       = 51865
+whisper_model_load: n_audio_ctx   = 1500
+whisper_model_load: n_audio_state = 768
+whisper_model_load: n_audio_head  = 12
+whisper_model_load: n_audio_layer = 12
+whisper_model_load: n_text_ctx    = 448
+whisper_model_load: n_text_state  = 768
+whisper_model_load: n_text_head   = 12
+whisper_model_load: n_text_layer  = 12
+whisper_model_load: n_mels        = 80
+whisper_model_load: ftype         = 0
+whisper_model_load: qntvr         = 0
+whisper_model_load: type          = 3 (small)
+whisper_model_load: adding 1607 extra tokens
+whisper_model_load: n_langs       = 99
+whisper_model_load:        CUDA0 total size =   966.94 MB
+whisper_model_load: model size    =  966.94 MB
+whisper_backend_init_gpu: device 0: CUDA0 (type: 1)
+whisper_backend_init_gpu: found GPU device 0: CUDA0 (type: 1, cnt: 0)
+whisper_backend_init_gpu: using CUDA0 backend
+whisper_init_state: kv self size  =   18.87 MB
+whisper_init_state: kv cross size =   56.62 MB
+whisper_init_state: kv pad  size  =    4.72 MB
+whisper_init_state: compute buffer (conv)   =   23.38 MB
+whisper_init_state: compute buffer (encode) =   33.85 MB
+whisper_init_state: compute buffer (cross)  =    6.20 MB
+whisper_init_state: compute buffer (decode) =   98.21 MB
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-06.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-06.wav' (221120 samples, 13.8 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.996003)
+
+[00:00:00.000 --> 00:00:08.420]   Make your common cuisine like that of similar stones in the Mediterranean is based on bread,
+[00:00:08.420 --> 00:00:12.480]   vegetables, and meat, especially pork, and uses olive oil throughout.
+output_json: saving output to 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015546Z-asr-candidate-benchmark-v1-68e3c7\en-06-small.json'
+
+whisper_print_timings:     load time =   866.92 ms
+whisper_print_timings:     fallbacks =   0 p /   0 h
+whisper_print_timings:      mel time =    13.15 ms
+whisper_print_timings:   sample time =    83.50 ms /   183 runs (     0.46 ms per run)
+whisper_print_timings:   encode time =   198.83 ms /     2 runs (    99.42 ms per run)
+whisper_print_timings:   decode time =    22.15 ms /     1 runs (    22.15 ms per run)
+whisper_print_timings:   batchd time =   239.24 ms /   181 runs (     1.32 ms per run)
+whisper_print_timings:   prompt time =     0.00 ms /     1 runs (     0.00 ms per run)
+whisper_print_timings:    total time =  1450.22 ms

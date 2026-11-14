@@ -1,5 +1,18 @@
 # Trạng thái SCAR-X
 
+## ASR dùng VRAM có gain, QA chưa gain —14/11
+
+Whisper-small nguồnFP32/479tensor exactbyte audit; paired32FLEURSDEV mới:
+ViWER45,95→21,23%(CIpaired delta[-31,30;-18,94]pp), En9,64→6,02%(CIupper0).
+Median coldCLI1,024→1,680s; p95RTFsmall0,321. Followup activeVRAMminfree1502MiB,
+sharedgrowth~79,7MB; lỗi initialfinalsamplegate giữ/audit riêng, không rewrite.
+Privatevideo21s vẫn strictQA1/3 cảbase/small; nghe9nhưngQwen trả15 choAdamHall,
+0synapseupdate. **ASR DEV candidate, chưa thay live/8hprofile**, khônghiddengain.
+Tooldata266calls phân loại37diff; SQLoracle49queries khớpactual49/49,23annotations
+khácfullresponse (20subsetđượcupstreamcho phép). Chưa tạo nhãn học từcorpus.
+[Nguồn/raw/audits/giới hạn](hybrid/ASR_CANDIDATE_AND_TOOL_DATA_20261114.md).
+230Python+10Nodechecks qua; source8h giữ đúnghash, live vẫnbase+0.8B/allneuralGPU.
+
 ## Retention buffers và lượt8h mới — 14/11
 
 Audit CUDA3seed×32paired updates: importance=1000/stable+0,25 cho cùng trọng số

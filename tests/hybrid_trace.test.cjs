@@ -95,3 +95,21 @@ test("only orchestrator receipt updates the lab panel", () => {
   assert.match(nodes.get("lab-summary").children.map(n => n.textContent).join("\n"),
     /Đã kết thúc: INTERRUPTED_NOT_8H_PASS/);
 });
+
+test("ASR candidate gain is separate from actual downstream question failures", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "ASR_candidate.benchmark_completed",
+    payload: { run_id: "ASR-dev", by_language: {
+      vi: { base_micro_WER: .46, small_micro_WER: .21, utterance_pairs: 16 } } } });
+  const text = nodes.get("asr-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /46.00% → 21.00%/);
+  assert.match(text, /chưa thay ASR live/);
+  event({ actor: "orchestrator", kind: "ASR_candidate.integrated_video_answer",
+    payload: { run_id: "video-p0", ASR_model: "small", question: "Fixture rank?",
+      expected: "9", actual: { answer: "15" }, strict_contract_passed: false } });
+  const answer = nodes.get("asr-answers").children[0].children.map(n => n.textContent).join("\n");
+  assert.match(answer, /trả lời thật: 15/);
+  assert.match(answer, /Đáp án đã khóa: 9/);
+  assert.match(answer, /Chưa qua/);
+  assert.equal(nodes.has("updates"), false);
+});

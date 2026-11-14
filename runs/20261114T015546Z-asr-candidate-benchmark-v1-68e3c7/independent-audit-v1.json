@@ -1,0 +1,56 @@
+{
+  "paired_run": "20261114T015546Z-asr-candidate-benchmark-v1-68e3c7",
+  "resource_run": "20261114T020114Z-asr-resource-followup-v1-6e53cb",
+  "independent_word_DP_matches": true,
+  "metrics": {
+    "vi": {
+      "reference_words": 457,
+      "base_edits": 210,
+      "small_edits": 97,
+      "base_WER": 0.45951859956236324,
+      "small_WER": 0.212253829321663,
+      "paired_delta_CI95": [
+        -0.31297760544272785,
+        -0.18937477175349895
+      ]
+    },
+    "en": {
+      "reference_words": 332,
+      "base_edits": 32,
+      "small_edits": 20,
+      "base_WER": 0.0963855421686747,
+      "small_WER": 0.060240963855421686,
+      "paired_delta_CI95": [
+        -0.07837837837837838,
+        0.0
+      ]
+    }
+  },
+  "resources": {
+    "base": {
+      "confirmed_fresh_active_PDH_after_discarding_initial_cache": 4,
+      "minimum_free_MiB": 2287,
+      "peak_shared_bytes": 245366784,
+      "shared_growth_bytes": 79691776,
+      "sampling_limit": "PDH2s/Nvidia0.25s; shorter peaks may be missed"
+    },
+    "small": {
+      "confirmed_fresh_active_PDH_after_discarding_initial_cache": 7,
+      "minimum_free_MiB": 1502,
+      "peak_shared_bytes": 245366784,
+      "shared_growth_bytes": 79691776,
+      "sampling_limit": "PDH2s/Nvidia0.25s; shorter peaks may be missed"
+    }
+  },
+  "original_tensor_readback": {
+    "original_F32_tensors": 479,
+    "every_original_export_byte_equal": true,
+    "dropped_or_duplicated_tensors": 0,
+    "quantization_or_dtype_reduction": false
+  },
+  "verdict": "DEV_ASR_GAIN_AND_SAMPLED_RESOURCE_PROFILE_VERIFIED",
+  "supersedes_original_final_shared_sample_as_resource_proof": true,
+  "candidate_live_promoted": false,
+  "eight_hour_changed_ASR_profile_qualified": false,
+  "LLM_SNN_learning_advantage_claim": false
+}

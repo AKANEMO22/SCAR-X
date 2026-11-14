@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[ASR candidate và tool-dataqualification](hybrid/ASR_CANDIDATE_AND_TOOL_DATA_20261114.md):
+setup_hybrid_whisper_small.py, prepare_hybrid_asr_dev.py, benchmark/audit ASR,
+probe_hybrid_asr_resources.py, probe_hybrid_asr_video_integration.py;
+tool_response_qualification.py + independent SQLtool_query_oracle.py.
+Tất cảresearch/private; frozen8h/live/main không đổi.
+
 [Retention buffer audit + active endurance](hybrid/RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md):
 audit_hybrid_retention_mechanisms.py, data-only verifier, monitor_hybrid_endurance.py.
 Lab liveprocess/source check riêng; không restart service từ monitor.

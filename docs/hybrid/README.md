@@ -6,6 +6,11 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Ứng viên ASR dùng thêm VRAM và giới hạnQA](ASR_CANDIDATE_AND_TOOL_DATA_20261114.md):
+Whisper-small nguyênFP32 giảm ViWER trên32mẫuDEV, actualresourceprobe còn≥1502MiB,
+nhưng QAclip21s vẫn1/3. Đây là candidatechưađổi live, khôngSNNlearninggain;
+trace tự hiện WER và outputQA thất bại bên cạnh tiến độ8hbase.
+
 [Retention mechanism và trace endurance](RETENTION_BUFFERS_AND_ACTIVE_ENDURANCE_20261114.md):
 Hybrid importance/stable mới là state được lưu, chưa bảo vệ update. Lượt8h mới
 có link trace riêng; xem actual process/final receipt bằng monitor, không suy

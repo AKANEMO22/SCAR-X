@@ -1,0 +1,383 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 6140 MiB):
+  Device 0: NVIDIA GeForce RTX 4050 Laptop GPU, compute capability 8.9, VMM: yes, VRAM: 6140 MiB
+load_backend: loaded CUDA backend from C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\runtime\whisper.cpp-b5454-cuda12.4\Release\ggml-cuda.dll
+load_backend: loaded CPU backend from C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\runtime\whisper.cpp-b5454-cuda12.4\Release\ggml-cpu-alderlake.dll
+whisper_init_from_file_with_params_no_state: loading model from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\models\native\whisper-base-f32.bin'
+whisper_init_with_params_no_state: use gpu    = 1
+whisper_init_with_params_no_state: flash attn = 1
+whisper_init_with_params_no_state: gpu_device = 0
+whisper_init_with_params_no_state: dtw        = 0
+whisper_init_with_params_no_state: devices    = 2
+whisper_init_with_params_no_state: backends   = 2
+whisper_model_load: loading model
+whisper_model_load: n_vocab       = 51865
+whisper_model_load: n_audio_ctx   = 1500
+whisper_model_load: n_audio_state = 512
+whisper_model_load: n_audio_head  = 8
+whisper_model_load: n_audio_layer = 6
+whisper_model_load: n_text_ctx    = 448
+whisper_model_load: n_text_state  = 512
+whisper_model_load: n_text_head   = 8
+whisper_model_load: n_text_layer  = 6
+whisper_model_load: n_mels        = 80
+whisper_model_load: ftype         = 0
+whisper_model_load: qntvr         = 0
+whisper_model_load: type          = 2 (base)
+whisper_model_load: adding 1607 extra tokens
+whisper_model_load: n_langs       = 99
+whisper_model_load:        CUDA0 total size =   290.38 MB
+whisper_model_load: model size    =  290.38 MB
+whisper_backend_init_gpu: device 0: CUDA0 (type: 1)
+whisper_backend_init_gpu: found GPU device 0: CUDA0 (type: 1, cnt: 0)
+whisper_backend_init_gpu: using CUDA0 backend
+whisper_init_state: kv self size  =    6.29 MB
+whisper_init_state: kv cross size =   18.87 MB
+whisper_init_state: kv pad  size  =    3.15 MB
+whisper_init_state: compute buffer (conv)   =   17.24 MB
+whisper_init_state: compute buffer (encode) =   23.09 MB
+whisper_init_state: compute buffer (cross)  =    4.66 MB
+whisper_init_state: compute buffer (decode) =   97.29 MB
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-00.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-00.wav' (123840 samples, 7.7 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.993589)
+
+[00:00:00.000 --> 00:00:07.000]   Cách nhà pha học cho biết buồn và trạm đỡ lây giao, buồn ngổ lất lớn.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-01.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-01.wav' (201600 samples, 12.6 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.403384)
+
+[00:00:00.000 --> 00:00:12.000]   Ên ở hạc ca cũng thông tin rằng nhà máy hạc nhân "ca siwa zaki", "cariwa", "tai huận", "ni gia ta", "dao agno mun thường".
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-02.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-02.wav' (186240 samples, 11.6 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.972646)
+
+[00:00:00.000 --> 00:00:06.000]   Nhiều đến dễ phẫu biến với vô tập đến dễ phẫu abert
+[00:00:06.000 --> 00:00:11.000]   Tương đơn phặt giao sắp sĩ tính lại quân hành này
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-03.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-03.wav' (286080 samples, 17.9 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.990009)
+
+[00:00:00.000 --> 00:00:07.080]   Một trường mới này có những nụng lực khác và những đối thủ cắn tăng khác
+[00:00:07.080 --> 00:00:10.780]   Bì thế, dân số mới sẽ cầm những đặc điểm
+[00:00:10.780 --> 00:00:17.140]   Học khá đang thích nghi khác để trả thành một đối thủ cắn tăng hùng mạnh hơn những gì họ vông có trước kia
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-04.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-04.wav' (479040 samples, 29.9 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.998917)
+
+[00:00:00.000 --> 00:00:12.000]   Cô chút của lông bủ, gửi gần bộ lông này không dùng bé bay mà để kiếm sét nhị độ cơ thẩy mà đẩy khai mẹ.
+[00:00:12.000 --> 00:00:29.000]   Cách nhạy nghiên cứu cho gần mặc dù đây là đôi của mọc con cũng lông nong, mọc giặt thẩy nhẹn mọc bộ lông, chứng thành, chứ không phải là lông tơ.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-05.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-05.wav' (271680 samples, 17.0 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.851923)
+
+[00:00:00.000 --> 00:00:16.000]   Các sĩ nói chuyên, trên khắc cả nước, trên bày, hà gian, mộ đạo tại chiến cổ, sư ri, hình dàng.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-06.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-06.wav' (238080 samples, 14.9 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.991446)
+
+[00:00:00.000 --> 00:00:13.000]   Tuy nhiên, tiến, cà ta lan, đợt dùng đẩy, biểu thầy, hầu hết, cát, kê hiệu, vì đây chính nào ngôn ngữ chính thức đầu tiên.
+[00:00:13.000 --> 00:00:15.000]   Từ lúc phát.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-07.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-07.wav' (148800 samples, 9.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.981500)
+
+[00:00:00.000 --> 00:00:09.000]   Những lý thiết này với anh có người có một số nhiều cầu và em muốn nhắc đình được tử thú từ bên ngoài khi họ trưởng tàn.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-08.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-08.wav' (82560 samples, 5.2 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.968601)
+
+[00:00:00.000 --> 00:00:04.200]   Carry có thể khô và ước từ vào lớn nước sốt trong đó
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-09.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-09.wav' (186240 samples, 11.6 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.995654)
+
+[00:00:00.000 --> 00:00:11.000]   Cách nhà khoa học cho gàng bộ lông của lò này có mào nấu hạt nhễ, phí chân và mào sân xám hoặc bèn, càng bân dưới.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-10.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-10.wav' (295680 samples, 18.5 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.984370)
+
+[00:00:00.000 --> 00:00:11.500]   Các câu anh tại đế phương đang cảnh báo cư dàng ở dùng phụ cảnh của nhà máy nên nói trong nhà tác cánh thích mị.
+[00:00:11.500 --> 00:00:18.500]   Điều hà không ký và không muốn nước máy từ trời nước.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-11.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-11.wav' (224640 samples, 14.0 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.972249)
+
+[00:00:00.000 --> 00:00:04.280]   Không chỉ có đầm lầy đừng nhạc mạo.
+[00:00:04.280 --> 00:00:13.520]   Các khu rừng này, câu bao giờ một số khu vực còn sắc lại có những khu rừng hùng bảy từ bao phủ đồng bằng giàn liên tích.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-12.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-12.wav' (150720 samples, 9.4 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.812634)
+
+[00:00:00.000 --> 00:00:08.000]   Chỉ phí chiến chân của chủ nghĩa đế quốc 3 kỳ trong cổ chín phạp phí lịch biên được chính những người giăng phí lịch biên chi trả.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-13.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-13.wav' (153600 samples, 9.6 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.765593)
+
+[00:00:00.000 --> 00:00:08.920]   Người bệnh cũng đã từng tới ni ghê ghê nơi một số ca mắt bệnh em volatê ghê.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-14.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-14.wav' (202560 samples, 12.7 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.993722)
+
+[00:00:00.000 --> 00:00:12.000]   Một số loại động bạc như vôy và hấu ca cấu, thường hay lại gần xea và chỉ với các dụng cộ bình thường. Chúng ta cũng sẽ quan sát một cách dễ dàng.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-15.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\vi-15.wav' (128640 samples, 8.0 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: vi (p = 0.997737)
+
+[00:00:00.000 --> 00:00:07.000]   Theo cảnh sách, người lái chích xe tông vào phóng vinh, Ấn có thể không bị chi tố hình dữ.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-00.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-00.wav' (52800 samples, 3.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.979936)
+
+[00:00:00.000 --> 00:00:02.800]   "He built a Wi-Fi doorbell," he said.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-01.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-01.wav' (149120 samples, 9.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.984226)
+
+[00:00:00.000 --> 00:00:10.000]   Pronunciation is relatively easy and Italian since most wars are pronounced exactly how they are written.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-02.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-02.wav' (118720 samples, 7.4 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.994738)
+
+[00:00:00.000 --> 00:00:07.360]   The satellite in space gets the call and then reflects it back down almost instantly.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-03.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-03.wav' (118400 samples, 7.4 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.998363)
+
+[00:00:00.000 --> 00:00:05.500]   A curry can be either dry or wet depending on the amount of liquid.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-04.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-04.wav' (165120 samples, 10.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.988902)
+
+[00:00:00.000 --> 00:00:06.320]   Air accidents are common in Iran, which has an aging fleet that has poorly maintained
+[00:00:06.320 --> 00:00:09.160]   both for civil and military operations.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-05.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-05.wav' (188800 samples, 11.8 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.991949)
+
+[00:00:00.000 --> 00:00:11.000]   Local forties are warning residents in the vicinity of the plant to stay indoors, turn off air conditioners, and not to drink tap water.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-06.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-06.wav' (221120 samples, 13.8 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.989070)
+
+[00:00:00.000 --> 00:00:08.540]   Major Karan cuisine, like that of similar zones in the Mediterranean, is based on bread,
+[00:00:08.540 --> 00:00:12.560]   vegetables, and meat, especially pork, and uses olive oil for our own.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-07.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-07.wav' (85440 samples, 5.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.975180)
+
+[00:00:00.000 --> 00:00:05.040]   They were still trying to determine just how large the crash was and how the Earth will be affected.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-08.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-08.wav' (153600 samples, 9.6 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.955204)
+
+[00:00:00.000 --> 00:00:04.360]   They can see very well in the dark with night vision and move very stealthily, too.
+[00:00:04.360 --> 00:00:09.240]   Also, lots of hunt their prey by blending in with their surroundings and prouncing on their prey.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-09.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-09.wav' (74880 samples, 4.7 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.969956)
+
+[00:00:00.000 --> 00:00:04.160]   Most of the life of the Hebrew family happened in the open air.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-10.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-10.wav' (152640 samples, 9.5 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.985431)
+
+[00:00:00.000 --> 00:00:04.960]   A satellite phone is not generally a replacement for a mobile phone as you have to be outdoors
+[00:00:04.960 --> 00:00:08.360]   with a clear line of sight to the satellite to make a phone call.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-11.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-11.wav' (117440 samples, 7.3 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.968334)
+
+[00:00:00.000 --> 00:00:06.200]   The Spaniards started the colonization period, which lasted for three centuries.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-12.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-12.wav' (124800 samples, 7.8 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.990748)
+
+[00:00:00.000 --> 00:00:07.000]   In many cases I'm rolling on a cap your course abroad can actually improve your chances of moving into higher education back in your home country.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-13.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-13.wav' (130560 samples, 8.2 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.970208)
+
+[00:00:00.000 --> 00:00:07.000]   Some reports put the official death toll at 8 and official reports confirm that up to 30 were injured but final numbers are not yet known.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-14.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-14.wav' (170880 samples, 10.7 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.992749)
+
+[00:00:00.000 --> 00:00:04.560]   This new environment has different resources and different competitors, so the new population
+[00:00:04.560 --> 00:00:08.600]   will need different features or adaptations to be a strong competitor than what they had
+[00:00:08.600 --> 00:00:09.400]   needed before.
+read_audio_data: reading audio data from 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-15.wav' ...
+read_audio_data: trying to decode with miniaudio
+
+system_info: n_threads = 2 / 20 | WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CUDA : ARCHS = 500,610,700,750,800,860,890,900 | FA_QUANTS = q4_0-q4_0,q8_0-q8_0,f16-f16,bf16-bf16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | 
+
+main: processing 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\20261114T015303Z-asr-dev-data-v1-ddf1fd\en-15.wav' (147840 samples, 9.2 sec), 2 threads, 1 processors, 5 beams + best of 5, lang = auto, task = transcribe, timestamps = 1 ...
+
+whisper_full_with_state: auto-detected language: en (p = 0.954391)
+
+[00:00:00.000 --> 00:00:04.280]   But she spoke when Gordon John Drow called North Korea's pledge a major step towards
+[00:00:04.280 --> 00:00:08.740]   the goal of achieving the verifiable denuclearization of the Korean Peninsula.
+
+whisper_print_timings:     load time =   305.64 ms
+whisper_print_timings:     fallbacks =   1 p /   0 h
+whisper_print_timings:      mel time =   311.30 ms
+whisper_print_timings:   sample time =  3173.93 ms /  8060 runs (     0.39 ms per run)
+whisper_print_timings:   encode time =   802.80 ms /    64 runs (    12.54 ms per run)
+whisper_print_timings:   decode time =   535.56 ms /   216 runs (     2.48 ms per run)
+whisper_print_timings:   batchd time =  4534.45 ms /  7810 runs (     0.58 ms per run)
+whisper_print_timings:   prompt time =     0.00 ms /     1 runs (     0.00 ms per run)
+whisper_print_timings:    total time =  9732.18 ms
