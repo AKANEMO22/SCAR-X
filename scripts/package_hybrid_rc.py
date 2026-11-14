@@ -47,6 +47,30 @@ def source_sha(root):
     return subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 
 
+def predecessor_manifest(root,spec):
+    pin=spec.get('predecessor')
+    if pin is None:return None
+    path=(root/pin['archive']).resolve()
+    if not path.is_relative_to((root/'artifacts/releases').resolve()) or path.suffix!='.zip':
+        raise ValueError('Predecessor archive must stay in the release directory')
+    if digest(path.read_bytes())!=pin['sha256']:raise ValueError('Pinned predecessor archive checksum mismatch')
+    with zipfile.ZipFile(path) as archive:
+        infos=zip_members(archive)
+        previous=json.loads(archive.read('MANIFEST.json'))
+        if (previous.get('format')!='scarx-hybrid-local-rc-v1'
+                or previous.get('model_id')!='scarx-hybrid'
+                or previous.get('version')!=pin['version']
+                or previous.get('source_git_sha')!=pin['source_git_sha']):
+            raise ValueError('Pinned predecessor identity mismatch')
+        if {i.filename for i in infos}!=set(previous['files'])|{'MANIFEST.json'}:
+            raise ValueError('Predecessor members differ from its manifest')
+        for name,entry in previous['files'].items():
+            raw=archive.read(name)
+            if len(raw)!=entry['bytes'] or digest(raw)!=entry['sha256']:
+                raise ValueError('Predecessor payload integrity mismatch')
+    return previous
+
+
 def overlay_candidates(root):
     specs=[('src/scarx/hybrid/store.py','runs/20261114T101526Z-full-query-retrieval-p0-v1-7a9ee0/candidate-store.py',
             'runs/20261114T101526Z-full-query-retrieval-p0-v1-7a9ee0/independent-data-audit-v1.json',
@@ -103,11 +127,14 @@ def build(root,output_dir):
     if not {'scripts/hybrid_screen_worker.py','scripts/run_native_searxng.py','run_hybrid.py'}<=set(files):
         raise ValueError('Required Hybrid helper missing')
     overlays,provenance=overlay_candidates(root)
+    predecessor=predecessor_manifest(root,spec)
     before={};blobs={}
     for name in files:
         path=root/name
         if path.is_symlink() or not path.resolve().is_relative_to(root):raise ValueError('Source link/path escape')
-        original=path.read_bytes();before[name]=digest(original)
+        original=path.read_bytes()
+        before[name]=(predecessor['files'].get('payload/'+name,{}).get('sha256')
+                      if predecessor else digest(original))
         blobs['payload/'+name]=overlays.get(name,original)
     top={'manage.py':root/'release/hybrid/manage.py','README.md':root/'release/hybrid/README.md',
          'HERMES_MEDIA_ADMISSION.patch':root/'release/hybrid/HERMES_MEDIA_ADMISSION.patch',
@@ -121,6 +148,7 @@ def build(root,output_dir):
         'model_id':'scarx-hybrid','deployment':spec['deployment'],'release_state':'prepared_candidate_not_live_qualified',
         'files':{name:{'sha256':digest(raw),'bytes':len(raw)} for name,raw in sorted(blobs.items())},
         'target_before_sha256':before,'reviewed_overlays':provenance,
+        'predecessor':spec.get('predecessor'),
         'private_state_models_venv_cache_datasets_or_research_runs_included':False,
         'running_test_must_finish_before_install':True}
     blobs['MANIFEST.json']=(json.dumps(manifest,ensure_ascii=False,sort_keys=True,indent=2)+'\n').encode()

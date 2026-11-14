@@ -93,12 +93,22 @@ def no_live_protected_run(root):
     return run,m
 
 
-def protected_run_gate(root):
+def protected_run_gate(root,release_manifest=None):
     run,m=no_live_protected_run(root)
     for name,digest in m['source_sha256'].items():
         safe_relative(name)
         if not (root/name).resolve().is_relative_to(root):raise ValueError('Protected source outside root')
-        if sha((root/name).read_bytes())!=digest:raise RuntimeError('Protected source changed since tested baseline: '+name)
+        accepted={digest}
+        # A terminal run's historical source is not a permanent freeze on later
+        # verified releases. Allow only exact predecessor/next payload bytes;
+        # plan_files separately rejects unrelated target edits before mutation.
+        if release_manifest and release_manifest.get('predecessor'):
+            member='payload/'+name
+            if member in release_manifest['files']:
+                accepted.add(release_manifest['files'][member]['sha256'])
+                accepted.add(release_manifest['target_before_sha256'].get(name))
+        if sha((root/name).read_bytes()) not in accepted:
+            raise RuntimeError('Protected source changed since tested baseline: '+name)
     cancellation=run/'user-cancellation-audit-v1.json'
     if cancellation.is_file():
         request_raw=(run/'user-cancellation-request-v1.json').read_bytes()
@@ -302,7 +312,7 @@ def main(args):
         finally:lease.close()
         service.start();state=wait_ready(service)
         print(json.dumps({'code_rollback':True,'private_database_and_current_checkpoint_retained':True,'ready':state['ready']}));return
-    gate=protected_run_gate(root)  # Before stop/lease/write, even for apply.
+    gate=protected_run_gate(root,manifest)  # Before stop/lease/write, even for apply.
     if args.check:
         print(json.dumps({'preflight_source_gate':True,'changed_files':[r for r,_,_ in changes],'test_gate':gate,'applied':False}));return
     validate_existing_assets(root,home,package)

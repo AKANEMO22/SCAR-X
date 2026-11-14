@@ -42,7 +42,7 @@ def main():
     receipts={
         '1.0.0-rc.6':('local/media-admission-final-release-20261114.xml',256),
         '1.0.0-rc.7':('local/media-presentation-final-release-20261114/python.xml',263),
-        '1.0.0-rc.8':('local/screen-audio-final-release-20261115/python.xml',284),
+        '1.0.0-rc.8':('local/rc8-upgrade-final-release-20261115/python.xml',292),
     }
     receipt_path,expected_count=receipts[manifest['version']]
     suite=ET.parse(ROOT/receipt_path).getroot().find('testsuite')
@@ -62,6 +62,7 @@ def main():
     if manifest['version']=='1.0.0-rc.8':
         assert 'test_actual_ffmpeg_audio_decode_failure_keeps_frame_ingestion_alive' in names
         assert 'test_screen_audio_gaps_reach_model_as_coverage_limits_without_false_transcripts' in names
+        assert 'test_upgrade_baseline_is_loaded_from_pinned_predecessor_not_new_worktree' in names
     evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
     assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
     sys.path.insert(0,str(ROOT/'src'))

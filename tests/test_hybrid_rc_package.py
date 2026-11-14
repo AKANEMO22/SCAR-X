@@ -63,6 +63,8 @@ def test_live_protected_test_blocks_before_any_files_change(manager,tmp_path):
     (run/'process-identity-v1.json').write_text(json.dumps({'process_created_epoch':psutil.Process().create_time()}))
     marker=tmp_path/'keep.py';marker.write_bytes(b'original')
     with pytest.raises(RuntimeError,match='still running'):manager.protected_run_gate(tmp_path)
+    with pytest.raises(RuntimeError,match='still running'):
+        manager.protected_run_gate(tmp_path,{'predecessor':{'version':'owned'},'files':{}})
     assert marker.read_bytes()==b'original'
 
 
@@ -188,3 +190,86 @@ def test_explicit_user_cancellation_allows_RC_without_endurance_PASS(manager,tmp
         assert gate['release_gate']=='user_cancelled_8h_for_RC' and gate['eight_hour_qualified'] is False
     else:
         with pytest.raises(RuntimeError):manager.protected_run_gate(tmp_path)
+
+
+@pytest.mark.parametrize('state',['predecessor','next','user_edit'])
+def test_cancelled_run_upgrade_accepts_only_exact_release_sources_and_keeps_custody(manager,tmp_path,state):
+    run=tmp_path/'runs/cancelled';run.mkdir(parents=True);(tmp_path/'local').mkdir()
+    (tmp_path/'local/current-small-mixed-endurance-run.txt').write_text(str(run))
+    pid=2147483647
+    (run/'manifest.json').write_text(json.dumps({'pid':pid,'source_sha256':{'core.py':manager.sha(b'historical')}}))
+    (run/'process-identity-v1.json').write_text(json.dumps({'process_created_epoch':123.0}))
+    request={'action':'cancel_8h_for_product_release','run_id':run.name,'pid':pid,
+             'process_created_epoch':123.0,'eight_hour_PASS_claimed':False}
+    result={'gate_pass':False,'formal_P1_P2_P3_or_lifelong_pass':False}
+    rr=json.dumps(request).encode();sr=json.dumps(result).encode()
+    (run/'user-cancellation-request-v1.json').write_bytes(rr);(run/'result.json').write_bytes(sr)
+    audit={'run_id':run.name,'pid':pid,'process_created_epoch':123.0,
+           'verdict':'USER_CANCELLED_NOT_EIGHT_HOUR_PASS','actual_worker_terminal':True,
+           'source_matches_before_activation':True,'residual_private_worker_pids':[],
+           'request_sha256':manager.sha(rr),'result_sha256':manager.sha(sr),
+           'engineering_eight_hour_qualified':False}
+    (run/'user-cancellation-audit-v1.json').write_text(json.dumps(audit))
+    current={'predecessor':b'old release','next':b'new release','user_edit':b'KEEP_USER_EDIT'}[state]
+    (tmp_path/'core.py').write_bytes(current)
+    manifest={'predecessor':{'version':'owned previous RC'},
+              'files':{'payload/core.py':{'sha256':manager.sha(b'new release')}},
+              'target_before_sha256':{'core.py':manager.sha(b'old release')}}
+    if state=='user_edit':
+        with pytest.raises(RuntimeError):manager.protected_run_gate(tmp_path,manifest)
+    else:
+        assert manager.protected_run_gate(tmp_path,manifest)['eight_hour_qualified'] is False
+        # The release-source exception never permits rewriting the old outcome.
+        result['gate_pass']=True;(run/'result.json').write_text(json.dumps(result))
+        with pytest.raises(RuntimeError,match='custody'):manager.protected_run_gate(tmp_path,manifest)
+    assert (tmp_path/'core.py').read_bytes()==current
+
+
+def predecessor_fixture(packager,tmp_path,*,wrong_payload=False):
+    folder=tmp_path/'artifacts/releases';folder.mkdir(parents=True)
+    archive=folder/'owned.zip';code=b'owned previous entrypoint'
+    manifest={'format':'scarx-hybrid-local-rc-v1','model_id':'scarx-hybrid','version':'owned-rc',
+              'source_git_sha':'a'*40,'files':{'payload/run_hybrid.py':
+                  {'sha256':packager.digest(code),'bytes':len(code)}}}
+    with zipfile.ZipFile(archive,'x') as bundle:
+        bundle.writestr('payload/run_hybrid.py',b'wrong' if wrong_payload else code)
+        bundle.writestr('MANIFEST.json',json.dumps(manifest))
+    spec={'predecessor':{'archive':'artifacts/releases/owned.zip','sha256':packager.digest(archive.read_bytes()),
+                         'version':'owned-rc','source_git_sha':'a'*40}}
+    return archive,manifest,spec
+
+
+def test_upgrade_baseline_is_loaded_from_pinned_predecessor_not_new_worktree(packager,tmp_path):
+    archive,manifest,spec=predecessor_fixture(packager,tmp_path)
+    assert packager.predecessor_manifest(tmp_path,spec)==manifest
+    (tmp_path/'run_hybrid.py').write_bytes(b'candidate source already edited')
+    before=packager.predecessor_manifest(tmp_path,spec)['files']['payload/run_hybrid.py']['sha256']
+    assert before==packager.digest(b'owned previous entrypoint')
+    assert before!=packager.digest((tmp_path/'run_hybrid.py').read_bytes())
+    archive.write_bytes(archive.read_bytes()+b'changed after approval')
+    with pytest.raises(ValueError,match='checksum'):packager.predecessor_manifest(tmp_path,spec)
+
+
+@pytest.mark.parametrize('tamper',['payload','identity','path'])
+def test_predecessor_rejects_member_corruption_identity_and_path_escape(packager,tmp_path,tamper):
+    _,_,spec=predecessor_fixture(packager,tmp_path,wrong_payload=tamper=='payload')
+    if tamper=='identity':spec['predecessor']['source_git_sha']='b'*40
+    if tamper=='path':spec['predecessor']['archive']='../outside.zip'
+    with pytest.raises(ValueError):packager.predecessor_manifest(tmp_path,spec)
+
+
+def test_predecessor_to_next_plan_and_rollback_preserve_later_data(manager,tmp_path):
+    root=tmp_path/'installation';root.mkdir();package=tmp_path/'package';(package/'payload').mkdir(parents=True)
+    (root/'run_hybrid.py').write_bytes(b'old release');(package/'payload/run_hybrid.py').write_bytes(b'new release')
+    manifest={'files':{'payload/run_hybrid.py':{'sha256':manager.sha(b'new release')}},
+              'target_before_sha256':{'run_hybrid.py':manager.sha(b'old release')}}
+    changes=manager.plan_files(package,root,manifest)
+    assert changes==[('run_hybrid.py',b'old release',b'new release')]
+    backup=tmp_path/'backup';backup.mkdir();manager.write_overlay(root,backup,changes)
+    (root/'user.json').write_bytes(b'NEW_USER_DATA_AFTER_UPDATE')
+    assert manager.plan_files(package,root,manifest)==[]
+    manager.rollback_files(root,backup)
+    assert (root/'run_hybrid.py').read_bytes()==b'old release'
+    assert (root/'user.json').read_bytes()==b'NEW_USER_DATA_AFTER_UPDATE'
+    (root/'run_hybrid.py').write_bytes(b'USER_EDIT')
+    with pytest.raises(RuntimeError,match='differs from tested baseline'):manager.plan_files(package,root,manifest)

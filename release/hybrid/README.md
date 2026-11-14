@@ -9,6 +9,11 @@ Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; 
 coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
 tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
+Đường nâng cấp RC8 pin đúng payload RC7 và từ chối source khác trước khi sửa.
+Source gate của test đã hủy nhận đúng bản trước/bản kế tiếp, không yêu cầu source
+đóng băng vĩnh viễn ở baseline cũ. Test đang chạy vẫn chặn cập nhật; trạng thái
+hủy vẫn không thành PASS. Backup/rollback chỉ phục hồi code, giữ trải nghiệm mới.
+
 Từ RC6, gói cần Hermes đã có đường metadata admission tương ứng được build/cài.
 Installer đối chiếu fingerprints và từ chối app cũ; không tự thay source hoặc
 renderer Hermes khác phiên bản. `HERMES_MEDIA_ADMISSION.patch` đi kèm để bảo trì/

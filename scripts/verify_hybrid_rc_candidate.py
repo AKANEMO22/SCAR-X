@@ -44,6 +44,12 @@ def validate_trusted_sources(packager, package, manifest):
         expected = overlays[name] if name in overlays else (ROOT/name).read_bytes()
         if (package/'payload'/name).read_bytes() != expected:
             raise ValueError('Extracted executable differs from trusted source: '+name)
+    spec=json.loads((ROOT/'release/hybrid/payload-files.json').read_text(encoding='utf-8'))
+    predecessor=packager.predecessor_manifest(ROOT,spec)
+    if predecessor:
+        expected={name:predecessor['files'].get('payload/'+name,{}).get('sha256') for name in allowed}
+        if manifest.get('target_before_sha256')!=expected or manifest.get('predecessor')!=spec['predecessor']:
+            raise ValueError('Upgrade baseline differs from trusted predecessor')
 
 
 def main():

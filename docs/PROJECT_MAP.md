@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[RC upgrade custody](release/RC_UPGRADE_PATH_20261115.md): predecessor pins tại
+`release/hybrid/payload-files.json`, parser/packer tại `scripts/package_hybrid_rc.py`,
+source gate/CAS/rollback tại `release/hybrid/manage.py`. Actual RC7 clone replay
+qua `scripts/accept_hybrid_rc_upgrade.py`; không coi no-op install là chứng minh
+đường nâng cấp đã chạy. Research/history không được ghi đè.
+
 [Audio resilience](release/SCREEN_AUDIO_RESILIENCE_20261115.md):
 `ScreenMemory._ingest_audio` giữ failed/skipped intervals và bounded pause;
 `tests/test_hybrid_screen_audio.py` kiểm fault isolation/resource boundaries;
