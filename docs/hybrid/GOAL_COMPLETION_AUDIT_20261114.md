@@ -94,3 +94,13 @@ No SNN update or hiddenadvantage claim. Fullgoal stillnotachieved: sequential/
 pipeline cases, learnedcausepolicy, transfer/retention and8h/quality remainopen.
 PID41904/source verifiedlive16477s/55cycles/10checks. No external blocker; next
 safeaction is a separate whole-read-path engineering check, not neural scaling.
+
+Progressofcurrentturn778239: separate sequential/pipeline engineering repair,
+sixcurrentbase/sixcandidate/sixinstalledactualcalls.23targetchecks pass, preserve
+125/10/9canonicalcandidate (knownbase failures and independentlyfocused
+order-sensitive dedup) rather than all-green claim. Exactsource installed with
+twofilebackup; freshHermes47768/Desktopreconnected. Native39372/liveALIF5 and
+8hPID41904/source identity retained. Initialzerocallharness and auditID-parser
+mistakes retained with corrections. Fullgoal is stillactive: learnederrorcause/
+policy and transfer/retention remain unproven,8h notdone. No external blocker;
+avoid endless tool-guard work substituting for the neural learning requirement.

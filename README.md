@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Read-paths v2](docs/hybrid/HERMES_READ_PATHS_V2_20261114.md): đã sửa thêm
+fallback và lỗi đầu pipeline bị che trên GitBash,18calls thật/23target checks;
+fullsuiteHermes vẫn có lỗi nền, chưa là neural self-recovery hoặc productionPASS.
 [Sửa phản hồi đọc file Hermes](docs/hybrid/HERMES_FILE_READ_CONTRACT_20261114.md):
 file bị khóa không còn thành empty-file trên default path; đã cài/back up,
 giữ rõ fallback và neural self-recovery còn chưa được chứng minh.

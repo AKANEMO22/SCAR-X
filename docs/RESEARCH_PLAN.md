@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hermes read paths v2:** sửa/test thêm sequential và failed-leading-pipeline
+trên Windows/GitBash,18dispatcher calls/23target contracts qua. Kết quả thành
+công này chỉ là nguồn phản hồi công cụ đúng hơn, chưa learned neural recovery;
+giữ fullsuitefailure/logs và remote/concurrent-read limits. Không thay mô hình,
+learning rule hoặc8hsource. [Báo cáo](hybrid/HERMES_READ_PATHS_V2_20261114.md).
+
 **Tool truth14/11:** actual Hermes read của file khóa bị báo thành empty0byte;
 đã sửa compound response parser và cold-validate installedsource. Không dùng
 reported status làm nhãn đúng khi contract chưa đủ; không coi sửa phần mềm là

@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Hermes fallback/pipeline v2 —14/11
+
+[Run778239, source và limits](hybrid/HERMES_READ_PATHS_V2_20261114.md): sed lỗi
+bị cut che từng thành success1|; compound/sequential nay báoerror.18actualcalls
+gồm6installed source,23target checks qua. Canonicalbase115pass/20fail/9skip,
+candidate125/10/9; giữ9failure cũ chung+1order-sensitive dedup đã thấy trên base
+lịch sử, focused cảhai qua. Không all-green. Đã exactSHA-install/back up/reload
+Hermes47768; nativeVLM39372/liveALIF vẫn nguyên. Neuralcausepolicy còn chưađạt.
+
 ## Hermes file-read contract —14/11
 
 [Actual file repro và sửa](hybrid/HERMES_FILE_READ_CONTRACT_20261114.md): file24byte

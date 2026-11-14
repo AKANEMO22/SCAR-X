@@ -88,6 +88,10 @@ nativeVLM39372 giữ nguyên; liveALIF vẫn5updates tại lúc kiểm.
 
 ## Những việc còn mở
 
+Cập nhật sau lượt này: [bản nâng cấp read-paths v2](HERMES_READ_PATHS_V2_20261114.md)
+đã sửa/test/cài sequential và status pipeline trên GitBash. Kết quả và SHA ở
+các mục trên giữ ý nghĩa lịch sử của lượt3aeff8; source hiện tại xem báo cáo v2.
+
 1. Kiểm riêng fallback sequential và lỗi đầu pipeline bị tiến trình sau che:
    sửa hiện tại tập trung parser compound/default, chưa chứng minh mọi backend
    và race đọc nguồn đều có thông báo đúng. Không gán engineering acceptance này

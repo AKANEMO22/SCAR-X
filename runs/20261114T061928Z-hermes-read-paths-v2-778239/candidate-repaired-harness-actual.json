@@ -1,0 +1,212 @@
+{
+  "source": "Actual Hermes dispatcher and registered public observer hooks, manually constructed owned files",
+  "model_tools_sha256": "d1da6f6d7346ca7c9a4eb67337056492bdc219dc55fb1df7cb1f49cd189a94aa",
+  "hooks_sha256": "7dbef5a4747ff867b1af4235194b8c831a4383d62f53a4adaf0760e6f9f91c52",
+  "calls": [
+    {
+      "case": "compound_ok",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "readable",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": false,
+        "sed_exit": null
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\readable.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"1|Owned readable source.\", \"total_lines\": 1, \"file_size\": 24, \"truncated\": false, \"is_binary\": false, \"is_image\": false, \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "ok",
+        "error_type": null,
+        "error_message": null
+      },
+      "public_hook_observation": {
+        "scope": "a6d271349ce4d0394cac97501ad3d27b57fd42127caf10c140d7259cd90661b2",
+        "call_id": "1ae143ad5e76384fde0d141121021686bf6b4b9939bff06cf14e7bde0f1777dd",
+        "tool": "read_file",
+        "args_sha256": "26c887a407423f6f2e478f42b6642644d71709c6f2aa1a1d2482c6a446da857e",
+        "result_sha256": "e26875135f527d9712c84abd5587708fc6ee04d1ac9528c3af281fb47f8d74b3",
+        "reported_status": "ok",
+        "error_type": "",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 1847.0
+      },
+      "returned_epoch": 1794637319.1758032
+    },
+    {
+      "case": "compound_page_failure",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "readable",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": false,
+        "sed_exit": 17
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\readable.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"\", \"total_lines\": 0, \"file_size\": 0, \"truncated\": false, \"is_binary\": false, \"is_image\": false, \"error\": \"Failed to read file: \", \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "error",
+        "error_type": "tool_error",
+        "error_message": "Failed to read file: "
+      },
+      "public_hook_observation": {
+        "scope": "7a9901a62309328dab186bcc623c19b25b51dcc9e1c28eee5e4e9b91f103bfaa",
+        "call_id": "96250a21b789bd89b982da7d9e4f64032a8a20f5e804fdf3a09b784968bcba48",
+        "tool": "read_file",
+        "args_sha256": "26c887a407423f6f2e478f42b6642644d71709c6f2aa1a1d2482c6a446da857e",
+        "result_sha256": "2d9fa9a33ef06a96c699a1717fa99373ac3645f387de6e8bb5cdeae2530bc24b",
+        "reported_status": "error",
+        "error_type": "tool_error",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 847.0
+      },
+      "returned_epoch": 1794637320.026916
+    },
+    {
+      "case": "sequential_ok",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "readable",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": true,
+        "sed_exit": null
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\readable.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"1|Owned readable source.\", \"total_lines\": 1, \"file_size\": 24, \"truncated\": false, \"is_binary\": false, \"is_image\": false, \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "ok",
+        "error_type": null,
+        "error_message": null
+      },
+      "public_hook_observation": {
+        "scope": "9dbb13ff59a44387808b32ddd29cb4534bcfe6c4f87bcbe066baf8eb37da743c",
+        "call_id": "c3296dd045dfd0609ad7ad3118ce31699b14219ba96b5f82c75f99e852a5f326",
+        "tool": "read_file",
+        "args_sha256": "26c887a407423f6f2e478f42b6642644d71709c6f2aa1a1d2482c6a446da857e",
+        "result_sha256": "e26875135f527d9712c84abd5587708fc6ee04d1ac9528c3af281fb47f8d74b3",
+        "reported_status": "ok",
+        "error_type": "",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 2749.0
+      },
+      "returned_epoch": 1794637322.7801845
+    },
+    {
+      "case": "sequential_page_failure",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "readable",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": true,
+        "sed_exit": 17
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\readable.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"\", \"total_lines\": 0, \"file_size\": 0, \"truncated\": false, \"is_binary\": false, \"is_image\": false, \"error\": \"File page read failed; no complete read was established.\", \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "error",
+        "error_type": "tool_error",
+        "error_message": "File page read failed; no complete read was established."
+      },
+      "public_hook_observation": {
+        "scope": "33d001723d802dfbcb7437b400aa3dc7007862ab96a56c27357e5c478d2d5dcd",
+        "call_id": "28701854185dfa0155aa6ba0fac4cb1d4ea34ede678b73e702988246420eedb3",
+        "tool": "read_file",
+        "args_sha256": "26c887a407423f6f2e478f42b6642644d71709c6f2aa1a1d2482c6a446da857e",
+        "result_sha256": "7bd333ca021dad5b676f9872cf38970b02aabfcb6ba672309cf3be5c837765b4",
+        "reported_status": "error",
+        "error_type": "tool_error",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 1724.0
+      },
+      "returned_epoch": 1794637324.5079052
+    },
+    {
+      "case": "sequential_empty",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "empty",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": true,
+        "sed_exit": null
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\empty.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"\", \"total_lines\": 0, \"file_size\": 0, \"truncated\": false, \"hint\": \"File is empty (0 bytes).\", \"is_binary\": false, \"is_image\": false, \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "ok",
+        "error_type": null,
+        "error_message": null
+      },
+      "public_hook_observation": {
+        "scope": "e425ac6d9cdd1b6ffa129b6ccb58dfba652cf0aa3d82aeda9f8b63606e4ae57c",
+        "call_id": "5917ac6194990ba59251bcf383f783f2edd6f3e64d68c5dd710f22fca1709c23",
+        "tool": "read_file",
+        "args_sha256": "21d2d378079599c79e91b49e1e2450246224858892c6439c4887b0acdc7b959b",
+        "result_sha256": "b26f93098513ceae185b808b57ca98617d72441cbc6bce167c30f8b304b931df",
+        "reported_status": "ok",
+        "error_type": "",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 2141.0
+      },
+      "returned_epoch": 1794637326.6526434
+    },
+    {
+      "case": "sequential_locked",
+      "repetition": 0,
+      "owned_fixture_cause_not_neural_input": "exclusive",
+      "controlled_transport_fault_not_neural_input": {
+        "force_fallback": true,
+        "sed_exit": null
+      },
+      "arguments": {
+        "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261114T061928Z-hermes-read-paths-v2-778239\\candidate-harness-repaired\\project\\exclusive.txt",
+        "offset": 1,
+        "limit": 100
+      },
+      "raw_tool_result": "{\"content\": \"\", \"total_lines\": 0, \"file_size\": 0, \"truncated\": false, \"is_binary\": false, \"is_image\": false, \"error\": \"File read probe failed; source or backend may be unavailable. No content was established.\", \"not_found\": false}",
+      "metadata_extractor": {
+        "status": "error",
+        "error_type": "tool_error",
+        "error_message": "File read probe failed; source or backend may be unavailable. No content was established."
+      },
+      "public_hook_observation": {
+        "scope": "a6e4e629a2d67322ccd4944a9f7579b1155ffb122038e10f643bade176460f1f",
+        "call_id": "a5bdbdefe7b171597365a0b8b9aa1bf2d9e8bed319a299c90d539b110ae3be30",
+        "tool": "read_file",
+        "args_sha256": "d231896026b6625a6e584dfc325dfbb3ba06c7b9b7dfcb29ddfcf55fa2b99d19",
+        "result_sha256": "5773e666408ef5ce6be13236db1614c486811e9b2c008e7ff4d8d3efaff9cc19",
+        "reported_status": "error",
+        "error_type": "tool_error",
+        "empty_result": false,
+        "spillover": false,
+        "duration_ms": 516.0
+      },
+      "returned_epoch": 1794637327.1736841
+    }
+  ],
+  "failures": [],
+  "live_gateway_or_neural_calls": 0,
+  "file_operations_overlay_sha256": "89328ad2cba667107dc12125fdee163a41739dfb85f5651d14a4cf678dd03cfc",
+  "imported_reader_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\hermes-file-read-paths-v2\\file_operations.py",
+  "imported_reader_sha256": "89328ad2cba667107dc12125fdee163a41739dfb85f5651d14a4cf678dd03cfc",
+  "metadata_extractor_source": "def _tool_result_observer_fields(tool_name: str, result: Any) -> tuple[str, Optional[str], Optional[str]]:\n    \"\"\"Derive (status, error_type, error_message) from a tool result for observer hooks.\"\"\"\n    try:\n        parsed_result = json.loads(result) if isinstance(result, str) else result\n        if isinstance(parsed_result, dict) and parsed_result.get(\"error\"):\n            return \"error\", \"tool_error\", str(parsed_result.get(\"error\"))\n    except Exception:\n        pass\n    try:\n        from agent.display import _detect_tool_failure\n        failed, suffix = _detect_tool_failure(tool_name, result)\n        if failed:\n            return \"error\", \"tool_error\", suffix.strip().strip(\"[]\") or None\n    except Exception:\n        pass\n    return \"ok\", None, None",
+  "seconds": 12.256940299994312
+}

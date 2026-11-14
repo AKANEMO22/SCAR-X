@@ -15,7 +15,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main(output, directory, hooks_source, smoke, candidate=None, repair_smoke=False, installed_code=False):
+def main(output, directory, hooks_source, smoke, candidate=None, repair_smoke=False, installed_code=False, read_paths=False):
     assert not output.exists()
     assert directory.resolve().is_relative_to((ROOT / "local").resolve())
     assert not directory.exists()
@@ -80,18 +80,35 @@ def register(ctx):
         from tools import file_operations as active_reader
         report["imported_reader_path"] = str(Path(active_reader.__file__).resolve())
         report["imported_reader_sha256"] = hashlib.sha256(Path(active_reader.__file__).read_bytes()).hexdigest()
-        if installed_code:
+        if installed_code and candidate is None:
             assert Path(active_reader.__file__).resolve() == (source / "tools/file_operations.py").resolve()
         from hermes_cli.plugins import discover_plugins
         from hermes_cli.lifecycle import invoke_hook
         discover_plugins(force=True)
+        original_exec = active_reader.ShellFileOperations._exec
+        fault = {"force_fallback": False, "sed_exit": None}
+        if read_paths:
+            from tools.file_operations_common import ExecuteResult
+            def scoped_exec(instance, command, *args, **kwargs):
+                if fault["force_fallback"] and "__HERMES_RF_" in command:
+                    return ExecuteResult(stdout="OWNED_UNSUPPORTED_COMPOUND_FRAME",exit_code=0)
+                if fault["sed_exit"] is not None:
+                    command = "(set +o pipefail; sed() { return 17; }; " + command + ")"
+                return original_exec(instance,command,*args,**kwargs)
+            active_reader.ShellFileOperations._exec = scoped_exec
         node = next(n for n in ast.parse(original.decode("utf-8")).body
                     if isinstance(n, ast.FunctionDef) and n.name == "_tool_result_observer_fields")
         report["metadata_extractor_source"] = ast.get_source_segment(original.decode("utf-8"), node)
-        cases = ["empty", "exclusive", "partial"] if repair_smoke else ["misleading", "missing", "binary"] if smoke else [
+        cases = (["compound_ok", "compound_page_failure", "sequential_ok", "sequential_page_failure",
+                  "sequential_empty", "sequential_locked"] if read_paths else
+                 ["empty", "exclusive", "partial"] if repair_smoke else ["misleading", "missing", "binary"] if smoke else [
             "readable", "empty", "misleading", "missing", "deleted", "wrong_location",
-            "directory", "binary", "partial", "full", "exclusive", "changing"]
-        for index, kind in enumerate(cases):
+            "directory", "binary", "partial", "full", "exclusive", "changing"])
+        for index, case in enumerate(cases):
+            kind = ({"sequential_empty":"empty","sequential_locked":"exclusive"}.get(case,"readable")
+                    if read_paths else case)
+            fault.update(force_fallback=read_paths and case.startswith("sequential"),
+                         sed_exit=17 if read_paths and case.endswith("page_failure") else None)
             target = project / (kind + ".txt")
             if kind == "directory":
                 target.mkdir()
@@ -143,8 +160,9 @@ def register(ctx):
                     assert len(sent) == len(report["calls"]) + 1, "Actual public hook did not emit exactly once"
                     observation = sent[-1]
                     assert observation["reported_status"] == status
-                    report["calls"].append({"case":kind, "repetition":repetition,
+                    report["calls"].append({"case":case, "repetition":repetition,
                         "owned_fixture_cause_not_neural_input":kind,
+                        "controlled_transport_fault_not_neural_input":dict(fault),
                         "arguments":args, "raw_tool_result":result,
                         "metadata_extractor":{"status":status,"error_type":error_type,"error_message":error_message},
                         "public_hook_observation":observation,"returned_epoch":returned})
@@ -152,7 +170,9 @@ def register(ctx):
                 if handle is not None:
                     assert kernel.CloseHandle(handle), "Owned exclusive handle did not close"
         assert (source / "model_tools.py").read_bytes() == live_source.read_bytes() == original
-        assert len(report["calls"]) == (3 if smoke or repair_smoke else 14)
+        if read_paths:
+            active_reader.ShellFileOperations._exec = original_exec
+        assert len(report["calls"]) == (6 if read_paths else 3 if smoke or repair_smoke else 14)
         assert time.monotonic() - started < 180
     except Exception:
         import traceback
@@ -173,7 +193,8 @@ if __name__ == "__main__":
     p.add_argument("--file-operations-candidate",type=Path)
     p.add_argument("--repair-smoke",action="store_true")
     p.add_argument("--installed-code",action="store_true")
+    p.add_argument("--read-paths",action="store_true")
     a=p.parse_args()
     raise SystemExit(0 if main(a.output.resolve(),a.directory.resolve(),a.hooks.resolve(),a.smoke,
                               a.file_operations_candidate.resolve() if a.file_operations_candidate else None,
-                              a.repair_smoke,a.installed_code) else 1)
+                              a.repair_smoke,a.installed_code,a.read_paths) else 1)

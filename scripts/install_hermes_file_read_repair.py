@@ -10,6 +10,10 @@ from pathlib import Path
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+PATCHERS = {
+    "ENGINEERING_READ_CONTRACT_REPAIR_QUALIFIED_WITH_EXISTING_OS_TEST_FAILURES": "file_read_contract_patch.py",
+    "ENGINEERING_READ_PATHS_V2_QUALIFIED_WITH_EXISTING_OS_TEST_FAILURES": "file_read_paths_patch.py",
+}
 
 
 def digest(raw):
@@ -31,8 +35,8 @@ def main(receipt_path, apply):
     receipt_path = receipt_path.resolve()
     assert receipt_path.is_relative_to(ROOT / "runs")
     acceptance = json.loads(receipt_path.read_text(encoding="utf-8"))
-    assert acceptance["verdict"] == "ENGINEERING_READ_CONTRACT_REPAIR_QUALIFIED_WITH_EXISTING_OS_TEST_FAILURES"
-    assert not acceptance["new_canonical_failures"] and acceptance["canonical_new_contract_tests_passed"] == 11
+    assert acceptance["verdict"] in PATCHERS
+    assert not acceptance["new_canonical_failures"] and acceptance["canonical_new_contract_tests_passed"] > 0
     folder = receipt_path.parent / acceptance["source_artifacts"]
     candidate = (folder / "file_operations.py").read_bytes()
     sibling = (folder / "file_operations_read_contract.py").read_bytes()
@@ -42,13 +46,18 @@ def main(receipt_path, apply):
     target, companion = tools / "file_operations.py", tools / "file_operations_read_contract.py"
     assert target.resolve().is_relative_to(tools.resolve())
     original = target.read_bytes()
+    old_sibling = companion.read_bytes() if companion.exists() else None
     if original == candidate and companion.is_file() and companion.read_bytes() == sibling:
         print(json.dumps({"already_installed":True,"running_workers_reloaded":False}));return
     if digest(original) != acceptance["core_before_sha256"]:
         raise RuntimeError("Live Hermes source changed; refuse overwriting concurrent edits")
-    if companion.exists():
-        raise RuntimeError("Sibling module already exists; review before overwriting")
-    spec=importlib.util.spec_from_file_location("reader_patch",ROOT / "integrations/hermes/file_read_contract_patch.py")
+    expected_sibling = acceptance.get("sibling_before_sha256")
+    if ((old_sibling is None) != (expected_sibling is None)
+            or old_sibling is not None and digest(old_sibling) != expected_sibling):
+        raise RuntimeError("Sibling source changed; review before overwriting")
+    if not companion.resolve().is_relative_to(tools.resolve()):
+        raise ValueError("Reader sibling path escapes intended Hermes directory")
+    spec=importlib.util.spec_from_file_location("reader_patch",ROOT / "integrations/hermes" / PATCHERS[acceptance["verdict"]])
     patch=importlib.util.module_from_spec(spec);spec.loader.exec_module(patch)
     assert patch.patch_bytes(original) == candidate
     compile(candidate,str(target),"exec");compile(sibling,str(companion),"exec")
@@ -58,7 +67,10 @@ def main(receipt_path, apply):
     backup=ROOT / "local/hermes-file-read-contract-backups" / stamp
     backup.mkdir(parents=True)
     (backup / "file_operations.py.before").write_bytes(original)
-    if target.read_bytes() != original or companion.exists():
+    if old_sibling is not None:
+        (backup / "file_operations_read_contract.py.before").write_bytes(old_sibling)
+    current_sibling = companion.read_bytes() if companion.exists() else None
+    if target.read_bytes() != original or current_sibling != old_sibling:
         raise RuntimeError("Concurrent Hermes edit after backup; installation refused")
     replace_file(companion,sibling)
     try:
@@ -66,12 +78,15 @@ def main(receipt_path, apply):
             raise RuntimeError("Concurrent Hermes edit; core replacement refused")
         replace_file(target,candidate)
     except Exception:
-        if companion.read_bytes() == sibling:companion.unlink()
+        if target.read_bytes() == original and companion.read_bytes() == sibling:
+            if old_sibling is None:companion.unlink()
+            else:replace_file(companion,old_sibling)
         raise
     assert target.read_bytes() == candidate and companion.read_bytes() == sibling
     result={"installed_UTC":stamp,"acceptance_receipt":str(receipt_path),"target":str(target),
         "before_sha256":digest(original),"after_sha256":digest(candidate),
-        "sibling":str(companion),"sibling_sha256":digest(sibling),"backup":str(backup),
+        "sibling":str(companion),"sibling_sha256":digest(sibling),
+        "sibling_before_sha256":digest(old_sibling) if old_sibling is not None else None,"backup":str(backup),
         "running_workers_reloaded":False,"neural_or_user_state_files_changed":False}
     (backup / "receipt.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
     print(json.dumps(result))

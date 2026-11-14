@@ -1,0 +1,5 @@
+{
+  "failure": "Whitespace regex collapsed three parameterized status-frame test IDs into one",
+  "effect": "Audit stopped before acceptance/source installation. No actual result/test/source data rewritten.",
+  "fix": "Read whole FAILED-line test IDs including bracketed spaces; compare existing copied logs for byte equality."
+}

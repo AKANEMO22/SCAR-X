@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Read paths v2](hybrid/HERMES_READ_PATHS_V2_20261114.md):
+integrations/hermes/file_operations_read_contract.py xử lý compound/sequential/
+status pipeline; file_read_paths_patch.py + installerchung exactSHA upgrade.
+test_file_read_paths.py, audit_hermes_read_paths_v2.py; raw778239 giữ faultscript,
+18actualcalls và canonicalbase/candidate logs, không training/liveweightchange.
+
 [Hermes file contract](hybrid/HERMES_FILE_READ_CONTRACT_20261114.md):
 hermes_file_contract_fixture.py, two data-only auditors, exact-version installer;
 integrations/hermes/file_read_contract_patch.py + file_operations_read_contract.py.

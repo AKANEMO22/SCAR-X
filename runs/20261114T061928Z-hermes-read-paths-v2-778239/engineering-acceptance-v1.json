@@ -1,0 +1,102 @@
+{
+  "run_id": "20261114T061928Z-hermes-read-paths-v2-778239",
+  "verdict": "ENGINEERING_READ_PATHS_V2_QUALIFIED_WITH_EXISTING_OS_TEST_FAILURES",
+  "actual_baseline_and_candidate_cases": [
+    {
+      "case": "compound_ok",
+      "before_status": "ok",
+      "after_status": "ok",
+      "controlled_fault": {
+        "force_fallback": false,
+        "sed_exit": null
+      }
+    },
+    {
+      "case": "compound_page_failure",
+      "before_status": "ok",
+      "after_status": "error",
+      "controlled_fault": {
+        "force_fallback": false,
+        "sed_exit": 17
+      }
+    },
+    {
+      "case": "sequential_ok",
+      "before_status": "ok",
+      "after_status": "ok",
+      "controlled_fault": {
+        "force_fallback": true,
+        "sed_exit": null
+      }
+    },
+    {
+      "case": "sequential_page_failure",
+      "before_status": "ok",
+      "after_status": "error",
+      "controlled_fault": {
+        "force_fallback": true,
+        "sed_exit": 17
+      }
+    },
+    {
+      "case": "sequential_empty",
+      "before_status": "ok",
+      "after_status": "ok",
+      "controlled_fault": {
+        "force_fallback": true,
+        "sed_exit": null
+      }
+    },
+    {
+      "case": "sequential_locked",
+      "before_status": "error",
+      "after_status": "error",
+      "controlled_fault": {
+        "force_fallback": true,
+        "sed_exit": null
+      }
+    }
+  ],
+  "actual_dispatcher_calls_so_far": 12,
+  "remaining_installed_validation_call_budget": 6,
+  "initial_harness_failure_calls": 0,
+  "canonical_new_contract_tests_passed": 23,
+  "new_canonical_failures": [],
+  "candidate_existing_failures": [
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[18]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[2]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_new_file_gets_umask_default_permissions[63]",
+    "tests/tools/test_file_operations.py::TestAtomicWriteNewFilePermissions::test_overwrite_still_preserves_existing_mode",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_sorts_files_and_directories_before_pagination",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_excludes_gitignored_empty_directory",
+    "tests/tools/test_file_operations.py::TestSearchFilesIncludesDirectories::test_rg_target_files_includes_matching_empty_directory",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_read_file_tool_rejects_device_symlink_before_io",
+    "tests/tools/test_file_read_guards.py::TestDevicePathBlocking::test_symlink_to_blocked_device_is_blocked",
+    "tests/tools/test_file_read_guards.py::TestFileDedup::test_background_review_fork_gets_content_and_read_mark_not_stub"
+  ],
+  "original_canonical_summaries": {
+    "target-baseline": "=== Summary: 1 files, 1 tests passed, 11 failed; FAILED: 1 of 1 file (100% complete) in 3.9s (1 workers) ===",
+    "target-candidate": "=== Summary: 2 files, 23 tests passed, 0 failed (100% complete) in 5.8s (1 workers) ===",
+    "full-baseline": "=== Summary: 5 files, 115 tests passed, 20 failed, 9 skipped; FAILED: 3 of 5 files (100% complete) in 68.1s (1 workers) ===",
+    "full-candidate": "=== Summary: 5 files, 125 tests passed, 10 failed, 9 skipped; FAILED: 2 of 5 files (100% complete) in 67.9s (1 workers) ===",
+    "dedup-baseline-targeted": "=== Summary: 1 files, 1 tests passed, 0 failed (100% complete) in 2.2s (1 workers) ===",
+    "dedup-candidate-targeted": "=== Summary: 1 files, 1 tests passed, 0 failed (100% complete) in 2.2s (1 workers) ==="
+  },
+  "known_order_sensitive_dedup_failure": {
+    "id": "tests/tools/test_file_read_guards.py::TestFileDedup::test_background_review_fork_gets_content_and_read_mark_not_stub",
+    "historical_v1_base_already_failed": true,
+    "historical_log_sha256": "68cf729c89369ff91442fb26cda29d2d4b30a79dbe72ca87dcf2ff814d124283",
+    "v2_focused_base_and_candidate_pass": true,
+    "claimed_fixed": false,
+    "scope": "Order/process-sensitive failure in mocked file_ops read-mark test; unrelated reader changes are not a proof of fixing it."
+  },
+  "whole_upstream_suite_green": false,
+  "core_before_sha256": "68bb3ef6fb07c12384641f1359a7744dbf4814e1d84a79b7b20407d2bad3dee9",
+  "sibling_before_sha256": "e846b861d9a2f672f47f026b72aab2b4799109b93cef55f9720309192add5a2f",
+  "core_after_sha256": "89328ad2cba667107dc12125fdee163a41739dfb85f5651d14a4cf678dd03cfc",
+  "sibling_sha256": "39207c292c33dab410ac7ed519fea086d9822b80e0061bd004ab6ead8c43f190",
+  "source_artifacts": "source-after",
+  "installed_code_validation_complete": false,
+  "neural_learning_or_model_quality_claim": false,
+  "scope": "GitBash shell path engineering acceptance. No atomic snapshot guarantee, remote-shell qualification or neural causal awareness."
+}

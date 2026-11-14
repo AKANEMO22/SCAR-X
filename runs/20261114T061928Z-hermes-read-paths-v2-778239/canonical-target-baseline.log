@@ -1,0 +1,226 @@
+▶ not activated — using HERMES_PYTHON: /c/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-hybrid-20261113/local/hermes-reliability-test-env/Scripts/python.exe
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~6 tests) under ['tests\\tools\\test_scarx_file_read_paths.py']; running with -j 1
+[100.0% |     6/~6 | ✓ 1 | ✗11] ✗ tests\tools\test_scarx_file_read_paths.py (1✓ 11✗, 3.8s)
+
+  ╔╍ Failed: tests\tools\test_scarx_file_read_paths.py ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+  ║ ____ test_real_bash_failed_sed_is_not_hidden_by_successful_cut[sequential] ____
+  ║ 
+  ║ tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/hermes-pytest/r-ytz_8vdz/pytest-of-unknown/pytest-0/test_real_bash_failed_sed_is_n1')
+  ║ path = 'sequential'
+  ║ 
+  ║     @pytest.mark.platforms("windows")
+  ║     @pytest.mark.parametrize("path", ("compound","sequential"))
+  ║     def test_real_bash_failed_sed_is_not_hidden_by_successful_cut(tmp_path,path):
+  ║         source=tmp_path/"source.txt";source.write_bytes(b"owned\n")
+  ║         ops,_=real_bash_ops(tmp_path,True)
+  ║         result = (ops.read_file(str(source),limit=2) if path=="compound"
+  ║                   else ops._read_file_sequential(str(source),1,2))
+  ║ >       assert result.error and not result.not_found
+  ║ E       AssertionError: assert (None)
+  ║ E        +  where None = ReadResult(content='1|', total_lines=1, file_size=6, truncated=False, truncated_lines=None, hint=None, is_binary=False..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+  ║ 
+  ║ tests\tools\test_scarx_file_read_paths.py:76: AssertionError
+  ║ =========================== short test summary info ===========================
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 17 0 0]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 17 0]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 0 17]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_unknown_or_negative_size_does_not_manufacture_empty[0-bad_size]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_unknown_or_negative_size_does_not_manufacture_empty[-1-ok]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[unavailable-0]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[0-17]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[-1-0]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_failed_tail_does_not_claim_correct_full_line_count
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_real_bash_failed_sed_is_not_hidden_by_successful_cut[compound]
+  ║ FAILED tests/tools/test_scarx_file_read_paths.py::test_real_bash_failed_sed_is_not_hidden_by_successful_cut[sequential]
+  ║ 11 failed, 1 passed in 2.68s
+  ║
+  ║  Repro: python -m pytest tests\tools\test_scarx_file_read_paths.py -q -p scarx_file_read_contract_pytest
+  ╚╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
+
+
+=== Summary: 1 files, 1 tests passed, 11 failed; FAILED: 1 of 1 file (100% complete) in 3.9s (1 workers) ===
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 3.8s  (runner wall: 3.9s, parallelism: 1x)
+  P50: 3.76s  P90: 3.76s  P95: 3.76s  P99: 3.76s  Max: 3.76s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      3.76s  tests\tools\test_scarx_file_read_paths.py
+
+=== Failure output ===
+
+--- tests\tools\test_scarx_file_read_paths.py ---
+FFFFFFFFFFF.                                                             [100%]
+================================== FAILURES ===================================
+____ test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 17 0 0] _____
+
+status = '0 0 17 0 0'
+
+    @pytest.mark.parametrize("status", ("0 0 17 0 0", "0 0 0 17 0", "0 0 0 0 17"))
+    def test_failed_probe_is_not_hidden_by_numeric_zero_metadata(status):
+        ops = SimpleNamespace(
+            _decode_base64_sample=lambda text: b"", _is_likely_binary=lambda *args: False,
+            _is_likely_binary_bytes=lambda data: False,
+            _assemble_read_result=lambda *args, **kw: ReadResult(file_size=kw["file_size"]))
+        result = finish_compound_read(ops, "owned.txt", 1, 2, ("0", "", "", "0", "0", status))
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint=None, is_binary=False, ..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:20: AssertionError
+____ test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 17 0] _____
+
+status = '0 0 0 17 0'
+
+    @pytest.mark.parametrize("status", ("0 0 17 0 0", "0 0 0 17 0", "0 0 0 0 17"))
+    def test_failed_probe_is_not_hidden_by_numeric_zero_metadata(status):
+        ops = SimpleNamespace(
+            _decode_base64_sample=lambda text: b"", _is_likely_binary=lambda *args: False,
+            _is_likely_binary_bytes=lambda data: False,
+            _assemble_read_result=lambda *args, **kw: ReadResult(file_size=kw["file_size"]))
+        result = finish_compound_read(ops, "owned.txt", 1, 2, ("0", "", "", "0", "0", status))
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint=None, is_binary=False, ..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:20: AssertionError
+____ test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 0 17] _____
+
+status = '0 0 0 0 17'
+
+    @pytest.mark.parametrize("status", ("0 0 17 0 0", "0 0 0 17 0", "0 0 0 0 17"))
+    def test_failed_probe_is_not_hidden_by_numeric_zero_metadata(status):
+        ops = SimpleNamespace(
+            _decode_base64_sample=lambda text: b"", _is_likely_binary=lambda *args: False,
+            _is_likely_binary_bytes=lambda data: False,
+            _assemble_read_result=lambda *args, **kw: ReadResult(file_size=kw["file_size"]))
+        result = finish_compound_read(ops, "owned.txt", 1, 2, ("0", "", "", "0", "0", status))
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint=None, is_binary=False, ..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:20: AssertionError
+_ test_sequential_unknown_or_negative_size_does_not_manufacture_empty[0-bad_size] _
+
+size = 0, status = 'bad_size'
+
+    @pytest.mark.parametrize("size,status", ((0,"bad_size"),(-1,"ok")))
+    def test_sequential_unknown_or_negative_size_does_not_manufacture_empty(size,status):
+        result = sequential_ops(size,status)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='', total_lines=0, file_size=0, truncated=False, truncated_lines=None, hint='File is empty (0 bytes..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:42: AssertionError
+_ test_sequential_unknown_or_negative_size_does_not_manufacture_empty[-1-ok] __
+
+size = -1, status = 'ok'
+
+    @pytest.mark.parametrize("size,status", ((0,"bad_size"),(-1,"ok")))
+    def test_sequential_unknown_or_negative_size_does_not_manufacture_empty(size,status):
+        result = sequential_ops(size,status)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=1, file_size=-1, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:42: AssertionError
+__ test_sequential_count_failure_cannot_turn_into_valid_read[unavailable-0] ___
+
+count = 'unavailable', code = 0
+
+    @pytest.mark.parametrize("count,code", (("unavailable",0),("0",17),("-1",0)))
+    def test_sequential_count_failure_cannot_turn_into_valid_read(count,code):
+        result = sequential_ops(count=count,count_code=code)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:48: AssertionError
+_______ test_sequential_count_failure_cannot_turn_into_valid_read[0-17] _______
+
+count = '0', code = 17
+
+    @pytest.mark.parametrize("count,code", (("unavailable",0),("0",17),("-1",0)))
+    def test_sequential_count_failure_cannot_turn_into_valid_read(count,code):
+        result = sequential_ops(count=count,count_code=code)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=0, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:48: AssertionError
+_______ test_sequential_count_failure_cannot_turn_into_valid_read[-1-0] _______
+
+count = '-1', code = 0
+
+    @pytest.mark.parametrize("count,code", (("unavailable",0),("0",17),("-1",0)))
+    def test_sequential_count_failure_cannot_turn_into_valid_read(count,code):
+        result = sequential_ops(count=count,count_code=code)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=-1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:48: AssertionError
+_____ test_sequential_failed_tail_does_not_claim_correct_full_line_count ______
+
+    def test_sequential_failed_tail_does_not_claim_correct_full_line_count():
+        result = sequential_ops(tail_code=17)._read_file_sequential("owned.txt",1,2)
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|text', total_lines=1, file_size=5, truncated=False, truncated_lines=None, hint=None, is_binary=F..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:53: AssertionError
+_____ test_real_bash_failed_sed_is_not_hidden_by_successful_cut[compound] _____
+
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/hermes-pytest/r-ytz_8vdz/pytest-of-unknown/pytest-0/test_real_bash_failed_sed_is_n0')
+path = 'compound'
+
+    @pytest.mark.platforms("windows")
+    @pytest.mark.parametrize("path", ("compound","sequential"))
+    def test_real_bash_failed_sed_is_not_hidden_by_successful_cut(tmp_path,path):
+        source=tmp_path/"source.txt";source.write_bytes(b"owned\n")
+        ops,_=real_bash_ops(tmp_path,True)
+        result = (ops.read_file(str(source),limit=2) if path=="compound"
+                  else ops._read_file_sequential(str(source),1,2))
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|', total_lines=1, file_size=6, truncated=False, truncated_lines=None, hint=None, is_binary=False..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:76: AssertionError
+____ test_real_bash_failed_sed_is_not_hidden_by_successful_cut[sequential] ____
+
+tmp_path = WindowsPath('C:/Users/hachimi/AppData/Local/Temp/hermes-pytest/r-ytz_8vdz/pytest-of-unknown/pytest-0/test_real_bash_failed_sed_is_n1')
+path = 'sequential'
+
+    @pytest.mark.platforms("windows")
+    @pytest.mark.parametrize("path", ("compound","sequential"))
+    def test_real_bash_failed_sed_is_not_hidden_by_successful_cut(tmp_path,path):
+        source=tmp_path/"source.txt";source.write_bytes(b"owned\n")
+        ops,_=real_bash_ops(tmp_path,True)
+        result = (ops.read_file(str(source),limit=2) if path=="compound"
+                  else ops._read_file_sequential(str(source),1,2))
+>       assert result.error and not result.not_found
+E       AssertionError: assert (None)
+E        +  where None = ReadResult(content='1|', total_lines=1, file_size=6, truncated=False, truncated_lines=None, hint=None, is_binary=False..., mime_type=None, dimensions=None, error=None, not_found=False, similar_files=[], _snapshot=None, _content_sha256=None).error
+
+tests\tools\test_scarx_file_read_paths.py:76: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 17 0 0]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 17 0]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_failed_probe_is_not_hidden_by_numeric_zero_metadata[0 0 0 0 17]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_unknown_or_negative_size_does_not_manufacture_empty[0-bad_size]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_unknown_or_negative_size_does_not_manufacture_empty[-1-ok]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[unavailable-0]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[0-17]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_count_failure_cannot_turn_into_valid_read[-1-0]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_sequential_failed_tail_does_not_claim_correct_full_line_count
+FAILED tests/tools/test_scarx_file_read_paths.py::test_real_bash_failed_sed_is_not_hidden_by_successful_cut[compound]
+FAILED tests/tools/test_scarx_file_read_paths.py::test_real_bash_failed_sed_is_not_hidden_by_successful_cut[sequential]
+11 failed, 1 passed in 2.68s
+
+=== 1 file with test failures ===
+  tests\tools\test_scarx_file_read_paths.py  (11 tests failed)

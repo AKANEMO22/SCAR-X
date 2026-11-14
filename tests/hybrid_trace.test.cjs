@@ -178,4 +178,9 @@ test("actual file-contract repair does not imply neural learning or all-green up
   assert.match(text,/9 test cũ Hermes chưa qua/);
   assert.match(text,/chưa là SNN tự hiểu nguyên nhân/);
   assert.equal(nodes.has("updates"),false);
+  event({actor:"orchestrator",kind:"file_contract.read_paths_v2_verified",payload:{
+    run_id:"owned-read-paths",actual_dispatcher_calls:18,target_contracts_passed:23,existing_upstream_failures:10}});
+  const upgraded=nodes.get("read-contract-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(upgraded,/18 lượt công cụ thật · 23 test/);
+  assert.match(upgraded,/không học hoặc sửa model neural/);
 });

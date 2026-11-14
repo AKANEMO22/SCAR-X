@@ -1,0 +1,149 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SCAR-X Hybrid</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#19222e;--stroke:#2a384a;--text:#e4edf8;--muted:#a2b3c9;--accent:#79dfbe}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui}main{max-width:1280px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}h1{font-size:24px;margin:0}h2{font-size:17px;margin:0 0 12px}p{margin:6px 0}small,.muted{color:var(--muted)}.badge{border:1px solid var(--stroke);border-radius:20px;padding:4px 10px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.card{background:var(--panel);border:1px solid var(--stroke);padding:16px;border-radius:12px}.stat strong{display:block;font-size:21px;color:var(--accent)}nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}button,input,textarea{font:inherit}button{background:#244f48;border:1px solid #3d786a;color:var(--text);padding:9px 14px;border-radius:8px;cursor:pointer}button.secondary{background:var(--panel);border-color:var(--stroke)}button[aria-selected=true]{background:var(--accent);color:#11221e}button:disabled{opacity:.5;cursor:wait}input,textarea{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--stroke);border-radius:8px;padding:10px}textarea{min-height:90px;resize:vertical}.row{display:flex;gap:8px;align-items:center;margin:10px 0}.row input{flex:1}.feed{max-height:55vh;overflow:auto}.message{padding:14px 0;border-bottom:1px solid var(--stroke);white-space:pre-wrap;overflow-wrap:anywhere}.message b,.actor{color:var(--accent)}.error{color:#ffb1a9;white-space:pre-wrap}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 ui-monospace,monospace;margin:8px 0}details{border-bottom:1px solid var(--stroke);padding:10px 0}summary{cursor:pointer}.hidden{display:none}a{color:#98c9ff}.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px}.goal{padding:12px 0;border-bottom:1px solid var(--stroke)}@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}main{padding:16px}}
+</style></head><body><main>
+<header><div><h1>SCAR-X Hybrid</h1><p class="muted">Xem · ghi nhớ · hỏi để học</p></div><span id="phase" class="badge">Đang kết nối</span></header>
+<div class="stats"><div class="card stat"><small>RAM toàn hệ</small><strong id="ram">—</strong><small id="ram-limit">Đang đọc giới hạn RAM · CPU</small></div><div class="card stat"><small>Neuron đang phát xung / đã cấp</small><strong id="neurons">—</strong><small>ALIF · local learning</small></div><div class="card stat"><small>Cập nhật được chấp nhận</small><strong id="updates">—</strong><small id="hidden-updates">—</small></div><div class="card stat"><small>Điều đang tìm hiểu</small><strong id="goals-count">—</strong><small id="qualification">Chưa qua kiểm chứng chất lượng</small></div></div>
+<div class="card"><h2 id="cognitive-phase">Nhịp hoạt động</h2><p id="cognitive-info" class="muted"></p><div class="row"><button type="button" data-intent="auto">Tự động</button><button type="button" data-intent="awake">Thức</button><button type="button" data-intent="sleep">Ngủ / củng cố</button></div></div><p id="note" class="muted"></p><p id="review-status" class="muted"></p><p id="error" class="error" role="alert"></p>
+<nav><button data-tab="chat" aria-selected="true">Trò chuyện</button><button data-tab="video" class="secondary">Trí nhớ video</button><button data-tab="learn" class="secondary">Hỏi để học</button><button data-tab="trace" class="secondary">Trace trực tiếp</button></nav>
+<section id="chat" class="tab card"><h2>Trò chuyện</h2><div id="answers" class="feed"><p class="muted">Câu hỏi, câu trả lời và nguồn thực sẽ hiện ở đây.</p></div><form id="chat-form"><textarea id="question" maxlength="6000" placeholder="Hỏi về video đã xem hoặc trò chuyện…" required></textarea><div class="row"><input id="stream-id" placeholder="ID video (để trống khi trò chuyện chung)"><button id="send">Gửi</button></div></form></section>
+<section id="video" class="tab hidden"><div class="card"><h2>Cho xem video trên máy</h2><p class="muted">Thu nhận 1×; lấy mẫu hình ảnh theo tải. Phần đã lưu, đã nghe và đã phân tích ảnh được đo riêng.</p><form id="video-form"><div class="row"><input id="video-path" placeholder="C:\Videos\video.mp4" required><button>Quan sát</button></div></form><div id="streams"></div></div></section>
+<section id="learn" class="tab hidden"><div class="layout"><div class="card"><h2>Hỏi để học</h2><p class="muted">Khi bạn vắng, SCAR-X gom câu hỏi và tiếp tục tìm hiểu trong ngân sách.</p><div id="pending"></div><form id="reply-form" class="hidden"><textarea id="reply" maxlength="4000" placeholder="Trả lời hoặc nhập “bỏ qua”…"></textarea><div class="row"><button>Trả lời</button><button type="button" id="skip" class="secondary">Bỏ qua</button><button type="button" id="unhelpful" class="secondary">Chưa hữu ích</button></div></form><div id="incidents"></div><div id="goals"></div></div><div class="card"><h2>Nguồn tự học</h2><p class="muted">Chỉ chủ đề công khai được cho phép mới gửi ra web. Nội dung video và hội thoại riêng tư ở lại trên máy.</p><form id="topic-form"><div class="row"><input id="topic" maxlength="160" placeholder="Chủ đề công khai cho phép tra cứu" required><button>Thêm</button></div></form><div id="topics"></div><form id="goal-form"><textarea id="goal-question" maxlength="1000" placeholder="Điều muốn SCAR-X tự tìm hiểu…" required></textarea><div class="row"><input id="topic-id" placeholder="ID chủ đề (trống = chỉ local)"><button>Tạo mục tiêu</button></div></form><div class="row"><button id="pause" class="secondary">Tạm dừng học</button><button id="save" class="secondary">Lưu trạng thái</button></div><form id="rollback-form"><div class="row"><input id="checkpoint" placeholder="ID checkpoint"><button class="secondary">Khôi phục</button></div></form><p id="saved" class="muted"></p></div></div></section>
+<section id="trace" class="tab card"><h2>Trace trực tiếp</h2><p class="muted">Tự cập nhật công việc thực. Phân biệt thao tác triển khai, VLM và quyết định neural; không mô phỏng suy nghĩ.</p>
+<div id="learning-screen" class="goal hidden"></div>
+<div id="binding-summary" class="goal hidden"></div>
+<div id="representation-summary" class="goal hidden"></div>
+<div id="lab-summary" class="goal hidden"></div>
+<details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
+<details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
+<div id="events" class="feed"></div></section>
+</main><script>
+const query=new URLSearchParams(location.search);const startCursor=Number(query.get('after')||0);
+let cursor=Number.isSafeInteger(startCursor)&&startCursor>=0?startCursor:0,state=null,pending=null,learning=true,lab=null;
+const $=id=>document.getElementById(id);const fmt=n=>Number(n||0).toLocaleString('vi-VN');
+async function api(path,body){let r=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});let v=await r.json();if(!r.ok)throw Error(v.error?.message||v.error||r.statusText);if(path.startsWith('/api/status?'))for(const e of v.events||[])labEvent(e);return v}
+function error(e){$('error').textContent=e.message||String(e)}function clear(id){$(id).replaceChildren()}function para(parent,text,cls){let p=document.createElement('p');p.textContent=text;if(cls)p.className=cls;parent.append(p);return p}
+for(let b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{for(let s of document.querySelectorAll('.tab'))s.classList.toggle('hidden',s.id!==b.dataset.tab);for(let n of document.querySelectorAll('[data-tab]'))n.setAttribute('aria-selected',n===b?'true':'false')};
+for(const b of document.querySelectorAll('[data-tab]'))if(b.dataset.tab===query.get('tab'))b.click();
+function renderLab(){
+if(!lab)return;const p=$('lab-summary');clear('lab-summary');p.classList.remove('hidden');
+para(p,'Lab · '+lab.run_id);para(p,lab.finished?'Đã kết thúc: '+lab.verdict:
+  'Nhịp đo '+Math.floor((lab.elapsed_seconds||0)/60)+' phút · '+(lab.video_cycles||0)+' video/QA · '+(lab.checkpoints||0)+' lần kiểm checkpoint');
+if(lab.neural)para(p,'SNN lab trên '+lab.neural.device+': '+lab.neural.updates+' cập nhật · '+lab.neural.replay_items+' mẫu replay.','muted');
+para(p,'Số đo lab độc lập; không cộng vào bộ đếm model live và chưa là kết luận về năng lực.','muted');
+if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận thêm nhịp cập nhật; chưa xác nhận tiến trình đã dừng.','error');
+}
+function labEvent(e){
+if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='file_contract.read_paths_v2_verified'){
+const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
+para(p,'Hermes: kiểm đường dự phòng và pipeline · '+e.payload.run_id);
+para(p,'sed lỗi không còn bị cut che thành đọc thành công. Sequential từ chối metadata kích thước/số dòng không hợp lệ.');
+para(p,e.payload.actual_dispatcher_calls+' lượt công cụ thật · '+e.payload.target_contracts_passed+' test hợp đồng qua. Fullsuite còn '+e.payload.existing_upstream_failures+' lỗi đã đối chiếu, không gọi tất cả xanh.');
+para(p,'Đã cài với backup, không học hoặc sửa model neural. Chỉ xác nhận Windows/GitBash trong các ca đã đo.','muted');
+}
+if(e.kind==='file_contract.repair_verified'){
+const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
+para(p,'Kiểm đường đọc file Hermes · '+e.payload.run_id);
+para(p,'File bị khóa: trước báo rỗng, sau báo lỗi đọc. File rỗng thật vẫn đọc thành công.');
+para(p,e.payload.actual_dispatcher_calls+' lượt công cụ thật · '+e.payload.target_tests_passed+' test hợp đồng qua · '+e.payload.existing_upstream_failures+' test cũ Hermes chưa qua.');
+para(p,'Sửa compound parser trong phần mềm, chưa là SNN tự hiểu nguyên nhân. Fallback và neural policy còn cần kiểm.','muted');
+}
+if(e.kind==='hidden_common_probe.actual_score'){
+const p=$('representation-summary');clear('representation-summary');p.classList.remove('hidden');
+para(p,'Kiểm representation bằng readout chung · '+e.payload.run_id);
+para(p,e.payload.arm+' · seed '+e.payload.seed+(e.payload.reset_hidden?' · reset hidden về ban đầu':''));
+para(p,'Mẫu đã học: '+(100*e.payload.train.accuracy).toFixed(1)+'% · final DEV: '+(100*e.payload.final_DEV.accuracy).toFixed(1)+'%');
+para(p,'Chỉ fit đầu đọc chẩn đoán, hidden bị khóa. Không thay model live hoặc biến kết quả thành lifelong PASS.','muted');
+}
+if(e.kind==='hidden_common_probe.completed'){
+const p=$('representation-summary');clear('representation-summary');p.classList.remove('hidden');
+para(p,'Kết quả kiểm representation · '+e.payload.run_id);para(p,e.payload.verdict);
+const gain=e.payload.current_hidden_minus_frozen_common_probe;
+if(gain)para(p,'Hidden − frozen, cùng readout: '+Number(gain.mean_pp).toFixed(2)+' điểm % · CI95% ['+gain.paired_seed_family_CI95_pp.map(n=>Number(n).toFixed(2)).join('; ')+'].');
+para(p,'Readout offline chẩn đoán dùng lại dữ liệu train. Không là kết quả học liên tục hoặc đổi model live.','muted');
+}
+if(e.kind==='predicate_binding.actual_contrast'){
+const p=$('binding-summary');clear('binding-summary');p.classList.remove('hidden');
+para(p,'Kiểm quan hệ câu hỏi / bản ghi · '+e.payload.run_id);
+para(p,e.payload.arm+' · seed '+e.payload.seed+' · '+e.payload.api+' / '+e.payload.contrast);
+para(p,'Đúng cả hai câu đối chiếu: '+(100*e.payload.both_correct).toFixed(1)+'% trên '+e.payload.pairs+' cặp.');
+para(p,'Chỉ suy luận từ checkpoint cố định; không học mới hoặc cộng cập nhật vào model live.','muted');
+}
+if(e.kind==='predicate_binding.completed'){
+const p=$('binding-summary');clear('binding-summary');p.classList.remove('hidden');
+para(p,'Kết quả kiểm quan hệ câu hỏi / bản ghi · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,e.payload.pairs+' cặp truy vấn · '+e.payload.forwards+' lượt suy luận; chi tiết nhóm trong sự kiện bên dưới.');
+para(p,'Không học mới hoặc thay checkpoint live; các cặp dùng chung nguồn không phải mẫu độc lập.','muted');
+}
+if(e.kind==='predicate_retention.actual_learning_stage'){
+const p=$('learning-screen');clear('learning-screen');p.classList.remove('hidden');
+const names={frozen:'Khóa học',readout_only:'Chỉ học readout',current_hidden:'Hidden hiện tại',protected_hidden:'Hidden + protection thử nghiệm'};
+para(p,'Đo học & giữ kỹ năng · '+e.payload.run_id);
+para(p,(names[e.payload.arm]||e.payload.arm)+' · seed '+e.payload.seed+' · chặng '+(e.payload.stage+1)+'/20');
+para(p,'Điểm trên mẫu chưa thấy: '+(100*e.payload.accuracy).toFixed(1)+'% · loss học '+Number(e.payload.mean_train_loss).toFixed(3));
+para(p,'Lab: '+e.payload.updates+' cập nhật, '+e.payload.hidden_updates+' cập nhật hidden.','muted');
+para(p,'Dữ liệu truy vấn có kiểm chứng; chưa phải năng lực trò chuyện. Điểm và bộ đếm này không thuộc model live.','muted');
+}
+if(e.kind==='predicate_retention.study_completed'){
+const p=$('learning-screen');clear('learning-screen');p.classList.remove('hidden');
+para(p,'Kết quả đo học & giữ kỹ năng · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,'Chỉ là screening trong lab; chưa đưa protection vào Hermes hoặc kết luận SNN hơn RAG.','muted');
+}
+if(e.kind==='recovery_outcome.actual_branch'){
+const p=$('recovery-summary');clear('recovery-summary');p.classList.remove('hidden');
+const labels={show_schema:'Xem schema',inspect_status:'Kiểm tra trạng thái',retry:'Thử lại',clarify:'Hỏi để làm rõ',defer:'Hoãn',finish:'Kết thúc'};
+para(p,'Đo phục hồi lỗi · '+e.payload.run_id);para(p,e.payload.question);
+para(p,'Hành động đang đo: '+(labels[e.payload.selected_action]||e.payload.selected_action));
+para(p,'Model trả về: '+(e.payload.actual_final?.message||'Chưa có quyết định hợp lệ'));
+para(p,e.payload.verification?.verified_resolution?'Qua kiểm effect/status trong sandbox.':'Chưa qua kiểm effect/status trong sandbox.');
+para(p,'Đo mọi nhánh trên bản sao trạng thái, chưa huấn luyện SNN hoặc thay model live.','muted');
+}
+if(e.kind==='recovery_outcome.completed'){
+const p=$('recovery-summary');clear('recovery-summary');p.classList.remove('hidden');
+para(p,'Kết quả đo phục hồi · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,'Lượt native thực: '+e.payload.unique_native_calls+' · ca có kết quả phân biệt giữa hành động: '+(e.payload.informative_cases??'chưa đủ'));
+para(p,'Đây là dữ liệu DEV đo thực thi, chưa phải điểm policy hoặc bằng chứng SNN tự học.','muted');
+}
+if(e.kind==='ASR_candidate.benchmark_completed'&&e.payload.by_language){
+const p=$('asr-summary');clear('asr-summary');p.classList.remove('hidden');
+para(p,'Ứng viên ASR · Whisper-small FP32 · '+e.payload.run_id);
+for(const [lang,m] of Object.entries(e.payload.by_language))para(p,lang.toUpperCase()+': WER '+(100*m.base_micro_WER).toFixed(2)+'% → '+(100*m.small_micro_WER).toFixed(2)+'% · '+m.utterance_pairs+' mẫu DEV');
+para(p,'Đo nhận dạng lời nói riêng; chưa thay ASR live, chưa chứng minh hỏi đáp hay SNN học tốt hơn.','muted');
+}
+if(e.kind==='ASR_candidate.integrated_video_answer'){
+const a=document.createElement('article');a.className='message';const r=e.payload.actual||{};
+para(a,'Video kiểm tra · ASR '+e.payload.ASR_model+' · '+e.payload.run_id,'muted');
+para(a,'Câu hỏi: '+(e.payload.question||r.question||''));
+para(a,'Model trả lời thật: '+(r.answer||'Chưa có đầu ra'));
+para(a,'Đáp án đã khóa: '+e.payload.expected+' · '+(e.payload.strict_contract_passed?'Qua':'Chưa qua')+' tiêu chí output. Clip kỹ thuật đã biết, không phải TEST mới.','muted');
+$('asr-answers').prepend(a);while($('asr-answers').children.length>8)$('asr-answers').lastChild.remove();
+}
+if(e.kind==='shared_endurance.heartbeat'){lab={...e.payload,received_epoch:e.created};renderLab()}
+if(e.kind==='shared_endurance.completed'){lab={...e.payload,received_epoch:e.created,finished:true};renderLab()}
+if(e.kind==='shared_endurance.measured_video'){
+const a=document.createElement('article');a.className='message';const r=e.payload.actual_answer||{};
+para(a,'Lab video · '+e.payload.run_id,'muted');para(a,'Câu hỏi: '+(r.question||'Video QA'));
+para(a,'Model trả lời thật: '+(r.answer||'Chưa có đầu ra'));para(a,'Đầu ra này chưa được chấm chất lượng.','muted');
+$('lab-answers').prepend(a);while($('lab-answers').children.length>12)$('lab-answers').lastChild.remove();
+}}
+setInterval(renderLab,3000);
+async function poll(){try{state=await api('/api/status?after='+cursor);$('phase').textContent=state.phase;const cg=state.cognition;if(cg){const names={starting:'Khởi động',serving:'Đang làm việc',observing:'Đang quan sát',reflecting:'Xem lại trải nghiệm',verifying:'Kiểm chứng',exploring:'Tìm hiểu mục tiêu',sleep_consolidating:'Ngủ · củng cố',resting:'Nghỉ',awake_idle:'Thức · chờ việc',paused:'Tạm dừng học',waking:'Đang thức dậy'};$('cognitive-phase').textContent=names[cg.phase]||cg.phase;$('cognitive-info').textContent=cg.reason+' · VLM '+(cg.VLM_resident?'đang nạp':'đã nhả tài nguyên')+' · '+cg.state.consolidations+' lượt ôn có nguồn · không phải độc thoại nội tâm.';}$('note').textContent=state.note;const rv=state.review;if(rv)$('review-status').textContent='Xem lại: '+rv.completed+' lượt · '+rv.pending+' chờ · '+rv.verified_replay_items+' mẫu có nguồn · '+(rv.blocker||'sẵn sàng')+' · VLM frozen; chưa có bằng chứng thì chưa sửa trọng số.';$('ram').textContent=((state.resources.conservative_ram_bytes??state.resources.rss_bytes)/1e6).toFixed(1)+' MB';$('ram-limit').textContent=state.resources.limit_bytes==null?'GPU · không đặt trần · VRAM '+fmt((state.resources.gpu_dedicated?.bytes||0)/1e6)+' MB':'CPU · trần '+fmt(state.resources.limit_bytes/1e6)+' MB';$('neurons').textContent=state.neural.active+' / '+state.neural.hidden;$('updates').textContent=fmt(state.neural.updates);$('hidden-updates').textContent=fmt(state.neural.hidden_updates)+' lượt cập nhật hidden';$('goals-count').textContent=state.goals.filter(g=>g.status==='open').length;learning=state.learning_enabled;$('pause').textContent=learning?'Tạm dừng học':'Tiếp tục học';$('send').disabled=!state.ready;
+for(let e of state.events){cursor=e.id;let d=document.createElement('details');let s=document.createElement('summary');s.textContent=new Date(e.created*1000).toLocaleTimeString()+' · '+e.actor+' · '+e.kind;s.className='actor';let p=document.createElement('pre');p.textContent=JSON.stringify(e.payload,null,2);d.append(s,p);$('events').prepend(d);if(e.kind==='answer'){if($('answers').children.length===1&&$('answers').firstChild.classList.contains('muted'))clear('answers');let a=document.createElement('article');a.className='message';para(a,'Bạn: '+e.payload.question);para(a,'SCAR-X: '+e.payload.answer);for(let v of e.payload.evidence||[])para(a,'['+v.id+'] '+v.start.toFixed(1)+'–'+v.end.toFixed(1)+'s · '+v.source,'muted');$('answers').append(a);$('answers').scrollTop=$('answers').scrollHeight}}
+while($('events').children.length>180)$('events').lastChild.remove();clear('streams');for(let s of state.streams){let d=document.createElement('div');d.className='goal';para(d,s.id+' · '+s.status+(s.degraded?' · phân tích chưa đầy đủ':''));para(d,'Đã thu '+s.capture_frontier.toFixed(1)+'s · âm thanh '+s.asr_frontier.toFixed(1)+'s · ảnh '+s.vision_frontier.toFixed(1)+'s','muted');if(s.error)para(d,s.error,'error');$('streams').append(d)}
+clear('incidents');for(const i of state.tool_incidents?.recent||[]){let d=document.createElement('div');d.className='goal';para(d,'Đang kiểm tra: '+i.tool+' lặp '+i.observed_repeats+' lần cùng kết quả');para(d,'Nguyên nhân chưa xác minh · '+i.status,'muted');if(i.diagnostic_probe)para(d,'Đã kiểm tra '+i.diagnostic_probe.source_name+': '+(i.diagnostic_probe.read_ok?'đọc được nguồn thay thế, cần xác nhận đúng ý bạn':'chưa đọc được nguồn'),'muted');if(i.last_policy_action)para(d,'Lựa chọn gần nhất: '+i.last_policy_action.action+' · '+i.last_policy_action.selector,'muted');$('incidents').append(d)}pending=state.question;clear('pending');$('reply-form').classList.toggle('hidden',!pending);if(pending){para($('pending'),pending.question);para($('pending'),pending.reason,'muted')}clear('goals');for(let g of state.goals.slice(-20).reverse()){let d=document.createElement('div');d.className='goal';para(d,g.question);para(d,g.status+' · '+g.attempts+'/2 vòng · '+(g.last_action||'chờ'),'muted');$('goals').append(d)}clear('topics');for(let t of state.public_topics)para($('topics'),t.topic+' · '+t.id,'muted');if(state.failure)error(state.failure)
+}catch(e){error(e)}setTimeout(poll,1500)}poll();
+setInterval(()=>{if(document.visibilityState==='visible'&&document.hasFocus())api('/api/presence',{activity:false}).catch(error)},15000);window.addEventListener('focus',()=>api('/api/presence',{activity:false}).catch(error));
+for(const b of document.querySelectorAll('[data-intent]'))b.onclick=()=>api('/api/cognition',{intent:b.dataset.intent}).catch(error);
+let lastActivityPing=0;for(const kind of ['pointerdown','keydown'])document.addEventListener(kind,()=>{if(Date.now()-lastActivityPing>=2000){lastActivityPing=Date.now();api('/api/presence',{activity:true}).catch(error)}});
+$('chat-form').onsubmit=async e=>{e.preventDefault();$('send').disabled=true;try{await api('/v1/chat/completions',{messages:[{role:'user',content:$('question').value}],scarx_stream_id:$('stream-id').value||null});$('question').value=''}catch(e){error(e)}finally{$('send').disabled=false}};
+$('video-form').onsubmit=async e=>{e.preventDefault();try{let s=await api('/api/observe',{path:$('video-path').value});$('stream-id').value=s.id}catch(e){error(e)}};
+$('topic-form').onsubmit=async e=>{e.preventDefault();try{let t=await api('/api/public-topic',{topic:$('topic').value});$('topic-id').value=t.id;$('topic').value=''}catch(e){error(e)}};
+$('goal-form').onsubmit=async e=>{e.preventDefault();try{await api('/api/goal',{question:$('goal-question').value,public_topic_id:$('topic-id').value||null});$('goal-question').value=''}catch(e){error(e)}};
+$('reply-form').onsubmit=async e=>{e.preventDefault();try{await api('/api/feedback',{id:pending.id,text:$('reply').value});$('reply').value=''}catch(e){error(e)}};
+$('skip').insertAdjacentHTML('beforebegin','<button type="button" id="helpful" class="secondary">Trả lời · hữu ích</button>');
+$('helpful').onclick=async()=>{if(!pending||!$('reply').value.trim())return;try{await api('/api/feedback',{id:pending.id,text:$('reply').value,helpful:true});$('reply').value=''}catch(e){error(e)}};
+$('unhelpful').onclick=()=>pending&&api('/api/feedback',{id:pending.id,text:'Câu hỏi này chưa hữu ích cho tác vụ.',helpful:false}).catch(error);$('skip').onclick=()=>pending&&api('/api/feedback',{id:pending.id,text:'bỏ qua'}).catch(error);$('pause').onclick=()=>api('/api/learning',{enabled:!learning}).catch(error);
+$('save').onclick=async()=>{try{let s=await api('/api/save',{});$('checkpoint').value=s.id;$('saved').textContent='Đã lưu '+s.id}catch(e){error(e)}};
+$('rollback-form').onsubmit=async e=>{e.preventDefault();try{await api('/api/rollback',{id:$('checkpoint').value});$('saved').textContent='Đã khôi phục; nhật ký được giữ.'}catch(e){error(e)}};
+</script></body></html>

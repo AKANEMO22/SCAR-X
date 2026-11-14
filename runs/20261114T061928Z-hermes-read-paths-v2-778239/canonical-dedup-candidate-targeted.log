@@ -1,0 +1,20 @@
+▶ not activated — using HERMES_PYTHON: /c/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-hybrid-20261113/local/hermes-reliability-test-env/Scripts/python.exe
+▶ running per-file parallel test suite via run_tests_parallel.py
+  (TZ=UTC LANG=C.UTF-8 PYTHONHASHSEED=0; clean env)
+▶ pre-compiling bytecode cache
+▶ launching test runner
+Discovered 1 test files (~34 tests) under ['tests\\tools\\test_file_read_guards.py']; running with -j 1
+[100.0% |    34/~34 | ✓1 | ✗0] ✓ tests\tools\test_file_read_guards.py (1✓, 2.1s)
+
+=== Summary: 1 files, 1 tests passed, 0 failed (100% complete) in 2.2s (1 workers) ===
+
+  note: platforms('linux') tests (in 1 file) were SKIPPED on this host (win32); they run on the main Linux CI lane.
+  Durations cached to test_durations.json (1 files)
+
+=== Per-file subprocess time distribution ===
+  Files:   1
+  Total subprocess CPU-wall: 2.1s  (runner wall: 2.2s, parallelism: 1x)
+  P50: 2.08s  P90: 2.08s  P95: 2.08s  P99: 2.08s  Max: 2.08s
+  <1s: 0 files (0%)  <2s: 0 files (0%)
+  Top 10 slowest:
+      2.08s  tests\tools\test_file_read_guards.py

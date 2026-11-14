@@ -35,6 +35,13 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='file_contract.read_paths_v2_verified'){
+const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
+para(p,'Hermes: kiểm đường dự phòng và pipeline · '+e.payload.run_id);
+para(p,'sed lỗi không còn bị cut che thành đọc thành công. Sequential từ chối metadata kích thước/số dòng không hợp lệ.');
+para(p,e.payload.actual_dispatcher_calls+' lượt công cụ thật · '+e.payload.target_contracts_passed+' test hợp đồng qua. Fullsuite còn '+e.payload.existing_upstream_failures+' lỗi đã đối chiếu, không gọi tất cả xanh.');
+para(p,'Đã cài với backup, không học hoặc sửa model neural. Chỉ xác nhận Windows/GitBash trong các ca đã đo.','muted');
+}
 if(e.kind==='file_contract.repair_verified'){
 const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
 para(p,'Kiểm đường đọc file Hermes · '+e.payload.run_id);
