@@ -214,3 +214,39 @@ test("cold video persistence does not turn a wrong answer into neural-retention 
   assert.match(answer,/Đáp án đã khóa: 9 · Chưa qua/);
   assert.equal(nodes.has("updates"),false);
 });
+
+test("endurance audit shows repeated-video scope and keeps another job separate",()=>{
+  const {nodes,event}=setup();
+  event({actor:"orchestrator",kind:"shared_endurance.heartbeat",payload:{run_id:"current-lab"},created:Date.now()/1000});
+  const payload={parent_endurance_run:"current-lab",verdict:"PRELIMINARY_ONLY",
+    video:{summed_repeated_video_seconds:1575,unique_original_source_paths:1},
+    resources:{peak_reported_tree_RSS_bytes:5.9e9,peak_reported_tree_private_commit_bytes:8.6e9,current_gateway_in_last_sample:false}};
+  event({actor:"orchestrator",kind:"endurance_data_audit.snapshot",payload});
+  let text=nodes.get("endurance-scope").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/26.3 phút lặp · 1 nguồn/);
+  assert.match(text,/không cộng hai số/);
+  assert.match(text,/chưa có peak đầy đủ toàn hệ/);
+  event({actor:"orchestrator",kind:"endurance_data_audit.snapshot",payload:{...payload,parent_endurance_run:"old-interrupted"}});
+  text=nodes.get("endurance-scope").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/current-lab/);assert.doesNotMatch(text,/old-interrupted/);
+});
+
+test("ASR soak is a real component profile separate from deployed model and training",()=>{
+  const {nodes,event}=setup();
+  event({actor:"orchestrator",kind:"ASR_small_soak.heartbeat",payload:{run_id:"owned-asr-preflight",
+    elapsed_seconds:15,requested_seconds:30,complete_calls:1,completed_audio_seconds:12,GPU_headroom:{free_MiB:1400}},created:Date.now()/1000-120});
+  const preflight=nodes.get("asr-soak-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(preflight,/15\/30 giây/);
+  assert.match(preflight,/cần kiểm PID/);
+  event({actor:"orchestrator",kind:"ASR_small_soak.heartbeat",payload:{run_id:"owned-asr-soak",
+    elapsed_seconds:120,requested_seconds:1800,complete_calls:8,completed_audio_seconds:90,
+    GPU_headroom:{free_MiB:1400}}});
+  const text=nodes.get("asr-soak-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/2\/30 phút · 8 lượt phiên âm/);
+  assert.match(text,/ASR của Hermes vẫn giữ nguyên/);
+  event({actor:"orchestrator",kind:"ASR_small_soak.actual_transcript",payload:{attempt:8,source_id:"owned-public-audio",
+    actual_transcript:"Actual fixture transcript for DOM test only",seconds:1.7,RTF:.17,native_CUDA_FP32_verified:true}});
+  const output=nodes.get("asr-soak-text").children[0].children.map(n=>n.textContent).join("\n");
+  assert.match(output,/RTF 0.170/);assert.match(output,/CUDA\/FP32 đã kiểm log/);
+  assert.equal(nodes.has("updates"),false);
+});

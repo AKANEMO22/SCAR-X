@@ -173,3 +173,21 @@ runs/*-video-cold-memory-v1-*/** -text -whitespace
 scripts/diagnose_hybrid_video_cold_memory.py -text
 scripts/audit_hybrid_video_cold_memory.py -text
 experiments/hybrid-video-cold-memory-diagnostic-v1.md -text
+runs/*-endurance-data-audit-v1-*/** -text -whitespace
+experiments/hybrid-endurance-independent-audit-v1.md -text
+scripts/audit_hybrid_endurance.py -text
+scripts/supplement_hybrid_gateway_coverage.py -text
+src/scarx/evaluation/endurance_independent_audit.py -text
+runs/*-client-roots-p0-v1-*/** -text -whitespace
+runs/*-whisper-small-soak-v1-*/** -text -whitespace
+experiments/hybrid-resource-client-roots-p0-v1.md -text
+experiments/hybrid-whisper-small-paced-soak-v1.md -text
+experiments/hybrid-whisper-soak-data-audit-v1.md -text
+integrations/hermes/resource_client_roots_patch.py -text
+scripts/probe_hybrid_client_roots_p0.py -text
+scripts/soak_hybrid_whisper_small.py -text
+scripts/monitor_hybrid_asr_soak.py -text
+scripts/audit_hybrid_asr_soak.py -text
+src/scarx/evaluation/asr_soak_budget.py -text
+src/scarx/evaluation/asr_soak_audit.py -text
+src/scarx/evaluation/hermes_resource_roots.py -text

@@ -1,5 +1,25 @@
 # Trạng thái SCAR-X
 
+## Resource-root P0 và activeASRsmall soak —14/11
+
+[Report](hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):actualP0 cho thấy old
+discovery vẫn tìmHG47768 khi bật; confirmedbug là overwrite explicitroots và
+longrun dùng startupclients cốđịnh. Finaloverlayda6f4c giữ cả extra_pids.add,
+chưa cài sourcefrozen. ASRsmallpreflight3f9957:3CUDAFP32calls/30,234s,
+physicalfree≥1434MiB; failurelock67183e0ASRcalls giữchargedattempt1. Lượt30min
+292b32 actualPID18444 đangchạy/sourceđúng, sửdụngoverlay0c0835 chỉconstructor
+roots, khôngđổiASRHermes. Joblive khônglàPASS;8h41904 cũngchưađủhorizon.
+
+## Endurance independent audit —14/11
+
+[a2ccf7](hybrid/ENDURANCE_INDEPENDENT_AUDIT_20261114.md):PRELIMINARY với actualPID/
+source cònđúng;75cycles=1575sclip21slặp,1source,không8hcontinuousvideo. Median
+observation→answer26,46s. Sampledglobalfree≥1888MiB; source/checkpoints/bounds
+khớp. RootHermes47768 mới không nằm trong monitorfixedroots; peakRSS5,924GB/
+commit8,682GB là nhómđo, khôngfullcurrentHermes/CPU4,5GBPASS. Snapshotbổsung
+currentpoint riêng, khôngbackfillhistoricalpeak. Auditornegativeold0acab3 vẫn
+NOT_PASS. Giữfrozen8hsource; dynamicrootmeasurement cầnfix saukếtthúc.
+
 ## Video cold memory —14/11
 
 [7f5e62](hybrid/VIDEO_COLD_MEMORY_20261114.md):4cells×2processphases×3knownQs,

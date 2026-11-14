@@ -129,3 +129,24 @@ Initiald5867bUTF8failure0calls retained. Newruleapproval stillpending; no depend
 variantlearner implemented/trained. EndurancePID41904 verifiedlive20272s/
 68cycles/12checks with sourcehashes intact, not8hcomplete. Goalnotachieved,
 no whole-goalexternalimpasse while actualjob and independentqualification remain.
+
+Progressa2ccf7/16e3bd: independentdataauditor verifies actualprocess/source,
+rawobserver/private snapshots/checkpointmetadata and oldinterruptionnegative.
+75cycles represent1575s repeatedvideo, not6hcontinuous; currentHermes47768
+missingfromfixedrootmonitor is a real resourcecoveragegap. Currenthostpoint
+supplement validates4roots/deduplicates, doesn'tbackfillhistoricalpeaks.
+Noactive8hsource change/newneuralwork. Need dynamicroot measurement after job
+terminal, plus unresolvedpolicy/transfer/retention. Pendingnewruleapproval not
+an all-work impasse while job/live qualification continues; no completion claim.
+
+ProgressresourceP0/ASRpreflight: actualmembership proves olddiscovery finds
+currentgateway whenenabled but drops constructor/extra_pids.add roots onrefresh.
+Narrowoverlayda6f4c keepsfixed+dynamicunion; notinstalled intoactive8hsource.
+Whispersmall30spref3f9957 completed3CUDAFP32calls, minfree1434MiB; independent
+dataaudit rederives logs/transcripts/RTF/rootsets. Initial67183e lockfailure
+beforeASRspawn retainedchargedattempt1, budgetledger/tests nowcloseWindowshandle
+beforeunlink. Same-source1800s292b32 actualPID18444/create-time verifiedlive;
+no liveASRchange/newneuralupdates. This is meaningful progress, not completion
+or unchangedstatus. Bothactualjobs need terminalaudit; fullpolicy/representation/
+retention remainunproven and newlocalruleapproval stayspending. No whole-goal
+externalimpasse while jobverification/deploymentqualification continues.

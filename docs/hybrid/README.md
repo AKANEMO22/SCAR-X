@@ -6,6 +6,14 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Bộ đo clientroots và ASRsmall soak](RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
+bản vá đang overlayP0, chưa đụng sourceactive. ASRsmall chạy profilethử30min,
+Hermes vẫnbase; xemmonitor/PID thật và rawtranscripts, không gọi soak là học.
+
+[Kiểm toán walltime/video/RAMscope](ENDURANCE_INDEPENDENT_AUDIT_20261114.md):
+lượt8h hiệnpreliminary; clip21slặp khôngthành8hcontinuousvideo. RAM hiển thị là
+nhómtiếntrình đượcđo, rootHermesmới có gap chưa đođủlịch sử; khôngCPUcapPASS.
+
 [Nguồn video sau restart](VIDEO_COLD_MEMORY_20261114.md): bằng chứng và prompt
 được giữ qua8privateprocessphases; QA sai vẫn sai. Không phải do mất data ở
 restart trong các ca đo, nhưng chưa chứng minh hiểuvideo hoặc synapse học được.

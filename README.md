@@ -7,6 +7,12 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Bộ đo và ASRsmall thành phần](docs/hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
+đã có bản sao sửa phạm vi đo/P0, source8h giữ nguyên; ASRsmall đang kiểm30phút
+cùngVLMnative, chưa thay ASRlive hoặc tự học từ transcript.
+[Audit endurance và phạm vi RAM](docs/hybrid/ENDURANCE_INDEPENDENT_AUDIT_20261114.md):
+chưa finalPASS;6giờwall mới~26phút clip lặp. ClientrootHermes thay sau reload
+không được monitor cũ theo đủ; không gọi peak nhóm đo là peak toàn hệ.
 [Video sau restart](docs/hybrid/VIDEO_COLD_MEMORY_20261114.md):8privateprocess/
 24nativecalls giữ đúng nguồn/checkpoint/prompt nhưng strictQA vẫn1/3. NhớSSD
 không đồng nghĩa hiểuvideo hoặc synapse đã học kỹ năng; chưa đổi model live.

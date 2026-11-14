@@ -1,5 +1,17 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Clientroot/ASRcomponent14/11:** P0 xác nhận discovery cũ tìm gateway khi bật;
+giữ explicit+dynamicroots/attachmentAPI trong overlay, chưa cài activefile.
+NativeWhispersmallFP32 đãqua30smechanicalpreflight và chạy30minpacedsoak riêng;
+không promote/livechange/learninglabel từ sốlặp. Hai job/source khóa độc lập;
+newrulehistory vẫnchờduyệt. [Raw và phạm vi](hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md).
+
+**Independent endurance audit14/11:** worker còn sống/sourceđúng nên chưafinalPASS;
+walltime khác totalvideo (75×21s=26phút15s). ClientrootHermes đổi sau reload
+làm monitorfixedroots thiếu coverage; giữraw/reportpeaknhómđo, khôngCPU4,5GB
+hoặc whole-systemclaim. Không sửaactive8hsource; finalaudit/measurementrootfix
+là việc tiếp. [Bằng chứng/giới hạn](hybrid/ENDURANCE_INDEPENDENT_AUDIT_20261114.md).
+
 **Video persistence14/11:** actualprivate process restart giữ evidence/stream/
 checkpoint/learnedstate vàprompt, nhưng strictQA trênclipđãbiết vẫn1/3. Đây
 là memorypersistence, không synapticretention/hiddenadvantage/videoP1PASS.

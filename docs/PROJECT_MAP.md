@@ -1,5 +1,18 @@
 # Bản đồ dự án SCAR-X
 
+[Resource roots và ASRpacedsoak](hybrid/RESOURCE_ROOTS_AND_ASR_SOAK_20261114.md):
+integrations/hermes/resource_client_roots_patch.py exact-sourceoverlay,
+probe_hybrid_client_roots_p0.py; evaluation/hermes_resource_roots.py auditonly.
+soak_hybrid_whisper_small.py + monitor_hybrid_asr_soak.py, budgethelper/tests.
+CompletedP0s/failedpreflight/passed30spref giữraw;292b32active/source/manifest
+giữ riêng, khôngcommitmutableheartbeat hoặc chưafinalPASS.
+
+[Independent endurance/resource audit](hybrid/ENDURANCE_INDEPENDENT_AUDIT_20261114.md):
+evaluation/endurance_independent_audit.py puregates/coverage; audit_hybrid_endurance.py
+read-only transactions/source/metadata/process check. supplement_hybrid_gateway_coverage.py
+onecurrentpoint, khôngnewdaemon. a2ccf7preliminary/16e3bdnegativeinterrupted,
+không dùngelapsedwall làmcontinuousvideo hoặc oldrootpeak thànhfullsystem.
+
 [Video cold-memory diagnostic](hybrid/VIDEO_COLD_MEMORY_20261114.md):
 diagnose_hybrid_video_cold_memory.py chạyprivateA/Bprocess trênSQLbackupowned,
 audit_hybrid_video_cold_memory.py kiểmrequest/checkpoint/sourcehash/strictscore.
