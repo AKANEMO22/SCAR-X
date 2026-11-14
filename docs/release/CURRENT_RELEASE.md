@@ -1,96 +1,86 @@
-# SCAR-X Hybrid — RC5 cùng các bản sửa đang QA
+# SCAR-X Hybrid — RC6 đang cài trong Hermes
 
-**Mới nhất: hai finding đã sửa trong deployment hiện tại.**
-[Video admission/snapshot](MEDIA_ADMISSION_REPAIRS_20261114.md) đã qua 256 Python,
-29 Node và 12 Desktop checks; renderer typechecked và UI video draft mới chạy
-thật. Không còn gắn video mới bằng text digest, snapshot không ghi đè nguồn
-khác; lượt media đã sửa không gọi web. Kết quả VLM vẫn trả tiếng Anh/thiếu
-timestamp, nên chưa production/neural PASS. Antigravity follow-up timeout,
-không được tính là approval.
+**Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
+`scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
+Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
+pruning hoặc thay quy tắc học.
 
-Các đoạn RC5/triage bên dưới là mốc lịch sử trước closure; trạng thái hiện tại
-theo báo cáo sửa lỗi phía trên và receipt gói RC6 sẽ được chốt sau kiểm artifact.
-
-**Cập nhật mới nhất:** [Antigravity QA và triage](ANTIGRAVITY_FULL_QA_20261114.md).
-238 Python/27 Node/3 HTTP checks qua trên bản sao; Antigravity review source đã
-xong, nhưng tự chạy test bị sandbox chặn. Codex xác nhận lỗi P1: video ở draft
-chưa có session có thể bị chat khác cùng text lấy nhầm. Chưa approve production;
-không xem RC5 ZIP/receipt lịch sử bên dưới là bản khớp mọi sửa candidate hiện tại.
-
-Lỗi marker trong ảnh đã sửa và kiểm qua Hermes thật. Screen history sau stop/
-restart cũng đã sửa và kiểm trên cửa sổ thử. Xem
-[phạm vi và giới hạn](SCREEN_HISTORY_AND_GREETING_20261114.md). Draft ownership
-và snapshot dùng chung path còn cần xử lý trước khi chốt gói tiếp theo.
-
-**Dùng trong chat Hermes bình thường**, model **Scarx Hybrid**, ID
-`scarx-hybrid`. Một gateway `127.0.0.1:8775`, một worker Qwen3.5-0.8B nguyên
-BF16/F32, Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA,
-quantization, pruning hoặc thay cơ chế học.
-
-Gói: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.5+83c5fd2bc936.zip`,
-801.428 byte, 51 payload files. SHA256:
-`01136cb5cb2cfd8c5327d706fd44bbaee2c3fc67d3761d185166547f553f1f8d`.
-Git SHA nguồn gói: `83c5fd2bc936458de2bb3585a66261fb818f267a`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.6+374828e98c2b.zip`,
+824.647 byte, 53 payload files. SHA256:
+`5d392c3c6c6a7868e641d58123816e1644d2fbdd97723e18de715ad7bf06c851`.
+Git SHA nguồn: `374828e98c2b175f4e79ab24b8fd6df1b7a76b7a`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
-asset/Hermes/dependency pins khớp, không restart hoặc gọi model khi kiểm cuối.
-Main/R13 giữ nguyên; không merge hoặc push. Các gói/receipt cũ được giữ riêng.
+asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 
-## Dùng ngay
+## Cách dùng và phạm vi gói
 
-- Chọn **Scarx Hybrid** trong chat Hermes như model trước đây.
-- Ảnh/video dùng menu đính kèm sẵn có, hỏi tiếp trong cùng chat. Video được
-  lấy mẫu hình và phiên âm từng đoạn; không đảm bảo thấy mọi sự kiện.
-- Muốn xem video màn hình: yêu cầu trong chat và chỉ rõ cửa sổ cần xem. Không
-  mặc định theo dõi toàn màn hình hoặc microphone.
-- Trace: `http://127.0.0.1:8775/?tab=trace`. Debug chỉ quan sát.
-- Đây là gói cập nhật code cho deployment Windows/Hermes đã cài trên máy này,
-  không chứa trọng số, venv, hội thoại hay checkpoint riêng; chưa là bộ cài máy mới.
+- Chat và ảnh/video dùng các thao tác sẵn có của Hermes. Tab Debug chỉ quan sát.
+- Video đính kèm được phân tích local trước khi gửi câu hỏi, chờ tối đa 35 giây
+  cho bằng chứng đầu tiên; lỗi/timeout giữ bản nháp và cùng retry identity.
+- Video ở draft mới gắn theo **session + mã lượt gửi thực**, không theo câu hỏi
+  giống nhau. Metadata không chèn vào lời người dùng; restart/retry không đổi chủ.
+- Xem màn hình cần yêu cầu rõ và chọn cửa sổ. Sau stop/restart có thể hỏi rõ
+  về “cửa sổ vừa xem”, dùng nguồn còn giữ mà không capture lại. Không mặc định
+  theo dõi toàn màn hình hoặc microphone.
+- Trace: `http://127.0.0.1:8775/?tab=trace`; các bản sửa/check thật có event riêng.
+- Gói là overlay cho **deployment Windows/Hermes đã cài bản metadata admission
+  tương ứng trên máy này**, không chứa model/venv/dữ liệu riêng. Installer kiểm
+  fingerprints, từ chối app khác; chưa phải bộ cài cho máy mới. Source patch
+  `HERMES_MEDIA_ADMISSION.patch` đi kèm phục vụ bảo trì, không tự sửa app lạ.
 
 ## Đã sửa và kiểm
 
-| Luồng | Bằng chứng và phạm vi |
+| Phần | Bằng chứng, kết luận đúng phạm vi |
 |---|---|
-| Chat/video Hermes | Lời chào trả lời bình thường; clip engineering 21 giây được đính kèm qua Files, trả đúng màu đỏ/mốc 5 giây. Mã transcript đi qua metadata, không chèn link vào lời người dùng. |
-| GPU/persistence | VLM/vision, ASR, ALIF trên GPU; 3 startup parity cases và 3 ASR FP32/CUDA calls thật qua. Các mảng/RNG/replay giữ qua restart, live updates vẫn 5; không nhập lab weights. |
-| Search | Dispatcher Hermes + SearXNG native trả được tài liệu chính thức; không API trả phí/Docker. |
-| Tool loop | Observer đọc đúng `request.body.tools`; actual dispatcher cho thấy 0→1 probe đọc lại README ở đúng project sau 3 lỗi. Guard replay chặn lần giống hệt thứ tư. Đây là runtime repair, chưa là neural learning. |
-| Chat dài/workspace | Query FTS không còn làm tin nhắn 7.028 ký tự bị HTTP 400. Project trung lập được đọc bằng runtime prelude; VLM trả đúng mục đích, receipt và port. |
-| Compact | 5 lượt tiếp theo ×7.115 ký tự kích hoạt 3 auto compact; manual compact 8→6 message. Owner display giữ 7 đoạn user nguyên văn, raw có 4 handoff rows nhưng display có 0. Hỏi sau manual trả đúng code/port, không gọi tool. |
+| Video draft lấy nhầm giữa chat | Bỏ unscoped text matching; callback sau resolve session, canonical executor truyền request ID qua ContextVar/header; pending/binding/focus commit atomic. Có test hai chat cùng text, queued inputs, retry/restart và lỗi transaction. |
+| Snapshot ghi đè | JPEG immutable theo hash; hai nguồn khác có path khác, publication không overwrite trên Windows. Có 32 request concurrency, integrity và archive quota tests. |
+| UI video mới | Upload qua Files ở chat mới, frame local có trước bind; DB request ID khớp attachment, user text giữ nguyên, 0 tool calls sau readiness fix. VLM nhận đúng màu nhưng trả tiếng Anh và thiếu timestamp. |
+| Marker ở lời chào | Repro đúng ảnh người dùng, sửa ví dụ steering không dùng ở lượt xã giao tại host; không hardcode/lọc output. Canonical Hermes trả “chào bạn” bình thường; chất lượng xã giao khác còn hạn chế. |
+| Screen history | Capture thật cửa sổ FFplay thử: 13 frame/2 VLM descriptions, dừng sạch; hỏi sau stop và restart vẫn chọn đúng nguồn/màu đỏ. Câu không liên quan không nạp ảnh cũ, hỏi lịch sử không cấp quyền capture mới. Audio/mic tắt trong thử này. |
+| Tool/workspace/compact/search | Observer đọc đúng envelope; readonly probe thật 0→1 sau 3 lỗi. Guard replay chặn lần thứ tư giống hệt. Project trung lập/7K-char turns và 3 auto compact +1 manual qua; owner display không lộ handoff. Dispatcher SearXNG native trả nguồn thật. |
+| GPU/state | Cả VLM/vision, ASR, ALIF trên GPU; startup/native parity đã kiểm. Full saved arrays/RNG/replay qua activation cuối giữ nguyên, live updates vẫn 5; không nhập lab weights. |
 
-**171 Python checks qua**, gồm streaming/non-streaming, observer và CPU/native
-parity; bộ Node 27 checks của giao diện/plugin giữ làm bằng chứng tương ứng
-với bytes không đổi. Native startup có kiểm thực, không suy chất lượng từ unit test.
+**256 Python checks, 29 Node checks, 12 Hermes Desktop tests và 3 actual
+loopback feedback scenarios qua.** Có CPU/native/CUDA parity và persistence;
+không dùng test transport hoặc test xanh để chấm năng lực đa năng.
+Renderer build/typecheck thành công, Electron main/preload giữ nguyên.
 
-Chat dài chia query truy xuất thành phần ≤6.000 ký tự và pool ≤32 ứng viên;
-**tin nhắn gửi VLM giữ nguyên**. Trần xử lý 65.536 ký tự không phải context 65K
-token. Context vẫn **16.384 token**, gồm system/history/tools; không tăng model
-hoặc nới cửa nghiên cứu để đạt các kết quả này.
+Khi trả lời dựa vào media local, native call không được cấp tool schemas để
+tránh biến observations riêng thành automatic web/remote query. Đây là policy
+runtime, chưa là SNN tự học lúc nào nên tìm kiếm. Tác vụ thông thường vẫn có tool.
+Context vẫn **16.384 token**; trần text 65.536 ký tự và FTS chunk 6.000 ký tự
+không tạo context 65K token. Cache/quota và SSD memory không bằng trí nhớ synapse.
 
 ## Bằng chứng và bảo trì
 
-- [Chat/video/GPU](evidence/RC3_OPERATIONAL_SMOKE_20261114.json),
-  [observer](OBSERVER_ENVELOPE_REPAIR_20261114.md),
-  [chat dài và compact](LONG_INPUT_AND_COMPACTION_20261114.md).
-- `scripts/activate_hybrid_rc.py`: backup/CAS và kiểm learned state;
-  `scripts/verify_installed_hybrid_rc.py`: đối chiếu artifact với deployment.
-- Hai acceptance scripts dùng canonical gateway trên project tự tạo;
-  `scripts/audit_hermes_context_acceptance.py` đọc lại receipt, không gọi model.
-- Raw prompt/checkpoint/log nằm ở vùng private. Không ghi đè receipt thất bại,
-  xóa journal hay rollback toàn database để làm phép kiểm trông thành công.
+- [Sửa ownership/snapshot và UI](MEDIA_ADMISSION_REPAIRS_20261114.md),
+  [audit dữ liệu](evidence/MEDIA_ADMISSION_REPAIRS_20261114.json),
+  [Desktop contracts](evidence/HERMES_MEDIA_ADMISSION_DESKTOP_TESTS_20261114.json).
+- [Antigravity review/triage](ANTIGRAVITY_FULL_QA_20261114.md): review đầu 6 finding
+  đã đối chiếu, hai lỗi kỹ thuật đã sửa. CLI không chạy xong tests vì sandbox;
+  Codex thực thi suite. Follow-up review source timeout, không tính approval.
+- [Screen/greeting](SCREEN_HISTORY_AND_GREETING_20261114.md),
+  [chat dài/compact](LONG_INPUT_AND_COMPACTION_20261114.md),
+  [feedback HTTP](evidence/RC6_FEEDBACK_HTTP_20261114.json).
+- `scripts/verify_installed_hybrid_rc.py` kiểm ZIP với deployment read-only.
+  `scripts/audit_media_admission_repairs.py` đọc actual UI/admissions/source pins,
+  không gọi model thêm. Backup source/renderer/checkpoint và log ở vùng private.
+- Các artifact/receipt trước được giữ nguyên. Code rollback không ghi đè DB,
+  xóa journal hoặc hoàn tác trải nghiệm mới để làm phép kiểm trông thành công.
 
 ## Giới hạn còn lại
 
-- Model 0.8B còn yếu; clip/project đã biết không chứng minh năng lực đa năng,
-  chất lượng video chưa thấy hoặc ngang model online.
-- SNN chưa chứng minh vượt cùng LLM + RAG, retention chưa đạt ngưỡng đăng ký,
-  chưa tự học chắc chắn nguyên nhân tool loop hoặc kỹ năng sửa lỗi lâu dài.
-- Guard/retrieval/host tool routing/compact không được ghi thành hidden-neuron
-  improvement. LoRA tự động và learner mới vẫn tắt/backlog.
-- Save/load/rollback state đã kiểm cô lập và giữ state live qua restart; không
-  thử rewind cuộc trò chuyện riêng của người dùng. Code rollback không ghi đè DB.
-- Đã kiểm canonical owner display projection, chưa chụp lại toàn UI Desktop
-  hoặc nghiệm thu mọi luồng capture màn hình/project/tool. Không gọi full UI PASS.
-- Lượt small8h `32cd13` đã hủy theo yêu cầu sau 11.268,281 giây: giữ 38 chu kỳ,
-  7 checkpoint, không worker sót. `USER_CANCELLED_NOT_EIGHT_HOUR_PASS`, không chạy lại.
+- Model 0.8B còn yếu, có thể hiểu sai, sai ngôn ngữ hoặc không dẫn nguồn như yêu
+  cầu. Clip/project đã biết không chứng minh chất lượng video chưa thấy, năng
+  lực đa năng hoặc ngang model online. Hai lỗi QA được sửa không giải quyết
+  toàn bộ chất lượng model.
+- SNN chưa chứng minh vượt cùng LLM + RAG, retention chưa đạt ngưỡng đã đăng ký,
+  chưa tự học chắc chắn nguyên nhân tool loop hay kỹ năng sửa lỗi lâu dài.
+  Không gọi guard/retrieval/host routing là hidden-neuron improvement.
+- Chưa nghiệm thu live speaker-loopback, mọi cách hỏi màn hình, mọi workflow
+  Desktop hoặc mọi tổ hợp chạy đồng thời. Không tuyên bố full UI/production PASS.
+- Lượt small8h `32cd13` đã hủy theo yêu cầu: giữ 38 chu kỳ/7 checkpoint,
+  `USER_CANCELLED_NOT_EIGHT_HOUR_PASS`, không worker sót và không mở lại.
+- LoRA tự động, learner mới, dataset/benchmark mới ở backlog theo ưu tiên sản phẩm.
 
 Đây là **RC dùng thử có giới hạn**, không phải production hoặc lifelong PASS.
