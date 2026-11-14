@@ -1,14 +1,14 @@
 {
   "format": "scarx-hybrid-release-allowlist-v1",
-  "version": "1.0.0-rc.12",
+  "version": "1.0.0-rc.13",
   "deployment": "existing-registered-Windows-installation-overlay",
   "model_id": "scarx-hybrid",
   "gateway": "http://127.0.0.1:8775",
   "predecessor": {
-    "archive": "artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.11+1404b691f774.zip",
-    "sha256": "ad09db4c0e90f442c6ea837eaea2a809d9a058df2613fb84be297f411c841f17",
-    "version": "1.0.0-rc.11",
-    "source_git_sha": "1404b691f774593a69c212db6cfe277856b5127b"
+    "archive": "artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.12+6389f00ef37a.zip",
+    "sha256": "0fa8364503c68b9c904f5af4ac209118b8ff0546643e2727e9efdcefa5f17ef2",
+    "version": "1.0.0-rc.12",
+    "source_git_sha": "6389f00ef37a8db289059c15f04c29d1335848f2"
   },
   "files": [
     "integrations/hermes/hybrid_plugin/__init__.py",
@@ -67,7 +67,8 @@
     "src/scarx/neural/core.py",
     "src/scarx/runtime/__init__.py",
     "src/scarx/runtime/asr_profiles.py",
-    "src/scarx/runtime/maintenance.py"
+    "src/scarx/runtime/maintenance.py",
+    "src/scarx/hybrid/arithmetic.py"
   ],
   "forbidden_folders": [
     "local",

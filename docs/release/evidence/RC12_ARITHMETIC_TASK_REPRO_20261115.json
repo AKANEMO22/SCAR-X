@@ -1,0 +1,58 @@
+{
+  "verdict": "RC12_INCIDENTAL_ARITHMETIC_CAN_AUTHORIZE_WRONG_TASK_LABEL",
+  "rows": [
+    {
+      "question": "What color is 12+3 written in?",
+      "answer": "15",
+      "parsed": [
+        12,
+        "+",
+        3
+      ],
+      "current_review_result": {
+        "expected": 15,
+        "observed": 15,
+        "correct": true,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      }
+    },
+    {
+      "question": "Hãy đọc chuỗi 12+3, đừng tính.",
+      "answer": "16",
+      "parsed": [
+        12,
+        "+",
+        3
+      ],
+      "current_review_result": {
+        "expected": 15,
+        "observed": 16,
+        "correct": false,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      }
+    },
+    {
+      "question": "The code contains \"12+3\". Is it secure?",
+      "answer": "14",
+      "parsed": [
+        12,
+        "+",
+        3
+      ],
+      "current_review_result": {
+        "expected": 15,
+        "observed": 14,
+        "correct": false,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      }
+    }
+  ],
+  "new_neural_or_VLM_calls": 0,
+  "source_sha256": {
+    "src\\scarx\\hybrid\\review.py": "822765e7a097c5e037d3745c4f42f7bf8010e709fd1ab08ec4185248e1c3f1fd",
+    "src\\scarx\\learning\\verifiers.py": "96e50e76a38d1cf7d638e5dc38673ee3766361f64569d32bb091f3e7d3e85bdb"
+  }
+}

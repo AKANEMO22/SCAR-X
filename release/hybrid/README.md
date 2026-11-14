@@ -1,8 +1,14 @@
-# SCAR-X Hybrid 1.0.0-rc.12
+# SCAR-X Hybrid 1.0.0-rc.13
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
+
+RC13 chỉ cho verifier số học tự xác minh các câu tính toán hoàn chỉnh nằm
+trong grammar hỗ trợ. Biểu thức nằm trong câu hỏi màu, code, chuỗi trích dẫn
+hoặc nhiều yêu cầu không tự thành nhãn máy. Word problem/cách diễn đạt ngoài
+phạm vi vẫn dùng chat/review bình thường; chưa được xác minh, không coi là sai.
+ALIF, công thức học, encoder và checkpoint không đổi.
 
 RC12 đọc được envelope `untrusted_tool_result` thực của Hermes khi lưu nguồn;
 giữ nguyên envelope trong prompt model và luôn để snippet ở trạng thái observed.
@@ -31,7 +37,7 @@ Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; 
 coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
 tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
-Đường nâng cấp RC12 pin đúng payload RC11 và từ chối source khác trước khi sửa.
+Đường nâng cấp RC13 pin đúng payload RC12 và từ chối source khác trước khi sửa.
 Source gate của test đã hủy nhận đúng bản trước/bản kế tiếp, không yêu cầu source
 đóng băng vĩnh viễn ở baseline cũ. Test đang chạy vẫn chặn cập nhật; trạng thái
 hủy vẫn không thành PASS. Backup/rollback chỉ phục hồi code, giữ trải nghiệm mới.

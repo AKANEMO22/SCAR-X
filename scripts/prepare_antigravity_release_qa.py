@@ -47,7 +47,7 @@ def main():
         folder=ROOT/'runs'/run
         files += [folder/candidate,folder/'independent-data-audit-v1.json']
         files += [p for p in (folder/'source').rglob('*') if p.is_file()]
-    files += [ROOT/'docs/release/evidence/WEB_WRAPPER_TIME_SOURCE_20261115.json']
+    files += [ROOT/'docs/release/evidence/ARITHMETIC_TASK_SCOPE_SOURCE_20261115.json']
     dll=ROOT/'build/scarx_cpu.dll'
     if dll.is_file():files.append(dll)
     hashes={}

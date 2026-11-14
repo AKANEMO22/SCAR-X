@@ -3,7 +3,7 @@
 import copy
 import json
 import re
-from ..learning.verifiers import parse_integer_expression, integer_answer
+from .arithmetic import parse_integer_expression, integer_answer, VERIFIER_ID
 from .cognition import initial_cognition, validate_cognition
 
 
@@ -141,8 +141,8 @@ def arithmetic_check(question, answer):
         "expected": expected,
         "observed": value,
         "correct": expected == value,
-        "verifier": "integer-arithmetic-v1",
-        "scope": "exact numeric answer only",
+        "verifier": VERIFIER_ID,
+        "scope": "supported explicit arithmetic task and exact numeric answer only",
     }
 
 

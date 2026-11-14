@@ -1,0 +1,51 @@
+{
+  "verdict": "INCIDENTAL_EXPRESSION_NO_LONGER_AUTHORIZES_MACHINE_TASK_LABEL",
+  "saved_reproduction_sha256": "0687f5effbae7ffcf8e185efc855a1348d88e17b0901cd87bd8d077aedf612c4",
+  "three_saved_cases": [
+    {
+      "question": "What color is 12+3 written in?",
+      "old_machine_label": {
+        "expected": 15,
+        "observed": 15,
+        "correct": true,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      },
+      "new_machine_label": null
+    },
+    {
+      "question": "Hãy đọc chuỗi 12+3, đừng tính.",
+      "old_machine_label": {
+        "expected": 15,
+        "observed": 16,
+        "correct": false,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      },
+      "new_machine_label": null
+    },
+    {
+      "question": "The code contains \"12+3\". Is it secure?",
+      "old_machine_label": {
+        "expected": 15,
+        "observed": 14,
+        "correct": false,
+        "verifier": "integer-arithmetic-v1",
+        "scope": "exact numeric answer only"
+      },
+      "new_machine_label": null
+    }
+  ],
+  "unchanged_sources_vs_RC12": {
+    "src/scarx/hybrid/learner.py": true,
+    "src/scarx/learning/verifiers.py": true,
+    "src/scarx/neural/core.py": true
+  },
+  "all_HybridEngine_methods_AST_unchanged": true,
+  "only_engine_import_target_changed": true,
+  "encoder_checkpoint_learning_rule_changed": false,
+  "new_model_initialization_forward_or_update_calls": 0,
+  "new_dataset_or_research_benchmark": false,
+  "new_verifier_is_general_intent_understanding": false,
+  "scientific_or_production_PASS": false
+}

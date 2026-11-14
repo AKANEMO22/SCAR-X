@@ -22,7 +22,7 @@ from .review import (
     is_social_exchange,
     topic_relevant,
 )
-from ..learning.verifiers import parse_integer_expression, integer_answer
+from .arithmetic import parse_integer_expression, integer_answer
 from .temporal import temporal_direction
 from .cognition import CognitiveLoop, initial_cognition
 from .incidents import IncidentLedger
