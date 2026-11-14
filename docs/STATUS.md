@@ -6,7 +6,9 @@
 ALIF/local learning và chuẩn bị gói cập nhật cho chat Hermes bình thường.
 Antigravity CLI đã hỗ trợ review checklist bằng Gemini 3.8 Flash high, effort
 high; [đối chiếu độc lập](release/ANTIGRAVITY_RELEASE_REVIEW_20261114.md) ghi rõ
-các suy đoán sai và hai review timeout. 25 kiểm tra đóng gói/P0 qua.
+các suy đoán sai và hai review timeout. [Gói RC](release/HYBRID_RC_CANDIDATE_20261114.md)
+787.328 byte đã tạo: 27 safety/P0 và 74 regression từ code giải nén qua.
+Installer từ chối đúng khi worker bảo vệ còn chạy; không import Torch.
 Lượt small mixed `32cd13` còn chạy; chưa cài hai patch, chưa live acceptance,
 chưa production PASS. Metadata/video research chưa xong chuyển backlog.
 

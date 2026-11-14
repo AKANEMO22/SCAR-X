@@ -1,0 +1,66 @@
+{
+  "format": "scarx-hybrid-prepared-RC-evidence-v1",
+  "version": "1.0.0-rc.1",
+  "artifact": "artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.1+2f1fc57c0f59.zip",
+  "source_git_sha": "2f1fc57c0f590673ebf0274a77f3daa0a1418329",
+  "archive_sha256": "cee4df090421ed02622f7157768f53e2a677d0980f677a091ad8eec76dd7f035",
+  "archive_bytes": 787328,
+  "payload_files": 48,
+  "installed_or_live_qualified": false,
+  "safety_and_P0_tests": {
+    "passed": 27,
+    "junit": "local/hybrid-rc-safety-and-p0-anchored-final-20261114.xml",
+    "self_consistent_forged_manifest_executables_refused": true
+  },
+  "extracted_payload_regression": {
+    "passed": 74,
+    "failures": 0,
+    "errors": 0,
+    "source_receipt": "local/release-verification/20261114T125649675911Z/result.json",
+    "all_SCARX_imports_from_payload": true,
+    "torch_imported": false,
+    "isolated_CPU_ALIF_fixtures_executed": true,
+    "native_VLM_ASR_calls": 0,
+    "native_CPU_parity_case_excluded": true,
+    "live_state_changed_or_service_restarted": false,
+    "model_quality_measured": false
+  },
+  "protected_gate": {
+    "run_id": "20261114T095534Z-small-mixed-endurance-v1-32cd13",
+    "pid": 46940,
+    "process_created_epoch": 1794650133.8709867,
+    "checked_epoch": 1794661014.4187624,
+    "actual_process_live": true,
+    "frozen_source_matches": true,
+    "completed_video_cycles_at_inspection": 37,
+    "checkpoints_at_inspection": 7,
+    "installer_refused_before_stop_or_write": true,
+    "terminal_or_final_PASS_claimed": false
+  },
+  "registered_gateway_at_postcheck": {"pid": 32012, "ready": true, "model": "scarx-hybrid"},
+  "observed_native_llama_worker_pids": [4728],
+  "registered_asset_and_dependency_readonly_check": {
+    "checked_epoch": 1794661125.2220557,
+    "native_asset_pins": 64,
+    "Hermes_code_pins": 1157,
+    "dependency_versions_match": true,
+    "planned_code_files_changed": 2,
+    "database_or_service_modified": false,
+    "receipt": "local/release-verification/20261114T125649675911Z/asset-check.json"
+  },
+  "original_main_sha_unchanged": "37749041ef45d54951558fdeb0c3695616b47cb5",
+  "Antigravity": {
+    "requested_model": "gemini-3.8-flash-high",
+    "requested_effort": "high",
+    "completed_design_checklist_reviews": 1,
+    "timeout_reviews_not_counted_as_approval": 2,
+    "private_data_sent": false,
+    "review_notes": "docs/release/ANTIGRAVITY_RELEASE_REVIEW_20261114.md"
+  },
+  "remaining_release_gates": [
+    "Actual 8h terminal and independent receipt audit",
+    "Guarded activation of the two exact P0 candidates",
+    "Postactivation device/state checks and real Hermes operational acceptance"
+  ],
+  "research_or_production_success_claimed": false
+}

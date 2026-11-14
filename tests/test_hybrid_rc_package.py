@@ -135,3 +135,23 @@ def test_overlay_requires_exact_qualified_recipe_and_audit(packager,tmp_path,tam
     else:
         path=tmp_path/'src/scarx/hybrid/store.py';path.write_bytes(path.read_bytes()+b'\n# concurrent edit\n')
     with pytest.raises(ValueError):packager.overlay_candidates(tmp_path)
+
+
+@pytest.mark.parametrize('tamper',['manage.py','payload/src/scarx/hybrid/engine.py'])
+def test_self_consistent_forged_manifest_is_not_executed(manager,packager,tmp_path,tamper):
+    checker=load('hybrid_rc_candidate_trust_fixture',ROOT/'scripts/verify_hybrid_rc_candidate.py')
+    allowed=json.loads((ROOT/'release/hybrid/payload-files.json').read_text())['files']
+    overlays,_=packager.overlay_candidates(ROOT)
+    for name in allowed:
+        path=tmp_path/'payload'/name;path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_bytes(overlays[name] if name in overlays else (ROOT/name).read_bytes())
+    (tmp_path/'manage.py').write_bytes((ROOT/'release/hybrid/manage.py').read_bytes())
+    changed=tmp_path/tamper;changed.write_bytes(changed.read_bytes()+b'\n# UNREVIEWED EXECUTABLE FIXTURE\n')
+    manifest={'format':'scarx-hybrid-local-rc-v1','model_id':'scarx-hybrid','files':{
+        p.relative_to(tmp_path).as_posix():{'sha256':manager.sha(p.read_bytes()),'bytes':p.stat().st_size}
+        for p in tmp_path.rglob('*') if p.is_file()}}
+    (tmp_path/'MANIFEST.json').write_text(json.dumps(manifest))
+    # Checksums agree with the forgery; the separately trusted source rejects it.
+    manager.verify_package(tmp_path)
+    with pytest.raises(ValueError,match='trusted'):
+        checker.validate_trusted_sources(packager,tmp_path,manifest)

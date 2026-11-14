@@ -9,7 +9,7 @@ nghiên cứu chưa xong trong backlog. Không sửa main, R13 hoặc kết qu�
 | Cửa | Điều kiện | Trạng thái |
 |---|---|---|
 | 1. Bảo vệ thử nghiệm | Worker thực sự kết thúc, có receipt đủ 8 giờ và audit độc lập | Small mixed `32cd13` đang chạy; chưa được restart native hoặc sửa 36 file khóa |
-| 2. Gói cập nhật | Allowlist, SHA, closure import, loại dữ liệu riêng, installer/rollback | 25 kiểm tra đóng gói và P0 qua; cần tạo ZIP và kiểm bản giải nén |
+| 2. Gói cập nhật | Allowlist, SHA, closure import, loại dữ liệu riêng, installer/rollback | ZIP đã tạo; 27 safety/P0 + 74 regression trên code giải nén qua; asset/dependency khớp; installer chặn đúng khi worker còn chạy |
 | 3. Áp dụng | Sau cửa 1, gộp hai bản sửa P0, backup checkpoint, CAS, maintenance lease | Chưa áp dụng lên phiên đang chạy |
 | 4. Nghiệm thu | Chat/ACK, workspace, tool có giới hạn và dừng được, compaction, search, ảnh/video, GPU, persistence | Cần nghiệm thu sau cập nhật; không gọi là production PASS |
 
@@ -50,3 +50,5 @@ Giữ nguyên tiêu chí nghiên cứu và kết quả không đạt.
 Antigravity được dùng với `gemini-3.8-flash-high`, effort `high`, chỉ nhận code
 và mô tả công khai. [Biên bản review](ANTIGRAVITY_RELEASE_REVIEW_20261114.md)
 phân biệt ý kiến tham khảo với kiểm tra độc lập.
+
+[Artifact và bằng chứng RC đã chuẩn bị](HYBRID_RC_CANDIDATE_20261114.md).
