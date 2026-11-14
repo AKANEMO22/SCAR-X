@@ -196,3 +196,21 @@ test("credit alignment diagnostic is not displayed as training accuracy",()=>{
   assert.match(text,/không phải accuracy/);
   assert.equal(nodes.has("updates"),false);
 });
+
+test("cold video persistence does not turn a wrong answer into neural-retention success",()=>{
+  const {nodes,event}=setup();
+  event({actor:"orchestrator",kind:"video_cold_memory.actual_restart_comparison",payload:{
+    run_id:"owned-cold-compare",cell:"small-SNN_frozen_existing",before_score:1,after_score:1,
+    persistent_memory_and_learned_state_exact:true}});
+  const text=nodes.get("cold-memory-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/1\/3 trước · 1\/3 sau/);
+  assert.match(text,/VLM dùng chung giữ nóng/);
+  assert.match(text,/Persistence không phải kỹ năng neural/);
+  event({actor:"orchestrator",kind:"video_cold_memory.actual_answer",payload:{
+    cell:"small-SNN_frozen_existing",phase:"cold_restart",question:"Owned rank?",
+    actual:{answer:"15"},expected:"9",strict_original_contract_passed:false}});
+  const answer=nodes.get("cold-memory-answers").children[0].children.map(n=>n.textContent).join("\n");
+  assert.match(answer,/Trả lời thật: 15/);
+  assert.match(answer,/Đáp án đã khóa: 9 · Chưa qua/);
+  assert.equal(nodes.has("updates"),false);
+});

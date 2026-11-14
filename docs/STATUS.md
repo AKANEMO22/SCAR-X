@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Video cold memory —14/11
+
+[7f5e62](hybrid/VIDEO_COLD_MEMORY_20261114.md):4cells×2processphases×3knownQs,
+24actualnativecalls/6uniqueinputs/8PID. Evidence/sourcefiles, learnedstate và
+savedboundary/prompt giữ exact;12before/after answerpairs cũng exact. Strict
+score1/3 ởmọicell, không gọi persistencePASS thành hiểuvideo/retentionPASS.
+SmallASR+RAGorder ra số9 cho AdamHall nhưng cảcâu vẫnstrictfail; SNNra15.
+Không tạo reward/label; initialUTF8harnessfailure0calls retained. Rulehistory
+proposal vẫn pendingapproval, chưa code/train variant;8h tiếp tục riêng.
+
 ## Credit/history diagnostic —14/11
 
 [fc84eb](hybrid/CREDIT_DIRECTION_DIAGNOSTIC_20261114.md):48case initial/final640,

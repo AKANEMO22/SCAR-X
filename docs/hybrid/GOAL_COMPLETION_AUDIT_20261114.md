@@ -120,3 +120,12 @@ implemented/trained learner. Master§4.1 requires prior approval of newrules;
 scope question sent for P0only vs P0+isolatedDEV. No dependent learner code or
 training starts pending that answer. This is not a whole-goal externalimpasse:
 actual8h job/source monitoring and other read-only qualification remain possible.
+
+Progress7f5e62:actual8privateprocess phases/24nativecalls on storedownedvideo,
+coldboundary/evidence/media/learnedstate/prompt exact and12pairedanswers exact,
+includingwronganswers. Strict1/3 unchanged, no label/reward or newrule. This
+separates persistedsource from semanticcompetence; doesn't promote SNN overRAG.
+Initiald5867bUTF8failure0calls retained. Newruleapproval stillpending; no dependent
+variantlearner implemented/trained. EndurancePID41904 verifiedlive20272s/
+68cycles/12checks with sourcehashes intact, not8hcomplete. Goalnotachieved,
+no whole-goalexternalimpasse while actualjob and independentqualification remain.

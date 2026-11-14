@@ -1,5 +1,10 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Video persistence14/11:** actualprivate process restart giữ evidence/stream/
+checkpoint/learnedstate vàprompt, nhưng strictQA trênclipđãbiết vẫn1/3. Đây
+là memorypersistence, không synapticretention/hiddenadvantage/videoP1PASS.
+Không thay rulehistory đangchờduyệt. [Evidence/limits](hybrid/VIDEO_COLD_MEMORY_20261114.md).
+
 **Credit diagnostic14/11:** local direction còn alignment với cùngtrajectory
 surrogatecontrol; sai khác hướng tăng sau momentum/preconditioning ở final640.
 Counterfactual data-only không là quality/forgetting causalproof hoặc learner

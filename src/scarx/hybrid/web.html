@@ -14,8 +14,9 @@
 <div id="binding-summary" class="goal hidden"></div>
 <div id="representation-summary" class="goal hidden"></div>
 <div id="credit-summary" class="goal hidden"></div>
+<div id="cold-memory-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
-<details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
+<details><summary>Đáp án thực từ các lượt đo</summary><div id="cold-memory-answers" class="feed"></div><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
 </main><script>
@@ -36,6 +37,18 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='video_cold_memory.actual_restart_comparison'){
+const p=$('cold-memory-summary');clear('cold-memory-summary');p.classList.remove('hidden');
+para(p,'Kiểm trí nhớ video qua restart · '+e.payload.run_id);para(p,e.payload.cell);
+para(p,'Điểm strict: '+e.payload.before_score+'/3 trước · '+e.payload.after_score+'/3 sau. '+(e.payload.persistent_memory_and_learned_state_exact?'Nguồn và learnedstate khớp.':'Chưa xác nhận state khớp.'));
+para(p,'Private process restart, VLM dùng chung giữ nóng. Persistence không phải kỹ năng neural hoặc hiểu video đã đạt.','muted');
+}
+if(e.kind==='video_cold_memory.actual_answer'){
+const p=$('cold-memory-answers'),a=document.createElement('article');a.className='message';
+para(a,e.payload.cell+' · '+e.payload.phase);para(a,e.payload.question);
+para(a,'Trả lời thật: '+e.payload.actual.answer);para(a,'Đáp án đã khóa: '+e.payload.expected+' · '+(e.payload.strict_original_contract_passed?'Qua strict contract':'Chưa qua strict contract'));
+para(a,'Clip đã biết, không phải mẫu TEST mới hoặc nhãn tự học.','muted');p.prepend(a);while(p.children.length>12)p.lastChild.remove();
+}
 if(e.kind==='credit_direction.completed'){
 const p=$('credit-summary');clear('credit-summary');p.classList.remove('hidden');
 para(p,'Kiểm credit tới hidden · '+e.payload.run_id);para(p,e.payload.verdict);

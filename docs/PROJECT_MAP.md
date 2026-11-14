@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Video cold-memory diagnostic](hybrid/VIDEO_COLD_MEMORY_20261114.md):
+diagnose_hybrid_video_cold_memory.py chạyprivateA/Bprocess trênSQLbackupowned,
+audit_hybrid_video_cold_memory.py kiểmrequest/checkpoint/sourcehash/strictscore.
+7f5e62 giữ24actualoutputs và8PID/checkpoints;d5867bUTF8failure0calls giữ riêng.
+Không học hoặc khởi động lại liveVLM, không thay active8h/hybridneural source.
+
 [Credit direction và history](hybrid/CREDIT_DIRECTION_DIAGNOSTIC_20261114.md):
 evaluation/controls.py có hybrid_tape_credit_direction, backward chỉởcontrol;
 diagnose_hybrid_credit_direction.py chia runtimeCUDA/referenceTorchCUDA child,

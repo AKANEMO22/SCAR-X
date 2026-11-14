@@ -7,6 +7,9 @@ qua công cụ khi bạn yêu cầu. Tab SCAR-X chỉ debug. Một gateway local
 CPUtrần4,5GB; GPUkhông đặt capRAM theo phê duyệt mới nhất. Đang dùngRTX4050,
 SearXNGnativeWindows khôngDocker/WSL; [mode và số đo](docs/hybrid/GPU_AND_NATIVE_SEARCH_20261113.md).
 Context16K giữ nguyên sau benchmark.
+[Video sau restart](docs/hybrid/VIDEO_COLD_MEMORY_20261114.md):8privateprocess/
+24nativecalls giữ đúng nguồn/checkpoint/prompt nhưng strictQA vẫn1/3. NhớSSD
+không đồng nghĩa hiểuvideo hoặc synapse đã học kỹ năng; chưa đổi model live.
 [Read-paths v2](docs/hybrid/HERMES_READ_PATHS_V2_20261114.md): đã sửa thêm
 fallback và lỗi đầu pipeline bị che trên GitBash,18calls thật/23target checks;
 fullsuiteHermes vẫn có lỗi nền, chưa là neural self-recovery hoặc productionPASS.

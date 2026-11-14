@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Nguồn video sau restart](VIDEO_COLD_MEMORY_20261114.md): bằng chứng và prompt
+được giữ qua8privateprocessphases; QA sai vẫn sai. Không phải do mất data ở
+restart trong các ca đo, nhưng chưa chứng minh hiểuvideo hoặc synapse học được.
+
 [Chẩn đoán credit/history](CREDIT_DIRECTION_DIAGNOSTIC_20261114.md): đã đo hướng
 local và đối chứng surrogate cùng forward, tách momentum/energy trên mảng thật.
 Chưa đổi learningrule hoặc dùng control backward trong hệ đang phục vụ.
