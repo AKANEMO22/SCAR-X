@@ -85,3 +85,12 @@ duyệt riêng, chưa code/train/deploy. ASRgain không giải quyết các nút
 
 **Quyết định:** giữ profile0.8B+small như bước kỹ thuật có giới hạn; PIVOT phần
 representation/credit/retention. Chưa fullproduction/lifelong/selfrepairPASS.
+
+## Mixed-profile tiếp theo: đã đăng ký, chưa là PASS
+
+[Protocolsmall](../../experiments/hybrid-small-mixed-endurance-v1.md) giữ clip,
+cadence,ALIF và cửa kiểm kỹ thuật cũ. Thêm kiểm actualsmallASR/currentHermesroot
+trong mẫu đo, budgetphase rõ ràng; không nới gate hoặc thay P1/P2. Runner
+hybrid_small_mixed_endurance.py dùng sameNativeVLM và privatelearner, monitor
+kiểm đúng path+PID+create-time. Preflight phải actualterminal+dataaudit qua mới
+cho phép8h cùngsource. Không lấy tiến trình còn sống làm kết luận thành công.

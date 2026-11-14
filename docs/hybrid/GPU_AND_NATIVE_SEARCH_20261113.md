@@ -1,5 +1,10 @@
 # GPU, CPU và SearXNG native — 13/11/2026
 
+**Cập nhật14/11:** [profile hiện tại và cách chuyểnmode](ASR_RUNTIME_AND_8H_20261114.md)
+đã có ASRsmallFP32/allneuralGPU. Khi chuyểnCPU cần chọn base/name/revision đúng
+cùngmode; không giữ smallCPU chưaqualified. Các cấu hình/ASRCPU và số đo bên
+dưới ghi trạng thái13/11, không thay cho telemetry/runtime hiện tại.
+
 **Đang dùng GPU RTX4050; người dùng đã bỏ trần RAM/committed của SCAR-X cho
 GPUmode.** CPUmode vẫn giữ4.500.000.000byte. Cùng model0.8B, precision gốc,
 context16K và ALIFH128. Không quantization/pruning/LoRA trong lượt này.
