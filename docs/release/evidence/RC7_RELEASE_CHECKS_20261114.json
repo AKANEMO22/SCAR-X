@@ -1,0 +1,41 @@
+{
+  "status": "RELEASE_FUNCTIONAL_CHECKS_PASS_NOT_MODEL_QUALITY_OR_PRODUCTION_PASS",
+  "executor": "Codex; Antigravity source review is separate",
+  "Python_passed": 263,
+  "Python_failed": 0,
+  "Python_skipped": 0,
+  "Node_passed": 29,
+  "actual_isolated_HTTP_feedback_scenarios_passed": 3,
+  "HTTP_scenarios": [
+    "chat",
+    "debug",
+    "lost-receipt"
+  ],
+  "Hermes_Desktop_tests": {
+    "passed": 12,
+    "scope": "prior RC6 admission repair; no renderer changes in RC7, not rerun"
+  },
+  "new_live_LLM_ASR_calls_in_functional_suite": 0,
+  "isolated_ALIF_CPU_CUDA_fixture_updates": true,
+  "CuPy_CUDA_PATH_warning": true,
+  "four_CUDA_cases_actually_passed": true,
+  "receipt_sha256": {
+    "feedback-chat.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "feedback-chat.stdout.log": "cfe88a010fb8d1f95ef2b26c3feeb5538c0d5b57fe9a58ab52c2124532155643",
+    "feedback-debug.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "feedback-debug.stdout.log": "9d4d7b044f3ac6270328e253ff5e9ef422255b381e8141f6438efc35c3e20537",
+    "feedback-lost-receipt.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "feedback-lost-receipt.stdout.log": "5be4d469fc8560935c7a2d1b4279142fb01a128e246fe1831e0d6cde3e120362",
+    "node.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node.stdout.log": "b7897eba745138d2a9132f13af4d35c8763f6e9a7b898c427cd1c683456c11eb",
+    "python.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "python.stdout.log": "90c39bf6a05d05be041666139f58bca6ce2dcf56e15a273b531b9386cfac4e37",
+    "python.xml": "8d3612ec57028d3f45c1493018aa760a3ab1d8c12cc0f499c2d0cd0592ef4502",
+    "result.json": "0112501f43c7e06d3d1ca60e522c0934a99b2b7e3e404a5949823c88d414c303"
+  },
+  "Antigravity_CLI_full_test_execution_completed": false,
+  "Antigravity_CLI_review_completed_on_baseline": true,
+  "Antigravity_repair_followup_approval": false,
+  "source_git_sha": "509f6d48de435512fac9711fd51a52a77f05746f",
+  "research_or_production_PASS": false
+}

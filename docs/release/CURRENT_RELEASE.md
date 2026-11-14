@@ -1,14 +1,14 @@
-# SCAR-X Hybrid — RC6 đang cài trong Hermes
+# SCAR-X Hybrid — RC7 đang cài trong Hermes
 
 **Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
 Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
 pruning hoặc thay quy tắc học.
 
-Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.6+374828e98c2b.zip`,
-824.647 byte, 53 payload files. SHA256:
-`5d392c3c6c6a7868e641d58123816e1644d2fbdd97723e18de715ad7bf06c851`.
-Git SHA nguồn: `374828e98c2b175f4e79ab24b8fd6df1b7a76b7a`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.7+509f6d48de43.zip`,
+831.825 byte, 55 payload files. SHA256:
+`c24fb159599124dff832c877ee28a5a87362a28395b953a0a93709a5410e366e`.
+Git SHA nguồn: `509f6d48de435512fac9711fd51a52a77f05746f`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
 asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 
@@ -34,14 +34,16 @@ asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 |---|---|
 | Video draft lấy nhầm giữa chat | Bỏ unscoped text matching; callback sau resolve session, canonical executor truyền request ID qua ContextVar/header; pending/binding/focus commit atomic. Có test hai chat cùng text, queued inputs, retry/restart và lỗi transaction. |
 | Snapshot ghi đè | JPEG immutable theo hash; hai nguồn khác có path khác, publication không overwrite trên Windows. Có 32 request concurrency, integrity và archive quota tests. |
-| UI video mới | Upload qua Files ở chat mới, frame local có trước bind; DB request ID khớp attachment, user text giữ nguyên, 0 tool calls sau readiness fix. VLM nhận đúng màu nhưng trả tiếng Anh và thiếu timestamp. |
+| UI video mới | Upload qua Files ở chat mới, frame local có trước bind; DB request ID khớp attachment, user text giữ nguyên, 0 tool calls sau readiness fix. RC6 nhận đúng màu nhưng trả tiếng Anh và thiếu timestamp; receipt lỗi đó được giữ. |
+| Trả lời video sau sửa presentation | Canonical Hermes thật trên clip đã biết trả “Hình đầu tiên là một hình vuông màu đỏ.”, 0 tool events. Runtime hiển thị nguồn `[E1 · 00:05]`, log riêng với native answer; chưa phải model học dẫn nguồn hoặc xác minh đáp án. |
 | Marker ở lời chào | Repro đúng ảnh người dùng, sửa ví dụ steering không dùng ở lượt xã giao tại host; không hardcode/lọc output. Canonical Hermes trả “chào bạn” bình thường; chất lượng xã giao khác còn hạn chế. |
 | Screen history | Capture thật cửa sổ FFplay thử: 13 frame/2 VLM descriptions, dừng sạch; hỏi sau stop và restart vẫn chọn đúng nguồn/màu đỏ. Câu không liên quan không nạp ảnh cũ, hỏi lịch sử không cấp quyền capture mới. Audio/mic tắt trong thử này. |
 | Tool/workspace/compact/search | Observer đọc đúng envelope; readonly probe thật 0→1 sau 3 lỗi. Guard replay chặn lần thứ tư giống hệt. Project trung lập/7K-char turns và 3 auto compact +1 manual qua; owner display không lộ handoff. Dispatcher SearXNG native trả nguồn thật. |
 | GPU/state | Cả VLM/vision, ASR, ALIF trên GPU; startup/native parity đã kiểm. Full saved arrays/RNG/replay qua activation cuối giữ nguyên, live updates vẫn 5; không nhập lab weights. |
 
-**256 Python checks, 29 Node checks, 12 Hermes Desktop tests và 3 actual
-loopback feedback scenarios qua.** Có CPU/native/CUDA parity và persistence;
+**263 Python checks, 29 Node checks và 3 actual loopback feedback scenarios
+qua ở RC7.** 12 Hermes Desktop tests/typecheck qua ở lần sửa admission RC6,
+không chạy lại vì bản này chỉ đổi backend presentation. Có CPU/native/CUDA parity và persistence;
 không dùng test transport hoặc test xanh để chấm năng lực đa năng.
 Renderer build/typecheck thành công, Electron main/preload giữ nguyên.
 
@@ -59,9 +61,13 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 - [Antigravity review/triage](ANTIGRAVITY_FULL_QA_20261114.md): review đầu 6 finding
   đã đối chiếu, hai lỗi kỹ thuật đã sửa. CLI không chạy xong tests vì sandbox;
   Codex thực thi suite. Follow-up review source timeout, không tính approval.
+- [Trả lời media và ranh giới footer](MEDIA_REPLY_PRESENTATION_20261114.md),
+  [audit actual Hermes](evidence/MEDIA_REPLY_PRESENTATION_20261114.json),
+  [RC7 code/runtime pins](evidence/RC7_INSTALLED_ARTIFACT_20261114.json),
+  [RC7 functional receipts](evidence/RC7_RELEASE_CHECKS_20261114.json).
 - [Screen/greeting](SCREEN_HISTORY_AND_GREETING_20261114.md),
   [chat dài/compact](LONG_INPUT_AND_COMPACTION_20261114.md),
-  [feedback HTTP](evidence/RC6_FEEDBACK_HTTP_20261114.json).
+  [feedback HTTP RC6](evidence/RC6_FEEDBACK_HTTP_20261114.json) giữ lịch sử.
 - `scripts/verify_installed_hybrid_rc.py` kiểm ZIP với deployment read-only.
   `scripts/audit_media_admission_repairs.py` đọc actual UI/admissions/source pins,
   không gọi model thêm. Backup source/renderer/checkpoint và log ở vùng private.
