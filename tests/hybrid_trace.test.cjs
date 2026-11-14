@@ -140,3 +140,31 @@ test("actual predicate training stage displays loss and heldout score separately
   assert.match(text, /không thuộc model live/);
   assert.equal(nodes.has("updates"), false);
 });
+
+test("counterfactual query diagnostic never claims new learning", () => {
+  const { nodes, event } = setup();
+  event({actor: "orchestrator", kind: "predicate_binding.actual_contrast", payload: {
+    run_id: "binding-audit", seed: 260113, arm: "current_hidden", api: "FindAlarms",
+    contrast: "time", both_correct: .2, pairs: 100}});
+  const text = nodes.get("binding-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text, /20.0% trên 100 cặp/);
+  assert.match(text, /không học mới/);
+  assert.equal(nodes.has("updates"), false);
+});
+
+test("common-head diagnostic separates seen fit from heldout transfer", () => {
+  const { nodes, event } = setup();
+  event({actor:"orchestrator",kind:"hidden_common_probe.actual_score",payload:{
+    run_id:"representation-audit",arm:"current_hidden",seed:260113,reset_hidden:false,
+    train:{accuracy:.9},final_DEV:{accuracy:.52}}});
+  const text = nodes.get("representation-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/90.0% · final DEV: 52.0%/);
+  assert.match(text,/hidden bị khóa/);
+  assert.equal(nodes.has("updates"), false);
+  event({actor:"orchestrator",kind:"hidden_common_probe.completed",payload:{
+    run_id:"representation-audit",verdict:"DIAGNOSTIC_ONLY",current_hidden_minus_frozen_common_probe:{
+      mean_pp:2.333,paired_seed_family_CI95_pp:[-3.083,8.167]}}});
+  const completed = nodes.get("representation-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(completed,/2.33 điểm % · CI95% \[-3.08; 8.17\]/);
+  assert.match(completed,/Readout offline chẩn đoán/);
+});

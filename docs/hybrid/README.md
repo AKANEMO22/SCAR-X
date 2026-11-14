@@ -6,6 +6,11 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Hidden đã đổi gì?](HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md): query contrasts
+và common ridge head tách hidden khỏi readout. Hidden fit train tốt hơn nhưng
+gainDEV chưa chắc chắn, protection không giúp representation probe. Chưa
+đưa hai diagnostic head hoặc checkpoint này vào Hermes; trace hiển thị thật.
+
 [Học và giữ kỹ năng trên predicate DEV](PREDICATE_RETENTION_DEV_20261114.md):
 3 seed × 4 arm, 20 chặng đã chạy thật. Protection53,08% so với hidden50,58%,
 chưa qua acquisition/retention hoặc gain gates. Mã hóa có nguy cơ mất binding

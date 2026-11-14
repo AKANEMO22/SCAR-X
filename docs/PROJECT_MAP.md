@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Binding và common-head hidden diagnostic](hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md):
+evaluation/predicate_binding_diagnostic.py, common_probe_diagnostic.py;
+diagnose/audit_hybrid_predicate_binding.py và diagnose/audit_hybrid_hidden_common_probe.py.
+Runs c1f23f/813109 giữ mọi query/prediction/raw feature matrix, source/parent
+hashes; reset controls/CPU linear algebra rederivation, không đổi model live.
+
 [Predicate acquisition/retention DEV](hybrid/PREDICATE_RETENTION_DEV_20261114.md):
 evaluation/predicate_retention_dev.py, run_hybrid_predicate_retention_dev.py,
 metric/encoding auditors và fixed-state fit diagnostic. 032f30/bef36b giữ

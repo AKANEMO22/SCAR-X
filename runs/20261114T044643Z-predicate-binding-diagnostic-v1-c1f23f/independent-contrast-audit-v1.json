@@ -1,0 +1,120 @@
+{
+  "run_id": "20261114T044643Z-predicate-binding-diagnostic-v1-c1f23f",
+  "source_and_parent_checkpoint_hashes_match": true,
+  "dual_verified_pairs_rechecked_with_independent_predicate": 663,
+  "stored_distribution_metrics_verified": true,
+  "forwards": 18600,
+  "aggregate_by_arm_contrast": [
+    {
+      "arm": "frozen",
+      "contrast": "owner",
+      "pairs": 1182,
+      "both_correct": 0.03637901861252115,
+      "prediction_flip_rate": 0.09052453468697123,
+      "mean_probability_contrast": -0.0033442028396323247,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "frozen",
+      "contrast": "time",
+      "pairs": 600,
+      "both_correct": 0.016666666666666666,
+      "prediction_flip_rate": 0.035,
+      "mean_probability_contrast": 0.0009361919263998667,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "frozen",
+      "contrast": "keyword",
+      "pairs": 207,
+      "both_correct": 0.01932367149758454,
+      "prediction_flip_rate": 0.024154589371980676,
+      "mean_probability_contrast": 0.0035612771944435323,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "readout_only",
+      "contrast": "owner",
+      "pairs": 1182,
+      "both_correct": 0.12013536379018612,
+      "prediction_flip_rate": 0.20050761421319796,
+      "mean_probability_contrast": 0.025120897078896785,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "readout_only",
+      "contrast": "time",
+      "pairs": 600,
+      "both_correct": 0.02666666666666667,
+      "prediction_flip_rate": 0.08333333333333333,
+      "mean_probability_contrast": -0.01796046066273296,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "readout_only",
+      "contrast": "keyword",
+      "pairs": 207,
+      "both_correct": 0.09178743961352658,
+      "prediction_flip_rate": 0.14492753623188406,
+      "mean_probability_contrast": 0.017068121749377236,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "current_hidden",
+      "contrast": "owner",
+      "pairs": 1182,
+      "both_correct": 0.12436548223350254,
+      "prediction_flip_rate": 0.2436548223350254,
+      "mean_probability_contrast": 0.004807073080302576,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "current_hidden",
+      "contrast": "time",
+      "pairs": 600,
+      "both_correct": 0.041666666666666664,
+      "prediction_flip_rate": 0.10166666666666667,
+      "mean_probability_contrast": -0.00677112334235441,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "current_hidden",
+      "contrast": "keyword",
+      "pairs": 207,
+      "both_correct": 0.07246376811594203,
+      "prediction_flip_rate": 0.13043478260869565,
+      "mean_probability_contrast": 0.010601964663518792,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "protected_hidden",
+      "contrast": "owner",
+      "pairs": 1182,
+      "both_correct": 0.10321489001692047,
+      "prediction_flip_rate": 0.18358714043993232,
+      "mean_probability_contrast": 0.005469751602602892,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "protected_hidden",
+      "contrast": "time",
+      "pairs": 600,
+      "both_correct": 0.041666666666666664,
+      "prediction_flip_rate": 0.08833333333333333,
+      "mean_probability_contrast": -0.004340798929333687,
+      "opposite_label_exact_aliases": 0
+    },
+    {
+      "arm": "protected_hidden",
+      "contrast": "keyword",
+      "pairs": 207,
+      "both_correct": 0.0966183574879227,
+      "prediction_flip_rate": 0.1642512077294686,
+      "mean_probability_contrast": 0.004496681589435264,
+      "opposite_label_exact_aliases": 0
+    }
+  ],
+  "in_memory_unchanged_claim": "Primary runner assertion/source; this auditor does not rerun GPU inference.",
+  "repeated_parent_sources_and_three_seeds_are_not_independent_quality_replicates": true,
+  "verdict": "RECORDED_BINDING_DIAGNOSTIC_VERIFIED_NO_PROMOTION"
+}

@@ -138,3 +138,13 @@ src/scarx/evaluation/predicate_retention_dev.py -text
 scripts/audit_hybrid_predicate_retention.py -text
 scripts/audit_hybrid_predicate_encoding.py -text
 scripts/plot_hybrid_predicate_retention.py -text
+runs/*-predicate-binding-diagnostic-v1-*/** -text -whitespace
+runs/*-hidden-common-probe-v1-*/** -text -whitespace
+src/scarx/evaluation/predicate_binding_diagnostic.py -text
+src/scarx/evaluation/common_probe_diagnostic.py -text
+scripts/diagnose_hybrid_predicate_binding.py -text
+scripts/diagnose_hybrid_hidden_common_probe.py -text
+scripts/audit_hybrid_predicate_binding.py -text
+scripts/audit_hybrid_hidden_common_probe.py -text
+experiments/hybrid-predicate-binding-diagnostic-v1.md -text
+experiments/hybrid-hidden-common-probe-diagnostic-v1.md -text

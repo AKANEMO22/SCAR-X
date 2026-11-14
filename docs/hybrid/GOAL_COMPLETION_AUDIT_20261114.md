@@ -72,3 +72,14 @@ again with installedbytesmatching and live5updates preserved. 554c19 actualPID
 41904/sourceidentity verifiedlive at12018s/40cycles/7checkpoints, not8hcomplete.
 Nextsafeaction is causalquery/record input audit and completing engineering
 qualification; no external blocker or completion claim.
+
+Continuation progressc1f23f/813109:663querycounterfactualpairs and18common-head
+representations measured onCUDA, nohiddenlearning. Hiddenreset exactly recovers
+frozenfeaturematrices; commonhead DEVhidden56.08% vs frozen53.75%, CIgain
+[-3.08,8.17]pp. Protection52.58%; no robust transfer advantage or promotion.
+Data-only auditors rederive source truth/probabilities/linear scores/CI and
+verify parent checkpoint hashes. Previousgoalturn's replytransport recheck was
+progress (verifiedinstalledbytes+actualHTTPfailure/retry regression), not merely
+a plan. Fullobjective stillactive: learnederrorrecovery/unseenretention and
+productioncoverage unresolved,8hPID41904/source verifiedlive13072s/44cycles/
+8checkpoints. No repeatedexternalblocker; do not reportcomplete or blocked.

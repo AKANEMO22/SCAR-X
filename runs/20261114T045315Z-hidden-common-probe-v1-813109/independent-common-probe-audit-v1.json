@@ -1,0 +1,230 @@
+{
+  "run_id": "20261114T045315Z-hidden-common-probe-v1-813109",
+  "checked_cells": [
+    {
+      "key": "260113-frozen",
+      "train": 0.809375,
+      "final_DEV": 0.535
+    },
+    {
+      "key": "260113-readout_only",
+      "train": 0.809375,
+      "final_DEV": 0.535
+    },
+    {
+      "key": "260113-current_hidden",
+      "train": 0.921875,
+      "final_DEV": 0.5425
+    },
+    {
+      "key": "260113-current_hidden-reset_hidden",
+      "train": 0.809375,
+      "final_DEV": 0.535
+    },
+    {
+      "key": "260113-protected_hidden",
+      "train": 0.853125,
+      "final_DEV": 0.5375
+    },
+    {
+      "key": "260113-protected_hidden-reset_hidden",
+      "train": 0.809375,
+      "final_DEV": 0.535
+    },
+    {
+      "key": "260137-frozen",
+      "train": 0.825,
+      "final_DEV": 0.545
+    },
+    {
+      "key": "260137-readout_only",
+      "train": 0.825,
+      "final_DEV": 0.545
+    },
+    {
+      "key": "260137-current_hidden",
+      "train": 0.921875,
+      "final_DEV": 0.5225
+    },
+    {
+      "key": "260137-current_hidden-reset_hidden",
+      "train": 0.825,
+      "final_DEV": 0.545
+    },
+    {
+      "key": "260137-protected_hidden",
+      "train": 0.865625,
+      "final_DEV": 0.525
+    },
+    {
+      "key": "260137-protected_hidden-reset_hidden",
+      "train": 0.825,
+      "final_DEV": 0.545
+    },
+    {
+      "key": "260171-frozen",
+      "train": 0.85625,
+      "final_DEV": 0.5325
+    },
+    {
+      "key": "260171-readout_only",
+      "train": 0.85625,
+      "final_DEV": 0.5325
+    },
+    {
+      "key": "260171-current_hidden",
+      "train": 0.91875,
+      "final_DEV": 0.6175
+    },
+    {
+      "key": "260171-current_hidden-reset_hidden",
+      "train": 0.85625,
+      "final_DEV": 0.5325
+    },
+    {
+      "key": "260171-protected_hidden",
+      "train": 0.853125,
+      "final_DEV": 0.515
+    },
+    {
+      "key": "260171-protected_hidden-reset_hidden",
+      "train": 0.85625,
+      "final_DEV": 0.5325
+    }
+  ],
+  "parent_checkpoints_and_source_hashes_match": true,
+  "raw_features_ignore_trained_readout_and_online_normalization_verified": true,
+  "reset_hidden_feature_matrices_exactly_equal_frozen": true,
+  "CPU_closed_form_rederives_GPU_ridge_scores_and_predictions": true,
+  "contrasts": {
+    "current_hidden": {
+      "mean_pp": 2.333333333333333,
+      "paired_seed_family_CI95_pp": [
+        -3.083333333333336,
+        8.166666666666668
+      ],
+      "scope": "Posthoc diagnostic, three neural seeds/four owned predicates, same finalDEV"
+    },
+    "protected_hidden": {
+      "mean_pp": -1.1666666666666667,
+      "paired_seed_family_CI95_pp": [
+        -3.0833333333333313,
+        0.3333333333333308
+      ],
+      "scope": "Posthoc diagnostic, three neural seeds/four owned predicates, same finalDEV"
+    }
+  },
+  "alias_sensitivity_only": [
+    {
+      "key": "260113-frozen",
+      "original_accuracy": 0.535,
+      "exclude_two_original_encoded_aliases_accuracy": 0.535175879396985,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260113-readout_only",
+      "original_accuracy": 0.535,
+      "exclude_two_original_encoded_aliases_accuracy": 0.535175879396985,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260113-current_hidden",
+      "original_accuracy": 0.5425,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5402010050251256,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260113-current_hidden-reset_hidden",
+      "original_accuracy": 0.535,
+      "exclude_two_original_encoded_aliases_accuracy": 0.535175879396985,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260113-protected_hidden",
+      "original_accuracy": 0.5375,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5376884422110553,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260113-protected_hidden-reset_hidden",
+      "original_accuracy": 0.535,
+      "exclude_two_original_encoded_aliases_accuracy": 0.535175879396985,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-frozen",
+      "original_accuracy": 0.545,
+      "exclude_two_original_encoded_aliases_accuracy": 0.542713567839196,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-readout_only",
+      "original_accuracy": 0.545,
+      "exclude_two_original_encoded_aliases_accuracy": 0.542713567839196,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-current_hidden",
+      "original_accuracy": 0.5225,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5226130653266332,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-current_hidden-reset_hidden",
+      "original_accuracy": 0.545,
+      "exclude_two_original_encoded_aliases_accuracy": 0.542713567839196,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-protected_hidden",
+      "original_accuracy": 0.525,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5226130653266332,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260137-protected_hidden-reset_hidden",
+      "original_accuracy": 0.545,
+      "exclude_two_original_encoded_aliases_accuracy": 0.542713567839196,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-frozen",
+      "original_accuracy": 0.5325,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5301507537688442,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-readout_only",
+      "original_accuracy": 0.5325,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5301507537688442,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-current_hidden",
+      "original_accuracy": 0.6175,
+      "exclude_two_original_encoded_aliases_accuracy": 0.6155778894472361,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-current_hidden-reset_hidden",
+      "original_accuracy": 0.5325,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5301507537688442,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-protected_hidden",
+      "original_accuracy": 0.515,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5150753768844221,
+      "does_not_replace_original_scores": true
+    },
+    {
+      "key": "260171-protected_hidden-reset_hidden",
+      "original_accuracy": 0.5325,
+      "exclude_two_original_encoded_aliases_accuracy": 0.5301507537688442,
+      "does_not_replace_original_scores": true
+    }
+  ],
+  "new_learning_or_promotion": false,
+  "verdict": "ARCHIVED_COMMON_PROBE_VERIFIED_ORIGINAL_CANDIDATE_REMAINS_PIVOT",
+  "scope": "Same-orchestrator data-only audit, not outside peer review or fresh confirmation"
+}

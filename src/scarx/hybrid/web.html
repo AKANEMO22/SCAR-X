@@ -11,6 +11,8 @@
 <section id="learn" class="tab hidden"><div class="layout"><div class="card"><h2>Hỏi để học</h2><p class="muted">Khi bạn vắng, SCAR-X gom câu hỏi và tiếp tục tìm hiểu trong ngân sách.</p><div id="pending"></div><form id="reply-form" class="hidden"><textarea id="reply" maxlength="4000" placeholder="Trả lời hoặc nhập “bỏ qua”…"></textarea><div class="row"><button>Trả lời</button><button type="button" id="skip" class="secondary">Bỏ qua</button><button type="button" id="unhelpful" class="secondary">Chưa hữu ích</button></div></form><div id="incidents"></div><div id="goals"></div></div><div class="card"><h2>Nguồn tự học</h2><p class="muted">Chỉ chủ đề công khai được cho phép mới gửi ra web. Nội dung video và hội thoại riêng tư ở lại trên máy.</p><form id="topic-form"><div class="row"><input id="topic" maxlength="160" placeholder="Chủ đề công khai cho phép tra cứu" required><button>Thêm</button></div></form><div id="topics"></div><form id="goal-form"><textarea id="goal-question" maxlength="1000" placeholder="Điều muốn SCAR-X tự tìm hiểu…" required></textarea><div class="row"><input id="topic-id" placeholder="ID chủ đề (trống = chỉ local)"><button>Tạo mục tiêu</button></div></form><div class="row"><button id="pause" class="secondary">Tạm dừng học</button><button id="save" class="secondary">Lưu trạng thái</button></div><form id="rollback-form"><div class="row"><input id="checkpoint" placeholder="ID checkpoint"><button class="secondary">Khôi phục</button></div></form><p id="saved" class="muted"></p></div></div></section>
 <section id="trace" class="tab card"><h2>Trace trực tiếp</h2><p class="muted">Tự cập nhật công việc thực. Phân biệt thao tác triển khai, VLM và quyết định neural; không mô phỏng suy nghĩ.</p>
 <div id="learning-screen" class="goal hidden"></div>
+<div id="binding-summary" class="goal hidden"></div>
+<div id="representation-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div></details>
@@ -33,6 +35,33 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='hidden_common_probe.actual_score'){
+const p=$('representation-summary');clear('representation-summary');p.classList.remove('hidden');
+para(p,'Kiểm representation bằng readout chung · '+e.payload.run_id);
+para(p,e.payload.arm+' · seed '+e.payload.seed+(e.payload.reset_hidden?' · reset hidden về ban đầu':''));
+para(p,'Mẫu đã học: '+(100*e.payload.train.accuracy).toFixed(1)+'% · final DEV: '+(100*e.payload.final_DEV.accuracy).toFixed(1)+'%');
+para(p,'Chỉ fit đầu đọc chẩn đoán, hidden bị khóa. Không thay model live hoặc biến kết quả thành lifelong PASS.','muted');
+}
+if(e.kind==='hidden_common_probe.completed'){
+const p=$('representation-summary');clear('representation-summary');p.classList.remove('hidden');
+para(p,'Kết quả kiểm representation · '+e.payload.run_id);para(p,e.payload.verdict);
+const gain=e.payload.current_hidden_minus_frozen_common_probe;
+if(gain)para(p,'Hidden − frozen, cùng readout: '+Number(gain.mean_pp).toFixed(2)+' điểm % · CI95% ['+gain.paired_seed_family_CI95_pp.map(n=>Number(n).toFixed(2)).join('; ')+'].');
+para(p,'Readout offline chẩn đoán dùng lại dữ liệu train. Không là kết quả học liên tục hoặc đổi model live.','muted');
+}
+if(e.kind==='predicate_binding.actual_contrast'){
+const p=$('binding-summary');clear('binding-summary');p.classList.remove('hidden');
+para(p,'Kiểm quan hệ câu hỏi / bản ghi · '+e.payload.run_id);
+para(p,e.payload.arm+' · seed '+e.payload.seed+' · '+e.payload.api+' / '+e.payload.contrast);
+para(p,'Đúng cả hai câu đối chiếu: '+(100*e.payload.both_correct).toFixed(1)+'% trên '+e.payload.pairs+' cặp.');
+para(p,'Chỉ suy luận từ checkpoint cố định; không học mới hoặc cộng cập nhật vào model live.','muted');
+}
+if(e.kind==='predicate_binding.completed'){
+const p=$('binding-summary');clear('binding-summary');p.classList.remove('hidden');
+para(p,'Kết quả kiểm quan hệ câu hỏi / bản ghi · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,e.payload.pairs+' cặp truy vấn · '+e.payload.forwards+' lượt suy luận; chi tiết nhóm trong sự kiện bên dưới.');
+para(p,'Không học mới hoặc thay checkpoint live; các cặp dùng chung nguồn không phải mẫu độc lập.','muted');
+}
 if(e.kind==='predicate_retention.actual_learning_stage'){
 const p=$('learning-screen');clear('learning-screen');p.classList.remove('hidden');
 const names={frozen:'Khóa học',readout_only:'Chỉ học readout',current_hidden:'Hidden hiện tại',protected_hidden:'Hidden + protection thử nghiệm'};

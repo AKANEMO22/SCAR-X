@@ -1,5 +1,12 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hidden common-probe14/11:** các raw feature matrices đổi bởi hidden update;
+reset riêng w_in/w_rec đưa chúng về đúng frozen, không do readout/statistics.
+Cùng diagnosticridge head: hidden56,08%DEV vs frozen53,75%, gain2,33pp/CI
+[-3,08;8,17]pp; protection52,58%. Query counterfactuals cho thấy binding yếu.
+Đây là chẩn đoán cùng finalDEV, chưa confirmation/hidden hữu ích/productionPASS.
+Giữ PIVOT và các ngưỡng gốc. [Chi tiết](hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md).
+
 **Predicate retention DEV14/11:** 3 seed × 4 arm, 20 chặng trên query/record có
 nhãn SQL/Python độc lập. Cả 12 joint acquisition/retention gates fail;
 protected53,08% so với hidden50,58%, gain2,5pp/CI[-0,75;6,33]pp. Không promote
@@ -10,7 +17,8 @@ protection, tăng quy mô hay kéo dài epoch. Giữ lỗi CI seed-only ban đ�
 
 **Protection/statusP014/11:** magnitude/anchorprototype cô lập tái sử dụng heuristic
 PlasticCore trên localactualdelta; đây là algorithmresearchmới, không sửa live.
-Importanceđãảnhhưởngupdate/EMA64/coldGPUstate nhưng chưađánh task/retention;
+P0 kiểmimportance/update/EMA64/coldGPUstate; task/retentionscreen032f30 sau đó
+chưađạt như ghi ở trên;
 aggregate350numericupdates>cap300 đượcgiữreview, khôngprotocolPASS.
 Statuscontractdiagnostic khôngbiến weaklabels thànhtruth; finitebank196043
 oracle margin4,17pp<gate5pp nên khôngtrain. [Evidence/limits](hybrid/STATUS_CONTRACT_AND_PROTECTION_P0_20261114.md).

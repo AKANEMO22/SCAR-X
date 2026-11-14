@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Hidden binding và common probe —14/11
+
+[Hai chẩn đoán inference-only](hybrid/HIDDEN_BINDING_AND_COMMON_PROBE_20261114.md):
+c1f23f kiểm663cặp query đổi đáp án/candidate giữ nguyên,18600CUDAforwards.
+Hidden đúng cả cặp owner/time/keyword12,44/4,17/7,25%; chưa biết dùng quan hệ.
+813109 dùng cùng ridge head cho18representation,12960forwards; hidden train
+92,08% nhưng finalDEV56,08% vs frozen53,75%, gainCI[-3,08;8,17]pp. Protection
+52,58%. Reset w_in/w_rec làm features về đúng frozen; đã xác minh hidden đổi
+representation, chưa chứng minh đổi hữu ích đáng tin cậy. Giữ PIVOT/nolive.
+
 ## Học predicate và retention DEV — 14/11
 
 [Báo cáo và raw results](hybrid/PREDICATE_RETENTION_DEV_20261114.md):
