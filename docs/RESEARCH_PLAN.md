@@ -1,5 +1,37 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+## 0. Literature-first: bắt buộc trước nghiên cứu mới
+
+Theo chỉ thị15/11/2026, trước mỗi nghiên cứu cơ chế học, retention hoặc SNN–RAG:
+
+1. Tra nguồn chính: paper, repo tác giả, code liên quan, giả định và phiên bản;
+   phân biệt kết quả tác giả báo cáo với điều đã kiểm độc lập. Kiểm cập nhật
+   upstream và tái sử dụng hồ sơ đã có, không đọc/chạy lại toàn bộ mặc định.
+2. Đối chiếu constraint SCAR-X: ALIF/local credit, đường thông tin/đầu ra,
+   pretrained/backprop, precision, RAM/VRAM, dữ liệu và thước đo. Không suy điểm
+   số paper sang model/thiết bị/tác vụ khác hoặc coi retrieval là học synapse.
+3. Ghi quyết định **REUSE / ADAPT / VERIFY_GAP / DEFER / DROP_DUPLICATE**. Nêu rõ
+   kết quả đã biết, artifact SCAR-X liên quan, phần chưa biết và vì sao phần đó
+   ảnh hưởng quyết định kỹ thuật. Kiểm giấy phép trước khi sao chép code.
+4. Chỉ đăng ký thí nghiệm nếu còn một câu hỏi phân biệt được: kiểm input có đủ
+   thông tin, SNN có đường tác động nhân quả và action/verifier có ích; kiểm cận
+   baseline/oracle trước khi train. Dùng đối chứng mạnh nhất và ngân sách tối
+   thiểu đủ trả lời; không tăng grid/epoch/model để lặp kết quả hoặc vượt ceiling.
+5. Khóa protocol/seeds/metrics/budget/điểm dừng và giữ phê duyệt cần thiết. Kết
+   quả cũ, failure và gate vẫn nguyên; chỉ mở rộng sau bằng chứng phù hợp.
+
+Mỗi protocol mới phải có một đoạn intake ngắn: **nguồn+ref; điều đã biết; khác
+biệt SCAR-X; artifact đã có; quyết định reuse; câu hỏi còn lại; kiểm tra tối
+thiểu/budget; điểm dừng; phạm vi được duyệt**. Không cần framework quản lý mới.
+Kiểm hồi quy cho lỗi app xác định vẫn cần chạy để xác nhận bản sửa; một kiểm
+tra toán/tương thích của cơ chế chuyển sang SCAR-X không phải tái lập toàn bộ
+benchmark gốc và không được mô tả thành phát hiện khoa học mới.
+
+[Đối chiếu nguồn/các quyết định hiện tại](research/literature/REUSE_DECISIONS_20261115.md)
+kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự nới P0 đang FAIL.
+
+---
+
 **RC10 web routing 15/11:** [sửa câu hỏi mới nhất chọn nhầm file](release/WEB_SEARCH_ROUTING_20261115.md)
 đã kiểm hai lượt JoJo thật trong Hermes/SearXNG. Đây là controller routing,
 không learned SNN foreground policy. Có search results thật nhưng native answer

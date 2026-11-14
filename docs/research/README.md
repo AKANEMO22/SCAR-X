@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Quy tắc15/11:** bắt buộc qua [literature-first gate của master](../RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới)
+trước nghiên cứu mới. [Bảng kế thừa hiện tại](literature/REUSE_DECISIONS_20261115.md)
+ghi source/code đã đọc, quyết định dùng lại và những lượt không cần chạy lại;
+không tạo thêm roadmap hoặc cấp quyền mở experiment.
+
 Cập nhật13/11/2026. Đây là điểm bắt đầu duy nhất để tra kết quả, thay vì mở
 từng branch hoặc suy từ một báo cáo tác giả. [Master plan](../RESEARCH_PLAN.md)
 quản lý định hướng; các protocol và số đo lịch sử giữ nguyên.

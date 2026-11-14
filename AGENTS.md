@@ -1,5 +1,7 @@
 # SCAR-X working rules
 
+- User research directive15/11: before any new neural/continual-learning/SNN-vs-RAG study, browse primary papers and author repositories, inspect the relevant mechanism/code and existing SCAR-X artifacts, then record what can be reused and the specific unresolved SCAR-X gap. Do not repeat an established result or old run without a new discriminating hypothesis. Use the literature-first gate in docs/RESEARCH_PLAN.md and docs/research/literature/REUSE_DECISIONS_20261115.md. A minimal compatibility/correctness check may still be necessary for an adaptation; do not rebrand a new research experiment as a software test to bypass this rule or required authorization. Keep previous failures, thresholds and approval boundaries unchanged.
+
 - User clarification14/11: the roughly3GB remaining capacity is discreteGPU VRAM, not hostRAM. Use it for measured useful native-model/vision/ASR buffers, never dummy allocations or silent weight precision reduction. Keep physical mixed-workload reserve and honest failed candidate results; GPUmemory occupancy is not model quality.
 
 - Latest mode amendment14/11: GPUmode routes VLM/vision, ASR and ALIF forward/local updates to CUDA; CPUmode uses no discrete GPU for neural compute (iGPU remains optional/unqualified). Host I/O/SQLite/tokenization/serialization/RNG stay CPU. Preserve native precision/local rules; GPU auto-rest keeps VLM warm, explicit sleep releases it. Device parity is not learned-skill/retention qualification. See docs/hybrid/WORKSPACE_GPU_RELIABILITY_20261114.md.

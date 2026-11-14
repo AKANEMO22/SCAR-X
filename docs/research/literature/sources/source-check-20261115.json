@@ -1,0 +1,113 @@
+{
+  "checked_date": "2026-11-15",
+  "purpose": "Literature-first research intake; no new experiment or upstream framework installation",
+  "source_types": "Author papers, author repositories and existing SCAR-X artifacts; third-party search summaries are not evidence",
+  "braintrace_main": {
+    "sha": "fafa25753b743a2e2d5b47209c4ee947abc02cfb",
+    "date": "2026-11-07T06:02:22Z",
+    "url": "https://github.com/chaobrain/braintrace/commit/fafa25753b743a2e2d5b47209c4ee947abc02cfb"
+  },
+  "braintrace_same_as_existing_20261112_pin": true,
+  "refs": [
+    {
+      "name": "e-prop",
+      "paper": "https://www.nature.com/articles/s41467-020-17236-y",
+      "code": {
+        "path": "https://github.com/IGITUGraz/eligibility_propagation/blob/master/Figure_3_and_S7_e_prop_tutorials/models.py",
+        "blob_sha": "1e17fe926ecda60aeeff5e7907a245c901877723",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "existing_dossier": "docs/research/literature/eprop.md",
+      "decision": "REUSE_EXISTING_REFERENCE"
+    },
+    {
+      "name": "BrainTrace",
+      "paper": "https://www.nature.com/articles/s41467-026-68453-w",
+      "code": {
+        "path": "https://github.com/chaobrain/braintrace/blob/main/braintrace/_algorithm/pp_prop.py",
+        "blob_sha": "14d017d5431f4bc8e88a44ac6797ca4f0dabdebb",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "additional_code": {
+        "path": "https://github.com/chaobrain/braintrace/blob/main/braintrace/_algorithm/d_rtrl.py",
+        "blob_sha": "0b1e2111dc1e6aac50eebdc236d1c58ac096200e",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "decision": "REUSE_D_RTRL_RECORDS; PP_PROP_REFERENCE_NOT_DEPLOYMENT"
+    },
+    {
+      "name": "DECOLLE",
+      "paper": "https://arxiv.org/abs/1811.10766",
+      "code": {
+        "path": "https://github.com/nmi-lab/decolle-public/blob/master/decolle/base_model.py",
+        "blob_sha": "174983160d8f5edca70ea47c1d93e4e6c94a25c9",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "decision": "REFERENCE; ALIF_AND_LOCALITY_COMPATIBILITY_REQUIRED"
+    },
+    {
+      "name": "Synaptic Intelligence",
+      "paper": "https://proceedings.mlr.press/v70/zenke17a.html",
+      "code": {
+        "path": "https://github.com/ganguli-lab/pathint/blob/86c5e07c5603d6a44c2f53585c19ee70773ef15c/pathint/optimizers.py",
+        "blob_sha": "da9a28536086042802d59148ffd9bf8448a0a06f",
+        "reading_scope": "Lines105-142; tf.gradients present"
+      },
+      "decision": "CONCEPT_ONLY; DIRECT_TRAINING_RULE_INCOMPATIBLE"
+    },
+    {
+      "name": "Reflexion",
+      "paper": "https://arxiv.org/abs/2303.11366",
+      "code": {
+        "path": "https://github.com/noahshinn/reflexion/blob/main/README.md",
+        "blob_sha": "ddef2fa6ae67d7c1aec49a43c1b286010ec27cc9",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "decision": "STRONG_NONPARAMETRIC_BASELINE"
+    },
+    {
+      "name": "ExpeL",
+      "paper": "https://arxiv.org/abs/2308.10144",
+      "code": {
+        "path": "https://github.com/LeapLabTHU/ExpeL/blob/main/README.md",
+        "blob_sha": "1ab70642eba9fdae44bf8280c50ea1f5ac68d55b",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "decision": "EXPERIENCE_MEMORY_BASELINE"
+    },
+    {
+      "name": "Self-RAG",
+      "paper": "https://arxiv.org/abs/2310.11511",
+      "code": {
+        "path": "https://github.com/AkariAsai/self-rag/blob/main/README.md",
+        "blob_sha": "8e4b13e6c64ca2cba48215eb718a01049e67725e",
+        "reading_scope": "README1-55 and paper abstract; not full training-code audit"
+      },
+      "decision": "REFERENCE_ONLY; NOT_FROZEN_VLM_PROMPT_EQUIVALENCE"
+    },
+    {
+      "name": "Graphiti",
+      "paper": "https://arxiv.org/abs/2501.13956",
+      "code": {
+        "path": "https://github.com/getzep/graphiti/blob/main/graphiti_core/edges.py",
+        "blob_sha": "6800438d9da1ea0f9d566a93bb4489c206726e2c",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "readme": {
+        "path": "https://github.com/getzep/graphiti/blob/main/README.md",
+        "blob_sha": "64fb8be4524f09fcdc222eba36db02c6413549bc",
+        "reading_scope": "Selected source/README lines; not a full framework audit"
+      },
+      "decision": "PROVENANCE_TEMPORAL_SCHEMA_IDEAS; NO_NEW_GRAPH_SERVICE"
+    }
+  ],
+  "full_Nature_article_fetch_blocked_by_cookie_redirect": true,
+  "copied_upstream_source_into_runtime": false,
+  "licenses_must_be_checked_before_actual_source_reuse": true,
+  "reused_local_reference_run": "runs/20261112T080533Z-literature-reference-dev-v1-839e07",
+  "six_existing_H128_trace_history_importance_buffers_bytes": 221184,
+  "buffer_size_scope": "Data-only read of existing P0 checkpoint. Upper bound if all six buffers vanished, not a realized saving.",
+  "new_neural_forward_backward_or_update_calls": 0,
+  "new_SNN_vs_RAG_study": false,
+  "old_history_P0_failure_and_gates_preserved": true
+}
