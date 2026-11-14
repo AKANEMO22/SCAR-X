@@ -1,5 +1,10 @@
 # Giới hạn của RC
 
+- RC9 khép transaction feedback/retry có request ID. API cũ không gửi request
+  ID không có bảo đảm này. Receipt lưu local ngoài neural snapshot; rollback
+  không tự áp lại cùng phản hồi để làm mất ý nghĩa rollback. Đây là độ bền
+  truyền/lưu nhãn, không chứng minh lời nhãn đúng hoặc kỹ năng được giữ lâu dài.
+
 - Lượt small mixed 8 giờ đã dừng theo yêu cầu người dùng sau khoảng 3 giờ 8 phút.
   Log, 38 chu kỳ và 7 checkpoint được giữ; không đạt hoặc thay thế cửa 8 giờ.
   Việc cho phép cài RC theo yêu cầu mới không phải giảm tiêu chí nghiên cứu.

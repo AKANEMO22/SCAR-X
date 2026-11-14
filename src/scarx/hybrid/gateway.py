@@ -4,6 +4,7 @@ import base64
 import copy
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import sqlite3
 import os
 from pathlib import Path
 import secrets
@@ -1212,7 +1213,8 @@ def serve(directory, port=8775):
                             {"error": "Missing mutation authorization"}, 403
                         )
                 client_id = body.get("client_id")
-                if client_id:
+                atomic_feedback = path == '/api/feedback' or (path == '/v1/learning/message' and body.get('kind') == 'reply')
+                if client_id and not atomic_feedback:
                     cached = gateway.store.get("api_result", str(client_id))
                     if cached:
                         return self.send(cached)
@@ -1307,7 +1309,9 @@ def serve(directory, port=8775):
                         origin="user",
                     )
                 elif path == "/api/feedback":
-                    response = gateway.engine.feedback(
+                    feedback = gateway.engine.feedback_once if client_id else gateway.engine.feedback
+                    response = feedback(
+                        *([client_id] if client_id else []),
                         body["id"],
                         text=body.get("text"),
                         helpful=body.get("helpful"),
@@ -1353,7 +1357,9 @@ def serve(directory, port=8775):
                     response = {"enabled": gateway.engine.state["learning_enabled"]}
                 elif path == "/v1/learning/message":
                     if body.get("kind") == "reply":
-                        response = gateway.engine.feedback(
+                        feedback = gateway.engine.feedback_once if client_id else gateway.engine.feedback
+                        response = feedback(
+                            *([client_id] if client_id else []),
                             body["question_id"], text=body["answer"], helpful=True
                         )
                     else:
@@ -1362,14 +1368,14 @@ def serve(directory, port=8775):
                         )
                 else:
                     return self.send({"error": "Not found"}, 404)
-                if client_id:
+                if client_id and not atomic_feedback:
                     gateway.store.put("api_result", str(client_id), response)
                 return self.send(response)
             except (ValueError, KeyError, TypeError, PermissionError) as exc:
                 return self.send({"error": {"message": str(exc)}}, 400)
             except MemoryError as exc:
                 return self.send({"error": {"message": str(exc)}}, 507)
-            except (RuntimeError, TimeoutError, OSError) as exc:
+            except (RuntimeError, TimeoutError, OSError, sqlite3.Error) as exc:
                 return self.send({"error": {"message": str(exc)}}, 503)
 
     try:

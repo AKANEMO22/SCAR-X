@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[Atomic feedback](release/FEEDBACK_TRANSACTION_20261115.md):
+`HybridEngine.feedback_once` + `Store.atomic_feedback` gắn retry identity với
+transaction checkpoint/receipt. `tests/test_hybrid_feedback_transaction.py` chạy
+actual nested Handler qua localhost với isolated GPU ALIF, gồm socket loss,
+SQLite ABORT và rollback. `integrations/hermes/atomic_feedback_patch.py` là recipe
+exact-source, không đổi local-learning equations; packager giữ provenance cả
+legacy P0 và runtime repair, không nhập nghiên cứu history vào serving.
+
 [History P0](hybrid/HISTORY_P0_RESULT_20261115.md):
 `src/scarx/evaluation/history_ablation_p0.py` là bản copy phương thức được pin/
 AST kiểm, không serving import. Runner `scripts/run_hybrid_history_p0.py` và

@@ -1,0 +1,20 @@
+{
+  "verdict": "ACTUAL_HTTP_GPU_FEEDBACK_ATOMICITY_REGRESSIONS_VERIFIED_NOT_NEURAL_QUALITY_PASS",
+  "before_sha256": {
+    "src/scarx/hybrid/engine.py": "630763d4a14b4ac30e235b3daf1d58e1d8c8d524b9850cdee7156581123a6546",
+    "src/scarx/hybrid/store.py": "0314f575475027cb11dd15e484e38d3c10baf72bddfc0a8d4ccaaed677974385"
+  },
+  "after_sha256": {
+    "src/scarx/hybrid/engine.py": "11eb3bf1965b6fe4046bce53ed234c93f9fbcef0be3172ea394ca3c925086d01",
+    "src/scarx/hybrid/store.py": "5b340428f6c090dcfc9eef6d1c37ec0a654b2116414568de0ec9dc3604256dbe"
+  },
+  "gateway_sha256": "0010c475fb6c181c51b7549e28c29412459aa0073d8f12c90f03bf69091269f3",
+  "recipe_sha256": "f3f8f6b832309585058734a3fae72bfa29d3d0eb8715f6ec41d26e0becbec755",
+  "test_source_sha256": "8c06430cc7615a547fc31aaa26536bcbfbe9a03ed3b46d38196eabd26e40076c",
+  "baseline_two_reproductions_failed_as_expected": true,
+  "actual_HTTP_CUDA_regressions_passed": 9,
+  "junit_sha256": "2ebfb82677a12ac0dd2265671e49c86b25132dbc3810775b91449d8559ac8cc8",
+  "live_data_modified_by_these_tests": false,
+  "core_learning_rule_modified": false,
+  "supersedes_candidate_qualification": "FEEDBACK_ATOMIC_BOUNDED_SOURCE_20261115.json; unchanged production code, added actual socket-response loss test"
+}

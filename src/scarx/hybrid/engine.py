@@ -1047,6 +1047,39 @@ class HybridEngine:
         finally:
             self.end_foreground()
 
+    def feedback_once(
+        self, request_id, identifier, text=None, helpful=None, positive_ids=(), negative_ids=()
+    ):
+        if (not isinstance(positive_ids, (list, tuple)) or not isinstance(negative_ids, (list, tuple))
+                or len(positive_ids) + len(negative_ids) > 128
+                or any(not isinstance(x, str) or not 1 <= len(x) <= 160
+                       for x in (*positive_ids, *negative_ids))):
+            raise ValueError('Feedback candidate labels must be a bounded ID list')
+        positive_ids, negative_ids = list(positive_ids), list(negative_ids)
+        if len(set(positive_ids)) != len(positive_ids) or len(set(negative_ids)) != len(negative_ids):
+            raise ValueError('Duplicate feedback candidate labels')
+        request = {'identifier': identifier, 'text': text, 'helpful': helpful,
+                   'positive_ids': positive_ids, 'negative_ids': negative_ids}
+        fingerprint = hashlib.sha256(encode(request).encode()).hexdigest()
+        # Lock order matches step/incident handling. In particular, an observer
+        # must not hold incidents.lock waiting for Store.lock while this callback
+        # holds Store.lock and attempts to finish the incident.
+        with self.lock, self.incidents.lock:
+            previous = self.model.dumps(self.state)
+            def apply():
+                result = self.feedback(identifier, text, helpful, positive_ids, negative_ids)
+                learning = result.get('learning') or []
+                if isinstance(learning, dict):
+                    learning = [learning]
+                if any(row.get('persistence_failed') for row in learning):
+                    raise OSError('Feedback update failed to persist; retry the same request')
+                return result
+            try:
+                return self.store.atomic_feedback(request_id, fingerprint, apply)
+            except Exception:
+                self.model, self.state = self._decode_snapshot(previous)
+                raise
+
     def feedback(
         self, identifier, text=None, helpful=None, positive_ids=(), negative_ids=()
     ):

@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## Feedback transaction — sửa khoảng hở ACK/checkpoint
+
+[Actual HTTP repro và sửa](release/FEEDBACK_TRANSACTION_20261115.md): RC8 source
+thất bại lost-postcommit-cache và same-ID/different-body. Bản sửa có durable
+receipt cùng transaction với checkpoint, giữ semantics khi restart/rollback;
+9 actual HTTP/CUDA fixture cases qua. Original learning rule không đổi, chưa
+chứng minh learned skills. Artifact đang cài theo [CURRENT_RELEASE](release/CURRENT_RELEASE.md).
+
 ## P0 history — dừng đúng gate, Hermes vẫn GPU
 
 [Kết quả và root cause](hybrid/HISTORY_P0_RESULT_20261115.md):177/600 charged

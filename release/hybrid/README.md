@@ -1,15 +1,21 @@
-# SCAR-X Hybrid 1.0.0-rc.8
+# SCAR-X Hybrid 1.0.0-rc.9
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
+
+RC9 lưu feedback, checkpoint và biên nhận trong một transaction SQLite. Retry
+cùng mã và nội dung trả cùng kết quả; đổi nội dung phải dùng mã gửi mới. Lỗi
+SQLite trả lỗi có thể thử lại và phục hồi trạng thái trước phản hồi. Receipt
+ở journal ngoài neural checkpoint, không bị xóa khi rollback synapse. Không
+đổi learning rule hoặc tự xác minh nội dung lời người dùng.
 
 RC8 tách lỗi decode/ASR không phải lỗi tài nguyên khỏi luồng hình màn hình.
 Sau ba lỗi audio liên tiếp, tạm dừng ASR của lượt chia sẻ đó; hình tiếp tục,
 coverage ghi rõ đoạn thiếu. Dừng rồi chia sẻ lại để thử audio từ đầu. Không
 tự chuyển CPU hoặc dùng microphone thay loopback. OOM/breach vẫn dừng pipeline.
 
-Đường nâng cấp RC8 pin đúng payload RC7 và từ chối source khác trước khi sửa.
+Đường nâng cấp RC9 pin đúng payload RC8 và từ chối source khác trước khi sửa.
 Source gate của test đã hủy nhận đúng bản trước/bản kế tiếp, không yêu cầu source
 đóng băng vĩnh viễn ở baseline cũ. Test đang chạy vẫn chặn cập nhật; trạng thái
 hủy vẫn không thành PASS. Backup/rollback chỉ phục hồi code, giữ trải nghiệm mới.

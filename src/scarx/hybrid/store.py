@@ -13,6 +13,25 @@ def encode(value):
     return json.dumps(value, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
 
 
+class _DeferredConnection:
+    """Defer nested connection contexts to one outer feedback transaction.
+
+    Used only while Store.lock is held. SQLite connections normally commit at
+    every nested `with connection`, so an ordinary outer context is insufficient.
+    """
+    def __init__(self, connection):
+        self.connection = connection
+
+    def __getattr__(self, name):
+        return getattr(self.connection, name)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
 class Store:
     def __init__(self, directory):
         self.directory = Path(directory).resolve()
@@ -83,6 +102,32 @@ class Store:
                 "SELECT payload FROM objects WHERE kind=? AND id=?", (kind, identifier)
             ).fetchone()
         return json.loads(row[0]) if row else None
+
+    def atomic_feedback(self, request_id, fingerprint, callback):
+        if (not isinstance(request_id, str) or not 1 <= len(request_id) <= 128
+                or any(not (c.isalnum() or c in '-_.') for c in request_id)
+                or not isinstance(fingerprint, str) or len(fingerprint) != 64
+                or any(c not in '0123456789abcdef' for c in fingerprint)):
+            raise ValueError('Invalid feedback retry identity')
+        key = hashlib.sha256(request_id.encode()).hexdigest()
+        with self.lock:
+            cached = self.get('feedback_receipt', key)
+            if cached is not None:
+                if cached.get('fingerprint') != fingerprint:
+                    raise ValueError('Feedback retry identity was reused with different content')
+                return cached['response']
+            connection = self.db
+            if isinstance(connection, _DeferredConnection) or connection.in_transaction:
+                raise RuntimeError('Feedback needs its own outer transaction')
+            self.db = _DeferredConnection(connection)
+            try:
+                with connection:
+                    result = callback()
+                    self.put('feedback_receipt', key,
+                             {'fingerprint': fingerprint, 'response': result})
+                return result
+            finally:
+                self.db = connection
 
     def list(self, kind, limit=200):
         with self.lock:

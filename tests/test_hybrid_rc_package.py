@@ -127,6 +127,10 @@ def test_overlay_requires_exact_qualified_recipe_and_audit(packager,tmp_path,tam
         for relative in (target,audit,candidate,recipe,archived):
             destination=tmp_path/relative;destination.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT/relative,destination)
+        if entry.get('post_RC8_atomic_feedback'):
+            for relative in (entry['post_RC8_atomic_feedback']['recipe'],entry['post_RC8_atomic_feedback']['audit']):
+                destination=tmp_path/relative;destination.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copyfile(ROOT/relative,destination)
     assert packager.overlay_candidates(tmp_path)[0]==packager.overlay_candidates(ROOT)[0]
     entry=targets['src/scarx/hybrid/store.py']
     if tamper=='audit':

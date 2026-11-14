@@ -91,12 +91,35 @@ def overlay_candidates(root):
         baseline=(root/Path(audit).parent/'source'/target).read_bytes()
         if scope['patch_bytes'](baseline)!=raw:
             raise ValueError('Candidate differs from the qualified exact-source P0 recipe')
-        if (root/target).read_bytes() not in (baseline,raw):
+        legacy = raw
+        followup_recipe = root/'integrations/hermes/atomic_feedback_patch.py'
+        followup_audit = root/'docs/release/evidence/FEEDBACK_ATOMIC_FINAL_SOURCE_20261115.json'
+        followup = None
+        if followup_recipe.exists() or followup_audit.exists():
+            if not followup_recipe.is_file() or not followup_audit.is_file():
+                raise ValueError('Incomplete atomic feedback qualification')
+            qualification=json.loads(followup_audit.read_text(encoding='utf-8'))
+            recipe_bytes=followup_recipe.read_bytes()
+            if (qualification['verdict']!='ACTUAL_HTTP_GPU_FEEDBACK_ATOMICITY_REGRESSIONS_VERIFIED_NOT_NEURAL_QUALITY_PASS'
+                    or qualification['recipe_sha256']!=digest(recipe_bytes)
+                    or qualification['before_sha256'][target]!=digest(legacy)):
+                raise ValueError('Atomic feedback qualification/recipe mismatch')
+            namespace={'__name__':'_atomic_feedback_release_recipe'}
+            exec(compile(recipe_bytes,str(followup_recipe),'exec'),namespace)
+            raw=namespace['patch_bytes'](target,legacy)
+            if digest(raw)!=qualification['after_sha256'][target]:
+                raise ValueError('Atomic feedback result differs from tested source')
+            followup={'recipe':'integrations/hermes/atomic_feedback_patch.py',
+                      'audit':'docs/release/evidence/FEEDBACK_ATOMIC_FINAL_SOURCE_20261115.json',
+                      'recipe_sha256':digest(recipe_bytes),'audit_sha256':digest(followup_audit.read_bytes()),
+                      'legacy_qualified_candidate_sha256':digest(legacy)}
+        if (root/target).read_bytes() not in (baseline,legacy,raw):
             raise ValueError('Active source differs from both qualified before/after states')
         changed[target]=raw
         provenance[target]={'candidate_sha256':digest(raw),'audit_sha256':digest((root/audit).read_bytes()),
                             'recipe_sha256':digest(recipe_raw),
                             'audit_reference':audit,'qualified_scope':'isolated P0; live release acceptance pending'}
+        if followup:provenance[target]['post_RC8_atomic_feedback']=followup
     return changed,provenance
 
 

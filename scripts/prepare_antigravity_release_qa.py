@@ -29,7 +29,8 @@ def main():
            'test_hybrid_rc_package.py','test_full_query_retrieval_shadow.py','test_verifier_capability_shadow.py',
            'test_asr_profile_resolver.py','test_hermes_resource_roots.py',
            'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py',
-           'test_media_reply_presentation.py','test_hybrid_screen_audio.py','test_hybrid_pipeline_audit.py']
+           'test_media_reply_presentation.py','test_hybrid_screen_audio.py','test_hybrid_pipeline_audit.py',
+           'test_hybrid_feedback_transaction.py']
     files=list((ROOT/'src/scarx').rglob('*.py'))
     files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'src/scarx/hybrid/hermes_protocol_notes.json',
               ROOT/'run_hybrid.py',ROOT/'pyproject.toml']
@@ -46,6 +47,7 @@ def main():
         folder=ROOT/'runs'/run
         files += [folder/candidate,folder/'independent-data-audit-v1.json']
         files += [p for p in (folder/'source').rglob('*') if p.is_file()]
+    files += [ROOT/'docs/release/evidence/FEEDBACK_ATOMIC_FINAL_SOURCE_20261115.json']
     dll=ROOT/'build/scarx_cpu.dll'
     if dll.is_file():files.append(dll)
     hashes={}
