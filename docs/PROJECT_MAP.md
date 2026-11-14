@@ -1,5 +1,15 @@
 # Bản đồ dự án SCAR-X
 
+[Verifier theo phạm vi task](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md):
+`src/scarx/hybrid/arithmetic.py` là grammar riêng Hybrid; engine/review dùng cùng
+checker. `scripts/audit_hybrid_arithmetic_scope.py` đọc repro và predecessor ZIP,
+không train. Original `src/scarx/learning/verifiers.py` giữ nguyên.
+
+[Audit causal input](release/evidence/CURRENT_CREDIT_INPUT_RC13_20261115.json):
+`scripts/audit_hybrid_current_credit_input.py` mã hóa lại input từ actual probes
+đã lưu và AST-compare, không gọi model hoặc tạo lại lỗi. [Outcome contract P0](../experiments/hybrid-stateful-outcome-contract-p0-v1.md)
+là đề xuất chờ duyệt, chưa có harness hoặc outcome-data mới.
+
 [Literature-first](RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới):
 master giữ gate; [reuse decisions](research/literature/REUSE_DECISIONS_20261115.md)
 và `docs/research/literature/sources/source-check-20261115.json` giữ nguồn/pin,

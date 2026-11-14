@@ -1,0 +1,60 @@
+{
+  "verdict": "CURRENT_RUNTIME_STILL_DROPS_RECORDED_PROBE_DISTINCTIONS_BEFORE_SNN",
+  "current_source_git_sha": "b89a49967aaa09e0d0110d1bc484c6db6c5be4f0",
+  "current_release_spec_version": "1.0.0-rc.13",
+  "original_run": "20261113T232337Z-incident-information-p0-2d5a24",
+  "original_archived_source_and_raw_data_verified": true,
+  "current_methods_AST_equal_to_archived": {
+    "goal_sequence": true,
+    "observe_tool_experience": true
+  },
+  "reencoded_existing_owned_cases": [
+    {
+      "case_id": "case-0",
+      "matrix_sha256": "1657f01744aba24d9ddfb21ee7e448b8d42460302496c3138a4f2a9a3dca44a5",
+      "probe_read_ok": true,
+      "probe_reported_not_found": false
+    },
+    {
+      "case_id": "case-1",
+      "matrix_sha256": "1657f01744aba24d9ddfb21ee7e448b8d42460302496c3138a4f2a9a3dca44a5",
+      "probe_read_ok": false,
+      "probe_reported_not_found": true
+    },
+    {
+      "case_id": "case-2",
+      "matrix_sha256": "1657f01744aba24d9ddfb21ee7e448b8d42460302496c3138a4f2a9a3dca44a5",
+      "probe_read_ok": false,
+      "probe_reported_not_found": false
+    }
+  ],
+  "current_input_shape": [
+    8,
+    64
+  ],
+  "distinct_actual_probe_outcomes": 3,
+  "distinct_current_neural_inputs": 1,
+  "same_checkpoint_cannot_distinguish_these_cases_from_this_input_alone": true,
+  "not_a_model_accuracy_bound_for_coarse_six_actions": true,
+  "production_action_order": [
+    "review",
+    "search",
+    "verify",
+    "ask",
+    "defer",
+    "consolidate"
+  ],
+  "research_shadow_action_order": [
+    "show_schema",
+    "inspect_status",
+    "retry",
+    "clarify",
+    "defer",
+    "finish"
+  ],
+  "same_six_slots_do_not_authorize_weight_transfer": true,
+  "new_model_initializations_forward_backward_or_learning_calls": 0,
+  "new_dataset_or_relabeling": false,
+  "current_engine_sha256": "7b78154c6ca9adb6c611829e5f5b23381be68c74a450a6759dc81fa6f63b04b1",
+  "scientific_or_production_PASS": false
+}

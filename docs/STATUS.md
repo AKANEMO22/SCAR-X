@@ -1,5 +1,20 @@
 # Trạng thái SCAR-X
 
+## RC13 — chặn nhãn số học cho sai yêu cầu
+
+[Repro và sửa](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md): biểu thức trong
+câu hỏi màu/code/chuỗi không còn tự thành phép tính được máy xác minh.82 targeted
+và28 package checks qua;3 actual controller review fixtures không forward/learn,
+Store/cold restore nguyên vẹn. Đã cài RC13, GPU/full neural state giữ nguyên,
+updates5; không đổi rule/encoder hoặc chạy lại history P0. Artifact hiện tại ở
+[CURRENT_RELEASE](release/CURRENT_RELEASE.md).
+
+[Audit input hiện tại](release/evidence/CURRENT_CREDIT_INPUT_RC13_20261115.json)
+tái dùng3 lỗi/probe thật đã lưu,0 model calls: vẫn3 outcomes→1 neural input.
+[P0 outcome contract](../experiments/hybrid-stateful-outcome-contract-p0-v1.md)
+đã tra code ToolSandbox/Reflexion/ExpeL và đề xuất12 fixtures, **chờ duyệt, chưa
+thực thi**. Không train selector trên bank cũ có oracle margin dưới gate.
+
 ## 15/11 — literature-first trước mọi nghiên cứu mới
 
 [Master plan §0](RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới)

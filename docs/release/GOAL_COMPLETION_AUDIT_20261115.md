@@ -1,5 +1,31 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Latest runtime update:** [RC13 verifier scope](ARITHMETIC_VERIFIER_SCOPE_20261115.md)
+is installed on GPU with58 payload files, unchanged arrays/learned metadata/
+RNG/replay and5 live updates. Actual isolated controller reviews show that three
+incidental arithmetic examples no longer create a machine label; reflection
+backend outputs are declared fixtures, not native answer-quality evidence.
+RC12 previously verified one real Hermes follow-up with5 persisted web sources
+and natural idle review, but its native answer and critique remain unreliable.
+These repairs make outcome provenance safer; they do not close the scientific
+goal. Current release pointer/receipts supersede older RC references below.
+
+[Current causal-input audit](evidence/CURRENT_CREDIT_INPUT_RC13_20261115.json)
+reuses archived real tool/probe data without creating models or learning:
+three distinct probe outcomes still map to one8×64 neural input. Recovery
+shadow slots also differ from production action semantics; their six weights
+cannot be transferred by matching dimensions alone. Causal input plus useful
+executed action and independently checked task outcome are all still needed.
+
+Literature-first now precedes every new study. [ToolSandbox/reflection intake](../research/literature/REUSE_DECISIONS_20261115.md)
+suggests reusing state/effect/dependency checks, not soft text similarity as truth.
+[Outcome-contract P0](../../experiments/hybrid-stateful-outcome-contract-p0-v1.md)
+is a **pending proposal**, not an executed experiment or permission to train.
+The approval question has been sent; no dependent harness/fixture work starts
+without an answer. Existing history FAIL, acquisition/retention/CI gates and
+the cancelled8h remain unchanged. The preceding turn made concrete progress
+through label-authorization code, targeted regressions and actual deployment.
+
 **Later P0 update:** user steered the pending isolated P0 to retain GPU and use
 Antigravity. [The actual P0](../hybrid/HISTORY_P0_RESULT_20261115.md) stopped at
 the unchanged current-hidden parity gate:177 charged calls including diagnostic,

@@ -1,14 +1,14 @@
-# SCAR-X Hybrid — RC12 đang cài trong Hermes
+# SCAR-X Hybrid — RC13 đang cài trong Hermes
 
 **Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
 Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
 pruning hoặc thay quy tắc học.
 
-Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.12+6389f00ef37a.zip`,
-863.040 byte, 57 payload files. SHA256:
-`0fa8364503c68b9c904f5af4ac209118b8ff0546643e2727e9efdcefa5f17ef2`.
-Git SHA nguồn: `6389f00ef37a8db289059c15f04c29d1335848f2`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.13+b89a49967aaa.zip`,
+865.128 byte, 58 payload files. SHA256:
+`661b79165666dfb87789d023a02f9f66e98b1572a90a3f04d8e5267db4e58829`.
+Git SHA nguồn: `b89a49967aaa09e0d0110d1bc484c6db6c5be4f0`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
 asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 
@@ -43,17 +43,18 @@ asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 | Feedback/retry RC9 | Checkpoint, nhãn, journal và receipt cùng transaction; actual Handler + GPU ALIF tái hiện lỗi trước sửa và kiểm socket mất phản hồi sau commit, concurrent retry, restart/rollback, SQLite ABORT và batch rollback. Cùng mã khác nội dung bị từ chối. Không áp nhãn thử vào model live. |
 | Web routing RC10 | Câu JoJo mới nhất và “tìm kiếm đi” đã gọi web_search thật đúng cùng chủ đề, mỗi lượt5 kết quả; không tìm file hay gọi extractor. Native answer vẫn lấy ngày ra mắt thay số tập hiện tại, không chấm answer-quality PASS. |
 | Source/review RC11→RC12 | RC11 nhận5 nguồn nhưng parser bỏ sót frame cảnh báo của Hermes, nên review không có nguồn; lỗi cũ giữ nguyên. RC12 giải mã bản sao để lưu, không bỏ cảnh báo khỏi model input. Một follow-up thật lưu đúng5 snippet `observed`, gắn task gốc, `partial=false`; tự review sau khi rảnh với đủ5 nguồn. Native vẫn nhầm tổng dự kiến11 tập với tập mới nhất; critique không xác minh được, không tự học từ nhãn đó. |
+| Verifier scope RC13 | Câu hỏi màu/code/trích dẫn chứa12+3 không còn tự được cấp nhãn số học. Cùng checker toàn-câu cho mask, action, review và feedback;0 neural updates trên3 controller fixtures trước đây cấp nhãn sai. Đây là sửa quyền cấp nhãn, không neural intent learning. |
 | Tool/workspace/compact/search | Observer đọc đúng envelope; readonly probe thật 0→1 sau 3 lỗi. Guard replay chặn lần thứ tư giống hệt. Project trung lập/7K-char turns và 3 auto compact +1 manual qua; owner display không lộ handoff. Dispatcher SearXNG native trả nguồn thật. |
 | GPU/state | Cả VLM/vision, ASR, ALIF trên GPU; startup/native parity đã kiểm. Full saved arrays/RNG/replay qua activation cuối giữ nguyên, live updates vẫn 5; không nhập lab weights. |
 
-**332 full release Python checks qua ở RC11** được giữ làm baseline. RC12 chạy
-**35 targeted wrapper/review/feedback checks** và **28 package checks**, không
+**332 full release Python checks qua ở RC11** được giữ làm baseline. RC13 chạy
+**82 targeted arithmetic/review/cognition/feedback/web checks** và **28 package checks**, không
 tuyên bố rerun toàn332. Không cộng các receipt chồng nhau thành mẫu độc lập.
 Có 9 actual HTTP/CUDA feedback cases,
 CPU/native/CUDA parity, audio fault, upgrade CAS/rollback và persistence.
 **29 Node checks +3 UI HTTP feedback
 scenarios qua ở RC7**; 12 Hermes Desktop tests/typecheck qua ở lần sửa admission
-RC6, không chạy lại vì RC12 không đổi renderer/plugin/composer. Các receipt này
+RC6, không chạy lại vì RC13 không đổi renderer/plugin/composer. Các receipt này
 được ghi đúng phiên bản;
 không dùng test transport hoặc test xanh để chấm năng lực đa năng.
 Renderer build/typecheck thành công, Electron main/preload giữ nguyên.
@@ -91,6 +92,13 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
   [actual RC12 calls/review](evidence/RC12_WEB_FRAME_LIVE_20261115.json),
   [RC12 installed pins](evidence/RC12_INSTALLED_ARTIFACT_20261115.json).
   Snippet và self-critique vẫn chưa được xác minh, không tự trở thành nhãn học.
+- [Sửa phạm vi verifier](ARITHMETIC_VERIFIER_SCOPE_20261115.md),
+  [actual controller fixtures](evidence/RC13_ARITHMETIC_CONTROLLER_20261115.json),
+  [RC13 installed pins](evidence/RC13_INSTALLED_ARTIFACT_20261115.json),
+  [RC13 activation](evidence/RC13_ACTIVATION_20261115.json),
+  [RC13 checks](evidence/RC13_RELEASE_CHECKS_20261115.json).
+  Grammar hẹp có thể từ chối câu toán hợp lệ ngoài phạm vi; vẫn chat/review
+  nhưng không tự xác minh hoặc coi lời sửa người dùng sai bằng checker này.
 - [Audio resilience](SCREEN_AUDIO_RESILIENCE_20261115.md),
   [upgrade source custody](RC_UPGRADE_PATH_20261115.md),
   [goal completion audit](GOAL_COMPLETION_AUDIT_20261115.md) tách kỹ thuật đã

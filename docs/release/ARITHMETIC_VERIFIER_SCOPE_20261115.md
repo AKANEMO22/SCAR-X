@@ -51,6 +51,21 @@ mở lại history P0, DEV/TEST hoặc nới gate từ việc siết checker.
 -[Exact-source qualification](evidence/ARITHMETIC_TASK_SCOPE_SOURCE_20261115.json)
   khóa recipe/source/JUnit cho gói mới. Không tự coi metadata là proof chất lượng.
 
-Activation/state và actual path acceptance được ghi sau khi thực hiện. Đây là
-sửa tính đúng đắn của nhãn, không chứng minh SNN đã hiểu nguyên nhân tool loop,
-thắng cùng LLM+RAG hoặc vượt ngưỡng forgetting.
+## Đã cài và kiểm đường controller thật
+
+[Activation](evidence/RC13_ACTIVATION_20261115.json) cập nhật thật engine/review
+và module arithmetic mới từ predecessor RC12.58 payload khớp, full saved
+arrays/learned metadata/RNG/replay giữ nguyên; updates live vẫn5. [Installed
+verification](evidence/RC13_INSTALLED_ARTIFACT_20261115.json) giữ GPU/native pins
+và main chưa đổi. Code backup/rollback không ghi đè database/journal.
+
+[Controller acceptance](evidence/RC13_ARITHMETIC_CONTROLLER_20261115.json) chạy
+thực HybridEngine.review_once trên3 counterexample đã lưu, Store/ALIF riêng
+trên GPU, backend reflection là **fixture JSON được khai báo**, không câu trả
+lời native VLM. Cả3 giữ `reviewed_unverified`, không vào `_guarded_learn` hoặc
+forward; toàn model arrays/RNG/replay không đổi và cold restore giữ3 records.
+Không chèn nhãn/test input vào phiên cá nhân. [Check receipts](evidence/RC13_RELEASE_CHECKS_20261115.json)
+phân biệt82 current/28 package với332 baseline cũ.
+
+Đây là sửa tính đúng đắn của nhãn, không chứng minh SNN đã hiểu nguyên nhân tool
+loop, thắng cùng LLM+RAG hoặc vượt ngưỡng forgetting. Không chạy nghiên cứu mới.

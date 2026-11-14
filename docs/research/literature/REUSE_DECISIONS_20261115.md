@@ -70,3 +70,23 @@ và artifact local → khác biệt SCAR-X → REUSE/ADAPT/VERIFY_GAP/DEFER/DROP
 của app, không thử một learner mới. Provenance/task binding phải đúng trước khi
 bất kỳ cơ chế học nào nhận trải nghiệm đó; không lấy một câu self-critique của
 VLM làm nhãn đúng. Không có nghiên cứu SNN-vs-RAG mới được khởi chạy trong lượt này.
+
+## Bổ sung đọc code outcome/reflect, không chạy benchmark
+
+- [Reflexion update_memory](https://github.com/noahshinn/reflexion/blob/main/alfworld_runs/generate_reflections.py)
+  chỉ tạo reflection theo failed environment result và giữ memory; [ExpeL
+  ReflectAgent](https://github.com/LeapLabTHU/ExpeL/blob/main/agent/reflect.py)
+  tách is_success/reflection_counter và previous_trial. Đã đọc hai file cụ thể,
+  không claim kiểm hết agent/framework. REUSE ranh giới outcome và reflection;
+  không coi generated plan là máy kiểm sự thật hoặc synaptic knowledge.
+- [ToolSandbox](https://github.com/apple-aiml-research/ToolSandbox), [paper](https://aclanthology.org/2025.findings-naacl.65/):
+  upstream đã chuyển từ apple/ToolSandbox; blob evaluator
+  `af9faacc65c0e700a52093fb0c5d77ac6c36c449` và LICENSE đã đọc. [Source/ranges](sources/toolsandbox-source-check-20261115.json)
+  ghi phần thực đã xem. Snapshot constraints và milestone ordering phù hợp
+  nghiên cứu recovery; partial similarity/ROUGE text/empty-milestone default
+  không tự là binary truth label. Chưa audit toàn scenarios hoặc chạy scorer.
+  REUSE concept, chưa copy/install/evaluate; không thêm Polars/NetworkX/API.
+- [Sửa verifier RC13](../../release/ARITHMETIC_VERIFIER_SCOPE_20261115.md) là
+  regression bug cụ thể, không cần học lại để xác nhận. [P0 contract mới](../../../experiments/hybrid-stateful-outcome-contract-p0-v1.md)
+  chỉ đề xuất12 fixtures/0 model calls, chờ phê duyệt; không rename nghiên cứu
+  thành software regression để vượt giới hạn đã chốt.

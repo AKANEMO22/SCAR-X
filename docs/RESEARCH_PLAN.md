@@ -32,6 +32,15 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**RC13 runtime15/11:** [verifier theo phạm vi task](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md)
+chặn biểu thức tình cờ tạo nhãn máy; không đổi ALIF/local rule/encoder.82 targeted
+và28 package checks qua, deployed state/RNG/replay/updates5 giữ nguyên. [Input
+audit hiện tại](release/evidence/CURRENT_CREDIT_INPUT_RC13_20261115.json) tái dùng
+raw probes cũ:3 outcomes vẫn thành1 input, không neural calls mới. [P0 outcome
+contract](../experiments/hybrid-stateful-outcome-contract-p0-v1.md) sau khi đọc code
+ToolSandbox/Reflexion/ExpeL là đề xuất **chờ duyệt**, không mở training/DEV/history.
+Quality, retention và hidden advantage vẫn PIVOT; [artifact hiện tại](release/CURRENT_RELEASE.md).
+
 **RC10 web routing 15/11:** [sửa câu hỏi mới nhất chọn nhầm file](release/WEB_SEARCH_ROUTING_20261115.md)
 đã kiểm hai lượt JoJo thật trong Hermes/SearXNG. Đây là controller routing,
 không learned SNN foreground policy. Có search results thật nhưng native answer

@@ -1,0 +1,31 @@
+{
+  "verdict": "ACTUAL_CONTROLLER_REVIEW_REJECTS_THREE_INCIDENTAL_ARITHMETIC_LABELS",
+  "backend": "declared reflection JSON fixture, not a native VLM generation",
+  "model_device": "gpu",
+  "cases": [
+    {
+      "question": "What color is 12+3 written in?",
+      "fixture_answer": "15",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "Hãy đọc chuỗi 12+3, đừng tính.",
+      "fixture_answer": "16",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "The code contains \"12+3\". Is it secure?",
+      "fixture_answer": "14",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    }
+  ],
+  "actual_native_VLM_calls": 0,
+  "SNN_forward_or_learning_calls": 0,
+  "isolated_neural_arrays_RNG_replay_unchanged": true,
+  "cold_restore_exact_model_and_three_review_records": true,
+  "live_user_state_modified": false,
+  "scientific_or_production_PASS": false
+}
