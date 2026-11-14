@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Startuptimelineadd9f5](hybrid/STARTUP_STORAGE_TIMELINE_20261114.md):
+audit_hybrid_startup_storage.py actualevents+three realreadonlyhashstages;
+verify_hybrid_startup_storage.py rederives eventintervals/bytecounts without
+modelrehash/restart. Không cachehandoff mới hoặc runtime/neuralalgorithmchange.
+
 [Verifierguard8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md):
 integrations/hermes/verifier_capability_guard_patch.py exactEngineSHA;
 accept_hybrid_verifier_capability.py gọi actualunboundallowed trên contextowned,

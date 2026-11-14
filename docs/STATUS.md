@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Startupstorageaudit —14/11
+
+[add9f5](hybrid/STARTUP_STORAGE_TIMELINE_20261114.md): mốc boot cũ→nativegate
+15,086s (không phải21,25s toàntransaction); ALIFdeviceinterval0,501s. Hash-only
+đo3,023GB qualification+967,5MBselectedASR đọc lặp0,86s; cùngbackendcachehit
+0hashbytes. Source/byteaccounting/timelineaudit qua,0newneuralcalls/restart.
+Không coldbenchmark/speedupclaim, chưa tối ưu/bỏintegrity. Website ghi rõ
+resident=đanggiữtài nguyên,20Nodechecks qua; source8hkhôngđổi.
+
 ## VerifiercapabilityguardP0 —14/11
 
 [8e205a](hybrid/VERIFIER_CAPABILITY_GUARD_P0_20261114.md): candidate chỉthay
