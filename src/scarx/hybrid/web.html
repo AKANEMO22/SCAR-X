@@ -14,7 +14,7 @@
 <div id="asr-soak-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Kiểm toán độ bền và phạm vi tài nguyên</summary><div id="endurance-scope" class="goal hidden"></div><div id="client-root-summary" class="goal hidden"></div></details>
-<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
+<details><summary>Các phép đo học và trí nhớ đã hoàn tất</summary><div id="input-budget-summary" class="goal hidden"></div><div id="learning-screen" class="goal hidden"></div><div id="binding-summary" class="goal hidden"></div><div id="representation-summary" class="goal hidden"></div><div id="credit-summary" class="goal hidden"></div><div id="cold-memory-summary" class="goal hidden"></div></details>
 <details><summary>Đáp án và phiên âm thực từ các lượt đo</summary><div id="asr-soak-text" class="feed"></div><div id="cold-memory-answers" class="feed"></div><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
 <div id="events" class="feed"></div></section>
@@ -52,6 +52,16 @@ if(smallSoak.audit)para(p,'Audit dữ liệu: '+smallSoak.audit.verdict+' · '+s
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='input_budget_audit.completed'){
+const r=e.payload,p=$('input-budget-summary');clear('input-budget-summary');p.classList.remove('hidden');
+para(p,'Kiểm toán đầu vào · '+r.run_id);
+if(r.failures?.length){para(p,'Kiểm toán chưa hoàn tất; xem log gốc.','error');return}
+const aliases=(r.relevance||[]).filter(v=>v.identical_inputs).map(v=>v.query_words);
+para(p,'Cặp khác sự kiện nhưng input giống byte tại các độ dài câu hỏi: '+aliases.join(', ')+' từ (trong fixture đã khóa).');
+para(p,'FTS bỏ sót từ khóa tại vị trí '+(r.FTS||[]).filter(v=>!v.blue_source_returned).map(v=>v.keyword_word_position).join(', ')+'. Đây là từ lexical, khác tokenizer VLM16K.');
+if(r.historical_predicate_scope)para(p,'Predicate cũ tối đa '+r.historical_predicate_scope.max_words+' từ/trường; giới hạn dài này không giải thích failure ngắn đó.');
+para(p,'Chỉ đo ma trận đầu vào và SQLite thật; 0 neuralforward/update/VLMcall. Không phải accuracy, representation học được hoặc bản sửa đã nạp.','muted');
+}
 if(e.kind==='ASR_profile.live_activation_verified'){
 const r=e.payload,p=$('asr-profile-summary');clear('asr-profile-summary');p.classList.remove('hidden');
 para(p,'Runtime đã nạp · '+r.ASR_model.name+' · '+r.ASR_model.precision);

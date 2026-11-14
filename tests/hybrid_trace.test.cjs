@@ -77,6 +77,23 @@ test("selected ASR runtime receipt separates actual private execution from live 
   assert.match(answer, /không phải kết quả model trả lời hoặc nhãn tự học/);
 });
 
+test("input boundary audit is shown as data loss, never a learned quality gain", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "input_budget_audit.completed", payload: {
+    run_id: "owned-input-fixture", failures: [],
+    relevance: [{ query_words: 16, identical_inputs: false }, { query_words: 125, identical_inputs: true }],
+    FTS: [{ keyword_word_position: 16, blue_source_returned: true }, { keyword_word_position: 17, blue_source_returned: false }],
+    historical_predicate_scope: { max_words: 11 },
+  }});
+  const text = nodes.get("input-budget-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /input giống byte.*125 từ/);
+  assert.match(text, /FTS bỏ sót từ khóa tại vị trí 17/);
+  assert.match(text, /không giải thích failure ngắn/);
+  assert.match(text, /0 neuralforward\/update\/VLMcall/);
+  assert.match(text, /Không phải accuracy/);
+  assert.equal(nodes.has("updates"), false);
+});
+
 test("stale heartbeat warns without claiming a missing process is terminal", () => {
   const { nodes, event } = setup();
   event({ actor: "orchestrator", kind: "shared_endurance.heartbeat",

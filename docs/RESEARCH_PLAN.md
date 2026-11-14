@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**InputbudgetP014/11:** [40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md)
+cho thấy longquery có thể đẩy nội dungevent/error khỏi128wordprefix;FTS cắt
+16từ đầu. Data-onlyarrays/SQLite được đối chiếu,0newneuralcalls. Không giải
+thích failurepredicate cũ≤11từ/trường; chưa đổiencoder/rule/weights hoặc nới
+gates. Ưu tiên giữ thông tin theo trường cùngcredit/binding/readoutstability.
+
 **Smallmixed14/11:** preflight6b42f5 qua actual4phút/6ASR/10VLM/4restorechecks
 và dataaudit; cùng36sourcefiles nay chạy8h32cd13,actualPID46940 lúcstart.
 Chưa PASS hoặc qualityclaim. [Phạm vi và trace](hybrid/ASR_RUNTIME_AND_8H_20261114.md).

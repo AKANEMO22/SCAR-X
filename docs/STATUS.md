@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Inputbudgetaudit —14/11
+
+[40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md): input-onlytap actualrelevance,
+rawarrays và độc lập hash-arithmetic/SQLiteauditor xác nhận5/10cặp sự kiện khác
+thành cùnginput khi querychiếm prefix;FTS chỉ16từ đầu bỏ keywordvị trí17+.
+0neuralforward/update/VLMcall, khôngmodelaccuracy/encoderfix. Predicate cũ
+1.840trường≤11từ nên không đổ failure ngắn cho truncationdài. Source8h nguyên,
+chưa đổiencoder/Store.search/weights;16Node tracechecks qua.
+
 ## Smallmixedpreflight qua; lượt8h mới đang chạy —14/11
 
 [6b42f5/32cd13](hybrid/ASR_RUNTIME_AND_8H_20261114.md):4phútactualsmallGPU

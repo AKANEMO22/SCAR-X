@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Inputboundary40c5f3](hybrid/INPUT_BUDGET_ROOT_CAUSE_20261114.md):
+audit_hybrid_input_budget.py chụp actualmethod input bằng tap khôngneural,
+verify_hybrid_input_budget.py tái tính hasharrays và SQLiteFTS; rawcases/NPZ/
+sources trong run. Không runtimeinput hoặc modelchange; localhostpanel riêng.
+
 [ASRruntime và final8h](hybrid/ASR_RUNTIME_AND_8H_20261114.md): accept_hybrid_ASR_profile.py
 khóa4nativecases, audit_hybrid_ASR_profile.py kiểm actualcommand/log/JSON;
 install_hybrid_ASR_profile.py CAS/backup6targets, activate_hybrid_ASR_profile.py
