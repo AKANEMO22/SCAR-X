@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Credit/history diagnostic —14/11
+
+[fc84eb](hybrid/CREDIT_DIRECTION_DIAGNOSTIC_20261114.md):48case initial/final640,
+96LocalALIFCUDArollouts và48surrogatebackwards chỉtrong control,0optimizersteps.
+Median local cosine0,867→0,724 nhưng actualdelta0,848→0,139; data-only audit
+tách history/preconditioning, giữ sameenergy current-only counterfactual0,554.
+Chưa chứng minh bỏ momentum cải thiện quality/retention; không sửa rule/live.
+Gradient query không mất toàn bộ, encoding/binding và transfer vẫn PIVOT.
+
 ## Hermes fallback/pipeline v2 —14/11
 
 [Run778239, source và limits](hybrid/HERMES_READ_PATHS_V2_20261114.md): sed lỗi

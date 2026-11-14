@@ -184,3 +184,15 @@ test("actual file-contract repair does not imply neural learning or all-green up
   assert.match(upgraded,/18 lượt công cụ thật · 23 test/);
   assert.match(upgraded,/không học hoặc sửa model neural/);
 });
+
+test("credit alignment diagnostic is not displayed as training accuracy",()=>{
+  const {nodes,event}=setup();
+  event({actor:"orchestrator",kind:"credit_direction.completed",payload:{
+    run_id:"owned-credit-check",verdict:"DIAGNOSTIC_ONLY",groups:[{state:"final640",
+      local_vs_surrogate:{cosine_median:.7242},prospective_delta_vs_surrogate:{cosine_median:.1393}}]}});
+  const text=nodes.get("credit-summary").children.map(n=>n.textContent).join("\n");
+  assert.match(text,/local 0.724 · delta sau history\/energy 0.139/);
+  assert.match(text,/0 bước optimizer/);
+  assert.match(text,/không phải accuracy/);
+  assert.equal(nodes.has("updates"),false);
+});

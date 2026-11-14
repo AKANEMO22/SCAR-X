@@ -13,6 +13,7 @@
 <div id="learning-screen" class="goal hidden"></div>
 <div id="binding-summary" class="goal hidden"></div>
 <div id="representation-summary" class="goal hidden"></div>
+<div id="credit-summary" class="goal hidden"></div>
 <div id="lab-summary" class="goal hidden"></div>
 <details><summary>Đáp án thực từ các lượt đo</summary><div id="lab-answers" class="feed"></div><div id="asr-answers" class="feed"></div></details>
 <details><summary>Đối chiếu ASR và phục hồi công cụ</summary><div id="asr-summary" class="goal hidden"></div><div id="recovery-summary" class="goal hidden"></div><div id="read-contract-summary" class="goal hidden"></div></details>
@@ -35,6 +36,13 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='credit_direction.completed'){
+const p=$('credit-summary');clear('credit-summary');p.classList.remove('hidden');
+para(p,'Kiểm credit tới hidden · '+e.payload.run_id);para(p,e.payload.verdict);
+const last=(e.payload.groups||[]).find(g=>g.state==='final640');
+if(last)para(p,'Cosine trung vị: local '+Number(last.local_vs_surrogate.cosine_median).toFixed(3)+' · delta sau history/energy '+Number(last.prospective_delta_vs_surrogate.cosine_median).toFixed(3));
+para(p,'Đối chứng surrogate riêng, 0 bước optimizer. Cosine là góc vector, không phải accuracy hoặc bằng chứng sửa forgetting.','muted');
+}
 if(e.kind==='file_contract.read_paths_v2_verified'){
 const p=$('read-contract-summary');clear('read-contract-summary');p.classList.remove('hidden');
 para(p,'Hermes: kiểm đường dự phòng và pipeline · '+e.payload.run_id);

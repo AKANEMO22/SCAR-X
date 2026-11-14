@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Credit diagnostic14/11:** local direction còn alignment với cùngtrajectory
+surrogatecontrol; sai khác hướng tăng sau momentum/preconditioning ở final640.
+Counterfactual data-only không là quality/forgetting causalproof hoặc learner
+đã duyệt triển khai. Backward chỉđối chứng evaluation, main/localrule/live không
+đổi. [Nguồn, số đo và giới hạn](hybrid/CREDIT_DIRECTION_DIAGNOSTIC_20261114.md).
+
 **Hermes read paths v2:** sửa/test thêm sequential và failed-leading-pipeline
 trên Windows/GitBash,18dispatcher calls/23target contracts qua. Kết quả thành
 công này chỉ là nguồn phản hồi công cụ đúng hơn, chưa learned neural recovery;

@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Credit direction và history](hybrid/CREDIT_DIRECTION_DIAGNOSTIC_20261114.md):
+evaluation/controls.py có hybrid_tape_credit_direction, backward chỉởcontrol;
+diagnose_hybrid_credit_direction.py chia runtimeCUDA/referenceTorchCUDA child,
+audit_hybrid_credit_direction.py đọc mảng đã lưu. fc84eb không optimizer/learner
+update, giữ48tape/vectors và posthoc historydecomposition riêng, không serving.
+
 [Read paths v2](hybrid/HERMES_READ_PATHS_V2_20261114.md):
 integrations/hermes/file_operations_read_contract.py xử lý compound/sequential/
 status pipeline; file_read_paths_patch.py + installerchung exactSHA upgrade.

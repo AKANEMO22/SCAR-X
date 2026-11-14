@@ -6,6 +6,10 @@ trang này mô tả vận hành, không thay các protocol/gates đã khóa.
 
 ## Cách dùng hiện tại
 
+[Chẩn đoán credit/history](CREDIT_DIRECTION_DIAGNOSTIC_20261114.md): đã đo hướng
+local và đối chứng surrogate cùng forward, tách momentum/energy trên mảng thật.
+Chưa đổi learningrule hoặc dùng control backward trong hệ đang phục vụ.
+
 [Read-paths v2 đã cài](HERMES_READ_PATHS_V2_20261114.md): fallback không còn
 bỏ qua size/count lỗi, pipeline GitBash giữ status từ bước đọc. Có backup/hash
 và18calls thật; không đổi neuralweights hoặc dùng success công cụ làm truth.

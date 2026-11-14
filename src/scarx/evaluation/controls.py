@@ -799,6 +799,48 @@ class DirectVisualLearnabilityControl:
         return m
 
 
+def hybrid_tape_credit_direction(state, sequence, observed_spikes, final_states, target, device="cuda:0"):
+    """CONTROL ONLY: same hard trajectory, full temporal surrogate derivative.
+
+    No optimizer or parameter update. Never imported by Hybrid serving/local rule.
+    This is not a true derivative of discontinuous spikes or an e-prop theorem.
+    """
+    c = state["config"]
+    tensor = lambda value, grad=False: torch.tensor(value, dtype=torch.float32, device=device, requires_grad=grad)
+    wi, wr = tensor(state["w_in"], True), tensor(state["w_rec"], True)
+    inputs = tensor(sequence, True)
+    indices = torch.tensor(state["indices"], dtype=torch.long, device=device)
+    wo, bias = tensor(state["w_out"][:2]), tensor(state["bias"][:2])
+    v, a, z, f = [torch.zeros(c["hidden"], dtype=torch.float32, device=device) for _ in range(4)]
+    spikes = tensor(observed_spikes)
+    for tick in range(len(sequence)):
+        current = wi @ inputs[tick] + (wr * z[indices]).sum(1)
+        v = c["leak"] * v + current
+        theta = c["threshold"] + c["adaptation_strength"] * a
+        z = WordTapeSurrogate.apply(v, theta, spikes[tick])
+        v = v - z * theta
+        a = c["adaptation_decay"] * a + z
+        f = c["feature_decay"] * f + (1 - c["feature_decay"]) * z
+    errors = [float(torch.max(torch.abs(value.detach() - tensor(expected))).item())
+              for value, expected in zip((v,a,z,f), final_states)]
+    if max(errors[:3]) > 3e-5 or errors[3] > 1e-6:
+        raise ValueError("Hybrid isolated tape forward parity failed")
+    raw = (f - tensor(state["f_mean"])) / tensor(np.maximum(np.sqrt(state["f_var"]), .05))
+    bounded = raw.detach().clamp(-5,5) + (raw - raw.detach()) * (raw.detach().abs() < 5)
+    logits = wo @ bounded + bias
+    probabilities = torch.softmax(logits, 0)
+    loss = torch.logsumexp(logits, 0) - logits[target]
+    loss.backward()
+    direction = np.concatenate((-wi.grad.detach().cpu().numpy(), -wr.grad.detach().cpu().numpy()), axis=1)
+    input_direction = -inputs.grad.detach().cpu().numpy()
+    if not np.isfinite(direction).all() or not np.isfinite(input_direction).all():
+        raise ValueError("Nonfinite isolated hybrid surrogate direction")
+    return {"hidden_direction":direction, "input_direction":input_direction,
+            "probabilities":probabilities.detach().cpu().numpy(), "loss":float(loss.detach()),
+            "state_max_abs_errors":errors, "backward_passes":1, "optimizer_steps":0,
+            "device":device, "observed_hard_spike_tape":True}
+
+
 if __name__ == "__main__":
     import sys
     print(run_phase21_control(Path.cwd()) if '--phase21' in sys.argv else run_control(Path.cwd()))

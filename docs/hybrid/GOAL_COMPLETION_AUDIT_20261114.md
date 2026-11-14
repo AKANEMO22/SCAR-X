@@ -104,3 +104,19 @@ twofilebackup; freshHermes47768/Desktopreconnected. Native39372/liveALIF5 and
 mistakes retained with corrections. Fullgoal is stillactive: learnederrorcause/
 policy and transfer/retention remain unproven,8h notdone. No external blocker;
 avoid endless tool-guard work substituting for the neural learning requirement.
+
+Progressfc84eb:48same-trajectory surrogatecredit comparisons,96originalCUDA
+rollouts,0optimizersteps, source and learningstate unchanged. Localdirection
+medianalignment initial.867/final.724; prospectiveactualdelta.848/.139. Independent
+data-only historydecomposition reconstructs deltas and isolates numerical effect
+of accumulatedtrace/energy, not a claim momentum removal improves learning.
+Creditquery not absent; binding and transfer still unresolved. Prior57dbe4c also
+finished exact-source fallback/pipeline repair with18actualcalls. Goalremains
+active/noexternalblocker;8h/job status needs authoritative recheck and learned
+causerecovery/retention/productionquality stillnotmet. No main/ALIF/livechanges.
+
+Nextstep proposal is hybrid-update-history-ablation-proposal-v1.md, not an
+implemented/trained learner. Master§4.1 requires prior approval of newrules;
+scope question sent for P0only vs P0+isolatedDEV. No dependent learner code or
+training starts pending that answer. This is not a whole-goal externalimpasse:
+actual8h job/source monitoring and other read-only qualification remain possible.
