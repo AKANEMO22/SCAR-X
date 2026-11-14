@@ -7,6 +7,10 @@ rõ, hai action chính và ratingicon; optionalfeedback chỉ gửi khi chủ đ
 11Nodechecks qua; cài cóbackup/hotreload, quan sát đúngHermes thấybố cục mới.
 Không gửifeedback thật/restartmodel hoặc đổi8hsource.
 [Chi tiết](hybrid/HERMES_QUESTION_CARD_FIX_20261114.md).
+Followup nút Gửi: bỏ nestedform trong composer, gọi POST trực tiếp, chặn
+doubleclick; giữdraft+lỗiinline khi fail, hiệnreceipt sauaccepted. Regression
+HTTPthật(temp HybridEngine/SQLite) đỏtrước/xanhsau;11Node+1HTTPcheck qua.
+Đã hotreload cóbackup, không gửi nhãn thử vào memorylive.
 
 ## ASR dùng VRAM có gain, QA chưa gain —14/11
 

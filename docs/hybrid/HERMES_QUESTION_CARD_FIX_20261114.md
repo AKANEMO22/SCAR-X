@@ -23,3 +23,24 @@ Không gửi câu trả lời hay bỏ qua pending question thật để test.
 Không restart model/gateway, không đổi synapse/feedback API. Lượt endurance8h
 vẫn giữ source/hash; thay đổi chỉ ở plugin renderer và tests. Ponytail không có
 tool/context được cung cấp trong phiên, không giả định đã nạp.
+
+## Sửa nút gửi sau phản hồi của người dùng
+
+Card ban đầu dùng form lồng vào composer form của Hermes. Nút submit phụ thuộc
+browser form dispatch, có thể không gọi endpoint feedback; source host xác nhận
+slot top nằm trong form chat. Không nhận request question_answered ở log lúc
+kiểm; question đã được chủ máy Bỏ qua trước khi kiểm UI, không giả làm đã nhận
+nội dung người dùng đã gõ. Thay bằng region/div và button typebutton có onClick
+trực tiếp; chặn propagation của shortcut textarea để không gửi nhầm chat.
+
+Ref guard chặn doubleclick đồng thời. Card giữ draft và lỗi inline khi HTTPfail,
+chỉ xóa khi máy chủ accepted/skipped rõ ràng. Receipt “Đã gửi câu trả lời cho
+SCAR-X” còn hiện sau refetch, có nút đóng; đóng receipt không làm hiện lại câu
+hỏi đã nhận nếu status cache còn cũ.
+
+Regression dùng chính JS handler của plugin, HTTPloopback thật với HybridEngine
+và SQLite trong tempdir: lần1controlled503 giữ draft/lỗi, lần2accepted, doubleclick
+không gửi trùng, không tạo helpful ngầm hoặc neuralupdate. Test đỏ trên phiên
+b809d1b trước sửa, xanh sau sửa.11Nodechecks +1HTTPintegration qua.
+Installerbackup20261114T024632706683Z/hotreload, kiểm installedbytes khớpsource,
+Hermes backendready. Không tạo/gửi phản hồi thử vào memorylive để kiểm.

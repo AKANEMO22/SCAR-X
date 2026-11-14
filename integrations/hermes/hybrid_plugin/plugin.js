@@ -645,11 +645,17 @@ function questionRatingIcon(positive) {
   });
 }
 
+const QUESTION_STATUS_CSS = ".sxq-error{margin:0;color:var(--ui-danger,#f29a9a);font-size:12px;overflow-wrap:anywhere}.sxq.sxq-receipt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;color:var(--ui-text-secondary,#a3abb3)}.sxq-receipt p{margin:0}.sxq-receipt button{flex:none}";
+
 function LearningQuestion({ ctx }) {
   const model = useValue(host.state.model),
     [reply, setReply] = useState(""),
     [busy, setBusy] = useState(false),
-    [rating, setRating] = useState(null);
+    [rating, setRating] = useState(null),
+    [feedbackError, setFeedbackError] = useState(""),
+    [receipt, setReceipt] = useState(null),
+    sending = useRef(false),
+    answeredId = useRef(null);
   const q = useQuery({
     queryKey: [ID, "pending-question"],
     queryFn: () => ctx.rest("/status?after=2147483647"),
@@ -661,6 +667,8 @@ function LearningQuestion({ ctx }) {
   useEffect(() => {
     setReply("");
     setRating(null);
+    setFeedbackError("");
+    if (pendingId && pendingId !== answeredId.current) setReceipt(null);
   }, [pendingId]);
   useEffect(() => {
     let last = 0;
@@ -678,23 +686,47 @@ function LearningQuestion({ ctx }) {
       b();
     };
   }, [ctx]);
-  if (!String(model || "").includes("scarx-hybrid") || !q.data?.question)
-    return null;
+  if (!String(model || "").includes("scarx-hybrid")) return null;
+  if (receipt && (!q.data?.question || q.data.question.id === receipt.id)) {
+    return jsxs("div", {
+      className: "sxq sxq-receipt", role: "status", "aria-live": "polite",
+      children: [
+        jsx("p", { children: receipt.message }),
+        jsx("button", {
+          type: "button", "aria-label": "Đóng xác nhận", title: "Đóng",
+          onClick: (event) => { event.preventDefault(); event.stopPropagation(); setReceipt(null); },
+          children: "×",
+        }),
+      ],
+    });
+  }
+  if (!q.data?.question || q.data.question.id === answeredId.current) return null;
   const question = q.data.question;
   async function answer(text, helpful) {
+    if (sending.current) return;
+    sending.current = true;
     setBusy(true);
+    setFeedbackError("");
     try {
-      await ctx.rest("/feedback", {
+      const result = await ctx.rest("/feedback", {
         method: "POST",
         body: { id: question.id, text,
           ...(typeof helpful === "boolean" ? { helpful } : {}) },
       });
+      if (result?.accepted !== true && result?.skipped !== true) {
+        throw new Error("Máy chủ chưa xác nhận đã nhận câu trả lời.");
+      }
+      answeredId.current = question.id;
+      setReceipt({ id: question.id, message: result.skipped
+        ? "Đã bỏ qua câu hỏi."
+        : "Đã gửi câu trả lời cho SCAR-X." });
       setReply("");
       setRating(null);
       void q.refetch();
     } catch (e) {
-      host.notifyError(e.message);
+      setFeedbackError("Chưa gửi được: " + (e.message || String(e)));
     } finally {
+      sending.current = false;
       setBusy(false);
     }
   }
@@ -703,10 +735,10 @@ function LearningQuestion({ ctx }) {
     if (!canSend) return;
     void answer(reply.trim() || "Câu hỏi này chưa hữu ích cho tác vụ.", rating);
   };
-  return jsxs("form", {
+  return jsxs("div", {
     className: "sxq",
+    role: "region",
     "aria-label": "Hỏi để học từ SCAR-X",
-    onSubmit: (event) => { event.preventDefault(); submit(); },
     children: [
       jsxs("div", { className: "sxq-header", children: [
         jsx("span", { className: "sxq-dot", "aria-hidden": true }),
@@ -715,8 +747,9 @@ function LearningQuestion({ ctx }) {
       jsx("p", { className: "sxq-question", children: question.question }),
       jsx("textarea", {
         value: reply,
-        onChange: (e) => setReply(e.target.value),
+        onChange: (e) => { setReply(e.target.value); setFeedbackError(""); },
         onKeyDown: (event) => {
+          event.stopPropagation();
           if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
             submit();
@@ -728,6 +761,7 @@ function LearningQuestion({ ctx }) {
         "aria-label": "Trả lời SCAR-X",
         placeholder: "Nhập câu trả lời của bạn…",
       }),
+      feedbackError && jsx("p", { className: "sxq-error", role: "alert", children: feedbackError }),
       jsxs("div", { className: "sxq-footer", children: [
         jsxs("div", { className: "sxq-rating", children: [
           jsx("span", { className: "sxq-rating-label", children: "Câu hỏi hữu ích?" }),
@@ -746,7 +780,12 @@ function LearningQuestion({ ctx }) {
             onClick: () => void answer("bỏ qua"), children: "Bỏ qua",
           }),
           jsx("button", {
-            type: "submit", className: "sxq-submit", disabled: !canSend,
+            type: "button", className: "sxq-submit", disabled: !canSend,
+            onClick: (event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              submit();
+            },
             children: busy ? "Đang gửi…" : (!reply.trim() && rating === false ? "Gửi đánh giá" : "Gửi trả lời"),
           }),
         ]}),
@@ -763,7 +802,7 @@ export default {
   register(ctx) {
     clearLegacyVideoContext(ctx);
     const style = document.createElement("style");
-    style.textContent = CSS + QUESTION_CSS;
+    style.textContent = CSS + QUESTION_CSS + QUESTION_STATUS_CSS;
     document.head.append(style);
     ctx.onDispose(() => style.remove());
     ctx.registerMany([
