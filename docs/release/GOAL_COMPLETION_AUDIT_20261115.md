@@ -1,5 +1,15 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**RC14 follow-up:** independent inspection of Antigravity high's48,60s inline
+review confirmed an ambiguous bare-hyphen labeling risk. The installed scope
+now requires an explicit calculation cue for ASCII hyphens.114 targeted checks
+and5 actual isolated controller review fixtures passed with0 neural calls;
+[activation](evidence/RC14_ACTIVATION_20261115.json) and [installed pins](evidence/RC14_INSTALLED_ARTIFACT_20261115.json)
+preserve full learned state/GPU, while the original goal stays incomplete.
+Only arithmetic.py changed after RC13; the causal-input audit below still
+applies to unchanged engine code. New P0 approval remains pending, not inferred
+from an automatic goal continuation.
+
 **Latest runtime update:** [RC13 verifier scope](ARITHMETIC_VERIFIER_SCOPE_20261115.md)
 is installed on GPU with58 payload files, unchanged arrays/learned metadata/
 RNG/replay and5 live updates. Actual isolated controller reviews show that three

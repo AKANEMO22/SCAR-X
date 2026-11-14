@@ -88,3 +88,14 @@ luận agent mặc định. Đây là kiểm phạm vi checker, không nghiên c
 source cuối, gồm4 case bổ sung và28 package cases. Không cộng overlap với suite
 cũ. Qualification source cuối ở
 [ARITHMETIC_TASK_SCOPE_FINAL_SOURCE](evidence/ARITHMETIC_TASK_SCOPE_FINAL_SOURCE_20261115.json).
+
+[RC14 activation thật](evidence/RC14_ACTIVATION_20261115.json) chỉ thay module
+arithmetic từ predecessor RC13; full learned arrays/metadata/RNG/replay/updates5
+giữ nguyên. [Installed pins](evidence/RC14_INSTALLED_ARTIFACT_20261115.json)
+xác nhận58 files và GPU native assets; main/R13 experiment không thay đổi.
+[Năm actual controller cases](evidence/RC14_ARITHMETIC_CONTROLLER_20261115.json)
+gồm3 repro cũ và2 chuỗi hyphen, không nhãn/forward/learn; cold restore giữ đủ
+review records. Script tái lập `scripts/accept_hybrid_arithmetic_scope.py` chỉ
+dùng Store/ALIF riêng và declared reflection JSON, không sửa phiên cá nhân.
+Không tuyên bố câu fixture là câu native model sinh. [114 checks](evidence/RC14_RELEASE_CHECKS_20261115.json)
+giữ đúng phạm vi; không train hoặc mở nghiên cứu mới.

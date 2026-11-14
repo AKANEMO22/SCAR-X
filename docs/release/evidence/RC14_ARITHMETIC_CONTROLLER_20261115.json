@@ -1,0 +1,50 @@
+{
+  "verdict": "ACTUAL_CONTROLLER_REVIEW_REJECTS_INCIDENTAL_AND_AMBIGUOUS_ARITHMETIC_LABELS",
+  "verifier_id": "integer-arithmetic-explicit-task-v3",
+  "backend": "declared reflection JSON fixture, not native VLM generation",
+  "model_device": "gpu",
+  "cases": [
+    {
+      "question": "What color is 12+3 written in?",
+      "fixture_answer": "15",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "Hãy đọc chuỗi 12+3, đừng tính.",
+      "fixture_answer": "16",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "The code contains \"12+3\". Is it secure?",
+      "fixture_answer": "14",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "3-1",
+      "fixture_answer": "2",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    },
+    {
+      "question": "03-01",
+      "fixture_answer": "2",
+      "review_status": "reviewed_unverified",
+      "weights_updated": false
+    }
+  ],
+  "actual_native_VLM_calls": 0,
+  "SNN_forward_or_learning_calls": 0,
+  "isolated_neural_arrays_RNG_replay_unchanged": true,
+  "cold_restore_exact_model_and_review_records": true,
+  "live_user_state_modified": false,
+  "source_sha256": {
+    "scripts/accept_hybrid_arithmetic_scope.py": "51bf5a7d1ea104473e1021bea2ec8d250f3a8247147ade99dbb1fb030ef72539",
+    "src/scarx/hybrid/arithmetic.py": "75e6ed957ca91014ca697eec6418f53fc3177e98ff5ddccb5a2f7a64a62ee646",
+    "src/scarx/hybrid/review.py": "3f9289f5c9925103aeca26a2742d83d733382bd8f0444c24fe2e11b9b6ca42b8",
+    "src/scarx/hybrid/engine.py": "7b78154c6ca9adb6c611829e5f5b23381be68c74a450a6759dc81fa6f63b04b1"
+  },
+  "scientific_or_production_PASS": false
+}

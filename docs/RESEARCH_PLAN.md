@@ -32,6 +32,12 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**RC14 hardening15/11:** [verifier scope](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md)
+thêm calculation cue cho bare ASCII hyphen sau review Antigravity high được
+kiểm độc lập.114 current targeted checks,5 isolated controller review cases;
+đã cài GPU/state preserved, không neural rule/encoder/skill claim. RC13/input
+audit và research proposal bên dưới giữ phạm vi lịch sử; P0 mới vẫn chờ duyệt.
+
 **RC13 runtime15/11:** [verifier theo phạm vi task](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md)
 chặn biểu thức tình cờ tạo nhãn máy; không đổi ALIF/local rule/encoder.82 targeted
 và28 package checks qua, deployed state/RNG/replay/updates5 giữ nguyên. [Input

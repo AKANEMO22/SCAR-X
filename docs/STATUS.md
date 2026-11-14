@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## RC14 — review checker đã hoàn tất, vẫn chờ research P0
+
+[Antigravity high48,60s](release/evidence/ARITHMETIC_ANTIGRAVITY_REVIEW_20261115.json)
+phát hiện bare3-1 có thể là tỷ số/ngày. Codex kiểm độc lập, thêm yêu cầu tính
+toán rõ cho hyphen; bác nhận xét trailing whitespace sau khi regression đúng.
+Đã cài RC14/GPU,58 files/full learned state giữ nguyên.114 targeted checks
+và5 actual isolated controller reviews qua với0 forward/learn; không quality
+hoặc representation PASS. [Current artifact](release/CURRENT_RELEASE.md).
+P0 contract mới bên dưới chưa được duyệt/chạy; không tự mở từ automatic continuation.
+
 ## RC13 — chặn nhãn số học cho sai yêu cầu
 
 [Repro và sửa](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md): biểu thức trong
