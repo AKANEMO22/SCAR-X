@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Smallmixedpreflight qua; lượt8h mới đang chạy —14/11
+
+[6b42f5/32cd13](hybrid/ASR_RUNTIME_AND_8H_20261114.md):4phútactualsmallGPU
+preflight240,235s/6ASR/10VLM/2video/4restore/6labupdates qua cả dataaudit.
+Lượt8hsmall32cd13 có actualPID46940/source36files khớp lúc khởi động; chưaPASS.
+Source/runtime đóng băng đến terminal. Liveupdates5 không nhập labweights.
+Đọc monitor_hybrid_endurance.py và finalreceipt; không suy thời gian đã qua
+hoặc cachedheartbeat thành bằng chứng hoàn tất.
+
 ## ASRsmall đã chọn trong runtime; final8hbase qua —14/11
 
 [Báo cáo hiện tại](hybrid/ASR_RUNTIME_AND_8H_20261114.md):57a681 có4actualprivate

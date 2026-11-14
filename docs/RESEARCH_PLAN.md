@@ -1,5 +1,9 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Smallmixed14/11:** preflight6b42f5 qua actual4phút/6ASR/10VLM/4restorechecks
+và dataaudit; cùng36sourcefiles nay chạy8h32cd13,actualPID46940 lúcstart.
+Chưa PASS hoặc qualityclaim. [Phạm vi và trace](hybrid/ASR_RUNTIME_AND_8H_20261114.md).
+
 **Hiện tại14/11 sau09:33UTC:** [ASRruntime/8h](hybrid/ASR_RUNTIME_AND_8H_20261114.md).
 Whisper-smallFP32 đã được chọn trong HermesGPUprofile sau4actualASRprivatecalls,
 exact-sourceactivation,3nativeparity+1fixedprobe; fullrestore/learnedRNG/replay

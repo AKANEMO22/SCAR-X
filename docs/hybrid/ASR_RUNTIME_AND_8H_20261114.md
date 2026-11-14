@@ -94,3 +94,17 @@ trong mẫu đo, budgetphase rõ ràng; không nới gate hoặc thay P1/P2. Run
 hybrid_small_mixed_endurance.py dùng sameNativeVLM và privatelearner, monitor
 kiểm đúng path+PID+create-time. Preflight phải actualterminal+dataaudit qua mới
 cho phép8h cùngsource. Không lấy tiến trình còn sống làm kết luận thành công.
+
+Preflight `20261114T095035Z-small-mixed-endurance-v1-6b42f5` đã terminal sau
+240,235s:2clip/QA,4checkpointchecks,6localupdates/4replay. Có6actualsmallASR
+và10VLMcalls (vision/QA/review gộp),0criticalerror. Data-onlyauditor kiểm command,
+freshlogCUDAFP32,transcriptJSON/checkpoint/receipt vàcurrentHermesroots: qua.
+Median từ bắt đầu clip đến answer29,30s; không phải decodeRTF hoặc speedbenchmark.
+Minfree trongheartbeat2738MiB không đại diện cho đỉnh allocationASR ngắn.
+
+Lượt mới `20261114T095534Z-small-mixed-endurance-v1-32cd13` đã khởi động8h,
+actualworker46940/create-time1794650133.8709867,source36files khớp. Đây là
+snapshot lúc bắt đầu, **chưa PASS**; monitor/PID/finalreceipt quyết định trạng thái
+hiện tại. Chỉ process lab học vào privateSQLite; gateway live32012 vẫnupdates5.
+[Trace riêng](http://127.0.0.1:8775/?after=10396&tab=trace). Không restart khi
+một lần quan sát timeout; chờ cùngprocess vàaudit terminal trước đổi source.
