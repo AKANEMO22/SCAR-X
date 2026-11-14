@@ -26,6 +26,7 @@ from .video_context import VideoContext
 from .media_reply import omit_unused_host_steering,media_parts,reference_footer
 from .temporal import temporal_direction
 from .search_service import SearchService
+from .web_routing import public_web_scope, web_prelude, WEB_TOOLS
 from .tool_routing import (
     workspace_tool_choice,
     workspace_prelude,
@@ -395,6 +396,9 @@ class Gateway:
 
     def select_tool_choice(self, body, messages):
         if body.get('_scarx_stream'):return 'none'
+        web = public_web_scope(body['messages'], body.get('tools'), body.get('tool_choice'))
+        if web:
+            return 'none' if web['web_calls'] >= 3 else body.get('tool_choice')
         bounded, rule = workspace_finalization(
             messages, body.get("tools"), body.get("tool_choice")
         )
@@ -412,7 +416,10 @@ class Gateway:
     def native_tools(body):
         # An answer grounded in private media must not turn its injected local
         # observations into an automatic web search or remote tool payload.
-        return None if body.get('_scarx_stream') else body.get('tools')
+        if body.get('_scarx_stream'):return None
+        if public_web_scope(body.get('messages', []), body.get('tools'), body.get('tool_choice')):
+            return [t for t in body['tools'] if t.get('function', {}).get('name') in WEB_TOOLS]
+        return body.get('tools')
 
     def output_budget(self, body, messages):
         if is_context_summary(messages, body.get("tools")):
@@ -421,6 +428,10 @@ class Gateway:
 
     def workspace_controller_response(self, body, messages):
         if body.get('_scarx_stream'):return None
+        if public_web_scope(body['messages'], body.get('tools'), body.get('tool_choice')):
+            request = web_prelude(body['messages'], body.get('tools'), body.get('tool_choice'))
+            if request is None:return None
+            return self.controller_tool_response(request, 'web_search_prelude', 'scarx_web_', 'runtime_public_web_prelude')
         _, limit = workspace_finalization(
             messages, body.get("tools"), body.get("tool_choice")
         )
@@ -456,13 +467,16 @@ class Gateway:
         )
         if request is None:
             return None
+        return self.controller_tool_response(request, 'workspace_read_prelude', 'scarx_read_', 'runtime_read_only_prelude')
+
+    def controller_tool_response(self, request, event_kind, prefix, producer):
         call = {
-            "id": "scarx_read_" + uuid.uuid4().hex,
+            "id": prefix + uuid.uuid4().hex,
             "type": "function",
             "function": {"name": request["name"], "arguments": request["arguments"]},
         }
         self.store.event(
-            "workspace_read_prelude", request["event"] | {"tool_call": call}, "runtime"
+            event_kind, request["event"] | {"tool_call": call}, "runtime"
         )
         return {
             "id": "scarx-controller-" + uuid.uuid4().hex,
@@ -482,7 +496,7 @@ class Gateway:
                 }
             ],
             "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
-            "scarx_producer": "runtime_read_only_prelude",
+            "scarx_producer": producer,
         }
 
     @staticmethod
@@ -896,6 +910,8 @@ class Gateway:
                         t.get("function", {}).get("name")
                         for t in body.get("tools") or []
                     ],
+                    "native_tool_names": [t.get('function', {}).get('name')
+                                          for t in self.native_tools(body) or []],
                     "workspace_marker_present": any(
                         "Current working directory:" in str(m.get("content", ""))
                         for m in messages

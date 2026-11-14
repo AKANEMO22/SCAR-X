@@ -30,7 +30,7 @@ def main():
            'test_asr_profile_resolver.py','test_hermes_resource_roots.py',
            'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py',
            'test_media_reply_presentation.py','test_hybrid_screen_audio.py','test_hybrid_pipeline_audit.py',
-           'test_hybrid_feedback_transaction.py']
+           'test_hybrid_feedback_transaction.py','test_hybrid_web_routing.py']
     files=list((ROOT/'src/scarx').rglob('*.py'))
     files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'src/scarx/hybrid/hermes_protocol_notes.json',
               ROOT/'run_hybrid.py',ROOT/'pyproject.toml']

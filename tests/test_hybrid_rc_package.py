@@ -277,3 +277,19 @@ def test_predecessor_to_next_plan_and_rollback_preserve_later_data(manager,tmp_p
     assert (root/'user.json').read_bytes()==b'NEW_USER_DATA_AFTER_UPDATE'
     (root/'run_hybrid.py').write_bytes(b'USER_EDIT')
     with pytest.raises(RuntimeError,match='differs from tested baseline'):manager.plan_files(package,root,manifest)
+
+
+def test_new_module_creation_rollback_and_later_edit_preserve_unrelated_files(manager,tmp_path):
+    root=tmp_path/'installation';root.mkdir();package=tmp_path/'package';(package/'payload').mkdir(parents=True)
+    (package/'payload/new_module.py').write_bytes(b'NEW_MODULE')
+    manifest={'files':{'payload/new_module.py':{'sha256':manager.sha(b'NEW_MODULE')}},
+              'target_before_sha256':{'new_module.py':None}}
+    changes=manager.plan_files(package,root,manifest)
+    assert changes==[('new_module.py',None,b'NEW_MODULE')]
+    backup=tmp_path/'backup';backup.mkdir();manager.write_overlay(root,backup,changes)
+    (root/'keep.txt').write_bytes(b'UNRELATED_USER_DATA')
+    manager.rollback_files(root,backup)
+    assert not (root/'new_module.py').exists() and (root/'keep.txt').read_bytes()==b'UNRELATED_USER_DATA'
+    (root/'new_module.py').write_bytes(b'USER_OWN_MODULE')
+    with pytest.raises(RuntimeError,match='differs from tested baseline'):
+        manager.plan_files(package,root,manifest)

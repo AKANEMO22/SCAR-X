@@ -299,3 +299,6 @@ runs/*-history-ablation-p0-v1/** -text -whitespace
 scripts/audit_hybrid_history_p0.py text eol=lf
 integrations/hermes/atomic_feedback_patch.py -text whitespace=cr-at-eol
 tests/test_hybrid_feedback_transaction.py text eol=lf
+src/scarx/hybrid/web_routing.py -text
+scripts/accept_hermes_public_web.py text eol=lf
+tests/test_hybrid_web_routing.py text eol=lf
