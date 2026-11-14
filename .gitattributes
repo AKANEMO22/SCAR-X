@@ -272,3 +272,17 @@ scripts/accept_hybrid_screen_window.py -text
 scripts/audit_hybrid_screen_acceptance.py -text
 scripts/prepare_antigravity_release_qa.py -text
 scripts/accept_hermes_greeting_control_marker.py -text
+src/scarx/hybrid/frame_snapshot.py -text
+src/scarx/hybrid/media.py -text
+src/scarx/hybrid/screen.py -text
+integrations/hermes/hybrid_plugin/plugin.js -text
+integrations/hermes/hybrid_plugin/dashboard/plugin_api.py -text
+integrations/hermes/session_submission.py -text
+scripts/prepare_hermes_media_admission.py -text
+scripts/audit_media_admission_repairs.py -text
+tests/test_video_request_ownership.py text eol=lf
+tests/test_hermes_admission_scope.py text eol=lf
+tests/test_hybrid_frame_snapshot.py text eol=lf
+tests/hybrid_composer.test.cjs -text
+integrations/hermes/media_admission_submit.test.tsx text eol=lf
+release/hybrid/*.patch -text -whitespace

@@ -2,6 +2,7 @@
 
 import ctypes as c
 import json
+import io
 import os
 from pathlib import Path
 import subprocess
@@ -10,6 +11,7 @@ import threading
 import time
 import uuid
 from PIL import Image
+from .frame_snapshot import publish_snapshot
 
 
 def window_sources():
@@ -319,11 +321,11 @@ class ScreenMemory:
             source = (root / latest["path"]).resolve()
         if not source.is_relative_to(root) or not source.exists():
             return None
-        target = root / "question-frame.jpg"
+        payload=io.BytesIO()
         with Image.open(source) as image:
             image.thumbnail((512, 512))
-            image.convert("RGB").save(target, quality=85)
-        return target
+            image.convert("RGB").save(payload,format='JPEG',quality=85)
+        return publish_snapshot(root,payload.getvalue())
 
     def close(self):
         for identifier in list(self.jobs):

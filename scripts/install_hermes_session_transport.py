@@ -35,6 +35,10 @@ def patch(original):
 
 def main():
     home=Path(os.environ['LOCALAPPDATA'])/'hermes'
+    if (not (home/'hermes-agent/gateway/session_submission.py').is_file()
+            or "with submission_scope(row.get('request_id')):" not in
+                (home/'hermes-agent/gateway/session_ingress.py').read_text(encoding='utf-8')):
+        raise RuntimeError('Install/build the reviewed Hermes admission metadata integration first; refusing to leave an unusable helper')
     agent=home/'hermes-agent/agent';target=agent/'chat_completion_helpers.py'
     original=target.read_bytes();candidate=patch(original)
     helper=ROOT/'integrations/hermes/scarx_session_transport.py'

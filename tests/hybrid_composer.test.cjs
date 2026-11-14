@@ -37,6 +37,7 @@ function setup(sessions = ["chat-a", "stored-a"]) {
     document: {},
     useRef: (initial) => ({ current: initial }),
     host: {
+      composer: { preparedSessionVersion: 1 },
       state: {
         model: { get: () => "scarx-hybrid" },
         focusedSessionId: { get: () => sessions[0] },
@@ -174,14 +175,17 @@ test("native video uses hidden metadata without changing typed text", async () =
   assert.equal(JSON.stringify(sandbox.draft), before);
   assert.equal(result.attachments.length, 1);
   assert.equal(result.attachments[0].id, "image");
+  assert.equal(calls.length,0,'No unscoped upload is queued before the host resolves the admission');
+  await result.prepareSession({runtimeSessionId:'chat-a',storedSessionId:'stored-a',submissionId:'exact-input',text:sandbox.draft.text});
   assert.deepEqual(
     calls.map((c) => c.endpoint),
-    ["/observe", "/observe"],
+    ["/observe", "/video-ready", "/observe"],
   );
-  assert.equal(calls[1].body.existing_stream_id, "a".repeat(32));
-  assert.match(calls[1].body.video_context.text_sha256, /^[a-f0-9]{64}$/);
+  assert.equal(calls[2].body.existing_stream_id, "a".repeat(32));
+  assert.match(calls[2].body.video_context.text_sha256, /^[a-f0-9]{64}$/);
+  assert.equal(calls[2].body.video_context.submission_id,'exact-input');
   assert.equal(
-    JSON.stringify(calls[1].body.video_context.session_ids),
+    JSON.stringify(calls[2].body.video_context.session_ids),
     JSON.stringify(["chat-a", "stored-a"]),
   );
   assert.ok(!result.text.includes("scarx://"));
@@ -195,7 +199,10 @@ test("fresh draft has no persistent global draft context", async () => {
   };
   const result = await vm.runInContext("attachVideos(ctx,draft)", sandbox);
   assert.equal(result.text, "xem?");
-  assert.equal(calls[1].body.video_context.session_ids.length, 0);
+  assert.equal(calls.length,0);
+  await result.prepareSession({runtimeSessionId:'created-for-this-draft',storedSessionId:null,submissionId:'first-turn',text:'xem?'});
+  assert.deepEqual([...calls[2].body.video_context.session_ids],['created-for-this-draft']);
+  assert.equal(calls[2].body.video_context.submission_id,'first-turn');
 });
 test("upload failure preserves original draft and cancels sending", async () => {
   const { sandbox, calls } = setup();
@@ -207,7 +214,31 @@ test("upload failure preserves original draft and cancels sending", async () => 
     attachments: [{ path: "C:\\video.mp4", id: "v" }],
   };
   const before = JSON.stringify(sandbox.draft);
-  assert.equal(await vm.runInContext("attachVideos(ctx,draft)", sandbox), null);
+  const prepared=await vm.runInContext("attachVideos(ctx,draft)", sandbox);
+  await assert.rejects(prepared.prepareSession({runtimeSessionId:'chat-a',storedSessionId:null,submissionId:'owned',text:'không được mất chữ'}),/fixture upload failure/);
   assert.equal(JSON.stringify(sandbox.draft), before);
-  assert.match(calls[0].error, /upload failure/);
+  assert.equal(calls.length,0,'Host rejection restores the original draft; no video binding was committed');
+});
+
+test('same text in two first drafts is owned by two actual submissions, not global focus',async()=>{
+  const {sandbox,calls}=setup([null,null]);
+  sandbox.draft={text:'xem giúp',attachments:[{id:'video',path:'C:\\owned.mp4'}]};
+  const a=await vm.runInContext('attachVideos(ctx,draft)',sandbox);
+  const b=await vm.runInContext('attachVideos(ctx,draft)',sandbox);
+  await a.prepareSession({runtimeSessionId:'session-A',storedSessionId:null,submissionId:'input-A',text:'xem giúp'});
+  await b.prepareSession({runtimeSessionId:'session-B',storedSessionId:null,submissionId:'input-B',text:'xem giúp'});
+  const bindings=calls.filter(c=>c.body.video_context).map(c=>c.body.video_context);
+  assert.deepEqual(bindings.map(b=>[b.session_ids[0],b.submission_id]),[['session-A','input-A'],['session-B','input-B']]);
+  assert.notEqual(bindings[0].ticket_id,bindings[1].ticket_id);
+});
+
+test('retry after renderer reload derives the same upload operation id',async()=>{
+  const ids=[];
+  for(let i=0;i<2;i++){
+    const {sandbox,calls}=setup([null,null]);sandbox.draft={text:'xem giúp',attachments:[{id:'video',occurrenceId:'same-occurrence',path:'C:\\owned.mp4'}]};
+    const prepared=await vm.runInContext('attachVideos(ctx,draft)',sandbox);
+    await prepared.prepareSession({runtimeSessionId:'owner',storedSessionId:null,submissionId:'stable-request',text:'xem giúp'});
+    ids.push(calls[0].body.client_id);
+  }
+  assert.equal(ids[0],ids[1]);
 });

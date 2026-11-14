@@ -50,8 +50,15 @@ def bind_transcript_session(agent, kwargs):
         return kwargs
     headers=dict(kwargs.get('extra_headers') or {})
     # Case-insensitive replacement avoids duplicate conflicting HTTP headers.
-    headers={k:v for k,v in headers.items() if k.lower()!='x-scarx-session'}
+    headers={k:v for k,v in headers.items() if k.lower() not in ('x-scarx-session','x-scarx-submission')}
     headers['X-SCARX-Session']=session
+    # The canonical executor supplies the actual admitted request, including
+    # queued/retried inputs. No extraction from messages or global session state.
+    from gateway.session_submission import current_submission_id
+    submission=current_submission_id()
+    if isinstance(submission,str) and re.fullmatch(r'[A-Za-z0-9_.:-]{1,256}',submission):
+        headers={k:v for k,v in headers.items() if k.lower()!='x-scarx-submission'}
+        headers['X-SCARX-Submission']=submission
     prepared=dict(kwargs,extra_headers=headers)
     if kwargs.get('tool_choice') in (None,'auto') and social_greeting_only(kwargs.get('messages')):
         # No generated answer or prompt replacement: narrow host tool exposure

@@ -4,6 +4,11 @@ Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hi
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
 cho máy mới. Không chứa venv, trọng số model, hội thoại hoặc checkpoint cá nhân.
 
+RC6 cần Hermes đã có đường metadata admission được build/cài trong lượt này.
+Installer đối chiếu fingerprints và từ chối app cũ; không tự thay source hoặc
+renderer Hermes khác phiên bản. `HERMES_MEDIA_ADMISSION.patch` đi kèm để bảo trì/
+review source; không tự chạy patch tùy tiện vào bản Hermes mới.
+
 ## Dùng thử
 
 1. Giải nén vào một thư mục riêng. Giữ file ZIP và SHA256 để đối chiếu.
@@ -47,6 +52,17 @@ Cửa sổ đã xem được gắn với đúng phiên chat. Sau stop/restart c�
 “cửa sổ vừa xem”; hệ thống dùng lại bằng chứng còn giữ mà không capture lại.
 Câu không liên quan không nhận ảnh cũ; upload mới có focus riêng. Đây là
 truy xuất nguồn, chưa là SNN đã học nội dung vào synapse.
+
+Video của draft mới chỉ được gắn sau khi Hermes xác định đúng session và mã
+lượt gửi. Không dùng câu hỏi giống nhau để đoán chủ sở hữu. Retry dùng lại
+identity cũ, binding/pending được lưu atomic; restart không làm chat khác lấy
+nhầm video. Trước khi admit, chờ quan sát local đầu tiên tối đa 35 giây; timeout
+giữ bản nháp để gửi lại. Lượt trả lời từ media local không được tự gọi công cụ
+web bằng các observations riêng. Công cụ vẫn dùng bình thường ở tác vụ khác.
+
+Snapshot câu hỏi theo hash nội dung và công bố immutable, nên hai nguồn ảnh
+khác không dùng chung đường dẫn ghi được; ảnh giống nhau tái sử dụng cache.
+Cache tính vào quota archive. Không tăng dung lượng neural để sửa hai lỗi này.
 
 Observer đọc đúng envelope `request.body.tools` của Hermes để không bỏ qua
 quyền đọc file khi kiểm tool loop. Tối đa một probe đọc lại nguồn trong project

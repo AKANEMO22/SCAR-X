@@ -530,16 +530,27 @@ async function attachVideos(ctx, draft) {
   // Plain turns remain byte-for-byte the same draft, regardless of old plugin
   // storage. No sticky global "draft" video or renderer-authored prompt suffix.
   if (!videos.length) return draft;
-  const sessions = sessionIds();
-  try {
+  if (host.composer?.preparedSessionVersion !== 1) {
+    host.notifyError("Cần nạp bản Hermes hỗ trợ gắn video theo lượt gửi. Bản nháp được giữ nguyên.");
+    return null;
+  }
+  const prepareSession = async (identity) => {
+    await draft.prepareSession?.(identity);
+    if (!identity?.runtimeSessionId || !identity?.submissionId)
+      throw Error("Chưa xác định được phiên và lượt gửi của video.");
+    const sessions = [...new Set([identity.runtimeSessionId, identity.storedSessionId]
+      .filter(id => typeof id === "string" && id && id !== "draft"))];
     for (const attachment of videos) {
       const key = JSON.stringify([
-        sessions,
+        identity.submissionId, sessions,
         attachment.occurrenceId || attachment.id || attachment.path,
       ]);
+      const bytes = new TextEncoder().encode(key);
+      const ticket = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
+        value => value.toString(16).padStart(2, "0")).join("");
       let upload = pendingUploads.get(key);
       if (!upload || Date.now() - upload.created > 240000) {
-        upload = { id: crypto.randomUUID(), created: Date.now(), stream: null };
+        upload = { id: "video-observe-"+ticket, created: Date.now(), stream: null };
         pendingUploads.set(key, upload);
         while (pendingUploads.size > 16)
           pendingUploads.delete(pendingUploads.keys().next().value);
@@ -550,19 +561,14 @@ async function attachVideos(ctx, draft) {
           body: { path: attachment.path, client_id: upload.id },
           timeoutMs: 20000,
         });
-      if (JSON.stringify(sessionIds()) !== JSON.stringify(sessions))
-        throw Error(
-          "Đã chuyển phiên chat; video chưa được gắn. Gửi lại ở đúng cuộc trò chuyện.",
-        );
-      const bytes = new TextEncoder().encode(draft.text.trim());
+      await ctx.rest('/video-ready',{
+        method:'POST',body:{stream_id:upload.stream.id},timeoutMs:45000,
+      });
+      const text = new TextEncoder().encode(identity.text);
       const digest = Array.from(
-        new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
+        new Uint8Array(await crypto.subtle.digest("SHA-256", text)),
         (v) => v.toString(16).padStart(2, "0"),
       ).join("");
-      if (upload.digest !== digest) {
-        upload.ticket = crypto.randomUUID();
-        upload.digest = digest;
-      }
       await ctx.rest("/observe", {
         method: "POST",
         body: {
@@ -570,20 +576,19 @@ async function attachVideos(ctx, draft) {
           video_context: {
             text_sha256: digest,
             session_ids: sessions,
-            ticket_id: upload.ticket,
+            ticket_id: ticket,
+            submission_id: identity.submissionId,
           },
         },
         timeoutMs: 15000,
       });
     }
-    return {
+  };
+  return {
       ...draft,
       attachments: (draft.attachments || []).filter((a) => !videos.includes(a)),
+      prepareSession,
     };
-  } catch (e) {
-    host.notifyError(e.message);
-    return null;
-  }
 }
 const QUESTION_CSS = ".sxq{box-sizing:border-box;display:grid;gap:12px;width:100%;min-width:0;padding:14px;margin:0 0 10px;border:1px solid var(--ui-stroke-secondary,#343b43);border-radius:12px;background:var(--ui-bg-secondary,#151a20);color:var(--ui-text-primary,#e4e8ec);font:14px/1.5 system-ui,sans-serif}.sxq *{box-sizing:border-box}.sxq-header{display:flex;align-items:center;gap:8px;color:var(--ui-text-secondary,#a3abb3);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}.sxq-dot{width:6px;height:6px;flex:none;border-radius:50%;background:var(--ui-accent,#80c9b0)}.sxq-question{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;font-weight:500;line-height:1.55}.sxq textarea{display:block;width:100%;min-width:0;min-height:64px;margin:0;padding:10px 12px;resize:vertical;border:1px solid var(--ui-stroke-secondary,#343b43);border-radius:8px;background:var(--ui-bg-primary,#10141a);color:inherit;font:inherit;outline:none}.sxq textarea::placeholder{color:var(--ui-text-tertiary,#858e97)}.sxq textarea:focus-visible{border-color:var(--ui-accent,#80c9b0);box-shadow:0 0 0 2px color-mix(in srgb,var(--ui-accent,#80c9b0) 16%,transparent)}.sxq-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.sxq-actions,.sxq-rating{display:flex;gap:6px;align-items:center}.sxq-rating{color:var(--ui-text-secondary,#a3abb3);font-size:12px}.sxq button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:32px;margin:0;padding:6px 11px;border:1px solid transparent;border-radius:7px;background:transparent;color:inherit;font:inherit;white-space:nowrap;cursor:pointer}.sxq button:hover{background:var(--ui-bg-tertiary,#242c34)}.sxq button:focus-visible{outline:2px solid var(--ui-accent,#80c9b0);outline-offset:2px}.sxq button:disabled{opacity:.45;cursor:default}.sxq .sxq-rate{width:30px;height:30px;min-height:30px;padding:6px}.sxq .sxq-rate[aria-pressed=true]{color:var(--ui-accent,#80c9b0);background:color-mix(in srgb,var(--ui-accent,#80c9b0) 12%,transparent);border-color:var(--ui-stroke-secondary,#343b43)}.sxq .sxq-skip{color:var(--ui-text-secondary,#a3abb3)}.sxq .sxq-submit{background:var(--ui-accent,#80c9b0);color:var(--ui-on-accent,#10261e);font-weight:600}.sxq .sxq-submit:hover{filter:brightness(1.08)}@media(max-width:520px){.sxq{padding:12px;gap:10px}.sxq-footer{align-items:flex-start}.sxq-actions{margin-left:auto}.sxq-rating-label{display:none}}";
 

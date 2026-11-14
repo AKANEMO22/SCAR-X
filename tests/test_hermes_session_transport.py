@@ -12,6 +12,7 @@ module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 @pytest.fixture(autouse=True)
 def isolated_Hermes_host_note(monkeypatch):
     monkeypatch.setitem(sys.modules,'agent.prompt_builder',SimpleNamespace(STEER_CHANNEL_NOTE='## Mid-turn user steering\nEXACT OWNED HOST NOTE'))
+    monkeypatch.setitem(sys.modules,'gateway.session_submission',SimpleNamespace(current_submission_id=lambda:None))
 
 
 def test_actual_transcript_replaces_ambient_affinity_without_dropping_headers():
@@ -74,3 +75,13 @@ def test_real_tasks_and_actual_steer_messages_keep_host_note_and_tools(query):
     old={'messages':[{'role':'system','content':note},{'role':'user','content':query}],'tools':[{'type':'function'}]}
     got=module.bind_transcript_session(agent,old)
     assert got['messages'] is old['messages'] and got['tools'] is old['tools']
+
+
+def test_headers_use_actual_admitted_request_not_text_or_cached_agent(monkeypatch):
+    monkeypatch.setitem(sys.modules,'gateway.session_submission',SimpleNamespace(current_submission_id=lambda:'actual-request-A'))
+    agent=SimpleNamespace(model='scarx-hybrid',base_url='http://127.0.0.1:8775/v1',session_id='owned')
+    old={'messages':[{'role':'user','content':'xem giúp'}],'extra_headers':{'x-scarx-submission':'stale-request'}}
+    result=module.bind_transcript_session(agent,old)
+    assert result['extra_headers']['X-SCARX-Submission']=='actual-request-A'
+    assert 'x-scarx-submission' not in result['extra_headers']
+    assert old['extra_headers']['x-scarx-submission']=='stale-request'

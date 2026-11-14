@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Release repair hiện tại:** [admission video và immutable snapshot](release/MEDIA_ADMISSION_REPAIRS_20261114.md)
+giải quyết hai finding kỹ thuật có repro; không đổi ALIF/local learning hoặc
+kết luận khoa học. Model vẫn có lỗi ngôn ngữ/dẫn timestamp; không ghi chất lượng
+neural/retention thành công từ test runtime. Giữ ưu tiên sản phẩm và trạng thái
+test 8 giờ đã hủy; không mở nghiên cứu/dataset/model mới.
+
 **Hiện tại:** [Hybrid RC đã cài trong Hermes](release/CURRENT_RELEASE.md).
 Người dùng yêu cầu hủy small8h để ưu tiên sản phẩm; giữ result/cancellation
 audit, không PASS. Sửa runtime/transport không thay ALIF/local learning hoặc

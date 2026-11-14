@@ -40,6 +40,7 @@ def main():
     home=Path(os.environ['LOCALAPPDATA'])/'hermes'
     needed=['hermes-agent/agent/agent_init.py','hermes-agent/agent/conversation_compression.py',
             'hermes-agent/agent/chat_completion_helpers.py','hermes-agent/agent/scarx_session_transport.py',
+            'hermes-agent/gateway/session_ingress.py','hermes-agent/gateway/session_submission.py',
             'hermes-agent/agent/context_compressor.py','hermes-agent/tools/tool_search.py',
             'hermes-agent/tools/file_operations.py','hermes-agent/tools/file_operations_read_contract.py',
             'desktop-plugins/scarx-hybrid/plugin.js','plugins/scarx-hybrid/__init__.py',

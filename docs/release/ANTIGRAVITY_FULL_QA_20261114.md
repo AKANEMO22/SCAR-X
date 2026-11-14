@@ -1,5 +1,10 @@
 # Antigravity release QA — kiểm tra và phản biện độc lập
 
+**Cập nhật sau triage:** [hai lỗi đã xác nhận được sửa](MEDIA_ADMISSION_REPAIRS_20261114.md),
+có ownership protocol/snapshot concurrency và UI thật. Kết quả model vẫn hạn
+chế; không tự đổi phần review nguyên bản bên dưới thành production approval.
+Source/repro/receipt lịch sử được giữ đúng thời điểm.
+
 **Kết luận: chưa approve production.** Bộ kiểm tra chức năng qua, nhưng có lỗi
 gắn video của draft mới cần sửa bằng quyền sở hữu request/attachment rõ ràng.
 Không xem test xanh hoặc nhận xét của agent là bằng chứng không còn lỗi.

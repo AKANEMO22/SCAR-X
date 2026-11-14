@@ -1,9 +1,9 @@
 """Out-of-band video metadata; never encode routing in a human message.
 
-Known chats bind by their Hermes session identity. A first-turn draft has no
-runtime identity yet: consume exactly one short-lived matching upload ticket.
-Ambiguous equal-text drafts fail closed rather than choosing another video's
-context. Legacy renderer storage and scarx:// links never create a binding.
+An upload is prepared after Hermes resolves its session and canonical input
+identity. Only that exact session/submission can consume the persisted ticket;
+equal-text drafts never share ownership. Legacy renderer storage and scarx://
+links never create a binding.
 """
 
 import hashlib
@@ -43,8 +43,14 @@ class VideoContext:
     def __init__(self, store, clock=time.time):
         self.store = store
         self.clock = clock
-        self.pending = {}
+        self.pending = self.store.get('video_context_v3','pending') or {}
+        if not isinstance(self.pending,dict) or len(self.pending)>16:
+            raise ValueError('Invalid bounded pending upload state')
         self.lock = threading.RLock()
+
+    @staticmethod
+    def valid_submission(value):
+        return isinstance(value,str) and re.fullmatch(r'[A-Za-z0-9_.:-]{1,256}',value) is not None
 
     @staticmethod
     def valid_session(session_id):
@@ -72,7 +78,7 @@ class VideoContext:
         self.store.put('media_focus_v1',session_id,binding)
         self.store.event('screen_context_bound',dict(binding,user_text_modified=False))
 
-    def queue(self, stream_id, text_sha256, session_ids=(), ticket_id=None):
+    def queue(self, stream_id, text_sha256, session_ids=(), ticket_id=None, *, submission_id=None):
         if not isinstance(stream_id, str) or not re.fullmatch(
             "[a-f0-9]{32}", stream_id
         ):
@@ -86,13 +92,15 @@ class VideoContext:
             raise ValueError("Invalid turn digest")
         if (
             not isinstance(session_ids, (list, tuple))
-            or len(session_ids) > 2
+            or not 1 <= len(session_ids) <= 2
             or any(
-                not isinstance(s, str) or not 1 <= len(s) <= 160 or s == "draft"
+                not self.valid_session(s) or s.startswith('__new__')
                 for s in session_ids
             )
         ):
             raise ValueError("Invalid session metadata")
+        if not self.valid_submission(submission_id):
+            raise ValueError('Video metadata requires its actual Hermes submission identity')
         ticket_id = ticket_id or uuid.uuid4().hex
         if not isinstance(ticket_id, str) or not re.fullmatch(
             "[a-f0-9-]{16,64}", ticket_id
@@ -103,28 +111,34 @@ class VideoContext:
             "stream_id": stream_id,
             "text_sha256": text_sha256,
             "session_ids": list(session_ids),
-            "expires": self.clock() + 300,
+            "submission_id":submission_id,
+            "expires": self.clock() + 24 * 3600,
         }
         with self.lock:
             self._prune()
+            for owner in session_ids:
+                key=hashlib.sha256((owner+'\0'+submission_id).encode()).hexdigest()
+                retained=self.store.get('video_turn_v3',key)
+                if retained:
+                    if retained.get('stream_id')!=stream_id or retained.get('text_sha256')!=text_sha256:
+                        raise ValueError('The admitted submission already owns a different attachment')
+                    return {'ticket_id':ticket_id,'queued':True,'already_bound':True}
             old = self.pending.get(ticket_id)
             if old:
                 if any(
                     old[k] != item[k]
-                    for k in ("stream_id", "text_sha256", "session_ids")
+                    for k in ("stream_id", "text_sha256", "session_ids", "submission_id")
                 ):
                     raise ValueError("Upload ticket changed")
                 return {"ticket_id": ticket_id, "queued": True}
-            # A resubmitted edited draft supersedes the unconsumed upload
-            # metadata for this stream; its abandoned text cannot bind later.
-            self.pending = {
-                key: row
-                for key, row in self.pending.items()
-                if row["stream_id"] != stream_id
-            }
+            if any(row['submission_id']==submission_id and set(row['session_ids'])&set(session_ids)
+                   for row in self.pending.values()):
+                raise ValueError('This submission already has another video ticket; keep the original retry identity')
             if len(self.pending) >= 16:
                 raise ValueError("Pending video context is full")
-            self.pending[ticket_id] = item
+            pending=dict(self.pending);pending[ticket_id]=item
+            self.store.put('video_context_v3','pending',pending)
+            self.pending=pending
         self.store.event(
             "video_context_queued",
             {
@@ -132,17 +146,21 @@ class VideoContext:
                 "stream_id": stream_id,
                 "session_known": bool(session_ids),
                 "user_text_modified": False,
+                "owner":"session and actual canonical submission; never text matching",
             },
         )
         return {"ticket_id": ticket_id, "queued": True}
 
     def _prune(self):
         now = self.clock()
-        self.pending = {
+        pending = {
             key: item for key, item in self.pending.items() if item["expires"] > now
         }
+        if pending!=self.pending:
+            self.store.put('video_context_v3','pending',pending)
+            self.pending=pending
 
-    def resolve(self, messages, session_id, *, active_screen_id=None):
+    def resolve(self, messages, session_id, *, active_screen_id=None, submission_id=None):
         if (
             not isinstance(session_id, str)
             or not session_id
@@ -150,18 +168,25 @@ class VideoContext:
             or session_id in ("local","draft")
         ):
             return None
-        digest = text_digest(last_user_text(messages))
         with self.lock:
             self._prune()
+            turn_key=hashlib.sha256((session_id+'\0'+submission_id).encode()).hexdigest() if self.valid_submission(submission_id) else None
+            retained=self.store.get('video_turn_v3',turn_key) if turn_key else None
+            if retained:
+                if (retained.get('session_id')==session_id and retained.get('submission_id')==submission_id
+                        and retained.get('origin')=='explicit_upload_request_v3' and retained['expires']>self.clock()
+                        and self.store.get('stream',retained['stream_id'])):
+                    return retained['stream_id']
+                return None
             matched = [
                 item
                 for item in self.pending.values()
-                if item["text_sha256"] == digest
-                and (not item["session_ids"] or session_id in item["session_ids"])
+                if self.valid_submission(submission_id) and item['submission_id']==submission_id
+                and session_id in item["session_ids"]
             ]
             if len(matched) > 1:
                 raise ValueError(
-                    "Ambiguous video uploads for equal-text drafts; please attach again in the intended chat"
+                    "Ambiguous video metadata for the same submission; please retain the original attachment"
                 )
             if matched:
                 item = matched[0]
@@ -169,11 +194,20 @@ class VideoContext:
                     "stream_id": item["stream_id"],
                     "session_id": session_id,
                     "expires": self.clock() + 12 * 3600,
-                    "origin": "explicit_upload_metadata_v2",
+                    "origin": "explicit_upload_request_v3",
+                    "submission_id":submission_id,
+                    "text_sha256":item['text_sha256'],
                 }
-                self.store.put("video_context_v2", session_id, binding)
-                self.store.put('media_focus_v1',session_id,{'stream_id':binding['stream_id'],'session_id':session_id,'origin':binding['origin']})
-                del self.pending[item["id"]]
+                pending={key:row for key,row in self.pending.items() if key!=item['id']}
+                # Commit source ownership, retry identity and pending consumption
+                # in one SQLite transaction. A restart cannot change the owner.
+                from .store import encode
+                records=[('video_turn_v3',turn_key,binding),('video_context_v2',session_id,binding),
+                         ('media_focus_v1',session_id,binding),('video_context_v3','pending',pending)]
+                with self.store.lock,self.store.db:
+                    self.store.db.executemany('INSERT OR REPLACE INTO objects(kind,id,payload) VALUES(?,?,?)',
+                        [(kind,key,encode(value)) for kind,key,value in records])
+                self.pending=pending
                 self.store.event(
                     "video_context_bound",
                     {
@@ -201,7 +235,7 @@ class VideoContext:
                 binding = self.store.get("video_context_v2", session_id)
             if (
                 not binding
-                or binding.get("origin") != "explicit_upload_metadata_v2"
+                or binding.get("origin") not in ("explicit_upload_metadata_v2","explicit_upload_request_v3")
                 or binding["expires"] <= self.clock()
             ):
                 return None

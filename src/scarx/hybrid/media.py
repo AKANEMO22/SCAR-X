@@ -8,6 +8,7 @@ import subprocess
 import threading
 import time
 import uuid
+from .frame_snapshot import publish_snapshot
 
 
 class VideoMemory:
@@ -80,6 +81,17 @@ class VideoMemory:
         self.threads.append(thread)
         thread.start()
         return state
+
+    def wait_first_observation(self,identifier,timeout=35):
+        deadline=time.monotonic()+timeout
+        while time.monotonic()<deadline:
+            state=self.store.get('stream',identifier)
+            if not state:raise ValueError('Video is not present in local memory')
+            if state.get('vision_frontier',0)>0:return {'id':identifier,'ready':True,'vision_frontier':state['vision_frontier'],'status':state['status']}
+            if state['status'] in ('failed','stopped','complete'):
+                raise RuntimeError('Video analysis has no usable visual observation; keep the attachment and inspect its local error')
+            if self.stop_event.wait(.2):raise InterruptedError('Video runtime is stopping')
+        raise TimeoutError('Video is still being analyzed locally; draft retained, retry the same send shortly')
 
     def _run(self, state, owned):
         listing = owned / "segments.csv"
@@ -417,28 +429,23 @@ class VideoMemory:
         )
         if interval is None:
             return None
-        target = owned / "question-frame.jpg"
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-v",
-                "error",
-                "-nostdin",
-                "-y",
-                "-ss",
-                str(max(0.0, moment - interval[0])),
-                "-i",
-                str(source),
-                "-frames:v",
-                "1",
-                "-vf",
-                "scale=512:512:force_original_aspect_ratio=decrease",
-                str(target),
-            ],
-            capture_output=True,
-            check=True,
-            timeout=15,
-        )
+        temporary = owned / ("question-frame-"+uuid.uuid4().hex+".part.jpg")
+        try:
+            subprocess.run(
+                [
+                    "ffmpeg", "-v", "error", "-nostdin", "-y",
+                    "-ss", str(max(0.0, moment - interval[0])), "-i", str(source),
+                    "-frames:v", "1", "-vf", "scale=512:512:force_original_aspect_ratio=decrease",
+                    str(temporary),
+                ],
+                capture_output=True,
+                check=True,
+                timeout=15,
+            )
+            if temporary.stat().st_size>2_000_000:raise ValueError('Video snapshot exceeds bound')
+            target=publish_snapshot(owned,temporary.read_bytes())
+        finally:
+            if temporary.exists():temporary.unlink()
         self.store.event(
             "source_video_reinspected",
             {

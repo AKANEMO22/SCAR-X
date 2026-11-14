@@ -102,6 +102,7 @@ def ensure_gateway():
 MAPPING = {
     "presence": "/api/presence",
     "observe": "/api/observe",
+    "video-ready": "/api/video/ready",
     "public-topic": "/api/public-topic",
     "goal": "/api/goal",
     "feedback": "/api/feedback",
@@ -136,7 +137,7 @@ def forward(path, body=None):
     try:
         with build_opener(NoRedirect()).open(
             Request(base + path, data=encoded, headers=headers),
-            timeout=120 if path.endswith("completions") else 15,
+            timeout=120 if path.endswith("completions") else 40 if path=='/api/video/ready' else 15,
         ) as response:
             raw = response.read(2_000_001)
         if len(raw) > 2_000_000:

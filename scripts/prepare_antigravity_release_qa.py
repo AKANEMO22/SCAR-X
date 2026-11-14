@@ -27,7 +27,8 @@ def main():
            'test_hybrid_incidents.py','test_hybrid_review.py','test_hybrid_resources.py','test_hybrid_device_budget.py',
            'test_hybrid_maintenance.py','test_hybrid_tool_routing.py','test_hybrid_cuda.py','test_hermes_session_transport.py',
            'test_hybrid_rc_package.py','test_full_query_retrieval_shadow.py','test_verifier_capability_shadow.py',
-           'test_asr_profile_resolver.py','test_hermes_resource_roots.py']
+           'test_asr_profile_resolver.py','test_hermes_resource_roots.py',
+           'test_hybrid_frame_snapshot.py','test_video_request_ownership.py','test_hermes_admission_scope.py']
     files=list((ROOT/'src/scarx').rglob('*.py'))
     files += [ROOT/'src/scarx/hybrid/web.html',ROOT/'run_hybrid.py',ROOT/'pyproject.toml']
     files += [ROOT/'tests'/name for name in tests]

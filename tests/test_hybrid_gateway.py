@@ -235,7 +235,8 @@ def test_video_attachment_uses_local_evidence_and_snn_in_normal_chat(gateway):
         ],
         "scarx_session_id": "chat-a",
     }
-    gateway.video_context.queue(stream, text_digest("Màu gì ở đầu video?"), ["chat-a"])
+    gateway.video_context.queue(stream, text_digest("Màu gì ở đầu video?"), ["chat-a"],submission_id='upload-a')
+    body['scarx_submission_id']='upload-a'
     before = copy.deepcopy(body["messages"])
     messages = gateway.prepare_agent_messages(body)
     assert messages[0] == before[0] and body["messages"] == before
@@ -246,13 +247,31 @@ def test_video_attachment_uses_local_evidence_and_snn_in_normal_chat(gateway):
     assert "scarx://" not in json.dumps(body["messages"])
 
 
+def test_private_media_answer_cannot_turn_local_observations_into_remote_tool_calls(gateway):
+    stream='a'*32;gateway.store.put('stream',stream,{'id':stream,'kind':'video','status':'complete','capture_frontier':10,'vision_frontier':10,'asr_frontier':10})
+    gateway.store.observe('red square',source='owned fixture',stream=stream,modality='sampled_frame',start=5,end=5)
+    seen={}
+    def model_transport(messages,max_tokens,tools,tool_choice,**kwargs):
+        seen.update(messages=messages,tools=tools,tool_choice=tool_choice)
+        yield {'choices':[{'index':0,'delta':{'content':'owned transport fixture'},'finish_reason':'stop'}]}
+    gateway.backend.stream=model_transport
+    body={'scarx_stream_id':stream,'messages':[{'role':'system','content':'KEEP HOST RULES'},
+        {'role':'user','content':'What color is first in this video?'}],
+        'tools':[{'type':'function','function':{'name':'web_search'}}]}
+    list(gateway.stream_chat(body))
+    assert seen['tools'] is None and seen['tool_choice']=='none'
+    assert seen['messages'][0]['content']=='KEEP HOST RULES'
+    assert body['tools'][0]['function']['name']=='web_search'
+    assert Gateway.native_tools({'tools':body['tools']}) is body['tools']
+
+
 def test_legacy_fixture_uri_cannot_route_a_new_turn(gateway):
     stream = "a" * 32
     gateway.store.put(
         "stream", stream, {"id": stream, "kind": "screen", "status": "stopped"}
     )
     body = {
-        "scarx_session_id": "chat-a",
+        "scarx_session_id": "chat-a", "scarx_submission_id":"upload-a",
         "messages": [
             {
                 "role": "user",
@@ -304,13 +323,13 @@ def test_screen_history_is_durable_scoped_and_not_capture_permission(gateway):
 def test_screen_and_upload_focus_follow_explicit_selection(gateway):
     context=gateway.video_context;old,new,screen='a'*32,'b'*32,'c'*32
     for stream in (old,new):gateway.store.put('stream',stream,{'id':stream,'kind':'video','status':'complete'})
-    context.queue(old,text_digest('old upload'),['chat-a'])
-    assert context.resolve([{'role':'user','content':'old upload'}],'chat-a')==old
+    context.queue(old,text_digest('old upload'),['chat-a'],submission_id='old-request')
+    assert context.resolve([{'role':'user','content':'old upload'}],'chat-a',submission_id='old-request')==old
     gateway.store.put('stream',screen,{'id':screen,'kind':'screen','status':'sharing','session_id':'chat-a'})
     context.bind_screen('chat-a',screen)
     assert context.resolve([{'role':'user','content':'What is visible now?'}],'chat-a',active_screen_id=screen)==screen
-    context.queue(new,text_digest('new upload'),['chat-a'])
-    assert context.resolve([{'role':'user','content':'new upload'}],'chat-a',active_screen_id=screen)==new
+    context.queue(new,text_digest('new upload'),['chat-a'],submission_id='new-request')
+    assert context.resolve([{'role':'user','content':'new upload'}],'chat-a',active_screen_id=screen,submission_id='new-request')==new
     assert context.resolve([{'role':'user','content':'Video vừa xem có gì?'}],'chat-a',active_screen_id=screen)==new
     assert context.resolve([{'role':'user','content':'Cửa sổ vừa xem có gì?'}],'chat-a')==screen
 
@@ -348,10 +367,10 @@ def test_video_context_binds_only_explicit_upload_and_correct_session(gateway):
     stream = "a" * 32
     gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
     context = gateway.video_context
-    context.queue(stream, text_digest("xem giúp"), ["chat-a"])
+    context.queue(stream, text_digest("xem giúp"), ["chat-a"],submission_id='upload-a')
     messages = [{"role": "user", "content": "xem giúp"}]
     assert context.resolve(messages, "chat-b") is None
-    assert context.resolve(messages, "chat-a") == stream
+    assert context.resolve(messages, "chat-a",submission_id='upload-a') == stream
     assert context.resolve([{"role": "user", "content": "vì sao?"}], "chat-a") == stream
     assert context.resolve(messages, "chat-b") is None
     restored = VideoContext(gateway.store)
@@ -362,10 +381,12 @@ def test_first_draft_upload_is_one_shot_and_no_global_draft_binding(gateway):
     stream = "a" * 32
     gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
     context = gateway.video_context
-    context.queue(stream, text_digest("  đoạn này?\n"), [])
+    with pytest.raises(ValueError,match='session metadata'):
+        context.queue(stream, text_digest("  đoạn này?\n"), [],submission_id='draft-request')
+    context.queue(stream,text_digest('đoạn này?'),['new-chat'],submission_id='draft-request')
     assert context.resolve([{"role": "user", "content": "đoạn này?"}], "local") is None
     assert (
-        context.resolve([{"role": "user", "content": "đoạn này?"}], "new-chat")
+        context.resolve([{"role": "user", "content": "đoạn này?"}], "new-chat",submission_id='draft-request')
         == stream
     )
     assert (
@@ -375,15 +396,15 @@ def test_first_draft_upload_is_one_shot_and_no_global_draft_binding(gateway):
     assert not context.pending
 
 
-def test_equal_text_unscoped_uploads_fail_closed(gateway):
-    for stream in ("a" * 32, "b" * 32):
+def test_equal_text_uploads_resolve_only_their_explicit_request(gateway):
+    for stream,session,request in [("a"*32,'chat-a','request-a'),("b"*32,'chat-b','request-b')]:
         gateway.store.put("stream", stream, {"id": stream, "status": "capturing"})
-        gateway.video_context.queue(stream, text_digest("video này?"), [])
-    with pytest.raises(ValueError, match="Ambiguous"):
-        gateway.video_context.resolve(
-            [{"role": "user", "content": "video này?"}], "chat-a"
-        )
+        gateway.video_context.queue(stream,text_digest('video này?'),[session],submission_id=request)
+    messages=[{'role':'user','content':'video này?'}]
+    assert gateway.video_context.resolve(messages,'chat-a',submission_id='request-b') is None
     assert gateway.store.get("video_context_v2", "chat-a") is None
+    assert gateway.video_context.resolve(messages,'chat-a',submission_id='request-a')=='a'*32
+    assert gateway.video_context.resolve(messages,'chat-b',submission_id='request-b')=='b'*32
 
 
 def test_expired_upload_ticket_and_session_binding_are_not_reused(gateway):
@@ -391,11 +412,11 @@ def test_expired_upload_ticket_and_session_binding_are_not_reused(gateway):
     context = VideoContext(gateway.store, clock=lambda: now[0])
     stream = "a" * 32
     gateway.store.put("stream", stream, {"id": stream, "status": "complete"})
-    context.queue(stream, text_digest("xem?"), [])
-    now[0] += 301
-    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a") is None
-    context.queue(stream, text_digest("xem?"), ["chat-a"])
-    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a") == stream
+    context.queue(stream, text_digest("xem?"), ['chat-a'],submission_id='old-request')
+    now[0] += 24*3600+1
+    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a",submission_id='old-request') is None
+    context.queue(stream, text_digest("xem?"), ["chat-a"],submission_id='new-request')
+    assert context.resolve([{"role": "user", "content": "xem?"}], "chat-a",submission_id='new-request') == stream
     now[0] += 12 * 3600 + 1
     assert context.resolve([{"role": "user", "content": "vì sao?"}], "chat-a") is None
 

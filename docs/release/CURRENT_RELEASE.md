@@ -1,5 +1,16 @@
 # SCAR-X Hybrid — RC5 cùng các bản sửa đang QA
 
+**Mới nhất: hai finding đã sửa trong deployment hiện tại.**
+[Video admission/snapshot](MEDIA_ADMISSION_REPAIRS_20261114.md) đã qua 256 Python,
+29 Node và 12 Desktop checks; renderer typechecked và UI video draft mới chạy
+thật. Không còn gắn video mới bằng text digest, snapshot không ghi đè nguồn
+khác; lượt media đã sửa không gọi web. Kết quả VLM vẫn trả tiếng Anh/thiếu
+timestamp, nên chưa production/neural PASS. Antigravity follow-up timeout,
+không được tính là approval.
+
+Các đoạn RC5/triage bên dưới là mốc lịch sử trước closure; trạng thái hiện tại
+theo báo cáo sửa lỗi phía trên và receipt gói RC6 sẽ được chốt sau kiểm artifact.
+
 **Cập nhật mới nhất:** [Antigravity QA và triage](ANTIGRAVITY_FULL_QA_20261114.md).
 238 Python/27 Node/3 HTTP checks qua trên bản sao; Antigravity review source đã
 xong, nhưng tự chạy test bị sandbox chặn. Codex xác nhận lỗi P1: video ở draft

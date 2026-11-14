@@ -1,5 +1,15 @@
 # Bản đồ dự án SCAR-X
 
+[Sửa hai finding media](release/MEDIA_ADMISSION_REPAIRS_20261114.md):
+`src/scarx/hybrid/frame_snapshot.py`, `tests/test_hybrid_frame_snapshot.py` kiểm
+immutable cache/concurrency/quota. Request ownership ở `video_context.py`,
+`tests/test_video_request_ownership.py`; generic execution context tại
+`integrations/hermes/session_submission.py`. Source patch Hermes được chuẩn bị
+bằng `scripts/prepare_hermes_media_admission.py`; regression React giữ tại
+`integrations/hermes/media_admission_submit.test.tsx`. Audit actual UI/admissions
+read-only: `scripts/audit_media_admission_repairs.py`. Không source hay dữ liệu
+riêng nào của peer R13 nằm trong các đường này.
+
 [Antigravity QA](release/ANTIGRAVITY_FULL_QA_20261114.md): public sanitized-copy
 handoff bằng `scripts/prepare_antigravity_release_qa.py`, full functional suite
 driver/log ở vùng `local/`, review source được đối chiếu độc lập. Lỗi marker

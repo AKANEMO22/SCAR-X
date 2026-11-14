@@ -1,0 +1,37 @@
+{
+  "verdict": "ACTUAL_NEW_DRAFT_VIDEO_SUBMISSION_OWNERSHIP_AND_LOCAL_READY_ANSWER_VERIFIED",
+  "identity_path": "composer submission_id -> resolved-session callback -> canonical executor ContextVar -> per-request X-SCARX-Submission -> SQLite binding",
+  "text_matching_used_to_claim_upload": false,
+  "actual_user_text_preserved": true,
+  "session_digest": "d76c08d458a1d31306afcfd191109c8d7aa57e2b33304641bf2481e36a980cc7",
+  "submission_digest": "0cfd580607e3c2b418ef1d64bd5a3e237aa388a27fb77c7bcf82924e8cb199fb",
+  "first_local_observation_before_media_binding": true,
+  "actual_Hermes_UI_first_turn": true,
+  "same_query_as_prior_chat_with_independent_identity": true,
+  "actual_model_answer": "The image displays a solid red square on the left and a solid blue circle on the right against a plain white background.",
+  "selected_source_stream": "1e2856c6764a4557825d6f47261f642a",
+  "selected_evidence_count": 1,
+  "actual_Hermes_tool_calls_after_readiness_fix": 0,
+  "answer_language_requested_Vietnamese_but_returned_English": true,
+  "requested_timestamp_citation_missing": true,
+  "known_fixture_not_general_video_quality_PASS": true,
+  "source_pins": {
+    "integrations/hermes/session_submission.py": "6ef78cd1925dc9b07e9fdf4bed7d1eeece7eadad93d89885468f427f4b23bb05",
+    "integrations/hermes/scarx_session_transport.py": "a890a0dfef2062f143cf8282160c8036c1a6a8ddb3ba4d15e21a19cb628c05b8",
+    "integrations/hermes/hybrid_plugin/plugin.js": "578b4ec7662e723e0e586b3b9d54880621e422c4f6b3452fd687270f2956f98b",
+    "integrations/hermes/hybrid_plugin/dashboard/plugin_api.py": "5dc182a8af2e1ec5530f5c918c093a093b7a0374a0dccac620039aff88975c0a"
+  },
+  "renderer_build_typechecked_and_installed": true,
+  "renderer_assets_verified": 1083,
+  "Electron_main_and_preloads_retained": true,
+  "saved_neural_arrays_RNG_replay_preserved_at_activation": true,
+  "live_synaptic_updates": 5,
+  "gateway_pid": 52496,
+  "one_native_GPU_pid": 33444,
+  "new_model_calls_in_this_audit": 0,
+  "research_or_production_PASS": false,
+  "original_known_failures_kept": [
+    "first unprepared UI turn searched web before video analysis; bounded guard stopped it",
+    "immutable JPEG concurrent publication initially hit Windows replace/read conflict; non-overwriting publication regression now passes"
+  ]
+}

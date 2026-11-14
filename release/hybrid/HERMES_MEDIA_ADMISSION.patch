@@ -1,0 +1,108 @@
+--- a/gateway/session_ingress.py
++++ b/gateway/session_ingress.py
+@@ -416,7 +416,9 @@
+     turn (``session_producer_lifecycle``; a no-op for every other admission)."""
+     async with producer_turn(authority, row, event, captured):
+         with await _execution_scope(authority, home):
+-            yield
++            from gateway.session_submission import submission_scope
++            with submission_scope(row.get('request_id')):
++                yield
+ 
+ 
+ async def _execution_scope(authority, home):
+--- a/apps/desktop/src/app/chat/composer/contrib.ts
++++ b/apps/desktop/src/app/chat/composer/contrib.ts
+@@ -82,6 +82,10 @@
+ export interface ComposerDraft {
+   text: string
+   attachments?: ComposerAttachment[]
++  /** Called on this exact send after session resolution and before admission. */
++  prepareSession?: (identity: {
++    runtimeSessionId: string; storedSessionId: null | string; submissionId: string; text: string
++  }) => Promise<void> | void
+ }
+ 
+ /** Payload of a `composer.middleware` data contribution. */
+--- a/apps/desktop/src/app/chat/composer/hooks/use-middleware-submit.ts
++++ b/apps/desktop/src/app/chat/composer/hooks/use-middleware-submit.ts
+@@ -43,7 +43,15 @@
+         return false
+       }
+ 
+-      return onSubmitProp(draft.text, { ...options, attachments: draft.attachments })
++      return onSubmitProp(draft.text, {
++        ...options, attachments: draft.attachments,
++        ...(draft.prepareSession ? {
++          onSessionPrepared: async identity => {
++            await options?.onSessionPrepared?.(identity)
++            await draft.prepareSession?.(identity)
++          }
++        } : {})
++      })
+     },
+     [onSubmitProp]
+   )
+--- a/apps/desktop/src/app/session/hooks/use-prompt-actions/utils.ts
++++ b/apps/desktop/src/app/session/hooks/use-prompt-actions/utils.ts
+@@ -812,6 +812,10 @@
+   composerScope?: string | null
+   /** This submit's fresh draft acquired a stored key. Never fired for navigation. */
+   onComposerScopeAssigned?: (scope: string) => void
++  /** Request metadata prepared for this exact resolved admission, never global focus. */
++  onSessionPrepared?: (identity: {
++    runtimeSessionId: string; storedSessionId: null | string; submissionId: string; text: string
++  }) => Promise<void> | void
+   /** What the transcript shows for this send, when it differs from the text
+    *  the agent receives. A `/skill` invocation expands into the whole skill
+    *  body — model-facing scaffolding the UI must never render — so the slash
+--- a/apps/desktop/src/app/session/hooks/use-prompt-actions/submit.ts
++++ b/apps/desktop/src/app/session/hooks/use-prompt-actions/submit.ts
+@@ -1155,6 +1155,12 @@
+                 }
+ 
+                 const params: Record<string, unknown> = { ...prepared.params, session_id: liveId }
++                await options?.onSessionPrepared?.({
++                  runtimeSessionId: liveId, storedSessionId: recoverStoredSessionId,
++                  submissionId, text
++                })
++                const metadataDrift = sessionDriftReason()
++                if (metadataDrift) { throw new SessionRecoveryAborted(metadataDrift, liveId) }
+ 
+                 try {
+                   return await requestGateway<SubmitReceipt>('prompt.submit', params, PROMPT_SUBMIT_REQUEST_TIMEOUT_MS)
+--- a/apps/desktop/src/sdk/composer.ts
++++ b/apps/desktop/src/sdk/composer.ts
+@@ -63,6 +63,8 @@
+  *  resolves to no live surface returns `null`/`false` (or is dropped, for
+  *  `focus`) — it never broadcasts and never throws. */
+ export const composerHost = {
++  /** Composer metadata can wait for the exact resolved session/admission. */
++  preparedSessionVersion: 1 as const,
+   /** The live draft text of one composer, or null when nothing holds it.
+    *  Mounted surfaces answer with their in-DOM text (current, incl.
+    *  unsaved keystrokes); an unmounted session falls back to its debounced
+--- a/gateway/session_submission.py
++++ b/gateway/session_submission.py
+@@ -0,0 +1,21 @@
++"""Readonly canonical submission identity bound to its execution task.
++
++The client request id belongs to this admitted input, never to a text digest,
++cached agent, ambient profile or a later queued input on the same session.
++"""
++
++from contextlib import contextmanager
++from contextvars import ContextVar
++
++_submission=ContextVar('canonical_submission_identity',default=None)
++
++
++@contextmanager
++def submission_scope(request_id):
++    token=_submission.set(request_id if isinstance(request_id,str) else None)
++    try:yield
++    finally:_submission.reset(token)
++
++
++def current_submission_id():
++    return _submission.get()

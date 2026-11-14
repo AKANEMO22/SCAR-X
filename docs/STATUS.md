@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Hai finding QA đã sửa và kiểm thật
+
+[Video admission/snapshot](release/MEDIA_ADMISSION_REPAIRS_20261114.md): bỏ
+unscoped text matching, truyền đúng session+submission từ Composer tới canonical
+executor/model header, commit binding atomic. Snapshot immutable theo hash,
+có kiểm concurrency/quota. 256 Python +29 Node +12 Desktop checks qua, build
+typechecked. UI first-draft thật nhận đúng nguồn và 0 tool calls sau readiness
+fix; model vẫn sai ngôn ngữ/thiếu timestamp, không production/neural PASS.
+
+
 ## Antigravity QA — 6 finding, chưa approve production
 
 [Review/triage](release/ANTIGRAVITY_FULL_QA_20261114.md): CLI3.8Flash high/effort

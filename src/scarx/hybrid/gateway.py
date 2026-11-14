@@ -215,7 +215,7 @@ class Gateway:
         stream = body.get("scarx_stream_id")
         session = body.get("scarx_session_id", "local")
         if not stream:
-            stream = self.video_context.resolve(messages, session, active_screen_id=self.active_screen_streams.get(session))
+            stream = self.video_context.resolve(messages, session, active_screen_id=self.active_screen_streams.get(session),submission_id=body.get('scarx_submission_id'))
         if not stream:
             stream = self.active_screen_streams.get(session)
             if stream:
@@ -382,6 +382,7 @@ class Gateway:
         return messages
 
     def select_tool_choice(self, body, messages):
+        if body.get('_scarx_stream'):return 'none'
         bounded, rule = workspace_finalization(
             messages, body.get("tools"), body.get("tool_choice")
         )
@@ -395,12 +396,19 @@ class Gateway:
             self.store.event("workspace_tool_route", event, "runtime")
         return choice
 
+    @staticmethod
+    def native_tools(body):
+        # An answer grounded in private media must not turn its injected local
+        # observations into an automatic web search or remote tool payload.
+        return None if body.get('_scarx_stream') else body.get('tools')
+
     def output_budget(self, body, messages):
         if is_context_summary(messages, body.get("tools")):
             return self.backend.summary_token_budget(messages)
         return min(1024, max(1, int(body.get("max_tokens") or 512)))
 
     def workspace_controller_response(self, body, messages):
+        if body.get('_scarx_stream'):return None
         _, limit = workspace_finalization(
             messages, body.get("tools"), body.get("tool_choice")
         )
@@ -639,7 +647,7 @@ class Gateway:
                 output = self.backend.generate(
                     prepared,
                     max_tokens=self.output_budget(body, prepared),
-                    tools=body.get("tools"),
+                    tools=self.native_tools(body),
                     tool_choice=self.select_tool_choice(body, prepared),
                     **(
                         {"response_format": body["response_format"]}
@@ -884,7 +892,7 @@ class Gateway:
             for chunk in self.backend.stream(
                 messages,
                 self.output_budget(body, messages),
-                body.get("tools"),
+                self.native_tools(body),
                 self.select_tool_choice(body, messages),
                 **(
                     {"response_format": body["response_format"]}
@@ -1162,6 +1170,10 @@ def serve(directory, port=8775):
                 session = self.headers.get("X-SCARX-Session")
                 if session and len(session) <= 160:
                     body["scarx_session_id"] = session
+                submission=self.headers.get('X-SCARX-Submission')
+                if submission:
+                    if not gateway.video_context.valid_submission(submission):raise ValueError('Invalid submission identity header')
+                    body['scarx_submission_id']=submission
                 path = urlparse(self.path).path
                 if path != "/v1/chat/completions":
                     cookie = self.headers.get("Cookie", "")
@@ -1229,6 +1241,7 @@ def serve(directory, port=8775):
                             context["text_sha256"],
                             context.get("session_ids", []),
                             context.get("ticket_id"),
+                            submission_id=context.get('submission_id'),
                         )
                     else:
                         response = gateway.video.observe(
@@ -1240,7 +1253,10 @@ def serve(directory, port=8775):
                         body["text_sha256"],
                         body.get("session_ids", []),
                         body.get("ticket_id"),
+                        submission_id=body.get('submission_id'),
                     )
+                elif path == '/api/video/ready':
+                    response=gateway.video.wait_first_observation(body['stream_id'])
                 elif path == "/api/screen/start":
                     response = gateway.screen.start(
                         body["hwnd"],

@@ -39,15 +39,17 @@ def main():
     if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Installed code does not match final payload')
     manager.assert_registered_owner_runtime(root,data)
     manager.validate_existing_assets(root,home,package)
-    suite=ET.parse(ROOT/'local/hybrid-rc5-final-targeted-20261114.xml').getroot().find('testsuite')
+    suite=ET.parse(ROOT/'local/media-admission-final-release-20261114.xml').getroot().find('testsuite')
     cases=list(suite.iter('testcase'))
-    assert len(cases)==int(suite.attrib['tests']) and len(cases)>=170
+    assert len(cases)==int(suite.attrib['tests']) and len(cases)==256
     assert not int(suite.attrib['failures']) and not int(suite.attrib['errors'])
     skipped=[c for c in cases if c.find('skipped') is not None]
     assert all(c.attrib['name']=='test_hybrid_alif_forward_matches_existing_native_core' for c in skipped)
     names={c.attrib['name'] for c in cases}
     assert 'test_long_chat_queries_search_every_chunk_without_rewriting_model_input' in names
     assert 'test_actual_Hermes_request_envelope_enables_one_readonly_probe' in names
+    assert 'test_different_drafts_with_identical_text_cannot_steal_each_others_video' in names
+    assert 'test_distinct_frame_requests_never_change_a_previous_returned_path' in names
     evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
     assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
     sys.path.insert(0,str(ROOT/'src'))
@@ -63,6 +65,7 @@ def main():
             'native_asset_Hermes_dependency_pins_match':True,
             'Python_checks_passed':len(cases)-len(skipped),'native_CPU_parity_skipped':len(skipped),
             'long_input_and_compaction_evidence':'docs/release/evidence/LONG_INPUT_AND_COMPACTION_20261114.json',
+            'request_owned_media_evidence':'docs/release/evidence/MEDIA_ADMISSION_REPAIRS_20261114.json',
             'gateway_pid':native.owner.pid,'native_GPU_pid':native.worker.pid,
             'live_neural_updates':status['neural']['updates'],'original_main_sha_unchanged':main_sha,
             'eight_hour_run_cancelled_not_PASS':True,'new_native_calls_or_training':0,

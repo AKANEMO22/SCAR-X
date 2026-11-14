@@ -24,7 +24,7 @@ def validate_payload_path(name):
     if (not name or '\\' in name or ':' in name or p.is_absolute()
             or any(part in ('','..','.') or part in FORBIDDEN or part.startswith('.') for part in name.split('/'))
             or p.suffix not in SUFFIXES):raise ValueError('Forbidden release payload path: '+name)
-    if name in ('run_hybrid.py','integrations/hermes/scarx_session_transport.py'):return
+    if name in ('run_hybrid.py','integrations/hermes/scarx_session_transport.py','integrations/hermes/session_submission.py'):return
     if not name.startswith(('src/scarx/','scripts/','integrations/hermes/hybrid_plugin/')):
         raise ValueError('Payload outside runtime allowlist roots')
     if p.name in ('settings.json','config.json','auth.json','gateway_state.json'):
@@ -110,6 +110,7 @@ def build(root,output_dir):
         original=path.read_bytes();before[name]=digest(original)
         blobs['payload/'+name]=overlays.get(name,original)
     top={'manage.py':root/'release/hybrid/manage.py','README.md':root/'release/hybrid/README.md',
+         'HERMES_MEDIA_ADMISSION.patch':root/'release/hybrid/HERMES_MEDIA_ADMISSION.patch',
          'KNOWN_LIMITATIONS.md':root/'release/hybrid/KNOWN_LIMITATIONS.md',
          'ASSETS.json':root/'release/hybrid/ASSETS.json','DEPENDENCIES.json':root/'release/hybrid/DEPENDENCIES.json'}
     for name,path in top.items():blobs[name]=path.read_bytes()
