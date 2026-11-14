@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Hiện tại:** [Hybrid RC đã cài trong Hermes](release/CURRENT_RELEASE.md).
+Người dùng yêu cầu hủy small8h để ưu tiên sản phẩm; giữ result/cancellation
+audit, không PASS. Sửa runtime/transport không thay ALIF/local learning hoặc
+kết luận nghiên cứu. SNN advantage, retention và learned error causality vẫn
+chưa được chứng minh; không mở nghiên cứu mới trong đợt release.
+
 **Ưu tiên phát hành ngày 14/11:** hoàn tất [Hybrid RC](release/HYBRID_RC_PLAN.md)
 trong chat Hermes hiện có. Không mở dataset, benchmark, model hoặc learner mới;
 giữ nghiên cứu chưa xong trong backlog. Không thay kiến trúc ALIF, ngưỡng

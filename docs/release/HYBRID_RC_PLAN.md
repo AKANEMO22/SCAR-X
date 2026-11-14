@@ -1,5 +1,9 @@
 # SCAR-X Hybrid — kế hoạch phát hành RC
 
+**Cập nhật bàn giao:** [RC đang cài](CURRENT_RELEASE.md). Cửa activation đã qua;
+chat/video/search smoke thật có bằng chứng. Full UI compaction/screen/project
+acceptance và chất lượng tổng quát còn giới hạn, không gọi production PASS.
+
 Ngày 14/11/2026: ưu tiên hoàn tất một bản dùng thử local trong chat Hermes bình
 thường. Dừng mở dataset, benchmark nghiên cứu, model hoặc learner mới; giữ các
 nghiên cứu chưa xong trong backlog. Không sửa main, R13 hoặc kết quả lịch sử.

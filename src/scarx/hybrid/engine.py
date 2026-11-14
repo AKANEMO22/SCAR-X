@@ -354,7 +354,10 @@ class HybridEngine:
             and len(self.state["search_times"]) < self.config.search_per_hour
         ):
             result.append("search")
-        if not goal["verified_attempted"]:
+        # Authorize only the checker this runtime actually implements.
+        # Parser acceptance is not a general factual/user-intent proof.
+        if (not goal["verified_attempted"]
+                and parse_integer_expression(goal["question"]) is not None):
             result.append("verify")
         if not self.state["question"]:
             result.append("ask")

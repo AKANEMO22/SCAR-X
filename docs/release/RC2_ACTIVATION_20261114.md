@@ -1,5 +1,11 @@
 # Hybrid RC2 — ưu tiên sản phẩm theo yêu cầu mới
 
+**Activation đã hoàn tất:** gateway 52192, native CUDA worker 49308, toàn mảng
+đã lưu/RNG/replay giữ nguyên, updates 5. Tiếp đó sửa transport trong Hermes
+để dùng đúng transcript cho video và không nạp schema dư ở lời chào. Kết quả
+hiện tại được chốt tại [CURRENT_RELEASE](CURRENT_RELEASE.md); các bước chuẩn bị
+bên dưới mô tả thứ tự và phạm vi lúc bắt đầu.
+
 User: “bỏ cái tets 8h đi tập trung xử lý nhanh ra sản phẩm đi”.
 Không mở lại lượt dài, model, dataset hoặc cơ chế học mới.
 

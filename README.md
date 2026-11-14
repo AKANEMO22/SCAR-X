@@ -1,5 +1,10 @@
 # SCAR-X · Thế hệ đầu
 
+**Đã cài [Hybrid RC](docs/release/CURRENT_RELEASE.md) trong chat Hermes bình
+thường.** Đã kiểm lời chào, clip đính kèm và search thật; GPU/ALIF/state còn nguyên.
+Test 8 giờ đã hủy theo yêu cầu để ưu tiên sản phẩm, không tính là PASS.
+Các mốc chuẩn bị cũ bên dưới giữ lịch sử; trạng thái hiện tại theo link trên.
+
 **Ưu tiên hiện tại:** [hoàn tất bản cập nhật Hybrid RC](docs/release/HYBRID_RC_PLAN.md)
 cho chat Hermes đang dùng. Gói chỉ cập nhật deployment đã cài, không chứa dữ
 liệu cá nhân hoặc model. Lượt 8 giờ đã dừng theo yêu cầu để ưu tiên sản phẩm;

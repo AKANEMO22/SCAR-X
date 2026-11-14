@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## Bản đang cài — Hybrid RC, ưu tiên sản phẩm
+
+[Hướng dẫn hiện tại](release/CURRENT_RELEASE.md): đã cài full-query và verifier
+guard, sửa mã transcript Hermes cho video, giới hạn schema tool ở lời chào.
+Chat/video thật trong Hermes và dispatcher SearXNG đã chạy; 140 Python + 27 Node
+checks qua, một native GPU worker, state/RNG/replay 5 live updates được giữ.
+Lượt small8h đã hủy theo yêu cầu; không mở lại. Đây là RC có giới hạn, chưa
+production/lifelong/SNN-over-RAG PASS; xem bằng chứng và việc chưa nghiệm thu.
+
 ## Ưu tiên hiện tại — phát hành Hybrid RC
 
 **Yêu cầu mới: bỏ test 8 giờ, tập trung sản phẩm.** Đã dừng sạch `32cd13` sau

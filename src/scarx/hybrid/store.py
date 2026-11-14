@@ -151,10 +151,22 @@ class Store:
     def search(self, query, stream=None, limit=12, before=None):
         import re
 
-        words = re.findall(r"[^\W_]+", query, flags=re.UNICODE)[:16]
+        if not isinstance(query, str) or len(query) > 6000:
+            raise ValueError("Search query exceeds bounded 6000-character working request")
+        words = re.findall(r"[^\W_]+", query, flags=re.UNICODE)
         if not words:
             return []
-        match = " OR ".join('"' + word + '"' for word in words)
+        if len(words) <= 16:
+            match = " OR ".join('"' + word + '"' for word in words)
+        else:
+            # Full bounded request, independent of labels or source contents.
+            terms = list(dict.fromkeys(word.lower() for word in words))
+            nodes = ['"' + word + '"' for word in terms]
+            while len(nodes) > 1:
+                nodes = ["(" + nodes[i] + " OR " + nodes[i + 1] + ")"
+                         if i + 1 < len(nodes) else nodes[i]
+                         for i in range(0, len(nodes), 2)]
+            match = nodes[0]
         sql = "SELECT e.* FROM evidence_fts f JOIN evidence e ON e.id=f.id WHERE evidence_fts MATCH ?"
         params = [match]
         if stream:

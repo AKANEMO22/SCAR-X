@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.2
+# SCAR-X Hybrid 1.0.0-rc.3
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -38,6 +38,10 @@ thông báo, không sửa manifest hoặc xóa dữ liệu người dùng để 
 Hai sửa chính: truy xuất toàn câu hỏi trong giới hạn 6.000 ký tự và loại
 action verify khi checker không hỗ trợ. Chúng là sửa runtime, không phải bằng
 chứng SNN đã học kỹ năng mới. Cửa nghiên cứu/retention không được thay.
+
+Hermes dùng đúng mã transcript cho video đính kèm. Với lời chào đơn giản,
+Hermes không gửi 8 schema công cụ không liên quan; tác vụ thật và ảnh vẫn giữ
+đầy đủ công cụ. Không thay nội dung system prompt, không hardcode câu trả lời.
 
 Xem `KNOWN_LIMITATIONS.md`, `MANIFEST.json`, `ASSETS.json` và `DEPENDENCIES.json`.
 SHA/version/codeoverlay có trong manifest; không xuất token hay cấu hình bí mật.

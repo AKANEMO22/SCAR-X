@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[RC đang cài](release/CURRENT_RELEASE.md): `scripts/activate_hybrid_rc.py` áp
+dụng có backup và kiểm learned state; `scripts/audit_hybrid_rc_operational.py`
+đối chiếu actual events/state không gọi model mới. Transport Hermes ở
+`integrations/hermes/scarx_session_transport.py`, cài bằng
+`scripts/install_hermes_session_transport.py`, kiểm bằng
+`tests/test_hermes_session_transport.py`. Historical receipts giữ nguyên.
+
 [Phát hành Hybrid RC](release/HYBRID_RC_PLAN.md): `release/hybrid/` giữ allowlist,
 installer code, asset/dependency pins và tài liệu sử dụng. Build bằng
 `scripts/package_hybrid_rc.py`, không dùng packager Generation1. Safety tests

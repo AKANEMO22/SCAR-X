@@ -24,7 +24,7 @@ def validate_payload_path(name):
     if (not name or '\\' in name or ':' in name or p.is_absolute()
             or any(part in ('','..','.') or part in FORBIDDEN or part.startswith('.') for part in name.split('/'))
             or p.suffix not in SUFFIXES):raise ValueError('Forbidden release payload path: '+name)
-    if name=='run_hybrid.py':return
+    if name in ('run_hybrid.py','integrations/hermes/scarx_session_transport.py'):return
     if not name.startswith(('src/scarx/','scripts/','integrations/hermes/hybrid_plugin/')):
         raise ValueError('Payload outside runtime allowlist roots')
     if p.name in ('settings.json','config.json','auth.json','gateway_state.json'):
