@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## Recovery outcomeDEV196043 —14/11
+
+24ownedcases/144snapshotbranches/266actualnativecalls281s; independentreplay
+hash/effect/statusaudit qua.12cóít nhất1successfulaction,12(noauth/missingtime/
+wrongprior)chưacónhánhqua. show_schema7/inspect_status6/retry7/finish4nhánhqua;
+khôngpolicyaccuracy/hiddengain. Outputstatuscodes chưađượcpromptgiải thíchđủ,
+cần fixedcontractdiagnostic trước newbank/train. Không sửaraw hoặc tựdạynhãnsai.
+[Report/raw/limits](hybrid/RECOVERY_ACTION_OUTCOMES_DEV_20261114.md).
+235Python+12Nodechecks+realHTTPreplyfixturequa; Hermesnútgửi đãhotreloadfix.
+
 ## Video entitybinding diagnostic14/11
 
 Knowncase2a3230:16uniqueactualnativecalls/28armrecords. SmallASRđổiorder làm

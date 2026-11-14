@@ -1,5 +1,11 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Actualrecovery outcomeDEV14/11:**24cases×6snapshotbranches đo266nativecalls,
+12cases chưa có action qua độc lập effect/status. Không tạo labelsuccessful
+khi rolloutfail; schema/codevocabulary là một confound cần fixeddiagnostic
+trước training/newbank. [Evidence](hybrid/RECOVERY_ACTION_OUTCOMES_DEV_20261114.md).
+Policy chưa train/promote, originalALIF/liveweights/8hsource giữ nguyên.
+
 **Perception/verification14/11:** nativeWhisper-smallFP32 có ViWERgain trên32speech
 DEV và resourceprobe vừaVRAM, nhưng integratedknownvideoQA1/3khônghơnbase.
 Không biến perceptiongain thành SNNlearningclaim hoặc tựpromoteASR khi8hbase

@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[Actualrecovery actionoutcomesDEV](hybrid/RECOVERY_ACTION_OUTCOMES_DEV_20261114.md):
+evaluation/recovery_outcome_bank.py; build_hybrid_recovery_outcomes.py và
+audit_hybrid_recovery_outcomes.py. Currentbank chưaqualifiedđểtrain; actualeffect
+và statusvocabulary khácNLsemantictruth, khôngpromote neuralpolicy.
+
 [ASR candidate và tool-dataqualification](hybrid/ASR_CANDIDATE_AND_TOOL_DATA_20261114.md):
 setup_hybrid_whisper_small.py, prepare_hybrid_asr_dev.py, benchmark/audit ASR,
 probe_hybrid_asr_resources.py, probe_hybrid_asr_video_integration.py;

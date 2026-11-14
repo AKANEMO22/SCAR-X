@@ -113,3 +113,17 @@ test("ASR candidate gain is separate from actual downstream question failures", 
   assert.match(answer, /Chưa qua/);
   assert.equal(nodes.has("updates"), false);
 });
+
+test("recovery branch panel reports a failed measured action without claiming learning", () => {
+  const { nodes, event } = setup();
+  event({ actor: "orchestrator", kind: "recovery_outcome.actual_branch",
+    payload: { run_id: "owned-recovery", question: "Owned task",
+      selected_action: "show_schema", actual_final: { message: "Reported completion" },
+      verification: { verified_resolution: false } } });
+  const text = nodes.get("recovery-summary").children.map(n => n.textContent).join("\n");
+  assert.match(text, /Xem schema/);
+  assert.match(text, /Reported completion/);
+  assert.match(text, /Chưa qua kiểm effect/);
+  assert.match(text, /chưa huấn luyện SNN/);
+  assert.equal(nodes.has("updates"), false);
+});

@@ -12,6 +12,7 @@
 <section id="trace" class="tab card"><h2>Trace trực tiếp</h2><p class="muted">Tự cập nhật công việc thực. Phân biệt thao tác triển khai, VLM và quyết định neural; không mô phỏng suy nghĩ.</p>
 <div id="lab-summary" class="goal hidden"></div><div id="lab-answers" class="feed"></div>
 <div id="asr-summary" class="goal hidden"></div><div id="asr-answers" class="feed"></div>
+<div id="recovery-summary" class="goal hidden"></div>
 <div id="events" class="feed"></div></section>
 </main><script>
 const query=new URLSearchParams(location.search);const startCursor=Number(query.get('after')||0);
@@ -31,6 +32,21 @@ if(!lab.finished&&Date.now()/1000-lab.received_epoch>90)para(p,'Chưa nhận th�
 }
 function labEvent(e){
 if(e.actor!=='orchestrator'||!e.payload||typeof e.payload!=='object')return;
+if(e.kind==='recovery_outcome.actual_branch'){
+const p=$('recovery-summary');clear('recovery-summary');p.classList.remove('hidden');
+const labels={show_schema:'Xem schema',inspect_status:'Kiểm tra trạng thái',retry:'Thử lại',clarify:'Hỏi để làm rõ',defer:'Hoãn',finish:'Kết thúc'};
+para(p,'Đo phục hồi lỗi · '+e.payload.run_id);para(p,e.payload.question);
+para(p,'Hành động đang đo: '+(labels[e.payload.selected_action]||e.payload.selected_action));
+para(p,'Model trả về: '+(e.payload.actual_final?.message||'Chưa có quyết định hợp lệ'));
+para(p,e.payload.verification?.verified_resolution?'Qua kiểm effect/status trong sandbox.':'Chưa qua kiểm effect/status trong sandbox.');
+para(p,'Đo mọi nhánh trên bản sao trạng thái, chưa huấn luyện SNN hoặc thay model live.','muted');
+}
+if(e.kind==='recovery_outcome.completed'){
+const p=$('recovery-summary');clear('recovery-summary');p.classList.remove('hidden');
+para(p,'Kết quả đo phục hồi · '+e.payload.run_id);para(p,e.payload.verdict);
+para(p,'Lượt native thực: '+e.payload.unique_native_calls+' · ca có kết quả phân biệt giữa hành động: '+(e.payload.informative_cases??'chưa đủ'));
+para(p,'Đây là dữ liệu DEV đo thực thi, chưa phải điểm policy hoặc bằng chứng SNN tự học.','muted');
+}
 if(e.kind==='ASR_candidate.benchmark_completed'&&e.payload.by_language){
 const p=$('asr-summary');clear('asr-summary');p.classList.remove('hidden');
 para(p,'Ứng viên ASR · Whisper-small FP32 · '+e.payload.run_id);
