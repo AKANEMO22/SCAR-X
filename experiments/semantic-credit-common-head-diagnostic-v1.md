@@ -26,3 +26,14 @@ source-textbootstrap10000/RNG260216. One seed only, reusedDEV andposthocprobe:
 even positiveCI isdiagnostic, not fresh3seedconfirmation or SNNvsstrongRAGPASS.
 Report whether learnedrepresentation helps undercommonhead, and gap torawPCA64
 ridge79.17% onall240TRAIN (224observedTRAIN countdiff explicit).
+
+Engineering recovery after20d178: missing nvJitLinkDLL blocked CuPy directsolve
+after344forwardattempts, before any fittedhead/DEVscore. KeepFAIL and344charged.
+Do not install anotherCUDAstack, switchCPU or lowerprecision. One isolated
+recovery uses GPU conjugategradient on the SAMEpositive-definite ridge system,
+fixed256iterations/FP32, actual relative residual must<=3e-5 orSTOP. Verify known
+SPDsolution onGPU beforefeatures; no ALIFupdate. Recovery max1050forwards and
+55seconds, original4.531seconds +344forwards retained explicitly. Combined with
+source9126 remains below12000forwards; no originalresult is changed. Allthree
+conditions still required, no dropping an arm/sample to fit quota. Preserve
+features beforefitting so anotherfailure cannot hide consumedobservations.

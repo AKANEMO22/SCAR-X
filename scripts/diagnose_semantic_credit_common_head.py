@@ -12,6 +12,29 @@ from scarx.evaluation.semantic_credit_alif import CreditALIF
 from scarx.hybrid.store import Store, encode
 
 
+def gpu_spd_solve(xp, a, b):
+    """Same ridge normal equations, no optional cuSOLVER/nvJitLink dependency."""
+    value = xp.zeros_like(b)
+    r = b.copy()
+    p = r.copy()
+    rs = xp.sum(r * r, axis=0)
+    for _ in range(256):
+        ap = a @ p
+        denominator = xp.sum(p * ap, axis=0)
+        active = rs > np.float32(1e-18)
+        alpha = xp.where(active, rs / xp.maximum(denominator, np.float32(1e-30)), np.float32(0))
+        value += p * alpha[None, :]
+        r -= ap * alpha[None, :]
+        new_rs = xp.sum(r * r, axis=0)
+        beta = xp.where(active, new_rs / xp.maximum(rs, np.float32(1e-30)), np.float32(0))
+        p = r + p * beta[None, :]
+        rs = new_rs
+    residual = float(xp.linalg.norm(a @ value - b) / xp.maximum(xp.linalg.norm(b), np.float32(1e-8)))
+    if not xp.isfinite(value).all() or residual > 3e-5:
+        raise FloatingPointError('GPU ridge solver residual: ' + str(residual))
+    return value, residual
+
+
 def main():
     source = Path((ROOT / 'local/current-semantic-credit-dev.txt').read_text(encoding='utf-8').strip())
     manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
@@ -23,15 +46,19 @@ def main():
     data = json.loads((feature_dir / 'data.json').read_text(encoding='utf-8'))
     assert len(train) == 224 and len(dev) == 120
     assert all(data[i]['split'] == 'TRAIN' for i in train) and all(data[i]['split'] == 'DEV' for i in dev)
-    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-credit-common-head-v1-' + uuid.uuid4().hex[:6])
+    prior = ROOT / 'runs/20261115T100703Z-semantic-credit-common-head-v1-20d178'
+    prior_report = json.loads((prior / 'result.json').read_text(encoding='utf-8'))
+    assert not prior_report['completed'] and prior_report['forward_attempts'] == 344
+    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-credit-common-head-GPU-recovery-v1-' + uuid.uuid4().hex[:6])
     run.mkdir()
-    with (ROOT / 'local/semantic-credit-common-head-v1-execution.json').open('x', encoding='utf-8') as f:
+    with (ROOT / 'local/semantic-credit-common-head-GPU-recovery-v1-execution.json').open('x', encoding='utf-8') as f:
         json.dump({'run': str(run)}, f)
     (ROOT / 'local/current-semantic-credit-common-head.txt').write_text(str(run), encoding='utf-8')
     sources = ('scripts/diagnose_semantic_credit_common_head.py', 'experiments/semantic-credit-common-head-diagnostic-v1.md')
     (run / 'manifest.json').write_text(encode({'source_run': source.name, 'source_git_sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         'source_sha256': {n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in sources},
-        'ALIF_updates': 0, 'TEST_calls': 0, 'device': 'CUDA0', 'max_forwards': 1100, 'max_seconds': 60}), encoding='utf-8')
+        'ALIF_updates': 0, 'TEST_calls': 0, 'device': 'CUDA0', 'max_forwards': 1050, 'max_seconds': 55,
+        'prior_FAILED_run': prior.name, 'prior_charged_forwards': 344, 'prior_active_seconds': prior_report['elapsed_seconds']}), encoding='utf-8')
     for name in sources:
         (run / Path(name).name).write_bytes((ROOT / name).read_bytes())
     trace = Store(ROOT / 'local/hybrid-v1')
@@ -42,7 +69,7 @@ def main():
               'confirmation_or_quality_PASS': False, 'failures': []}
     def charge(kind):
         nonlocal attempts, last
-        if kind != 'forward' or attempts >= 1100 or time.monotonic() - started > 60:
+        if kind != 'forward' or attempts >= 1050 or time.monotonic() - started > 55:
             raise TimeoutError('GPU commonhead diagnostic quota')
         attempts += 1
         journal.write(encode({'forward': attempts, 'epoch': time.time()}) + '\n')
@@ -64,6 +91,13 @@ def main():
                 model = CreditALIF.loads((ROOT / 'artifacts' / source.name / f'{name}-stage19.npz').read_bytes())[0]
             model.budget = type('Budget', (), {'charge': staticmethod(charge)})()
             xp = model.model.xp
+            if name == 'hidden_eta05':
+                known = xp.arange(18, dtype=xp.float32).reshape(3, 6) / 10
+                spd = xp.asarray([[3, 1, 0], [1, 4, 1], [0, 1, 2]], dtype=xp.float32)
+                solved, residual = gpu_spd_solve(xp, spd, spd @ known)
+                if float(xp.max(xp.abs(solved - known))) > 3e-5:
+                    raise ValueError('Known GPU SPDsolution fixture')
+                report['GPU_solver_P0_residual'] = residual
             matrices = []
             for indices in (train, dev):
                 fs = []
@@ -72,6 +106,9 @@ def main():
                     fs.append(features.copy())
                 matrices.append(xp.stack(fs))
             a, b = matrices
+            arrays[name + '_TRAIN'] = model.model.host(a)
+            arrays[name + '_DEV'] = model.model.host(b)
+            np.savez(run / 'partial-features.npz', **arrays)
             mean = a.mean(axis=0)
             def code(matrix):
                 matrix = matrix - mean
@@ -79,8 +116,9 @@ def main():
                 return xp.column_stack((matrix, xp.ones(len(matrix), dtype=xp.float32)))
             train_code, dev_code = code(a), code(b)
             # All fitting and prediction explicitly CuPy CUDA; no CPU optimizer.
-            head = xp.linalg.solve(train_code.T @ train_code + xp.eye(129, dtype=xp.float32),
-                                   train_code.T @ xp.eye(6, dtype=xp.float32)[xp.asarray(labels[train])])
+            head, residual = gpu_spd_solve(xp, train_code.T @ train_code + xp.eye(129, dtype=xp.float32),
+                                         train_code.T @ xp.eye(6, dtype=xp.float32)[xp.asarray(labels[train])])
+            report.setdefault('GPU_ridge_residuals', {})[name] = residual
             prediction = xp.argmax(dev_code @ head, axis=1)
             correct[name] = model.model.host(prediction == xp.asarray(labels[dev]))
             scores[name] = float(correct[name].mean())
@@ -95,7 +133,7 @@ def main():
             rng = np.random.default_rng(260216)
             samples = [float(diff[np.concatenate([c * 20 + rng.integers(20, size=20) for c in range(6)])].mean()) for _ in range(10000)]
             effects[name] = {'gain_vs_frozen': float(diff.mean()), 'CI95': np.quantile(samples, [.025, .975]).tolist()}
-        if time.monotonic() - started > 60:
+        if time.monotonic() - started > 55:
             raise TimeoutError('Commonhead diagnostic totalwall')
         report.update(completed=True, verdict='COMMON_HEAD_DEV_DIAGNOSIS_NOT_CONFIRMATION', scores=scores, effects=effects)
     except Exception as exc:
@@ -104,7 +142,9 @@ def main():
     finally:
         np.savez(run / 'measurements.npz', **arrays)
         report.update(forward_attempts=attempts, elapsed_seconds=time.monotonic() - started, resources=resources,
-                      source_charged_forwards=9126, combined_forwards=9126 + attempts)
+                      source_charged_forwards=9126, prior_failed_charged_forwards=344,
+                      combined_forwards=9126 + 344 + attempts,
+                      diagnostic_active_seconds=prior_report['elapsed_seconds'] + time.monotonic() - started)
         (run / 'result.json').write_text(encode(report), encoding='utf-8')
         journal.close()
         trace.event('work_trace.activity', {'title': report['verdict'], 'run_id': run.name, **report}, 'orchestrator')
