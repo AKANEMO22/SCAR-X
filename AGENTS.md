@@ -1,5 +1,17 @@
 # SCAR-X working rules
 
+- Latest user16/11 P1b FULL directive (attachmentece237de, SHA256
+  2e0fa1fdd2e87614681ca69be67b451fd1470325a9aa034bffd2105d0849c6e5):
+  first data-only reaudit P1/6e08a361, never rerun terminal-logit-only. Then
+  one temporal-P-signal hypothesis with no-training preflight, real CPU/CUDA
+  profiling, and only after passing prerequisites a locked P1b, max3seeds/
+  24arm-runs/1800s total execution including profiling/audits, experimentRAM
+  <2GB. CPU/GPU backend selected by matched real ALIF workload and safety;
+  no forced old GPU-only/CPU-only rule for this scope. No main/Hermes/live
+  checkpoints, servingP reset, TESTselection, push/merge/deploy, scale/dtype
+  changes or failed-study rescue sweeps. Conditional restart/reuse only under
+  registered gates. Read full directive private copy before implementation.
+
 - Latest user P1 request15/11: specifically authorizes a CPU-only, no-training
   preflight for one teacher-P causal-credit hypothesis; only if it passes,
   register and run one isolated P1, at most24configs/3predeclaredseeds,
