@@ -44,21 +44,23 @@ def main():
     allowed={
         '1.0.0-rc.15':['src/scarx/hybrid/web_routing.py'],
         '1.0.0-rc.16':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/web_routing.py'],
+        '1.0.0-rc.17':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/image_question.py'],
     }
-    if manifest['version'] not in allowed:raise ValueError('Expected qualified dated-webRC15/16')
+    if manifest['version'] not in allowed:raise ValueError('Expected qualified scoped RC15/16/17')
     root,data,python,home=manager.registered_target()
     if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Serving disk differs from tested package')
     manager.assert_registered_owner_runtime(root,data);manager.validate_existing_assets(root,home,package)
     manager.protected_run_gate(root,manifest)
     previous=packager.predecessor_manifest(ROOT,json.loads((ROOT/'release/hybrid/payload-files.json').read_text(encoding='utf-8')))
-    changed=[name for name in manifest['target_before_sha256'] if manifest['files']['payload/'+name]['sha256']!=previous['files']['payload/'+name]['sha256']]
+    changed=[name for name in manifest['target_before_sha256'] if manifest['files']['payload/'+name]['sha256']!=previous['files'].get('payload/'+name,{}).get('sha256')]
     if sorted(changed)!=allowed[manifest['version']]:raise ValueError('Hotfix exceeds explicit public-routing scope')
     old_archive=ROOT/manifest['predecessor']['archive']
     previous_bytes={}
     with zipfile.ZipFile(old_archive) as z:
         for relative in changed:
-            previous_bytes[relative]=z.read('payload/'+relative)
-            if hashlib.sha256(previous_bytes[relative]).hexdigest()!=manifest['target_before_sha256'][relative]:raise ValueError('Pinned rollback source')
+            previous_bytes[relative]=z.read('payload/'+relative) if 'payload/'+relative in previous['files'] else None
+            digest=hashlib.sha256(previous_bytes[relative]).hexdigest() if previous_bytes[relative] is not None else None
+            if digest!=manifest['target_before_sha256'][relative]:raise ValueError('Pinned rollback source')
     before=snapshot();(run/'private-before.npz').write_bytes(before)
     status=service.status()
     if status.get('cognition',{}).get('phase') in ('serving','observing'):raise RuntimeError('Foreground retains priority')
@@ -71,8 +73,9 @@ def main():
         manager.snapshot_backup(data,backup)
         records=[]
         for relative in changed:
-            rollback=backup/'files'/relative;rollback.parent.mkdir(parents=True,exist_ok=True);rollback.write_bytes(previous_bytes[relative])
-            records.append({'path':relative,'before_sha256':hashlib.sha256(previous_bytes[relative]).hexdigest(),
+            if previous_bytes[relative] is not None:
+                rollback=backup/'files'/relative;rollback.parent.mkdir(parents=True,exist_ok=True);rollback.write_bytes(previous_bytes[relative])
+            records.append({'path':relative,'before_sha256':hashlib.sha256(previous_bytes[relative]).hexdigest() if previous_bytes[relative] is not None else None,
                 'after_sha256':hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()})
         manager.atomic(backup/'files.json',json.dumps(records,indent=2).encode())
         manager.atomic(backup/'receipt.json',json.dumps({'version':manifest['version'],

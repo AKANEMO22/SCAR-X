@@ -102,6 +102,36 @@ def test_long_chat_queries_search_every_chunk_without_rewriting_model_input(gate
 
 
 @pytest.mark.parametrize('streaming',[False,True])
+def test_documented_image_answer_has_actual_native_usage_and_explicit_runtime_provenance(gateway,streaming):
+    calls=[]
+    def generate(messages,**kwargs):
+        calls.append((copy.deepcopy(messages),kwargs))
+        visible='plotOutput("other")? A. input$x <- hist() B. output$other <- renderPlot({...})'
+        return {'text':json.dumps({'visible_text':visible} if len(calls)==1 else {'choice_id':'B'}),
+                'usage':{'prompt_tokens':10,'completion_tokens':4,'total_tokens':14},'seconds':.1}
+    gateway.backend.generate=generate
+    body={'messages':[{'role':'system','content':'KEEP HOST INSTRUCTIONS'},
+        {'role':'user','content':[{'type':'image_url','image_url':{'url':'data:image/png;base64,AA=='}},
+                                 {'type':'text','text':'Giải thích câu trong ảnh'}]}],
+        'tools':[{'type':'function','function':{'name':'terminal'}}]}
+    before=copy.deepcopy(body)
+    if streaming:
+        chunks=list(gateway.stream_chat(body))
+        text=''.join(c.get('choices',[{}])[0].get('delta',{}).get('content') or '' for c in chunks)
+        assert chunks[-1]['usage']['completion_tokens']==8
+        assert chunks[0]['scarx_producer']=='runtime_documentation_grounded_image_answer'
+    else:
+        response=gateway.chat(body);text=response['choices'][0]['message']['content']
+        assert response['scarx_producer']=='runtime_documentation_grounded_image_answer'
+        assert response['usage']=={'prompt_tokens':20,'completion_tokens':8,'total_tokens':28}
+    assert len(calls)==2 and body['messages']==before['messages']
+    assert calls[1][0][0]==before['messages'][0]
+    assert text.startswith('Đáp án: **B.') and 'Shiny for R' in text
+    assert gateway.backend.received is None, 'No free-form third stream replaced the cited explanation'
+    assert any(e['kind']=='image_question_grounded_answer' for e in gateway.store.events())
+
+
+@pytest.mark.parametrize('streaming',[False,True])
 def test_Hermes_long_document_reaches_model_in_both_HTTP_modes(gateway,streaming):
     query='Archived unrelated observation; no configuration change. '*130+'\nGive a brief answer.'
     body={'messages':[{'role':'system','content':'Keep all instructions'},{'role':'user','content':query}]}

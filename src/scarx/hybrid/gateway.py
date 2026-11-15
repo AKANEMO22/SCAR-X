@@ -28,6 +28,7 @@ from .temporal import temporal_direction
 from .search_service import SearchService
 from .web_routing import public_web_scope, web_prelude, WEB_TOOLS
 from .web_evidence import supplied_web_sources, persist_web_sources, task_interpretation, task_user_message
+from .image_question import prepare_image_question, question_scope
 from .tool_routing import (
     workspace_tool_choice,
     workspace_prelude,
@@ -215,7 +216,7 @@ class Gateway:
 
     def prepare_agent_messages(self, body):
         for key in ('_scarx_evidence','_scarx_candidates','_scarx_stream','_scarx_media_kind',
-                    '_scarx_media_query','_scarx_unused_steering_omitted','_scarx_task_question','_scarx_web_coverage','_scarx_task_interpretation'):
+                    '_scarx_media_query','_scarx_unused_steering_omitted','_scarx_task_question','_scarx_web_coverage','_scarx_task_interpretation','_scarx_image_question'):
             body.pop(key,None)
         self.validate_request(body)
         messages = copy.deepcopy(body["messages"])
@@ -374,6 +375,14 @@ class Gateway:
             query = " ".join(
                 p.get("text", "") for p in parts if p.get("type") == "text"
             )
+            reading=(prepare_image_question(body,messages,self.backend,self.store)
+                     if question_scope(dict(body,messages=messages)) is not None else None)
+            if reading is not None:
+                body['_scarx_image_question']=reading
+                # The attached question itself is the evidence for this turn;
+                # unrelated personal FTS hits and file tools can distract a
+                # small VLM. Keep full original instructions/history/images.
+                return messages
             # Public facts must not be grounded by an unrelated global personal
             # FTS hit. Preserve the actual tool sources and task across follow-ups.
             web, coverage = supplied_web_sources(body['messages'])
@@ -419,7 +428,7 @@ class Gateway:
         return messages
 
     def select_tool_choice(self, body, messages):
-        if body.get('_scarx_stream'):return 'none'
+        if body.get('_scarx_stream') or body.get('_scarx_image_question',{}).get('grounded_answer'):return 'none'
         web = public_web_scope(body['messages'], body.get('tools'), body.get('tool_choice'))
         if web:
             return 'none' if web['web_calls'] >= web['search_call_limit'] else body.get('tool_choice')
@@ -440,7 +449,7 @@ class Gateway:
     def native_tools(body):
         # An answer grounded in private media must not turn its injected local
         # observations into an automatic web search or remote tool payload.
-        if body.get('_scarx_stream'):return None
+        if body.get('_scarx_stream') or body.get('_scarx_image_question',{}).get('grounded_answer'):return None
         if public_web_scope(body.get('messages', []), body.get('tools'), body.get('tool_choice')):
             return [t for t in body['tools'] if t.get('function', {}).get('name') in WEB_TOOLS]
         return body.get('tools')
@@ -452,6 +461,20 @@ class Gateway:
 
     def workspace_controller_response(self, body, messages):
         if body.get('_scarx_stream'):return None
+        if body.get('_scarx_image_question'):
+            reading=body['_scarx_image_question'];grounded=reading.get('grounded_answer')
+            if grounded is None:return None
+            answer=grounded['content']
+            usage={key:sum((u or {}).get(key,0) for u in (reading.get('transcription_usage'),grounded.get('selection_usage')))
+                   for key in ('prompt_tokens','completion_tokens','total_tokens')}
+            self.store.event('image_question_grounded_answer',{
+                'answer':answer,'reference_ids':reading['reference_ids'],
+                'choice_id':grounded['choice_id'],'usage':usage,'producer':grounded['explanation_producer'],
+                'option_chosen_by':grounded['option_chosen_by'],'new_training':False},'runtime')
+            return {'id':'scarx-image-'+uuid.uuid4().hex,'object':'chat.completion','created':int(time.time()),
+                'model':'scarx-hybrid','system_fingerprint':'scarx-runtime-documentation-grounding',
+                'choices':[{'index':0,'message':{'role':'assistant','content':answer},'finish_reason':'stop'}],
+                'usage':usage,'scarx_producer':'runtime_documentation_grounded_image_answer'}
         if public_web_scope(body['messages'], body.get('tools'), body.get('tool_choice')):
             request = web_prelude(body['messages'], body.get('tools'), body.get('tool_choice'))
             if request is None:return None

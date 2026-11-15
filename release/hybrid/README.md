@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.16
+# SCAR-X Hybrid 1.0.0-rc.17
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -14,6 +14,11 @@ năm2026. Đây là runtime routing, không học SNN mới hoặc đáp án har
 RC16 giữ chủ đề công khai cho câu hỏi tiếp ngắn như “là”, “cụ thể”; một search
 theo câu hỏi gốc rồi chuyển sang trả lời, không tự tìm chủ đề khác. Câu riêng tư/
 workspace và lệnh không-search vẫn được giữ ngoài tự động web routing.
+
+RC17 thêm đọc chữ localGPU cho câu hỏi trong ảnh. Với cặp hàm RShiny đã có tài
+liệu đối chiếu, model chọn phương án hiện trong ảnh; lời giải được trình bày từ
+các ý có nguồn, trace ghi rõ runtime hỗ trợ chứ không là SNN vừa học kiến thức.
+Chưa là cải thiện vision/coding tổng quát hoặc được bảo đảm cho mọi đề bài.
 
 RC13 chỉ cho verifier số học tự xác minh các câu tính toán hoàn chỉnh nằm
 trong grammar hỗ trợ. Biểu thức nằm trong câu hỏi màu, code, chuỗi trích dẫn
