@@ -144,3 +144,28 @@ launchers were insufficient evidence for b12360. Local exact-exe --help and
 pinned arg.cpp now checked: actual flag is --load-mode none; --lazy-mode off
 explicitly forbids on-demand tensor reads. Correct only this syntax once,
 charge all prior active seconds/calls, unchanged weights/data/caps/quality.
+
+Executable specification before DEV scores: baseline kNN uses uniform voting,
+stable train-order ties; BM25 k1=1.5,b=.75, word casefold tokens, nearest labeled
+document; centroid is normalized class mean; ridge alpha1 fixed, no DEV tuning.
+All four semantic controls run both full1024D and shared PCA64. PCA uses normalized
+raw vectors, TRAINmean/SVD64 then per-sample unitFP32. Exact source is preserved.
+
+Prototype details before learning: all initial input rows normalized to unit
+length, unchanged sparse recurrence,8constant-input ALIF ticks. Input/readout
+controls share this initialization and fixed f_mean0/f_var1. Prototype inference
+is max of the21 actual ALIF feature traces in each label pool, softmax(4*pooled);
+all126neurons included even unallocated, no cosine classifier at inference.
+TRAIN: find highest input-drive allocated neuron in target pool; if none or its
+cosine<.95 and unused rows remain, imprint a new row, otherwise update winner
+with count-based alpha1/(count+1), then normalize. Count changes per chosen row;
+recurrence/readout weights not trained in prototype arm. Shuffled control uses
+an independent fixed signal RNG to randomize target label uniformly, same
+stream/replay and allowed sample count. Readout-only uses ordinary output-local
+cross-entropy delta on the same raw spike features, lr.04, element clip.025;
+hidden frozen, no feature-stat fitting. Frozen arm uses same fixed max pooling.
+Before formal training, isolated numerical/device/strictcheckpoint P0 fixtures
+at most40local attempts and200forward attempts counted inside4500/40000global
+quota. Two technical seeds and synthetic vectors are only correctness fixtures,
+not quality evidence. Seed/task bootstrap10000resamples with source text cluster
+and seed resampling,95% percentileCI, RNG260216. TESTnever used for decisions.
