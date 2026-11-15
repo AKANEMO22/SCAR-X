@@ -1,5 +1,12 @@
 # Next research step: verified error recovery, not silent retraining
 
+Update15/11: [outcome-contract P0](../docs/hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md)
+is approved/completed with exact isolated state/source/order/cost checks. Reuse
+its checker contract and audit artifacts; don't rerun its12fixtures to claim
+learning. No new SNN path, training or live deployment was approved by that P0.
+The encoder/action binding and discriminating held-out tasks below are still
+needed before P1, and old recovery-bank ceiling/retention failures remain.
+
 Status: design following the negative14/11current-learner audit; not executed,
 not a claim that semantic self-repair works. Mastergates/ALIF/localcredit remain.
 Do not scale neurons or open languagepretraining/LoRA to conceal a failed mechanism.

@@ -1,5 +1,12 @@
 # Bản đồ dự án SCAR-X
 
+[Outcome-contract P0](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md):
+`src/scarx/evaluation/outcome_contract.py` là pure checker không neural import;
+runner `scripts/run_hybrid_outcome_contract_p0.py` thực thi file/SQLite riêng,
+auditor `scripts/audit_hybrid_outcome_contract_p0.py` đọc raw states không import
+checker hoặc replay tool. `tests/test_outcome_contract.py` kiểm evidence tamper.
+Run5842c6 giữ đủ14 traces/real DB/snapshots; không import vào Hybrid serving.
+
 [Verifier theo phạm vi task](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md):
 `src/scarx/hybrid/arithmetic.py` là grammar riêng Hybrid; engine/review dùng cùng
 checker. `scripts/audit_hybrid_arithmetic_scope.py` đọc repro và predecessor ZIP,
@@ -8,7 +15,7 @@ không train. Original `src/scarx/learning/verifiers.py` giữ nguyên.
 [Audit causal input](release/evidence/CURRENT_CREDIT_INPUT_RC13_20261115.json):
 `scripts/audit_hybrid_current_credit_input.py` mã hóa lại input từ actual probes
 đã lưu và AST-compare, không gọi model hoặc tạo lại lỗi. [Outcome contract P0](../experiments/hybrid-stateful-outcome-contract-p0-v1.md)
-là đề xuất chờ duyệt, chưa có harness hoặc outcome-data mới.
+đã duyệt và có harness/data P0 như mục đầu; không ngầm cho phép P1/train.
 
 [Literature-first](RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới):
 master giữ gate; [reuse decisions](research/literature/REUSE_DECISIONS_20261115.md)

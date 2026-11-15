@@ -1,0 +1,70 @@
+{
+  "verdict": "INDEPENDENT_EXACT_STATE_ORDER_SOURCE_COST_RESCORE_MATCHES_12_FIXTURES",
+  "fixtures": 12,
+  "traces": 14,
+  "actual_owned_tool_calls": 42,
+  "comparisons": [
+    {
+      "name": "01-correct-source",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "02-wrong-source-same-content",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "03-success-without-effect",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "04-partial-effect",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "05-correct-update",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "06-wrong-record",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "07-order-reference",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "07-order-reversed",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "08-denied-before-success",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "09-loop-before-correct-read",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "10-progressing-polls",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "11-finaltext-without-proof",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "12-wrong-clarification",
+      "matches_independent_state_rescore": true
+    },
+    {
+      "name": "12-supported-clarification",
+      "matches_independent_state_rescore": true
+    }
+  ],
+  "order_pair_has_identical_final_state_and_bag_of_actions": true,
+  "live_saved_neural_state_RNG_replay_equal": true,
+  "new_tool_or_model_calls_in_audit": 0,
+  "same_orchestrator_separate_implementation_not_external_peer_approval": true,
+  "scope": "Engineering contract fixtures; not a neural accuracy/generalization/retention result",
+  "research_or_production_PASS": false
+}

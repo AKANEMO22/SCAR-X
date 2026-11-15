@@ -32,6 +32,12 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**Outcome contract P0,15/11:** người dùng duyệt “làm đi”; [lượt5842c6](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md)
+đã thực thi12 fixtures/14 traces/42 file–SQLite calls,1,078s/RSS32,4MB,0 model
+calls. Separate data/state rescore khớp14; giữ full learned live state và58 RC14
+payload/GPU. GO checker lab, chưa neural/P1/train/live promotion hoặc retention
+PASS. Pending-P0 notices bên dưới giữ lịch sử; history P0 FAIL và gates không đổi.
+
 **RC14 hardening15/11:** [verifier scope](release/ARITHMETIC_VERIFIER_SCOPE_20261115.md)
 thêm calculation cue cho bare ASCII hyphen sau review Antigravity high được
 kiểm độc lập.114 current targeted checks,5 isolated controller review cases;

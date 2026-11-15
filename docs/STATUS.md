@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## 15/11 — outcome-contract P0 đã chạy theo phê duyệt
+
+[Kết quả/audit](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md):12 fixture/14
+trace,42 file/SQLite calls thật,1,078s/RSS32,4MB. Checker tách effect, dependency,
+forbidden attempts, loop/cost và clarification field;14 independent data rescore
+khớp.0 neural/native model calls; live27 saved arrays/RNG/replay/updates5 và58
+RC14 payload/GPU giữ nguyên. Đây là GO cho checker lab, chưa SNN skill PASS.
+Antigravity high print_timeout120s, không verdict/approval. P1/train chưa mở.
+Các dòng “chờ P0” bên dưới là mốc trước khi người dùng nói “làm đi”.
+
 ## RC14 — review checker đã hoàn tất, vẫn chờ research P0
 
 [Antigravity high48,60s](release/evidence/ARITHMETIC_ANTIGRAVITY_REVIEW_20261115.json)

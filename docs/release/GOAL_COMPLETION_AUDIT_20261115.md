@@ -1,5 +1,16 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**User-approved next P0 now completed:** “làm đi” on15/11 authorized the pending
+outcome-contract P0 only. [Run5842c6](../hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md)
+executes42 actual owned file/SQLite calls on12 fixtures/14 traces with0 model
+calls. Independent implementation rescore matches14 and retained real DB/files;
+live learned arrays/RNG/replay and RC14 GPU/payload remain unchanged. The checker
+now provides an exact lab outcome contract, not permission to learn or a general
+truth oracle. This resolves the prior approval wait for P0; older pending notes
+below are historical. P1/encoder/learner changes and training remain unapproved.
+The full original goal remains incomplete: no hidden-over-RAG/retention or
+learned causal tool recovery claim follows from deterministic checker fixtures.
+
 **RC14 follow-up:** independent inspection of Antigravity high's48,60s inline
 review confirmed an ambiguous bare-hyphen labeling risk. The installed scope
 now requires an explicit calculation cue for ASCII hyphens.114 targeted checks
