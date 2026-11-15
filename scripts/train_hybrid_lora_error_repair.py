@@ -14,6 +14,7 @@ from pathlib import Path
 import sqlite3
 import struct
 import sys
+import subprocess
 import time
 import traceback
 import uuid
@@ -73,7 +74,13 @@ def main():
         if max(memory.rss,getattr(memory,'private',0))>8_000_000_000:raise MemoryError('Host memory cap')
         free,total=torch.cuda.mem_get_info()
         if free<512*1024**2:raise MemoryError('CUDA availability below reserve; no dtype reduction/fallback')
+        result=subprocess.run([str(Path(os.environ['WINDIR'])/'System32/nvidia-smi.exe'),'--id=0',
+            '--query-gpu=memory.free,memory.total','--format=csv,noheader,nounits'],capture_output=True,text=True,
+            timeout=3,check=True,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+        physical_free,physical_total=[int(x.strip())*1024**2 for x in result.stdout.strip().split(',')]
+        if physical_free<512*1024**2:raise MemoryError('Dedicated GPU reserve below512MiB')
         return {'cuda_available_free_bytes':free,'cuda_total_bytes':total,'RSS_bytes':memory.rss,
+                'dedicated_GPU_free_bytes':physical_free,'dedicated_GPU_total_bytes':physical_total,
                 'CUDA_allocated_bytes':torch.cuda.memory_allocated(),'CUDA_reserved_bytes':torch.cuda.memory_reserved()}
     def charge(kind,identifier):
         nonlocal forward_calls,attempts
@@ -152,6 +159,16 @@ def main():
         model.save_pretrained(artifact,safe_serialization=True);tokenizer.save_pretrained(artifact)
         report['adapter_path']=str(artifact.relative_to(ROOT))
         model.gradient_checkpointing_disable();evaluate('final')
+        # Roundtrip a saved adapter through a separately named PEFT instance
+        # on the same immutable base. This is a persistence check, not a new arm.
+        charge('roundtrip','default-before-reload');prompt,_=tokens(train[0])
+        fixed=torch.tensor([prompt],device='cuda:0')
+        with torch.no_grad():expected=model(input_ids=fixed,use_cache=False,logits_to_keep=1).logits.detach().clone()
+        model.load_adapter(str(artifact),adapter_name='roundtrip',is_trainable=False)
+        model.set_adapter('roundtrip');charge('roundtrip','loaded-adapter')
+        with torch.no_grad():restored=model(input_ids=fixed,use_cache=False,logits_to_keep=1).logits.detach()
+        if not torch.equal(expected,restored):raise ValueError('Saved/reloaded adapter logits differ')
+        report['save_reload_logits_exact']=True;model.set_adapter('default')
         # Parameter objects point to frozen base tensors even after adapter wrapping.
         assert all(tensor_hash(p)==base_hashes[name] for name,p in source_to_loaded.items())
         baseline=[p for p in report['predictions'] if p['phase']=='baseline' and p['split']=='TEST']

@@ -80,3 +80,33 @@ CPU/CUDA hard-spike trajectory parity. No inference into live/user checkpoints.
 If A stops, B remains unexecuted, explicit result; do not claim user request
 has been scientifically completed. Publish actual sources/calls/loss/synapse
 updates/guards/rollbacks with origin in localhost; no mock thinking or scores.
+
+## After DEV qualification, locked before SNN updates
+
+DEVce3cae:rule62.5%, verified-experience retrieval75%, finite action oracle87.5%,
+headroom12.5pp; threshold5pp unchanged. Extend the same native prompt/macro loop
+to32TRAIN+16TEST, max336additional unique calls; keep DEV table immutable.
+No winner/prompt is chosen onTEST. TRAIN/TEST labels come from actual common
+VLM+executor outcomes on independent snapshots; shared outcomes reused across
+selectors prevent a second LLM from making one selector look better.
+
+Concrete online stream:20stages×12samples, cycling four actual error types;
+32unique TRAIN errors reused over240 exposures (not240new experiences/skills).
+12 replay attempts per stage from64-entry reservoir for learned arms. At each
+exposure, a fixed common exploration schedule chooses one of all6slots, then
+verified utility from that action's actual precomputed branch supplies+1/-1.
+All learned arms receive the same behavior actions/rewards; this is disclosed
+off-policy experience learning, not on-policy neural credit assignment. Neural
+selectors are evaluated separately before/after stages on unseen TEST inputs.
+Negative utility means the owned task was not completed within the action/tool
+contract, not that an unverified factual claim is false. No TEST target/reward
+enters learn or retrieval. Same stream/feedback access for all controls.
+
+Three seeds×four ALIF arms, learned/readout/shuffle each480updates=4320update
+attempts total, below4500; frozen0. TEST16probes after each of20stages, report
+old error-family retention across the20learning stages (four recurring families,
+not20distinct skills or long wall-clock retention). Record actual executed action
+effect from branch lookup, not teacher-forced accuracy or LLMjudge. Fixed-rule
+and lexical-experience retrieval as well as frozen/readout controls remain visible.
+Acquisition65%, gain5pp/lowerCI>0, forgetting3/5pp unchanged. Final hidden reset
+and shuffled control with matched steps/input/budget; no selection of best seed.
