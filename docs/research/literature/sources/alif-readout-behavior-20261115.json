@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-15",
+  "document": "docs/research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md",
+  "status": "MATHEMATICAL_DRAFT_NOT_RUNTIME_CERTIFIED",
+  "source_commit": "2780bcefbd64942fa413f0643c1b9b42e265fae1",
+  "input": {
+    "name": "Văn bản đã dán.txt",
+    "sha256": "f85185be4d110723c6c9bcbdb11131c6096247965f5618652276057383297008",
+    "bytes": 9211,
+    "scope": "Full input read; paper-only core/readout preservation with hidden changes"
+  },
+  "source_files": [
+    {
+      "path": "src/scarx/hybrid/learner.py",
+      "sha256": "c38f7dd9412da3bc14a02a3a83611941d15aee1c558c05f4bd26671a6872111a",
+      "read_ranges": [
+        [
+          173,
+          211
+        ],
+        [
+          247,
+          287
+        ]
+      ],
+      "scope": "Read source only, no import or neural execution"
+    },
+    {
+      "path": "src/scarx/neural/core.py",
+      "sha256": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+      "read_ranges": [
+        [
+          94,
+          130
+        ]
+      ],
+      "scope": "Read source only, no import or neural execution"
+    }
+  ],
+  "prior_spike_spec": "docs/research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md",
+  "assumptions": [
+    "W_in-only deterministic ALIF with fixed input/topology/config and initial state",
+    "Fixed normalization, masked readout/bias and allowed/tie contract",
+    "Finite valid evidence set S",
+    "Real arithmetic analysis; no FP32/CUDA certificate"
+  ],
+  "deductions": [
+    "Softmax probability preservation iff fixed-head logit differences are preserved in real arithmetic",
+    "Head6 over128continuous features has readout-difference nullspace dimension at least123, not proof of reachable neural plasticity",
+    "Exact behavior-safe parameter region is a union of spike-pattern cells and need not be convex or monotone along a proposed ray",
+    "Hidden spike changes introduce recurrent/adaptation terms, invalidating the fixed-old-spike voltage shortcut",
+    "Neuron permutation with consistent transformed readout and state preserves inference but does not by itself create semantic capacity"
+  ],
+  "operation_count_example": {
+    "M": 100000,
+    "H": 128,
+    "d": 64,
+    "dense_dot_contributions": 819200000,
+    "approx_FLOPs_at_two_per_MAC": 1638400000,
+    "benchmark": false
+  },
+  "not_proven": [
+    "Useful local update reaching a behavior-safe different spike pattern",
+    "Acquisition/retention gate success",
+    "Cheap sound feature bound from W_in update",
+    "Floating-point safety",
+    "New architecture novelty",
+    "Complete-history coverage from subset replay"
+  ],
+  "literature": [
+    {
+      "url": "https://arxiv.org/abs/2209.04836v6",
+      "scope": "Abstract/metadata reread; permutation prior art, not local ALIF training equivalence proof"
+    },
+    {
+      "url": "https://papers.neurips.cc/paper_files/paper/2020/hash/2f3bbb9730639e9ea48f309d9a79ff01-Abstract.html",
+      "scope": "Publisher abstract reread; functional regularisation prior art, no code or reproduction"
+    }
+  ],
+  "operations": {
+    "model_calls": 0,
+    "synapse_updates": 0,
+    "model_fitting": false,
+    "neural_or_symbolic_fixtures": false,
+    "new_dataset": false,
+    "new_experiment": false,
+    "source_or_live_changes": false
+  },
+  "ponytail": "Unavailable in enabled tool inventory"
+}

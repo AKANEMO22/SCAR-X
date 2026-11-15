@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — đặc tả bảo toàn core–readout, hidden được phép đổi spike
+
+[Spec](research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md) tách giữq/
+p/label; cận nullspace head6class≥123chiều là feature algebra, không capacity
+neural đã chứng minh. Behavioral safe-step có phản ví dụ không đơn điệu;
+không tự binarysearch hoặc dùng surrogate làm certificate. 819,2MMAC chỉ là
+đếm cho ví dụM100K/H128/d64.0modelcalls/updates/fixtures/train; core/main/
+Hermes/gates và historical raw nguyên vẹn, chưa FP32certificate/learner.
+
 ## 15/11 — cụ thể hóa relation-update operator, chỉ đặc tả
 
 [Contract](research/ALIF_RELATION_UPDATE_SPEC_20261115.md) tách worldstate/

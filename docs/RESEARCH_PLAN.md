@@ -9,6 +9,12 @@ triển khai; không mở P0/thí nghiệm/inference/training hoặc đổi mode
 Phần đề xuất tách khỏi kiến trúc đã có, tính mới và lợi ích vẫn cần kiểm chứng.
 Các phê duyệt training trước giữ lịch sử, không được dùng để tự mở lượt mới.
 
+**Câu hỏi tiếp15/11 — core/readout:** [behavior-preservation spec](research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md)
+phân biệt giữ feature/probability/decision khi hidden được đổi spike. Có điều
+kiện logitmargin, feature-nullspace và bound có giả định; chưa biết update
+ALIF-local nào đạt gain hoặc numerical certificate nào đủ rẻ. Không mở guard,
+code/fixture/train hoặc coi feature nullspace là capacity neural đã chứng minh.
+
 **Đặc tả toán được yêu cầu tiếp15/11:** [bảo toàn giao diện spike ALIF](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md)
 giữ nguyên neuron/learner và chỉ phân tích điều kiện W_in-only, miền giữ spike,
 hướng học còn lại và các giới hạn. Không bảo đảm runtimeFP32 hoặc acquisition;

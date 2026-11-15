@@ -291,3 +291,7 @@ Không nới ngưỡng đã đăng ký. Main/Hermes/liveALIF và raw/protocol l�
 **Cụ thể hóa tiếp theo, chưa thực thi:** [relation-update contract](ALIF_RELATION_UPDATE_SPEC_20261115.md)
 xét một phép đổi vị trí theo event. Phân biệt kỹ năng neural với worldstate
 và phần interface cung cấp sẵn; không biến proof này thành acquisition claim.
+
+**Contract ít bảo thủ hơn, chưa thực thi:** [core–readout behavior preservation](ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md)
+xét giữ probability/decision thay vì mọi spike. Miền khả đạt của ALIF và
+chi phí/soundness còn mở; spec gốc vẫn là một sufficient innerregion.

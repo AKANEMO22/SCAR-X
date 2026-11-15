@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[Core/readout behavior15/11](research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md):
+spikes→features→normalize→head→decision, các contract giữ chức năng và giới
+hạn reachability/nonmonotone step/numerics. Chỉ đặc tả, không learner mới.
+
 [ALIF relation operator15/11](research/ALIF_RELATION_UPDATE_SPEC_20261115.md):
 state/event → encoding/decoder đề xuất → shortcut counterexamples → memory
 baseline → attribution/protection limits. Chưa code, data hoặc run mới.

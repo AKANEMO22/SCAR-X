@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Core–readout trên giấy15/11:** [giữ behavior khi hidden đổi spike](ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md).
+Tách feature/probability/label, margin/tie, reachablefeatures và chi phí.
+Miền behavior theo weight ray có thể không đơn điệu; chưa binarysearch/guard
+hoặc run mới. Không gọi nullspace readout là dung lượng kỹ năng còn lại.
+
 **Operator cụ thể trên giấy15/11:** [relation update](ALIF_RELATION_UPDATE_SPEC_20261115.md)
 định nghĩa INIT/MOVE/END, joint-state output và evidence/correction policy.
 Chưa encoder/head implementation; hai bit state ngữ nghĩa đã đủ cho miền
