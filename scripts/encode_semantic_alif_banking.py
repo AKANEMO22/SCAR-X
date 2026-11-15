@@ -17,9 +17,13 @@ def main():
     prior = ROOT / 'runs/20261115T093544Z-semantic-encoder-v1-84f936'
     prior_result = json.loads((prior / 'result.json').read_text(encoding='utf-8'))
     assert prior_result['attempts'] == 1 and not prior_result['completed']
-    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-v2-' + uuid.uuid4().hex[:6])
+    second = ROOT / 'runs/20261115T093631Z-semantic-encoder-v2-5bbf9f'
+    second_result = json.loads((second / 'result.json').read_text(encoding='utf-8'))
+    assert not second_result['completed'] and second_result['attempts'] == 0
+    remaining_seconds = 600 - prior_result['elapsed_seconds'] - second_result['elapsed_seconds']
+    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-recovery-p0-' + uuid.uuid4().hex[:6])
     run.mkdir()
-    with (ROOT / 'local/semantic-encoder-v2-execution.json').open('x', encoding='utf-8') as f:
+    with (ROOT / 'local/semantic-encoder-recovery-p0-execution.json').open('x', encoding='utf-8') as f:
         json.dump({'run': str(run)}, f)
     (ROOT / 'local/current-semantic-encoder.txt').write_text(str(run), encoding='utf-8')
     source = Path((ROOT / 'local/current-semantic-ALIF-data.txt').read_text(encoding='utf-8').strip())
@@ -40,7 +44,9 @@ def main():
     for flag, value in (('--port', '18786'), ('--api-key', token), ('--alias', 'scarx-semantic-encoder')):
         if flag in args:
             args[args.index(flag) + 1] = value
-    args += ['--embeddings', '--pooling', 'last']
+    if '--mmap' in args:
+        args.remove('--mmap')
+    args += ['--embeddings', '--pooling', 'last', '--no-mmap']
     assert '--lora' not in args
     manifest = {
         'data_run': source.name, 'data_sha256': hashlib.sha256(data_bytes).hexdigest(),
@@ -49,8 +55,9 @@ def main():
             'scripts/encode_semantic_alif_banking.py', 'experiments/semantic-alif-local-prototypes-v1.md')},
         'native_exe_sha256': hashlib.sha256(Path(args[0]).read_bytes()).hexdigest(),
         'native_model_sha256': hashlib.sha256(Path(args[args.index('-m') + 1]).read_bytes()).hexdigest(),
-        'max_calls': 609, 'max_seconds': 598.063, 'combined_max_calls': 610,
+        'max_calls': 609, 'max_seconds': remaining_seconds, 'combined_max_calls': 610,
         'prior_charged_calls': 1, 'prior_run': prior.name, 'text_context_tokens': 512,
+        'second_closed_run': second.name, 'model_memory_mapping': False,
         'pooling': 'last', 'precision': 'original BF16/F32',
         'encoder_inputs': 'raw public utterance only; never labels/intent names/split/IDs',
         'SNN_updates': 0, 'VLM_updates': 0, 'live_adapter_changed': False,
@@ -64,7 +71,7 @@ def main():
     trace = Store(ROOT / 'local/hybrid-v1')
     records, vectors, failures = [], [], []
     def guard():
-        if time.monotonic() - started > 598.063:
+        if time.monotonic() - started > remaining_seconds:
             raise TimeoutError('600second encoder budget')
         native.check()
         output = subprocess.check_output([str(Path(os.environ['WINDIR']) / 'System32/nvidia-smi.exe'),
@@ -73,8 +80,11 @@ def main():
         free = int(output.strip()) * 1024**2
         if free < 512 * 1024**2:
             raise MemoryError('512MiB discrete GPU reserve')
-        if process and psutil.Process(process.pid).memory_info().rss > 2_000_000_000:
-            raise MemoryError('Encoder worker2GB resident cap')
+        if process:
+            memory = psutil.Process(process.pid).memory_info()
+            report['last_worker_memory'] = {'RSS': memory.rss, 'private_commit': getattr(memory, 'private', None)}
+            if memory.rss > 2_000_000_000:
+                raise MemoryError('Encoder worker2GB resident cap: ' + str(memory.rss))
         return free
     def call(path, body=None):
         with urlopen(Request('http://127.0.0.1:18786' + path,

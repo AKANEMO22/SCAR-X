@@ -127,3 +127,14 @@ text weights/precision/source, same data and2GBworker/512MiBGPU guards. No neura
 training. Charge original1call/1.937seconds against combined610call/600second
 budget; no reset/refund. No quality selection has occurred. If this reduced
 buffer configuration also fails, stop encoder study, not increase its cap.
+
+V2 stopped before any embedding at the same guard; both runs are closed.
+Engineering recovery P0 under latest user authorization tests one explicit
+native loading-path change, --no-mmap (author b12360 common/arg.cpp, also used
+by existing SCAR-X control launchers). No forced working-set trim/pagefile or
+weight streaming, no guard increase. Offloaded original weights remain onGPU;
+remove unnecessary memory-mapped host model view. Record RSS/private commit
+and exact flags. The two closed failures stay failures. At most one recovery
+launch, combined calls<=610 and summed active wall<=600seconds across all
+three. If E0 passes, extract the same locked public utterances; otherwise stop
+this feature path without neural training. This is not a scientific success.
