@@ -1,5 +1,18 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Latest authorized P1B/LoRA work:** [report](../hybrid/P1B_AND_LORA_RESULT_20261115.md)
+uses actual112source-tool calls and392 common native action/RAG inputs. DEV
+initially passed usefulness, but TRAIN/TEST action ceilings cannot exceed
+strongest experience control by5pp; SNN runner stopped with0updates, no new
+readout-only/retention conclusion. This is a useful pretraining stop, not hidden
+learning success. A separate native-dtype VLM LoRA actually trained32steps on
+TRAIN-only corrections, saved/reloaded exactly, and improved its16-case
+Transformers pilot6→16correct; effect replay confirms outputs. One API/one seed,
+no oldskill/20stage retention, no native-GGUF quality qualification or live
+adapter promotion. ALIF weights/RNG/replay/liveupdates5 stay exactly unchanged.
+The full goal remains incomplete; next mechanism study must change the
+discriminating hypothesis/action usefulness rather than train the closed bank.
+
 **P1A-v2 now qualified technically:** user approved the fresh confirmation.
 [Run6e203c](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md) passed the
 eight frozen neural/action/outcome interface cases with independent data audit,

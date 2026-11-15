@@ -32,6 +32,13 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**P1B/LoRA15/11:** user đã duyệt train/LoRA riêng; [kết quả](hybrid/P1B_AND_LORA_RESULT_20261115.md)
+cho thấy TEST action oracle không hơn RAG, nên dừng trước SNN train theo gate5pp,
+không lấy retention chưa đo thành PASS. LoRA32steps native-base/FP32 adapter
+riêng cải thiện16-case pilot6→16correct, actual tool-effect replay khớp; chưa
+multiseed/oldskill/20stage/production hoặc SNN gain. Base/ALIF live nguyên vẹn,
+adapter không tự cài. Các pending/no-LoRA notices cũ là lịch sử; không nới gates.
+
 **P1A-v2,15/11 — technical PASS:** user duyệt confirmation riêng; [run6e203c](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md)
 đạt8 interface cases/two technical seeds,18 CUDA forwards/8 macro executions/
 2 denials,0 learning. E0/guard/dedicated GPU reserve và checkpoint/journal qua

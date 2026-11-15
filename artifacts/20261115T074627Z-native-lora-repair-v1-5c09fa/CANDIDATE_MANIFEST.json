@@ -1,0 +1,31 @@
+{
+  "adapter_source": "20261115T074627Z-native-lora-repair-v1-5c09fa",
+  "base_model": "Qwen/Qwen3.5-0.8B",
+  "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "rank": 4,
+  "alpha": 8,
+  "train_steps": 32,
+  "new_adapter_tensor_precision": "FP32",
+  "source_and_GGUF_tensor_counts": 24,
+  "GGUF_all_tensors_F32": true,
+  "Frobenius_norm_and_element_counts_preserved_after_converter_layout_permutations": true,
+  "quantization_pruning_or_base_weight_changes": false,
+  "llama_cpp_converter_version": "b12360",
+  "GGUF_converted_but_not_native_inference_qualified": true,
+  "live_Hermes_adapter_installed": false,
+  "general_or_long_term_retention_verified": false,
+  "files": {
+    "adapter\\adapter_config.json": {
+      "bytes": 1170,
+      "sha256": "8114982f5834351ad80ae867ff97fd061aeb87e9b7aa95ae9e39bf44f74bcf14"
+    },
+    "adapter\\adapter_model.safetensors": {
+      "bytes": 642472,
+      "sha256": "f1286d4fa6d6eb967a1599fe6540a5f424f3a320a561b3b1aaa7d4b9c501898c"
+    },
+    "adapter-f32.gguf": {
+      "bytes": 641280,
+      "sha256": "2c92092edaf5781f91a6c788e56787bc5a15b0456dbe041898d865b0bf674c12"
+    }
+  }
+}

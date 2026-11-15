@@ -1,0 +1,28 @@
+{
+  "seed": 260115,
+  "source_git_sha": "0e6c03785d210d89ae73d951fd0c24a7d922918b",
+  "source_sha256": {
+    "scripts/train_hybrid_lora_error_repair.py": "f53636f5afe2fdfa8b00ae5b2682f1824813555eeae5029940e0a1aae1e5b29d",
+    "experiments/hybrid-lora-error-repair-pilot-v1.md": "75cf7fec96302852d7c13ccd934c4c914ba8d273b01633a46161936d6b0c8f95",
+    "scripts/qualify_hybrid_repair_data.py": "77d37dcd750ddc6666e7d238fe1a27ee37b51b9ade751b4c7aee2ee8c4744b31"
+  },
+  "data_run": "20261115T073642Z-repair-data-qualified-v2-2d102f",
+  "data_sha256": "ccda757d118d8890b0348b3ab75bb511a97b933f680b280af95b0f57ddfe9db1",
+  "base_header_sha256": "44db78c384ece32b3a1fcedd12334a0213489b26edd0b696c94ff5b0a0be0c97",
+  "max_optimizer_attempts": 32,
+  "max_generation_probes_per_phase": 20,
+  "max_total_forward_calls": 128,
+  "base_model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "base_precision": "BF16 + original FP32 tensors",
+  "LoRA": {
+    "rank": 4,
+    "alpha": 8,
+    "dropout": 0,
+    "targets": [
+      "q_proj",
+      "v_proj"
+    ],
+    "lr": 0.0001
+  },
+  "no_ALIF_learning_or_live_promotion": true
+}

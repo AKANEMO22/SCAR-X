@@ -123,6 +123,11 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 
 ## Giới hạn còn lại
 
+-[P1B/LoRA15/11](../hybrid/P1B_AND_LORA_RESULT_20261115.md): đã có trained adapter
+  candidate riêng, nhưng chưa áp vào RC14. TEST pilot hẹp không là retention/
+  production PASS. SNN training dừng ở action-usefulness gate (oracleTEST bằng
+  RAG), không tự thay ALIF/weights hoặc gọi LoRA gain là hidden-neuron gain.
+
 - [P1A-v2](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md) đã qua
   frozen neural/action/outcome technical gate tronglab;0 learning, chưa cài
   wrapper/adapter/guard vào RC14. Không phải learned self-repair/retention hoặc

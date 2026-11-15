@@ -1,5 +1,15 @@
 # Bản đồ dự án SCAR-X
 
+[P1B/LoRA](hybrid/P1B_AND_LORA_RESULT_20261115.md):
+`prepare_hybrid_verified_repair_data.py` gọi actual ToolTalk errors/corrections;
+`qualify_hybrid_repair_data.py` cân bằng template/error trước inference, giữ raw.
+`qualify_hybrid_p1b_action_usefulness.py` và outcome expansion đo common native
+VLM effects; `audit_hybrid_p1b_action_bank.py` replay nguồn/state độc lập.
+SNN runner chặn training khi oracle-control margin không đủ; chưa học/retention.
+`train_hybrid_lora_error_repair.py` chỉ train VLM LoRA qua PEFT, không ALIF import;
+owned resource window có restore. `audit_hybrid_lora_repair_pilot.py` kiểm saved
+outputs bằng actual executor, split/counters/adapter. Candidate artifact chưa live.
+
 [P1A-v2](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md):
 `scripts/prepare_neural_bridge_confirmation_v2.py` tạo runner v2 từ archived
 v1 source, AST-check toàn per-seed loop. Runner v2 dùng sticky SDK guard và

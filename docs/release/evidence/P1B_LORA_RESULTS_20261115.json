@@ -1,0 +1,61 @@
+{
+  "verdict": "P1B_ACTION_BANK_STOP_AND_LORA_PILOT_IMPROVEMENT_SEPARATELY_VERIFIED",
+  "P1B": {
+    "native_counterfactual_calls": 392,
+    "TRAIN_rule_RAG_oracle": [
+      27,
+      30,
+      29
+    ],
+    "TRAIN_count": 32,
+    "DEV_rule_RAG_oracle": [
+      5,
+      6,
+      7
+    ],
+    "DEV_count": 8,
+    "TEST_rule_RAG_oracle": [
+      9,
+      10,
+      10
+    ],
+    "TEST_count": 16,
+    "max_TEST_SNN_gain_over_RAG_pp": 0,
+    "SNN_updates": 0,
+    "readout_only_or_retention_new_measurements": false,
+    "registered_stop_respected": true
+  },
+  "LoRA": {
+    "actual_optimizer_steps": 32,
+    "TRAIN_count": 32,
+    "TEST_baseline_correct": 6,
+    "TEST_final_correct": 16,
+    "TEST_count": 16,
+    "same_Transformers_backend": true,
+    "single_seed": 260115,
+    "base_dtypes_and_weights_unchanged": true,
+    "original_MTP_tensors_preserved_frozen": 15,
+    "adapter_parameters": 159744,
+    "adapter_tensor_count": 24,
+    "adapter_precision": "FP32",
+    "PEFT_adapter_bytes": 642472,
+    "GGUF_adapter_bytes": 641280,
+    "save_reload_logits_exact": true,
+    "heldout_actual_effect_replay_matches": true,
+    "exploratory_family_CI95_gain_pp": [
+      25.0,
+      100.0
+    ],
+    "long_term_or_general_retention_measured": false,
+    "native_GGUF_inference_qualified": false,
+    "installed_in_Hermes": false
+  },
+  "live_saved_neural_state_RNG_replay_equal": true,
+  "live_updates": 5,
+  "runtime_intent_restored": "auto",
+  "live_GPU_VLM_warm": true,
+  "research_or_production_PASS": false,
+  "raw_result_sha256": "7cdaa8960e8a24aed7aefe5782b3db21412c4dd5c95f64eaf88e5e12907a1b91",
+  "LoRA_audit_sha256": "cb24ad20367d6ce2e05d478c3c2aef8572ace1b377a727ab533c9f54fba82a66",
+  "P1B_bank_audit_sha256": "36f11a385a57500d8d004af900bacf298f8516fbfe033c9cbb6ceaba27d29dae"
+}

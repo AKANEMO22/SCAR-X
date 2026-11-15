@@ -326,5 +326,22 @@ src/scarx/evaluation/bridge_environment_metrics.py -text
 tests/test_bridge_effect_guard.py text eol=lf
 scripts/prepare_neural_bridge_confirmation_v2.py -text
 scripts/run_hybrid_neural_outcome_bridge_p1a_v2.py -text
+scripts/train_hybrid_lora_error_repair.py -text
+scripts/train_hybrid_p1b_local_policy.py -text
+scripts/qualify_hybrid_p1b_action_usefulness.py -text
+scripts/build_hybrid_p1b_training_outcomes.py -text
+scripts/prepare_hybrid_verified_repair_data.py -text
+scripts/qualify_hybrid_repair_data.py -text
+scripts/run_hybrid_lora_owned_window.py -text
+scripts/audit_hybrid_lora_repair_pilot.py -text
+scripts/audit_hybrid_p1b_action_bank.py -text
+runs/*-verified-repair-data-v1-*/** -text -whitespace
+runs/*-repair-data-qualified-v2-*/** -text -whitespace
+runs/*-p1b-action-usefulness-v1-*/** -text -whitespace
+runs/*-p1b-train-test-outcomes-v1-*/** -text -whitespace
+runs/*-p1b-local-error-learning-v1-*/** -text -whitespace
+runs/*-native-lora-repair-v1-*/** -text -whitespace
+runs/*-p1b-action-bank-data-audit-*/** -text -whitespace
+runs/*-lora-repair-audit-v1-*/** -text -whitespace
 experiments/hybrid-neural-bridge-guard-confirmation-v2.md -text
 runs/*-neural-outcome-bridge-p1a-v2-*/** -text -whitespace

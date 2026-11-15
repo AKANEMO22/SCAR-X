@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## 15/11 — P1B usefulness STOP; một LoRA candidate đã train thật
+
+[Báo cáo/kết quả tách attribution](hybrid/P1B_AND_LORA_RESULT_20261115.md):392
+actual native action/retrieval calls; independent executor replay khớp. TEST
+RAG10/16 bằng6-action oracle10/16, không thể đạt gain5pp; dừng trước local SNN
+updates, chưa đo retention/readout-only mới, giữ toàn gates và kết quả cũ.
+Pilot LoRA riêng32steps/79s có TEST6→16/16 trên same Transformers backend,
+40outputs được replay effect,24 FP32 adapter tensors~642KB; save/reload exact,
+base native dtypes/full tensors giữ nguyên. Một seed/task hẹp, chưa retention/
+general-production PASS; chưa cài adapter vào Hermes. Live auto/warmGPU/learning
+restored, saved synapses/RNG/replay/updates5 giữ nguyên. Không main/R13/merge/push.
+
 ## 15/11 — P1A-v2 technical PASS, chưa learning PASS
 
 [Run6e203c và audit](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md):18
