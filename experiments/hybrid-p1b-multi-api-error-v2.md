@@ -94,3 +94,12 @@ Publish actual errors/model answers/loss/deltas/guard/retention events to8775.
 
 Any quality-gate failure is an honest negative conclusion; do not scale model,
 rewrite thresholds, drop a strong control, tune epochs/LR or promote intoHermes.
+
+Source-status compatibility note before first native/SNN call:0ddc0e stopped
+with0native calls/0updates because the private effect checker expected
+CompleteReminder status"completed", matching API description but not its actual
+source line134 which sets"complete". Fix that enum only to match the intended
+exact source effect; no score/threshold/learning/data/split/prompt change. The
+original failure source/result remain, marker consumed. A separate zero-call
+source-compatibility continuation must pin the original failure hash and reject
+if any model/update was consumed. This is not permission to retry failed scores.

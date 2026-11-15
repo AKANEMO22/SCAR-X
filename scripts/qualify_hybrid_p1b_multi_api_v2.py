@@ -29,14 +29,22 @@ def effect(before,after,row,owner):
         reduced=copy.deepcopy(after);del reduced['Reminder'][owner][ident]
         return reduced==before
     ident=row['correct_request']['parameters']['reminder_id' if api=='CompleteReminder' else 'alarm_id']
-    if api=='CompleteReminder':expected['Reminder'][owner][ident]['status']='completed'
+    if api=='CompleteReminder':expected['Reminder'][owner][ident]['status']='complete'
     else:del expected['Alarm'][owner][ident]
     return after==expected
 
 
 def main():
     start=time.time();run=ROOT/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-p1b-multi-api-v2-'+uuid.uuid4().hex[:6]);run.mkdir()
-    with (ROOT/'local/p1b-multi-api-v2-execution.json').open('x',encoding='utf-8') as f:json.dump({'run':str(run)},f)
+    previous=ROOT/'local/p1b-multi-api-v2-execution.json'
+    if not previous.exists():raise ValueError('This source compatibility continuation requires the original zero-model-call failure')
+    original=Path(json.loads(previous.read_text(encoding='utf-8'))['run'])
+    failure=json.loads((original/'result.json').read_text(encoding='utf-8'))
+    if failure['native_calls']!=0 or failure['SNN_updates']!=0 or failure['failures']!=['AssertionError: ']:
+        raise ValueError('No automatic retry of a model/learning result or other failure')
+    with (ROOT/'local/p1b-multi-api-v2-source-status-compatibility.json').open('x',encoding='utf-8') as f:
+        json.dump({'run':str(run),'original_zero_model_failure':original.name,
+                   'original_result_SHA256':hashlib.sha256((original/'result.json').read_bytes()).hexdigest()},f)
     (ROOT/'local/current-p1b-multi-api-v2.txt').write_text(str(run),encoding='utf-8')
     sources=[Path(__file__),ROOT/'experiments/hybrid-p1b-multi-api-error-v2.md',ROOT/'src/scarx/evaluation/tooltalk_sandbox.py',ROOT/'src/scarx/evaluation/shared_native.py']
     hashes={}
