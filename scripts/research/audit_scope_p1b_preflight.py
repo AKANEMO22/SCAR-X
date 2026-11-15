@@ -68,6 +68,7 @@ def main():
            "old_valid_construction":all(old_ok),
            "conditional_trace_variation":min(variances)>1e-6,
            "physical_update_distinguishable":all(g["median_relative_physical_difference"]>.01 for g in groups) and max(diff)>1e-6}
+    gates={key:bool(value) for key,value in gates.items()}
     result={"audit_pass":not fail,"failures":fail,"independently_reconstructed_gates":gates,
             "teacher_accuracy":float(np.mean(teacher)),"witness_accuracy":float(np.mean(witness)),
             "min_conditional_trace_variance":min(variances),"groups":groups,"max_delta_error":maxdelta,

@@ -198,7 +198,9 @@ class ALIF:
                 "before_correct": int(np.argmax(p)) == label,
                 "hidden_delta_L2": float(xp.linalg.norm(delta)) if arm != "readout" else 0.,
                 "direction_L2": float(xp.linalg.norm(direction)),
-                "hint_bank_L2": float(xp.linalg.norm(bank)), "updates": self.updates}
+                "hint_bank_L2": float(xp.linalg.norm(bank)), "updates": self.updates,
+                "direction_array": self.host(direction).copy(), "hint_bank_array": self.host(bank).copy(),
+                "probabilities_before": p.copy()}
 
     def dumps(self):
         arrays = {"core_"+k: self.host(v) for k, v in self.core.arrays().items()}
