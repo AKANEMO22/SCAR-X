@@ -21,6 +21,9 @@ def messages(query):
     'jojo ra tập mới nhất là tập bn','jojo ra mấy seasion rồi',
     'Python phiên bản mới nhất là gì?', 'What is the current episode of JoJo?',
     'Tìm trên web về JoJo',
+    'việt nam có bao nhiêu tỉnh thành 2026',
+    'Năm 2026 Việt Nam có mấy thành phố trực thuộc trung ương?',
+    'How many provinces does Vietnam have in 2026?',
 ])
 def test_public_freshness_queries_request_real_web_tool_not_local_files(query):
     original=messages(query);before=copy.deepcopy(original)
@@ -52,6 +55,12 @@ def test_bare_search_followup_uses_previous_user_topic_not_assistant_or_tool_ins
     'Tìm trên web mật khẩu của tôi', 'Latest result in C:\\private\\data.txt',
     'Video này tập mới nhất là tập nào?', 'What is on this screen now?',
     'Search the web for user@example.com', '[OUT-OF-BAND USER MESSAGE — latest episode]',
+    'Năm 2026 đọc file dân số trong workspace',
+    'Không tìm trên mạng, Việt Nam có bao nhiêu tỉnh thành 2026?',
+    'Lương của tôi năm 2026 là bao nhiêu?',
+    'Tính 2026 + 34 là bao nhiêu?',
+    'Viết truyện về Việt Nam năm 2026',
+    'là',
 ])
 def test_private_local_negative_or_control_inputs_are_not_auto_exported(query):
     assert web_prelude(messages(query),TOOLS) is None

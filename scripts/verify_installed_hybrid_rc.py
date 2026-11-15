@@ -49,6 +49,7 @@ def main():
         '1.0.0-rc.12':('local/web-context-release-20261115/python.xml',332),
         '1.0.0-rc.13':('local/web-context-release-20261115/python.xml',332),
         '1.0.0-rc.14':('local/web-context-release-20261115/python.xml',332),
+        '1.0.0-rc.15':('local/web-context-release-20261115/python.xml',332),
     }
     receipt_path,expected_count=receipts[manifest['version']]
     suite=ET.parse(ROOT/receipt_path).getroot().find('testsuite')
@@ -92,6 +93,9 @@ def main():
     if manifest['version']=='1.0.0-rc.14':
         target=ET.parse(ROOT/'local/arithmetic-task-scope-release-20261115.xml').getroot().find('testsuite')
         assert target.attrib['tests']=='114' and target.attrib['errors']==target.attrib['failures']=='0'
+    if manifest['version']=='1.0.0-rc.15':
+        target=ET.parse(ROOT/'local/dated-public-route-20261115.xml').getroot().find('testsuite')
+        assert target.attrib['tests']=='122' and target.attrib['errors']==target.attrib['failures']=='0'
     evidence=json.loads((ROOT/'docs/release/evidence/RC3_OPERATIONAL_SMOKE_20261114.json').read_text(encoding='utf-8'))
     assert evidence['installed_P0_candidates_exact'] and evidence['research_or_production_PASS'] is False
     sys.path.insert(0,str(ROOT/'src'))
@@ -107,10 +111,11 @@ def main():
             'native_asset_Hermes_dependency_pins_match':True,
             'Python_checks_passed':len(cases)-len(skipped),'native_CPU_parity_skipped':len(skipped),
             'Python_regression_receipt':receipt_path,
-            'full_regression_reused_from_RC11':manifest['version'] in ('1.0.0-rc.12','1.0.0-rc.13','1.0.0-rc.14'),
+            'full_regression_reused_from_RC11':manifest['version'] in ('1.0.0-rc.12','1.0.0-rc.13','1.0.0-rc.14','1.0.0-rc.15'),
             'RC12_current_wrapper_review_feedback_targeted_checks':35 if manifest['version']=='1.0.0-rc.12' else None,
             'RC13_current_arithmetic_review_cognition_feedback_web_targeted_checks':82 if manifest['version']=='1.0.0-rc.13' else None,
             'RC14_current_arithmetic_review_cognition_feedback_web_package_targeted_checks':114 if manifest['version']=='1.0.0-rc.14' else None,
+            'RC15_current_dated_public_web_gateway_evidence_package_targeted_checks':122 if manifest['version']=='1.0.0-rc.15' else None,
             'long_input_and_compaction_evidence':'docs/release/evidence/LONG_INPUT_AND_COMPACTION_20261114.json',
             'request_owned_media_evidence':'docs/release/evidence/MEDIA_ADMISSION_REPAIRS_20261114.json',
             'gateway_pid':native.owner.pid,'native_GPU_pid':native.worker.pid,

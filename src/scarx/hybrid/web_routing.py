@@ -23,6 +23,30 @@ def followup(text):
         r'look it up)[.!?\s]*', plain(text)))
 
 
+def dated_public_question(value):
+    """Bounded public factual questions with a year need external evidence too.
+
+    A year alone is neither permission to export personal data nor proof of a
+    search intent. Keep math, creative requests and local/private tasks out.
+    This is a runtime routing rule, not learned SNN intent understanding.
+    """
+    if not re.search(r'\b(?:19|20)\d{2}\b', value):
+        return False
+    if re.search(r'\b(?:viet truyen|sang tac|tuong tuong|write a story|imagine|'
+                 r'cua toi|cua chung toi|my|our)\b', value):
+        return False
+    if re.search(r'\b(?:tinh|calculate|compute)\s+\d+\s*[+*/-]', value):
+        return False
+    question = bool(re.search(r'\b(?:bao nhieu|may|nao|la gi|o dau|khi nao|'
+                              r'how many|how much|what|which|when|where|who)\b', value))
+    public_subject = bool(re.search(
+        r'\b(?:viet nam|vietnam|quoc gia|tinh thanh|thanh pho|dan so|thu do|'
+        r'chinh phu|chinh sach|thue|nghi dinh|ty gia|thoi tiet|lich thi dau|'
+        r'phien ban|gdp|population|provinces|cities|country|government|capital|'
+        r'version|release|exchange rate|weather)\b', value))
+    return question and public_subject
+
+
 def public_web_scope(messages, tools, requested=None):
     if requested not in (None, 'auto') or not tools:
         return None
@@ -65,7 +89,8 @@ def public_web_scope(messages, tools, requested=None):
                            r'terminal|debug|fix|sua loi|viet code)\b', value))
     fresh = bool(re.search(r'\b(?:moi nhat|hien nay|hien tai|hom nay|latest|most recent|'
                            r'current (?:episode|version|release|price|weather|news))\b', value)
-                 or re.search(r'\b(?:ra|da ra|ra toi|ra den)\b.{0,50}\b(?:tap|season|seasion|chap|chuong)\b', value))
+                 or re.search(r'\b(?:ra|da ra|ra toi|ra den)\b.{0,50}\b(?:tap|season|seasion|chap|chuong)\b', value)
+                 or dated_public_question(value))
     if not explicit and (local or not (fresh or source != latest)):
         return None
     if explicit and not re.sub(r'\b(?:tim|kiem|tra|cuu|tren|web|mang|search|the|online|look|up|di)\b', '', value).strip(' .!?'):
