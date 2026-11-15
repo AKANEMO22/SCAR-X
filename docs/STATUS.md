@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — đãpushresearch; RC16 sửa datedsearch và shortfollowup
+
+108researchcommits qua6e0f929b đãlên `codex/scarx-hybrid-20261113`, main37749041
+giữnguyên. [Searchfix/receipts](release/DATED_PUBLIC_WEB_20261115.md): exact
+câuhỏi tỉnhthành2026 và “là” đều1actualSearXNGsearch/5results, nativeanswer34;
+RC15followup lạcYouTube/3repeats đượcgiữFAIL.132targetedchecks,58payloadmatching,
+checkpoint/RNG/replay/updates5 vàCUDA giữ nguyên. Khôngtrain/đổiSNNrule hoặc
+quy runtime routing thành learnedtooluse. [Bảnđangcài](release/CURRENT_RELEASE.md).
+
 ## 15/11 — localcredit học representation trênGPU; SNN–RAG vẫn chưaPASS
 
 [Report/figure/source](hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md): newGPU-only

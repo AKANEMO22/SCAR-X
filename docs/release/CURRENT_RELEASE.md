@@ -1,16 +1,24 @@
-# SCAR-X Hybrid — RC14 đang cài trong Hermes
+# SCAR-X Hybrid — RC16 đang cài trong Hermes
 
 **Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
 Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
 pruning hoặc thay quy tắc học.
 
-Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.14+44c928df0eea.zip`,
-865.770 byte, 58 payload files. SHA256:
-`c79b4df28d38b621ca3d6314a1b2841fda6e22ccfbe5a3a3feda0c3f555c2238`.
-Git SHA nguồn: `44c928df0eead1d3829043b8334af4f07e1b1ded`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.16+0d9a5e31ded7.zip`,
+868.048 byte, 58 payload files. SHA256:
+`57e96873f74ca7e794b4797891d481336615dcc91b13c428141f97fb9ee52541`.
+Git SHA nguồn: `0d9a5e31ded798464745e92c0ec21a5017db185d`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
-asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
+asset/Hermes/dependency pins khớp. Không thay main/R13 hoặc merge; nhánh nghiên cứu đã push.
+
+**RC15/16:** [dated public search và short followup](DATED_PUBLIC_WEB_20261115.md).
+Câu hỏi năm2026 bị bỏ sót route; RC15 sửa câu đầu nhưng lượt “là” vẫn lạc chủ đề
+và lặpsearch. RC16 giữ câu hỏi công khai gốc cho shortclarification, mộtsearch
+rồi trảlời. Hai lượt canonicalHermes thật đều1web_search/5results, nativeanswer34,
+khôngloop.132targetedchecks qua; checkpoint/RNG/replay/updates5 giữ nguyên,
+khôngneurallearning/answerhardcode hoặc generaltoolqualityPASS. Research và
+RCfixes đượcpush trên nhánh `codex/scarx-hybrid-20261113`, main khôngđổi.
 
 ## Cách dùng và phạm vi gói
 
@@ -37,6 +45,7 @@ asset/Hermes/dependency pins khớp. Không main/R13 change, merge hoặc push.
 | UI video mới | Upload qua Files ở chat mới, frame local có trước bind; DB request ID khớp attachment, user text giữ nguyên, 0 tool calls sau readiness fix. RC6 nhận đúng màu nhưng trả tiếng Anh và thiếu timestamp; receipt lỗi đó được giữ. |
 | Trả lời video sau sửa presentation | Canonical Hermes thật trên clip đã biết trả “Hình đầu tiên là một hình vuông màu đỏ.”, 0 tool events. Runtime hiển thị nguồn `[E1 · 00:05]`, log riêng với native answer; chưa phải model học dẫn nguồn hoặc xác minh đáp án. |
 | Marker ở lời chào | Repro đúng ảnh người dùng, sửa ví dụ steering không dùng ở lượt xã giao tại host; không hardcode/lọc output. Canonical Hermes trả “chào bạn” bình thường; chất lượng xã giao khác còn hạn chế. |
+| Dated web RC15→16 | Câu hỏi tỉnh thành2026 gọi searchthật; shortfollowup “là” giữđúngquery,1search/lượt,5results, nativeanswer34. RC15followupYouTube/3repeatFAILgiữraw. Chưa chứng minh giải thích/citation hoặc semanticrouter học được. |
 | Screen history | Capture thật cửa sổ FFplay thử: 13 frame/2 VLM descriptions, dừng sạch; hỏi sau stop và restart vẫn chọn đúng nguồn/màu đỏ. Câu không liên quan không nạp ảnh cũ, hỏi lịch sử không cấp quyền capture mới. Audio/mic tắt trong thử này. |
 | Lỗi âm thanh màn hình | FFmpeg thật từ chối WAV hỏng: code cũ dừng toàn ingestion, code sửa vẫn phân tích hai frame bằng VLM GPU thật (`red`, `blue`). Failed/skipped intervals rõ ràng; ba lỗi audio liên tiếp chỉ pause ASR, không giả transcript; resource breach vẫn fatal. Đây là owned journal, chưa live loopback acceptance. |
 | Nâng cấp/bảo trì | Pin payload RC7 thay vì hash candidate đang sửa; terminal source gate nhận đúng predecessor/next bytes và giữ custody không-PASS. Đã chạy thật installer cập nhật ba file, cùng clone CAS/rollback giữ dữ liệu mới; không no-op install claim. |
@@ -59,6 +68,11 @@ RC6, không chạy lại vì RC14 không đổi renderer/plugin/composer. Các r
 được ghi đúng phiên bản;
 không dùng test transport hoặc test xanh để chấm năng lực đa năng.
 Renderer build/typecheck thành công, Electron main/preload giữ nguyên.
+
+RC16 chạy132targetedweb/routing/evidence/gateway/packagechecks, khôngtuyênbố
+rerun332 hoặc nativeCPUtraining. [InstalledRC16](evidence/RC16_INSTALLED_ARTIFACT_20261115.json),
+[state-preservingactivation](evidence/RC16_ACTIVATION_20261115.json),
+[actualHermesreceipt audit](evidence/ACTUAL_HERMES_DATED_WEB_20261115.json).
 
 Khi trả lời dựa vào media local, native call không được cấp tool schemas để
 tránh biến observations riêng thành automatic web/remote query. Đây là policy

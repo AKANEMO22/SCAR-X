@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0-rc.15",
+  "source_git_sha": "e93d845d41b185d171e338df65f74cefdd6dc455",
+  "archive": "artifacts\\releases\\SCAR-X-Hybrid-1.0.0-rc.15+e93d845d41b1.zip",
+  "activation_method": "qualified source restart",
+  "changed_payload_files": [
+    "src/scarx/hybrid/web_routing.py"
+  ],
+  "full_saved_arrays_equal": true,
+  "learned_metadata_RNG_replay_equal": true,
+  "updates": 5,
+  "hidden_updates": 5,
+  "gateway_pid": 46252,
+  "GPU_placement": {
+    "VLM_vision": "gpu",
+    "ASR": "gpu",
+    "ALIF_forward_learning": "gpu",
+    "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+  },
+  "model_weights_or_learning_rule_changed": false,
+  "actual_Hermes_acceptance_pending": false,
+  "research_quality_PASS": false,
+  "actual_Hermes_result_scope": "RC15 first-turn success but shortfollowup failed"
+}
