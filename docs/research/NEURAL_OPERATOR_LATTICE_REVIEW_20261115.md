@@ -330,3 +330,11 @@ Chưa đưa compilation vào cơ chế bắt buộc của bản tối giản. Kh
 compatibility chưa rõ, compilation làm khó attribution mà chưa trả lời nguyên
 nhân gốc. ALIF/local learning giữ nguyên ràng buộc; chưa có kiến trúc mới được
 chọn, không có P0, training, model call hoặc thay đổi tiêu chí từ bản sửa này.
+
+## 12. Đầu vào tiếp: đặc tả giữ giao diện ALIF
+
+Tài liệu người dùng gửi tiếp sau review b698702a thu hẹp thành W_in-only và
+điều kiện giữ spike. [Đặc tả toán](ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md)
+hoàn thành proof có giả định, điều kiện một phía/tie, frozen consumer,
+cumulative updates và phân biệt sign-cell với nullspace. Không thử learner,
+không chuyển việc guard chặn một hướng thành kết luận cần bỏ ALIF.

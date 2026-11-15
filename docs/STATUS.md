@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — đặc tả toán bảo toàn giao diện spike ALIF, chưa thực thi
+
+[Spec](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md) khớp subtractive
+ALIF/>=; proof W_in-only cho quỹ đạo hữu hạn với state/recurrence/consumer cố
+định. Bổ sung tie, normalization, tích lũy delta và FP32 chưa chứng nhận.
+Sign inequalities còn có thể cho lân cận học dù input rank đầy; một hướng
+bị chặn chưa chứng minh hết capacity. Chỉ docs/source reading,0neuralcalls/
+updates/refit/fixtures; không thay main/Hermes/core hoặc ngưỡng lịch sử.
+
 ## 15/11 — review bản thu hẹp A/B/NOL, chưa chọn kiến trúc
 
 [Review bổ sung§11](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md#11-review-bản-đối-chiếu-abnol-gửi-tiếp-cùng-ngày):

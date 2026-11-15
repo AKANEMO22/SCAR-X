@@ -9,6 +9,12 @@ triển khai; không mở P0/thí nghiệm/inference/training hoặc đổi mode
 Phần đề xuất tách khỏi kiến trúc đã có, tính mới và lợi ích vẫn cần kiểm chứng.
 Các phê duyệt training trước giữ lịch sử, không được dùng để tự mở lượt mới.
 
+**Đặc tả toán được yêu cầu tiếp15/11:** [bảo toàn giao diện spike ALIF](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md)
+giữ nguyên neuron/learner và chỉ phân tích điều kiện W_in-only, miền giữ spike,
+hướng học còn lại và các giới hạn. Không bảo đảm runtimeFP32 hoặc acquisition;
+không mở code/fixture/inference/training từ tài liệu. Ràng buộc bất đẳng thức
+giữ spike khác nullspace giữ drive; chưa có kết luận ALIF hết capacity.
+
 **Tự phản biện cùng ngày:** [điều suy ra được và câu hỏi còn mở](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md)
 phân biệt cận toán, quan sát cũ và dự đoán. Hoãn chọn gói kiến trúc B: chưa biết
 các phần phối hợp có lợi. Ưu tiên đặc tả đường thông tin, update cuối sau

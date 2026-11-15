@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[Đặc tả ALIF giữ giao diện15/11](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md):
+core/CUDA/readout source → proof điều kiện → sign-cell/bước cập nhật → giới hạn
+precision/state/capacity. Chỉ tài liệu, không có module guard hoặc run mới.
+
 [Review Neural Operator Lattice15/11](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md):
 đề xuất người dùng → nguồn trực tiếp → giới hạn low-rank/composition/credit
 → phần spec còn thiếu. Không chọn kiến trúc mới hoặc mở thí nghiệm.

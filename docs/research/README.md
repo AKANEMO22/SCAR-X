@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Đặc tả trên giấy15/11:** [ALIF interface preservation](ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md).
+Điều kiện một phía khớp comparator>=, proof dưới W_in-only/frozen consumer,
+sign-cell thay vì nullspace, cận bước và cumulativeupdates. Chưa machine
+certificate/learner hoặc phép đo mới; master giữ cửa duyệt thực thi.
+
 **Review đề xuất người dùng15/11:** [Neural Operator Lattice / Functional Recomposition](NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md).
 Giữ câu hỏi compatibility, yêu cầu sửa spec trước triển khai. Đối chiếu DNAR,
 NCA/BPTT, boundary-firstPC và ROW negative compilation; đếm lại savedR13.2,

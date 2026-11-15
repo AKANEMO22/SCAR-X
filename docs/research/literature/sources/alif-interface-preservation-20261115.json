@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-15",
+  "document": "docs/research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md",
+  "status": "MATHEMATICAL_DRAFT_NOT_MACHINE_VERIFIED_OR_RUNTIME_CERTIFIED",
+  "source_commit": "ae584c480f65b1d8149252cd973ba4e0ca344868",
+  "input": {
+    "name": "Văn bản đã dán.txt",
+    "sha256": "9d468030cde67c425c3b34a8bc7b2c65006a133e419b054c58e45b61de3664d8",
+    "bytes": 9574,
+    "request_scope": "Mathematical specification only; preserve ALIF/main/Hermes and prior results; no new experiments"
+  },
+  "source_files": [
+    {
+      "path": "src/scarx/neural/core.py",
+      "sha256": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+      "read_ranges": [
+        [
+          16,
+          32
+        ],
+        [
+          60,
+          135
+        ],
+        [
+          138,
+          176
+        ]
+      ],
+      "scope": "Source read only; not imported or executed"
+    },
+    {
+      "path": "src/scarx/hybrid/cuda_alif.py",
+      "sha256": "49fd7bb65be02d8b8950b78751d72e90f471dea5f7ca624459025e8e2978accd",
+      "read_ranges": [
+        [
+          1,
+          88
+        ]
+      ],
+      "scope": "Source read only; not imported or executed"
+    },
+    {
+      "path": "src/scarx/hybrid/learner.py",
+      "sha256": "c38f7dd9412da3bc14a02a3a83611941d15aee1c558c05f4bd26671a6872111a",
+      "read_ranges": [
+        [
+          24,
+          76
+        ],
+        [
+          132,
+          205
+        ],
+        [
+          220,
+          300
+        ]
+      ],
+      "scope": "Source read only; not imported or executed"
+    },
+    {
+      "path": "src/scarx/evaluation/semantic_credit_alif.py",
+      "sha256": "4f09b4dee0541401826fe4c5f1d710584abf81f25a662a2bc897569632da54cb",
+      "read_ranges": [
+        [
+          57,
+          92
+        ]
+      ],
+      "scope": "Source read only; not imported or executed"
+    }
+  ],
+  "assumptions": [
+    "Only input weights change and remain fixed during the forward segment",
+    "Identical encoded inputs, neuron/config/topology and initial v/a/z/f",
+    "Recurrent weights fixed; all relevant spike dependencies covered",
+    "Consumer/readout/normalization/masks/router fixed for output claim",
+    "Exact real arithmetic for the proof; no floating-point certificate"
+  ],
+  "deductions": [
+    "One-sided threshold constraints follow actual >= comparator",
+    "Filtered-input affine voltage difference holds by induction within a fixed spike pattern",
+    "Finite positive margins and interior weights permit a nonzero real neighborhood even when filtered inputs span full rank",
+    "A blocked proposed direction does not prove full constraint infeasibility or exhausted model capacity",
+    "A cached reference margin must constrain cumulative displacement, not each incremental update separately"
+  ],
+  "not_proven": [
+    "Novel architecture or first theorem",
+    "Useful new-skill acquisition",
+    "Continual retention thresholds",
+    "Generalization beyond protected sequences",
+    "FP32/CUDA numerical certificate",
+    "Purely synapse-local global guard",
+    "Functional recomposition"
+  ],
+  "literature": [
+    {
+      "url": "https://arxiv.org/html/2402.11984v1",
+      "scope": "Existing HLOP mechanism/source intake reused; protection prior art, no new reproduction"
+    },
+    {
+      "url": "https://papers.neurips.cc/paper_files/paper/2020/hash/2f3bbb9730639e9ea48f309d9a79ff01-Abstract.html",
+      "scope": "Publisher abstract: functional regularisation and memorable examples; no algorithm implementation or full reproduction"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9307274/",
+      "scope": "Search excerpt only as prior-art lead; full PMC page returned browser challenge; eLife page also challenge, no full-paper read claimed"
+    }
+  ],
+  "operations": {
+    "model_calls": 0,
+    "training_updates": 0,
+    "model_fitting": false,
+    "neural_fixtures": false,
+    "upstream_execution": false,
+    "new_experiment": false,
+    "source_changes": false
+  },
+  "ponytail": "Unavailable in enabled tool inventory"
+}
