@@ -422,7 +422,7 @@ class Gateway:
         if body.get('_scarx_stream'):return 'none'
         web = public_web_scope(body['messages'], body.get('tools'), body.get('tool_choice'))
         if web:
-            return 'none' if web['web_calls'] >= 3 else body.get('tool_choice')
+            return 'none' if web['web_calls'] >= web['search_call_limit'] else body.get('tool_choice')
         bounded, rule = workspace_finalization(
             messages, body.get("tools"), body.get("tool_choice")
         )

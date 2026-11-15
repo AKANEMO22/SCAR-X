@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.15
+# SCAR-X Hybrid 1.0.0-rc.16
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -10,6 +10,10 @@ Review Antigravity high được kiểm độc lập, không phải approval ch�
 
 RC15 bổ sung web search cho câu hỏi công khai có mốc năm, như số tỉnh thành
 năm2026. Đây là runtime routing, không học SNN mới hoặc đáp án hardcode.
+
+RC16 giữ chủ đề công khai cho câu hỏi tiếp ngắn như “là”, “cụ thể”; một search
+theo câu hỏi gốc rồi chuyển sang trả lời, không tự tìm chủ đề khác. Câu riêng tư/
+workspace và lệnh không-search vẫn được giữ ngoài tự động web routing.
 
 RC13 chỉ cho verifier số học tự xác minh các câu tính toán hoàn chỉnh nằm
 trong grammar hỗ trợ. Biểu thức nằm trong câu hỏi màu, code, chuỗi trích dẫn

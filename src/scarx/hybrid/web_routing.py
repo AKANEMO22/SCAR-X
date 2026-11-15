@@ -23,6 +23,11 @@ def followup(text):
         r'look it up)[.!?\s]*', plain(text)))
 
 
+def clarification(text):
+    return bool(re.fullmatch(r'(?:la(?: sao)?|cu the(?: la)?|nghia la sao|'
+                            r'which ones|what do you mean|can you clarify)[.!?\s]*', plain(text)))
+
+
 def dated_public_question(value):
     """Bounded public factual questions with a year need external evidence too.
 
@@ -57,17 +62,18 @@ def public_web_scope(messages, tools, requested=None):
         return None
     source = latest
     text = text_content(messages[source].get('content', ''))
+    short_clarification = clarification(text)
     # Resolve only a short chain of bare search follow-ups. Never skip a newer
     # substantive local/private request to reuse an older public topic.
     for _ in range(4):
-        if not followup(text):
+        if not (followup(text) or clarification(text)):
             break
         source = next((i for i in range(source-1, -1, -1)
                        if messages[i].get('role') == 'user'), None)
         if source is None:
             return None
         text = text_content(messages[source].get('content', ''))
-    if followup(text) or not 3 <= len(text) <= 600:
+    if followup(text) or clarification(text) or not 3 <= len(text) <= 600:
         return None
     value = plain(text)
     if value in {'chao ban', 'xin chao', 'hi', 'hello', 'ok', 'cam on', 'thanks'}:
@@ -91,6 +97,8 @@ def public_web_scope(messages, tools, requested=None):
                            r'current (?:episode|version|release|price|weather|news))\b', value)
                  or re.search(r'\b(?:ra|da ra|ra toi|ra den)\b.{0,50}\b(?:tap|season|seasion|chap|chuong)\b', value)
                  or dated_public_question(value))
+    if short_clarification and not (fresh or explicit):
+        return None
     if not explicit and (local or not (fresh or source != latest)):
         return None
     if explicit and not re.sub(r'\b(?:tim|kiem|tra|cuu|tren|web|mang|search|the|online|look|up|di)\b', '', value).strip(' .!?'):
@@ -99,6 +107,8 @@ def public_web_scope(messages, tools, requested=None):
              for call in message.get('tool_calls') or []]
     return {'query': text, 'source_user_index': source, 'latest_user_index': latest,
             'followup_resolved': source != latest, 'explicit_web': explicit,
+            'short_clarification': short_clarification,
+            'search_call_limit': 1 if short_clarification else 3,
             'web_calls': sum(c.get('function', {}).get('name') in WEB_TOOLS for c in calls),
             'search_already_requested': any(c.get('function', {}).get('name') == 'web_search' for c in calls)}
 

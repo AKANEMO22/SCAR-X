@@ -74,6 +74,26 @@ def test_followup_cannot_skip_new_local_topic_to_reach_older_web_question():
     assert web_prelude(messages('hello')+[{'role':'user','content':'tìm kiếm đi'}],TOOLS) is None
 
 
+@pytest.mark.parametrize('query', ['là', 'là sao?', 'cụ thể', 'cụ thể là?', 'which ones?', 'what do you mean?'])
+def test_short_clarification_keeps_public_question_and_finishes_after_one_real_search(query):
+    original=messages('việt nam có bao nhiêu tỉnh thành 2026')+[
+        {'role':'assistant','content':'Việt Nam có34 tỉnh thành.'}, {'role':'user','content':query}]
+    before=copy.deepcopy(original)
+    request=web_prelude(original,TOOLS)
+    assert json.loads(request['arguments'])['query']=='việt nam có bao nhiêu tỉnh thành 2026'
+    assert original==before
+    gateway=Gateway.__new__(Gateway)
+    original += [{'role':'assistant','tool_calls':[{'id':'owned','function':{'name':'web_search','arguments':request['arguments']}}]},
+                 {'role':'tool','tool_call_id':'owned','content':'Actual returned public sources'}]
+    assert gateway.select_tool_choice({'messages':original,'tools':TOOLS},original)=='none'
+
+
+@pytest.mark.parametrize('previous', ['Lương của tôi năm2026 là bao nhiêu?', 'Đọc file hiện tại',
+                                     'Tôi có bao nhiêu tiền?', 'hello'])
+def test_short_clarification_never_turns_private_or_local_conversation_into_web_query(previous):
+    assert web_prelude(messages(previous)+[{'role':'user','content':'là'}],TOOLS) is None
+
+
 def test_web_availability_explicit_choices_and_completed_search_are_respected():
     original=messages('jojo ra tập mới nhất là tập bn')
     assert web_prelude(original,[TOOLS[0]]) is None

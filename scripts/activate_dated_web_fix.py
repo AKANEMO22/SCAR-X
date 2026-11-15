@@ -1,4 +1,4 @@
-"""Activate a qualified on-disk one-file routing hotfix, preserving live state.
+"""Activate a qualified bounded routing hotfix, preserving live state.
 
 This checkout is also the registered serving source. Source was edited/tested
 before restart; rollback bytes therefore come from the pinned previous release,
@@ -41,19 +41,24 @@ def main():
         for info in packager.zip_members(z):
             target=package/info.filename;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(z.read(info))
     manifest=manager.verify_package(package);trust.validate_trusted_sources(packager,package,manifest)
-    if manifest['version']!='1.0.0-rc.15':raise ValueError('Expected qualified dated-webRC15')
+    allowed={
+        '1.0.0-rc.15':['src/scarx/hybrid/web_routing.py'],
+        '1.0.0-rc.16':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/web_routing.py'],
+    }
+    if manifest['version'] not in allowed:raise ValueError('Expected qualified dated-webRC15/16')
     root,data,python,home=manager.registered_target()
     if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Serving disk differs from tested package')
     manager.assert_registered_owner_runtime(root,data);manager.validate_existing_assets(root,home,package)
     manager.protected_run_gate(root,manifest)
     previous=packager.predecessor_manifest(ROOT,json.loads((ROOT/'release/hybrid/payload-files.json').read_text(encoding='utf-8')))
     changed=[name for name in manifest['target_before_sha256'] if manifest['files']['payload/'+name]['sha256']!=previous['files']['payload/'+name]['sha256']]
-    relative='src/scarx/hybrid/web_routing.py'
-    if changed!=[relative]:raise ValueError('Hotfix scope must be exactly one public-routing module')
+    if sorted(changed)!=allowed[manifest['version']]:raise ValueError('Hotfix exceeds explicit public-routing scope')
     old_archive=ROOT/manifest['predecessor']['archive']
-    with zipfile.ZipFile(old_archive) as z:old_bytes=z.read('payload/'+relative)
-    new_bytes=(ROOT/relative).read_bytes()
-    if hashlib.sha256(old_bytes).hexdigest()!=manifest['target_before_sha256'][relative]:raise ValueError('Pinned rollback source')
+    previous_bytes={}
+    with zipfile.ZipFile(old_archive) as z:
+        for relative in changed:
+            previous_bytes[relative]=z.read('payload/'+relative)
+            if hashlib.sha256(previous_bytes[relative]).hexdigest()!=manifest['target_before_sha256'][relative]:raise ValueError('Pinned rollback source')
     before=snapshot();(run/'private-before.npz').write_bytes(before)
     status=service.status()
     if status.get('cognition',{}).get('phase') in ('serving','observing'):raise RuntimeError('Foreground retains priority')
@@ -64,12 +69,15 @@ def main():
         service.stop()
         stopped=True
         manager.snapshot_backup(data,backup)
-        rollback=backup/'files'/relative;rollback.parent.mkdir(parents=True);rollback.write_bytes(old_bytes)
-        records=[{'path':relative,'before_sha256':hashlib.sha256(old_bytes).hexdigest(),'after_sha256':hashlib.sha256(new_bytes).hexdigest()}]
+        records=[]
+        for relative in changed:
+            rollback=backup/'files'/relative;rollback.parent.mkdir(parents=True,exist_ok=True);rollback.write_bytes(previous_bytes[relative])
+            records.append({'path':relative,'before_sha256':hashlib.sha256(previous_bytes[relative]).hexdigest(),
+                'after_sha256':hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()})
         manager.atomic(backup/'files.json',json.dumps(records,indent=2).encode())
         manager.atomic(backup/'receipt.json',json.dumps({'version':manifest['version'],
             'activation_method':'restart of already edited and qualified registered source',
-            'rollback_source':'exact pinned RC14 archive; not the on-disk candidate at activation',
+            'rollback_source':'exact pinned predecessor archive; not the on-disk candidate at activation',
             'source_git_sha':manifest['source_git_sha'],'files':records},indent=2).encode())
         manager.atomic(data/'release-backups/latest.json',json.dumps({'backup':str(backup)}).encode())
     except Exception:
