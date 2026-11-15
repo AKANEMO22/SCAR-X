@@ -1,5 +1,9 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Tự phản biện15/11:** [cận toán, phản ví dụ và các nghiên cứu không cần lặp](ARCHITECTURE_SELF_CRITIQUE_20261115.md).
+Hạ ưu tiên gói kiến trúc B; tách quan sát, dự đoán và điều chưa biết. Chưa có
+lượt chạy mới hoặc bằng chứng một kiến trúc mới đã thắng.
+
 **Nghiên cứu sơ bộ kiến trúc15/11:** [ma trận và phản biện](ARCHITECTURE_DESIGN_SPACE_20261115.md),
 [nguồn có commit/hash/phạm vi đọc](literature/sources/architecture-design-space-20261115.json).
 Đây là tài liệu thiết kế trước thí nghiệm; chưa có learner, điểm benchmark hoặc

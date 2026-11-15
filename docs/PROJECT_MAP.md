@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[Tự phản biện ma trận15/11](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md):
+oracle/alias/projection/EMA → điều kiện suy luận → bỏ/hoãn/giữ câu hỏi nghiên
+cứu. Hoãn chọn kiến trúc B nhiều vùng; chưa thí nghiệm hoặc cập nhật model.
+
 [Ma trận kiến trúc15/11](research/ARCHITECTURE_DESIGN_SPACE_20261115.md):
 paper/repo→nút thắt→các trục thiết kế→prior art→ba đề xuất chưa triển khai.
 JSONnguồn ở `docs/research/literature/sources/architecture-design-space-20261115.json`

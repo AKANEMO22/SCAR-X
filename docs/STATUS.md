@@ -1,13 +1,23 @@
 # Trạng thái SCAR-X
 
+## 15/11 — tự phản biện khảo sát kiến trúc, không chạy model
+
+[Bản phản biện](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md) phân loại điều
+suy ra theo giả định, quan sát cũ, dự đoán và câu hỏi mở. Cận oracle loại việc
+train lại selector trên bank cũ; projection rồi clip từng trọng số có phản ví
+dụ phá bảo vệ. Gói importance/anchor chưa tách được contribution; common-head
+gain chưa hơn raw-feature control. Hoãn chọn triển khai kiến trúc B nhiều vùng,
+làm rõ information path/update vật lý/shared output trước. Không thí nghiệm,
+model call, cập nhật synapse, thay gate hoặc sửa raw/protocol lịch sử.
+
 ## 15/11 — chỉ đọc nguồn và lập ma trận kiến trúc, chưa thí nghiệm
 
 [Nghiên cứu sơ bộ](research/ARCHITECTURE_DESIGN_SPACE_20261115.md) và
 [hồ sơ nguồn](research/literature/sources/architecture-design-space-20261115.json):
 khóa17repo, đọc các đoạn liên quan của21file code và ghi phạm vi đọc23nguồn
 paper. HLOP/GDN-2/MoM/Benna–Fusi/SPIRE là prior art cần tránh gọi lại là mới.
-Ba đề xuất được tách khỏi code đã triển khai; ưu tiên thiết kế một coreALIF
-chia vùng, residualassociation và bảo vệ cả activity/output. Chưa rule hoàn
+Ba đề xuất được tách khỏi code đã triển khai; bản đầu ưu tiên thiết kế một coreALIF
+chia vùng, được hiệu chỉnh bởi tự phản biện phía trên. Chưa rule hoàn
 chỉnh hoặc noveltyproof,0newinference/updates/dataset/weights/install/livechanges.
 Chưa tảiDeepSeek hoặc gỡSCAR-X trong lượt đọc này; không dùng approval cũ để train.
 

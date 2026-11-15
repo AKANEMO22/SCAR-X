@@ -6,14 +6,20 @@ tải trọng số, gỡ model, sửa Hermes/main/R13. Quyết định hiện t�
 kế chi tiết; chưa GO cho một kiến trúc hay thí nghiệm mới.** Master duy nhất vẫn
 là [RESEARCH_PLAN](../RESEARCH_PLAN.md).
 
+**Hiệu chỉnh sau tự phản biện cùng ngày:** [bản phản biện và phân loại suy luận](ARCHITECTURE_SELF_CRITIQUE_20261115.md)
+hạ ưu tiên triển khai B; chưa có bằng chứng gói chia vùng tốt hơn phương án tối
+giản. Phân tích update vật lý, khả năng phân biệt input và bảo vệ đầu ra đi
+trước ghép nhiều module. Không mở thí nghiệm hoặc thay đổi kết quả lịch sử.
+
 ## 1. Kết luận sơ bộ
 
-SCAR-X cần giải đồng thời đường biểu diễn, credit, can thiệp khi ghi và tính ổn
-định của đầu ra. Chỉ thay STDP, thêm replay, tăng neuron hoặc thêm FAQ không đủ.
-Thiết kế đáng ưu tiên tiếp là **một lõi ALIF chia vùng trong ngân sách cố định,
-học phần sai lệch, bảo vệ các hướng hoạt động và đầu ra đã hữu ích**. Đây là
-đề xuất kết hợp cần viết rõ phương trình; **chưa đủ cơ sở gọi là mới trên thế
-giới, đã tốt hơn hay giải được những vấn đề còn mở**.
+SCAR-X cần phân biệt lỗi biểu diễn, credit, can thiệp khi ghi và tính ổn định
+của đầu ra. Chưa có bằng chứng chỉ thay STDP, thêm replay, tăng neuron hoặc
+thêm FAQ sẽ giải đồng thời các lỗi đã đo. **Một lõi ALIF chia vùng trong ngân
+sách cố định, học phần sai lệch và bảo vệ activity/output** là ứng viên tổng
+hợp để phản biện, chưa được chọn ưu tiên triển khai. Cần đặc tả phương trình
+và so với phương án tối giản; **chưa đủ cơ sở gọi là mới trên thế giới, đã tốt
+hơn hay giải được những vấn đề còn mở**.
 
 Ba phát hiện làm thay đổi cách chọn hướng:
 
@@ -52,7 +58,7 @@ Các số dưới đây là số đo cũ, không có lượt mới trong intake 
 | Nút thắt | Bằng chứng đã có | Hàm ý thiết kế |
 |---|---|---|
 | Information/representation | Hidden học từ lỗi78,33% vs đóng băng62,50%; PCA gốc79,72%, cùng loại readout trên DEV | Có học hữu ích nhưng chưa vượt encoder+classifier mạnh; kiểm cùng information/head trước khi mở rộng |
-| Interference | Protection: quên trung bình8,06→4,72 điểm, accuracy76,39→74,44%; chỉ 1/3 seed qua cả hai cửa | Importance theo độ lớn/EMA có tác dụng nhưng chưa đủ; cần quan tâm hướng ghi và ranh giới quyết định |
+| Interference | Protection: quên trung bình8,06→4,72 điểm, accuracy76,39→74,44%; chỉ 1/3 seed qua cả hai cửa | Gói importance/anchor có đánh đổi chưa qua gate; chưa tách lợi ích từng thành phần. Hướng ghi và ranh giới quyết định là giả thuyết cần đặc tả |
 | Readout | Ghi đè readout nổi bật ở Phase2; probe mạnh đọc được feature mà head học online dùng kém | Bảo vệ hidden đơn độc không bảo đảm output cũ ổn định |
 | Temporal/credit | Lượt semantic dùng 8 tick với input lặp, recurrent weights không học | Chưa chứng minh học quan hệ theo thời gian; không nhập điểm classification thành video reasoning |
 | Useful actions | Toolbank cũ có oracle không hơn constant/RAG | Không quy tắc credit nào tạo action đúng khi mọi action khả dụng đều thất bại |
@@ -119,7 +125,7 @@ Các cột là lựa chọn, không phải grid được duyệt để chạy h�
 | Trạng thái | Một recurrentpopulation | Một graphALIF có boundedregions và trạng thái theo sự kiện | Chia vùng trong một core khác nhiều model độc lập; mask/taskID không được lộ nhãn |
 | Đơn vị trí nhớ | Voltage/trace và synapse | Fast association, protectedslowweights, sourced episode | State, synapse, SSD retrieval là ba loại bằng chứng khác nhau |
 | Learning signal | Scalar hoặc one-stepreadout error | Signedeligibility hiện có; local auxiliary prediction; perturbation | Auxiliarysignal/perturbation là giả thuyết khác; chưa được tự code/run |
-| Hướng ghi | Chỉimportance từng weight | Activitysubspace/low-rank lateral protection | Importance chéo bỏ tương quan; projection mạnh dễ chặn plasticity |
+| Hướng ghi | Chỉimportance từng weight | Activitysubspace/low-rank lateral protection | Importance theo đường chéo bỏ qua tương quan giữa các chiều; projection mạnh dễ chặn plasticity |
 | Ghi/xóa | Một LR/decay chung | Gates riêng cho ghi mới, sửa association và retirement | Gate cần học/kiểm chứng; không dùng novelty hoặc confidence làm truth |
 | Output | Sharedreadout dễ trôi | Outputlocalprotection và kiểm margin trên trải nghiệm cũ | Hiddenổn định mà head/router đổi vẫn có thể quên |
 | Consolidation | Replay/EMA | Trao đổi nhanh–chậm có tín hiệu học; chuyển kiến thức có kiểm chứng | Copyweights/ôntemplate không tự thành skill generalization |
@@ -159,7 +165,8 @@ chưa là permission thử một HLOP adapter hoặc chạy PMNIST.
 
 ### B. Một core ALIF chia vùng, association nhanh và sửa phần sai lệch
 
-**Đây là phác thảo kết hợp được ưu tiên làm rõ kiến trúc**, chưa triển khai.
+**Đây là phác thảo kết hợp chưa được chọn ưu tiên triển khai.** Tự phản biện
+cùng ngày yêu cầu làm rõ các ràng buộc tối giản trước khi ghép toàn bộ.
 
 ```mermaid
 flowchart TD
@@ -215,7 +222,7 @@ phải quyết định riêng. Hiện không có thay đổi như vậy.
 | Đề xuất | Giá trị trước mắt | Rủi ro chính | Trạng thái |
 |---|---|---|---|
 | A: subspace hữu hạn + readout protection | Sát forgetting đã đo, có source để phản biện | Saturation, task boundary ẩn, không đủ representation | Viết spec và phản ví dụ trước |
-| B: core chia vùng + residual association | Bao phủ retention, reuse, adaptive capacity tốt hơn | Router drift, nhiều state, phối hợp chưa có rule đủ rõ | Ưu tiên thiết kế kiến trúc; chưa code |
+| B: core chia vùng + residual association | Nhắm tới retention, reuse và adaptive capacity; chưa chứng minh lợi ích thêm | Router drift, nhiều state, phối hợp chưa có rule đủ rõ | Ứng viên tổng hợp; hoãn chọn triển khai |
 | C: dynamics/optimizer mới | Có thể thay credit sâu | Đổi gốc neuron/signal, training cost và ràng buộc | Giữ làm đối chiếu; chưa thực hiện |
 
 ## 7. Những phép phân tích cần xong trước khi mở thí nghiệm
@@ -236,6 +243,10 @@ Giả sử neuron nhận vector trace \(x\) và hoạt động tuyến tính tr�
 - Khi subspace chiếm hết không gian, P gần 0: không quên vì không học được gì.
 - Nếu trace e khác input x, phải bảo vệ đúng đối tượng trong công thức, không
   đổi chỗ input/eligibility rồi giữ nguyên proof.
+- Q cần trực chuẩn; basis Hebbian xấp xỉ chưa mặc nhiên thỏa điều kiện đó.
+  Coordinate clipping, weight bounds, anchor hoặc momentum sau projection có
+  thể phá tính trực giao; phải xét update vật lý cuối. Xem phản ví dụ D5/D7
+  trong [bản tự phản biện](ARCHITECTURE_SELF_CRITIQUE_20261115.md).
 
 Vì vậy spec phải nêu đồng thời điều kiện cho hidden và output, với phản ví dụ
 cho boundary competition và representation drift. Guard từ replay/probe là một

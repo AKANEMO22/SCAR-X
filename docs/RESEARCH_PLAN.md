@@ -9,6 +9,12 @@ triển khai; không mở P0/thí nghiệm/inference/training hoặc đổi mode
 Phần đề xuất tách khỏi kiến trúc đã có, tính mới và lợi ích vẫn cần kiểm chứng.
 Các phê duyệt training trước giữ lịch sử, không được dùng để tự mở lượt mới.
 
+**Tự phản biện cùng ngày:** [điều suy ra được và câu hỏi còn mở](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md)
+phân biệt cận toán, quan sát cũ và dự đoán. Hoãn chọn gói kiến trúc B: chưa biết
+các phần phối hợp có lợi. Ưu tiên đặc tả đường thông tin, update cuối sau
+clip/anchor và bảo vệ shared output; tránh train lại bank bị chặn bởi oracle.
+Không có thí nghiệm, learner hoặc thay đổi gate từ lần tự phản biện này.
+
 Theo chỉ thị15/11/2026, trước mỗi nghiên cứu cơ chế học, retention hoặc SNN–RAG:
 
 1. Tra nguồn chính: paper, repo tác giả, code liên quan, giả định và phiên bản;
