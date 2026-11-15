@@ -1,6 +1,6 @@
 # P1A đề xuất — nối frozen ALIF tới hành động và outcome có nguồn
 
-**CHỜ DUYỆT; chưa code bridge hoặc thực thi neural/tool mới.** Đây là bước
+**Đã duyệt “duyệt” ngày15/11/2026: code + chạy P1A, chưa P1B/train.** Đây là bước
 qualification cho đường tác động nhân quả. Không train, không mở DEV/P1B,
 không sửa Hermes/main/R13 hoặc nhập research weights vào live.
 
@@ -127,3 +127,31 @@ tool executions và2 guard denials. Case malformed phải reject trước forwar
 
 Đề nghị duyệt **code + chạy trọn P1A trong budget trên**, không cần hỏi lại từng
 fixture đã mô tả. Không coi automatic goal continuation là câu trả lời phê duyệt.
+
+## Khóa thực thi trước forward đầu tiên
+
+Ordinary cases1–4 chạy mỗi seed; case5/6 là các biến thể malformed data và phải
+reject trước forward. Case7 dùng một proposal mới rồi revoke lease trước dispatch.
+Case8 tạo một pending proposal, snapshot, chạy một continuation; cold load rồi
+rollback snapshot riêng và chạy lại đúng continuation. Dự kiến9 forwards/seed=18 total; global
+cap24 không đổi, không dùng phần dư để tune.8 executed macro calls và2 denials
+là toàn bộ dispatch budget; không có initial tool call bị bỏ khỏi budget.
+
+Ordinary decision đầu có history rỗng, task thật có trước decision. Observation
+sau macro mới được dùng cho continuation case8; không gán observation của project
+cũ sang scope mới. File cases dùng cùng permission mask inspect_status/retry;
+inspect_status đọc bounded source/status từ đúng binding, retry giữ nguyên request.
+Job dùng cùng hai action, missing-field dùng show_schema/clarify. Mỗi mask có2
+choices, chọn vì capability trong fixture, không từ expected outcome/label.
+
+Private checker tái dùng state/effect rules P0 qua trusted executor trace. Raw
+tool producer vẫn được ghi riêng với outer neural action selection; không đổi
+nhãn fixed fixture thành neural ở dữ liệu P0. Output scope là interface correctness,
+không task-optimality hoặc accuracy. Journal quyết định/receipt và attempt ledger
+ở ngoài model snapshot; rollback không rewind journal hoặc cấp lại scope đã revoke.
+
+Auditor không gọi model lại: re-encode input bằng implementation riêng, so
+readout probabilities từ saved features/weights với atol3e-6 (không là parity
+trajectory CPU/CUDA). Same-device continuation vẫn byte-exact theo gate gốc.
+Receipt API bắt buộc expected_decision_id, kể cả receipt khác có chữ ký/journal
+hợp lệ của chính nó. Quyết định không được ghi credit chỉ vì receipt tự hợp lệ.
