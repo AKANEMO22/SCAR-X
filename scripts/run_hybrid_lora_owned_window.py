@@ -4,6 +4,7 @@ Restore the previous explicit intent and learning switch after the worker exits.
 No private checkpoint restore, process kills, foreign model changes or weight edits.
 """
 from datetime import datetime,timezone
+import argparse
 import hashlib,importlib.util,json,os
 from pathlib import Path
 import subprocess,sys,time
@@ -17,6 +18,8 @@ def status():
 
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--script',choices=['train_hybrid_lora_error_repair.py','train_shared_lora_retention20.py'],default='train_hybrid_lora_error_repair.py')
+    args=parser.parse_args()
     run=ROOT/'local/lora-resource-window'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ');run.mkdir(parents=True)
     before=status()
     if before['cognition']['foreground_requests'] or before['cognition']['capture_active']:
@@ -37,12 +40,12 @@ def main():
         report['owned_idle_VLM_released']=True
         python=ROOT/'local/hybrid-v1/reference-env/Scripts/python.exe'
         with (run/'training.stdout.log').open('wb') as out,(run/'training.stderr.log').open('wb') as err:
-            process=subprocess.Popen([str(python),'-B',str(ROOT/'scripts/train_hybrid_lora_error_repair.py')],cwd=ROOT,
+            process=subprocess.Popen([str(python),'-B',str(ROOT/'scripts'/args.script)],cwd=ROOT,
                 stdout=out,stderr=err,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
         report['worker_pid']=process.pid
         (run/'started.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
         print(json.dumps({'resource_window':str(run),'worker_pid':process.pid,'owned_idle_VLM_released':True}),flush=True)
-        process.wait(timeout=1500);report['training_exit_code']=process.returncode
+        process.wait(timeout=2100);report['training_exit_code']=process.returncode
     finally:
         current=status()
         if current['cognition']['state']['intent']=='sleep':post('/api/cognition',{'intent':intent})
