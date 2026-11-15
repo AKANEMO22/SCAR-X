@@ -138,3 +138,9 @@ and exact flags. The two closed failures stay failures. At most one recovery
 launch, combined calls<=610 and summed active wall<=600seconds across all
 three. If E0 passes, extract the same locked public utterances; otherwise stop
 this feature path without neural training. This is not a scientific success.
+
+P0 invocation error d9584a exited with invalid --no-mmap and0calls: older SCAR-X
+launchers were insufficient evidence for b12360. Local exact-exe --help and
+pinned arg.cpp now checked: actual flag is --load-mode none; --lazy-mode off
+explicitly forbids on-demand tensor reads. Correct only this syntax once,
+charge all prior active seconds/calls, unchanged weights/data/caps/quality.

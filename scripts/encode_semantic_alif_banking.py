@@ -20,10 +20,13 @@ def main():
     second = ROOT / 'runs/20261115T093631Z-semantic-encoder-v2-5bbf9f'
     second_result = json.loads((second / 'result.json').read_text(encoding='utf-8'))
     assert not second_result['completed'] and second_result['attempts'] == 0
-    remaining_seconds = 600 - prior_result['elapsed_seconds'] - second_result['elapsed_seconds']
-    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-recovery-p0-' + uuid.uuid4().hex[:6])
+    invocation = ROOT / 'runs/20261115T093736Z-semantic-encoder-recovery-p0-d9584a'
+    invocation_result = json.loads((invocation / 'result.json').read_text(encoding='utf-8'))
+    assert invocation_result['attempts'] == 0 and not invocation_result['completed']
+    remaining_seconds = 600 - sum(r['elapsed_seconds'] for r in (prior_result, second_result, invocation_result))
+    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-loading-p0-' + uuid.uuid4().hex[:6])
     run.mkdir()
-    with (ROOT / 'local/semantic-encoder-recovery-p0-execution.json').open('x', encoding='utf-8') as f:
+    with (ROOT / 'local/semantic-encoder-loading-p0-execution.json').open('x', encoding='utf-8') as f:
         json.dump({'run': str(run)}, f)
     (ROOT / 'local/current-semantic-encoder.txt').write_text(str(run), encoding='utf-8')
     source = Path((ROOT / 'local/current-semantic-ALIF-data.txt').read_text(encoding='utf-8').strip())
@@ -46,7 +49,7 @@ def main():
             args[args.index(flag) + 1] = value
     if '--mmap' in args:
         args.remove('--mmap')
-    args += ['--embeddings', '--pooling', 'last', '--no-mmap']
+    args += ['--embeddings', '--pooling', 'last', '--load-mode', 'none', '--lazy-mode', 'off']
     assert '--lora' not in args
     manifest = {
         'data_run': source.name, 'data_sha256': hashlib.sha256(data_bytes).hexdigest(),
