@@ -1,6 +1,6 @@
 # P0 đề xuất: bằng chứng hoàn thành tác vụ cho learning controller
 
-**Trạng thái: CHỜ DUYỆT, chưa code harness/chạy fixture mới.** Đây là bước sửa
+**Đã duyệt P0 bằng “làm đi” ngày15/11/2026; chưa mở P1/train.** Đây là bước sửa
 định nghĩa outcome trước nghiên cứu neural. Không đổi hoặc khởi động lại history
 P0 FAIL; không mở DEV, train, model mới, corpus mới, LoRA hoặc live integration.
 
@@ -80,3 +80,29 @@ P0 PASS chỉ đủ cho contract chuẩn bị. **Không tự mở P1/data acquis
 phải review liệu action bank/oracle có đủ margin so baseline, input phân biệt được
 trạng thái cần thiết và có causal path trước. Giữ gain≥5pp/lower95%CI>0, hidden
 so readout/ablation và acquisition +20stage forgetting mean≤3/worst≤5pp.
+
+## Khóa diễn giải kỹ thuật trước khi chạy
+
+12 fixture,14 trace: case07 có reference thứ tự đúng và đảo; case12 có hỏi sai
+field và đúng field. Không tính14 trace thành14 mẫu chất lượng độc lập. Các
+expected outcome nằm trong manifest trước thực thi và không thay sau khi đo.
+
+Loop là≥3 tool/args/result giống nhau liên tiếp, snapshot không đổi; báo số
+call dư sau lần đầu và terminal_stuck riêng. Case09 có24 read lỗi rồi1 read
+đúng: effect cuối có thể đúng, terminal không còn stuck, nhưng whole-task
+completion không qua vì đã có loop/cost violation. Poll có tiến độ không bị
+phạt vì kết quả và state thực thay đổi. Đây là tiêu chí runtime contract P0,
+không sửa ngưỡng nghiên cứu hoặc tự là utility label cho SNN.
+
+Case12 kiểm schema field thiếu thực trong request SQLite: chỉ hỏi đúng field
+đang NULL mới có clarification_supported. Field sai/login/dấu hỏi không đủ;
+clarification đúng cũng không là task_effect_satisfied hoặc permission học.
+Case07 dùng prepare flag tách khỏi commit value để hai thứ tự có cùng final
+state và bag actions; checker cần kiểm dependency, không chỉ nhìn final state.
+
+Tool fixture là các hàm stdlib/SQLite thực trên workspace riêng; không dùng
+actual Hermes/API bên ngoài hoặc model sinh câu trả lời. Finaltext/status do
+fixture đặt được ghi rõ, không hiện như model answer. Traces lưu decision
+cutoff, observed prefix, selector fixed_fixture, proposed/executed riêng. Policy
+view chỉ nhận tool/args/result/duration đã trả trước cutoff, không contract,
+expected value, caseID/family, snapshot hash hoặc future outcome.

@@ -307,3 +307,9 @@ tests/test_hybrid_web_evidence.py text eol=lf
 src/scarx/hybrid/arithmetic.py -text
 src/scarx/hybrid/review.py -text
 tests/test_hybrid_arithmetic_scope.py text eol=lf
+src/scarx/evaluation/outcome_contract.py -text
+scripts/run_hybrid_outcome_contract_p0.py -text
+scripts/audit_hybrid_outcome_contract_p0.py -text
+experiments/hybrid-stateful-outcome-contract-p0-v1.md -text
+tests/test_outcome_contract.py text eol=lf
+runs/*-outcome-contract-p0-v1-*/** -text -whitespace
