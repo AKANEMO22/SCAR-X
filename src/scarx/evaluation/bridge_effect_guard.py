@@ -9,6 +9,7 @@ import hashlib
 import os
 from pathlib import Path
 import re
+import subprocess
 import traceback
 
 
@@ -26,8 +27,11 @@ class StickyEffectGuard:
         if not self.monitor_source or not self.gpu:return False
         from .bridge_environment_metrics import GPU_QUERY_ARGS
         executable,argv=args[:2]
-        if not isinstance(executable,str) or not isinstance(argv,(tuple,list)):return False
-        if Path(executable).resolve()!=self.gpu or tuple(argv)!=(str(self.gpu),*GPU_QUERY_ARGS):return False
+        if not isinstance(executable,str):return False
+        exact=(str(self.gpu),*GPU_QUERY_ARGS)
+        if isinstance(argv,str):argv_matches=argv==subprocess.list2cmdline(exact)
+        else:argv_matches=isinstance(argv,(tuple,list)) and tuple(argv)==exact
+        if Path(executable).resolve()!=self.gpu or not argv_matches:return False
         if hashlib.sha256(self.gpu.read_bytes()).hexdigest()!=self.gpu_sha:return False
         if hashlib.sha256(self.monitor_source.read_bytes()).hexdigest()!=self.monitor_sha:return False
         return any(f['function']=='sample_physical_gpu' and Path(f['filename']).resolve()==self.monitor_source for f in frames)

@@ -22,6 +22,6 @@ def sample_physical_gpu(executable,expected_sha256):
     path=Path(executable).resolve()
     if hashlib.sha256(path.read_bytes()).hexdigest()!=expected_sha256:
         raise ValueError('GPU telemetry executable changed')
-    result=subprocess.run([str(path),*GPU_QUERY_ARGS],capture_output=True,text=True,
+    result=subprocess.run([str(path),*GPU_QUERY_ARGS],executable=str(path),capture_output=True,text=True,
         timeout=3,check=True,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
     return {**parse_gpu_memory(result.stdout),'epoch':time.time()}

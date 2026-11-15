@@ -57,7 +57,9 @@ def model_object(run,sha):
 
 def audit(run,diagnostic_stopped=False):
     run=run.resolve()
-    if run.parent!=ROOT/'runs' or '-neural-outcome-bridge-p1a-v1-' not in run.name:raise ValueError('Not an owned P1A run')
+    if run.parent!=ROOT/'runs' or not any(tag in run.name for tag in ('-neural-outcome-bridge-p1a-v1-','-neural-outcome-bridge-p1a-v2-')):
+        raise ValueError('Not an owned P1A run')
+    confirmation_v2='-p1a-v2-' in run.name
     manifest=read(run/'manifest.json');result=read(run/'result.json')
     if diagnostic_stopped:
         assert result['gate_pass'] is False and result['verdict']=='P1A_STOPPED_NOT_PASS'
@@ -189,6 +191,18 @@ def audit(run,diagnostic_stopped=False):
             assert db.execute('SELECT COUNT(*) FROM decisions').fetchone()[0]==9
             assert db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0]==5
     resources=read(run/'resources.json')
+    if confirmation_v2:
+        original=manifest['confirmation_of'];prior=ROOT/'runs'/original['run']
+        assert hashlib.sha256((prior/'result.json').read_bytes()).hexdigest()==original['result_sha256']
+        assert hashlib.sha256((prior/'attempt-ledger.jsonl').read_bytes()).hexdigest()==original['ledger_sha256']
+        assert original['forwards']==18 and original['dispatches']==10 and read(prior/'result.json')['gate_pass'] is False
+        assert hashlib.sha256((ROOT/'local/neural-outcome-bridge-p1a-v1-budget.jsonl').read_bytes()).hexdigest()==original['ledger_sha256']
+        environment=read(run/'environment-preflight.json');guard=read(run/'guard-events.json')
+        assert environment['passed'] and environment['before_ALIF_initialization']
+        assert environment['forward_attempts']==environment['dispatch_attempts']==0
+        assert result['environment_preflight_passed'] and not guard['violations']
+        assert guard['gpu_queries']==len(resources)<=128 and guard['ver_queries_declined']<=4
+        assert all('nvidia-smi dedicated GPU memory query' in r['physical_gpu_source'] for r in resources)
     assert all(max(r['peak_RSS_bytes'],r['peak_private_commit_bytes'])<=1_000_000_000 for r in resources)
     assert min(r['physical_cuda_free_bytes'] for r in resources if r['physical_cuda_free_bytes'] is not None)>=512*1024**2
     assert result['elapsed_seconds']<=600 and result['learn_calls']==result['native_VLM_ASR_calls']==0
@@ -206,6 +220,8 @@ def audit(run,diagnostic_stopped=False):
         'actual_tool_macro_executions':8,'scope_guard_denials':2,'ordinary_selections':ordinary,
         'maximum_independent_readout_probability_error':max_probability_error,
         'same_device_continuation_exact':True,'new_forward_or_tool_calls_in_audit':0,
+        'confirmation_v2':confirmation_v2,
+        'v1_failure_and_consumed_ledger_preserved':confirmation_v2,
         'independent_readout_math_is_not_CPU_GPU_trajectory_certification':True,
         'same_orchestrator_independent_code_not_external_peer_approval':True,
         'learned_skill_retention_hidden_advantage_or_production_PASS':False}

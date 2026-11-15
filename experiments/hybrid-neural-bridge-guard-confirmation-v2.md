@@ -1,6 +1,6 @@
 # P1A-v2 — đề xuất sửa guard và một lượt confirmation kỹ thuật
 
-**CHỜ DUYỆT; chưa chạy SDK preflight hoặc forward mới.** V1f39bc6 giữ nguyên
+**Đã duyệt “Duyệt confirmation v2” ngày15/11/2026; một lượt v2.** V1f39bc6 giữ nguyên
 `P1A_STOPPED_NOT_PASS`; không dùng diagnostic để đổi FAIL thành PASS. Protocol
 v1 cấm tự mở confirmation khi fail, nên cần phê duyệt riêng cho lượt này.
 
@@ -80,3 +80,20 @@ nguyên vẹn. P1B/data acquisition/train phải được duyệt riêng sau k�
 
 Đề nghị duyệt **tích hợp candidate guard + E0 + một confirmation v2** trong
 budget trên; không cần hỏi lại từng fixture. Chưa thực hiện từ phê duyệt v1.
+
+## Tích hợp đã khóa trước execution
+
+V2 runner được sinh từ source863513e5 đã archive, qua recipe
+`scripts/prepare_neural_bridge_confirmation_v2.py`. Per-seed loop/TASKS/SEEDS
+phải AST-identical; source v1 không sửa. Prefix v2 có marker/attempt-ledger riêng
+và ghi hash result/ledger v1; không sử dụng6 forward budget cũ còn dư.
+
+Pin platform.py, cmd.exe và nvidia-smi.exe theo absolute path +SHA trước E0.
+Telemetry helper truyền executable tuyệt đối rõ ràng; guard chấp nhận đúng
+Windows audit command-line form (list2cmdline), không argv tùy ý. Theo source
+CPython3.11 đã cài, Win32 Popen chuyển argv thành string trước audit event.
+
+E0 ghi receipt passed/zero forward/zero dispatch trước khởi tạo ALIF. CUDA
+runtime availability và nvidia-smi dedicated-memory samples được giữ riêng.
+Guard log phân biệt local query, declined VER probe và telemetry subprocess
+thật; source chưa được nhận dạng sẽ sticky-stop, không tự mở thêm exception.
