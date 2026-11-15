@@ -1,0 +1,62 @@
+{
+  "verdict": "NATIVE_FP32_LORA_PORTABILITY_AND_SAVED_EFFECTS_VERIFIED_WITH_SMALL_SAMPLE_LIMITS",
+  "native_source_run": "20261115T080312Z-lora-native-portability-v1-3dcddc",
+  "actual_tool_replays": 40,
+  "new_model_or_learning_calls": 0,
+  "same_native_process_and_base_for_both_scales": true,
+  "matched_generation_budget": true,
+  "repair_DEV_TEST_counts": {
+    "0": 6,
+    "1": 20
+  },
+  "repair_probe_count": 20,
+  "repair_TEST_counts": {
+    "0": 5,
+    "1": 16
+  },
+  "repair_TEST_count": 16,
+  "exploratory_error_family_gain_CI95_pp": [
+    25.0,
+    100.0
+  ],
+  "observed_old_control_counts": {
+    "math": {
+      "0": 2,
+      "1": 2
+    },
+    "JSON": {
+      "0": 4,
+      "1": 4
+    },
+    "source": {
+      "0": 4,
+      "1": 4
+    }
+  },
+  "old_control_count_per_family": 4,
+  "old_control_total_per_scale": 12,
+  "observed_old_control_regression_pp": 0,
+  "old_skill_noninferiority_generalization_NOT_proven": true,
+  "reason": "0/12 observed regressions is insufficient to establish<=3pp average/<=5pp family population loss",
+  "same_prompt_order_warm_cache_may_confound_latency": true,
+  "paired_latency_descriptive_only": {
+    "0": {
+      "median_seconds": 0.2829946279525757,
+      "p95_seconds": 0.34562413692474364
+    },
+    "1": {
+      "median_seconds": 0.3227177858352661,
+      "p95_seconds": 0.34584200382232666
+    }
+  },
+  "long_horizon_retention_or_20stage_learning_measured": false,
+  "LoRA_gain_is_not_hidden_SNN_gain": true,
+  "adapter_installed_in_Hermes": false,
+  "production_or_full_retention_PASS": false,
+  "raw_result_sha256": "d6d0d9a9a23a8a77d2457c0f1bd343f922bcda6a5e5a83e43357120f91409ea0",
+  "min_sampled_dedicated_GPU_free_bytes": 924844032,
+  "64_native_generation_calls_original_run": 64,
+  "owned_worker_cleanup_complete": true,
+  "live_state_exactly_equal": true,
+  "RC14_payload_files_unchanged": 58
+}

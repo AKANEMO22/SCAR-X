@@ -1,5 +1,22 @@
 # Bản đồ dự án SCAR-X
 
+[Multi-API action gate](hybrid/P1B_MULTI_API_STOP_20261115.md):
+`qualify_hybrid_p1b_multi_api_v2.py` dùng pinnedToolTalk/setup/sourcecheck;
+`audit_hybrid_multi_api_v2.py` rebuild ownedstate/replayoutputs,0modelcalls.
+Family đã STOP; không train trên c07292 để che thiếu action utility.
+
+Shared adapter retention runner `scripts/train_shared_lora_retention20.py`
+tách hoàn toàn ALIF;20stages/source-verified TRAIN/replay64. Wrapper
+`run_hybrid_lora_owned_window.py --script train_shared_lora_retention20.py`
+quản lý owned GPUwindow/restore; auditor riêng `audit_shared_lora_retention20.py`
+có diagnostic mode giới hạn cho lỗi final comparator, không wholeprotocolPASS.
+
+[Native LoRA portability](hybrid/LORA_NATIVE_PORTABILITY_20261115.md):
+`scripts/qualify_hybrid_lora_native.py` dùng disposable GPUworker, explicit
+requestscale0/1 và locked probes; `scripts/audit_hybrid_lora_native.py` replay
+savedanswers qua actual ToolTalk và paired rescore. Không live server/global
+adapter change; run3dcddc/audit04dce0 giữ64 outputs/resources và40 effectreplays.
+
 [P1B/LoRA](hybrid/P1B_AND_LORA_RESULT_20261115.md):
 `prepare_hybrid_verified_repair_data.py` gọi actual ToolTalk errors/corrections;
 `qualify_hybrid_repair_data.py` cân bằng template/error trước inference, giữ raw.

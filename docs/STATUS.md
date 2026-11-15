@@ -1,5 +1,29 @@
 # Trạng thái SCAR-X
 
+## 15/11 — multi-API usefulness STOP, shared-adapter20stage đang chạy
+
+[P1B-v2 report](hybrid/P1B_MULTI_API_STOP_20261115.md):12DEV/84nativecalls trên
+3APIs, inspect_status6/12=oracle6/12, không đủ gain5pp. Teacher72corrections
+và84savedreplies qua source-effect audit;0SNNupdates/0nativeTESToutputs. Sau2
+registeredDEVrounds dừng family6actions, không mở thêm bank để tìm score.
+[Shared-LoRA retention20](../experiments/hybrid-shared-lora-retention20-v1.md)
+được chạy riêng trên1adapter/4APIs, giữ gates. RAGcomparator phát hiện prompt
+vượt512tokens trong data-only inspection, không nới/truncate; [scope note](../experiments/shared-lora-retention20-audit-scope-note.md)
+giữ wholeprotocol và retention-component khác nhau nếu comparatorFAIL.
+Chưa kết luận retention từ điểm giữa lượt chạy; ALIF/liveweights không đổi.
+
+## 15/11 — LoRA native portability có actual paired results
+
+[Native qualification/audit](hybrid/LORA_NATIVE_PORTABILITY_20261115.md):64
+requests cùng isolated llama.cpp worker, per-request scale0/1; repair20câu
+6→20correct, trong đó16TEST5→16, independent40effectreplays khớp.12math/JSON/
+source controls giữ10/12correct, nhưng sample quá nhỏ để chứng minh regression
+3/5pp hoặc retention20stages. Minsampled dedicatedfree882MiB, worker cleanup
+xong;58RC14/liveALIF/GPU nguyên vẹn, adapter chưa cài. Không SNN training mới.
+[Literature intake tiếp](research/literature/CONTINUAL_SNN_TRANSFER_INTAKE_20261115.md)
+phân biệt CLP-SNN semantic backbone/prototypes với ALIF64D/action contract hiện
+tại; không copy rule/hardware scores hoặc rerun benchmark chỉ từ README.
+
 ## 15/11 — P1B usefulness STOP; một LoRA candidate đã train thật
 
 [Báo cáo/kết quả tách attribution](hybrid/P1B_AND_LORA_RESULT_20261115.md):392

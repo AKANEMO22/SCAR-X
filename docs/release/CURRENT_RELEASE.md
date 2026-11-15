@@ -123,6 +123,11 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 
 ## Giới hạn còn lại
 
+-[LoRA native qualification](../hybrid/LORA_NATIVE_PORTABILITY_20261115.md)
+  chạy qua worker riêng cùng base/requestbudget; artifact có tác dụng ở native
+  trên bộ repair đã biết.12general controls chưa đủ retention gate, chưa lắp
+  adapter vào modelHermes đang dùng; RC14 tiếp tục giữ source/base/ALIF cũ.
+
 -[P1B/LoRA15/11](../hybrid/P1B_AND_LORA_RESULT_20261115.md): đã có trained adapter
   candidate riêng, nhưng chưa áp vào RC14. TEST pilot hẹp không là retention/
   production PASS. SNN training dừng ở action-usefulness gate (oracleTEST bằng

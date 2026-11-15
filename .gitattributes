@@ -335,6 +335,11 @@ scripts/qualify_hybrid_repair_data.py -text
 scripts/run_hybrid_lora_owned_window.py -text
 scripts/audit_hybrid_lora_repair_pilot.py -text
 scripts/audit_hybrid_p1b_action_bank.py -text
+scripts/qualify_hybrid_lora_native.py -text
+scripts/audit_hybrid_lora_native.py -text
+experiments/hybrid-lora-native-portability-v1.md -text
+runs/*-lora-native-portability-v1-*/** -text -whitespace
+runs/*-lora-native-data-audit-v1-*/** -text -whitespace
 runs/*-verified-repair-data-v1-*/** -text -whitespace
 runs/*-repair-data-qualified-v2-*/** -text -whitespace
 runs/*-p1b-action-usefulness-v1-*/** -text -whitespace

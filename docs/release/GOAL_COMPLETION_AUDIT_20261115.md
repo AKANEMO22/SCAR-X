@@ -1,5 +1,14 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Native adapter follow-up:** [paired native portability](../hybrid/LORA_NATIVE_PORTABILITY_20261115.md)
+now verifies the same FP32 adapter on a disposable llama.cpp worker using the
+same base and per-request scale0/1.64requests: known repair20probes6→20correct,
+TEST subset5→16/16; actual-effect replay matches.12old-controls observed10/12
+correct both scales, insufficient to establish the population3/5pp gates or
+20stage retention. LiveRC14/ALIF are unchanged; this closes the native
+portability unknown on the tested tasks, not the full objective. No new SNN
+updates or re-opening of the closed uninformative P1B action bank.
+
 **Latest authorized P1B/LoRA work:** [report](../hybrid/P1B_AND_LORA_RESULT_20261115.md)
 uses actual112source-tool calls and392 common native action/RAG inputs. DEV
 initially passed usefulness, but TRAIN/TEST action ceilings cannot exceed

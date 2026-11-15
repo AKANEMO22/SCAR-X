@@ -1,5 +1,10 @@
 # P1B và LoRA — học được một sửa lỗi hẹp ở adapter, chưa có lợi thế SNN
 
+**Native follow-up:** [qualification cùng llama.cpp worker](LORA_NATIVE_PORTABILITY_20261115.md)
+đã có, không còn chỉ là GGUF conversion. Các dòng “chưa native acceptance” bên
+dưới mô tả thời điểm pilot; current scope vẫn chưa population retention hoặc
+liveHermes promotion. Không sửa receipt/history pilot ban đầu.
+
 User duyệt P1B/actual errors/local ALIF GPU/retention, sau đó cho phép train và
 tạo LoRA. Hai phần được tách attribution: SNN selector dùng frozen VLM trong
 llama.cpp; adapter pilot dùng Transformers/PEFT. Không dùng điểm hai backend

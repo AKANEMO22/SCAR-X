@@ -32,6 +32,20 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**P1B-v2/shared adapter15/11:** [multi-API c07292](hybrid/P1B_MULTI_API_STOP_20261115.md)
+84nativeDEVcalls cho inspect6/12=oracle6/12; giữ STOP và0SNNtraining, không tạo
+thêm bank sau2registeredDEVrounds. [One-adapter retention20](../experiments/hybrid-shared-lora-retention20-v1.md)
+được register/run riêng trong scopeLoRA, không là lợi ích synapseSNN. Whole
+comparator/gates không được nới từ lỗi512token-budget phát hiện trong preflight
+muộn; giữ rawdata/component scopes và chưa báo success khi run cònactive.
+
+**Native LoRA15/11:** [paired qualification](hybrid/LORA_NATIVE_PORTABILITY_20261115.md)
+có64requests/0training trong isolated llama.cpp, repair20cases6→20correct với
+adapterFP32, exact-effect replay khớp;12old-controls giữ điểm nhưng không đủ
+chứng minh noninferiority3/5pp/20stage retention. Candidate chưa promote vào
+Hermes; SNN-over-RAG vẫn không chứng minh. [Continual-SNN intake](research/literature/CONTINUAL_SNN_TRANSFER_INTAKE_20261115.md)
+không cài/sao chép thêm learner hoặc suy upstream classification score sang AI.
+
 **P1B/LoRA15/11:** user đã duyệt train/LoRA riêng; [kết quả](hybrid/P1B_AND_LORA_RESULT_20261115.md)
 cho thấy TEST action oracle không hơn RAG, nên dừng trước SNN train theo gate5pp,
 không lấy retention chưa đo thành PASS. LoRA32steps native-base/FP32 adapter
