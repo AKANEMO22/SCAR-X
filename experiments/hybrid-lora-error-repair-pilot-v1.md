@@ -60,3 +60,12 @@ Pilot gate: independently executed repair success improvement>=5pp, lower95%CI>0
 and old/general control regression<=3pp with no family>5pp, same input/tool budget.
 If retention/general controls absent, NOT production or retention qualified.
 Single seed/smallTEST is exploratory; don't claim three-seed P1B conclusion.
+
+Loader preflight552928 stopped at missing `mtp.fc.weight` with0forwards/0updates.
+Original result is retained. Transformers normal forward does not use this
+checkpoint's MTP prediction head; keep every mtp.* tensor registered/frozen in
+an auxiliary ParameterDict at native dtype rather than drop/prune it. A corrected
+loader is a zero-call compatibility continuation of the same32step pilot,
+not a new training grid/seed/dataset. Refuse continuation if the old receipt had
+any neural forward/update or a different failure. Keep both receipts/source refs.
+The old pre-PEFT save is an untrained full model snapshot, not a learned adapter.

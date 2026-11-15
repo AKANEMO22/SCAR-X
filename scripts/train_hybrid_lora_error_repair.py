@@ -46,7 +46,14 @@ def tensor_hash(tensor):return hashlib.sha256(tensor.detach().cpu().contiguous()
 
 def main():
     begun=time.time();run=ROOT/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-native-lora-repair-v1-'+uuid.uuid4().hex[:6]);run.mkdir()
-    with (ROOT/'local/native-lora-repair-v1-execution.json').open('x',encoding='utf-8') as f:json.dump({'run':str(run),'started':begun},f)
+    previous_marker=ROOT/'local/native-lora-repair-v1-execution.json'
+    if previous_marker.exists():
+        previous_run=Path(json.loads(previous_marker.read_text(encoding='utf-8'))['run'])
+        previous=json.loads((previous_run/'result.json').read_text(encoding='utf-8'))
+        if (previous['optimizer_attempts']!=0 or previous['forward_calls']!=0
+                or previous['failures']!=['ValueError: Original tensor missing in model: mtp.fc.weight']):
+            raise RuntimeError('Previous pilot consumed calls or failed outside the exact zero-call loader compatibility issue')
+    with (ROOT/'local/native-lora-native-mtp-compatibility-v1-execution.json').open('x',encoding='utf-8') as f:json.dump({'run':str(run),'started':begun,'previous_zero_call_loader_failure_preserved':previous_marker.exists()},f)
     (ROOT/'local/current-native-lora-repair-run.txt').write_text(str(run),encoding='utf-8')
     data_path=Path((ROOT/'local/current-qualified-repair-data.txt').read_text(encoding='utf-8').strip())
     rows=json.loads((data_path/'verified-data.json').read_text(encoding='utf-8'))
@@ -67,7 +74,7 @@ def main():
         'no_ALIF_learning_or_live_promotion':True})
     report={'run_id':run.name,'completed':False,'failures':[],'updates':[],'predictions':[],
             'backprop_scope':'VLM LoRA only, ALIF untouched','production_or_retention_qualified':False}
-    forward_calls=0;attempts=0;model=None
+    forward_calls=0;attempts=0;model=None;adapter_initialized=False
     def guard():
         if time.time()-begun>1200:raise TimeoutError('20minute pilot cap')
         memory=psutil.Process().memory_info()
@@ -99,13 +106,20 @@ def main():
         guard();tokenizer=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
         model=Qwen3_5ForConditionalGeneration.from_pretrained(MODEL,local_files_only=True,dtype='auto',attn_implementation='sdpa',low_cpu_mem_usage=True).to('cuda:0')
         # Restore any loader-cast original FP32 tensors before inference/training.
-        parameters=dict(model.named_parameters());source_to_loaded={}
+        parameters=dict(model.named_parameters());source_to_loaded={};auxiliary=torch.nn.ParameterDict()
+        model.add_module('scarx_preserved_source_auxiliary',auxiliary)
         with safe_open(weights,framework='pt',device='cpu') as source:
             for name,description in header.items():
                 if name=='__metadata__':continue
                 if name not in parameters:
                     if name=='lm_head.weight':continue
-                    raise ValueError('Original tensor missing in model: '+name)
+                    if name.startswith('mtp.'):
+                        # Transformers has no MTP inference path in this class.
+                        # Preserve every unused original tensor, unchanged and
+                        # frozen, rather than silently dropping/pruning it.
+                        auxiliary[name.replace('.','__')]=torch.nn.Parameter(source.get_tensor(name).to('cuda:0'),requires_grad=False)
+                        parameters[name]=auxiliary[name.replace('.','__')]
+                    else:raise ValueError('Original tensor missing in model: '+name)
                 p=parameters[name];expected={'F32':torch.float32,'BF16':torch.bfloat16}[description['dtype']]
                 if p.dtype!=expected:p.data=source.get_tensor(name).to(device='cuda:0',dtype=expected)
                 if p.dtype!=expected:raise ValueError('Base dtype not preserved')
@@ -113,10 +127,12 @@ def main():
         base_hashes={name:tensor_hash(p) for name,p in source_to_loaded.items()}
         config=LoraConfig(r=4,lora_alpha=8,lora_dropout=0,target_modules=['q_proj','v_proj'],bias='none',task_type='CAUSAL_LM')
         model=get_peft_model(model,config,autocast_adapter_dtype=True)
+        adapter_initialized=True
         trainables=[p for name,p in model.named_parameters() if p.requires_grad]
         assert trainables and all('lora_' in name for name,p in model.named_parameters() if p.requires_grad)
         model.config.use_cache=False
         write(run/'dtype-trainable-audit.json',{'native_source_dtypes_preserved':True,'base_tensor_count':len(source_to_loaded),
+            'original_unused_MTP_tensors_preserved_frozen':len(auxiliary),
             'trainable_parameters':sum(p.numel() for p in trainables),'trainable_names':[n for n,p in model.named_parameters() if p.requires_grad],
             'trainable_dtypes':sorted({str(p.dtype) for p in trainables}),'resources':guard()})
         def tokens(row):
@@ -180,7 +196,7 @@ def main():
     except Exception as exc:
         report['failures'].append(type(exc).__name__+': '+str(exc));report['verdict']='LORA_PILOT_STOPPED_NOT_PASS'
         (run/'failure.txt').write_text(traceback.format_exc(),encoding='utf-8')
-        if model is not None:
+        if model is not None and adapter_initialized:
             try:
                 partial=ROOT/'artifacts'/run.name/'unqualified-partial-adapter';partial.mkdir(parents=True)
                 model.save_pretrained(partial,safe_serialization=True)
