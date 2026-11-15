@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## 15/11 — P1A-v2 technical PASS, chưa learning PASS
+
+[Run6e203c và audit](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md):18
+GPU forwards/8 actual macros/2 denials,0 learning/native VLM calls;8 interface
+cases/two technical seeds qua. E0 trước ALIF qua,0 unexpected guard violations;
+3 known VER probes decline không spawn. Dedicated GPU min2739MiB, worker
+RSS726MB/private751MB;28s,35 pure preflight checks. Cold/rollback exact,
+independent readout error4,45e-8. V1FAIL/ledger giữ nguyên; cumulative36forward/
+20dispatch, không refund.58 RC14 payload/live arrays/RNG/replay/updates5 giữ nguyên.
+GO bridge lab; chưa P1B/train/live promotion hoặc hidden-over-RAG/retention PASS.
+
 ## 15/11 — P1A đã chạy, STOP vì guard của harness
 
 [Kết quả f39bc6](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md):18 GPU

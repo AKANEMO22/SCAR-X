@@ -123,6 +123,11 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 
 ## Giới hạn còn lại
 
+- [P1A-v2](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md) đã qua
+  frozen neural/action/outcome technical gate tronglab;0 learning, chưa cài
+  wrapper/adapter/guard vào RC14. Không phải learned self-repair/retention hoặc
+  production PASS. V1 fail bên dưới giữ lịch sử, không được sửa thành PASS.
+
 - [P1A research f39bc6](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md)
   có frozen neural proposals/tools thật nhưng STOP do harness guard; không
   nhập wrapper/adapter/snapshots vào RC14.6 pure guard-fix tests không chứng

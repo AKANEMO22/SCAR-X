@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[P1A-v2](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md):
+`scripts/prepare_neural_bridge_confirmation_v2.py` tạo runner v2 từ archived
+v1 source, AST-check toàn per-seed loop. Runner v2 dùng sticky SDK guard và
+dedicated telemetry, namespace/ledger riêng. Auditor P1A hiện hỗ trợ strict v2
+và giữ diagnostic-only v1; source/runtime/core serving không nhập prototype.
+Run6e203c có model objects, measurement arrays, journals, E0/guard/resource
+receipts và source đủ tái lập data-only audit;35 pure checks/0 model calls.
+
 [P1A neural/action/outcome](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md):
 `neural_outcome_bridge.py` là frozen CUDA wrapper/versioned adapter + immutable
 SQLite BindingJournal; `neural_bridge_sandbox.py` nối research action với owned

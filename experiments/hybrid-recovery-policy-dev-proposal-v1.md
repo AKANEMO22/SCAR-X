@@ -1,5 +1,11 @@
 # Recovery policy DEV: kế hoạch nối từ trải nghiệm tới hành động
 
+Update15/11: [P1A-v2](../docs/hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md)
+đã qua technical frozen bridge/action/outcome/persistence gate. Không train hoặc
+đổi learner, không tạo quyền DEV từ PASS. Tái dùng bridge/checker/source audit;
+đăng ký dataqualification/action utility và exact split/budget trước khi cân
+nhắc P1B. Các dự toán DEV bên dưới vẫn chưa là lệnh chạy hoặc approval.
+
 Trạng thái: **đề xuất, chưa chạy training hoặc chọn policy**. P0wrapperac7bb8 chỉ
 cho proposal từ weights chưa học. Không coi neuron hoạt động/đổi input/khôi phục
 đúng là bằng chứng nó đã học representation hay tự sửa lỗi.

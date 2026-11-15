@@ -1,0 +1,92 @@
+{
+  "verdict": "P1A_INDEPENDENT_DECISION_MACRO_STATE_READOUT_LEDGER_AUDIT_MATCHES",
+  "diagnostic_only": false,
+  "original_result_gate_pass": true,
+  "original_guard_gate_satisfied": true,
+  "original_blocked_attempts": [],
+  "current_postrun_auditor_sha256": "30b460c0f680c020a76c4efe538767140dbc8b78394bd4ad1a928843757980ff",
+  "registered_auditor_sha256": "30b460c0f680c020a76c4efe538767140dbc8b78394bd4ad1a928843757980ff",
+  "technical_cases": 8,
+  "seeds": [
+    260113,
+    260137
+  ],
+  "actual_GPU_forwards": 18,
+  "dispatch_attempts": 10,
+  "actual_tool_macro_executions": 8,
+  "scope_guard_denials": 2,
+  "ordinary_selections": [
+    {
+      "seed": 260113,
+      "case": 1,
+      "action": "inspect_status",
+      "raw_tool": "read_file",
+      "task_effect_satisfied": true,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260113,
+      "case": 2,
+      "action": "inspect_status",
+      "raw_tool": "read_file",
+      "task_effect_satisfied": false,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260113,
+      "case": 3,
+      "action": "inspect_status",
+      "raw_tool": "inspect_status",
+      "task_effect_satisfied": false,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260113,
+      "case": 4,
+      "action": "show_schema",
+      "raw_tool": "show_schema",
+      "task_effect_satisfied": false,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260137,
+      "case": 1,
+      "action": "inspect_status",
+      "raw_tool": "read_file",
+      "task_effect_satisfied": true,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260137,
+      "case": 2,
+      "action": "retry",
+      "raw_tool": "read_file",
+      "task_effect_satisfied": false,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260137,
+      "case": 3,
+      "action": "inspect_status",
+      "raw_tool": "inspect_status",
+      "task_effect_satisfied": false,
+      "clarification_supported": false
+    },
+    {
+      "seed": 260137,
+      "case": 4,
+      "action": "clarify",
+      "raw_tool": "ask_field",
+      "task_effect_satisfied": false,
+      "clarification_supported": true
+    }
+  ],
+  "maximum_independent_readout_probability_error": 4.451232349378387e-08,
+  "same_device_continuation_exact": true,
+  "new_forward_or_tool_calls_in_audit": 0,
+  "confirmation_v2": true,
+  "v1_failure_and_consumed_ledger_preserved": true,
+  "independent_readout_math_is_not_CPU_GPU_trajectory_certification": true,
+  "same_orchestrator_independent_code_not_external_peer_approval": true,
+  "learned_skill_retention_hidden_advantage_or_production_PASS": false
+}

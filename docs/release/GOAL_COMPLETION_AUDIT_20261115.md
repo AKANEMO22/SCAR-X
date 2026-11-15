@@ -1,5 +1,15 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**P1A-v2 now qualified technically:** user approved the fresh confirmation.
+[Run6e203c](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_V2_RESULT_20261115.md) passed the
+eight frozen neural/action/outcome interface cases with independent data audit,
+18 actual CUDA forwards/8 macro executions/2 denials,0 learning. Sticky guard
+and dedicated GPU telemetry passed; same-device persistence/journal exact.
+V1 remains FAIL with its consumed ledger; total36 forwards20 dispatches retained.
+Live RC14/weights/RNG/replay unchanged. This closes the prior bridge/guard
+qualification gap inlab, not the objective of useful lifelong learning or an
+advantage over matched RAG. P1B/dataset/training/live promotion remain unapproved.
+
 **Approved P1A executed, not qualified:** [f39bc6](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md)
 records18 genuine frozen CUDA forwards and10 macro attempts,0 learning. A
 poststop data-only diagnostic supports the neural-selection→tool→receipt path,

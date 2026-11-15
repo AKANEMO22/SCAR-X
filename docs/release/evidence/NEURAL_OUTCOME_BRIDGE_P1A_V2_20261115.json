@@ -1,0 +1,47 @@
+{
+  "verdict": "P1A_V2_FROZEN_BRIDGE_ENGINEERING_PASS_NOT_LEARNING_PASS",
+  "run_id": "20261115T063826Z-neural-outcome-bridge-p1a-v2-6e203c",
+  "source_git_sha": "50d7cd6c665f42bc93bce857834e21238a335634",
+  "technical_cases": 8,
+  "seeds": [
+    260113,
+    260137
+  ],
+  "GPU_forwards": 18,
+  "dispatch_attempts": 10,
+  "tool_macro_executions": 8,
+  "scope_denials": 2,
+  "learn_calls": 0,
+  "native_VLM_ASR_calls": 0,
+  "elapsed_seconds": 27.996912240982056,
+  "peak_worker_RSS_bytes": 726282240,
+  "peak_worker_private_commit_bytes": 750735360,
+  "minimum_sampled_dedicated_GPU_free_bytes": 2872049664,
+  "dedicated_GPU_telemetry_queries": 88,
+  "declined_stdlib_VER_probes_without_spawn": 3,
+  "unexpected_guard_violations": 0,
+  "independent_probability_error": 4.451232349378387e-08,
+  "same_device_checkpoint_continuation_exact": true,
+  "old_v1_failure_and_consumed_budget_preserved": true,
+  "cumulative_v1_plus_v2_forwards": 36,
+  "cumulative_dispatch_attempts": 20,
+  "live_saved_arrays_RNG_replay_equal": true,
+  "RC14_payload_files_unchanged": 58,
+  "actual_trace_events": 31,
+  "actual_trace_event_id_range": [
+    16251,
+    16281
+  ],
+  "P1B_training_or_live_promotion_authorized": false,
+  "skill_retention_hidden_advantage_or_production_PASS": false,
+  "evidence_sha256": {
+    "manifest.json": "d5fb54a1c8970e69d8393e9a679dc1aca05bab36608b203ec1edb314d56e248a",
+    "result.json": "90633245753a7a80b4221e8daeab9cb7418e4e7c343a9ce7b6905474bf41fecd",
+    "independent-data-audit.json": "ff93fd67fc6730f6b54ee56af642c0a7ab0e6a357a0204c69ed482ac87687a42",
+    "guard-events.json": "3f8b35d8d88a8f5ce6d472082baaf6eadf7c8a141804caf67459e73ed7c82dc2",
+    "environment-preflight.json": "87d22c1385db9b7278de61b34e189cd48faa967471e3dc7317856eb726a0f7fb",
+    "live-state-audit.json": "541f635f59134dd474c14327b1264f2ed35ff744aa7451d67793b1f3b1f87ba8",
+    "post-runtime-audit.json": "d58cc89a9c2218178d76a05c3ae73476ef3cb3b772a35cf8bbbda2398aab6a53",
+    "attempt-ledger.jsonl": "9ec92f7cb969e50803a4d95122417500c2659feacf15a610f660c6b7ec955842"
+  }
+}
