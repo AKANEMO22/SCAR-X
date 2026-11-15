@@ -1,5 +1,15 @@
 # SCAR-X working rules
 
+- Latest user P1 request15/11: specifically authorizes a CPU-only, no-training
+  preflight for one teacher-P causal-credit hypothesis; only if it passes,
+  register and run one isolated P1, at most24configs/3predeclaredseeds,
+  total120s and RAM<2GB including concurrent workers/audit. This supersedes
+  prior GPU-only/paper-only instructions for this scoped task. Do not rerun
+  OR/XOR/MOVE/R13.2/Phase2/P0-sign with more seeds. If duplicate, unidentifiable
+  or prerequisite fails, stop before training. No main/Hermes/live reset,
+  old TEST selection, push/merge/deploy. User asks parallel arms/seeds for
+  speed only within the same hypothesis and aggregate resource budget.
+
 - Latest user15/11 architecture direction: literature/repository reading, design-space matrix and preliminary architecture proposals ONLY. Do not start experiments, P0 fixtures, model inference, training, dataset/weight downloads, packages or live/model changes under this request. Earlier broad training approvals do not open a new run now. Finish source/provenance, locality, resource accounting, prior-art and falsification analysis first; a future experimental protocol needs separate user approval. Proposals are not implemented capabilities or proven novel architectures.
 
 - Latest user15/11: all NEW research neural forward and training/fitted readouts run CUDA0 automatically; reject CPU fallback. CPU remains allowed for initialization, I/O, serialization, numerical checking of already-saved arrays and statistics. Do not rerun old CPU training/parity studies to satisfy this direction; preserve their historical results. GPU-only candidate wrappers are research-only; product CPU mode remains available as originally requested.
