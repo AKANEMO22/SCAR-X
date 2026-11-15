@@ -1,0 +1,159 @@
+{
+  "verdict": "P0_FIXTURES_ARE_NOT_A_NEURAL_POLICY_TRAINING_DATASET",
+  "existing_P0_run": "20261115T044756Z-outcome-contract-p0-v1-5842c6",
+  "all_existing_artifact_inventory_hashes_verified": true,
+  "traces": 14,
+  "actual_decision_origins": {
+    "fixed_fixture": 42
+  },
+  "traces_with_a_public_user_task_field": 0,
+  "first_decisions_with_empty_prior_tool_history": 13,
+  "traces_without_a_decision": 1,
+  "distinct_initial_snapshot_hashes": 1,
+  "distinct_private_checker_contracts": 5,
+  "learning_authorized_outcomes": 0,
+  "raw_recorded_tool_actions": {
+    "read_file": 27,
+    "acknowledge": 1,
+    "write_value": 1,
+    "commit": 5,
+    "prepare": 2,
+    "forbidden_update": 1,
+    "poll": 3,
+    "ask_field": 2
+  },
+  "production_action_order": [
+    "review",
+    "search",
+    "verify",
+    "ask",
+    "defer",
+    "consolidate"
+  ],
+  "research_shadow_action_order": [
+    "show_schema",
+    "inspect_status",
+    "retry",
+    "clarify",
+    "defer",
+    "finish"
+  ],
+  "raw_tool_names_are_not_neural_action_slot_labels": true,
+  "legacy_shadow_observation_fields": [
+    "empty_result",
+    "error_type",
+    "probe",
+    "reported_status",
+    "returned_epoch",
+    "spillover",
+    "streak",
+    "tool"
+  ],
+  "P0_policy_view_fields": [
+    "tool",
+    "arguments",
+    "result",
+    "duration_ms"
+  ],
+  "direct_encoder_compatibility": false,
+  "what_is_missing": [
+    "Public task meaning from the actual request, not serialized private checker/gold",
+    "Versioned causal observation adapter and explicit action macro binding",
+    "Immutable decision-to-executed-action-to-independent-outcome attribution before any reward"
+  ],
+  "not_a_prediction_accuracy_bound_or_new_model_result": true,
+  "new_samples_tools_model_initializations_forward_or_updates": 0,
+  "source_sha256": {
+    "src/scarx/hybrid/learner.py": "c38f7dd9412da3bc14a02a3a83611941d15aee1c558c05f4bd26671a6872111a",
+    "src/scarx/hybrid/engine.py": "7b78154c6ca9adb6c611829e5f5b23381be68c74a450a6759dc81fa6f63b04b1",
+    "src/scarx/evaluation/recovery_policy.py": "34896cfe1fc6a027e0f5df1dd1996361bf49be6f1f3acb3a543734e79c66dc5f",
+    "src/scarx/evaluation/hybrid_incident_encoder.py": "f41a5c8bb21c731e6b9d672fa919f72df21c467a4d001b980e5eb0bb411b7948"
+  },
+  "trace_details": [
+    {
+      "name": "01-correct-source",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "02-wrong-source-same-content",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "03-success-without-effect",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "04-partial-effect",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "05-correct-update",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "06-wrong-record",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "07-order-reference",
+      "public_user_task_fields": [],
+      "recorded_decisions": 2,
+      "learning_authorized": false
+    },
+    {
+      "name": "07-order-reversed",
+      "public_user_task_fields": [],
+      "recorded_decisions": 2,
+      "learning_authorized": false
+    },
+    {
+      "name": "08-denied-before-success",
+      "public_user_task_fields": [],
+      "recorded_decisions": 2,
+      "learning_authorized": false
+    },
+    {
+      "name": "09-loop-before-correct-read",
+      "public_user_task_fields": [],
+      "recorded_decisions": 25,
+      "learning_authorized": false
+    },
+    {
+      "name": "10-progressing-polls",
+      "public_user_task_fields": [],
+      "recorded_decisions": 3,
+      "learning_authorized": false
+    },
+    {
+      "name": "11-finaltext-without-proof",
+      "public_user_task_fields": [],
+      "recorded_decisions": 0,
+      "learning_authorized": false
+    },
+    {
+      "name": "12-wrong-clarification",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    },
+    {
+      "name": "12-supported-clarification",
+      "public_user_task_fields": [],
+      "recorded_decisions": 1,
+      "learning_authorized": false
+    }
+  ],
+  "research_or_production_PASS": false
+}

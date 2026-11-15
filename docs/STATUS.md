@@ -1,5 +1,15 @@
 # Trạng thái SCAR-X
 
+## 15/11 — chưa dùng fixture P0 để học policy
+
+[Readiness data audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json)
+kiểm123 artifact hashes,0 new calls:42 decisions đều fixed_fixture,0 authorized
+learning outcomes,14 traces không có public task field. Raw schema/action names
+không khớp shadow policy trực tiếp. Giữ P0 checker PASS, không dùng nó làm chứng
+cứ học được. [P1A](../experiments/hybrid-neural-action-outcome-bridge-p1a-v1.md)
+đề xuất nối task/observations→frozen neural proposal→macro→receipt,≤24 GPU forwards,
+0 updates; đang chờ duyệt, chưa code/run. Không mở DEV hoặc thay model live.
+
 ## 15/11 — outcome-contract P0 đã chạy theo phê duyệt
 
 [Kết quả/audit](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md):12 fixture/14

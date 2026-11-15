@@ -1,5 +1,15 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Readiness follow-up, no new experiment:** the existing123 P0 artifacts were
+hash-verified and source interfaces inspected without importing models. All42
+actions are fixed_fixture;14 traces omit a public user-task field,0 outcomes
+authorize learning. Raw tool actions are not the six shadow neural slots and
+observation schemas do not directly match. [P1A](../../experiments/hybrid-neural-action-outcome-bridge-p1a-v1.md)
+now specifies a bounded frozen neural action/outcome bridge for approval, not a
+new learning rule or permission to train. This analysis changes the next step:
+bind public task/observations and action provenance before using outcomes for
+local credit; do not train on the checker fixtures by exposing private contracts.
+
 **User-approved next P0 now completed:** “làm đi” on15/11 authorized the pending
 outcome-contract P0 only. [Run5842c6](../hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md)
 executes42 actual owned file/SQLite calls on12 fixtures/14 traces with0 model

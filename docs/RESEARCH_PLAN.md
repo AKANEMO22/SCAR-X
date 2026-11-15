@@ -32,6 +32,13 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**Sau P0 outcome15/11:** [data-only readiness audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json)
+xác nhận bộ fixture checker không là policy training dataset: thiếu public task
+field, fixed decisions và interface/action semantics chưa khớp shadow SNN.
+[P1A bridge proposal](../experiments/hybrid-neural-action-outcome-bridge-p1a-v1.md)
+đã cụ thể hóa input/action/outcome attribution, frozen ALIF≤24 GPU forwards/0
+updates. **Chờ duyệt, chưa code/chạy**, không mở P1B/DEV từ P0 PASS.
+
 **Outcome contract P0,15/11:** người dùng duyệt “làm đi”; [lượt5842c6](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md)
 đã thực thi12 fixtures/14 traces/42 file–SQLite calls,1,078s/RSS32,4MB,0 model
 calls. Separate data/state rescore khớp14; giữ full learned live state và58 RC14

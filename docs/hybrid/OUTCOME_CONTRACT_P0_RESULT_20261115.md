@@ -80,6 +80,19 @@ tiến hành; không suy là review hoàn tất, không resubmit hoặc gọi đ
 
 ## Bước tiếp theo, chưa được mở tự động
 
+[Readiness audit dữ liệu đã có](../release/evidence/OUTCOME_POLICY_READINESS_20261115.json)
+kiểm toàn123 artifact hashes, không tạo samples/calls mới:14 traces thiếu public
+user-task field,42 decisions fixed_fixture,0 authorized learning outcomes.13
+first decisions có tool history rỗng;1 trace không có decision. Initial snapshot
+cùng hash nhưng5 private checker contracts khác nhau. Đây là lý do không gọi
+P0 này là training dataset, không phải accuracy bound cho policy có task input.
+Raw tool names/schema cũng không tương thích trực tiếp với6 shadow action slots
+và encoderV2. Không serialize private contract/gold vào policy để lấp khoảng trống.
+
+[P1A bridge qualification](../../experiments/hybrid-neural-action-outcome-bridge-p1a-v1.md)
+đã được đề xuất: public task + causal observations → frozen ALIF → actual macro →
+bound outcome receipt, tối đa24 GPU forwards/0 updates. **Chưa được duyệt/chạy.**
+
 P0 này chỉ làm rõ outcome đúng phạm vi. Còn thiếu đường nối: observation lỗi/
 probe → neural input phân biệt được → neural action thực thi → outcome gắn đúng
 decision → local update → kỹ năng unseen và retention. Audit hiện tại vẫn cho

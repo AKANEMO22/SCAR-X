@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Policy-readiness audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json):
+`scripts/audit_hybrid_outcome_training_readiness.py` đọc lại artifact inventory và
+AST literals của các interface; không import model hoặc tạo sample/forward.
+[P1A bridge](../experiments/hybrid-neural-action-outcome-bridge-p1a-v1.md) là
+proposal chờ duyệt, chưa có implementation hoặc checkpoint mới.
+
 [Outcome-contract P0](hybrid/OUTCOME_CONTRACT_P0_RESULT_20261115.md):
 `src/scarx/evaluation/outcome_contract.py` là pure checker không neural import;
 runner `scripts/run_hybrid_outcome_contract_p0.py` thực thi file/SQLite riêng,
