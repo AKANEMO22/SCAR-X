@@ -395,3 +395,9 @@ scripts/run_semantic_contrastive_credit_dev.py -text
 experiments/semantic-alif-contrastive-credit-dev-v1.md -text
 runs/*-semantic-contrastive-credit-dev-v1-*/** -text -whitespace
 artifacts/*-semantic-contrastive-credit-dev-v1-*/** -text -whitespace
+tests/test_semantic_credit_gpu_boundary.py -text
+scripts/audit_semantic_credit_dev.py -text
+scripts/diagnose_semantic_credit_common_head.py -text
+experiments/semantic-credit-common-head-diagnostic-v1.md -text
+runs/*-semantic-credit-DEV-data-audit-v1-*/** -text -whitespace
+runs/*-semantic-credit-common-head-v1-*/** -text -whitespace

@@ -12,6 +12,15 @@ from scarx.evaluation.semantic_credit_alif import CreditALIF
 from scarx.hybrid.store import Store, encode
 
 
+def summarize_curve(curve):
+    trajectory = np.asarray(curve)
+    forgotten = np.array([max(0, trajectory[c:, c].max() - trajectory[-1, c]) for c in range(6)])
+    score = float(trajectory[-1].mean())
+    return {'final_DEV_accuracy': score, 'mean_forgetting': float(forgotten.mean()),
+        'worst_forgetting': float(forgotten.max()), 'per_intent_forgetting': forgotten.tolist(),
+        'pilot_acquisition_and_retention_gate': bool(score >= .65 and forgotten.mean() <= .03 + 1e-9 and forgotten.max() <= .05 + 1e-9)}
+
+
 class Budget:
     def __init__(self, run):
         self.run, self.started = run, time.monotonic()
@@ -128,12 +137,7 @@ def main():
                 raise MemoryError('30MB artifacts bound')
         summary = {}
         for name, curve in curves.items():
-            trajectory = np.asarray(curve)
-            forgotten = np.array([max(0, trajectory[c:, c].max() - trajectory[-1, c]) for c in range(6)])
-            score = float(trajectory[-1].mean())
-            summary[name] = {'final_DEV_accuracy': score, 'mean_forgetting': float(forgotten.mean()),
-                'worst_forgetting': float(forgotten.max()), 'per_intent_forgetting': forgotten.tolist(),
-                'pilot_acquisition_and_retention_gate': score >= .65 and forgotten.mean() <= .03 + 1e-9 and forgotten.max() <= .05 + 1e-9}
+            summary[name] = summarize_curve(curve)
         report.update(completed=True, verdict='GPU_DEV_SCREEN_COMPLETE_NOT_CONFIRMATION', summary=summary,
             strongest_raw_feature_DEV_control=.7916666666666666,
             pilot_any_candidate_gate=any(summary[n]['pilot_acquisition_and_retention_gate'] for n in ('hidden_eta05', 'hidden_eta20')),
