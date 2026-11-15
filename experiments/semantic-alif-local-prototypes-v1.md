@@ -169,3 +169,17 @@ at most40local attempts and200forward attempts counted inside4500/40000global
 quota. Two technical seeds and synthetic vectors are only correctness fixtures,
 not quality evidence. Seed/task bootstrap10000resamples with source text cluster
 and seed resampling,95% percentileCI, RNG260216. TESTnever used for decisions.
+
+Final executor clarifications locked before learning: emit actual examples,
+probabilities/deltas and DEVcurves per stage. Frozen DEV outputs may be cached
+exactly, never counted as new forwards. Each seed receives its own TRAIN-only
+permutation/reservoir schedule, identical across arms. Final controls retain all
+uniqueTRAIN actually observed by that seed (not unseen remainingTRAIN, no64record
+retrieval cap); headroom gate above used all240 and stays historical. Compare
+against all9registered full/PCA/BM25 controls plus readout-only/frozen/shuffled/
+hiddenreset; no choosing a winner after TEST. Repeated final predictions are
+only deterministic cold-restore checks, not extra independent TEST evidence.
+Two TRAIN-clone next-update checks per trained final model also charge global
+quota, no changes to measured checkpoint. Forgetting per intent uses its maximum
+DEVaccuracy after that intent's first exposure minus final20stage accuracy,
+clipped at0; retain gates for every seed, not just averaging failures away.
