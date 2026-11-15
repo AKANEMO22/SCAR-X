@@ -1,0 +1,75 @@
+{
+  "status": "PINNED_HUMAN_INTENT_DATA_PARTITIONED_BEFORE_MODEL_CALLS",
+  "source_commit": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+  "sources": {
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/LICENSE",
+      "bytes": 18650,
+      "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+      "reused_exact_pinned_source_cache": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T092901Z-semantic-ALIF-data-v1-ddb2b6\\LICENSE"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/README.md",
+      "bytes": 4735,
+      "sha256": "7b9ce9069931cc2de89dce8c7ffb53d07806cf413601ccf133b9af5227b3a373",
+      "reused_exact_pinned_source_cache": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T092901Z-semantic-ALIF-data-v1-ddb2b6\\README.md"
+    },
+    "banking_data/categories.json": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/categories.json",
+      "bytes": 2036,
+      "sha256": "53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63",
+      "reused_exact_pinned_source_cache": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T092901Z-semantic-ALIF-data-v1-ddb2b6\\banking_data\\categories.json"
+    },
+    "banking_data/train.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/train.csv",
+      "bytes": 839073,
+      "sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+      "reused_exact_pinned_source_cache": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T092901Z-semantic-ALIF-data-v1-ddb2b6\\banking_data\\train.csv"
+    },
+    "banking_data/test.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+      "bytes": 239961,
+      "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+      "reused_exact_pinned_source_cache": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T092901Z-semantic-ALIF-data-v1-ddb2b6\\banking_data\\test.csv"
+    }
+  },
+  "source_license": "CC-BY-4.0",
+  "attribution": "Casanueva et al., Efficient Intent Detection with Dual Sentence Encoders,2020; PolyAI",
+  "labels": [
+    "card_payment_fee_charged",
+    "cash_withdrawal_charge",
+    "transfer_fee_charged",
+    "card_payment_wrong_exchange_rate",
+    "wrong_exchange_rate_for_cash_withdrawal",
+    "exchange_rate"
+  ],
+  "counts": {
+    "TRAIN": 240,
+    "DEV": 120,
+    "TEST": 240
+  },
+  "duplicate_candidates_skipped_before_inference": [
+    {
+      "label": "transfer_fee_charged",
+      "split": "TRAIN_candidate",
+      "text_sha256": "1b586585d58641b89a0a0083c379d01dfc65b8c00e642952a1dc31d60f873e8a"
+    },
+    {
+      "label": "transfer_fee_charged",
+      "split": "TRAIN_candidate",
+      "text_sha256": "c0ba091262287e08e5f2b06472d1e950b64a08a7c2ac1453148a55edad9fec25"
+    }
+  ],
+  "selected_data_sha256": "e37a194f9d2b58324115a859503cdce9cc0442846092ad4bbbd2722046564547",
+  "public_utterances_only": true,
+  "model_or_learning_calls": 0,
+  "official_test_not_training": true,
+  "full_Banking77_benchmark_claim": false,
+  "raw_source_directory": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\20261115T093029Z-semantic-ALIF-data-v1-8424b0",
+  "official_TEST_rows_preserved_normalized_unique_counts": {
+    "TRAIN": 240,
+    "DEV": 120,
+    "TEST": 240
+  },
+  "official_TEST_duplicates_must_be_clustered_not_independent_samples": true
+}
