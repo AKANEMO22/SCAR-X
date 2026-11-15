@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[SharedLoRA20stage result](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md):
+run89ee2c giữraw480updates/20curves/knownTEST40 và originalcomparatorSTOP.
+`audit_shared_lora_retention20.py --diagnostic-comparator-stop` tínhlạimetric/
+effect/checkpoint IDs, khôngwholePASS; `plot_shared_lora_retention20.py` xuất
+figure từraw. Late-only resourceobserver khôngbackfillpeak. Comparator-view
+correction9790fe đo42calls riêng; `audit_retention_comparator_view.py` không
+chấp nhậnRAG0asstrongbaseline. AdapterPEFT/GGUFFP32 chưa cài live.
+
 [Multi-API action gate](hybrid/P1B_MULTI_API_STOP_20261115.md):
 `qualify_hybrid_p1b_multi_api_v2.py` dùng pinnedToolTalk/setup/sourcecheck;
 `audit_hybrid_multi_api_v2.py` rebuild ownedstate/replayoutputs,0modelcalls.

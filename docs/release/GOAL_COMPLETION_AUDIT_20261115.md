@@ -1,5 +1,16 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Twenty-stage shared-adapter evidence, original whole protocol still stopped:**
+[89ee2c](../hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md) actually trained
+480LoRAupdates on68uniqueTRAINrows, retained40knownTESTeffects after20stages
+(72.5→100%, finalforget0pp, transient12.5ppdrop recovered). This is VLM-LoRA
+learning,0ALIFupdates. The full runSTOP at original RAG512tokenbudget; diagnostic
+audits do not rewrite it. Separately corrected42calls fit within unused quota,
+verify artifactreload, but copy-proneRAG0/40is not a strong comparator, no superiority
+claim. Sample size/one seed/fresh generalization/full telemetry are insufficient
+for original lifelong/product goal. SNNsix-actionfamily remainsclosed after2DEV
+stops; no training just to manufacture passing scores. LiveRC14 unchanged.
+
 **Native adapter follow-up:** [paired native portability](../hybrid/LORA_NATIVE_PORTABILITY_20261115.md)
 now verifies the same FP32 adapter on a disposable llama.cpp worker using the
 same base and per-request scale0/1.64requests: known repair20probes6→20correct,

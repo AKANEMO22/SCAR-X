@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## 15/11 — đủ20stage sharedLoRA, wholeprotocolSTOP vẫn giữ
+
+[Report89ee2c/audits](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md):480
+VLM-LoRAupdates,40APIcases72,5→100%, finalforgetting0pp trênbộ này; có transient
+AddReminder−12,5pp sauchặng3 rồi phục hồi.40finaleffectreplays khớp. Original
+protocolSTOP doRAGprompt>512, không sửaverdict; correction42calls/0train trong
+quota còn lại córeloadexact nhưngRAGcopyexamples nên không claim superiority.
+General12cases10→11correct, chưa population3/5pp/3seeds/lifelong hoặcSNNPASS.
+CandidateFP32/sharedadapter và20researchsnapshots đã lưu, latestnativequality
+chưa kiểm; HermeswarmGPU/learning/auto restored, savedALIF/RNG/replay/updates5
+nguyên vẹn. Không trainthêm hoặc promote trên bộ nhỏ đã chạmtrần này.
+
 ## 15/11 — multi-API usefulness STOP, shared-adapter20stage đang chạy
 
 [P1B-v2 report](hybrid/P1B_MULTI_API_STOP_20261115.md):12DEV/84nativecalls trên

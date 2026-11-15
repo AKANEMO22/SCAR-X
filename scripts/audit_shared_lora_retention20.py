@@ -16,6 +16,8 @@ def main():
     args=parser.parse_args()
     original=Path((ROOT/'local/current-shared-lora-retention20.txt').read_text(encoding='utf-8').strip())
     result=json.loads((original/'result.json').read_text(encoding='utf-8'));manifest=json.loads((original/'manifest.json').read_text(encoding='utf-8'))
+    for name,expected in manifest['source_sha256'].items():
+        assert hashlib.sha256((original/'source'/name).read_bytes()).hexdigest()==expected
     data=json.loads((original/'locked-data.json').read_text(encoding='utf-8'));by_id={r['id']:r for r in data}
     assert hashlib.sha256((original/'locked-data.json').read_bytes()).hexdigest()==manifest['data_sha256']
     diagnostic=args.diagnostic_comparator_stop
@@ -47,6 +49,10 @@ def main():
         accuracy=sum(p['exact_correct'] for p in stage['predictions'])/40
         assert accuracy==stage['accuracy'];scores.append(accuracy);api_scores.append(counted)
     forgetting={api:100*(max(s[api] for s in api_scores)-api_scores[-1][api]) for api in api_scores[-1]}
+    transient=[]
+    for index,current in enumerate(api_scores):
+        drops={api:100*(max(s[api] for s in api_scores[:index+1])-current[api]) for api in current}
+        transient.append({'completed_stages':index,'by_API_pp':drops,'mean_pp':sum(drops.values())/4,'worst_API_pp':max(drops.values())})
     if not diagnostic:assert forgetting==result['forgetting_pp']
     mean=sum(forgetting.values())/4;worst=max(forgetting.values());acquisition=max(scores[1:])
     if not diagnostic:assert abs(mean-result['mean_forgetting_pp'])<1e-12 and worst==result['worst_API_forgetting_pp']
@@ -107,6 +113,10 @@ def main():
         confidence=(100*np.quantile(boot,[.025,.975])).tolist()
     ledger=[json.loads(line) for line in (original/'attempts.jsonl').read_text(encoding='utf-8').splitlines()]
     assert sum(r['kind']=='optimizer' for r in ledger)==480
+    assert sum(r['kind']=='training_forward' for r in ledger)==480
+    assert sum(r['kind']=='generate' for r in ledger)==840
+    assert sum(r['kind']=='general_generate' for r in ledger)==24
+    assert ledger[-1]['top_level_calls']==result['top_level_model_calls']==1344
     assert all(r['id'] in train_ids for r in ledger if r['kind'] in ('optimizer','training_forward'))
     artifact=ROOT/(result.get('final_adapter') or result['last_saved_adapter']);checkpoints=sorted(artifact.parent.glob('stage-*'));assert len(checkpoints)==20
     for path in checkpoints:
@@ -122,12 +132,17 @@ def main():
         'original_run':original.name,'optimizer_steps':480,'stages':20,'unique_TRAIN_rows':68,'known_TEST_rows':40,
         'baseline_by_API':api_scores[0],'final_by_API':api_scores[-1],'forgetting_pp':forgetting,
         'mean_forgetting_pp':mean,'worst_API_forgetting_pp':worst,'acquisition':acquisition,'joint_acquisition_retention_gate':joint,
+        'largest_transient_observed_API_drop_pp':max(t['worst_API_pp'] for t in transient),
+        'largest_transient_mean_drop_pp':max(t['mean_pp'] for t in transient),
+        'transient_drop_is_supplementary_metric_not_redefinition_of_registered_final_gate':True,
+        'transient_drop_events':[t for t in transient if t['worst_API_pp']>0],
         'final_adapter_effect_accuracy':sum(final_by.values())/40,
         'frozen_base_RAG_effect_accuracy':sum(rag_by.values())/40 if rag_by else None,
         'paired_API_cluster_gain_CI95_pp':confidence,
         'error_API_clusters':4,'single_seed_nonfresh_TEST_scope':True,'old_general_controls':control,
         'population_oldskill_noninferiority_or_lifelong_retention_proven':False,
         'source_effect_replays':tool_calls,'new_model_or_learning_calls':0,'checkpoint_replay_ids_and_python_rng_validated':True,
+        'archived_source_hashes_and_full_attempt_kind_counts_validated':True,
         'ALIF_learning_or_SNN_advantage':False,'production_qualified':False,'curves':scores,
         'original_result_sha256':hashlib.sha256((original/'result.json').read_bytes()).hexdigest(),'replayed':replay}
     run=ROOT/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-shared-lora-retention-audit-v1-'+uuid.uuid4().hex[:6]);run.mkdir()

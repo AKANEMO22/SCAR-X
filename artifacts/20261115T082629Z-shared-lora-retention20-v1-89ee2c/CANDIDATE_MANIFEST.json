@@ -1,0 +1,43 @@
+{
+  "type": "ONE_SHARED_EXPERIMENTAL_ADAPTER_VERSION",
+  "base_model": "Qwen/Qwen3.5-0.8B",
+  "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "initial32step_adapter": "20261115T074627Z-native-lora-repair-v1-5c09fa",
+  "additional_optimizer_steps": 480,
+  "unique_TRAIN_rows": 68,
+  "rank": 4,
+  "alpha": 8,
+  "parameters": 159744,
+  "FP32_adapter_tensors": 24,
+  "native_base_precision_not_reduced": true,
+  "controlled20stage_API_retention_final_forgetting_pp": {
+    "AddAlarm": 0.0,
+    "AddReminder": 0.0,
+    "CompleteReminder": 0.0,
+    "DeleteAlarm": 0.0
+  },
+  "observed_transient_worst_API_drop_pp": 12.5,
+  "full_original_protocol_status": "SHARED_ADAPTER_RETENTION20_STOPPED_NOT_PASS",
+  "not_hidden_SNN_learning": true,
+  "latest_native_generation_quality_qualified": false,
+  "Hermes_installed": false,
+  "production_qualified": false,
+  "files": {
+    "stage-19\\adapter_config.json": {
+      "bytes": 1170,
+      "sha256": "8114982f5834351ad80ae867ff97fd061aeb87e9b7aa95ae9e39bf44f74bcf14"
+    },
+    "stage-19\\adapter_model.safetensors": {
+      "bytes": 642472,
+      "sha256": "2697e9264b51366ee9448b527b3483399053eef233ebc7384b8c9f23702eb7c0"
+    },
+    "shared-adapter-final-f32.gguf": {
+      "bytes": 641376,
+      "sha256": "e824ade880d55576b1ab08be21a8321a35bc6ad4d435f0bbc0b7c8c9257677b7"
+    },
+    "retention20-and-loss.png": {
+      "bytes": 115396,
+      "sha256": "1c103fe7e4a7eeee3e5690bc66bc1cc8cf77388fb0ced045d3bb8a1856602c98"
+    }
+  }
+}

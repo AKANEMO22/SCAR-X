@@ -123,6 +123,11 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 
 ## Giới hạn còn lại
 
+-[SharedLoRA20stage](../hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md)
+  candidate đã có trajectory học/giữ4API, nhưng wholeprotocolSTOP và reliable
+  RAG/noninferiority/generalization cònthiếu; latestcandidate chưa nativeQA hoặc
+  cài vàoHermes. Không gán LoRAgain thành cải thiện SNN hoặc productionPASS.
+
 -[LoRA native qualification](../hybrid/LORA_NATIVE_PORTABILITY_20261115.md)
   chạy qua worker riêng cùng base/requestbudget; artifact có tác dụng ở native
   trên bộ repair đã biết.12general controls chưa đủ retention gate, chưa lắp

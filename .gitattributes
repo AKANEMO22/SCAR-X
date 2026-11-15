@@ -340,6 +340,24 @@ scripts/audit_hybrid_lora_native.py -text
 experiments/hybrid-lora-native-portability-v1.md -text
 runs/*-lora-native-portability-v1-*/** -text -whitespace
 runs/*-lora-native-data-audit-v1-*/** -text -whitespace
+scripts/qualify_hybrid_p1b_multi_api_v2.py -text
+scripts/audit_hybrid_multi_api_v2.py -text
+scripts/train_shared_lora_retention20.py -text
+scripts/audit_shared_lora_retention20.py -text
+experiments/hybrid-p1b-multi-api-error-v2.md -text
+experiments/hybrid-shared-lora-retention20-v1.md -text
+runs/*-p1b-multi-api-v2-*/** -text -whitespace
+runs/*-multi-api-data-audit-v2-*/** -text -whitespace
+runs/*-shared-lora-retention20-v1-*/** -text -whitespace
+runs/*-shared-lora-retention-audit-v1-*/** -text -whitespace
+scripts/qualify_retention20_comparator_view.py -text
+scripts/audit_retention_comparator_view.py -text
+scripts/observe_shared_lora_retention_resources.py -text
+scripts/plot_shared_lora_retention20.py -text
+runs/*-retention-comparator-view-v1-*/** -text -whitespace
+runs/*-retention-comparator-audit-v1-*/** -text -whitespace
+experiments/shared-lora-retention-comparator-view-repair-v1.md -text
+experiments/shared-lora-retention20-audit-scope-note.md -text
 runs/*-verified-repair-data-v1-*/** -text -whitespace
 runs/*-repair-data-qualified-v2-*/** -text -whitespace
 runs/*-p1b-action-usefulness-v1-*/** -text -whitespace

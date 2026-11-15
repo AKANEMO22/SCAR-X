@@ -32,6 +32,13 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**SharedLoRA20stage15/11:** [completedtrajectory/wholeSTOP](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md)
+480updates/20stages, knownAPI40cases72,5→100%, finalforget0 nhưng transient12,5pp
+drop đượcgiữ. Sourceeffect/dataaudits khớp; originalprotocolSTOP doRAGtokenbudget,
+correctionkhôngretrain/khôngrewriteverdict vàRAGcopyexampleskhôngstrongcontrol.
+KhôngSNNgain/production/lifelongclaim, không thêmepoch trênbộ nhỏđãtrần. CPU/GPU
+dtype vàALIFlivegiữnguyên; main/R13khôngđổi. Ngưỡng3/5pp,65%,5pp/CIkhôngnới.
+
 **P1B-v2/shared adapter15/11:** [multi-API c07292](hybrid/P1B_MULTI_API_STOP_20261115.md)
 84nativeDEVcalls cho inspect6/12=oracle6/12; giữ STOP và0SNNtraining, không tạo
 thêm bank sau2registeredDEVrounds. [One-adapter retention20](../experiments/hybrid-shared-lora-retention20-v1.md)
