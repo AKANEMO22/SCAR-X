@@ -1,0 +1,35 @@
+0.00.101.793 I srv  llama_server: initializing ...
+0.00.101.806 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.101.807 W srv  server_prepa: embeddings enabled with n_batch (128) > n_ubatch (64)
+0.00.101.809 W srv  server_prepa: setting n_batch = n_ubatch = 64 to avoid assertion failure
+0.00.110.513 I srv    load_model: loading model 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\models\native\qwen-native-bf16.gguf'
+0.00.462.499 W model has unused tensor blk.24.attn_norm.weight (size = 4096 bytes) -- ignoring
+0.00.462.511 W model has unused tensor blk.24.post_attention_norm.weight (size = 4096 bytes) -- ignoring
+0.00.462.527 W model has unused tensor blk.24.attn_q.weight (size = 8388608 bytes) -- ignoring
+0.00.462.533 W model has unused tensor blk.24.attn_k.weight (size = 1048576 bytes) -- ignoring
+0.00.462.539 W model has unused tensor blk.24.attn_v.weight (size = 1048576 bytes) -- ignoring
+0.00.462.559 W model has unused tensor blk.24.attn_output.weight (size = 4194304 bytes) -- ignoring
+0.00.462.565 W model has unused tensor blk.24.attn_q_norm.weight (size = 1024 bytes) -- ignoring
+0.00.462.570 W model has unused tensor blk.24.attn_k_norm.weight (size = 1024 bytes) -- ignoring
+0.00.462.575 W model has unused tensor blk.24.ffn_gate.weight (size = 7340032 bytes) -- ignoring
+0.00.462.581 W model has unused tensor blk.24.ffn_down.weight (size = 7340032 bytes) -- ignoring
+0.00.462.587 W model has unused tensor blk.24.ffn_up.weight (size = 7340032 bytes) -- ignoring
+0.00.462.593 W model has unused tensor blk.24.nextn.eh_proj.weight (size = 4194304 bytes) -- ignoring
+0.00.462.599 W model has unused tensor blk.24.nextn.enorm.weight (size = 4096 bytes) -- ignoring
+0.00.462.605 W model has unused tensor blk.24.nextn.hnorm.weight (size = 4096 bytes) -- ignoring
+0.00.462.622 W model has unused tensor blk.24.nextn.shared_head_norm.weight (size = 4096 bytes) -- ignoring
+0.01.038.210 W llama_init_from_model: model default pooling_type is [-1], but [3] was specified
+0.01.052.070 I cmn          init: llama threadpool init, n_threads = 4
+0.01.052.614 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.01.052.618 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.01.052.619 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+0.01.216.468 I srv    load_model: loaded multimodal model, 'C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-hybrid-20261113\local\hybrid-v1\models\native\qwen-vision-native-bf16.gguf'
+0.01.217.777 W init: embeddings required but some input tokens were not marked as outputs -> overriding
+0.01.287.110 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 16384, kv_unified = 'false'
+0.01.287.223 W srv          init: --cache-idle-slots requires --cache-ram, disabling
+0.01.291.675 I srv  server_run_i: model loaded
+0.01.291.685 I srv  server_on_li: listening on http://127.0.0.1:18786
+0.01.612.435 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.01.612.450 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.01.660.940 I slot      release: id  0 | task 0 | stop processing: n_tokens = 10, truncated = 0

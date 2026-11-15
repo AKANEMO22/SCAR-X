@@ -117,3 +117,13 @@ TEST normalized texts before selecting TRAIN/DEV, keeping all official40TEST
 rows/intent. Report withinTEST normalized duplicates and cluster them inCI,
 not treating duplicate official rows as independent. No intent/gate/model is
 changed to fit scores, source cache is reused rather than downloaded again.
+
+Encoder resource compatibility amendment before any quality score: v1 run84f936
+performed one public E0 embedding, then stopped at the2GBworker resident guard.
+It unnecessarily inherited the live vision projector and16K context. Preserve
+that STOP. V2 is text-only: remove unused --mmproj, use512-token context and
+batch/ubatch512 (no truncation; oversized input rejects). Same original native
+text weights/precision/source, same data and2GBworker/512MiBGPU guards. No neural
+training. Charge original1call/1.937seconds against combined610call/600second
+budget; no reset/refund. No quality selection has occurred. If this reduced
+buffer configuration also fails, stop encoder study, not increase its cap.

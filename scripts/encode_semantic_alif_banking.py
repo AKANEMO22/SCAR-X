@@ -14,9 +14,12 @@ from scarx.hybrid.store import Store, encode
 
 
 def main():
-    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-v1-' + uuid.uuid4().hex[:6])
+    prior = ROOT / 'runs/20261115T093544Z-semantic-encoder-v1-84f936'
+    prior_result = json.loads((prior / 'result.json').read_text(encoding='utf-8'))
+    assert prior_result['attempts'] == 1 and not prior_result['completed']
+    run = ROOT / 'runs' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-semantic-encoder-v2-' + uuid.uuid4().hex[:6])
     run.mkdir()
-    with (ROOT / 'local/semantic-encoder-v1-execution.json').open('x', encoding='utf-8') as f:
+    with (ROOT / 'local/semantic-encoder-v2-execution.json').open('x', encoding='utf-8') as f:
         json.dump({'run': str(run)}, f)
     (ROOT / 'local/current-semantic-encoder.txt').write_text(str(run), encoding='utf-8')
     source = Path((ROOT / 'local/current-semantic-ALIF-data.txt').read_text(encoding='utf-8').strip())
@@ -25,6 +28,14 @@ def main():
     assert len(data) == 600
     native = SharedNative(ROOT)
     args = native.worker.cmdline().copy()
+    if '--mmproj' in args:
+        index = args.index('--mmproj')
+        del args[index:index + 2]
+    for flag, value in (('-c', '512'), ('-b', '512'), ('-ub', '512')):
+        if flag in args:
+            args[args.index(flag) + 1] = value
+        else:
+            args += [flag, value]
     token = secrets.token_hex(24)
     for flag, value in (('--port', '18786'), ('--api-key', token), ('--alias', 'scarx-semantic-encoder')):
         if flag in args:
@@ -38,7 +49,9 @@ def main():
             'scripts/encode_semantic_alif_banking.py', 'experiments/semantic-alif-local-prototypes-v1.md')},
         'native_exe_sha256': hashlib.sha256(Path(args[0]).read_bytes()).hexdigest(),
         'native_model_sha256': hashlib.sha256(Path(args[args.index('-m') + 1]).read_bytes()).hexdigest(),
-        'max_calls': 610, 'max_seconds': 600, 'pooling': 'last', 'precision': 'original BF16/F32',
+        'max_calls': 609, 'max_seconds': 598.063, 'combined_max_calls': 610,
+        'prior_charged_calls': 1, 'prior_run': prior.name, 'text_context_tokens': 512,
+        'pooling': 'last', 'precision': 'original BF16/F32',
         'encoder_inputs': 'raw public utterance only; never labels/intent names/split/IDs',
         'SNN_updates': 0, 'VLM_updates': 0, 'live_adapter_changed': False,
     }
@@ -51,7 +64,7 @@ def main():
     trace = Store(ROOT / 'local/hybrid-v1')
     records, vectors, failures = [], [], []
     def guard():
-        if time.monotonic() - started > 600:
+        if time.monotonic() - started > 598.063:
             raise TimeoutError('600second encoder budget')
         native.check()
         output = subprocess.check_output([str(Path(os.environ['WINDIR']) / 'System32/nvidia-smi.exe'),
@@ -72,7 +85,7 @@ def main():
             raise ValueError('Embedding response byte cap')
         return json.loads(raw)
     def embedding(text, identifier):
-        if len(records) >= 610:
+        if len(records) >= 609:
             raise RuntimeError('610calls precharge cap')
         guard()
         attempt = {'attempt': len(records) + 1, 'id': identifier, 'epoch': time.time(),
