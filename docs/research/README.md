@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**15/11 localALIFGPU:** [report/source/figure](../hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md)
+giữ3seed representationgain cóđiềukiện, forgetting vàRAGlimits. Signederror
+common-headDEV78,33vsfrozen62,50%, rawPCA64cùngreadout79,72%; chưa superiority.
+Importance/slowanchor chỉ1/3seedqua jointgate, khôngscale/promote hoặcTESTretune.
+
 **Quy tắc15/11:** bắt buộc qua [literature-first gate của master](../RESEARCH_PLAN.md#0-literature-first-bắt-buộc-trước-nghiên-cứu-mới)
 trước nghiên cứu mới. [Bảng kế thừa hiện tại](literature/REUSE_DECISIONS_20261115.md)
 ghi source/code đã đọc, quyết định dùng lại và những lượt không cần chạy lại;

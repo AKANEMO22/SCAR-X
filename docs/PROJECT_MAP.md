@@ -1,5 +1,14 @@
 # Bản đồ dự án SCAR-X
 
+[Localcredit/retentionGPU](hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md):
+`semantic_credit_alif.py` và `semantic_metaplastic_alif.py` là research-only,
+GPU-onlyALIF wrappers; khôngimportvàolive. `run_semantic_*` giữcounter/source/
+checkpoint/DEVcurves; `audit_semantic_*` rescoretừsavedarrays, khôngtrainCPU.
+`diagnose_semantic_three_seed.py` fitcommonheads trênGPU, auditcoefficients
+chỉxácminhphươngtrình. `plot_semantic_credit_results.py` xuấtfigure từraw.
+`lock_semantic_fresh_holdout.py` khóa240chuỗinhânloại chưaused,0modelcalls;
+khôngmởTESTconfirmation trongkhiDEVjointgate chưaqua. PIVOTtiếp, khôngRAGPASS.
+
 [SharedLoRA20stage result](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md):
 run89ee2c giữraw480updates/20curves/knownTEST40 và originalcomparatorSTOP.
 `audit_shared_lora_retention20.py --diagnostic-comparator-stop` tínhlạimetric/

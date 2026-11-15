@@ -1,5 +1,17 @@
 # Trạng thái SCAR-X
 
+## 15/11 — localcredit học representation trênGPU; SNN–RAG vẫn chưaPASS
+
+[Report/figure/source](hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md): newGPU-only
+signederror×eligibility cho common-head3seed DEV78,33% vsfrozen62,50%, gain15,83pp
+CI[8,60;22,78], nhưngrawPCA64cùngreadout79,72%. PrototypeTEST62,64% vẫnFAIL so
+BM2578,47%/ridge83,33%; không ghépDEVgainthànhTESTgain. Protection giảmmeanforget
+8,06→4,72pp, accuracy76,39→74,44%, chỉ1/3seedqua jointgate; normmatched65,83%.
+3840newformalGPUupdates/151,53s,160checkpoints và4488read-onlyGPUforwards đãaudit.
+SourceJSONterminalFAIL501749/missingDLLFAIL20d178 giữnguyên, recovery táchriêng;
+0newTESTcalls sauprototype,240freshheldout khóa nhưngchưainference. Live/main/
+R13 khôngđổi; khôngpromote hoặc nới3/5pp/5ppgain. Mục tiêuSNNmạnhhơnRAG chưađạt.
+
 ## 15/11 — đủ20stage sharedLoRA, wholeprotocolSTOP vẫn giữ
 
 [Report89ee2c/audits](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md):480

@@ -32,6 +32,13 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**Localcredit15/11:** [representation và retentionGPU](hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md)
+cho common-head3seed DEV78,33vs62,50%frozen, nhưngrawfeatures79,72%; chưa5ppgain
+vsđốichứngmạnh. Importance/slowanchor giảmforget8,06→4,72pp nhưngchỉ1/3seedđạt
+jointgate, nên **PIVOT**, chưascale/promote/confirmation. Latestuser yêu cầu
+newneuralforward/trainingGPU-only; CPUchỉI/O/khởitạo/kiểmtoán, giữCPUproductmode
+và kếtquảlịchsử. Khôngnới scientificgates hoặc ghépDEVvớiTEST cũ.
+
 **SharedLoRA20stage15/11:** [completedtrajectory/wholeSTOP](hybrid/SHARED_LORA_RETENTION20_RESULT_20261115.md)
 480updates/20stages, knownAPI40cases72,5→100%, finalforget0 nhưng transient12,5pp
 drop đượcgiữ. Sourceeffect/dataaudits khớp; originalprotocolSTOP doRAGtokenbudget,
