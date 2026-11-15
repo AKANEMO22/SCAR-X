@@ -16,11 +16,19 @@ async def main():
     run=ROOT/'local/image-question-acceptance'/stamp;run.mkdir(parents=True)
     (ROOT/'local/current-Hermes-image-question-acceptance.txt').write_text(str(run),encoding='utf-8')
     home=Path(os.environ['LOCALAPPDATA'])/'hermes';sys.path.insert(0,str(home/'hermes-agent'))
+    # Hermes accepts upload staging paths only under this profile's image cache,
+    # never a retained input path from another admission. Copy exact bytes to a
+    # fresh owned staging file; do not weaken the native-input ownership check.
+    staging_root=(home/'cache/images').resolve()
+    if not staging_root.is_dir() or staging_root!=home/'cache/images':
+        raise ValueError('Expected existing canonical profile staging cache')
+    staged=staging_root/('scarx-image-acceptance-'+uuid.uuid4().hex+'.png')
+    with staged.open('xb') as f:f.write(raw)
     from websockets.asyncio.client import connect
     from hermes_cli.gateway_client import GatewayClient
     grant=json.loads(subprocess.check_output([str(home/'bin/hermes.exe'),'--profile','default','gateway','attach','--json'],
         text=True,encoding='utf-8',timeout=20,creationflags=subprocess.CREATE_NO_WINDOW))
-    trace=Store(ROOT/'local/hybrid-v1');start_cursor=trace.events(after=0,limit=1)[0]['id'] if False else None
+    trace=Store(ROOT/'local/hybrid-v1')
     with trace.lock:
         start_cursor=trace.db.execute('SELECT COALESCE(MAX(id),0) FROM events').fetchone()[0]
     report={'scope':'actual canonical Hermes attachment, original reported image; not general vision benchmark',
@@ -40,13 +48,13 @@ async def main():
                     hidden=True,toolsets=['terminal','file','web'],max_turns=4,run_budget=60,
                     client={'name':'scarx-image-question-acceptance','version':'1'})
                 sid=snapshot['session_id'];report['session_id']=sid
-                for query,attachments in [('câu này làm  ntn giải thích chi tiết',[{'path':str(image),'mime':'image/png'}]),('chào bạn',[])]:
+                for query,attachments in [('câu này làm  ntn giải thích chi tiết',[{'path':str(staged),'mime':'image/png'}]),('chào bạn',[])]:
                     row={'query':query,'attachments':len(attachments),'tool_calls':[]}
                     report['turns'].append(row);began=time.monotonic()
                     trace.event('work_trace.activity',{'title':'Hermes nhận câu hỏi kèm ảnh thật','run_id':stamp,
                         'question':query,'image_sha256':report['image_sha256'] if attachments else None,'new_training':False},'orchestrator')
                     row['admission']=await client.rpc('prompt.submit',session_id=sid,profile='default',text=query,
-                        attachments=attachments,submission_id=uuid.uuid4().hex)
+                        **({'attachments':attachments} if attachments else {}),submission_id=uuid.uuid4().hex)
                     save();deadline=time.monotonic()+90
                     while time.monotonic()<deadline:
                         try:frame=await asyncio.wait_for(client.events.get(),min(10,max(.1,deadline-time.monotonic())))

@@ -45,8 +45,9 @@ def main():
         '1.0.0-rc.15':['src/scarx/hybrid/web_routing.py'],
         '1.0.0-rc.16':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/web_routing.py'],
         '1.0.0-rc.17':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/image_question.py'],
+        '1.0.0-rc.18':['src/scarx/hybrid/gateway.py','src/scarx/hybrid/image_question.py'],
     }
-    if manifest['version'] not in allowed:raise ValueError('Expected qualified scoped RC15/16/17')
+    if manifest['version'] not in allowed:raise ValueError('Expected qualified scoped RC15/16/17/18')
     root,data,python,home=manager.registered_target()
     if root!=ROOT or manager.plan_files(package,root,manifest):raise ValueError('Serving disk differs from tested package')
     manager.assert_registered_owner_runtime(root,data);manager.validate_existing_assets(root,home,package)

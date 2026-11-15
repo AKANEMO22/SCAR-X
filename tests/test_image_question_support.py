@@ -3,7 +3,7 @@ import copy
 import json
 from types import SimpleNamespace
 import pytest
-from scarx.hybrid.image_question import question_scope, parse_transcription, documentation_cards, prepare_image_question, grounded_choice_response, visible_options
+from scarx.hybrid.image_question import question_scope, parse_transcription, documentation_cards, prepare_image_question, grounded_choice_response, visible_options, anchor_new_greeting_after_image
 from scarx.hybrid.gateway import Gateway
 
 
@@ -109,3 +109,28 @@ def test_reading_without_documentation_does_not_disable_original_tool_access():
     body=request();body['tools']=[{'type':'function','function':{'name':'terminal'}}]
     body['_scarx_image_question']={'reference_ids':[]}
     assert Gateway.native_tools(body)==body['tools']
+
+
+def test_documentation_choice_subtask_has_no_host_history_or_tool_authority():
+    calls=[]
+    def generate(items,**kwargs):
+        calls.append((items,kwargs));return {'text':'{"choice_id":"B"}'}
+    text='plotOutput("n")? A. ui$n <- hist() B. output$n <- renderPlot({})'
+    grounded_choice_response([{'role':'system','content':'HOST_PRIVATE_CONTEXT'},
+                              {'role':'assistant','content':'OLD_WRONG_ANSWER'}],
+        text,documentation_cards(text),SimpleNamespace(generate=generate),True,'Giải thích câu này')
+    encoded=json.dumps(calls)
+    assert 'HOST_PRIVATE_CONTEXT' not in encoded and 'OLD_WRONG_ANSWER' not in encoded
+    assert 'tools' not in calls[0][1]
+    assert json.loads(calls[0][0][1]['content'])['user_question']=='Giải thích câu này'
+
+
+def test_new_greeting_after_image_keeps_original_history_and_never_hardcodes_reply():
+    messages=request()['messages']+[{'role':'assistant','content':'Old answer'}, {'role':'user','content':'chào bạn'}]
+    before=copy.deepcopy(messages)
+    assert anchor_new_greeting_after_image(messages)
+    assert messages[:-1]==before[:-1]
+    assert messages[-1]['content'][0]=={'type':'text','text':'chào bạn'}
+    assert 'Respond to this greeting' in messages[-1]['content'][1]['text']
+    assert not anchor_new_greeting_after_image([{'role':'user','content':'hello'}])
+    assert not anchor_new_greeting_after_image(before[:-1]+[{'role':'user','content':'Giải thích tiếp đáp án B'}])

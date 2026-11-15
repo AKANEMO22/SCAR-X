@@ -1,4 +1,4 @@
-# SCAR-X Hybrid 1.0.0-rc.17
+# SCAR-X Hybrid 1.0.0-rc.18
 
 Bản cập nhật RC cho SCAR-X Hybrid **đã cài trên máy Windows/Hermes hiện tại**.
 Đây là gói code nhỏ, tái sử dụng model/runtime đã có; không phải bộ cài độc lập
@@ -19,6 +19,11 @@ RC17 thêm đọc chữ localGPU cho câu hỏi trong ảnh. Với cặp hàm RS
 liệu đối chiếu, model chọn phương án hiện trong ảnh; lời giải được trình bày từ
 các ý có nguồn, trace ghi rõ runtime hỗ trợ chứ không là SNN vừa học kiến thức.
 Chưa là cải thiện vision/coding tổng quát hoặc được bảo đảm cho mọi đề bài.
+
+RC17 acceptance thật chọn sai A dù native probe chọn C; giữFAIL. RC18 tách
+bước lựa chọn thành phân loại chỉ đọc đề/tài liệu local, không có công cụ hoặc
+ngữ cảnh workspace/lịch sử gây nhiễu. Lời chào mới sau ảnh có nhắc ranh giới
+lượt hỏi để model không tiếp tục đáp án cũ; không hardcode lời chào hoặc nhãn C.
 
 RC13 chỉ cho verifier số học tự xác minh các câu tính toán hoàn chỉnh nằm
 trong grammar hỗ trợ. Biểu thức nằm trong câu hỏi màu, code, chuỗi trích dẫn

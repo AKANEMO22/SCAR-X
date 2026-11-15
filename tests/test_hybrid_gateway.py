@@ -125,7 +125,8 @@ def test_documented_image_answer_has_actual_native_usage_and_explicit_runtime_pr
         assert response['scarx_producer']=='runtime_documentation_grounded_image_answer'
         assert response['usage']=={'prompt_tokens':20,'completion_tokens':8,'total_tokens':28}
     assert len(calls)==2 and body['messages']==before['messages']
-    assert calls[1][0][0]==before['messages'][0]
+    assert 'KEEP HOST INSTRUCTIONS' not in json.dumps(calls[1][0]), 'A tool-free local classification task is isolated from host history'
+    assert body['messages'][0]==before['messages'][0], 'Original host authority is not mutated'
     assert text.startswith('Đáp án: **B.') and 'Shiny for R' in text
     assert gateway.backend.received is None, 'No free-form third stream replaced the cited explanation'
     assert any(e['kind']=='image_question_grounded_answer' for e in gateway.store.events())

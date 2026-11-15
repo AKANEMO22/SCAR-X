@@ -28,7 +28,7 @@ from .temporal import temporal_direction
 from .search_service import SearchService
 from .web_routing import public_web_scope, web_prelude, WEB_TOOLS
 from .web_evidence import supplied_web_sources, persist_web_sources, task_interpretation, task_user_message
-from .image_question import prepare_image_question, question_scope
+from .image_question import prepare_image_question, question_scope, anchor_new_greeting_after_image
 from .tool_routing import (
     workspace_tool_choice,
     workspace_prelude,
@@ -365,6 +365,8 @@ class Gateway:
             messages,omitted=omit_unused_host_steering(messages)
             body['_scarx_unused_steering_omitted']=omitted
         else:
+            if body.get('response_format') is None:
+                anchor_new_greeting_after_image(messages)
             latest = task_user_message(messages)
             content = latest.get("content", "")
             parts = (
