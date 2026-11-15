@@ -8,6 +8,8 @@ behavior từS+P vào shadowS bằng localeligibility, chỉ commit/resetP nếu
 coverage/skill/resourcechecks. Đây là P&C adaptation, không phát minh mới.
 Có case linearfold chính xác nhưngreadout-only; counterexample student nhỏ
 không chứa teacher, finiteguard mất skill hiếm, drift tích lũy và creditdead.
+§6.1 còn có existencewitness một tick cần hiddeninputweight đổi, giữoldprob
+và họcnewdecision bằng local signal dương; không là training hoặc saturationproof.
 GO phân tích khảthi hẹp; NO-GO resetP/triểnkhai/train/lifelongclaim hiện tại.
 0neuralcalls/updates/refit/data/TESTselection; main/Hermes/source giữ nguyên.
 

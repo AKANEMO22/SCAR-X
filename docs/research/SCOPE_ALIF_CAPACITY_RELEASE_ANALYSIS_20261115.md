@@ -309,6 +309,63 @@ Chỉ khi hidden C học có lợi hơn, có can thiệp causal và transfer ngo
 mới gọi là hidden consolidation hữu ích. Chỉ giảm phụ thuộc P ở readout vẫn
 là một thành quả kỹ thuật hợp lệ nhưng chưa đạt mục tiêu hidden của SCAR-X.
 
+### 6.1 Một witness cần hidden thay đổi, không chỉ readout folding
+
+Ví dụ tồn tại trên giấy, không là task benchmark mới hoặc kết quả training:
+input có hai bit a,b, một tick từ state0. Teacher có một neuron hữu ích ởS
+với W_in=(1,0) và một neuron ởP với W_in=(0,1), recurrence đóng góp0. Với
+threshold0,65, z_S=a,z_P=b. Những neuron này có thể nhúng vào graph cố định
+đủ fan-in bằng các row/slot khác không đóng góp output; không chọn split
+một-neuron hoặc thay tổngH128 của SCOPE để chạy.
+
+Lấy feature_decay0,92, μ=0 vàscale0,1 cố định như một state hợp lệ: q_S=0,8a,
+q_P=0,8b. Teacher binary head có ell0=0 và
+ell1=1,25(q_S+q_P)−0,5, nên decision là OR(a,b). StableS head chỉ có
+ell1=1,25q_S−0,5; trên miền cũ b=0 nó đúng và trùng teacherprobabilities.
+Mọi weights/bias trong witness đều trong bounds±3.
+
+CandidateS thay đúng weight từ inputb: W_in=(1,w), còn head/normalizer,
+threshold/state/R giữ nguyên. Với0,65<w≤3, neuronS biểu diễn OR(a,b).
+Trên mọi input cũ b=0, current/spike/features/probabilities vẫn chính xác
+như trước; trên input mới(0,1), output từ0 chuyển thành1. Trên(1,1) cũng
+đúng OR, nhưng probabilities teacher hai-spike khác candidate một-spike:
+witness bảo vệ oldprobability và newdecision, **không** newfullprobability.
+
+Readout-only trên frozenS không thể làm việc này: (0,0) và(0,1) có cùng q_S
+nhưng nhãn khác nhau. Đây là khác biệt representation có thể chứng minh,
+không phải gain do fit một head mạnh hơn. P sau đó có thể reset mà OR vẫn
+nằm trong S. S đã có một hướng có ích chưa dùng; không tạo dung lượng từ0.
+
+Local rule có thể tạo hướng cần thiết trong witness, dưới lịch học nêu rõ:
+freeze head/normalizer, bắt đầu learning traces tại0, và lặp case mới(0,1)
+với hard verified label1 (κ=0), xen kẽ oldkeep với target oldprobability.
+Ở case mới, m_S>0, ψ(u−θ)>0 và E^f_(S,b)>0 trong khoảng w∈[0;0,75]. D_b>0;
+momentum/energy bounded và clipping giữ bước d_b>0. Trên khoảng hữu hạn này,
+các đại lượng đó cho một cận dưới bước d_b dương ở mỗi lần case mới xuất
+hiện, nên sau hữu hạn lần w vượt0,65 trong số thực. Inputa=0 ở case mới
+cho D_a=0; oldkeep có δ=0 và momentum_a ban đầu0, nên weighta giữ nguyên.
+Không tính một số updates/timing thực; không suy từ surrogate thành exact
+gradient. Learning signal ở đây chỉ chứng minh hướng/sign có ích trong case
+cực đơn giản; head được khóa là một mask phân tích, không chính sách learner
+mặc định cho mọi task. Source `learn()` hiện tại không thực hiện mask này.
+
+Viết rõ cận dùng ở lập luận hữu hạn: trên khoảng w vừa nêu có
+0<D_min≤D_b≤D_max<∞ và C_max=max(c_init,D_max²). Ở mỗi case mới,
+b'_b≥0,1D_min, c'_b≤C_max, nên bước trước weightbound ít nhất
+min(0,01;0,008×0,1D_min/(sqrt(C_max)+10^-4))>0. Weightbound3 chưa chặn
+khi w≤0,75. Điều kiện case mới tiếp tục xuất hiện là thiết yếu; đây không
+là cam kết số mẫu/thời gian học hoặc một cận cho task bất kỳ.
+
+W_in(1,w) vẫn có thể tiếp tục drift lên bound sau khi nhãn đúng vì crossentropy
+còn error; một future stopping/guardbudget cần được khóa riêng. Teacher không
+phải groundtruth của input mở: y_OR ở đây là semantics do ví dụ định nghĩa.
+Không dùng witness để tạo data hoặc mở một campaign OR/recall100%.
+
+Giới hạn quan trọng: không temporalcredit, không continuousvideo, không
+chứng minh từ randominitialization, S gần capacity hoặc nhiều releasecycles.
+Khi S không còn biểu diễn được union, C1 vẫn bác bảo đảm tổng quát. Đây là
+existence witness cho một cơ chế có điều kiện, không là validation SCAR-X.
+
 ## 7. Reset P là tái sử dụng, không tăng dung lượng vô hạn
 
 Sau commit C, cùng H_p neurons và cùng số kết nối được khởi tạo theo version
