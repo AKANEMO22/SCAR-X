@@ -385,3 +385,8 @@ scripts/run_semantic_alif_prototypes.py -text
 tests/test_semantic_prototype_checkpoint.py -text
 runs/*-semantic-local-ALIF-v1-*/** -text -whitespace
 artifacts/*-semantic-local-ALIF-v1-*/** -text -whitespace
+scripts/audit_semantic_alif_prototypes.py -text
+scripts/diagnose_semantic_alif_representation.py -text
+experiments/semantic-alif-representation-diagnostic-v1.md -text
+runs/*-semantic-local-data-audit-v1-*/** -text -whitespace
+runs/*-semantic-representation-diagnostic-v1-*/** -text -whitespace
