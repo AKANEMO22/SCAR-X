@@ -176,16 +176,20 @@ def conditional_intervals(summaries,output,phase):
 
 
 def run(output):
-    start=time.perf_counter();deadline=start+300;output.mkdir(exist_ok=False)
+    start=time.perf_counter();deadline=start+298;output.mkdir(exist_ok=False)
     cap=apply_memory_limit(700_000_000);monitor=Monitor();monitor.start();phase=ROOT/OLD/"learning"
     rows=read(phase/"completed.json");custody=read(ROOT/OLD/"closure/FINAL_MANIFEST.json")
     source_names=["scripts/research/rc_p1b_diagnostics.py","scripts/research/scope_p1b_common.py",
                   "scripts/research/scope_p1b_resources.py","src/scarx/neural/core.py","src/scarx/hybrid/cuda_alif.py",
-                  "experiments/rc-p1b-diagnostics-v1.md"]
+                  "experiments/rc-p1b-diagnostics-v1.md","experiments/rc-p1b-diagnostics-provenance-recovery-v1.md"]
     hashes={name:sha(ROOT/name) for name in source_names}
     current=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+    git_hashes={}
     for name,expected in hashes.items():
-        assert hashlib.sha256(subprocess.check_output(["git","show",current+":"+name],cwd=ROOT)).hexdigest()==expected
+        blob=subprocess.check_output(["git","show",current+":"+name],cwd=ROOT)
+        assert blob.replace(b'\r\n',b'\n')==(ROOT/name).read_bytes().replace(b'\r\n',b'\n'),"Non-EOL source mutation: "+name
+        git_hashes[name]=hashlib.sha256(blob).hexdigest()
+        snapshot=output/"source"/name;snapshot.parent.mkdir(parents=True,exist_ok=True);snapshot.write_bytes((ROOT/name).read_bytes())
     if psutil.virtual_memory().available<4_000_000_000 or psutil.disk_usage(ROOT.anchor).free<3_000_000_000:raise MemoryError("Host reserve")
     jobs={};subjects=[];inputs={}
     def verify_input(path):
@@ -205,9 +209,9 @@ def run(output):
             jobs.setdefault(key,{"key":key,"seed":r["seed"],"checkpoint":str(checkpoint),"data":str(data),
                                  "directory":str(output/"features"/key),"deadline":deadline,"stop":str(output/"STOP")})
         subjects.append({**r,"feature_keys":keys})
-    write(output/"registration.json",{"source_commit":current,"source_hashes":hashes,"input_hashes":inputs,
+    write(output/"registration.json",{"source_commit":current,"source_hashes":hashes,"committed_blob_hashes":git_hashes,"input_hashes":inputs,
           "source_status":subprocess.check_output(["git","status","--short"],cwd=ROOT,text=True),
-          "cap":cap,"max_seconds":300,"unique_hidden_states":len(jobs),"probe_alpha":1,"scope":"TRAIN_DEV_only_NO_hidden_updates_NO_TEST"})
+          "cap":cap,"max_seconds":300,"prior_failed_intake_reserved_seconds":2,"unique_hidden_states":len(jobs),"probe_alpha":1,"scope":"TRAIN_DEV_only_NO_hidden_updates_NO_TEST"})
     write(output/"hardware.json",{"physical_cores":psutil.cpu_count(False),"logical_cores":psutil.cpu_count(),
           "RAM":psutil.virtual_memory()._asdict(),"pagefile_pressure":psutil.swap_memory()._asdict(),
           "disk":psutil.disk_usage(ROOT.anchor)._asdict(),"GPU":gpu(),
