@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — review đề xuất Neural Operator Lattice, chỉ đọc/audit số đã lưu
+
+[Bản phản biện](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md): giữ câu
+hỏi compatibility sau cập nhật, REQUEST_CHANGES với spec. NCA cited dùngBPTT;
+ROW báo compilation chưa có lợi ở budget đã thử; shared low-rankU giới hạn
+hướng sửa state khiU cố định. R13.2 savedpredictions được đếm lại độc lập:
+fixed19,92%, aligner33,40%, symbolic98,05%; chưa fullcausal/provenanceaudit.
+0modelcalls/updates/refit, không run mới, sửa core/live/main hoặc đổi gate.
+
 ## 15/11 — tự phản biện khảo sát kiến trúc, không chạy model
 
 [Bản phản biện](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md) phân loại điều

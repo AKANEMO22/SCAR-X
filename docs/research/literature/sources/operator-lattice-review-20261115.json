@@ -1,0 +1,246 @@
+{
+  "date": "2026-11-15",
+  "scope": "Selected-source critique and algebra; no new neural experiment or learner",
+  "review": "docs/research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md",
+  "input": {
+    "name": "Văn bản đã dán.txt",
+    "sha256": "3fd2f1bae60809a845c03f7e7e78643fc83ac44d4ced7bcf3844a00f494cdc75",
+    "bytes": 22760,
+    "treated_as": "proposal for review, not operational approval"
+  },
+  "external_source_files": [
+    {
+      "repo": "doeixd/reusable-operator-worlds",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/README.md",
+      "sha256": "0ea59e113be534494cbbfa90456d32e3b17484d8224297f1106bceb1f5579262",
+      "bytes": 48985,
+      "scope": "Selected E6/E6.2 and limitations sections; not full-repository audit or independent reproduction"
+    },
+    {
+      "repo": "doeixd/reusable-operator-worlds",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "path": "DESIGN_ADEQUACY.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/DESIGN_ADEQUACY.md",
+      "sha256": "33e748ee5845e04053d17ba6ae8d5509986e1ebbb27ab14c3b0bbd69d9ca74d4",
+      "bytes": 11754,
+      "scope": "Lines1-85: necessity/opportunity/discrimination and caveats"
+    },
+    {
+      "repo": "doeixd/reusable-operator-worlds",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "path": "E6_2_COMPILED_MACRO_PLAN.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/E6_2_COMPILED_MACRO_PLAN.md",
+      "sha256": "289641496c7f531d612616babf4ace2987816feee6d4de6e863d81dbb5bb38bc",
+      "bytes": 19348,
+      "scope": "Lines1-30: definitions and scope; full preregistration chronology not audited"
+    },
+    {
+      "repo": "doeixd/reusable-operator-worlds",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "path": "src/row/experiments/audit_e6_2_compiled.py",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/src/row/experiments/audit_e6_2_compiled.py",
+      "sha256": "36f98442d2c57feb91b02f0bf6f1af6ad51bf80feb304d1bb60712660bc63320",
+      "bytes": 20034,
+      "scope": "Search hits for capacity/optimizer/backward plus fit routine lines142-163; not all metrics/harness audited"
+    },
+    {
+      "repo": "yandex-research/dnar",
+      "commit": "12f3f0bd0a70568386e43b2d841422f28ed53698",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/yandex-research/dnar/12f3f0bd0a70568386e43b2d841422f28ed53698/README.md",
+      "sha256": "d344fcf66a9ea6b17c1bb3e03a841486c88def50a749b4779e89e1b04d7861c6",
+      "bytes": 685,
+      "scope": "Complete short README"
+    },
+    {
+      "repo": "yandex-research/dnar",
+      "commit": "12f3f0bd0a70568386e43b2d841422f28ed53698",
+      "path": "train.py",
+      "url": "https://raw.githubusercontent.com/yandex-research/dnar/12f3f0bd0a70568386e43b2d841422f28ed53698/train.py",
+      "sha256": "b4da0c8e8e6c1948dac4404f8c6365638fca4736c5ceac08eb6e0434ce7a0c62",
+      "bytes": 3075,
+      "scope": "Complete train entrypoint: AdamW/backward/default double; models internals not audited"
+    },
+    {
+      "repo": "yandex-research/dnar",
+      "commit": "12f3f0bd0a70568386e43b2d841422f28ed53698",
+      "path": "generate_data.py",
+      "url": "https://raw.githubusercontent.com/yandex-research/dnar/12f3f0bd0a70568386e43b2d841422f28ed53698/generate_data.py",
+      "sha256": "dbb4289b8d1ee5f92a5c187758ad4295171febb355fb163fc417d99767109970",
+      "bytes": 14560,
+      "scope": "Downloaded for provenance; not substantively reviewed, no generation executed"
+    }
+  ],
+  "papers": [
+    {
+      "name": "DNAR",
+      "url": "https://proceedings.mlr.press/v267/rodionov25a.html",
+      "scope": "Publisher abstract and pinned train entrypoint; no full-paper/code reproduction"
+    },
+    {
+      "name": "NCA",
+      "url": "https://arxiv.org/html/2609.36126v1",
+      "scope": "Sections3.1-3.3/Table1: state architecture, BPTT and inference scaling; not complete paper/code audit"
+    },
+    {
+      "name": "Boundary-first PC",
+      "url": "https://arxiv.org/html/2609.00686v1",
+      "scope": "Sections3,5/Table1 and PC-PC/PC-BP distinction; no reproduction"
+    },
+    {
+      "name": "Compile by Training",
+      "url": "https://arxiv.org/html/2609.04199v1",
+      "scope": "System/training, interpreter, composition and limitations; no training/service use"
+    },
+    {
+      "name": "Huginn probing",
+      "url": "https://arxiv.org/abs/2507.02199v2",
+      "scope": "Abstract/metadata only in this review"
+    },
+    {
+      "name": "DreamCoder",
+      "url": "https://arxiv.org/abs/2006.08381v1",
+      "scope": "Abstract/metadata only in this review"
+    },
+    {
+      "name": "Model stitching",
+      "url": "https://arxiv.org/abs/2106.07682v1",
+      "scope": "Abstract/metadata; novelty lead, not full applicability audit"
+    },
+    {
+      "name": "Git Re-Basin",
+      "url": "https://arxiv.org/abs/2209.04836v6",
+      "scope": "Abstract/metadata; symmetry lead, not full applicability audit"
+    },
+    {
+      "name": "PS-SNN",
+      "url": "https://www.nature.com/articles/s41598-026-42970-6",
+      "scope": "Search metadata/abstract only; full page inaccessible via cookie redirect"
+    }
+  ],
+  "saved_prediction_recount": {
+    "scope": "Existing saved predictions only; independent equality recount, no model calls or fitting; no source/data-generation/causal-validation pass",
+    "source_path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-gemini-r7\\artifacts\\r13_2_raw_predictions.json",
+    "source_sha256": "dae55c68307e7363d48c05e81de361b6be2af68f0778acd8d7812e955f8c889b",
+    "total_records": 1600,
+    "SNN_correct_flag_mismatches": 0,
+    "summary": {
+      "snn_fixed_spike": {
+        "by_seed": [
+          {
+            "seed": 140011,
+            "correct": 20,
+            "n": 128,
+            "accuracy": 0.15625
+          },
+          {
+            "seed": 140017,
+            "correct": 50,
+            "n": 128,
+            "accuracy": 0.390625
+          },
+          {
+            "seed": 140023,
+            "correct": 13,
+            "n": 128,
+            "accuracy": 0.1015625
+          },
+          {
+            "seed": 140099,
+            "correct": 19,
+            "n": 128,
+            "accuracy": 0.1484375
+          }
+        ],
+        "mean_seed_accuracy": 0.19921875
+      },
+      "snn_learned_aligner": {
+        "by_seed": [
+          {
+            "seed": 140011,
+            "correct": 65,
+            "n": 128,
+            "accuracy": 0.5078125
+          },
+          {
+            "seed": 140017,
+            "correct": 51,
+            "n": 128,
+            "accuracy": 0.3984375
+          },
+          {
+            "seed": 140023,
+            "correct": 25,
+            "n": 128,
+            "accuracy": 0.1953125
+          },
+          {
+            "seed": 140099,
+            "correct": 30,
+            "n": 128,
+            "accuracy": 0.234375
+          }
+        ],
+        "mean_seed_accuracy": 0.333984375
+      },
+      "snn_symbolic_router": {
+        "by_seed": [
+          {
+            "seed": 140011,
+            "correct": 118,
+            "n": 128,
+            "accuracy": 0.921875
+          },
+          {
+            "seed": 140017,
+            "correct": 128,
+            "n": 128,
+            "accuracy": 1.0
+          },
+          {
+            "seed": 140023,
+            "correct": 128,
+            "n": 128,
+            "accuracy": 1.0
+          },
+          {
+            "seed": 140099,
+            "correct": 128,
+            "n": 128,
+            "accuracy": 1.0
+          }
+        ],
+        "mean_seed_accuracy": 0.98046875
+      }
+    },
+    "model_calls": 0,
+    "updates": 0
+  },
+  "interpretation": {
+    "verdict": "REQUEST_CHANGES_SPEC_ONLY",
+    "keep": "Compatibility under ongoing component updates",
+    "not_proven": [
+      "new architecture novelty",
+      "local ALIF learning rule",
+      "continual skill accumulation",
+      "economic compilation",
+      "causal video state"
+    ],
+    "no_new_permission": [
+      "change ALIF",
+      "global/backward/BPTT in core",
+      "neural fixtures/training",
+      "main/live changes"
+    ]
+  },
+  "operations": {
+    "new_model_calls": 0,
+    "new_learning_updates": 0,
+    "new_model_fitting": false,
+    "upstream_script_execution": false,
+    "dataset_or_weight_downloads": false
+  },
+  "ponytail": "Not available in enabled tool inventory"
+}

@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Review đề xuất người dùng15/11:** [Neural Operator Lattice / Functional Recomposition](NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md).
+Giữ câu hỏi compatibility, yêu cầu sửa spec trước triển khai. Đối chiếu DNAR,
+NCA/BPTT, boundary-firstPC và ROW negative compilation; đếm lại savedR13.2,
+không gọi model hoặc đổi ALIF/gate. [Nguồn và phạm vi](literature/sources/operator-lattice-review-20261115.json).
+
 **Tự phản biện15/11:** [cận toán, phản ví dụ và các nghiên cứu không cần lặp](ARCHITECTURE_SELF_CRITIQUE_20261115.md).
 Hạ ưu tiên gói kiến trúc B; tách quan sát, dự đoán và điều chưa biết. Chưa có
 lượt chạy mới hoặc bằng chứng một kiến trúc mới đã thắng.

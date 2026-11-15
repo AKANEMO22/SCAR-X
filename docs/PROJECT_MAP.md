@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[Review Neural Operator Lattice15/11](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md):
+đề xuất người dùng → nguồn trực tiếp → giới hạn low-rank/composition/credit
+→ phần spec còn thiếu. Không chọn kiến trúc mới hoặc mở thí nghiệm.
+
 [Tự phản biện ma trận15/11](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md):
 oracle/alias/projection/EMA → điều kiện suy luận → bỏ/hoãn/giữ câu hỏi nghiên
 cứu. Hoãn chọn kiến trúc B nhiều vùng; chưa thí nghiệm hoặc cập nhật model.
