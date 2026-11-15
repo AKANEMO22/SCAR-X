@@ -32,6 +32,13 @@ kế thừa reference12/11, không mở một lượt nghiên cứu hoặc tự 
 
 ---
 
+**P1A15/11 — STOP:** user đã duyệt, [runf39bc6](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md)
+có18 CUDA forwards/10 dispatches/0 updates, action→macro→receipt data được đọc
+lại khớp. Toàn gateFAIL do guard quá rộng và không sticky khi SDK nuốt exception;
+không chấm diagnostic thành PASS, không rerun v1. Candidate guard có7 pure checks;
+[v2 confirmation](../experiments/hybrid-neural-bridge-guard-confirmation-v2.md) chờ
+duyệt, chưa thêm forward. Không mở P1B/train, không thay ALIF/precision/gates cũ.
+
 **Sau P0 outcome15/11:** [data-only readiness audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json)
 xác nhận bộ fixture checker không là policy training dataset: thiếu public task
 field, fixed decisions và interface/action semantics chưa khớp shadow SNN.

@@ -1,5 +1,17 @@
 # Bản đồ dự án SCAR-X
 
+[P1A neural/action/outcome](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md):
+`neural_outcome_bridge.py` là frozen CUDA wrapper/versioned adapter + immutable
+SQLite BindingJournal; `neural_bridge_sandbox.py` nối research action với owned
+macro và checker P0. `bridge_attempt_budget.py` precharge/owner-lock, không reset.
+Runner/auditor ở `scripts/*neural_outcome_bridge_p1a.py`; auditor có diagnostic
+mode rõ cho run STOP, không biến nó thành PASS. Không serving imports.
+
+Candidate `src/scarx/evaluation/bridge_effect_guard.py` và
+`bridge_environment_metrics.py`/`tests/test_bridge_effect_guard.py` chuẩn bị sửa
+guard, chưa áp dụng. [V2 proposal](../experiments/hybrid-neural-bridge-guard-confirmation-v2.md)
+khóa fresh quota và SDK exceptions hẹp, chờ duyệt trước bất kỳ confirmation.
+
 [Policy-readiness audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json):
 `scripts/audit_hybrid_outcome_training_readiness.py` đọc lại artifact inventory và
 AST literals của các interface; không import model hoặc tạo sample/forward.

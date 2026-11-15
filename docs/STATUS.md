@@ -1,5 +1,18 @@
 # Trạng thái SCAR-X
 
+## 15/11 — P1A đã chạy, STOP vì guard của harness
+
+[Kết quả f39bc6](hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md):18 GPU
+forwards/10 dispatches,8 actual macros/2 denials,0 learn/native VLM calls. Data
+diagnostic khớp input/readout/receipt/effect và same-device continuation, nhưng
+guard chặn local gethostname và3 Popen, SDK bắt exception còn harness không
+sticky-stop trước lượt tiếp. **Giữ P1A_STOPPED_NOT_PASS**, không sửa old result.
+Live27 arrays/RNG/replay/updates5 và58 RC14 payload/GPU nguyên vẹn.
+Candidate sticky guard +telemetry có7 pure tests qua, chưa import vào v1/live.
+[Confirmation v2](../experiments/hybrid-neural-bridge-guard-confirmation-v2.md)
+chờ duyệt riêng theo stop rule; chưa chạy lại/không reset ledger. Các pending
+P1A notices bên dưới là mốc trước câu trả lời “duyệt”.
+
 ## 15/11 — chưa dùng fixture P0 để học policy
 
 [Readiness data audit](release/evidence/OUTCOME_POLICY_READINESS_20261115.json)

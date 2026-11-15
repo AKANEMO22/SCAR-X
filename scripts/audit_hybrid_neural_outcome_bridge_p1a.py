@@ -55,11 +55,15 @@ def model_object(run,sha):
     return arrays,meta
 
 
-def audit(run):
+def audit(run,diagnostic_stopped=False):
     run=run.resolve()
     if run.parent!=ROOT/'runs' or '-neural-outcome-bridge-p1a-v1-' not in run.name:raise ValueError('Not an owned P1A run')
     manifest=read(run/'manifest.json');result=read(run/'result.json')
-    assert result['gate_pass'] and len(result['seed_results'])==2
+    if diagnostic_stopped:
+        assert result['gate_pass'] is False and result['verdict']=='P1A_STOPPED_NOT_PASS'
+        assert result['failures']==['ValueError: Live/model-call/learning invariant failure']
+    else:assert result['gate_pass']
+    assert len(result['seed_results'])==2
     for name,sha in manifest['source_sha256'].items():
         assert hashlib.sha256((run/'source'/name).read_bytes()).hexdigest()==sha
     ledger=[json.loads(line) for line in (run/'attempt-ledger.jsonl').read_bytes().splitlines()]
@@ -187,10 +191,17 @@ def audit(run):
     resources=read(run/'resources.json')
     assert all(max(r['peak_RSS_bytes'],r['peak_private_commit_bytes'])<=1_000_000_000 for r in resources)
     assert min(r['physical_cuda_free_bytes'] for r in resources if r['physical_cuda_free_bytes'] is not None)>=512*1024**2
-    assert result['elapsed_seconds']<=600 and not result['blocked_attempts'] and result['learn_calls']==result['native_VLM_ASR_calls']==0
+    assert result['elapsed_seconds']<=600 and result['learn_calls']==result['native_VLM_ASR_calls']==0
+    if not diagnostic_stopped:assert not result['blocked_attempts']
     live=read(run/'live-state-audit.json');assert live['equal'] and live['before']==live['after']==manifest['live_before']
     assert sum(p.stat().st_size for p in run.rglob('*') if p.is_file())<=20_000_000
-    return {'verdict':'P1A_INDEPENDENT_DECISION_MACRO_STATE_READOUT_LEDGER_AUDIT_MATCHES',
+    return {'verdict':('P1A_STOPPED_RUN_DATA_DIAGNOSTIC_MATCHES_NOT_PROTOCOL_PASS' if diagnostic_stopped
+                       else 'P1A_INDEPENDENT_DECISION_MACRO_STATE_READOUT_LEDGER_AUDIT_MATCHES'),
+        'diagnostic_only':diagnostic_stopped,'original_result_gate_pass':result['gate_pass'],
+        'original_guard_gate_satisfied':not result['blocked_attempts'],
+        'original_blocked_attempts':result['blocked_attempts'],
+        'current_postrun_auditor_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'registered_auditor_sha256':manifest['source_sha256']['scripts/audit_hybrid_neural_outcome_bridge_p1a.py'],
         'technical_cases':8,'seeds':[260113,260137],'actual_GPU_forwards':18,'dispatch_attempts':10,
         'actual_tool_macro_executions':8,'scope_guard_denials':2,'ordinary_selections':ordinary,
         'maximum_independent_readout_probability_error':max_probability_error,
@@ -202,7 +213,8 @@ def audit(run):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('run',type=Path);parser.add_argument('--output',type=Path)
-    args=parser.parse_args();report=audit(args.run)
+    parser.add_argument('--diagnostic-stopped',action='store_true',help='Read completed data from a failed run without certifying its guard gate')
+    args=parser.parse_args();report=audit(args.run,args.diagnostic_stopped)
     if args.output:
         with args.output.open('x',encoding='utf-8') as stream:json.dump(report,stream,ensure_ascii=False,indent=2)
     print(json.dumps(report,ensure_ascii=False))

@@ -1,0 +1,27 @@
+{
+  "primary_run_gate_pass": false,
+  "primary_reason": "Overbroad event classification and non-sticky stop after swallowed PermissionError",
+  "blocked_events": [
+    "socket.gethostname",
+    "subprocess.Popen",
+    "subprocess.Popen",
+    "subprocess.Popen"
+  ],
+  "exact_origin_of_three_Popen_attempts": "UNPROVEN: v1 did not record argv or caller stacks",
+  "static_candidate_paths_sha256": {
+    "C:\\Users\\hachimi\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\platform.py": "49699c94c015e4a060e4a79872152b8f016eab34bcfd103a1803d75f50f7b49d",
+    "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\hybrid-v1\\runtime-env\\Lib\\site-packages\\cupy\\cuda\\compiler.py": "c8ab1a5e69110eecedda088af158d9194afe61fe92ea4ca664691d96f0297ba3",
+    "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-hybrid-20261113\\local\\hybrid-v1\\runtime-env\\Lib\\site-packages\\cuda\\pathfinder\\_dynamic_libs\\load_nvidia_dynamic_lib.py": "4db9611f2f4c0403f243ed4a5a1b9848d48d3891ccfc6593e0a1dbeae8090b1c"
+  },
+  "known_local_gethostname_documentation": "https://docs.python.org/3.11/library/socket.html#socket.gethostname",
+  "new_guard_candidate_executed_in_P1": false,
+  "new_guard_pure_tests": 6,
+  "GPU_memory_v1_provider": "CUDA runtime availability, not certified global dedicated-memory peak",
+  "postrun_nvidia_smi_observation_MiB": {
+    "total": 6141,
+    "used": 3067,
+    "free": 2854
+  },
+  "postrun_reading_is_not_backfilled_into_original_run": true,
+  "new_forward_or_tool_calls_in_diagnosis": 0
+}

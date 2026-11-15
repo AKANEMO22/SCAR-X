@@ -1,5 +1,17 @@
 # Audit of the original Hybrid objective — 15 November 2026
 
+**Approved P1A executed, not qualified:** [f39bc6](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md)
+records18 genuine frozen CUDA forwards and10 macro attempts,0 learning. A
+poststop data-only diagnostic supports the neural-selection→tool→receipt path,
+without establishing task-optimality or learned skill. The full run remains
+STOPPED_NOT_PASS: our guard incorrectly blocked a local hostname query and
+3 process attempts, and SDK-caught exceptions were not checked until the end.
+No ledger/result was reset, no confirmation ran. Candidate guard repair has7
+pure tests; [v2 proposal](../../experiments/hybrid-neural-bridge-guard-confirmation-v2.md)
+requires separate approval under the accepted stop rule. Current live learned
+state/RC14 remain unchanged. Neither this failure nor partial data settles
+SNN-over-RAG, hidden representation, self-repair or lifelong retention.
+
 **Readiness follow-up, no new experiment:** the existing123 P0 artifacts were
 hash-verified and source interfaces inspected without importing models. All42
 actions are fixed_fixture;14 traces omit a public user-task field,0 outcomes

@@ -6,3 +6,6 @@ build/
 local/
 /artifacts/releases/
 
+# Research compiler caches remain local; measured data/source/checkpoints stay tracked.
+runs/*-neural-outcome-bridge-p1a-v1-*/cupy-cache/
+runs/*-neural-outcome-bridge-p1a-v1-*/cuda-cache/

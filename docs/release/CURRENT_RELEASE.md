@@ -123,6 +123,11 @@ không tạo context 65K token. Cache/quota và SSD memory không bằng trí nh
 
 ## Giới hạn còn lại
 
+- [P1A research f39bc6](../hybrid/NEURAL_OUTCOME_BRIDGE_P1A_RESULT_20261115.md)
+  có frozen neural proposals/tools thật nhưng STOP do harness guard; không
+  nhập wrapper/adapter/snapshots vào RC14.6 pure guard-fix tests không chứng
+  nhận model skill. Confirmation v2 chưa được duyệt/chạy; không reset budget.
+
 - Model 0.8B còn yếu, có thể hiểu sai, sai ngôn ngữ hoặc không dẫn nguồn như yêu
   cầu. Clip/project đã biết không chứng minh chất lượng video chưa thấy, năng
   lực đa năng hoặc ngang model online. Hai lỗi QA được sửa không giải quyết
