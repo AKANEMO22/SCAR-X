@@ -18,7 +18,7 @@ def status():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--script',choices=['train_hybrid_lora_error_repair.py','train_shared_lora_retention20.py'],default='train_hybrid_lora_error_repair.py')
+    parser=argparse.ArgumentParser();parser.add_argument('--script',choices=['train_hybrid_lora_error_repair.py','train_shared_lora_retention20.py','qualify_retention20_comparator_view.py'],default='train_hybrid_lora_error_repair.py')
     args=parser.parse_args()
     run=ROOT/'local/lora-resource-window'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ');run.mkdir(parents=True)
     before=status()

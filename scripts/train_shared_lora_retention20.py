@@ -210,6 +210,7 @@ def main():
         excluded=('updates','stages','baseline','frozen_base_RAG_final','old_general_baseline','old_general_final')
         write(run/'result.json',report);event('Shared-adapter retention terminal',{k:v for k,v in report.items() if k not in excluded})
     print(encode({'run':str(run),**{k:v for k,v in report.items() if k not in excluded}}),flush=True)
+    return 0 if report['completed'] else 1
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':raise SystemExit(main())
