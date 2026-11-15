@@ -1,5 +1,12 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Capacity release trên giấy15/11:** [đặc tả và phản ví dụ](SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md),
+[ma trận prior art](SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md),
+[SCOPEv2 đã review nhất quán](SCOPE_ALIF_ARCHITECTURE_CANDIDATE_20261115.md).
+Đề xuất chuyển hành vi bằng localeligibility vàoS rồi reuseP là adaptation
+P&C, chưa learner mới hoặc lifelongPASS. Không resetP/train/dùngTESTcũ chọn
+thiết kế. Manifest khóa nguồn/phạm vi, không nhận upstream claims như tái lập.
+
 **Core–readout trên giấy15/11:** [giữ behavior khi hidden đổi spike](ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md).
 Tách feature/probability/label, margin/tie, reachablefeatures và chi phí.
 Miền behavior theo weight ray có thể không đơn điệu; chưa binarysearch/guard

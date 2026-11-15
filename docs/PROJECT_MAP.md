@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Capacity release15/11](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md):
+SCOPEv2 → consolidation candidateS → evidence/output guard → atomicreuseP;
+proof có điều kiện/counterexamples/resources/falsifiers, chưa thực thi.
+[Prior art](research/SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md) so PNN/P&C/HLOP/
+ROW và kết quả âm. [Reviewv2](research/SCOPE_ALIF_REVIEW_20261115.json) chỉ spec.
+
 [Core/readout behavior15/11](research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md):
 spikes→features→normalize→head→decision, các contract giữ chức năng và giới
 hạn reachability/nonmonotone step/numerics. Chỉ đặc tả, không learner mới.

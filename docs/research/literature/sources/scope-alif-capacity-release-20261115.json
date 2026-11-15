@@ -1,0 +1,217 @@
+{
+  "date": "2026-11-15",
+  "title": "Fixed-budget ALIF consolidation and reuse-P feasibility analysis",
+  "status": "GO_PAPER_FEASIBILITY_ONLY_NO_GO_IMPLEMENTATION_RELEASE_OR_LIFELONG_CLAIM",
+  "base_git_commit": "b3a48983e148024c75b093d0413140c255c78073",
+  "branch": "research/contracted-interface-alif-design-20261115",
+  "SCOPE_v2_sha256": "4928fdc0de96b90e6e7e84b98e8384a8bcd23d81c6090f574713381a0cd8b977",
+  "documents": [
+    "docs/research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md",
+    "docs/research/SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md"
+  ],
+  "mechanism": "Known distillation/consolidation-and-reset pattern from Progress and Compress, adapted on paper to one-step output error times local ALIF eligibility with bounded verified replay and shadow transaction; no novelty claim",
+  "papers": [
+    {
+      "name": "progressive",
+      "url": "https://arxiv.org/html/1606.04671v4",
+      "sha256": "bd3a794ac8d9305fbc0d934ec1e4971da7a47d91fa6175c308aa14842982b209",
+      "text_lines": 824,
+      "text_characters": 46974,
+      "read_scope": "Paper body, mathematical methods, reported results, limitations and substantive appendices; no independent empirical reproduction. HTML mathematical extraction inspected; not proof-assistant verification."
+    },
+    {
+      "name": "progress-compress",
+      "url": "https://arxiv.org/html/1805.06370v2",
+      "sha256": "1e16e3366a89ac14ae78ebacd613d43ed3d196fd0405d24b51809a8ecf566429",
+      "text_lines": 525,
+      "text_characters": 58259,
+      "read_scope": "Paper body, mathematical methods, reported results, limitations and substantive appendices; no independent empirical reproduction. HTML mathematical extraction inspected; not proof-assistant verification."
+    },
+    {
+      "name": "hlop",
+      "url": "https://arxiv.org/html/2402.11984v1",
+      "sha256": "55bfb333d6d7971d1bcd5c4ce4e7629d00d503b7cfa35d58fb859fda9fe481c8",
+      "text_lines": 932,
+      "text_characters": 103696,
+      "read_scope": "Paper body, mathematical methods, reported results, limitations and substantive appendices; no independent empirical reproduction. HTML mathematical extraction inspected; not proof-assistant verification."
+    }
+  ],
+  "ROW_repository_pin": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+  "ROW_current_master_same_as_pin": true,
+  "ROW_files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/README.md",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "0ea59e113be534494cbbfa90456d32e3b17484d8224297f1106bceb1f5579262",
+      "bytes": 48985,
+      "read_scope": "Complete README read. Some older status prose differs from newer rows; concrete protocols and report summaries used for scope."
+    },
+    {
+      "path": "paper/draft.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/paper/draft.md",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "51c1e22a4d04397e6aed665c7971aa987618e708a913fcedd47d6579e218e7e9",
+      "bytes": 137518,
+      "read_scope": "Selected sections7,7.5,7.6,9 and section headings; not the entire 137KB draft"
+    },
+    {
+      "path": "reports/e6_2_compiled.json",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/reports/e6_2_compiled.json",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "313faf484e39199327f0a7ae67bed1332c3e1b103b8eb46391209ddf493fc16c",
+      "bytes": 27570,
+      "read_scope": "Top-level protocol and verdict/capacity ladder fields read; raw per-world arrays not independently rescored"
+    },
+    {
+      "path": "DESIGN_ADEQUACY.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/DESIGN_ADEQUACY.md",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "33e748ee5845e04053d17ba6ae8d5509986e1ebbb27ab14c3b0bbd69d9ca74d4",
+      "bytes": 11754,
+      "read_scope": "First145lines reread including necessity/opportunity/discrimination and limitations; prior selected source intake reused"
+    },
+    {
+      "path": "reports/o2c_consolidation.json",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/reports/o2c_consolidation.json",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "c2033caa35dc071140db439a9c1831f9fff2304a2746801b3ae7d2956e570e7c",
+      "bytes": 152881,
+      "read_scope": "Protocol, gate and summary fields read; no rerun or raw-cell forensic audit"
+    },
+    {
+      "path": "O6_SEALED_REROUTE_CONFIRMATION_PLAN.md",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/O6_SEALED_REROUTE_CONFIRMATION_PLAN.md",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "4f57dc9b04af29733cf5275149dec76e7f2c065fa7b4cbbdcac61cfef51dd080",
+      "bytes": 10315,
+      "read_scope": "First105lines: memory/search/update scope and decision rule"
+    },
+    {
+      "path": "src/row/experiments/audit_e6_2_compiled.py",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/src/row/experiments/audit_e6_2_compiled.py",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "36f98442d2c57feb91b02f0bf6f1af6ad51bf80feb304d1bb60712660bc63320",
+      "bytes": 20034,
+      "read_scope": "Cached for provenance; prior review of fit routine/backward reused; no fresh full-file audit"
+    },
+    {
+      "path": "reports/o6_sealed_reroute.json",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/reports/o6_sealed_reroute.json",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "9430b0da2aa59d76418a399e8983a773872e5c2710cab76a3a60f0bd1749f524",
+      "bytes": 612946,
+      "read_scope": "Protocol/summary read; reported confirmatory result, not independent replication"
+    },
+    {
+      "path": "src/row/experiments/o2c_consolidation.py",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/src/row/experiments/o2c_consolidation.py",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "7445a7221513f7e45fffe41e99d8a45281b72036488c7f8ae7f532e11279ab34",
+      "bytes": 14252,
+      "read_scope": "Lines1-112 and relevant search hits: optimizer/allparameters/backward, reservoir scope"
+    },
+    {
+      "path": "src/row/experiments/o5_reroute_sleep.py",
+      "url": "https://raw.githubusercontent.com/doeixd/reusable-operator-worlds/e846633e1d1a5cfa60e8c83646f68175e810a1ba/src/row/experiments/o5_reroute_sleep.py",
+      "commit": "e846633e1d1a5cfa60e8c83646f68175e810a1ba",
+      "sha256": "a2788b483abb3f6432702d36dc704ef3be49bec3d5acaa9bf9dd948aac75ff49",
+      "bytes": 12418,
+      "read_scope": "Search hits: reroute and reservoir lines76-114; not a full code audit"
+    }
+  ],
+  "SCARX_inputs": [
+    {
+      "path": "src/scarx/neural/core.py",
+      "sha256": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "src/scarx/hybrid/learner.py",
+      "sha256": "4702a5d7ab87d5cf64cbd3ee8304a3381c83e1eb359ad387ec05aa686c9feb4b",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/SCOPE_ALIF_ARCHITECTURE_CANDIDATE_20261115.md",
+      "sha256": "4928fdc0de96b90e6e7e84b98e8384a8bcd23d81c6090f574713381a0cd8b977",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/SCOPE_ALIF_REVIEW_20261115.json",
+      "sha256": "6ab132a29ac30c73e7826ac384d85efd67b48c3d9629027a13db339b62e95b3e",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md",
+      "sha256": "4a77cba30e2cb1448db5728b8c32196ffb6c01fb95e72bb2d5e42488a35aa618",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/hybrid/P1B_MULTI_API_STOP_20261115.md",
+      "sha256": "80672aaad7dddef9a5577b493614af839cb9d6d6661cfb7df00b68611ccf2ea6",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/ACR_CREDIT_SPACE_LIMITS_20261112.md",
+      "sha256": "a37cf429b1ef7852d9d8929433e5f7c1e8e408aa8925ba6217775201d50045af",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/ACR_DEV_RESULTS_20261112.md",
+      "sha256": "fe2cc71c8120d9fa2aac58056cb575803077a9d5066bbf5068073701db141aa5",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/CAPACITY_H64_H128_RESULTS_20261112.md",
+      "sha256": "a015cf7b01d878cf95a97284319d54bf6fb99caf0046dcec8ad615639e4e286e",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md",
+      "sha256": "f8eef4caea120869a2eaec33a052510ef08d9603aefa95adb01c41ba82e0905d",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md",
+      "sha256": "89f88ad28b15ecd8d733bb7c8b4a2fc894604e84ade6f05ae5decc21344bce03",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "docs/research/ALIF_RELATION_UPDATE_SPEC_20261115.md",
+      "sha256": "90f0d4b639f82bf71892cc0d00ffb232e5477564bf5d9913593b56b0412b2ccc",
+      "scope": "Source or historical report/spec read; no training or old TEST prediction access/selection"
+    },
+    {
+      "path": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x-gemini-r7\\docs\\research\\R13_2_INDEPENDENT_COMPOSITION_AND_FAIR_LLM_REPORT.md",
+      "sha256": "83d01c001d355e04b871f7618ad7ba6c55b1d3c629431dce67beb6e29eceefab",
+      "scope": "Read report; reused previously saved prediction recount. Unverified full-LLM/resource/causal claims not accepted; no old TEST selection"
+    }
+  ],
+  "mathematical_results": [
+    "Conditional affine readout folding transfers redundant normalized features exactly within bounds",
+    "Fixed finite-precision memory cannot encode arbitrary unbounded independent skills exactly",
+    "One-tick two-neuron teacher versus one-neuron student is a representability counterexample",
+    "Finite output guard does not guarantee rare unseen skills",
+    "Per-cycle approximation may accumulate lifetime drift"
+  ],
+  "unresolved": [
+    "S trained/verified on partition topology does not yet exist",
+    "S-only union representability and local reachability",
+    "Local eligibility omits cross-neuron recurrent credit",
+    "Coverage, teacher truth and valid correction",
+    "Same-budget useful hidden consolidation versus readout/replay",
+    "Finite capacity, repeated-release economics and numerical/persistence verification"
+  ],
+  "reviewer_PASS_interpretation": "SCOPE consistency only, never empirical evidence; no new reviewer loop this turn",
+  "operations": {
+    "neural_forward_calls": 0,
+    "training_updates": 0,
+    "model_fitting": false,
+    "neural_or_symbolic_fixtures": false,
+    "new_dataset_or_weights": false,
+    "old_TEST_prediction_access_or_selection": false,
+    "main_Hermes_model_changes": false,
+    "upstream_script_execution": false
+  },
+  "ponytail": "Unavailable in enabled tool inventory"
+}

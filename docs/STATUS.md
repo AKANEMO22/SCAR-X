@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## 15/11 — capacity-release ALIF: đặc tả, chưa model validation
+
+[Phân tích](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md) và
+[priorart](research/SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md): chuyển verified
+behavior từS+P vào shadowS bằng localeligibility, chỉ commit/resetP nếu đủ
+coverage/skill/resourcechecks. Đây là P&C adaptation, không phát minh mới.
+Có case linearfold chính xác nhưngreadout-only; counterexample student nhỏ
+không chứa teacher, finiteguard mất skill hiếm, drift tích lũy và creditdead.
+GO phân tích khảthi hẹp; NO-GO resetP/triểnkhai/train/lifelongclaim hiện tại.
+0neuralcalls/updates/refit/data/TESTselection; main/Hermes/source giữ nguyên.
+
 ## 15/11 — đặc tả bảo toàn core–readout, hidden được phép đổi spike
 
 [Spec](research/ALIF_READOUT_BEHAVIOR_PRESERVATION_SPEC_20261115.md) tách giữq/

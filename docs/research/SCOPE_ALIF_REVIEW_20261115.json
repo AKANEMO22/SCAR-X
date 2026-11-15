@@ -1,0 +1,42 @@
+{
+  "status": "SPEC_PEER_REVIEWED_NOT_VALIDATED",
+  "status_meaning": "Two consecutive spec-consistency PASS reviews of the same v2 by separate Codex agents; same model family, no independent empirical validation",
+  "started_utc": "2026-11-15T15:27:48+00:00",
+  "review_stopped_utc": "2026-11-15T15:32:44.343009+00:00",
+  "seconds_elapsed": 296.34,
+  "limit_seconds": 300,
+  "max_rounds": 12,
+  "actual_rounds": 4,
+  "round_sequence": [
+    "reviewer1 REQUEST_CHANGES",
+    "orchestrator designer v2",
+    "reviewer2 PASS",
+    "reviewer3 PASS"
+  ],
+  "consecutive_passes": 2,
+  "base_commit": "b3a48983e148024c75b093d0413140c255c78073",
+  "research_branch": "research/contracted-interface-alif-design-20261115",
+  "candidate_sha256": "4928fdc0de96b90e6e7e84b98e8384a8bcd23d81c6090f574713381a0cd8b977",
+  "candidate_file": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-scope-alif-design-20261115\\docs\\research\\SCOPE_ALIF_ARCHITECTURE_CANDIDATE_20261115.md",
+  "driver_executed": false,
+  "driver_deviation": "Supplied only main() fragment; native reviewer agents used. No CLI stdout/stderr was fabricated. This is not the supplied Python driver acceptance run.",
+  "new_neural_calls": 0,
+  "training_updates": 0,
+  "implementation_approved": false,
+  "main_or_Hermes_changed": false,
+  "commit_push_merge_PR": false,
+  "resolved": [
+    "Explicit sparse physical update masks",
+    "Checkpoint causal partition contract",
+    "Open-loop and dual-reuse-path clarifications",
+    "Dense-vs-sparse budget distinction",
+    "S competence and conditional finite capacity"
+  ],
+  "unresolved": [
+    "Useful acquisition and local temporal credit",
+    "Causal reuse over matched controls",
+    "Correction of S and finiteP release",
+    "FP32/CUDA qualification and checkpoint enforcement",
+    "No exact lifecycle solution or proven novelty"
+  ]
+}

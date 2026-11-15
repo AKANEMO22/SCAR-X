@@ -2,6 +2,14 @@
 
 ## 0. Literature-first: bắt buộc trước nghiên cứu mới
 
+**Yêu cầu capacity-release15/11:** [đặc tả consolidation-local và tái sử dụngP](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md),
+[prior art/negative evidence](research/SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md).
+Giữ SCOPEv2 làm candidate giấy; adaptation P&C chuyển hành vi vào shadowS,
+chỉ releaseP nếu kiểm chức năng đủ. Chưa có feasibility/localcredit proof cho
+SCAR-X hoặc numerical/retentionqualification. GO phân tích hẹp, NO-GO reset/
+implementation/train/product hiện tại. Không TESTselection, main/Hermes hoặc
+ngưỡng đổi; hai reviewerPASS không là experimental evidence.
+
 **Yêu cầu mới nhất ngày15/11 — chỉ nghiên cứu sơ bộ:**
 [ma trận không gian kiến trúc và ba đề xuất](research/ARCHITECTURE_DESIGN_SPACE_20261115.md)
 đối chiếu paper/repo với các thất bại hiện tại. Chưa chọn một learner mới để
