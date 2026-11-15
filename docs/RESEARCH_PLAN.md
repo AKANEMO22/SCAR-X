@@ -15,6 +15,12 @@ hướng học còn lại và các giới hạn. Không bảo đảm runtimeFP32
 không mở code/fixture/inference/training từ tài liệu. Ràng buộc bất đẳng thức
 giữ spike khác nullspace giữ drive; chưa có kết luận ALIF hết capacity.
 
+**Một operator được đề xuất tiếp15/11:** [cập nhật quan hệ vị trí](research/ALIF_RELATION_UPDATE_SPEC_20261115.md)
+đặc tả state/event/interface và phân biệt worldstate với learned synapses.
+Codec/head mới chỉ là đề xuất; không relabel action live. Miền nhỏ có lời giải
+finite-state chính xác, nên chưa đủ mở campaign kiến trúc hoặc claim thắng RAG.
+Chưa dataset/runner/protocol thực thi; ALIF và các gate lịch sử giữ nguyên.
+
 **Tự phản biện cùng ngày:** [điều suy ra được và câu hỏi còn mở](research/ARCHITECTURE_SELF_CRITIQUE_20261115.md)
 phân biệt cận toán, quan sát cũ và dự đoán. Hoãn chọn gói kiến trúc B: chưa biết
 các phần phối hợp có lợi. Ưu tiên đặc tả đường thông tin, update cuối sau

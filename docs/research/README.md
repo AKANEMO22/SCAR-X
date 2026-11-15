@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Operator cụ thể trên giấy15/11:** [relation update](ALIF_RELATION_UPDATE_SPEC_20261115.md)
+định nghĩa INIT/MOVE/END, joint-state output và evidence/correction policy.
+Chưa encoder/head implementation; hai bit state ngữ nghĩa đã đủ cho miền
+target nên không dùng toy100% để claim architecture/skill superiority.
+
 **Đặc tả trên giấy15/11:** [ALIF interface preservation](ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md).
 Điều kiện một phía khớp comparator>=, proof dưới W_in-only/frozen consumer,
 sign-cell thay vì nullspace, cận bước và cumulativeupdates. Chưa machine

@@ -1,5 +1,9 @@
 # Bản đồ dự án SCAR-X
 
+[ALIF relation operator15/11](research/ALIF_RELATION_UPDATE_SPEC_20261115.md):
+state/event → encoding/decoder đề xuất → shortcut counterexamples → memory
+baseline → attribution/protection limits. Chưa code, data hoặc run mới.
+
 [Đặc tả ALIF giữ giao diện15/11](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md):
 core/CUDA/readout source → proof điều kiện → sign-cell/bước cập nhật → giới hạn
 precision/state/capacity. Chỉ tài liệu, không có module guard hoặc run mới.

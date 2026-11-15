@@ -287,3 +287,7 @@ Chưa có đủ bằng chứng trả lời bằng một kiến trúc mới.
 Chưa có numerical certificate, thuật toán learning đủ tốt, phép đo acquisition/
 retention, lợi thế hơn replay/readout/RAG hoặc giải pháp Functional Recomposition.
 Không nới ngưỡng đã đăng ký. Main/Hermes/liveALIF và raw/protocol lịch sử giữ nguyên.
+
+**Cụ thể hóa tiếp theo, chưa thực thi:** [relation-update contract](ALIF_RELATION_UPDATE_SPEC_20261115.md)
+xét một phép đổi vị trí theo event. Phân biệt kỹ năng neural với worldstate
+và phần interface cung cấp sẵn; không biến proof này thành acquisition claim.

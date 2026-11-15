@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-15",
+  "document": "docs/research/ALIF_RELATION_UPDATE_SPEC_20261115.md",
+  "status": "CONTRACT_DRAFT_ONLY_NO_EXPERIMENTAL_AUTHORIZATION",
+  "source_commit": "880cd71b4399c237d947b0cc3c5951bfb13c8615",
+  "input": {
+    "name": "Văn bản đã dán.txt",
+    "sha256": "3af1ed4ea960b5036347be6eefef82e484562b7b96ae91286ccc5bee1fc9a880",
+    "bytes": 10758,
+    "scope": "Full attachment read; one relation-update operator, paper-only"
+  },
+  "current_code_checks": [
+    {
+      "path": "src/scarx/hybrid/learner.py",
+      "sha256": "c38f7dd9412da3bc14a02a3a83611941d15aee1c558c05f4bd26671a6872111a",
+      "read_ranges": [
+        [
+          24,
+          42
+        ],
+        [
+          173,
+          204
+        ]
+      ],
+      "finding": "Current repeated hashed feature vector and 6-action/2-relevance heads do not implement proposed event codec/joint-state decoder"
+    }
+  ],
+  "inherited_proof_source_manifest": "docs/research/literature/sources/alif-interface-preservation-20261115.json",
+  "paper_interface_proposal": {
+    "objects": 2,
+    "locations": 2,
+    "semantic_world_states": 4,
+    "record_types": [
+      "INIT",
+      "MOVE",
+      "END"
+    ],
+    "input_width": 64,
+    "readout_classes": 4,
+    "implemented": false,
+    "not_proposed_as_model_size_or_benchmark_config": true
+  },
+  "deductions": [
+    "Known transition semantics admit exact four-state finite-state solution with two semantic state bits",
+    "Latest-event-only and order-invariant encodings fail specified history pairs",
+    "Updating observed location is working-state inference, not proof of synaptic skill learning",
+    "A fixed tuple consumer does not establish learned functional recomposition"
+  ],
+  "operations": {
+    "model_calls": 0,
+    "synapse_updates": 0,
+    "model_fitting": false,
+    "new_dataset": false,
+    "new_experiment": false,
+    "source_or_runtime_changes": false
+  },
+  "literature": [
+    {
+      "url": "https://arxiv.org/abs/1502.05698v10",
+      "name": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks",
+      "scope": "Primary abstract/metadata only as prior-art lead for diagnostic QA tasks; no full-paper/code/data audit or benchmark reproduction"
+    }
+  ],
+  "decision": "Accept narrow specification subject; do not open architecture campaign without discriminating hypothesis and adequate baselines",
+  "unresolved": [
+    "event codec and output contract approval",
+    "fixed-readout acquisition feasibility",
+    "learning signal usefulness",
+    "generalization beyond tiny state space",
+    "numerical guard and persistence",
+    "relation to product vision/continuous streaming"
+  ],
+  "ponytail": "Unavailable in enabled tool inventory"
+}

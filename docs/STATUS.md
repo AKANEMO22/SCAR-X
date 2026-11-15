@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## 15/11 — cụ thể hóa relation-update operator, chỉ đặc tả
+
+[Contract](research/ALIF_RELATION_UPDATE_SPEC_20261115.md) tách worldstate/
+workingstate/weights, đề xuất chuỗi INIT/MOVE/END và bốn jointstates cho hai
+object/hai vị trí. Encoder/head này chưa có; không relabel live. FSM hai bit
+giải đúng miền target trên giấy, nên task chưa đủ làm campaign quyết định
+kiến trúc. 0modelcalls/updates/data/fixtures, không main/Hermes/core/gatechanges.
+
 ## 15/11 — đặc tả toán bảo toàn giao diện spike ALIF, chưa thực thi
 
 [Spec](research/ALIF_INTERFACE_PRESERVATION_SPEC_20261115.md) khớp subtractive
