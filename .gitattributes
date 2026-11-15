@@ -427,3 +427,7 @@ scripts/diagnose_image_question_candidate.py -text
 scripts/accept_hermes_image_question.py -text
 tests/test_image_question_support.py -text
 scripts/audit_hermes_image_question.py -text
+runs/*-scope-teacher-preflight-v1/** -text -whitespace
+experiments/scope-p1-teacher-preflight-20261115.md -text
+scripts/research/run_scope_teacher_preflight.py -text
+scripts/research/audit_scope_teacher_preflight.py -text

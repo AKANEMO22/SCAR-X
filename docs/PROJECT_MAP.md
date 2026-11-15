@@ -1,5 +1,10 @@
 # Bản đồ dự án SCAR-X
 
+[SCOPE P1 preflight](research/SCOPE_P1_PREFLIGHT_RESULT_20261115.md): locked
+protocol → CPU source ALIFforward → raw144records → independentstdlibscalar
+audit → PREFLIGHT_NO_GO,0training. Scripts `scripts/research/run_scope_teacher_preflight.py`
+và `audit_scope_teacher_preflight.py` không có learner/P1 launch path.
+
 [Capacity release15/11](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md):
 SCOPEv2 → consolidation candidateS → evidence/output guard → atomicreuseP;
 proof có điều kiện/counterexamples/resources/falsifiers, chưa thực thi.

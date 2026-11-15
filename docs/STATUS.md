@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## SCOPE P1 preflight — NO-GO trước training
+
+[Report](research/SCOPE_P1_PREFLIGHT_RESULT_20261115.md),
+[run](../runs/20261115T165305Z-scope-teacher-preflight-v1/result.json):144CPU
+forwards/1.440ticks,0updates,constructedteacher/witness competent nhưngteacher
+terminalprobability là hai hằng theo nhãn. Matched labeltargetcontrol tạo
+cùng credit; P1 không phân biệt lợi ích P. STOP trước training, không sweep.
+Audit scalar/hashPASS chỉ tính nhất quán, không quality/retentionPASS.
+Runner+auditwall0,444s; conservativeRSSbound66,06MB,commit45,20MB<2GB.
+Oldvalidskills/learnedrestart/20stage/CI NOT_MEASURED. Không push/main/Hermes.
+
 ## 15/11 — capacity-release ALIF: đặc tả, chưa model validation
 
 [Phân tích](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md) và

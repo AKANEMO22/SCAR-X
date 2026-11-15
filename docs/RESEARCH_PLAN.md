@@ -2,6 +2,14 @@
 
 ## 0. Literature-first: bắt buộc trước nghiên cứu mới
 
+**P1 CPU conditional approval và kết quả:** user duyệt preflightkhônghọc,
+chỉ khi qua mới đăng ký P1 (≤24configs,3seed,120s tổng/RAM2GB); ngoại lệ CPU
+riêng này ghi ởAGENTS, không lấy GPU-only cũ để bỏ qua yêu cầu. [Preflight](research/SCOPE_P1_PREFLIGHT_RESULT_20261115.md)
+đã dừng PREFLIGHT_NO_GO: terminalteacher chỉ là classconditionaltargettable,
+không phân biệt P-specificcredit khỏi labeltransformation.144forward/0updates,
+không P1registration hoặc training, không scientificgatePASS. Không mở thêm
+task/hints/seed sau fail; không push/merge/main/Hermes.
+
 **Yêu cầu capacity-release15/11:** [đặc tả consolidation-local và tái sử dụngP](research/SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md),
 [prior art/negative evidence](research/SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md).
 Giữ SCOPEv2 làm candidate giấy; adaptation P&C chuyển hành vi vào shadowS,

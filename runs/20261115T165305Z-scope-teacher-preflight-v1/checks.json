@@ -1,0 +1,29 @@
+{
+  "gates": {
+    "G1_input_and_temporal_effect": true,
+    "G2_constructed_teacher_competent": true,
+    "G3_constructed_student_representable": true,
+    "G4_readout_only_collision_ceiling": true,
+    "G5_teacher_identifiable_beyond_class_targets": false,
+    "G6_new_credit_path_not_P0_sign_repetition": false
+  },
+  "teacher_class_probability_table": {
+    "0": [
+      0.47242799401283264
+    ],
+    "1": [
+      0.527571976184845
+    ]
+  },
+  "minimum_initial_voltage_span": 0.1170128583908081,
+  "readout_only_balanced_ceiling": 0.5,
+  "teacher_correct": 36,
+  "teacher_cases": 36,
+  "witness_correct": 36,
+  "witness_cases": 36,
+  "forward_calls": 144,
+  "core_ticks": 1440,
+  "learning_calls": 0,
+  "quality_confirmation": false,
+  "G6_reason": "Only terminal targets changed; output feedback/eligibility path is unchanged. Binary teacher class targets can be generated from verified labels without P."
+}

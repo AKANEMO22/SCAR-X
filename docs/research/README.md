@@ -1,5 +1,11 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**P1teachercredit preflight:** [PREFLIGHT_NO_GO](SCOPE_P1_PREFLIGHT_RESULT_20261115.md),
+[lockedprotocol](../../experiments/scope-p1-teacher-preflight-20261115.md),
+[raw/audit](../../runs/20261115T165305Z-scope-teacher-preflight-v1/).
+Terminalteacher signal trùng classconditional labeltable; không mở P1/train.
+Forward-onlyconstruction không là model học100%, không OOD/lifelongclaim.
+
 **Capacity release trên giấy15/11:** [đặc tả và phản ví dụ](SCOPE_ALIF_CAPACITY_RELEASE_ANALYSIS_20261115.md),
 [ma trận prior art](SCOPE_ALIF_CAPACITY_PRIOR_ART_20261115.md),
 [SCOPEv2 đã review nhất quán](SCOPE_ALIF_ARCHITECTURE_CANDIDATE_20261115.md).
