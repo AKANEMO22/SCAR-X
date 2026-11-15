@@ -23,7 +23,9 @@ Actual counts recorded, no learned states fabricated. No backward/autograd.
 
 D1 primary head: binary linear class-balanced ridge, alpha=1, TRAIN-only
 mean/std (floor1e-6), unpenalized intercept, targets +/-1, weightsN/(2Nk).
-Decision score>0 positive, ties negative. One closed-form fit, no lambda or
+Decision score>0 positive, ties negative; |score|<=1e-12 is a numerical zero
+for scoring/AUC to prevent floating residuals splitting a constant feature.
+One closed-form fit, no lambda or
 threshold selection. Same class/regularizer at all seeds/signs/arms. Algebra
 float64 for numerical stability; neural/checkpoint weights stay FP32 unchanged.
 Primary raw f endpoint; secondary q=clip(f/.1,-5,5), same fitting procedure,
@@ -47,7 +49,10 @@ if primary common-head on every seed has balanced accuracy>=.75, both recalls
 inspect raw rank/collisions and evidence, do not claim absent information from
 one linear probe. No project quality GO from this diagnostic. Report all
 seed contrasts, conditional paired DEV bootstrap95% with10000draws seed991116
-for fixed models; no population qualification at n=3. P1b old gates unchanged.
+for fixed models, stratified by seed/order/gap/clock and paired indices across
+signs/arms. Comparisons fixed: primary Bprobe vs its onlinehead, Bprobe vs
+A/C/Dprobes, Bprobe vs initialhiddenprobe; report each sign separately. No
+population qualification at n=3. P1b old gates unchanged.
 
 Resource envelope: D1/D2 <=300s active including profiling, forward extraction,
 fits/statistics/audit; <=700MB owned tree during CPU jobs, profileGPUhost<=800MB,
