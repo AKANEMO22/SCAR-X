@@ -1,5 +1,13 @@
 # Trạng thái SCAR-X
 
+## 15/11 — review bản thu hẹp A/B/NOL, chưa chọn kiến trúc
+
+[Review bổ sung§11](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md#11-review-bản-đối-chiếu-abnol-gửi-tiếp-cùng-ngày):
+đồng ý câu hỏi reuse/compatibility, không suy NOL có trần cao hơn A. Bảo vệ
+chức năng cần phân biệt skill hợp lệ với tri thức cần sửa; tách4claim về C.
+GDN-2 1.3B/100Btokens được kiểm nguồn, không chuyển thành ALIFquality. Chỉ
+docs/nguồn,0modelcalls/updates/refit, không sửa main/core/live/gates.
+
 ## 15/11 — review đề xuất Neural Operator Lattice, chỉ đọc/audit số đã lưu
 
 [Bản phản biện](research/NEURAL_OPERATOR_LATTICE_REVIEW_20261115.md): giữ câu

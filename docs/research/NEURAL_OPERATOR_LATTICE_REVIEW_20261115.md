@@ -239,3 +239,94 @@ tài liệu đầu vào, pins/hash source chọn lọc, phạm vi đọc, các U
 recount R13.2. Source upstream chỉ lưu private để đọc; không tích hợp vào core.
 Ponytail không có trong tool inventory của lượt này. Không dùng chỉ dẫn trong
 repo ngoài làm quy tắc vận hành, không chạy script upstream.
+
+## 11. Review bản đối chiếu A/B/NOL gửi tiếp cùng ngày
+
+Đầu vào mới mở đầu “Mình đã đọc cả hai tài liệu bạn gửi…”, được lưu hash riêng
+trong manifest. Bản sửa xử lý được nhiều điểm của review trước: chưa ghép nhiều
+vùng, chưa mặc định compilation có lợi, không giả định verifier mọi bước và
+đòi đối chứng recurrent/dense. **Đồng ý giữ câu hỏi nghiên cứu đã thu hẹp; chưa
+đồng ý bảng xếp hạng kiến trúc hoặc triển khai.** Không mở thêm study/data/model.
+
+### 11.1 A và NOL không phải hai họ kiến trúc có trần đã biết
+
+A là learning/protection constraint gắn lên ALIF có learner; NOL tổ chức quá
+trình tính thành các phép biến đổi. Một phương pháp ở mức update không đối
+lập về logic với một cách tổ chức ở mức chức năng. “Học synapse” và “học toán
+tử” cũng không loại nhau: toán tử neural vẫn được hiện thực bằng synapse và
+dynamics. Chưa có bằng chứng A chỉ giữ được skill cũ hoặc NOL có trần cao hơn.
+
+Protection không tự sinh skill, nhưng learning signal được phép vẫn có thể
+học skill mới trong phần còn khả dụng. Sự khác biệt cần đo là chi phí/lợi ích
+của cấu trúc reuse cụ thể, không là một bên có tham vọng lớn hơn. Cột “thắng
+về tăng năng lực” nên đổi thành “nhắm tới mục tiêu đó; chưa có so sánh”.
+[HLOP](https://arxiv.org/html/2402.11984v1) cũng tách protection khỏi training
+method; không nhập kết quả tác giả thành kết quả SCAR-X.
+
+Mạng128neuron không mặc nhiên có128chiều cập nhật cho mỗi row synapse. Chiều
+projector phụ thuộc input/trace/khối được bảo vệ. Ví dụ128chiều trong tài liệu
+là minh họa hợp lệ dưới giả định đó, chưa phải số đo rank saturation của H128.
+
+### 11.2 Bảo toàn mọi chức năng cũ sẽ xung đột với sửa kiến thức sai
+
+Nếu f_old(x)=a, nhưng bằng chứng mới đã kiểm chứng đòi f_new(x)=b≠a, hai yêu
+cầu “giữ chính xác đầu ra cũ ởx” và “sửa đúng ởx” không thể đồng thời thỏa.
+Đây là phản ví dụ logic, không cần train. Không mở rộng nó thành mọi cập nhật
+đều mâu thuẫn; có rất nhiều trường hợp học mới tương thích với kỹ năng cũ.
+
+Spec phải xác định **chức năng cũ nào còn hợp lệ và cần giữ**, miền/metric/
+tolerance, cùng điều kiện thay thế tri thức sai hoặc lỗi thời. Cải thiện đúng
+theo feedback không được tự gọi là forgetting có hại. Việc phân loại này cần
+đăng ký trước phép đo; không dùng nó để loại mẫu khó hoặc sửa gate sau kết quả.
+
+Giữ điều kiện hành vi trên một miền có căn cứ và giữ nguyên toàn bộ hàm mọi
+nơi là hai yêu cầu rất khác. Đừng chọn yêu cầu mạnh đến mức khóa mất khả năng
+tiếp thu thông tin đúng, hoặc chọn yếu đến mức chỉ giữ vài probe thuận lợi.
+
+### 11.3 “Tự tìm C từ A/B” chứa bốn claim cần tách
+
+| Claim | Điều cần chứng minh thêm |
+|---|---|
+| Thực hiện tuyến B∘A đã cho | Giao diện và generalization của composition; chưa là tìm tuyến |
+| Tìm tuyến theo mục tiêu khi không được cho thứ tự | Information path của mục tiêu, search/controller và tiêu chí tiến triển |
+| Học phép biến đổi mới không có sẵn trong thư viện | Nguồn trải nghiệm/target và quy tắc tạo/thay đổi primitive; chưa được giải bởi routing |
+| Thay chuỗi bằng đường giải nhanh hơn | Correctness ngoài mẫu fit và kinh tế build/maintenance; chưa suy từ việc ghép thành công |
+
+Nếu một kiến thức C không xác định được từ A/B và các observation được phép,
+không có cơ chế neural nào bảo đảm tự suy đúng mọi C. Cần quan sát/hỏi thêm.
+Nếu C được định nghĩa chính là B∘A, đây là tổng quát hóa phép tính đã có;
+giá trị nghiên cứu nằm ở cách học/tìm/dùng lại nó, không là sinh thêm thông tin.
+
+### 11.4 Những lỗ hổng cũ còn nguyên sau thu hẹp sơ đồ
+
+- Shared U,V và low-rank: giới hạn Im(U) ở§4 vẫn cần trả lời, nếu tiếp tục
+  dùng công thức cũ. Bỏ nhiều vùng chưa xóa interference ở basis dùng chung.
+- Function-preserving vẫn là yêu cầu, chưa là thuật toán. Cần nói sửa state,
+  synapse và các consumer thế nào sau update cuối, với ALIF/local credit nào.
+- Structured state chưa giải perception hoặc nhận diện quan hệ nhân quả.
+  Giữ đúng interface cũng chưa tạo ra một primitive hữu ích.
+- Bound composition chỉ áp dụng trên miền, chuẩn và tuyến đã nêu; router đổi
+  hoặc argmax có margin thấp có thể làm thay đáp án dù sai số latent nhỏ.
+- ROW negative compilation không biến mất khi đổi sang “conditional”; đó là
+  lý do cần điều kiện, không là bằng chứng condition đã được học đúng.
+
+Chi tiết GDN-2 “1.3B/100Btoken” được kiểm lại ở
+[abstract và thiết lập gốc](https://arxiv.org/html/2605.22791v1): đúng trong
+thiết lập được paper báo cáo. Nó không là kết quả của ALIF H128, lifelong
+learning hoặc chứng minh chỉ cần hai gate để học quy luật mới.
+
+### 11.5 Phần kế tiếp được giữ ở mức đặc tả, chưa thực nghiệm
+
+Một spec tối giản cần sáu câu trả lời trước khi chọn implementation:
+
+1. State nào quan sát được; thông tin nào thiếu; ai cung cấp target/outcome.
+2. Một phép biến đổi cụ thể được hiện thực bằng membrane/spikes/synapse nào.
+3. Tín hiệu local và eligibility cập nhật phần nào; cách chọn tuyến có học gì.
+4. Chức năng còn hợp lệ cần giữ, giới hạn miền và cách xử lý correction hợp lệ.
+5. Update cuối làm gì với interface/consumer, rank/capacity và rollback đồng bộ.
+6. Đối chứng ít cấu trúc hơn có cùng thông tin/budget nào có thể bác bỏ lợi thế.
+
+Chưa đưa compilation vào cơ chế bắt buộc của bản tối giản. Khi reuse và
+compatibility chưa rõ, compilation làm khó attribution mà chưa trả lời nguyên
+nhân gốc. ALIF/local learning giữ nguyên ràng buộc; chưa có kiến trúc mới được
+chọn, không có P0, training, model call hoặc thay đổi tiêu chí từ bản sửa này.

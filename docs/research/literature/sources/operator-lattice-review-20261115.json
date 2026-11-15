@@ -118,6 +118,16 @@
       "name": "PS-SNN",
       "url": "https://www.nature.com/articles/s41598-026-42970-6",
       "scope": "Search metadata/abstract only; full page inaccessible via cookie redirect"
+    },
+    {
+      "name": "Gated DeltaNet-2 followup",
+      "url": "https://arxiv.org/html/2605.22791v1",
+      "scope": "Abstract checked to verify the reported 1.3B parameters/100B FineWeb-Edu training setting; no reproduction or new source-code audit"
+    },
+    {
+      "name": "HLOP followup",
+      "url": "https://arxiv.org/html/2402.11984v1",
+      "scope": "Reread abstract/method distinction of protection and training; prior source inspection reused, no new experiment"
     }
   ],
   "saved_prediction_recount": {
@@ -242,5 +252,29 @@
     "upstream_script_execution": false,
     "dataset_or_weight_downloads": false
   },
-  "ponytail": "Not available in enabled tool inventory"
+  "ponytail": "Not available in enabled tool inventory",
+  "followup_reviews": [
+    {
+      "date": "2026-11-15",
+      "section": "11",
+      "input": {
+        "name": "Văn bản đã dán.txt",
+        "sha256": "10fdebb686aca5b33ea2924f8b13393e2e2265073850c4c378eaeb99b9e4e126",
+        "bytes": 17160,
+        "scope": "Complete supplied revision A/B/NOL read; discussion proposal, not authorization to change core"
+      },
+      "assessment": "Keep narrowed reuse/compatibility question; no architecture winner or experimental approval",
+      "new_deductions": [
+        "Protection and operator organization are different abstraction levels",
+        "Exact preservation of a wrong old answer conflicts with verified correction at the same input",
+        "Execution of a given route, route discovery, new primitive learning and compilation are separate claims"
+      ],
+      "operations": {
+        "new_model_calls": 0,
+        "new_learning_updates": 0,
+        "new_fitting": false,
+        "new_experiments": false
+      }
+    }
+  ]
 }

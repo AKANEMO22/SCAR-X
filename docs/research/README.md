@@ -4,6 +4,9 @@
 Giữ câu hỏi compatibility, yêu cầu sửa spec trước triển khai. Đối chiếu DNAR,
 NCA/BPTT, boundary-firstPC và ROW negative compilation; đếm lại savedR13.2,
 không gọi model hoặc đổi ALIF/gate. [Nguồn và phạm vi](literature/sources/operator-lattice-review-20261115.json).
+§11 đánh giá bản đối chiếu A/B/NOL gửi tiếp: protection và tổ chức phép tính
+khác cấp trừu tượng; bảo toàn chức năng phải cho phép sửa tri thức sai. Tách
+thực hiện tuyến, tìm tuyến, học primitive và compilation; chưa chọn winner.
 
 **Tự phản biện15/11:** [cận toán, phản ví dụ và các nghiên cứu không cần lặp](ARCHITECTURE_SELF_CRITIQUE_20261115.md).
 Hạ ưu tiên gói kiến trúc B; tách quan sát, dự đoán và điều chưa biết. Chưa có
