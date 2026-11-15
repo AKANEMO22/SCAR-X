@@ -1,5 +1,14 @@
 # Trạng thái SCAR-X
 
+## 15/11 — RC18 sửa hẹp câu hỏi Shiny trong ảnh bằng tài liệu local
+
+[Receipt/failure/giớihạn](release/IMAGE_QUESTION_GROUNDING_20261115.md): ảnhđãtới
+GPUmodel, nhưngnativegiảithíchsai. RC17actualchọnA đượcgiữFAIL. RC18táchđọc/
+chọnphươngán thànhtool-freeGPUtasks vàrenderlờigiải từoneauthoredShinycard:
+exactHermesimagecase chọnC/giảithíchUI/serverđúng,0tools/newlearning; greeting
+sauảnhkhônglặpđápán.149targetedchecks,59payloadmatching, learnedstate/RNG/
+replay/updates5 giữnguyên. Chưageneralvision/learnedShiny/RAGadvantagePASS.
+
 ## 15/11 — đãpushresearch; RC16 sửa datedsearch và shortfollowup
 
 108researchcommits qua6e0f929b đãlên `codex/scarx-hybrid-20261113`, main37749041

@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0-rc.18",
+  "source_git_sha": "fc2aa9c09b852ac44c891ac3833aa8b69d89299a",
+  "archive": "artifacts\\releases\\SCAR-X-Hybrid-1.0.0-rc.18+fc2aa9c09b85.zip",
+  "activation_method": "qualified source restart",
+  "changed_payload_files": [
+    "src/scarx/hybrid/gateway.py",
+    "src/scarx/hybrid/image_question.py"
+  ],
+  "full_saved_arrays_equal": true,
+  "learned_metadata_RNG_replay_equal": true,
+  "updates": 5,
+  "hidden_updates": 5,
+  "gateway_pid": 59864,
+  "GPU_placement": {
+    "VLM_vision": "gpu",
+    "ASR": "gpu",
+    "ALIF_forward_learning": "gpu",
+    "host": "CPU: tokenization, file/network I/O, SQLite, media orchestration, serialization/RNG"
+  },
+  "model_weights_or_learning_rule_changed": false,
+  "actual_Hermes_acceptance_pending": false,
+  "research_quality_PASS": false,
+  "actual_Hermes_acceptance_scope": "one original image question correct with authored documentation grounding; one generatedgreeting regression"
+}

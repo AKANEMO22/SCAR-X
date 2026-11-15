@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[ImagequestionRC18](release/IMAGE_QUESTION_GROUNDING_20261115.md):
+`src/scarx/hybrid/image_question.py` đọcảnhlocalGPU vàmộtcardShinyđối chiếu;
+modelchọnvisibleoption, runtimegiảithích từnguồn. `accept_hermes_image_question.py`
+dùngcanonicaluploadstaging/RPC, `audit_hermes_image_question.py` đối chiếuraw/
+trace/usage màkhônggọi model. Khôngneurallearning hoặc generalOCR/frameworkindex.
+
 [Localcredit/retentionGPU](hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md):
 `semantic_credit_alif.py` và `semantic_metaplastic_alif.py` là research-only,
 GPU-onlyALIF wrappers; khôngimportvàolive. `run_semantic_*` giữcounter/source/

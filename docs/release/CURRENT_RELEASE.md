@@ -1,16 +1,24 @@
-# SCAR-X Hybrid — RC16 đang cài trong Hermes
+# SCAR-X Hybrid — RC18 đang cài trong Hermes
 
 **Dùng trong chat Hermes bình thường**, chọn **Scarx Hybrid**, model ID
 `scarx-hybrid`. Một gateway `127.0.0.1:8775`, một Qwen3.5-0.8B nguyên BF16/F32,
 Whisper-small FP32 và ALIF H128 học cục bộ trên GPU. Không LoRA, quantization,
 pruning hoặc thay quy tắc học.
 
-Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.16+0d9a5e31ded7.zip`,
-868.048 byte, 58 payload files. SHA256:
-`57e96873f74ca7e794b4797891d481336615dcc91b13c428141f97fb9ee52541`.
-Git SHA nguồn: `0d9a5e31ded798464745e92c0ec21a5017db185d`.
+Gói hiện tại: `artifacts/releases/SCAR-X-Hybrid-1.0.0-rc.18+fc2aa9c09b85.zip`,
+884.815 byte, 59 payload files. SHA256:
+`8096923f07833e9f38e9622cac7f80e1675d8a0464adfc3e7d1925be49a8f16e`.
+Git SHA nguồn: `fc2aa9c09b852ac44c891ac3833aa8b69d89299a`.
 Sidecar `.installed-verification.json` xác nhận payload khớp code đang cài,
 asset/Hermes/dependency pins khớp. Không thay main/R13 hoặc merge; nhánh nghiên cứu đã push.
+
+**RC17→18:** [câu hỏi kỹ thuật trong ảnh](IMAGE_QUESTION_GROUNDING_20261115.md).
+Ca RShiny gốc đã đọcđược ảnh nhưng nhầmPlotly. RC17actualHermes chọn saiA,
+giữFAIL; RC18tách localGPUtranscription/choice khỏi ngữcảnhagent và trìnhbày
+lờigiải từ một documentationcard Shiny cónguồn. Đúngảnh/câuhỏi đãtrảC và đúng
+vai tròUI/server;149targetedchecks,0SNNtraining. Đây là hỗ trợ tài liệu hẹp,
+không generalvision/codingPASS hoặc bằngchứng modeltựhọcShiny. Trace ghi rõ
+runtime rendering thay phần nativefreeform explanation. [Receipt](evidence/ACTUAL_HERMES_IMAGE_QUESTION_20261115.json).
 
 **RC15/16:** [dated public search và short followup](DATED_PUBLIC_WEB_20261115.md).
 Câu hỏi năm2026 bị bỏ sót route; RC15 sửa câu đầu nhưng lượt “là” vẫn lạc chủ đề
@@ -46,6 +54,7 @@ RCfixes đượcpush trên nhánh `codex/scarx-hybrid-20261113`, main khôngđ�
 | Trả lời video sau sửa presentation | Canonical Hermes thật trên clip đã biết trả “Hình đầu tiên là một hình vuông màu đỏ.”, 0 tool events. Runtime hiển thị nguồn `[E1 · 00:05]`, log riêng với native answer; chưa phải model học dẫn nguồn hoặc xác minh đáp án. |
 | Marker ở lời chào | Repro đúng ảnh người dùng, sửa ví dụ steering không dùng ở lượt xã giao tại host; không hardcode/lọc output. Canonical Hermes trả “chào bạn” bình thường; chất lượng xã giao khác còn hạn chế. |
 | Dated web RC15→16 | Câu hỏi tỉnh thành2026 gọi searchthật; shortfollowup “là” giữđúngquery,1search/lượt,5results, nativeanswer34. RC15followupYouTube/3repeatFAILgiữraw. Chưa chứng minh giải thích/citation hoặc semanticrouter học được. |
+| Imagequestion RC17→18 | Exactuserimage đượcđọc localGPU; modelchọnC vàruntimegiảithích từtài liệuShiny. RC17chọnA vàlặpcâu khi chào đượcgiữFAIL. RC18chào lại bìnhthường nhưngcònnhắcShiny; khôngperfecttopicreset/generalvisionclaim. |
 | Screen history | Capture thật cửa sổ FFplay thử: 13 frame/2 VLM descriptions, dừng sạch; hỏi sau stop và restart vẫn chọn đúng nguồn/màu đỏ. Câu không liên quan không nạp ảnh cũ, hỏi lịch sử không cấp quyền capture mới. Audio/mic tắt trong thử này. |
 | Lỗi âm thanh màn hình | FFmpeg thật từ chối WAV hỏng: code cũ dừng toàn ingestion, code sửa vẫn phân tích hai frame bằng VLM GPU thật (`red`, `blue`). Failed/skipped intervals rõ ràng; ba lỗi audio liên tiếp chỉ pause ASR, không giả transcript; resource breach vẫn fatal. Đây là owned journal, chưa live loopback acceptance. |
 | Nâng cấp/bảo trì | Pin payload RC7 thay vì hash candidate đang sửa; terminal source gate nhận đúng predecessor/next bytes và giữ custody không-PASS. Đã chạy thật installer cập nhật ba file, cùng clone CAS/rollback giữ dữ liệu mới; không no-op install claim. |
@@ -73,6 +82,11 @@ RC16 chạy132targetedweb/routing/evidence/gateway/packagechecks, khôngtuyênb�
 rerun332 hoặc nativeCPUtraining. [InstalledRC16](evidence/RC16_INSTALLED_ARTIFACT_20261115.json),
 [state-preservingactivation](evidence/RC16_ACTIVATION_20261115.json),
 [actualHermesreceipt audit](evidence/ACTUAL_HERMES_DATED_WEB_20261115.json).
+
+RC18 có149targetedimage/schema/isolation/gateway/web/packagechecks; bản332RC11
+vẫn làbaselinecũ. [InstalledRC18](evidence/RC18_INSTALLED_ARTIFACT_20261115.json),
+[activationgiữtrạngthái](evidence/RC18_ACTIVATION_20261115.json),
+[Hermesimageaudit](evidence/ACTUAL_HERMES_IMAGE_QUESTION_20261115.json).
 
 Khi trả lời dựa vào media local, native call không được cấp tool schemas để
 tránh biến observations riêng thành automatic web/remote query. Đây là policy
