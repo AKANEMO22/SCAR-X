@@ -1,5 +1,11 @@
 # Bản đồ dự án SCAR-X
 
+[Ma trận kiến trúc15/11](research/ARCHITECTURE_DESIGN_SPACE_20261115.md):
+paper/repo→nút thắt→các trục thiết kế→prior art→ba đề xuất chưa triển khai.
+JSONnguồn ở `docs/research/literature/sources/architecture-design-space-20261115.json`
+giữ commit/URL/hash/phạm vi đọc và trạng thái đề xuất để truy vấn lại.
+Không có runner/model/runtime mới từ đợt intake này.
+
 [ImagequestionRC18](release/IMAGE_QUESTION_GROUNDING_20261115.md):
 `src/scarx/hybrid/image_question.py` đọcảnhlocalGPU vàmộtcardShinyđối chiếu;
 modelchọnvisibleoption, runtimegiảithích từnguồn. `accept_hermes_image_question.py`

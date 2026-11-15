@@ -1,5 +1,16 @@
 # Trạng thái SCAR-X
 
+## 15/11 — chỉ đọc nguồn và lập ma trận kiến trúc, chưa thí nghiệm
+
+[Nghiên cứu sơ bộ](research/ARCHITECTURE_DESIGN_SPACE_20261115.md) và
+[hồ sơ nguồn](research/literature/sources/architecture-design-space-20261115.json):
+khóa17repo, đọc các đoạn liên quan của21file code và ghi phạm vi đọc23nguồn
+paper. HLOP/GDN-2/MoM/Benna–Fusi/SPIRE là prior art cần tránh gọi lại là mới.
+Ba đề xuất được tách khỏi code đã triển khai; ưu tiên thiết kế một coreALIF
+chia vùng, residualassociation và bảo vệ cả activity/output. Chưa rule hoàn
+chỉnh hoặc noveltyproof,0newinference/updates/dataset/weights/install/livechanges.
+Chưa tảiDeepSeek hoặc gỡSCAR-X trong lượt đọc này; không dùng approval cũ để train.
+
 ## 15/11 — RC18 sửa hẹp câu hỏi Shiny trong ảnh bằng tài liệu local
 
 [Receipt/failure/giớihạn](release/IMAGE_QUESTION_GROUNDING_20261115.md): ảnhđãtới

@@ -1,5 +1,10 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Nghiên cứu sơ bộ kiến trúc15/11:** [ma trận và phản biện](ARCHITECTURE_DESIGN_SPACE_20261115.md),
+[nguồn có commit/hash/phạm vi đọc](literature/sources/architecture-design-space-20261115.json).
+Đây là tài liệu thiết kế trước thí nghiệm; chưa có learner, điểm benchmark hoặc
+phát hiện “kiến trúc mới đã thắng”. Master vẫn quản lý cửa duyệt bước tiếp theo.
+
 **15/11 localALIFGPU:** [report/source/figure](../hybrid/LOCAL_CREDIT_AND_RETENTION_20261115.md)
 giữ3seed representationgain cóđiềukiện, forgetting vàRAGlimits. Signederror
 common-headDEV78,33vsfrozen62,50%, rawPCA64cùngreadout79,72%; chưa superiority.

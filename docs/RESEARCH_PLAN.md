@@ -2,6 +2,13 @@
 
 ## 0. Literature-first: bắt buộc trước nghiên cứu mới
 
+**Yêu cầu mới nhất ngày15/11 — chỉ nghiên cứu sơ bộ:**
+[ma trận không gian kiến trúc và ba đề xuất](research/ARCHITECTURE_DESIGN_SPACE_20261115.md)
+đối chiếu paper/repo với các thất bại hiện tại. Chưa chọn một learner mới để
+triển khai; không mở P0/thí nghiệm/inference/training hoặc đổi model/Hermes.
+Phần đề xuất tách khỏi kiến trúc đã có, tính mới và lợi ích vẫn cần kiểm chứng.
+Các phê duyệt training trước giữ lịch sử, không được dùng để tự mở lượt mới.
+
 Theo chỉ thị15/11/2026, trước mỗi nghiên cứu cơ chế học, retention hoặc SNN–RAG:
 
 1. Tra nguồn chính: paper, repo tác giả, code liên quan, giả định và phiên bản;
