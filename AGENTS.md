@@ -1,5 +1,13 @@
 # SCAR-X working rules
 
+- Latest user16/11 Autonomous Research Orchestrator directive explicitly
+  authorizes parallel research agents, P1b checkpoint-only D1-D4 probes and
+  new preregistered reusable-computation pilots without asking each run.
+  P1b itself stays CLOSED/G2 FAIL: no hidden retraining, TEST opening or G3/G4.
+  New study protocols/resources/data/provenance must lock before execution.
+  Main/Hermes/live and historical runs remain immutable; no push/merge/delete.
+  ALIF is the baseline, controls may differ only when explicitly separated.
+
 - P1b16/11 is now CLOSED:24/24arm-runs,4608learningcalls; G2 FAIL. Preserve
   negative results and original gates. No more learning/seeds/configs, TEST,
   G3/G4, source/live promotion or rescue sweep under this completed protocol.
