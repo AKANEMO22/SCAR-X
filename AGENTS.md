@@ -1,5 +1,11 @@
 # SCAR-X working rules
 
+- P1b16/11 is now CLOSED:24/24arm-runs,4608learningcalls; G2 FAIL. Preserve
+  negative results and original gates. No more learning/seeds/configs, TEST,
+  G3/G4, source/live promotion or rescue sweep under this completed protocol.
+  The teacher-blind readout-refit mentioned in the report is a proposal only,
+  requires a separate protocol/authorization, and has NOT been run.
+
 - Latest user16/11 P1b FULL directive (attachmentece237de, SHA256
   2e0fa1fdd2e87614681ca69be67b451fd1470325a9aa034bffd2105d0849c6e5):
   first data-only reaudit P1/6e08a361, never rerun terminal-logit-only. Then

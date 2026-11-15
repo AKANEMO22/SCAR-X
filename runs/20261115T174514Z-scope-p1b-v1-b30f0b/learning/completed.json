@@ -1,0 +1,3194 @@
+[
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": 1,
+    "arm": "label",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.2309585809707642,
+    "initial_checkpoint_sha256": "6d1e08fd484262a2090b7e8380345746b9a468884e9747d4d62d204049ab0833",
+    "final_checkpoint_sha256": "9c4da3cfca5fa30f9c361855358494fb3200c1e6af28fd02ea598944c802423d",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 0.9969503000029363,
+    "process_memory": {
+      "peak_rss": 50331648,
+      "rss": 46198784,
+      "commit": 32411648,
+      "peak_commit": 36564992,
+      "private": 32411648
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161-1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": 1,
+    "arm": "shuffled",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.90625,
+      "class_recall": [
+        1.0,
+        0.625
+      ],
+      "min_recall": 0.625
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.875,
+          "class_recall": [
+            0.8333333333333334,
+            1.0
+          ],
+          "min_recall": 0.8333333333333334
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.90625,
+          "class_recall": [
+            1.0,
+            0.625
+          ],
+          "min_recall": 0.625
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.7243263721466064,
+    "initial_checkpoint_sha256": "6d1e08fd484262a2090b7e8380345746b9a468884e9747d4d62d204049ab0833",
+    "final_checkpoint_sha256": "95dfe0addd3f3104e772e8008660c62b7840414ce3fe1cd9dfe2cc542bc95d22",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 0.9990452000056393,
+    "process_memory": {
+      "peak_rss": 50294784,
+      "rss": 46161920,
+      "commit": 32079872,
+      "peak_commit": 36278272,
+      "private": 32079872
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161-1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": 1,
+    "arm": "teacher",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.875,
+      "class_recall": [
+        1.0,
+        0.5
+      ],
+      "min_recall": 0.5
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.875,
+          "class_recall": [
+            0.8333333333333334,
+            1.0
+          ],
+          "min_recall": 0.8333333333333334
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.875,
+          "class_recall": [
+            1.0,
+            0.5
+          ],
+          "min_recall": 0.5
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.2420997619628906,
+    "initial_checkpoint_sha256": "6d1e08fd484262a2090b7e8380345746b9a468884e9747d4d62d204049ab0833",
+    "final_checkpoint_sha256": "78b9a3ad96f6b2bf7cf391f4c677924b392ca3f1cc2e4543628417d712ac0d34",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 0.9999936999811325,
+    "process_memory": {
+      "peak_rss": 50515968,
+      "rss": 46383104,
+      "commit": 32432128,
+      "peak_commit": 36589568,
+      "private": 32432128
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161-1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": -1,
+    "arm": "teacher",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.1158430576324463,
+    "initial_checkpoint_sha256": "b8b968a4fdf693908ca514c9f0347e658c6a146bb2071b190cec7ff145bdf559",
+    "final_checkpoint_sha256": "72e801a7aa1172a8e06d6fc12dfd3e2e1c2a2dc9dcfefd7734ae42aba48a8d69",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 1.0518244000268169,
+    "process_memory": {
+      "peak_rss": 50577408,
+      "rss": 46444544,
+      "commit": 31891456,
+      "peak_commit": 36589568,
+      "private": 31891456
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161--1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": -1,
+    "arm": "label",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.1572437286376953,
+    "initial_checkpoint_sha256": "b8b968a4fdf693908ca514c9f0347e658c6a146bb2071b190cec7ff145bdf559",
+    "final_checkpoint_sha256": "17e18bf9d7f4e77162e48ed5432434a9a651210d80a33d04aa4a6eb8d15f5f2a",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 1.0614094999909867,
+    "process_memory": {
+      "peak_rss": 50610176,
+      "rss": 46477312,
+      "commit": 32014336,
+      "peak_commit": 36278272,
+      "private": 32014336
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161--1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": 1,
+    "arm": "readout",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "6d1e08fd484262a2090b7e8380345746b9a468884e9747d4d62d204049ab0833",
+    "final_checkpoint_sha256": "6556a7c80f01f06415e23e7fecb0cc55df40ea9b025e4535512016255c54289e",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 1.0707292000006419,
+    "process_memory": {
+      "peak_rss": 50569216,
+      "rss": 46436352,
+      "commit": 33513472,
+      "peak_commit": 37679104,
+      "private": 33513472
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161-1-readout"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": -1,
+    "arm": "readout",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "b8b968a4fdf693908ca514c9f0347e658c6a146bb2071b190cec7ff145bdf559",
+    "final_checkpoint_sha256": "49e8f6d3ac5f9984eddd51b3d6e73baa374df41b5d5096f2244d00abeeaee3d2",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 1.831526900001336,
+    "process_memory": {
+      "peak_rss": 50610176,
+      "rss": 46362624,
+      "commit": 31756288,
+      "peak_commit": 36278272,
+      "private": 31756288
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161--1-readout"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261161,
+    "sign": -1,
+    "arm": "shuffled",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.511442184448242,
+    "initial_checkpoint_sha256": "b8b968a4fdf693908ca514c9f0347e658c6a146bb2071b190cec7ff145bdf559",
+    "final_checkpoint_sha256": "4347f463b598d821458aaf7d8c5a54efc2bccbd632a2881cce81be7df535858e",
+    "data_sha256": "4a495914d9958beeae4afc4653b280b919a52aa6afe545f65eb6f994844a43a7",
+    "wall_seconds": 1.8728989000082947,
+    "process_memory": {
+      "peak_rss": 50745344,
+      "rss": 46612480,
+      "commit": 31907840,
+      "peak_commit": 36589568,
+      "private": 31907840
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261161--1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": 1,
+    "arm": "label",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.3186851739883423,
+    "initial_checkpoint_sha256": "46967782b69969b586bf7abd646b687d0d11cb89b643576391a5eb8d6a1d536d",
+    "final_checkpoint_sha256": "b95a32cbcbec3d02115d3da38ae7af80e4cd9d63e542e83714e96aaec7ff4a20",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 1.8709901999973226,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46718976,
+      "commit": 32223232,
+      "peak_commit": 37679104,
+      "private": 32223232
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167-1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": 1,
+    "arm": "teacher",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.9140625,
+      "class_recall": [
+        1.0,
+        0.65625
+      ],
+      "min_recall": 0.65625
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.828125,
+          "class_recall": [
+            1.0,
+            0.3125
+          ],
+          "min_recall": 0.3125
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.9140625,
+          "class_recall": [
+            1.0,
+            0.65625
+          ],
+          "min_recall": 0.65625
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.408294677734375,
+    "initial_checkpoint_sha256": "46967782b69969b586bf7abd646b687d0d11cb89b643576391a5eb8d6a1d536d",
+    "final_checkpoint_sha256": "83d4a56ef639d62a95b8d10357115d1a20ae340598f0348683eb31544c5275e4",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.480698700004723,
+    "process_memory": {
+      "peak_rss": 50610176,
+      "rss": 46313472,
+      "commit": 31621120,
+      "peak_commit": 36278272,
+      "private": 31621120
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167-1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": 1,
+    "arm": "shuffled",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.84375,
+      "class_recall": [
+        1.0,
+        0.375
+      ],
+      "min_recall": 0.375
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.828125,
+          "class_recall": [
+            1.0,
+            0.3125
+          ],
+          "min_recall": 0.3125
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.84375,
+          "class_recall": [
+            1.0,
+            0.375
+          ],
+          "min_recall": 0.375
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.798386573791504,
+    "initial_checkpoint_sha256": "46967782b69969b586bf7abd646b687d0d11cb89b643576391a5eb8d6a1d536d",
+    "final_checkpoint_sha256": "0665228abad140c5af52316da810a1dd470c02dfcc97fb0ba227b163cd6f2391",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.4935160000168253,
+    "process_memory": {
+      "peak_rss": 50745344,
+      "rss": 46473216,
+      "commit": 31821824,
+      "peak_commit": 36589568,
+      "private": 31821824
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167-1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": 1,
+    "arm": "readout",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "46967782b69969b586bf7abd646b687d0d11cb89b643576391a5eb8d6a1d536d",
+    "final_checkpoint_sha256": "e4b4ee00aeb3c038fee1d30fdc6a273cfdfbe94d3793546a53504dc8c6491422",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.4881079000188038,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46567424,
+      "commit": 31981568,
+      "peak_commit": 37679104,
+      "private": 31981568
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167-1-readout"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": -1,
+    "arm": "label",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.5513873100280762,
+    "initial_checkpoint_sha256": "42003c2118a29faefd1d2f06da44c69a66155911ef59e60f657d072b58029144",
+    "final_checkpoint_sha256": "2f53527137d66aa6bd2488342aa93cf90c25e957f747dcd82b9662f4a4dd8b81",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.5652120000158902,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46718976,
+      "commit": 32215040,
+      "peak_commit": 36392960,
+      "private": 32215040
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167--1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": -1,
+    "arm": "teacher",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.288684844970703,
+    "initial_checkpoint_sha256": "42003c2118a29faefd1d2f06da44c69a66155911ef59e60f657d072b58029144",
+    "final_checkpoint_sha256": "94e88f730429f4e352e8e874137ea7452b8382f6367874865479857e4c3e54d4",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.570825300004799,
+    "process_memory": {
+      "peak_rss": 50745344,
+      "rss": 46510080,
+      "commit": 31801344,
+      "peak_commit": 36589568,
+      "private": 31801344
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167--1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": -1,
+    "arm": "shuffled",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.693835973739624,
+    "initial_checkpoint_sha256": "42003c2118a29faefd1d2f06da44c69a66155911ef59e60f657d072b58029144",
+    "final_checkpoint_sha256": "c55644300b8a01d395eca2bc4bc32981324636fa43b89a6cfbcab90daae59eda",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.568610299989814,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46551040,
+      "commit": 31993856,
+      "peak_commit": 37679104,
+      "private": 31993856
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167--1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261167,
+    "sign": -1,
+    "arm": "readout",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "42003c2118a29faefd1d2f06da44c69a66155911ef59e60f657d072b58029144",
+    "final_checkpoint_sha256": "77412d95e3b5774939af8d4424a0cef5b2129d6c33b219530809078ab88a4683",
+    "data_sha256": "d35346bbc95f5b57ca8b725929661bf61add9936ad5421e97016918524a2b064",
+    "wall_seconds": 2.580012299993541,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46534656,
+      "commit": 31948800,
+      "peak_commit": 36392960,
+      "private": 31948800
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261167--1-readout"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": 1,
+    "arm": "teacher",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.921875,
+      "class_recall": [
+        1.0,
+        0.6875
+      ],
+      "min_recall": 0.6875
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            0.6666666666666666,
+            1.0
+          ],
+          "min_recall": 0.6666666666666666
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.8671875,
+          "class_recall": [
+            1.0,
+            0.46875
+          ],
+          "min_recall": 0.46875
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.921875,
+          "class_recall": [
+            1.0,
+            0.6875
+          ],
+          "min_recall": 0.6875
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.2900688648223877,
+    "initial_checkpoint_sha256": "4e0c87896676065c8854a47fef8cf41ec2d75ac2a10d04a98ef74edb702a7335",
+    "final_checkpoint_sha256": "6677001f33396ba98a3037856ea31d600d4f5e154e44b682fcd64047127a52e4",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.5653660999960266,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46522368,
+      "commit": 32055296,
+      "peak_commit": 37679104,
+      "private": 32055296
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173-1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": 1,
+    "arm": "label",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.2605125904083252,
+    "initial_checkpoint_sha256": "4e0c87896676065c8854a47fef8cf41ec2d75ac2a10d04a98ef74edb702a7335",
+    "final_checkpoint_sha256": "ae3f087815591f5ea45727ced0cdc611a570983e66ad640770134adc8fb000b6",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.5733707000035793,
+    "process_memory": {
+      "peak_rss": 50745344,
+      "rss": 46485504,
+      "commit": 31850496,
+      "peak_commit": 36589568,
+      "private": 31850496
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173-1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": 1,
+    "arm": "shuffled",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.875,
+      "class_recall": [
+        1.0,
+        0.5
+      ],
+      "min_recall": 0.5
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            0.6666666666666666,
+            1.0
+          ],
+          "min_recall": 0.6666666666666666
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.875,
+          "class_recall": [
+            1.0,
+            0.5
+          ],
+          "min_recall": 0.5
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.7729122638702393,
+    "initial_checkpoint_sha256": "4e0c87896676065c8854a47fef8cf41ec2d75ac2a10d04a98ef74edb702a7335",
+    "final_checkpoint_sha256": "15cd4ab31d5fe959a82a2d028d6006ae275f497470a5f1681f09a386c3aa0f80",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.561310599994613,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46563328,
+      "commit": 31940608,
+      "peak_commit": 36392960,
+      "private": 31940608
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173-1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": 1,
+    "arm": "readout",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "4e0c87896676065c8854a47fef8cf41ec2d75ac2a10d04a98ef74edb702a7335",
+    "final_checkpoint_sha256": "52f6e7764dcad3249bf75dc1c1981df8af9b5855ab82d18a1a0a13a9049104c0",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.548979599989252,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46645248,
+      "commit": 32358400,
+      "peak_commit": 37679104,
+      "private": 32358400
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173-1-readout"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": -1,
+    "arm": "label",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 1.538216233253479,
+    "initial_checkpoint_sha256": "066de3e1f59c5aabd71d0f9ded275b1d649c9f66476df004468acb5f541cf953",
+    "final_checkpoint_sha256": "58ff0744d5b0d4606bc1669d2fe2a49a93cc6fb9941048982ba65d2f8c881731",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.5573957999877166,
+    "process_memory": {
+      "peak_rss": 50921472,
+      "rss": 46788608,
+      "commit": 32186368,
+      "peak_commit": 36589568,
+      "private": 32186368
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173--1-label"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": -1,
+    "arm": "teacher",
+    "pid": 56144,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 3.1026418209075928,
+    "initial_checkpoint_sha256": "066de3e1f59c5aabd71d0f9ded275b1d649c9f66476df004468acb5f541cf953",
+    "final_checkpoint_sha256": "1d5099f55f45d1a657913b26944fcc625f88feddf54158127f73550edfd371ef",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.577536199998576,
+    "process_memory": {
+      "peak_rss": 50954240,
+      "rss": 46821376,
+      "commit": 32112640,
+      "peak_commit": 36392960,
+      "private": 32112640
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173--1-teacher"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": -1,
+    "arm": "shuffled",
+    "pid": 66128,
+    "updates": 192,
+    "hidden_updates": 192,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 2.5233209133148193,
+    "initial_checkpoint_sha256": "066de3e1f59c5aabd71d0f9ded275b1d649c9f66476df004468acb5f541cf953",
+    "final_checkpoint_sha256": "835d58404bd1052e591f7a4f08c4c183f1e7b47c04fa21a554ded86d16bf0078",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.5707908000040334,
+    "process_memory": {
+      "peak_rss": 50851840,
+      "rss": 46575616,
+      "commit": 31932416,
+      "peak_commit": 37679104,
+      "private": 31932416
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173--1-shuffled"
+  },
+  {
+    "status": "COMPLETED",
+    "seed": 261173,
+    "sign": -1,
+    "arm": "readout",
+    "pid": 61456,
+    "updates": 192,
+    "hidden_updates": 0,
+    "neural_forwards": 880,
+    "final_dev": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "final_old": {
+      "accuracy": 1.0,
+      "class_recall": [
+        1.0,
+        1.0
+      ],
+      "min_recall": 1.0
+    },
+    "curves": [
+      {
+        "update": 0,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 48,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 96,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      },
+      {
+        "update": 192,
+        "dev": {
+          "accuracy": 0.75,
+          "class_recall": [
+            1.0,
+            0.0
+          ],
+          "min_recall": 0.0
+        },
+        "old": {
+          "accuracy": 1.0,
+          "class_recall": [
+            1.0,
+            1.0
+          ],
+          "min_recall": 1.0
+        }
+      }
+    ],
+    "hidden_revert": {
+      "accuracy": 0.75,
+      "class_recall": [
+        1.0,
+        0.0
+      ],
+      "min_recall": 0.0
+    },
+    "hidden_weight_drift_L2": 0.0,
+    "initial_checkpoint_sha256": "066de3e1f59c5aabd71d0f9ded275b1d649c9f66476df004468acb5f541cf953",
+    "final_checkpoint_sha256": "9299db96aebf26c0ad745afef6db9e37572e7629bc5f2196cbeb689f418a9089",
+    "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+    "wall_seconds": 2.578024899994489,
+    "process_memory": {
+      "peak_rss": 50921472,
+      "rss": 46612480,
+      "commit": 32903168,
+      "peak_commit": 37068800,
+      "private": 32903168
+    },
+    "memory_cap": {
+      "enforced": true,
+      "limit_bytes": 2000000000,
+      "kind": "Windows per-process committed memory; shared pages monitored separately"
+    },
+    "checkpoint_kind": "S64_student_only_no_P",
+    "teacher_at_inference": false,
+    "not_20stage_retention": true,
+    "relative_directory": "learning\\trials\\261173--1-readout"
+  }
+]

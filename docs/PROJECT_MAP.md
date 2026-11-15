@@ -1,5 +1,13 @@
 # Bản đồ dự án SCAR-X
 
+[SCOPE P1b16/11](research/SCOPE_P1B_TEMPORAL_TRANSFER_RESULT_20261116.md):
+P1saved-data audit → CPU/CUDAprofile → temporal-P preflight → locked24arms
+→ actual locallearning → DEV/revert/independent algebra audit → **G2 FAIL**
+→ TEST/G3/G4 đóng. Protocol ở `experiments/scope-p1b-temporal-transfer-v1.md`;
+code cô lập `scripts/research/*scope_p1b*.py`; evidence duy nhất
+`runs/20261115T174514Z-scope-p1b-v1-b30f0b/` (source, learning, summary, closure).
+Không production source change hoặc implicit permission chạy readout-refit.
+
 [SCOPE P1 preflight](research/SCOPE_P1_PREFLIGHT_RESULT_20261115.md): locked
 protocol → CPU source ALIFforward → raw144records → independentstdlibscalar
 audit → PREFLIGHT_NO_GO,0training. Scripts `scripts/research/run_scope_teacher_preflight.py`

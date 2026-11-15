@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-scope-alif-design-20261115\scripts\research\audit_scope_p1b_preflight.py", line 80, in <module>
+    if __name__=="__main__":raise SystemExit(main())
+                                             ^^^^^^
+  File "C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\scarx-scope-alif-design-20261115\scripts\research\audit_scope_p1b_preflight.py", line 76, in main
+    args.output.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\hachimi\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

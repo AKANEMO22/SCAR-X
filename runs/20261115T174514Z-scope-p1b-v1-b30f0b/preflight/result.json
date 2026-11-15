@@ -1,0 +1,70 @@
+{
+  "verdict": "PREFLIGHT_PASS_NOT_LEARNING_VALIDATION",
+  "gates": {
+    "teacher_qualified": true,
+    "student_witness": true,
+    "teacher_P_necessary": true,
+    "old_valid_construction": true,
+    "RO_feature_collision": true,
+    "conditional_trace_variation": true,
+    "physical_update_distinguishable": true,
+    "causal_teacher_prefix": true
+  },
+  "teacher_accuracy": 1.0,
+  "witness_accuracy": 1.0,
+  "old_valid_accuracy": 1.0,
+  "min_conditional_trace_variance": 0.12247403711080551,
+  "physical_relative_difference": [
+    {
+      "seed": 261161,
+      "sign": 1,
+      "median": 0.2888830927314576
+    },
+    {
+      "seed": 261161,
+      "sign": -1,
+      "median": 0.2888830927314576
+    },
+    {
+      "seed": 261167,
+      "sign": 1,
+      "median": 0.2903761317612022
+    },
+    {
+      "seed": 261167,
+      "sign": -1,
+      "median": 0.2903761317612022
+    },
+    {
+      "seed": 261173,
+      "sign": 1,
+      "median": 0.2891890345456712
+    },
+    {
+      "seed": 261173,
+      "sign": -1,
+      "median": 0.2891890345456712
+    }
+  ],
+  "neural_forwards": 942,
+  "learning_updates": 0,
+  "wall_seconds": 1.469577300013043,
+  "memory": {
+    "peak_rss": 52035584,
+    "rss": 52035584,
+    "commit": 38203392,
+    "peak_commit": 38203392,
+    "private": 38203392
+  },
+  "teacher_hand_engineered": true,
+  "TEST_accessed": false,
+  "source_hashes": {
+    "experiments/scope-p1b-temporal-preflight-v1.md": "324fba6a42715546da76818e120af7ee15e3b1d30ef56e2fd9848fa783586025",
+    "scripts/research/scope_p1b_common.py": "033b1f214ec3b348c74feb4d0d316f26fd0709b588e3c04b3f0ca7ff79d80889",
+    "scripts/research/scope_p1b_resources.py": "0ea8730ffd5f6b212c85185255a20bfefd9f0e1e623d5bf6d8efdb927d3a7e87",
+    "scripts/research/preflight_scope_p1b.py": "26f821979aee101b5199050c9d46b0b935ad2ea9860e45181eb022548cce6c1b",
+    "scripts/research/audit_scope_p1b_preflight.py": "2cfdab5fa8d5036d4c6013fec0b0d943790def0989c743872c545322ae599127",
+    "src/scarx/neural/core.py": "5d913d281bac4011288119e400535ea5229521876454ac17b50b832cc09e0a9e",
+    "src/scarx/evaluation/readout_eligibility.py": "535db494c1b390a0d781fbf0ca6a2891cfc3f3141df0855edb3e4c1f1c513137"
+  }
+}

@@ -1,5 +1,20 @@
 # Trạng thái SCAR-X
 
+## 16/11 — SCOPE P1b temporal transfer: PIVOT, G2 FAIL
+
+[Báo cáo và 11 câu trả lời](research/SCOPE_P1B_TEMPORAL_TRANSFER_RESULT_20261116.md),
+[protocol khóa](../experiments/scope-p1b-temporal-transfer-v1.md),
+[raw CSV](../runs/20261115T174514Z-scope-p1b-v1-b30f0b/summary/raw-predictions.csv).
+Đã kiểm toán P1 cũ bằng raw, 0 replay. Preflight temporal-P đủ phân biệt,
+sau đó train thật 24 arm-runs/3 seed/hai dấu, 4.608 calls/3.456 hidden updates.
+Teacher DEV dấu thuận90,36%, shuffled87,50%, label/readout75%; dấu bất lợi
+tất cả75%, positive recall0. Revert hidden xóa gain thuận; teacher-specific
+gain chưa robust/đủ5pp so matched shuffle. G2 FAIL; TEST/G3 restart/G4 reuse
+NOT_RUN. Old100% do stable mask, không 20-stage retention. Population CI N3
+INCONCLUSIVE. Audit arithmetic PASS không là skill PASS. CPU nhanh hơnCUDA
+60,85x cho đúng workload nhỏ; measured treeRSS peak591,51MB<2GB. Không sửa
+main/Hermes/live, không push. Chỉ đề xuất readout-refit diagnostic, chưa chạy.
+
 ## SCOPE P1 preflight — NO-GO trước training
 
 [Report](research/SCOPE_P1_PREFLIGHT_RESULT_20261115.md),

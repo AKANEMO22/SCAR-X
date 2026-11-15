@@ -1,5 +1,18 @@
 # SCAR-X — Kế hoạch nghiên cứu chính
 
+**Cập nhật16/11 — P1b đã được duyệt và đã đóng:**
+[báo cáo temporal P→S](research/SCOPE_P1B_TEMPORAL_TRANSFER_RESULT_20261116.md).
+Phê duyệt riêng24 arm-runs/3 seed/1800s/RAM2GB cho phép chọn CPU/CUDA bằng
+đo thật; không áp GPU-only cũ vào scope này. P1terminal-only cũ vẫn NO-GO,
+không rerun. Preflight mới đạt nhưng training4.608calls cho **G2 FAIL/PIVOT**:
+teacher usefulhidden gain chỉ dấu thuận, không thắng matched shuffle đủ mạnh
+trên mọi seed/dấu; adverse positive recall0. Không mở TEST/G3/G4. Oldstable
+retained do mask, không đạt20stage hoặc CI quần thể. Không sửa main/Hermes/
+live, push/merge/deploy, đổi ngưỡng/neuron/precision hoặc sweep cứu kết quả.
+Đề xuất duy nhất là diagnostic teacher-blind readout-refit trên checkpoint
+cũ; chưa chạy và chưa được mở bởi việc cập nhật master plan này. Các ghi chú
+phạm vi15/11 bên dưới giữ như lịch sử, không mô tả quyền thực thi mới nhất.
+
 ## 0. Literature-first: bắt buộc trước nghiên cứu mới
 
 **P1 CPU conditional approval và kết quả:** user duyệt preflightkhônghọc,

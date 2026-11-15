@@ -1,5 +1,14 @@
 # SCAR-X — trung tâm kết quả nghiên cứu
 
+**Mới nhất16/11 — SCOPE P1b:** [PIVOT, G2 FAIL](SCOPE_P1B_TEMPORAL_TRANSFER_RESULT_20261116.md),
+[locked protocol](../../experiments/scope-p1b-temporal-transfer-v1.md),
+[24 trial raw](../../runs/20261115T174514Z-scope-p1b-v1-b30f0b/learning/trials/),
+[bảng prediction](../../runs/20261115T174514Z-scope-p1b-v1-b30f0b/summary/raw-predictions.csv).
+Temporal teacher tạo useful hidden gain ở dấu thuận, không ở dấu bất lợi;
+matched shuffle cũng học được. Không robust teacher-specific benefit theo
+gates. 4.608 learning calls, không TEST/restart/reuse/20-stage claim. P1 gốc
+vẫn NO-GO; audit dữ liệu cũ không rerun. Không mở thêm study hoặc production.
+
 **P1teachercredit preflight:** [PREFLIGHT_NO_GO](SCOPE_P1_PREFLIGHT_RESULT_20261115.md),
 [lockedprotocol](../../experiments/scope-p1-teacher-preflight-20261115.md),
 [raw/audit](../../runs/20261115T165305Z-scope-teacher-preflight-v1/).

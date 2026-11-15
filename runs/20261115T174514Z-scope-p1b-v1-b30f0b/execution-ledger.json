@@ -1,0 +1,32 @@
+{
+  "prior_reserved_seconds": 60.0,
+  "stages": [
+    {
+      "stage": "p1_saved_audit",
+      "exit_code": 0,
+      "wall_seconds": 0.17636029998539016
+    },
+    {
+      "stage": "profile_cpu",
+      "exit_code": 0,
+      "wall_seconds": 0.4192869999969844
+    },
+    {
+      "stage": "profile_gpu",
+      "exit_code": 0,
+      "wall_seconds": 6.7125935999793
+    },
+    {
+      "stage": "new_preflight",
+      "exit_code": 0,
+      "wall_seconds": 1.7563977999961935
+    },
+    {
+      "stage": "preflight_audit",
+      "exit_code": 1,
+      "wall_seconds": 0.2754784999997355
+    }
+  ],
+  "elapsed_intake_seconds": 9.611444300011499,
+  "limit_seconds": 1800
+}

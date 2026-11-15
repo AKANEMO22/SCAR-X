@@ -1,0 +1,132 @@
+{
+  "status": "COMPLETED",
+  "seed": 261173,
+  "sign": 1,
+  "arm": "label",
+  "pid": 61456,
+  "updates": 192,
+  "hidden_updates": 192,
+  "neural_forwards": 880,
+  "final_dev": {
+    "accuracy": 0.75,
+    "class_recall": [
+      1.0,
+      0.0
+    ],
+    "min_recall": 0.0
+  },
+  "final_old": {
+    "accuracy": 1.0,
+    "class_recall": [
+      1.0,
+      1.0
+    ],
+    "min_recall": 1.0
+  },
+  "curves": [
+    {
+      "update": 0,
+      "dev": {
+        "accuracy": 0.75,
+        "class_recall": [
+          1.0,
+          0.0
+        ],
+        "min_recall": 0.0
+      },
+      "old": {
+        "accuracy": 1.0,
+        "class_recall": [
+          1.0,
+          1.0
+        ],
+        "min_recall": 1.0
+      }
+    },
+    {
+      "update": 48,
+      "dev": {
+        "accuracy": 0.75,
+        "class_recall": [
+          1.0,
+          0.0
+        ],
+        "min_recall": 0.0
+      },
+      "old": {
+        "accuracy": 1.0,
+        "class_recall": [
+          1.0,
+          1.0
+        ],
+        "min_recall": 1.0
+      }
+    },
+    {
+      "update": 96,
+      "dev": {
+        "accuracy": 0.75,
+        "class_recall": [
+          1.0,
+          0.0
+        ],
+        "min_recall": 0.0
+      },
+      "old": {
+        "accuracy": 1.0,
+        "class_recall": [
+          1.0,
+          1.0
+        ],
+        "min_recall": 1.0
+      }
+    },
+    {
+      "update": 192,
+      "dev": {
+        "accuracy": 0.75,
+        "class_recall": [
+          1.0,
+          0.0
+        ],
+        "min_recall": 0.0
+      },
+      "old": {
+        "accuracy": 1.0,
+        "class_recall": [
+          1.0,
+          1.0
+        ],
+        "min_recall": 1.0
+      }
+    }
+  ],
+  "hidden_revert": {
+    "accuracy": 0.75,
+    "class_recall": [
+      1.0,
+      0.0
+    ],
+    "min_recall": 0.0
+  },
+  "hidden_weight_drift_L2": 1.2605125904083252,
+  "initial_checkpoint_sha256": "4e0c87896676065c8854a47fef8cf41ec2d75ac2a10d04a98ef74edb702a7335",
+  "final_checkpoint_sha256": "ae3f087815591f5ea45727ced0cdc611a570983e66ad640770134adc8fb000b6",
+  "data_sha256": "cc657a310e8fa5a3837a470d2ee4f74de2aea7b8eabb8a9e6889b5de9dce22fa",
+  "wall_seconds": 2.5733707000035793,
+  "process_memory": {
+    "peak_rss": 50745344,
+    "rss": 46485504,
+    "commit": 31850496,
+    "peak_commit": 36589568,
+    "private": 31850496
+  },
+  "memory_cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "checkpoint_kind": "S64_student_only_no_P",
+  "teacher_at_inference": false,
+  "not_20stage_retention": true
+}

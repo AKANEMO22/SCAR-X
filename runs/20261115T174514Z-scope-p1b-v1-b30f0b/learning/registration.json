@@ -1,0 +1,59 @@
+{
+  "source_commit": "a0f5ac4c1a146bd07a554c6ed32919dc8a0ed8fb",
+  "dirty_status": "?? runs/20261115T174514Z-scope-p1b-v1-b30f0b/",
+  "source_hashes": {
+    "experiments/scope-p1b-temporal-transfer-v1.md": "817e09cba907c9cabf9263bde08162e804c1ed6da42a62c81cae0bb61c105f3c",
+    "scripts/research/scope_p1b_common.py": "bbc47d14faebb5da2c38ff78af6ea569c62b1caebedd8d8c91b3c99de4122c7d",
+    "scripts/research/scope_p1b_trials.py": "37aa27346b73f09df3467d9d2667d5a3c0cab5a0ace4c8dd67d4aff35d6e6641",
+    "scripts/research/scope_p1b_statistics.py": "00853e576967ebab277a49ce3daf3e2cd3189b9b3967677c7e6edce74f68d347",
+    "scripts/research/scope_p1b_cycle.py": "9c3c1503ce57ea9a3ca8831a5442d9924fa1521f654306938219b55d01303b3c",
+    "scripts/research/restart_scope_p1b_student.py": "300d4d5141c1b57ff6f915d61f0d75dbba1f867c6c173486bfcb1d16493446d4",
+    "scripts/research/run_scope_p1b_learning.py": "3f2b45fd8a35a02b1cd71e849eea482f49c3a6002d96e1148d87d587c235205d",
+    "scripts/research/audit_scope_p1b_learning.py": "744392ceb89ca8cf56737a423d4f6e74539bb3d6a77bfa3ae18113215f0cd0bb"
+  },
+  "seeds": [
+    261161,
+    261167,
+    261173
+  ],
+  "signs": [
+    1,
+    -1
+  ],
+  "arms": [
+    "label",
+    "teacher",
+    "shuffled",
+    "readout"
+  ],
+  "max_trials": 24,
+  "updates_each": 192,
+  "backend": "CPU",
+  "reserved_previous_execution_seconds": 75.0,
+  "global_limit_seconds": 1800,
+  "cap": {
+    "enforced": true,
+    "limit_bytes": 2000000000,
+    "kind": "Windows per-process committed memory; shared pages monitored separately"
+  },
+  "serving_before": {
+    "gateway_listeners": [
+      59864
+    ],
+    "processes": [
+      {
+        "pid": 59864,
+        "name": "python.exe",
+        "created": 1794746692.8536272,
+        "running": true
+      },
+      {
+        "pid": 61708,
+        "name": "llama-server.exe",
+        "created": 1794746703.5528777,
+        "running": true
+      }
+    ]
+  },
+  "UTC_first_preparation": "2026-11-15T18:15:46.669997+00:00"
+}
