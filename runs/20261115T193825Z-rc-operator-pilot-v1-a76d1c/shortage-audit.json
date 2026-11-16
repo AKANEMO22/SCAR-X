@@ -1,0 +1,237 @@
+{
+  "audit_level": "same-team independent stdlib tuple recount of saved data only",
+  "source_sha": "6cadbbe2113f94c88b44ecc87678adb5770bb552",
+  "D0_rerun": false,
+  "raw_data_sha256_reverified": "723a62407e5135d9b590a491164aad3e455db97ec850bbdda737e541f0881b20",
+  "state": [
+    0,
+    0,
+    0,
+    2,
+    3
+  ],
+  "counts": {
+    "all_SWAPS": 10,
+    "changed_before_target_filter": 7,
+    "changed_targets_blocked_by_train_partition": 6,
+    "valid_changed_after_filter": 1,
+    "required_changed_SWAPS": 2,
+    "TRAIN_examples": 512,
+    "TRAIN_distinct_prestates": 351,
+    "TRAIN_distinct_targets": 332,
+    "TRAIN_quotas": {
+      "MOVE:changed": 224,
+      "MOVE:noop": 32,
+      "SWAP:noop": 32,
+      "SWAP:changed": 224
+    }
+  },
+  "all_SWAP_targets": [
+    {
+      "command": [
+        "SWAP",
+        0,
+        1,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        0,
+        2,
+        3
+      ],
+      "changed": false,
+      "target_in_train_partition": false,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        0,
+        2,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        0,
+        2,
+        3
+      ],
+      "changed": false,
+      "target_in_train_partition": false,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        0,
+        3,
+        -1
+      ],
+      "target": [
+        2,
+        0,
+        0,
+        0,
+        3
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        0,
+        4,
+        -1
+      ],
+      "target": [
+        3,
+        0,
+        0,
+        2,
+        0
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        1,
+        2,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        0,
+        2,
+        3
+      ],
+      "changed": false,
+      "target_in_train_partition": false,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        1,
+        3,
+        -1
+      ],
+      "target": [
+        0,
+        2,
+        0,
+        0,
+        3
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        1,
+        4,
+        -1
+      ],
+      "target": [
+        0,
+        3,
+        0,
+        2,
+        0
+      ],
+      "changed": true,
+      "target_in_train_partition": false,
+      "valid_changed_command": true
+    },
+    {
+      "command": [
+        "SWAP",
+        2,
+        3,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        2,
+        0,
+        3
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        2,
+        4,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        3,
+        2,
+        0
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    },
+    {
+      "command": [
+        "SWAP",
+        3,
+        4,
+        -1
+      ],
+      "target": [
+        0,
+        0,
+        0,
+        3,
+        2
+      ],
+      "changed": true,
+      "target_in_train_partition": true,
+      "valid_changed_command": false
+    }
+  ],
+  "valid_commands": [
+    {
+      "command": [
+        "SWAP",
+        1,
+        4,
+        -1
+      ],
+      "target": [
+        0,
+        3,
+        0,
+        2,
+        0
+      ],
+      "changed": true,
+      "target_in_train_partition": false,
+      "valid_changed_command": true
+    }
+  ],
+  "compact_episodic_payload_bytes_if_stored": 7168,
+  "memory_control_quality": "NOT_RUN: STOP_DATA preceded control evaluation",
+  "models": 0,
+  "fits": 0,
+  "updates": 0,
+  "elapsed_seconds": 0.0024779000086709857
+}

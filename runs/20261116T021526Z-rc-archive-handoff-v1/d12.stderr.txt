@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\rc-1116\scripts\research\rc_p1b_diagnostics.py", line 330, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\rc-1116\scripts\research\rc_p1b_diagnostics.py", line 324, in main
+    try:run(args.output)
+        ^^^^^^^^^^^^^^^^
+  File "C:\Users\hachimi\Downloads\model agent\scar-x\local\worktrees\rc-1116\scripts\research\rc_p1b_diagnostics.py", line 188, in run
+    assert hashlib.sha256(subprocess.check_output(["git","show",current+":"+name],cwd=ROOT)).hexdigest()==expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

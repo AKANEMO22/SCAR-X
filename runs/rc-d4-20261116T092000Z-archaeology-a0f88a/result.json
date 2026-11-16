@@ -1,0 +1,1088 @@
+{
+  "completed": true,
+  "audit_level": "data-only recomputation by same Codex system",
+  "source_sha": "1ea065be194d44000ba795138c5917f3d13adda0",
+  "source_root": "C:\\Users\\hachimi\\Downloads\\model agent\\scar-x\\local\\worktrees\\scarx-scope-alif-design-20261115",
+  "source_branch": "research/scope-alif-p1b-20261116",
+  "script_sha256": "a0f88a8268097f722400e0d6db39caa7a137059f8d2917462205d0eb4a74ce8d",
+  "new_model_calls": 0,
+  "new_forward_calls": 0,
+  "new_backward_calls": 0,
+  "new_training_updates": 0,
+  "new_readout_fits": 0,
+  "opened_TEST_or_confirmation_raw": false,
+  "seed_selection": "all recorded ACR DEV rows and all 48 Hybrid diagnostic cases; no selection by scores",
+  "catalog_integrity": {
+    "entries": 121,
+    "report_references": 333,
+    "immutable_copies": 227,
+    "scope": "file integrity only, not scientific verification"
+  },
+  "local_inventory": {
+    "worktrees": "worktree C:/Users/hachimi/Downloads/model agent/scar-x\nHEAD 37749041ef45d54951558fdeb0c3695616b47cb5\nbranch refs/heads/main\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/rc-1116\nHEAD bee9b68c530d174f1bbc28d42cee5e11aebc81a9\nbranch refs/heads/research/autonomous-reusable-20261116\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/review-gemini-r8-607ffca\nHEAD 607ffca7c9222c5e3fd9741c3ebdf5939e10bedf\ndetached\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/review-gemini-r8-fe472b3\nHEAD fe472b3b1257cdb264805bf79fd53e5647e3568d\ndetached\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-acr-20261112\nHEAD 22bb9781f4ed8f60f7180bdb56b6570e64e1f503\nbranch refs/heads/codex/scarx-adaptive-credit-routing-20261112\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-capacity-h64-h128-20261112\nHEAD cec35fd9a0a5489042f23003e1b9c3f49893eeec\nbranch refs/heads/codex/scarx-capacity-h64-h128-20261112\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-hybrid-20261113\nHEAD b3a48983e148024c75b093d0413140c255c78073\nbranch refs/heads/codex/scarx-hybrid-20261113\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-literature-first-20261112\nHEAD 09f561754edd0f8c66a338b4114567a903fc4d9d\nbranch refs/heads/codex/scarx-literature-first-20261112\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-r8-matched-controls-20261112\nHEAD 93b5b96bebaf22dbc39a3f96b2cac7c917d5e377\nbranch refs/heads/codex/scarx-r8-matched-controls-20261112\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x/local/worktrees/scarx-scope-alif-design-20261115\nHEAD 1ea065be194d44000ba795138c5917f3d13adda0\nbranch refs/heads/research/scope-alif-p1b-20261116\n\nworktree C:/Users/hachimi/Downloads/model agent/scar-x-gemini-r7\nHEAD b2faef7cc01c10dd71b886675bfb4fefd5ed5243\nbranch refs/heads/research/gemini/frozen-llm-plastic-memory-a-f",
+    "refs": "refs/heads/codex/scarx-adaptive-credit-routing-20261112 22bb9781f4ed8f60f7180bdb56b6570e64e1f503\nrefs/heads/codex/scarx-capacity-h64-h128-20261112 cec35fd9a0a5489042f23003e1b9c3f49893eeec\nrefs/heads/codex/scarx-hybrid-20261113 b3a48983e148024c75b093d0413140c255c78073\nrefs/heads/codex/scarx-literature-first-20261112 09f561754edd0f8c66a338b4114567a903fc4d9d\nrefs/heads/codex/scarx-r8-matched-controls-20261112 93b5b96bebaf22dbc39a3f96b2cac7c917d5e377\nrefs/heads/main 37749041ef45d54951558fdeb0c3695616b47cb5\nrefs/heads/research/autonomous-reusable-20261116 bee9b68c530d174f1bbc28d42cee5e11aebc81a9\nrefs/heads/research/contracted-interface-alif-design-20261115 6e08a3616bc1ca908d8303f6321d759fc57804eb\nrefs/heads/research/gemini/frozen-llm-plastic-memory-a-f b2faef7cc01c10dd71b886675bfb4fefd5ed5243\nrefs/heads/research/gemini/r13-1-spike-composition-vs-small-llm ffddbcaea23c1d7b22ffdd0b5715f3939541fec1\nrefs/heads/research/gemini/r13-2-independent-composition-fair-llm 4e01834c65d8f34da90fe44f4d14d7211e07edd1\nrefs/heads/research/gemini/r13-neural-engram-composition-20261112 f4272ba73d80cd95a382c33e614cd59355216d9f\nrefs/heads/research/scope-alif-p1b-20261116 1ea065be194d44000ba795138c5917f3d13adda0\nrefs/remotes/origin/HEAD 37749041ef45d54951558fdeb0c3695616b47cb5\nrefs/remotes/origin/codex/scarx-hybrid-20261113 b3a48983e148024c75b093d0413140c255c78073\nrefs/remotes/origin/main 37749041ef45d54951558fdeb0c3695616b47cb5\nrefs/remotes/origin/research/contracted-interface-alif-design-20261115 df80b1b5fb9b19acc96def0a26f4e3f7d1bb6353\nrefs/remotes/origin/research/gemini/frozen-llm-plastic-memory-a-f b2faef7cc01c10dd71b886675bfb4fefd5ed5243\nrefs/remotes/origin/research/gemini/r13-1-spike-composition-vs-small-llm ffddbcaea23c1d7b22ffdd0b5715f3939541fec1\nrefs/remotes/origin/research/gemini/r13-2-independent-composition-fair-llm 4e01834c65d8f34da90fe44f4d14d7211e07edd1\nrefs/remotes/origin/research/gemini/r13-neural-engram-composition-20261112 f4272ba73d80cd95a382c33e614cd59355216d9f\nrefs/tags/archive/2026-11-13/branches/codex/consolidate-research-20261113 ad02c5dc09e70aa7ad148eb88b0675c007cbc476\nrefs/tags/archive/2026-11-13/branches/codex/integrate-grok-round1 0cf4ed01aa368e1bb7801a1017c9ca1919c7af55\nrefs/tags/archive/2026-11-13/branches/codex/scarx-adaptive-credit-routing-20261112 d3739963adabecf3aafd9daf752dd7743b917946\nrefs/tags/archive/2026-11-13/branches/codex/scarx-capacity-h64-h128-20261112 516939acd7d2601cb044bcfe1c78fc23c456deb2\nrefs/tags/archive/2026-11-13/branches/codex/scarx-forensic-r6-20261111 b64f049dc04b6c6d4f2445ebc4cf400a8b0edf9b\nrefs/tags/archive/2026-11-13/branches/codex/scarx-literature-first-20261112 c136e2f4af263c2f8350c778d0402b36bea5f42d\nrefs/tags/archive/2026-11-13/branches/codex/scarx-neural-learning-v2 f8a55a08e3819b0b2d5d22651e435a9116040e05\nrefs/tags/archive/2026-11-13/branches/codex/scarx-output-codec-p0-20261111 a6f0bd0e06f8ac6f3d23a30a2a4f4172ccb36c56\nrefs/tags/archive/2026-11-13/branches/codex/scarx-r8-matched-controls-20261112 11e46e7ad953b302621729852ab25f7cdeee7633\nrefs/tags/archive/2026-11-13/branches/cursor/scarx-release-candidate a1d42a4b4e81bf822b045c349d1d6c99e09f59e9\nrefs/tags/archive/2026-11-13/branches/main 591a93e15f395ed645abce830bb5580bf477fc50\nrefs/tags/archive/2026-11-13/branches/research/antigravity-gemini/scarx-neural-round1-20261111 356715ab6febfc67f6be3f2f2eaf215354ccf5c4\nrefs/tags/archive/2026-11-13/branches/research/antigravity/scarx-neural-round1-20261111 ec7546f468a81bb27899c52c5d561031302ca041\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r2-readout-learnability 417f7eaa78ed4a2e809c2186236ce04bf557634b\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r3-temporal-substrate bb0893bcf3d0a81bed9c3d3e573a1d79afe18d03\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r4-relational-representation 5be7a182d4ed919579e9613354520781feb9ac9a\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r5-independent-relational-binding c067837995fc0cd0b5bf36302d62bb10186fdc9f\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r6-learning-scaling 00f3cde2240610b303cfa3b965c1f3b8044bbe62\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r6d-audit 7197f0a41c9ebd131f925b0a357c236536c43c36\nrefs/tags/archive/2026-11-13/branches/research/deepseek/r7-causal-hidden 6d9a27d09d877badfa6f580cb2db20bb2f0d4143\nrefs/tags/archive/2026-11-13/branches/research/deepseek/scarx-neural-round1-20261111 70b6b6c1586cc6808f6e62751203bd0fcffa4a64\nrefs/tags/archive/2026-11-13/branches/research/gemini/r10-replication-learning-bottleneck-20261112 f2a1e3b53220457b55f0fb3dfebfedeb25340a7f\nrefs/tags/archive/2026-11-13/branches/research/gemini/r11-shared-learning-readout-20261112 d28bc53831e651ce2a338fc08c4be5ccd02a67f7\nrefs/tags/archive/2026-11-13/branches/research/gemini/r12-replay-lite-continual-memory-20261112 c2cf690e73d0ddc1da086ee404f72120f034f38a\nrefs/tags/archive/2026-11-13/branches/research/gemini/r6-local-associative-learning 167a03eeda72451e528127b9b940ed5ec4d7c5b3\nrefs/tags/archive/2026-11-13/branches/research/gemini/r7-hidden-representation-learning 986364d53a5cb022d70ee9f4d96662ba43facb1a\nrefs/tags/archive/2026-11-13/branches/research/gemini/r8-causal-learning-retention-20261112 a4ebf585ef9556b56ab718089b1fd774f9cbb465\nrefs/tags/archive/2026-11-13/branches/research/gemini/r9-massive-neural-search-20261112 03e769ef4fd931b62b31e19c6556c4ce70b1394e\nrefs/tags/archive/2026-11-13/branches/research/gemini/r9b-p1-matched-control-20261112 dd375cbe438d704bbb2372dd228742b35af84ee8\nrefs/tags/archive/2026-11-13/branches/research/gemini/r9c-distractor-causal-localization-20261112 2c65343acd9d96c6b6b5fd7e7a022ede563e4a62\nrefs/tags/archive/2026-11-13/branches/research/gemini/r9c-repair-literature-acceleration-20261112 b5ab7b3377d8e8a2f54000e1c3bf1824b538eaaa\nrefs/tags/archive/2026-11-13/branches/research/grok/r2-dendritic-transfer 083fa446c37d8447efff3ce47343737147519fa7\nrefs/tags/archive/2026-11-13/branches/research/grok/r3-temporal-stress ca9188d95cfddce2a85c126918046521391cbf7b\nrefs/tags/archive/2026-11-13/branches/research/grok/r4-online-readout-mechanism 6ff4cc7b4d019e86457fec40ffdf5475fa8bd925\nrefs/tags/archive/2026-11-13/branches/research/grok/r5-independent-audit c50125683ae28e6741fe0f6a764a4cee11d44a2d\nrefs/tags/archive/2026-11-13/branches/research/grok/r6-causal-readout-repair d2d642b9d90cd230d7221d81a081165d143a485d\nrefs/tags/archive/2026-11-13/branches/research/grok/r6d-adversarial-audit ad9de846c0508c2c50280edc49d42b1207a9303f\nrefs/tags/archive/2026-11-13/branches/research/grok/scarx-neural-round1-20261111 0f2ec83bebfb0b9e9a7d8c2aa51714d0153fbd48\nrefs/tags/archive/2026-11-13/consolidation-verified 4ce14771dda2a932b92d816055f685c6710bfb25\nrefs/tags/archive/2026-11-13/worktrees/antigravity-scarx-neural-round1-20261111-16a6d8d6 bb345c0bd8d7f24672b63de8114cb1c9cc755113\nrefs/tags/archive/2026-11-13/worktrees/forensic-source-gemini-8f24a5a-1cfa9e6f e977ca3dda745cb34508ea6b4ff9d163ba55a9cc\nrefs/tags/archive/2026-11-13/worktrees/forensic-source-r6b-c39e9db-af52056b c53644fcd25dfbbb9b067fd1eb58df7a3dc1b713\nrefs/tags/archive/2026-11-13/worktrees/forensic-source-r6d-4bacd7b-5b8fe6bc 0650392d30ba9509cd60ebf48ef6ec10f514a6e0\nrefs/tags/archive/2026-11-13/worktrees/integrate-grok-round1-57f888a7 5c5bec53b0e5b6a25f865d7119e00769e5c7af22\nrefs/tags/archive/2026-11-13/worktrees/review-antigravity-gemini-3dafe9ae 5a9c6eb6a90747d815f2de5645d68f645726aad1\nrefs/tags/archive/2026-11-13/worktrees/review-basicfactory-037d77e-945429e2 a00fcae67f2b153847bd08c71832bc2b7c0062c1\nrefs/tags/archive/2026-11-13/worktrees/review-deepseek-r7-853d408-17cc63a5 e8397ad6221010528b243f53baf61d0f9fb72d7e\nrefs/tags/archive/2026-11-13/worktrees/review-deepseek-r7-aacde3f-c586eca6 b01e86ff5c08850587a4e04878eefea56ac1e036\nrefs/tags/archive/2026-11-13/worktrees/review-gemini-81641f7-5ce804c0 2981485f842823a655a8427b0051beccd9d59318\nrefs/tags/archive/2026-11-13/worktrees/review-gemini-r7-64441fb-1a84fca3 1344e74027d47b19a73dfdd425a938b4cc650bad\nrefs/tags/archive/2026-11-13/worktrees/review-gemini-r7-bad0582-13f9a13f cd2a22d7fbc033d5c781bbe6873a0ccc10ef6379\nrefs/tags/archive/2026-11-13/worktrees/review-gemini-r9-2c41fda-77864757 e8309dac0e82384365efa26e932b11ca659976f3\nrefs/tags/archive/2026-11-13/worktrees/review-grok-14bf4b2-6c1afa21 ddb2a7deb6c21d9223e6261a1c55583e7747c4c7\nrefs/tags/archive/2026-11-13/worktrees/review-grok-d509878-d8179569 2a7f40c839d3cf838a5a9a3d0bea2618c6f79aa1\nrefs/tags/archive/2026-11-13/worktrees/scar-x-antigravity-round1-bd2d4b50 bd29b0018912c5452c3e3433d05267dd4700d039\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r2-19a961dd b3e30334b7e8dcecc9613949ed21be30ea13f034\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r3-1f3b1b8d 45f08b50683ef8e78b5f339f2ffbccd8c8fda2f6\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r4-2f373d0f 61a5945359e77d69e5771b46d91a34ff727a4664\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r5-e76d28c3 1c3191faaaa7f365f41188eb1dc13dd289e91a22\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r6-a7b2d342 f43f5aa3e5dbf4dc8c3c3bbcc65257e85c6d6b8c\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r6d-f959b9e0 c9679e10ae9e788529641cba735d9a0258e68440\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-r7-49f36bb7 a1b8b770b2aecfdc9fda09105734007e2255ec06\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-review-674aef8d b55e2d2ff15e3c9d987ba59f0108a5f75816efec\nrefs/tags/archive/2026-11-13/worktrees/scar-x-deepseek-round1-435567e8 f121e93ed64b9f3d9e79956af547e0a90a4d6684\nrefs/tags/archive/2026-11-13/worktrees/scar-x-gemini-r6-93778c07 eb2cb2c6156fb183bb008f5e5f62abc48d630fee\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r2-39c2396a 9e40a898751499d208610b7460cb223a97ea23bc\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r3-a8985f38 b66d9e3fc9a9dc8550ffe0c2b069735cbad13a2a\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r4-7018c936 51bc05c8ac0a04ee1b0d98ee10b120142187a868\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r5-5d257538 489e26c2d8279f40b6533ffdd55d40760d33ca16\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r6-1bfe4f4b 03f0393d42ec76c615ed272b12dcddc6433e1801\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-r6d-67094c7b fbeb5ced301cf0d79ff177984f026d4978acb709\nrefs/tags/archive/2026-11-13/worktrees/scar-x-grok-round1-77488e9b cb5e8f0c9b42b6864e727d272b958a51f79b0796\nrefs/tags/archive/2026-11-13/worktrees/scarx-forensic-r6-20261111-a6b0c54e 883163c8e9e5135b6bd8399785b30172b4fd8e44\nrefs/tags/archive/2026-11-13/worktrees/scarx-neural-learning-v2-e4a71dfa 2b9bcdbd59f9b0fd9fca28c407ae299e645c1792\nrefs/tags/archive/2026-11-13/worktrees/scarx-output-codec-p0-20261111-c0405aeb 0875a61598319f90d19b57b8fdf416cc63365695"
+  },
+  "ACR_DEV": {
+    "classification": "VERIFIED",
+    "scope": "saved prediction arithmetic only; no regenerated labels/checkpoint inference",
+    "source_commit": "c54ee689126a79e695df98eb81eb60053acc2621",
+    "seeds": [
+      140011,
+      140017,
+      140023
+    ],
+    "model_records": 375,
+    "prediction_entries_recounted": 1228800,
+    "max_accuracy_error": 0.0,
+    "equal_updates_learned_id": {
+      "groups_down/distractor_binding/direct": {
+        "mean": 0.6432291666666666,
+        "rows": 3
+      },
+      "groups_down/distractor_binding/probe": {
+        "mean": 0.6705729166666666,
+        "rows": 3
+      },
+      "groups_down/joint/direct": {
+        "mean": 0.6383463541666666,
+        "rows": 3
+      },
+      "groups_down/joint/probe": {
+        "mean": 0.7286783854166666,
+        "rows": 3
+      },
+      "groups_down/order/direct": {
+        "mean": 0.9993489583333334,
+        "rows": 3
+      },
+      "groups_down/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "groups_down/strict_binding/direct": {
+        "mean": 0.7799479166666666,
+        "rows": 3
+      },
+      "groups_down/strict_binding/probe": {
+        "mean": 0.7916666666666666,
+        "rows": 3
+      },
+      "groups_down/xor/direct": {
+        "mean": 0.9869791666666666,
+        "rows": 3
+      },
+      "groups_down/xor/probe": {
+        "mean": 0.9947916666666666,
+        "rows": 3
+      },
+      "groups_up/distractor_binding/direct": {
+        "mean": 0.5924479166666666,
+        "rows": 3
+      },
+      "groups_up/distractor_binding/probe": {
+        "mean": 0.6048177083333334,
+        "rows": 3
+      },
+      "groups_up/joint/direct": {
+        "mean": 0.6516927083333334,
+        "rows": 3
+      },
+      "groups_up/joint/probe": {
+        "mean": 0.7373046875,
+        "rows": 3
+      },
+      "groups_up/order/direct": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "groups_up/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "groups_up/strict_binding/direct": {
+        "mean": 0.8502604166666666,
+        "rows": 3
+      },
+      "groups_up/strict_binding/probe": {
+        "mean": 0.8854166666666666,
+        "rows": 3
+      },
+      "groups_up/xor/direct": {
+        "mean": 0.9811197916666666,
+        "rows": 3
+      },
+      "groups_up/xor/probe": {
+        "mean": 0.984375,
+        "rows": 3
+      },
+      "intrinsic/distractor_binding/direct": {
+        "mean": 0.5963541666666666,
+        "rows": 3
+      },
+      "intrinsic/distractor_binding/probe": {
+        "mean": 0.603515625,
+        "rows": 3
+      },
+      "intrinsic/joint/direct": {
+        "mean": 0.63232421875,
+        "rows": 3
+      },
+      "intrinsic/joint/probe": {
+        "mean": 0.7151692708333334,
+        "rows": 3
+      },
+      "intrinsic/order/direct": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "intrinsic/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "intrinsic/strict_binding/direct": {
+        "mean": 0.8365885416666666,
+        "rows": 3
+      },
+      "intrinsic/strict_binding/probe": {
+        "mean": 0.8606770833333334,
+        "rows": 3
+      },
+      "intrinsic/xor/direct": {
+        "mean": 0.962890625,
+        "rows": 3
+      },
+      "intrinsic/xor/probe": {
+        "mean": 0.9811197916666666,
+        "rows": 3
+      },
+      "linear_down/distractor_binding/direct": {
+        "mean": 0.6302083333333334,
+        "rows": 3
+      },
+      "linear_down/distractor_binding/probe": {
+        "mean": 0.6692708333333334,
+        "rows": 3
+      },
+      "linear_down/joint/direct": {
+        "mean": 0.6954752604166666,
+        "rows": 3
+      },
+      "linear_down/joint/probe": {
+        "mean": 0.7545572916666666,
+        "rows": 3
+      },
+      "linear_down/order/direct": {
+        "mean": 0.9973958333333334,
+        "rows": 3
+      },
+      "linear_down/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "linear_down/strict_binding/direct": {
+        "mean": 0.7779947916666666,
+        "rows": 3
+      },
+      "linear_down/strict_binding/probe": {
+        "mean": 0.818359375,
+        "rows": 3
+      },
+      "linear_down/xor/direct": {
+        "mean": 0.9817708333333334,
+        "rows": 3
+      },
+      "linear_down/xor/probe": {
+        "mean": 0.9908854166666666,
+        "rows": 3
+      },
+      "linear_up/distractor_binding/direct": {
+        "mean": 0.6009114583333334,
+        "rows": 3
+      },
+      "linear_up/distractor_binding/probe": {
+        "mean": 0.6529947916666666,
+        "rows": 3
+      },
+      "linear_up/joint/direct": {
+        "mean": 0.6399739583333334,
+        "rows": 3
+      },
+      "linear_up/joint/probe": {
+        "mean": 0.71337890625,
+        "rows": 3
+      },
+      "linear_up/order/direct": {
+        "mean": 0.9954427083333334,
+        "rows": 3
+      },
+      "linear_up/order/probe": {
+        "mean": 0.9973958333333334,
+        "rows": 3
+      },
+      "linear_up/strict_binding/direct": {
+        "mean": 0.828125,
+        "rows": 3
+      },
+      "linear_up/strict_binding/probe": {
+        "mean": 0.8196614583333334,
+        "rows": 3
+      },
+      "linear_up/xor/direct": {
+        "mean": 0.9733072916666666,
+        "rows": 3
+      },
+      "linear_up/xor/probe": {
+        "mean": 0.98828125,
+        "rows": 3
+      },
+      "random_alpha/distractor_binding/direct": {
+        "mean": 0.58203125,
+        "rows": 3
+      },
+      "random_alpha/distractor_binding/probe": {
+        "mean": 0.5826822916666666,
+        "rows": 3
+      },
+      "random_alpha/joint/direct": {
+        "mean": 0.6603190104166666,
+        "rows": 3
+      },
+      "random_alpha/joint/probe": {
+        "mean": 0.7381184895833334,
+        "rows": 3
+      },
+      "random_alpha/order/direct": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "random_alpha/order/probe": {
+        "mean": 0.9993489583333334,
+        "rows": 3
+      },
+      "random_alpha/strict_binding/direct": {
+        "mean": 0.8470052083333334,
+        "rows": 3
+      },
+      "random_alpha/strict_binding/probe": {
+        "mean": 0.8385416666666666,
+        "rows": 3
+      },
+      "random_alpha/xor/direct": {
+        "mean": 0.9765625,
+        "rows": 3
+      },
+      "random_alpha/xor/probe": {
+        "mean": 0.9856770833333334,
+        "rows": 3
+      },
+      "state/distractor_binding/direct": {
+        "mean": 0.5924479166666666,
+        "rows": 3
+      },
+      "state/distractor_binding/probe": {
+        "mean": 0.59765625,
+        "rows": 3
+      },
+      "state/joint/direct": {
+        "mean": 0.6432291666666666,
+        "rows": 3
+      },
+      "state/joint/probe": {
+        "mean": 0.6971028645833334,
+        "rows": 3
+      },
+      "state/order/direct": {
+        "mean": 0.9986979166666666,
+        "rows": 3
+      },
+      "state/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "state/strict_binding/direct": {
+        "mean": 0.8046875,
+        "rows": 3
+      },
+      "state/strict_binding/probe": {
+        "mean": 0.841796875,
+        "rows": 3
+      },
+      "state/xor/direct": {
+        "mean": 0.9908854166666666,
+        "rows": 3
+      },
+      "state/xor/probe": {
+        "mean": 0.9954427083333334,
+        "rows": 3
+      },
+      "state_shuffle/distractor_binding/direct": {
+        "mean": 0.5983072916666666,
+        "rows": 3
+      },
+      "state_shuffle/distractor_binding/probe": {
+        "mean": 0.615234375,
+        "rows": 3
+      },
+      "state_shuffle/joint/direct": {
+        "mean": 0.6650390625,
+        "rows": 3
+      },
+      "state_shuffle/joint/probe": {
+        "mean": 0.7097981770833334,
+        "rows": 3
+      },
+      "state_shuffle/order/direct": {
+        "mean": 0.9993489583333334,
+        "rows": 3
+      },
+      "state_shuffle/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "state_shuffle/strict_binding/direct": {
+        "mean": 0.8828125,
+        "rows": 3
+      },
+      "state_shuffle/strict_binding/probe": {
+        "mean": 0.8938802083333334,
+        "rows": 3
+      },
+      "state_shuffle/xor/direct": {
+        "mean": 0.9661458333333334,
+        "rows": 3
+      },
+      "state_shuffle/xor/probe": {
+        "mean": 0.9830729166666666,
+        "rows": 3
+      },
+      "static_0/distractor_binding/direct": {
+        "mean": 0.5696614583333334,
+        "rows": 3
+      },
+      "static_0/distractor_binding/probe": {
+        "mean": 0.5696614583333334,
+        "rows": 3
+      },
+      "static_0/joint/direct": {
+        "mean": 0.685546875,
+        "rows": 3
+      },
+      "static_0/joint/probe": {
+        "mean": 0.6990559895833334,
+        "rows": 3
+      },
+      "static_0/order/direct": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "static_0/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "static_0/strict_binding/direct": {
+        "mean": 0.8541666666666666,
+        "rows": 3
+      },
+      "static_0/strict_binding/probe": {
+        "mean": 0.8697916666666666,
+        "rows": 3
+      },
+      "static_0/xor/direct": {
+        "mean": 0.9186197916666666,
+        "rows": 3
+      },
+      "static_0/xor/probe": {
+        "mean": 0.966796875,
+        "rows": 3
+      },
+      "static_100/distractor_binding/direct": {
+        "mean": 0.556640625,
+        "rows": 3
+      },
+      "static_100/distractor_binding/probe": {
+        "mean": 0.6341145833333334,
+        "rows": 3
+      },
+      "static_100/joint/direct": {
+        "mean": 0.6927083333333334,
+        "rows": 3
+      },
+      "static_100/joint/probe": {
+        "mean": 0.71240234375,
+        "rows": 3
+      },
+      "static_100/order/direct": {
+        "mean": 0.99609375,
+        "rows": 3
+      },
+      "static_100/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "static_100/strict_binding/direct": {
+        "mean": 0.826171875,
+        "rows": 3
+      },
+      "static_100/strict_binding/probe": {
+        "mean": 0.8528645833333334,
+        "rows": 3
+      },
+      "static_100/xor/direct": {
+        "mean": 0.9934895833333334,
+        "rows": 3
+      },
+      "static_100/xor/probe": {
+        "mean": 0.9954427083333334,
+        "rows": 3
+      },
+      "static_25/distractor_binding/direct": {
+        "mean": 0.5768229166666666,
+        "rows": 3
+      },
+      "static_25/distractor_binding/probe": {
+        "mean": 0.59765625,
+        "rows": 3
+      },
+      "static_25/joint/direct": {
+        "mean": 0.6612955729166666,
+        "rows": 3
+      },
+      "static_25/joint/probe": {
+        "mean": 0.7275390625,
+        "rows": 3
+      },
+      "static_25/order/direct": {
+        "mean": 0.9986979166666666,
+        "rows": 3
+      },
+      "static_25/order/probe": {
+        "mean": 0.998046875,
+        "rows": 3
+      },
+      "static_25/strict_binding/direct": {
+        "mean": 0.841796875,
+        "rows": 3
+      },
+      "static_25/strict_binding/probe": {
+        "mean": 0.8828125,
+        "rows": 3
+      },
+      "static_25/xor/direct": {
+        "mean": 0.9772135416666666,
+        "rows": 3
+      },
+      "static_25/xor/probe": {
+        "mean": 0.9915364583333334,
+        "rows": 3
+      },
+      "static_50/distractor_binding/direct": {
+        "mean": 0.6315104166666666,
+        "rows": 3
+      },
+      "static_50/distractor_binding/probe": {
+        "mean": 0.6673177083333334,
+        "rows": 3
+      },
+      "static_50/joint/direct": {
+        "mean": 0.6691080729166666,
+        "rows": 3
+      },
+      "static_50/joint/probe": {
+        "mean": 0.7337239583333334,
+        "rows": 3
+      },
+      "static_50/order/direct": {
+        "mean": 0.9759114583333334,
+        "rows": 3
+      },
+      "static_50/order/probe": {
+        "mean": 1.0,
+        "rows": 3
+      },
+      "static_50/strict_binding/direct": {
+        "mean": 0.7584635416666666,
+        "rows": 3
+      },
+      "static_50/strict_binding/probe": {
+        "mean": 0.8020833333333334,
+        "rows": 3
+      },
+      "static_50/xor/direct": {
+        "mean": 0.9733072916666666,
+        "rows": 3
+      },
+      "static_50/xor/probe": {
+        "mean": 0.9895833333333334,
+        "rows": 3
+      },
+      "static_75/distractor_binding/direct": {
+        "mean": 0.5891927083333334,
+        "rows": 3
+      },
+      "static_75/distractor_binding/probe": {
+        "mean": 0.6217447916666666,
+        "rows": 3
+      },
+      "static_75/joint/direct": {
+        "mean": 0.71923828125,
+        "rows": 3
+      },
+      "static_75/joint/probe": {
+        "mean": 0.7547200520833334,
+        "rows": 3
+      },
+      "static_75/order/direct": {
+        "mean": 0.9772135416666666,
+        "rows": 3
+      },
+      "static_75/order/probe": {
+        "mean": 0.9993489583333334,
+        "rows": 3
+      },
+      "static_75/strict_binding/direct": {
+        "mean": 0.7766927083333334,
+        "rows": 3
+      },
+      "static_75/strict_binding/probe": {
+        "mean": 0.7819010416666666,
+        "rows": 3
+      },
+      "static_75/xor/direct": {
+        "mean": 0.9752604166666666,
+        "rows": 3
+      },
+      "static_75/xor/probe": {
+        "mean": 0.994140625,
+        "rows": 3
+      }
+    },
+    "retained_verdict": "ACR_SPECIALIZED_GAIN; no universal credit or continual PASS"
+  },
+  "Hybrid_credit_vectors": {
+    "classification": "VERIFIED",
+    "scope": "saved-vector arithmetic; not independent eligibility/backward reproduction or causal quality effect",
+    "cases": 48,
+    "seeds": [
+      260113,
+      260137,
+      260171
+    ],
+    "max_cosine_error": 0.0,
+    "groups": {
+      "final640/local_direction": {
+        "n": 24,
+        "median_cosine": 0.7242382279588101,
+        "negative": 0
+      },
+      "final640/prospective_delta": {
+        "n": 24,
+        "median_cosine": 0.13926044031397022,
+        "negative": 6
+      },
+      "initial/local_direction": {
+        "n": 24,
+        "median_cosine": 0.8667714430579334,
+        "negative": 0
+      },
+      "initial/prospective_delta": {
+        "n": 24,
+        "median_cosine": 0.8479338888727113,
+        "negative": 0
+      }
+    }
+  },
+  "excluded_raw": [
+    "all P1b TEST",
+    "all historical confirmation/TEST arrays",
+    "R13.2 raw predictions (reuse documented prior recount only)",
+    "semantic feature archive labels.npy includes 600 TRAIN/DEV/TEST labels: archive not loaded by this audit"
+  ],
+  "input_sha256": {
+    "docs/research/experiment-catalog.json": "d7bef6fc0236c35fe2c9736623643f8cdfebd9b0abfb04944ad5013d997041e2",
+    "docs/research/archive/source-index.json": "736390e0525398e86f91894d51b7dfcd7c5328c324e5527566a905044a1f9bb8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/manifest.json": "a33b8cddeffdda808a727f9cc13c61272ae15ee0fbeb6d6d6ab44e969515208e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/per-seed-results-v2.csv": "dfd3288e4fe317661e644100f271125dfed15a141ae69e9f328675eeac8aa5ee",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_down-equal_updates/result-0.json": "c1981d9dbb0876dcc10a32fd85412d144ea188864b92644ee1ad702a3eb95f3f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-equal_cpu/result-0.json": "8123da48113473960a964e80d8abe8cc6873cd16f0927c3f6d39b2501964538e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-equal_updates/result-0.json": "cec39a5961c38355a02d4304ecbfc9be9b10c96beda9be190d4dab053c426563",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-norm_matched/result-0.json": "f1e3113d96880a5bfe31f92a29cd367ae83453a03f42eb0acaa56586b2960ae1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-norm_matched/result-1.json": "6b3f562a3795247440d5da03de128667a55c7c2736f95bb828b19704f4de1e12",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-signal_shuffle-equal_cpu/result-0.json": "e16d32e694def6127d076193f208d28d73a1c25991ab5deea590e9d700146424",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-groups_up-signal_shuffle-equal_updates/result-0.json": "9b32440ea5c4207715010a060df6a6275eb26bfe1639c786cbfdf90023d94e72",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-intrinsic-equal_updates/result-0.json": "11b781b19a9f9e195448bbafbfe36f1da41e69b2c291f0fb0a1ef2a86b55bc39",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-linear_down-equal_updates/result-0.json": "62316f3d6b51e12e4f2ac5fd2e513a99e8944817a9ce21d27e22152d0b61e0cc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-linear_up-equal_updates/result-0.json": "448f8e1e6885cdc126664899d245a2eb104d07142a3dbc7f16ec5de7f09b2400",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-random_alpha-equal_updates/result-0.json": "1d6bd35ef88e424e592373b1aa71bd9cbd9b79f597cb57daa22fe9e3b198a254",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-readout_only-equal_cpu/result-0.json": "48e63948092951a9895c598f766bbf75d4c255bf2fdd4b5989e726417b4fb4e3",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-readout_only-equal_updates/result-0.json": "6295c46b5d91008c7366d0cbfaa4ce0ed1fa119d3b2d2852ed9c4924fc9615e6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-state-equal_updates/result-0.json": "8f5d3b7cab605d617e22b32f64fe7d9118ecf57fe06d9482fd102f3e757799ec",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-state_shuffle-equal_updates/result-0.json": "da72366248bc6fa61709b454f8f21f6beb46658a4e97d06a2124e8a82fd3984d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-state_signal_shuffle-equal_updates/result-0.json": "cddabc910c979441db0eed227a0e1e35698e2bf9759cbbc30a09f6f5a680b548",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_0-equal_cpu/result-0.json": "7d02b272a43185be2357da19d9f87487d5ae5fc2a176f22fd1bc82e16b23fb0e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_0-equal_updates/result-0.json": "ec43b7e761d0800e0fd0875487e3dc137d46964b794369a7e30ad1ffbd893ddb",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_100-equal_cpu/result-0.json": "9adf063c5528aab9ec61708858b30dff99bd69fa9102669307ed683e44a1e029",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_100-equal_updates/result-0.json": "d21b2a2ddf7a671076c536367edf8924e3945855639d6aecba558076e8434ae6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_25-equal_updates/result-0.json": "eda9eeb8402a293e6104ca7c7ef21ff187216a0a8f27eaf850fcdeb62d260230",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_50-equal_updates/result-0.json": "f6ffea44ec5c72dd100d69ed8b8f049b342239147596173631b5cad8226f4b8b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_50-norm_matched/result-0.json": "c7e2a34fcbf11b2086f0afb7f0d9150582a48d8d8cf44189ffe2915c7ffe79b2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_50-norm_matched/result-1.json": "1b88e4c7dc53d20e4c66be583b16ea307da4391470bcac7233772d88f9e6e10f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140011-static_75-equal_updates/result-0.json": "6edd9bd2ef894e8c405b6f3a384cc96c6dae6127b35bb7d1cee0d6601a766774",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_down-equal_updates/result-0.json": "4ad3048c81850e0d5f3e539c3ca422eb73ef672ffb91b6c2bc8bb3c5ba71916d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-equal_cpu/result-0.json": "e51fc27c810fb60e78f8695582149b1566d736352680e61519368f9f732b38bf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-equal_updates/result-0.json": "e677b29e9253e322bbb2545790b68b51b4acbd5177c394c3559ecbb420eb033d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-norm_matched/result-0.json": "1c662b6a53c06ad082217cafa0bc3c842a5c972a62d3415528b2938a857899ec",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-norm_matched/result-1.json": "ecfe047f4d4c461ce33bbcda48f8536bb65fbeca66e2604f3520598bbe1e11e4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-signal_shuffle-equal_cpu/result-0.json": "68444474ecf0d65b65759acbda934417386cbf6c43a99b3ee1bc5b49da553a7a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-groups_up-signal_shuffle-equal_updates/result-0.json": "5f5c241c8b58b675269d6794b25162b4dddb4494fbd23edd957a72ae44ad55c4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-intrinsic-equal_updates/result-0.json": "dc6c903fdb06fc0b9d6486aef137064aee1a8a68ae9e0487141d86136ea2aa2f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-linear_down-equal_updates/result-0.json": "349143cf5526b037e5e92f537430ed0d870fce5a9bee484ec08aeffd9872cc4f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-linear_up-equal_updates/result-0.json": "1a49b9385d14a0d0f5fb3fde4723811158760ecbda1a6f05ca062b86b71c789a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-random_alpha-equal_updates/result-0.json": "2ab8aa0b75d362fe9beddf6121748e65053a0dfc6a01b014a7746d7587285e74",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-readout_only-equal_cpu/result-0.json": "3c08b75a36ad25735c7c27685e9673e46b45147f435ad788fc6bdc7ad364214b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-readout_only-equal_updates/result-0.json": "afc69b209919ca91059602af16aaaeccca7ff991a16c000d973c3a579d6119dc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-state-equal_updates/result-0.json": "d76fe8d6d4b599ea8470b4a2f5559d174f60b2bac2fddad5f9e258a03c76cdf9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-state_shuffle-equal_updates/result-0.json": "ba994ab74ec35fcb7e6ebb90476d81c00f98dacf74fc0f351389d5dff5c33b2d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-state_signal_shuffle-equal_updates/result-0.json": "0e6f96e9ad11b5ae82ea3f04cfdc13b7f9691c8767c407b55559c7d600671b1c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_0-equal_cpu/result-0.json": "7c5727ceb0867dc5b97313dae02c3d7c742454a5541507c3ea07ccb2697e34d5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_0-equal_updates/result-0.json": "b4ae508b4ee99d307f80c83b7b853abcc384d46acd2f0f5b7adf20e4372be429",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_100-equal_cpu/result-0.json": "e6fef845f689c415c8a1de503753472b7199c2baa16d021800495d9e64292a7c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_100-equal_updates/result-0.json": "8d06fc05aba50853cbac3e602e559a16085115330b655e22d252bc80d0dd3231",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_25-equal_updates/result-0.json": "c172288992f435ab4984206b11d046dd0bc2d4fdb541cc126dab7ea79d14645c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_50-equal_updates/result-0.json": "f0c40abedc006ffdb83c6b88e2e288e17bb030136ef61163ab8c25e505f9dcdc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_50-norm_matched/result-0.json": "a089c9f1f13dcdfc000c1e4146808849aa7be4583923072ca32dadf714a04265",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_50-norm_matched/result-1.json": "7d201e5a9806ddaf376755fb07de4c53016b9603c61e052793eae12327009832",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140017-static_75-equal_updates/result-0.json": "d2d1db99e1d1772392737312daa6f025273d03bce7329065c5654482223d0baf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_down-equal_updates/result-0.json": "2293302eb9d3eeef3b49f4f5ea433bcfb08f80121c43878079729c262a96cdab",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-equal_cpu/result-0.json": "733397933f3b1f1f698f1c9e491604e6e7cd5f5f501248cfdf0fd9dee5733c61",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-equal_updates/result-0.json": "0c53c5f26d446ef038051eda244e0fecaf316b51f841f8b66c1ea9780072f7e4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-norm_matched/result-0.json": "dec49df6b39132764f8f153a5c5612b70815e70c025270ac422fd7004644711e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-norm_matched/result-1.json": "612cb7a8ab7382e4d94c1d018eb92686be4cbf2c0e5d2a2c8d61ef8303868d63",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-signal_shuffle-equal_cpu/result-0.json": "565f62433daf1a7c4e7c2323aa1bc9fddfb0ad629c2f9bd35bea0f7e134a3d05",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-groups_up-signal_shuffle-equal_updates/result-0.json": "60b89cd67b9adb04549cf8dbd18d9e714e472cbb4831a0c7871bf48ef0f5d99d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-intrinsic-equal_updates/result-0.json": "380c56db9f31571e390f8808f1a88a9d7afc7d5a71f4884d91f7f62cbee25dce",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-linear_down-equal_updates/result-0.json": "dd333fed0656620625a6986f93ce5ac197b7df1415257667ed3d65acd6370b0c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-linear_up-equal_updates/result-0.json": "c489334feca4ac00367a9960967239e63fa0eeb00df03268760fd0afc1158d54",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-random_alpha-equal_updates/result-0.json": "5b0a0e846f19a76907ea1681725b1b0a476500add6880cd52b9bf1151c344f91",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-readout_only-equal_cpu/result-0.json": "33d34cb734bb4e86caa39249ddfa2094f7359209e0fdc1b8ba7387b15678de16",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-readout_only-equal_updates/result-0.json": "bbc8d91eaa58c113514faf80fa5f223a3af3ace24cb08144fbe7f1557ff726b3",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-state-equal_updates/result-0.json": "e317c61320d6008b3bfca3fb4fe63026807f8ce3349d62c1da9a2950b26540cc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-state_shuffle-equal_updates/result-0.json": "e3b3e36dd1cac1d6c71d4cf961f5b8a98e777a8b4cd3f266b7695d44d8836d53",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-state_signal_shuffle-equal_updates/result-0.json": "733724b6369111140cbd902c551c6b73475e6644dedbfa49ac8c5b347d426edd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_0-equal_cpu/result-0.json": "78791f52546171ad6fadb9db17948587d167a190edea75b7da74f7dabfc03480",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_0-equal_updates/result-0.json": "56bafe3ff9004f5391d7811d5b9a8043225f86b5b7f8ff1da6a09edf85d72d4d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_100-equal_cpu/result-0.json": "9acd63402b5b0f7106c12e50a1283ffa02030669786f18d7d6c539d7e8e74a5a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_100-equal_updates/result-0.json": "c059c0d49d4be1b0b40b0efe7504bcbbf6dda4cff6da04610a427042578c021b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_25-equal_updates/result-0.json": "bb6bfcf5758574124ba6c812fc20050f67396e55168041eb5a81b4aea8bf9e3c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_50-equal_updates/result-0.json": "57d910af9eac0d4213f4fd343801008898c99b328fb8d792f70799bf103ccbcc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_50-norm_matched/result-0.json": "ed80ad0fc3e18fc48b54795eda6ffb3df4e3919e21054b6c40cbe4a5b8e0c2ee",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_50-norm_matched/result-1.json": "9134450f6e528e04273b20c30df1339e8f56057b0a56df533f5687572bbf1b9d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/distractor_binding-140023-static_75-equal_updates/result-0.json": "e0bd30358348d3aae3b11a672304d8a794f3cc42763294a059f42966591c6680",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_down-equal_updates/result-0.json": "0ff433a290b04535aa61f055e18b15202eb6c37cbe89cef880564c2b1834592a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-equal_cpu/result-0.json": "d24743b24d0a9711e0019d8fd389351ce1a022e08736bf0634c2d90747ab055a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-equal_updates/result-0.json": "94d19bff286f5143a5e38631c0a04b1a230a064565550b6185c99c78984bbd39",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-norm_matched/result-0.json": "bc67809df3d0dfaf51bb39b71e9d4dc8b0d999ee3a33e4a2b7bdcb92143dca0b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-norm_matched/result-1.json": "52be276a580ec5c55b025f74b7e0d509a202f16f0d5d596f442b454287e2cd89",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-signal_shuffle-equal_cpu/result-0.json": "0d3e14e40394a20494ae4d06e07ff5cb3fa3d4515f8bc1d1bd701aa30e368899",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-groups_up-signal_shuffle-equal_updates/result-0.json": "cbae6e52c3f6f3fe71e96391c850c51469038604d81078b7c2083a63b510138d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-intrinsic-equal_updates/result-0.json": "7a680e20306f003d8021a7d9a6cd4499046ffcb078e7100b7cc62c431c800a77",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-linear_down-equal_updates/result-0.json": "41800c0f45ad8a909e77b3c7b864413ef466b19504f7ed5a251478bdcafef521",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-linear_up-equal_updates/result-0.json": "44381ddc3d2355cccdc3813b9ddd116c5cfbb35fd5a7b2dcdd717ae8fe7f18dd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-random_alpha-equal_updates/result-0.json": "bad0e9ef1d38fc78e2527a1ce17d9a169e374af6ab7ea054679052f845b6aeaf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-readout_only-equal_cpu/result-0.json": "3a63ac3e02d5fb659151cd7c4b67ce83849e07ea701f3d6211eb71ddf10e20fd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-readout_only-equal_updates/result-0.json": "0f543cd46722e0373c88eb52c718097ee00b6a8c381e846f62ecd740af06ac39",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-state-equal_updates/result-0.json": "56e978a1e8941ea94088c9b83bb7abbbc1d5dc89f7df50c1aaa9023978a9a14f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-state_shuffle-equal_updates/result-0.json": "beec6abd9b0bf2c32c8015d3d61f84cb144856bfa6ace0f09e558fc252ea65d9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-state_signal_shuffle-equal_updates/result-0.json": "73cb4c4b35928b9e096abd49790d7611cd2b07b291fda12921a3642898440fe9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_0-equal_cpu/result-0.json": "618030e8d73cc4f9cb0ee00f56c7eefeee926e8310f2feef86abdb37b0a1d67a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_0-equal_updates/result-0.json": "18085ca1e855fbee984a419143f96be0227b92cba4af388c2bd8fe371645a478",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_100-equal_cpu/result-0.json": "9e8466a4f753c2bbdb1d5a2c53e5dd22137e4db7609bdc4032dff7dc5fe2bce3",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_100-equal_updates/result-0.json": "bfed36c98fede1435d12efbdae773406088b746552f7a11488b9eda7e5b9c573",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_25-equal_updates/result-0.json": "b8e86371ae6847a81684fe384b913158915ecd14c8302c98f24517ffb9b18b20",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_50-equal_updates/result-0.json": "eb539e474c6a9a66097b5b65c40d1535217fdbbfda91766c5537ce7044432ef4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_50-norm_matched/result-0.json": "f46d6494ec0a94db3660dfd78004415d4fb91bd3a7d1a93206d348f2f82605d9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_50-norm_matched/result-1.json": "0de6acbb4238473495d195a73443418afac7110e25ba4ef976979b2d23ba0a28",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140011-static_75-equal_updates/result-0.json": "1c8502c1dad65e69767f59984934ed0de86a5bcddeac65ef84225f1e449c0017",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_down-equal_updates/result-0.json": "4d9434bf264bdbe66bafa3d84f83c1a6a53f9bb05e095dcc7395040757507714",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-equal_cpu/result-0.json": "62ff982a54ff44ad0957aaa98d8775992358b60c4815c1b9d592929d1a532994",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-equal_updates/result-0.json": "c15c48ebc89da06733065c06daf186d54a4730564d6c9f99b11b12e117288396",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-norm_matched/result-0.json": "fb477a5c3afa2b735991e0700e96d003bb614fa873073255c0e3472a345525b4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-norm_matched/result-1.json": "a982731d9768b80e4a40003c71666292f8576bc09d21357bda93ffe5583de48f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-signal_shuffle-equal_cpu/result-0.json": "ac7ac862f8684742fb6dae46f05f5a55a6c735830b4a3010d172a50979dfece2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-groups_up-signal_shuffle-equal_updates/result-0.json": "64b016e721cf444f6174b97fcee9eb4b0ebb03b328724c59a56ace6f25306134",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-intrinsic-equal_updates/result-0.json": "2e9d0317e8a903f92b092c679a8ffccaac4c0a93d163759d14fe5ccd583b747f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-linear_down-equal_updates/result-0.json": "7fa8d4949ba3d6c4258db984016f93c4f4461f84dddd030556ec9c12e9acf55a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-linear_up-equal_updates/result-0.json": "400fbdfc62b63b398ce9323009da096a150744f35db00e4dcc66ec588891e922",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-random_alpha-equal_updates/result-0.json": "81f651d1c3a8cb3c8ef333c6380eeb295f456dc0cfa42cf5cfe11ccca5ffdaf1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-readout_only-equal_cpu/result-0.json": "304190f6d993c58f96cd43bba7831c862343a21ca670cb8ae6231df66cc51635",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-readout_only-equal_updates/result-0.json": "374556f51e0fc6fc25d97e6e9f1fab1e1691dc74ab7b3794b8126177c8057b9d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-state-equal_updates/result-0.json": "23822ed6823a31cd0bf51a699de2bd3890bc5f846db06d3cb103f4be793399a1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-state_shuffle-equal_updates/result-0.json": "efcac61e90b1563cbe3a6b3a0c493f46aa8e8116e7197cda24076cbd94c4bf95",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-state_signal_shuffle-equal_updates/result-0.json": "3f4db767c655f7d6d375990488962b966276b7befc43d4b9e859fdfe51f0dc40",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_0-equal_cpu/result-0.json": "8f14355615653ef09f5b8148e4e991e9ed31bd526cb9f55aac4b6f8a799ffdab",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_0-equal_updates/result-0.json": "94e8195b7bee704a1b293aae8d79502aef9d5e675e890b76a06195e9c0f14d9e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_100-equal_cpu/result-0.json": "dcefa1942928d9566d06cbdb0764e2969a3d65566d75f3384c96c257b4d3a48a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_100-equal_updates/result-0.json": "457065744c2ae22e4f3c131434bc7725819ea62848c215d43f757bd1a446fc8d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_25-equal_updates/result-0.json": "3918d9bd78f53463a888f6b5155d3a41baf378d9ee3403f34966b0e506d6d61a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_50-equal_updates/result-0.json": "fb600a2a6b04a1c09c4e85bd4a710b3541ef36252d5b4409ae7412803e1471ed",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_50-norm_matched/result-0.json": "7c43ff7d88363aabe1e676af70b40508d79f6e9779bbdc0d20abdbc5e28ad475",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_50-norm_matched/result-1.json": "45874f17df11c2fbfca3997acff63049ed7c46e5e07d90649aac464715eca71f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140017-static_75-equal_updates/result-0.json": "4e8840cf00658da41dfeaa9bd67673b16d00ceec5928092e8735c5f098736843",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_down-equal_updates/result-0.json": "2880cc1b182ce0c1fd3f87f43fd56274164d4fd75e40b031a02d11fbde899631",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-equal_cpu/result-0.json": "0079bfdfe96e0f846c3ce0b402d0eb44d44aac4d50e7230b3ebc6021275cf574",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-equal_updates/result-0.json": "a1cfae10c4cf72b72f3fa93ba00605127dafd8ea77a0bc3819fc14c94bf421e6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-norm_matched/result-0.json": "d9a6b07de55b41291dc18403367737194897a91d25f9b4a3b6208330f66e5e16",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-norm_matched/result-1.json": "5ecdd43c5b7d11f8516367c99b0dc013e4e634affd642a70b9886d472d87e84f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-signal_shuffle-equal_cpu/result-0.json": "71a9c80732fc61d39f343c0059a76ce686b5384adff53de3526c2c143a2dc9a2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-groups_up-signal_shuffle-equal_updates/result-0.json": "a63ac0361a24796e8cf1f7f023319aa162aa2d6351f6bb42d328767ffa2d801f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-intrinsic-equal_updates/result-0.json": "9babf4f9ba955f5cf4c696d12124a1bf59c5f615e7245e1b5ff902bf50c40519",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-linear_down-equal_updates/result-0.json": "3b78b75f30762e1f12c7dc909039a891ef511f0568150636a4f5ab1de9082e6c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-linear_up-equal_updates/result-0.json": "316dad9b145971ac352b84fad5702d2c3934ee07c331e301f0a2ef317efa1870",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-random_alpha-equal_updates/result-0.json": "c8ae3a3403f5f194f298daed4cad9c8aaac8863814edc61f927f673bca64ecbe",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-readout_only-equal_cpu/result-0.json": "fa883e70536c2049e0707573faa951c315d12ad89cdc1ab8cd1aa978755118c8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-readout_only-equal_updates/result-0.json": "e4f624e019255cd037264260bb4ff0a9e996815be863157952224fbdee7548ed",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-state-equal_updates/result-0.json": "0b3ef00442da0179b564c479a2752845c397c9e581dbf0e782a026029bfe5d4e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-state_shuffle-equal_updates/result-0.json": "bdafa5c4a4ec33b9a71632892188dec08aecf6a529763aa4aeb6d407805e48cc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-state_signal_shuffle-equal_updates/result-0.json": "4f4be8aa1388c098540b3058251a8a1a78d00b63466bae7c3767903300b8cab1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_0-equal_cpu/result-0.json": "bc5a360eab59913899f863566377e512cdb59408be43089fd2cd26bcad1fe3b3",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_0-equal_updates/result-0.json": "541bcf4cf9e1762425274594ed5b119e5e7870444822f9753facd75fe61dd62b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_100-equal_cpu/result-0.json": "63feb0c799f28c06a4d3706e8d377369ab7208cf6679fab2e03480aa4e9e7df2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_100-equal_updates/result-0.json": "7177a9d5a2d91ef99b41cf915421c7aa9ed311f566402cc969cee1b51667e969",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_25-equal_updates/result-0.json": "f4784fe3e4ad63d23f3992245299637f42977f05b61417e0e18b3471990cf6b6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_50-equal_updates/result-0.json": "555a2c09389f1c59bdcf83dcf2df7fe589bba6e3ff7ec026a8af722de6f95aa5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_50-norm_matched/result-0.json": "2e64febff17aebc8442cc14eac2bcec513b6054a906d22dd172788eee4267411",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_50-norm_matched/result-1.json": "ac160ce723b20ef0f839d7af8e7d725b393bbbd37f3898083ca4761992f07efa",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/joint-140023-static_75-equal_updates/result-0.json": "df56af90e573b42ed8022e6b16f335828180bba28eaff78ded3e1bc525726837",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_down-equal_updates/result-0.json": "be79427eb37ec316c238121546a5ecb188f44ed09e9e2b6d861a324c38eee0fe",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-equal_cpu/result-0.json": "9a199445a0785ce03300c17a993d514bd777aacbe30260f67d290617be9eb153",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-equal_updates/result-0.json": "99aec056a7a96583316840ff42d8e2b53f8bcc4341b4a149cac38e7eb08c2d18",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-norm_matched/result-0.json": "46ac5d220842d12f083b0a9c2ca779bc0bd329c5fd36782c221b935d9bf090f4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-norm_matched/result-1.json": "54872d51e97507d78c3d4238ca67c637cc759fdab59fa55218077248c2604e13",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-signal_shuffle-equal_cpu/result-0.json": "822f61b8beb547ee366b101e2013796a87895917734f9b16537956378dd8d96b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-groups_up-signal_shuffle-equal_updates/result-0.json": "2dce7981558404d8f01653923b3864504bcd6cdd32f0f121395ad863eda61631",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-intrinsic-equal_updates/result-0.json": "3468752fd7d320b71c73b39587b780261048c7abab403aa6e23788e91385bc17",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-linear_down-equal_updates/result-0.json": "f84d6e635791e381e10bc7d3cdee4a4005868245fce0c0075e097874e7c27425",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-linear_up-equal_updates/result-0.json": "65bd501f51d8f36acc4320a60ef7a8706e619cdb6cc7bcb101606fc091499548",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-random_alpha-equal_updates/result-0.json": "ae524a46bbcfaecddd07a3c487b16eb3f2eea5f0aeaf55edf3da3f38e4bc22e0",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-readout_only-equal_cpu/result-0.json": "0ac7899e4a29f5f59c6d20c51b6871552d19a5af085eea7e837fcf4bfec94401",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-readout_only-equal_updates/result-0.json": "ec134f6237c2d0b745d370ac5dc95fdb3fd5eed24e3a3060dc0fa6f518aefb93",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-state-equal_updates/result-0.json": "ce9255a78b949c438b5cc364ee234c55110c70ee14826890e0df684bd6a61094",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-state_shuffle-equal_updates/result-0.json": "fc1a948e9b3aef0b4b72948c5771dbde25f5277b27e6cf733df67b139b71bccc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-state_signal_shuffle-equal_updates/result-0.json": "bbd8bb240e9301ec21d496062fc15cadcd71174330205840bcdd7af405b1a437",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_0-equal_cpu/result-0.json": "e121be9d330adce58feb2c590c21dd7974d02a0f2f7803ab2a50e6b7eb84330c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_0-equal_updates/result-0.json": "b99a43e2459241d819c53cd571a03dcd73f33874e8c4dcd81fcf13e6a526ecd5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_100-equal_cpu/result-0.json": "da17e54632cbc3cefc3d8457abaf182acb07bfd185dd8c7376e47a70d2500db3",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_100-equal_updates/result-0.json": "545e9d903ee31ce2ff46b20d83d46d3ca1e2c4fe2e8023052f6a01dca72875ba",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_25-equal_updates/result-0.json": "996b52d49d59e51ba1534f2b22fdedf70e97e1b2ed9f615936b8432635b3f7d9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_50-equal_updates/result-0.json": "86f07fba22d77dab4bb8ec58b31bcd8cdea6a43eac289e0592552ad7641f7b4f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_50-norm_matched/result-0.json": "48de2b74de981cd2b3019b79fdca0107eaf33700eed0982983ffd1ac03c249b9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_50-norm_matched/result-1.json": "a6eb1b6556ce07bc788b965a45e9128013fbbe027ab12f025c297d94be708e9f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140011-static_75-equal_updates/result-0.json": "2d5b2978d78967c982e20d170e4ddd88bb26f417327323b9202ef581019c821e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_down-equal_updates/result-0.json": "51a51966e22d5e38154864c9b37a63c669386ab12bc2809033ddd85988f8c66a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-equal_cpu/result-0.json": "536d2e9b2734accf35b9ba4a55ef3752a7032972cd976b040ddbfea85b645f70",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-equal_updates/result-0.json": "61a07a914355b67d3efc7fd932df8929ef644579aed17a53c72df45c2b1dbc1f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-norm_matched/result-0.json": "33569d18eba949c0fbc28f53b59a2819bcc1a23ae2c2c19570a69d72fc1395bf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-norm_matched/result-1.json": "39d29dbc91d3499a1d40e5fa97d62160961ef1f2ce1bbf5d752203e5ecfee291",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-signal_shuffle-equal_cpu/result-0.json": "c4fb1ae0cedc05f0520e9517500cd8823d4cd618ee3396ede2ced94c8c7eee3e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-groups_up-signal_shuffle-equal_updates/result-0.json": "e05e7635c38a090e125925b421d1d14e0eb5a8ffb7de7c1a789eaa456cb259b0",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-intrinsic-equal_updates/result-0.json": "8fc8baa0902a84d94684269aa89b7d69276c08ea9c37004affdf584767249102",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-linear_down-equal_updates/result-0.json": "882acee546bfe0ea035ed39e1c500e36bfcf0139f002da61fe58c95e53fdfaaa",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-linear_up-equal_updates/result-0.json": "c44059f945348fff2ad4423f79d5f7ed2e5388de00807c511b5d692616dddc66",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-random_alpha-equal_updates/result-0.json": "9b356d4ccb45cbb5c0560518cb8dbde468614302adaaea9d09dab8c5ab3be203",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-readout_only-equal_cpu/result-0.json": "be961c1e0ea29c873082e0a882c2a46974e7ef50fab380497a46155f6a70b4c5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-readout_only-equal_updates/result-0.json": "c9ea63d9fb4908d2efe58ba114b1fe3852516fd13b476bd3e02ac645ba775e1c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-state-equal_updates/result-0.json": "bb96173bb42dd9045b5509eb65b3cb356296e868e75c9bc2d1536a6c930bafbc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-state_shuffle-equal_updates/result-0.json": "1b737ff663bf1e12f96f0b3202e97b4faebc867cf7b48edeed84aa9d07c96eec",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-state_signal_shuffle-equal_updates/result-0.json": "8f9385fa4309e00bbf5f1dbb77d7298fcf4398bd9ac603727e9943de7cea9ba5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_0-equal_cpu/result-0.json": "e18b0b312ad696ad4c4f78e547a502279396b72a8d946cb84e7b566e02ef11da",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_0-equal_updates/result-0.json": "976af917ff78ebce489bd9fa4a64de4b220777688413909c3d658b8fb605df02",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_100-equal_cpu/result-0.json": "956bd4162830e9da1c1d1029c41c2ed4a686067edafff0d87f7230b2df050ea7",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_100-equal_updates/result-0.json": "0395e7f3624f8cbdcf0895eec78901bc1beba82e29392e696334b555bdec9718",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_25-equal_updates/result-0.json": "3c544f3e0ad951caa472605d42d22d9966d597105c9c3f5a362932b783833b56",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_50-equal_updates/result-0.json": "fe32d60cc7bb86f369f9fb9d1e5f47b5cbba00633bf603756a752f5d9cbbfc16",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_50-norm_matched/result-0.json": "2bd886318592b8bf460fc01f7fdb8bc79bef800f295f60d44c401764e61d5a82",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_50-norm_matched/result-1.json": "4b2e219e1f3a936332a05e06bebfd9e81a9319642d3f82dfba1cee47067441e1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140017-static_75-equal_updates/result-0.json": "2c096f25f4d6f7f299b6c4d5f2a39ad2b7beb2a0420834f2d67749ba4eda1259",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_down-equal_updates/result-0.json": "1e87e24311430cc86fad2b39dfc8391bb93a82db39c73d80ac09728b79cc2b73",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-equal_cpu/result-0.json": "ea3db149aaf74dffdfbb96e16b351021072c75110db6426ffc3955593c9327a0",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-equal_updates/result-0.json": "756875247b30902f7c48b1eeffb076c1686a3c8a55307b0aced8016aec759c3e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-norm_matched/result-0.json": "5f1425f7f9fb8424f9bfc7156b80d2c361566c9b18d3b641cc0617de206f3bcd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-norm_matched/result-1.json": "78f5e59a30676c1fa8fd81c6b5691db12b8a562b208c0e1b27da55e8ce12c619",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-signal_shuffle-equal_cpu/result-0.json": "590ec2cf5846785e4238163127dc1e4316b454559cabd77bd9d9d5a8209d9e06",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-groups_up-signal_shuffle-equal_updates/result-0.json": "823623d74a08246947ce8cda1c6516690b2a991f91a59b25140fe6c0a436f389",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-intrinsic-equal_updates/result-0.json": "86affbc9b6f1a3f65f2864655b0d66910aafe703324b2ab96d5e3161a95d3fac",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-linear_down-equal_updates/result-0.json": "fc446ee0ac119886d4740c96f35e5b63cdb29f480cfc2e451a1a76365443597d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-linear_up-equal_updates/result-0.json": "f8a39a1307e07b85a78ace7076f1f115cff86841bfb61a2d00dc4a0952f6b644",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-random_alpha-equal_updates/result-0.json": "54a1ec367ca732a09e7f945d4bce2415bc04610fa27bdaeb0d77ce2f61e07fe5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-readout_only-equal_cpu/result-0.json": "97910b8555bad67a8a4e79db216107ec1c6ca9b41698ec6e89d4b996a4d52faa",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-readout_only-equal_updates/result-0.json": "d62c1b0fad73c0e7bda052324f88ebf48bf7a72e645f2d27913565784c9fd1c1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-state-equal_updates/result-0.json": "f2613103ba9c9b5069a1d5df7e0b3e30fb3f2a4f38efc6770c979e8055e24cbf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-state_shuffle-equal_updates/result-0.json": "4d8746505dc1829e501d0605720fdb249e0a3983bf15f96fedcbe780eae17dc8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-state_signal_shuffle-equal_updates/result-0.json": "7ce4fc19288d071d85df382bd85ca45dbaaa8da9189b0f21a3fd686a2c6f08ef",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_0-equal_cpu/result-0.json": "9745a1aad132d444e3d70a901e97e328326e6b3395347ac0be6f6a84ef829462",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_0-equal_updates/result-0.json": "c24a48c50f9a224ac2499b20de62cbe07b8ec5e8d48dc4751142aba4327caeae",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_100-equal_cpu/result-0.json": "3f77f2aa5d0b14a3d8f1036fc991fca7e47f7984613565289a25cbc2dff6df93",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_100-equal_updates/result-0.json": "3dbe65ea2fb31e4bb799854fff765034681706fd700e05013bfe12eb4a85d715",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_25-equal_updates/result-0.json": "7e8783b316ed161dd4db37ccc19ab7371ca10e0afc0ff0717c9a2c4492826c25",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_50-equal_updates/result-0.json": "7a487d3b60afcdb960e7f61b093e14ac059495b68978931ee92d0a05a4d99740",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_50-norm_matched/result-0.json": "eba01397f63af62dbe75f7e0727bf493048530a849ec0574aeb738436c39530c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_50-norm_matched/result-1.json": "bc4d1ced3780ebf7f39cc0a2efe62f90b3815d8e6cc100e4fcf8691c48077a70",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/order-140023-static_75-equal_updates/result-0.json": "e7acbec27299752572647e2d6aabdf30c4534731d9b2437091499e84b5d9f2b9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_down-equal_updates/result-0.json": "cbedf47f11fb644ab26ad7157b27b0dcfe1dd1fc6c6015f0c97cb4fa13593088",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-equal_cpu/result-0.json": "afb64515751669e1beda34f30b9aa8bbaddccd21a5426012090dd1240cf20929",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-equal_updates/result-0.json": "8d82aa49ce630e973051804caa2658d3bd666b2af460610007dbe54a7d56fccc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-norm_matched/result-0.json": "3ed136840521c62361916f0d61f1d5c5681600c22c5e9887dc7674cfd42affef",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-norm_matched/result-1.json": "cd0b819bef09134817a24daf377d555a1590ad131e27fe3eb2304896161cb35a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-signal_shuffle-equal_cpu/result-0.json": "0600e42f53d74f7215d5e4f072c1bc4c0308fdaa13f1f4c1f0dfb39c91770056",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-groups_up-signal_shuffle-equal_updates/result-0.json": "7df93c737036622167df1bfe581b1dc3866d6a9dc18c62325165c8213623d8d5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-intrinsic-equal_updates/result-0.json": "786acd82e240a62711eba27c1346843f4c6a5dac295bb32e28ea68b7ea2a20b5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-linear_down-equal_updates/result-0.json": "4aa1c1b1968ec428f33b8d6fd691ef346599a9790dd83b8e7700bd73627007ae",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-linear_up-equal_updates/result-0.json": "a31291ff65e8727d6f761b5c9e4066e842c9d2361a0b1af710a9d138d37499ad",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-random_alpha-equal_updates/result-0.json": "0f4887dbf5e2481bf52935b784fdfcb8679ccae64d73a89dd969397d4b8ead45",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-readout_only-equal_cpu/result-0.json": "128db174663135d3c3f1d6714adc2e00562a57f98766c545a1f9f27a8c9a9448",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-readout_only-equal_updates/result-0.json": "6aadc50ea42514367379b355fdc10ef6727d44afcd3759bf9a87090ed442411e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-state-equal_updates/result-0.json": "0d1e7aab6498be16b997f6137566618e8261c3d2248b1116e725dd5e74cc6f4b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-state_shuffle-equal_updates/result-0.json": "d5facd6908b1d7750dddd3e19a53ce23d38a2498a11bb01d13fae791ce303caf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-state_signal_shuffle-equal_updates/result-0.json": "f1fa3bc3d1f5428b962e581a40d10f35906ef7d6e8498d646b10af9757a358bc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_0-equal_cpu/result-0.json": "a193aa34fbf5c691921b5748ef4d62ded0d71dc9647332b2b09e209a027e05b4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_0-equal_updates/result-0.json": "28c1061c188515f5f978d4bdda769b582edbfda1ccf6a9d1830fbac756a5232f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_100-equal_cpu/result-0.json": "26f05d7a478af254c77c2ccc85537db034b26d744906468a955619c33f1c4f99",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_100-equal_updates/result-0.json": "f84179f685c4f445fde3c6d0dfacd7b2e0cc62d7a2bae6445cb602b0c77007b0",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_25-equal_updates/result-0.json": "7c71ba463b36fe0daece1ada7524dba8bece4a28d91586350e047478bb0e8df1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_50-equal_updates/result-0.json": "6af108ce3549136ded846cedc22b929d9d72f0ee65e130ffc23fd11980c00143",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_50-norm_matched/result-0.json": "e643de9d0eb2784a0bee857d4b7533b15bea0c883db8c21dfeddc0a027d0e86c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_50-norm_matched/result-1.json": "ae8170d7215bd6cb4aced79a346c1a56e67b3a581c08d0a5973cea84a194cd55",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140011-static_75-equal_updates/result-0.json": "05ef33ebcf041553fdfc8000cbfc0ce6a8d44915fb1746e318317844a5589c3c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_down-equal_updates/result-0.json": "fc7d729cdf149052efd2df8c025bae0ae88b4960570963995b1d997bc142d08f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-equal_cpu/result-0.json": "60c9f898fc970aaaaff79c6b861d79cf903a46931515791f75cea253107ed4c4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-equal_updates/result-0.json": "7edc939125a98f4c1bd488332cfd74173d60a6cae96ef8962881b493afe926d8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-norm_matched/result-0.json": "f978a829abaa0c33c3bf7b5f674f7f812b38d84f1b775ad5c2658dd212f755a6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-norm_matched/result-1.json": "108fd3f007561f7dd6a8f106a8c44d8d733317e2771abe50e7a236f628ecc0ba",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-signal_shuffle-equal_cpu/result-0.json": "26e172fe69e63f211413e32a76cd1a748e8278d7cafdf8169cac3970522a4e36",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-groups_up-signal_shuffle-equal_updates/result-0.json": "376ff7e3f9cb434bfb464bed556582d88d1c46642cc46605c09703e8072966cd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-intrinsic-equal_updates/result-0.json": "3b37072e1f9ac68b21433c33da9e628b6e9dc8efece2d88bc5238421ee30c31f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-linear_down-equal_updates/result-0.json": "2fdfd7744e706b49fd29292161c5fd961531d8601958c032db775e5ca254f3ff",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-linear_up-equal_updates/result-0.json": "83ac8a9790900e523ec6a625645c06dc01c92d41053a2e2a2d6c6397a00909eb",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-random_alpha-equal_updates/result-0.json": "b005dd3e36a2984fa80fd20071b20ba16223d6ecc87f799467b3e5463c69cc6e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-readout_only-equal_cpu/result-0.json": "e04cb3326ea396478ca4495b9379c97d77a059fe48b8d42825e1c333a8952a23",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-readout_only-equal_updates/result-0.json": "28ee5556b0b70ad2375682428eb9d77abbda55af252dd39ba8e12a80b1f403cc",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-state-equal_updates/result-0.json": "ca862fc6be459522fce5e9cc6b0a107ea306fc2367cb05f0b7bf45d39423d37f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-state_shuffle-equal_updates/result-0.json": "edb289b5f66f52e393be6146c33a0123f0666d371f70b9922b64acf1ed9752f6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-state_signal_shuffle-equal_updates/result-0.json": "46f760c67d9d31b1ce9ba60786cd8db14582bb35453bb99d8eec6a17de3ec977",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_0-equal_cpu/result-0.json": "af3c1adb91c4532496d5dbca101bce584de104f777256c7973cf29b0c8296143",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_0-equal_updates/result-0.json": "3a18769c5c5be29ce48320f3ea542945453a57f2ad9e1d65a00540abb222b9de",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_100-equal_cpu/result-0.json": "3089acf52f173c37611f29b40593f97b5492acd76352c4c6041a1a33bab8ae3b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_100-equal_updates/result-0.json": "674ca06b1987f5733cfb1a72742d4916f8fe226b34b29fd7094ec2c44f89c131",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_25-equal_updates/result-0.json": "5ee4a651b44fe1a167893a745a7d93648dc8e532ba67bac94e86ffff1f0c7b9b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_50-equal_updates/result-0.json": "cf3408e832e6b6717e7f501842b2640b79426ca46e70bf01024e61ee41881619",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_50-norm_matched/result-0.json": "42620f856e3aa2fc8a7d5b9bcc01e9d86025f8826b7501859cda325be2f7a169",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_50-norm_matched/result-1.json": "2d07a3c8a7315e4b63ab173e94c56be37b13c59aed8c6525548455a71ecb1c1f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140017-static_75-equal_updates/result-0.json": "2ba6def94cbeae2bd6ea64a0326a91d41f3d22846887af5a7c573f119b5de263",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_down-equal_updates/result-0.json": "99397c424e49f169d668a9fb0e61ede9defe0c659410a366ead882a07a767634",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-equal_cpu/result-0.json": "7051f5ab65e22104eef12deeb036544c027cc561a15baeb18cc60558c7e9aecb",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-equal_updates/result-0.json": "da906843f05f9a4e2fc58b6d084fc96e913bf16a27f9d4c7c051a18f279da5e7",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-norm_matched/result-0.json": "b1be920f1cc4a270f078c32ba429919bf2d1944ef726d738f4ccdfea05903d95",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-norm_matched/result-1.json": "e01cd594d93960b5b6ccf7128a3af238b0c3a767a9ff20342ee1f0b2b9ab4cc7",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-signal_shuffle-equal_cpu/result-0.json": "ed9b623a6fe5d69249215a8d0a83c45bf72a5de4ffef8e14f50447baa6eb387a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-groups_up-signal_shuffle-equal_updates/result-0.json": "fedc5766829e8bd0a605654ba6b8c2826a5d24159fc1f26b2bcec7edc7a6266f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-intrinsic-equal_updates/result-0.json": "b9237c7eca7e87960ebe715727cded8da93adfdb881192ae0b70f79d83e3f52f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-linear_down-equal_updates/result-0.json": "234f92f850064e109580e172eee9268b29320f2dcd20b594593f8816bfd83713",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-linear_up-equal_updates/result-0.json": "eca07ea6a8713bac08cc1f7592d4b91d1c2997fb7c88e55241e81c0bc7694580",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-random_alpha-equal_updates/result-0.json": "11b6866021e1ee2557376617d9b49ef3631260b634ed1774e80a130305648ae7",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-readout_only-equal_cpu/result-0.json": "af3acbbdc38590fff38a2dd5da9598b9f873fbac95c12f1d356604d796068376",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-readout_only-equal_updates/result-0.json": "638c3c22d44ba823ab93dd4033bbb8dfdc701febedf34e00f7429f5c49a47b06",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-state-equal_updates/result-0.json": "cfbd658a4ec6e485e728221ada3a30e8c9951ce7c50d2b1f588b045fc3900f90",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-state_shuffle-equal_updates/result-0.json": "567c95e39331e3fc8f67763aeaea77df9a65b8381ce2e52696c7e26e136a6866",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-state_signal_shuffle-equal_updates/result-0.json": "d42f7b1f24591d49ccc93c8180274c4ae54f625c78d1c14f1ad3e6a53d660488",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_0-equal_cpu/result-0.json": "49d1296a69f9ecd251136a9b6bb890e05dae0f45c3bed4a8044b7a5605e4dfce",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_0-equal_updates/result-0.json": "3292041ca97917e9bdf243684bd6cd9ee06766e051cc94ccd069f4c69e246294",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_100-equal_cpu/result-0.json": "046e5d3ba1867620f42037a6ea4166430e1dbf729601c53191ff6e85fe3f0dec",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_100-equal_updates/result-0.json": "27e796f96d602fb6677508fa71e9fbafe2e76559a284a764a468ab0e7e051577",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_25-equal_updates/result-0.json": "e33dae4578e64d43e6d4f5a56c74b54efd531832abb255d9fa06701e2f893742",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_50-equal_updates/result-0.json": "edb9f0e3e093399fb02fee5105b27a65024a120f0239c33f4e6a61b4f2b4fcf6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_50-norm_matched/result-0.json": "787ae9c759c6926f281a202faf839514f695f55593f2a8c0e80bdc297d226fb4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_50-norm_matched/result-1.json": "c0770df99cbf50e0dce977e00ecc50d8665e8c56793cf1a63fb9a3aa9cc0ea9c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/strict_binding-140023-static_75-equal_updates/result-0.json": "9401d94d20ea9480f0d19bb42fb69c83841bb2aae4d7d85914ebabd9bbd290c8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_down-equal_updates/result-0.json": "a65b1ecc6b535dbb93c78a0d8285a5397291e6bc68451b022c9737dd8581cf0c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-equal_cpu/result-0.json": "c6c92b095b417f472ebe49b7872be694e89bacd763792cf5bedc42124a5843df",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-equal_updates/result-0.json": "9a1dbf39b2671108d486216595d77785d3c37fb8fa7754bee693feb7e8c11239",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-norm_matched/result-0.json": "5eaa2d7113e4d66b9b37f601d9559657270ee2755e8f51b0eb5afbc83bfaa08f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-norm_matched/result-1.json": "04b4d18ac30b823f70aee6852be337a11dfba30e11af974824cc049c4dbf8a56",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-signal_shuffle-equal_cpu/result-0.json": "96c056736d2959cf53f9ca017ca72d2e6d8c807db7307c7b8190abf1772243da",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-groups_up-signal_shuffle-equal_updates/result-0.json": "7b5feec4ec92a857fa64c22987d7d0564c45d39c2292ebf2c05288ed45fa069c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-intrinsic-equal_updates/result-0.json": "eab8bea74159b8f3721851a738d90b85db48bd8015e6a61c4e5799d33bda921f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-linear_down-equal_updates/result-0.json": "ca4fa492cb45b0c5c09810f4dfc6ce5068c7cacc2616f85f8775b084468fe24e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-linear_up-equal_updates/result-0.json": "7716df785f2ed6b62aee07cfb5dba86ae81bcdcb9ee8c00c3e77530d3beb1ea8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-random_alpha-equal_updates/result-0.json": "6d84df46ddc76299a29165469cf39da5aab36869e2bee387a5e97559161f3c9f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-readout_only-equal_cpu/result-0.json": "f11eeef6105b1b94122f992314f95c1a9bcea2fd7013c141026a6b2574c1c30f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-readout_only-equal_updates/result-0.json": "589caf51620bb3c73290787a8fc71613d3939ed92199bfa9a778b00f0bc30da2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-state-equal_updates/result-0.json": "e0a92d0bd3365f237f92945826d817bf181e0fc52a44e2419eb89a027dc372c6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-state_shuffle-equal_updates/result-0.json": "3ed6c12e0bbfdea5968ae3ecfe97b165dfa20758cd57af1140f8f5d4063a4c01",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-state_signal_shuffle-equal_updates/result-0.json": "d454c9794e042247d6af65060b67e973e615f63913838011830e44e746f4a863",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_0-equal_cpu/result-0.json": "967bd6b93fb2c314654cf44f2957ad8faf033a97341b3bfb71913230e0b5c417",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_0-equal_updates/result-0.json": "ec1153261f55a0119952387f0b149400cc803e58714dbf548e3abf38ff22edb9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_100-equal_cpu/result-0.json": "33bc95279fb81a024fa27652598ebe1390d4103dfba4c205784958039a837320",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_100-equal_updates/result-0.json": "02344986494b02f678222ff9f8067c9e19b1932b9781c0ff447bc32d166b3853",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_25-equal_updates/result-0.json": "e2822ffedf8a7c5b837126d15a4a99062d5b5a5dde49afbe9d5d08f7c5b058cd",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_50-equal_updates/result-0.json": "73156d622c7c828dcc4bb72423590779128a173812186380e5de062921f8c468",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_50-norm_matched/result-0.json": "9517bcfbd0f57a02ac778348b46237f1933ec2ab511542c1c0434a0c77faadff",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_50-norm_matched/result-1.json": "fea198c559648dade74b5f0f0bf08587511b4d2cbfc9f0666718275edea9b580",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140011-static_75-equal_updates/result-0.json": "1978d9caec72116057e778f28e3817bea38b7ab0dd4a2298adcf6c9daae55c79",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_down-equal_updates/result-0.json": "458c0dd3d752256673617613c13074783878e614cd3ec5a1541f75597b94f93d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-equal_cpu/result-0.json": "1f3d91d521bd06bcfad7ca9a456a29483dd528ccde4d52bbd4cae6b915b09c76",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-equal_updates/result-0.json": "4feea43f03e68c52b84fee2c2c3e14934eef8d13258c6a90e01032cae369ea96",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-norm_matched/result-0.json": "c17a6fcf72626cadaffeb9dc2bf2fc2dbbb5244e29c21981df3e13cfaf68235a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-norm_matched/result-1.json": "49b8a79149e4fd9143b42ef04ffe179b360e7d72e06be7604c2ae819f38c3d48",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-signal_shuffle-equal_cpu/result-0.json": "cc2a7e1e0177f39ecadfe69404b705ddb72be5656449072eea9cb48c908b4c74",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-groups_up-signal_shuffle-equal_updates/result-0.json": "e3b959817656a6b69b6bce1adae6244fd6cc0ead8e05af5601f4dc6707692b88",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-intrinsic-equal_updates/result-0.json": "1992bf691a2263b84ceaceb8bd26bb1fe1f3ff6889fbde6ea99d29d6859d5a78",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-linear_down-equal_updates/result-0.json": "2eaa27929e94279a6b5d7ae265e642d4c384c04521fc8e4726721bbcfcdd9276",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-linear_up-equal_updates/result-0.json": "d0e9f50b214f4f0fdf416fdfcf3e75cc467ef0b0c7904cd61076e24d0c88ba0e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-random_alpha-equal_updates/result-0.json": "12a1113d2706b27a64ca7e6ab43433e3a49532b1b389fcff3b10ac797f4a42bf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-readout_only-equal_cpu/result-0.json": "92fbb0c1113cc99437413cb7082a0eddec8815bf0e7c0e038bde5bc5b5f2b042",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-readout_only-equal_updates/result-0.json": "efc1cc447330b5135a4efe55e63f6168c48d2499694fccea6f5a69db8177fa79",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-state-equal_updates/result-0.json": "9346d8b6ec3b5e8905660fe83e4b91a0c2d199d3dc0f95f2d9884ce0d2db663f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-state_shuffle-equal_updates/result-0.json": "abb572a2e082d103d6f32f3a882bcf2e14e822702788fd1e4db569f5d6c28544",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-state_signal_shuffle-equal_updates/result-0.json": "8c4b9f911a562fda17474f4b281581e885a1fb132cbd983506f81da78d7f78d0",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_0-equal_cpu/result-0.json": "43ce3f11e0ebcbb6ae505cedf4a3f08b526d9b3558b8f3fcb1bc6be7586c34ac",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_0-equal_updates/result-0.json": "124b5e35b10ad12584a357aa02bd52c5044b0ae59aa18c91c619ac7902c56cd5",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_100-equal_cpu/result-0.json": "251de1d58f860f96c4acbdf7f4f5c2d0840ad048134d34220b7ba53813f93544",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_100-equal_updates/result-0.json": "18fb7472a10a483e4a70c4c6d846af1545f28c0cc2cb2a4667e57af7eba9d62c",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_25-equal_updates/result-0.json": "bc39f31cafde089ec46201b740593bd4164e97c950ab72bc7eed28b3371cb6d9",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_50-equal_updates/result-0.json": "007fbd06be227688aed5ab0472f719c647df4194765ff696fe767a53478efa14",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_50-norm_matched/result-0.json": "c0b974830da38da31603cc156f538458636c94940a4e918022b08ff9473e194d",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_50-norm_matched/result-1.json": "c252c2ef5b0fcdf99435c6acac7fb5c8610f70309da2ece5baee42c0a8fb03a2",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140017-static_75-equal_updates/result-0.json": "1bb7547f1bde8b53ff1e0a5cfe36de31a65562ca94b43932337804c122db5910",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_down-equal_updates/result-0.json": "0ad409b1c558b7053fd815db729ff1d219ca9bf8034858e032151bc533ad2b14",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-equal_cpu/result-0.json": "1cf04ed1f9b21f5140b043688dfa291ea11e30d6b6f10d900052936f2857ce24",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-equal_updates/result-0.json": "565d8cc2d54262cfcfb2b4bdc8ed2637caaeea60af64e710a10111b3121d3e56",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-norm_matched/result-0.json": "7bebadc12840b8a754e976915b39c60521a943839e120f3d665b540ce29a3128",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-norm_matched/result-1.json": "9415f20d1190ad60d0bc82fd3e00235aa140319a45970ab90673e6130ab8a73b",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-signal_shuffle-equal_cpu/result-0.json": "7e71b4e6e69796b97582f9aee3e6c51f2c2de06430e2abfeef8677f05ddd8247",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-groups_up-signal_shuffle-equal_updates/result-0.json": "8c22186af49568a3538427517ea89fd49ec8c2ad4fc94e5bdd8c045bebaa66d4",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-intrinsic-equal_updates/result-0.json": "790d67ee894997c2c39f93feeccff1d74b46346119b9be22eb2b11d5a6865781",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-linear_down-equal_updates/result-0.json": "bf6a37a35a40b131f678ebb3f46abf9b246646d07b2a50249e9700dc92d1b029",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-linear_up-equal_updates/result-0.json": "44d498a96a9206fe71bf66d4c21718d72c836c1db1a5ea3f69c4e27cabaacff6",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-random_alpha-equal_updates/result-0.json": "1075b661041643465ecc337eabbb840a802fae335801afbc4f24f2f381ac89e1",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-readout_only-equal_cpu/result-0.json": "2cc3582f0795a7bb37bd928929d26aed508e157bacd9f7955d43b115ea2f3f0e",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-readout_only-equal_updates/result-0.json": "5cf7a94fe1ab34f507bd5825e0196c11c14548adee74b3f01dfcbb33cd8b7381",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-state-equal_updates/result-0.json": "fe439982e6ce17392c747d1e887408a3f56c965ac68951e9377afc0ae07553ec",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-state_shuffle-equal_updates/result-0.json": "c8c386c210d0e57ead85d77efc142e59be7266b1f6bc78a7ac09a4282083943a",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-state_signal_shuffle-equal_updates/result-0.json": "150bebd49bbd248b175f94cc3458fb0dbe62a96334b19d3fde432de50f7fea53",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_0-equal_cpu/result-0.json": "fed5a9cb35c84e6a109dc25e8349d76f60558f9d441b7e1419b2cff2e58a954f",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_0-equal_updates/result-0.json": "cbfccea0d7b7043ac3a308bf1d8182f1c03b51ea69b34874197f0ce505100c98",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_100-equal_cpu/result-0.json": "c7509b8db9f01d929186f2ec554a941152ae7e8165f700b1cd86233c4de97f70",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_100-equal_updates/result-0.json": "8d9a5cd349ee221635bf3e0b6983f995404af3654fc178144fad2f39376f8852",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_25-equal_updates/result-0.json": "c29cea6f31255cb8e9a8c582687c5bff9814d0dc1d0f2c896685f9812515ce26",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_50-equal_updates/result-0.json": "095210db00f5adf29e0fefd5751ab7f182e336465804ae2cdd2eab2c9ef8ced8",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_50-norm_matched/result-0.json": "6472a95e3fbd3260aba7aaf2b20f2397d90d1ee8377f69779d952decd7205fdf",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_50-norm_matched/result-1.json": "0a75998856319b69fea5aff740b4edc21aedaac3768360c45bea9a277f5e48f7",
+    "runs/20261112T121634Z-acr-dev-v1-resume-59ced4/jobs/xor-140023-static_75-equal_updates/result-0.json": "8c9c09ec8670f8a768f49caab9563934c99dcc85d02a6a63bba269ca8b444fe5",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/control-result.json": "371e066a68e47980cb786490eae6bd6e9e5077cd8610ea5efdc3edff7ec09c3b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-00.npz": "bed2075e43c49902285531524e6867c61e1d92fb966e950e7b0ce4c9a08d2896",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-00-surrogate.npz": "3d32b253f6353d0bc0080ce36bc5cd57f2df1142d693ace0d52a2287c31abfe0",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-01.npz": "871b39debb120bde71d1b2b525f0f6513c46b805daee7005d954324b1e4ff308",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-01-surrogate.npz": "da42eb60f65ff001b8f8399ea8eabc1b78006f8a9745bc4c4c21ad3702e92d38",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-02.npz": "505bda32ec53b618f9588adc351b5d979c934248764ed5597f0510fa87a48384",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-02-surrogate.npz": "6b8239157ce83a2800f16a24a4345c0b738a553249f8af6d03986239249a2ac7",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-03.npz": "06cddebd00e37fdfb70e931956792c91529119958abb65290f8d33ef4230f892",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-03-surrogate.npz": "c4734a53fe7948320ebdd602e80a2e7eefc12188e02cd03fe1f93d8391593761",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-04.npz": "86f39b88e7a481d51c6c8b2247213e973f5f98467d0fc9e137b4d19c6cf89b00",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-04-surrogate.npz": "7d815927cdde8ab501a2160017a29239f17dd190dc69f085d9d3fa88c7dfd164",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-05.npz": "ca802932e9cf8dab89a6fd5901fb8aa1027ce0ab590433b461de1028ad00a8d5",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-05-surrogate.npz": "def1910349912b9dab9d8cb2a93d6330480aee43b0131bf73fb8f12a4a0d23ce",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-06.npz": "d2fc6433ce31cb6d622015a3e9a818acfc1ca85cb609d8b6fd3f87dd8ccaacaf",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-06-surrogate.npz": "8008e9eb4c0d961fb7e21e1b15b4cd2630d02c285810f1b02c2a0529ede1407b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-07.npz": "a447414c5a784dbcb248f755553a28e81094e5e2ec61a6b5766d1d20852619f0",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-07-surrogate.npz": "91b2a0850e277793838025d92e1a45e21c0a00f7afea6d77d52a41a42161995b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-08.npz": "428668d9106b7c344fd23285d57d89803edc5aca3ee6d0494446471f88e607b9",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-08-surrogate.npz": "2f3f80a2608e8189a5a8db869ee7cf54aa60c665d58d2b20659c0b7fd1a87e13",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-09.npz": "17ec3af229d011ac4298398898d9836af5af15a9c858987cbe31d24b87caa7f3",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-09-surrogate.npz": "71085d2c37466d13d8a5d283ce3028389deb301452cb23dbbc9ae4f5ba32a087",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-10.npz": "3c0927e0480de3e25a41f927d2e8f101add212ff5ae8279e435dd6bf7a2a3f29",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-10-surrogate.npz": "0d934dae0e8573c76bcdf2f7287dbe5c02336bd71b0588e1ba1839916e573dbf",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-11.npz": "930d493ba5894ac8aa9eeabd2368fec021b0919ed62ad974f7e7ba5e34d7b6fe",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-11-surrogate.npz": "f20ea26728c4ec1297c11d962ddda247c9d09a23eb9754f0312213bf539144db",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-12.npz": "22e1f5642bfb89a102adf51963d2ebc7da7638598edc6d8b5a5b34349a1ca886",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-12-surrogate.npz": "6e0bfca73af8730478500bb42b819af1ede473172b5c85180d8598ddf13b03b6",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-13.npz": "533dbef3aeebe46d1af57ad49ef0e2558f76132b40901f36de6c0cd19c789c82",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-13-surrogate.npz": "ab2cb3e4c2587e4a798e477953c8027915c4e88eec37b45f8325954bc4397d12",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-14.npz": "3061869a65527296c60476f8cc2d3f7a59ec522461aac09e4ed8f20eeea1048b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-14-surrogate.npz": "bec0fd89be924505002ba3dfdbeef83b532c9c45eeffc0520a54d34c626350c1",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-15.npz": "498647ed3285c788f3d30c86d74c81f8e4695f3ec204a0a9df360d6572388d50",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-15-surrogate.npz": "7b2c05f37fd81f24b6b906927ad16ca17a9512877f816e80c559a3999b7a6d76",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-16.npz": "29b900ce055f3ba0516fce3468b4ae8a3ad3d554aeeae666f99f7234088131b6",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-16-surrogate.npz": "129a0527bd5f6108707731d3a26db5809ed62863ee9a5f81a2c050a6c548fd31",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-17.npz": "b8e03b2db58b6c3644eaffd08d894bbfc016618433f60b527ab0a65223d757d2",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-17-surrogate.npz": "119c05751864b494731255b0eb42126c6862a51ddc53a90c45b88c2317cde054",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-18.npz": "db66d132c9584bfd613d1222135b592ec9941b92bf9d26a48a5ca8e846c83670",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-18-surrogate.npz": "aaa8069fbdd1843ac39b066d694749c7fc5766a40c7096e6e0def6a33253a3c4",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-19.npz": "0fd8949785e332d93d6498f8c5d61d58372e8d06ff10f24a281235b0cc25d5cf",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-19-surrogate.npz": "c080aa2c453d379f5e7fcce709864a7f6248e011b2498fc1a0edb674daa64274",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-20.npz": "fc683ecbc2095477ce1df7f330c3cd4eb1c28aecab31357c900f434f3368e7b9",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-20-surrogate.npz": "ad23936e35acdf49b4924f2053e5150cf4919d060746cefe6a408198295cd191",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-21.npz": "a4e1403fa2a97f7701abd99917c77866996098ccf094afc4ee3dda980787d892",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-21-surrogate.npz": "6536ddf66cba5061944247c987c15f29008b2769d2ecab9698b8f863d4c4db10",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-22.npz": "b48fee851e34c038e08bddbfdd39157ca59baee0815454b6195a93e250ede755",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-22-surrogate.npz": "53017356be20cbe58fc4bcd0c2260167cc64a4fadb039f65b478c907826c7b05",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-23.npz": "6f349234e863681cb8835832e3789d4652eada20d85c50914fb0a3b176a4f27f",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-23-surrogate.npz": "140aad332f43348ae622dae1dc9dafe780b73e68d4116eb5001720a1a1a5e83f",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-24.npz": "a94b2e85d2a3f84486bef7543852dc3c14b9fa2825954892ced5bb7399ba9594",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-24-surrogate.npz": "c868f03ae5ff0d4dcd220ca45688e1c9e3ddd5f2bf1c5ad97c880c3c028d3481",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-25.npz": "50d517e65410eb04a2f9c5750128e41c16b84093cc0c476f23f188fdaa3d9fdc",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-25-surrogate.npz": "c1595ede9e08b4fd0d2c927276585fb51ffbea8717bd100c0ea0259d8226a30a",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-26.npz": "2a04e6f74d00e3419798b52b23b7f147927ae7b115831044fb6a2f7b8ddc5c57",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-26-surrogate.npz": "31445b10151cf61aa68fcefe9be36de5ed78a92547af8e333683a7c7db705dae",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-27.npz": "5df8b6addf76444f5e548778475d8051a11873590e0f7e1a63832cb2f79eacba",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-27-surrogate.npz": "b995986571267b27f8c03c57082ee3f612d0f3ded22a5a4d6d7060c5e54896b6",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-28.npz": "9d82c07fcad11503c6e8c2cd00b66636dc4e472aa52c2704774fc01fea3e2771",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-28-surrogate.npz": "d0e91cd31b958784015f5351a3e6ef1382dc5a68d2261ba53d8c8bc96fab3ec4",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-29.npz": "fdff2930fac2a4de7bde6c925b9b656003c605d6dbe2f65f7e25f02b4382b784",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-29-surrogate.npz": "61a628cbe7a6eae8b7d9b36cba557a77848bbc0b107c8a86fd044e138601755e",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-30.npz": "c1b12155b0639146ed038f2df0a041ff0f28c519ab4323e963d40fe16440d296",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-30-surrogate.npz": "3cc605ae59bc390fbf248baef16c87acb12c1b8b1580ef5fefbfb4638f82bf04",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-31.npz": "9292db73df5fb1d84b35ddbfa23ce8f56eb5f4c48fa04efc3c24e3ed0c7748f8",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-31-surrogate.npz": "2970cd71d3e0bfc22e8a9e2788d960ff81f306016c31b69f81f3dee10c17f5df",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-32.npz": "3247c9ce7b13922d186374f07bdba411ad42191552b821c8dc7d373cecfca9dd",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-32-surrogate.npz": "c5ad68dcf81c7da2879cb57aceffa1926d31fd90fafb68cd1ab3b8a056eda76f",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-33.npz": "55eb5de11b72a42a858220aa1eb8005d76a23265d90d0dfff88864cd65c9c172",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-33-surrogate.npz": "1a9763049736b20bed29c260b1fa72716729329dea87d446f8ce5c8a301c0681",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-34.npz": "2bf0c2b1aacf5ea094344a0ddd9878d3db087c611608e5bde5eaa87783d4ad9b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-34-surrogate.npz": "724e50169699b0bf07a0ad92b4c9cea20a64ccec7e3d7b24b037bf403044a823",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-35.npz": "10aba2402ae14cddf6deb85c5ceec8f47945b74f0121eabd5194c481cbf171d1",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-35-surrogate.npz": "0da473c1f77b225eea2a88ad530ff1ffbcfbd2e2b514d2e8c08acd56322a5611",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-36.npz": "41a7bf69853f1cb4e689627552dd6d1739892d11f5270cdaa4dc5669db85b613",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-36-surrogate.npz": "a40eb24262fd516182f135a15e8b6026389cd2c6e30cb718a0a62497c470a9c6",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-37.npz": "ef4b2d8b0c7d3064dcec9521554c71dfa04d3eb9be1641f611e6ccef4aa462a0",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-37-surrogate.npz": "354d5783c4d026443a0368fcbd359685c9a7470c2d1aa706c7ba6b05071a8018",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-38.npz": "fde330c0301030aea46e9bb34617cbb1fd567d10f1c50520e1c061be61ab1f55",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-38-surrogate.npz": "db427db60b24237649048c60b2f975385d6ee455256ccc2516a6be208d6e5678",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-39.npz": "fd078f02819e45e60fd6335e298266cbc0fcbc36f6eb3aab1dd6ab57b0d7833c",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-39-surrogate.npz": "695dfa7fce08d69d7511a2df7d3729ec819ef14efd68bd4cf3f6bbb50ffd560c",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-40.npz": "1db83c59026c1402a4639d5e56e9102ea4feea1de747fb98aab8c41f6b2052f9",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-40-surrogate.npz": "d7301b10b5a5b52b7e40df93b01306aca49b2a21716514b727698e4d34b181a4",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-41.npz": "062133d6ecae72aa7baad5922bf3169b76f5187b1365f9d1714af52b32cb0d99",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-41-surrogate.npz": "4167f5ff533f73ab22672eec3e820b0a083c2c6db31532a5511b212805f37778",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-42.npz": "0ff6dc3029bbff7e9a91ac1961012ca7f50cb8604e5794c2a71774127b88a49d",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-42-surrogate.npz": "a2df5fe168bc002bd7bb685cf040c3917e5639a807d711d4bb4b901e8bba53b8",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-43.npz": "3f3a8880f6ca6eb00bc706bb9abeb51a59a7cb640f73c46577e893d4b5ede5ac",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-43-surrogate.npz": "0ff47a0723640d13f6402765c7cc29a853407dec48efff252c56aaf3dd96d5f9",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-44.npz": "4fdee7b96ca03936159fa991006291f811535a03d230ad55b420420766616b79",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-44-surrogate.npz": "823b41d583942b0ea170e8693721f45776b7976399edddc3e3c02654eff33f2b",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-45.npz": "dccd9792d70aa12d76a1aec376488d20d984b3d44f3093eb4b3f4d5c09126cad",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-45-surrogate.npz": "3d75eddd6f99617962badbbaeb7205715e94579cbed60b0fdfdb23be8a9539b6",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-46.npz": "5dbd67748d938440ffe0b6bb1aa9006c92abb56712f66fb06e7e688478e7aad9",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-46-surrogate.npz": "ee9ca4ddf4934c6000b46bfe8bba62dffc2472d438172b9d08f5bcac0a0fa803",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-47.npz": "14ff0764e63a7081980a58afbf67e7082f2150ec743a536f6ff6fc63dd201555",
+    "runs/20261114T064319Z-credit-direction-diagnostic-v1-fc84eb/case-47-surrogate.npz": "2db5a196ea0acff38a68c994aa46a484cb9b7b5d85f19fad5125b37f0c4fc981"
+  },
+  "resource_receipt": {
+    "elapsed_seconds": 1.3280000000086147,
+    "sampled_peak_rss_bytes": 40931328,
+    "rss_sampling": "before each input/vector record; short peaks may be missed",
+    "processes": 1,
+    "GPU_used": false,
+    "seconds_cap": 60.0,
+    "rss_cap_mb": 300.0,
+    "threads": 1
+  }
+}

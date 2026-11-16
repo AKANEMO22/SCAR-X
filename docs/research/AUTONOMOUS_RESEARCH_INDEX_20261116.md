@@ -33,8 +33,8 @@ No new uncertainty claim: paired records share three seeds, not 375 independent 
 | Grok R6 / R5B reproduction | PARTIALLY VERIFIED | Prior Codex forensic reproduction saved raw pairs and reports head caseA~66.76% vs ridge~98.58%, no-clip CI crosses zero; this audit does not reopen confirmation. Use the readout diagnostic distinction, not a candidate success. |
 | DeepSeek R4 | PARTIALLY VERIFIED | Source and archived protocol/report inspected; confirmation FAIL and posthoc diagnostic extensions preserved. Fixed bilinear cue interactions are programmer supplied; no learned-hidden or general binding proof. |
 | DeepSeek R5 | PARTIALLY VERIFIED | Source/report and prior forensic provenance support STOP/caseA confirmation failure. Three DEV screen seeds did not predict eight historical confirmation seeds. No new old-TEST measurement. |
-| ACR DEV raw arithmetic | IN PROGRESS | Pending bounded script below. Three DEV seeds,375 model records incl reuse; isolated task models/joint IID do not measure continual composition. Source and final archival SHA differ and must be named separately. |
-| Hybrid Credit Direction vectors | IN PROGRESS | Pending saved-vector cosine recount below. History/preconditioning is an arithmetic location of direction change; no causal proof that removing history improves quality/retention. |
+| ACR DEV raw arithmetic | VERIFIED in stated scope | All375 records/1,228,800 ID/OOD direct/probe entries recount exactly, max accuracy error0. Three DEV seeds incl reuse; this subset is not all3,072,000 reported intervention entries. Isolated task models/joint IID do not measure continual composition. |
+| Hybrid Credit Direction vectors | VERIFIED in stated scope | All48 saved-case cosine pairs reproduce exactly. Final local median0.724 vs physical delta0.139,6/24 negative physical deltas. History/preconditioning is a location of direction change; no causal proof that removing history improves quality/retention. |
 | Phase2/2.1 | PARTIALLY VERIFIED | Prior15-trial audit reports head restoration rescues task0 much more than hidden restoration; report/source navigation inspected, historical matrices/TEST not rescored. Acquisition/retention gates remain FAIL/PIVOT. |
 | Shared head / common readout | PARTIALLY VERIFIED | ACR joint guards fail binding/distractor/order; GeminiR11 shared IID is not continual retention. Hybrid common-head DEV reports weak/variable earlier gains and conditional later signed-credit gains; neither proves H3/H5. |
 | Semantic common-head raw recount | NOT MEASURED in this audit | Saved measurements exist, but feature labels.npy contains600 TRAIN/DEV/TEST labels. Avoid loading this mixed archive. Existing scoped DEV audit can be reused with its limitation. |
@@ -73,5 +73,28 @@ PR inventory was established. No network mutation, model download or clone.
 
 ## D4 result receipt
 
-Pending root source/protocol lock and execution. Append only the new unique run
-path and scoped arithmetic result here; historical reports/catalog stay unchanged.
+Source/protocol locked by root at `bee9b68c530d174f1bbc28d42cee5e11aebc81a9`.
+One completed invocation, no retries:
+`runs/rc-d4-20261116T092000Z-archaeology-a0f88a/result.json`.
+Script SHA256 `a0f88a8268097f722400e0d6db39caa7a137059f8d2917462205d0eb4a74ce8d`.
+Elapsed1.328s, sampled peak RSS40,931,328bytes, one CPU process/thread, no GPU.
+Result contains all read input hashes and local refs/worktree inventory.
+All neural forward/backward/update/fit counters are0; no TEST/confirmation raw.
+RSS samples can miss brief peaks; this is an audit-process receipt, not system RAM.
+
+ACR DEV execution source is `c54ee689126a79e695df98eb81eb60053acc2621`, archival
+branch tip `22bb9781f4ed8f60f7180bdb56b6570e64e1f503`, reused by source1ea.
+Seeds140011/140017/140023. Equality counts agree with saved CSV at error0.
+For example, frozen protocol nominee groups_up has ID direct/probe85.03/88.54%
+Binding,98.11/98.44% XOR,59.24/60.48% Distractor. These are arithmetic reuse,
+not selection of a new candidate; original specialized-only verdict stays.
+
+Hybrid saved vectors use seeds260113/260137/260171, eight old training cases
+each, initial and final640 states. Initial local/delta median cosine0.86677/
+0.84793; final0.72424/0.13926. Recorded vector agreement has max error0;
+final delta6/24cosines are negative, local0/24negative. Recomputing these values
+does not recreate a gradient, validate the surrogate calculus independently,
+or show that changing optimizer history improves acquisition/retention.
+
+User-authorized Hermes backend shutdown during the campaign was performed by
+root; it is intentional, not a research incident. D4 did not stop or restart it.

@@ -1,0 +1,351 @@
+{
+  "backend": "cpu",
+  "profiles": {
+    "cpu": {
+      "exit_code": 0,
+      "backend": "cpu",
+      "episode_forwards": 7,
+      "hidden_updates": 0,
+      "median_two_episodes_seconds": 0.0015104000049177557,
+      "repeat_seconds": [
+        0.0015511999954469502,
+        0.0015104000049177557,
+        0.0015100000018719584
+      ],
+      "wall_seconds": 0.12430609998409636,
+      "memory": {
+        "peak_rss": 44953600,
+        "rss": 44912640,
+        "commit": 30285824,
+        "peak_commit": 30384128,
+        "private": 30285824
+      },
+      "cap": {
+        "enforced": true,
+        "limit_bytes": 800000000,
+        "kind": "Windows per-process committed memory; shared pages monitored separately"
+      },
+      "GPU_before": {
+        "available": true,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "compute_capability": "8.9",
+        "total_MiB": 6141,
+        "used_MiB": 756,
+        "free_MiB": 5165,
+        "temperature_C": 55,
+        "SM_clock_MHz": 2355,
+        "utilization_percent": 2,
+        "driver": "616.92"
+      },
+      "GPU_after": {
+        "available": true,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "compute_capability": "8.9",
+        "total_MiB": 6141,
+        "used_MiB": 756,
+        "free_MiB": 5165,
+        "temperature_C": 55,
+        "SM_clock_MHz": 2355,
+        "utilization_percent": 2,
+        "driver": "616.92"
+      },
+      "full_perprocess_VRAM_peak": "UNKNOWN_WDDM",
+      "cupy_pool_bytes": 0
+    },
+    "gpu": {
+      "exit_code": 0,
+      "backend": "gpu",
+      "episode_forwards": 7,
+      "hidden_updates": 0,
+      "median_two_episodes_seconds": 0.0365583999955561,
+      "repeat_seconds": [
+        0.03812330000801012,
+        0.036384700011694804,
+        0.0365583999955561
+      ],
+      "wall_seconds": 2.582375400001183,
+      "memory": {
+        "peak_rss": 551538688,
+        "rss": 540315648,
+        "commit": 562741248,
+        "peak_commit": 572817408,
+        "private": 562741248
+      },
+      "cap": {
+        "enforced": true,
+        "limit_bytes": 800000000,
+        "kind": "Windows per-process committed memory; shared pages monitored separately"
+      },
+      "GPU_before": {
+        "available": true,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "compute_capability": "8.9",
+        "total_MiB": 6141,
+        "used_MiB": 756,
+        "free_MiB": 5165,
+        "temperature_C": 55,
+        "SM_clock_MHz": 2355,
+        "utilization_percent": 2,
+        "driver": "616.92"
+      },
+      "GPU_after": {
+        "available": true,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "compute_capability": "8.9",
+        "total_MiB": 6141,
+        "used_MiB": 832,
+        "free_MiB": 5089,
+        "temperature_C": 55,
+        "SM_clock_MHz": 2355,
+        "utilization_percent": 2,
+        "driver": "616.92"
+      },
+      "full_perprocess_VRAM_peak": "UNKNOWN_WDDM",
+      "cupy_pool_bytes": 97280
+    }
+  },
+  "max_parity_error": 2.9802322387695312e-08,
+  "calibration": [
+    {
+      "workers": 1,
+      "seconds_including_startup": 0.5858063999912702,
+      "episodes_per_second": 655.5066656931753,
+      "jobs": [
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.06811640001251362,
+          "memory": {
+            "peak_rss": 43290624,
+            "rss": 43290624,
+            "commit": 28741632,
+            "peak_commit": 28741632,
+            "private": 28741632
+          }
+        },
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.05888799999956973,
+          "memory": {
+            "peak_rss": 43331584,
+            "rss": 43331584,
+            "commit": 28741632,
+            "peak_commit": 28790784,
+            "private": 28741632
+          }
+        },
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.05889330001082271,
+          "memory": {
+            "peak_rss": 43364352,
+            "rss": 43364352,
+            "commit": 28741632,
+            "peak_commit": 28794880,
+            "private": 28741632
+          }
+        },
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.058322400000179186,
+          "memory": {
+            "peak_rss": 43380736,
+            "rss": 43380736,
+            "commit": 28741632,
+            "peak_commit": 28803072,
+            "private": 28741632
+          }
+        },
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.05776809999952093,
+          "memory": {
+            "peak_rss": 43388928,
+            "rss": 43388928,
+            "commit": 28741632,
+            "peak_commit": 28803072,
+            "private": 28741632
+          }
+        },
+        {
+          "pid": 69048,
+          "episode_forwards": 64,
+          "seconds": 0.05767159999231808,
+          "memory": {
+            "peak_rss": 43397120,
+            "rss": 43397120,
+            "commit": 28741632,
+            "peak_commit": 28803072,
+            "private": 28741632
+          }
+        }
+      ]
+    },
+    {
+      "workers": 2,
+      "seconds_including_startup": 0.40134509999188595,
+      "episodes_per_second": 956.7825794005294,
+      "jobs": [
+        {
+          "pid": 50460,
+          "episode_forwards": 64,
+          "seconds": 0.06896429997868836,
+          "memory": {
+            "peak_rss": 42831872,
+            "rss": 42831872,
+            "commit": 28286976,
+            "peak_commit": 28286976,
+            "private": 28286976
+          }
+        },
+        {
+          "pid": 66888,
+          "episode_forwards": 64,
+          "seconds": 0.06685470000957139,
+          "memory": {
+            "peak_rss": 43286528,
+            "rss": 43286528,
+            "commit": 28725248,
+            "peak_commit": 28725248,
+            "private": 28725248
+          }
+        },
+        {
+          "pid": 66888,
+          "episode_forwards": 64,
+          "seconds": 0.06146440000156872,
+          "memory": {
+            "peak_rss": 43331584,
+            "rss": 43331584,
+            "commit": 28725248,
+            "peak_commit": 28737536,
+            "private": 28725248
+          }
+        },
+        {
+          "pid": 50460,
+          "episode_forwards": 64,
+          "seconds": 0.06086269998922944,
+          "memory": {
+            "peak_rss": 42938368,
+            "rss": 42938368,
+            "commit": 28553216,
+            "peak_commit": 28553216,
+            "private": 28553216
+          }
+        },
+        {
+          "pid": 66888,
+          "episode_forwards": 64,
+          "seconds": 0.05754700000397861,
+          "memory": {
+            "peak_rss": 43425792,
+            "rss": 43425792,
+            "commit": 28991488,
+            "peak_commit": 28991488,
+            "private": 28991488
+          }
+        },
+        {
+          "pid": 50460,
+          "episode_forwards": 64,
+          "seconds": 0.05965380000998266,
+          "memory": {
+            "peak_rss": 43503616,
+            "rss": 43503616,
+            "commit": 29085696,
+            "peak_commit": 29085696,
+            "private": 29085696
+          }
+        }
+      ]
+    },
+    {
+      "workers": 3,
+      "seconds_including_startup": 0.362875199993141,
+      "episodes_per_second": 1058.215055774708,
+      "jobs": [
+        {
+          "pid": 65276,
+          "episode_forwards": 64,
+          "seconds": 0.06966549999197014,
+          "memory": {
+            "peak_rss": 42688512,
+            "rss": 42688512,
+            "commit": 28291072,
+            "peak_commit": 28291072,
+            "private": 28291072
+          }
+        },
+        {
+          "pid": 59864,
+          "episode_forwards": 64,
+          "seconds": 0.07081010000547394,
+          "memory": {
+            "peak_rss": 42860544,
+            "rss": 42860544,
+            "commit": 28319744,
+            "peak_commit": 28319744,
+            "private": 28319744
+          }
+        },
+        {
+          "pid": 68740,
+          "episode_forwards": 64,
+          "seconds": 0.06969010000466369,
+          "memory": {
+            "peak_rss": 43057152,
+            "rss": 43057152,
+            "commit": 28553216,
+            "peak_commit": 28553216,
+            "private": 28553216
+          }
+        },
+        {
+          "pid": 65276,
+          "episode_forwards": 64,
+          "seconds": 0.06044939998537302,
+          "memory": {
+            "peak_rss": 42741760,
+            "rss": 42741760,
+            "commit": 28291072,
+            "peak_commit": 28348416,
+            "private": 28291072
+          }
+        },
+        {
+          "pid": 68740,
+          "episode_forwards": 64,
+          "seconds": 0.05695589998504147,
+          "memory": {
+            "peak_rss": 43098112,
+            "rss": 43098112,
+            "commit": 28553216,
+            "peak_commit": 28565504,
+            "private": 28553216
+          }
+        },
+        {
+          "pid": 59864,
+          "episode_forwards": 64,
+          "seconds": 0.060464599984698,
+          "memory": {
+            "peak_rss": 42971136,
+            "rss": 42971136,
+            "commit": 28585984,
+            "peak_commit": 28585984,
+            "private": 28585984
+          }
+        }
+      ]
+    }
+  ],
+  "chosen_workers": 3,
+  "threads_per_worker": 1,
+  "calibration_forwards": 1152,
+  "no_utilization_target": true
+}
